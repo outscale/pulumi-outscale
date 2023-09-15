@@ -1,0 +1,5 @@
+config:
+  outscale:accessKeyId: C8ARXIZEJD4VV03O9CN8
+  outscale:region: eu-west-2
+  outscale:secretKeyId:
+    secure: AAABAPPTa9xSaImUSgLpfvuSiN1UUp5hkzojFDDc4eLryfR8+dHH40BCBxeNeQYNjTKLp2o2QSRgznCL05aVhexP72pJReqk

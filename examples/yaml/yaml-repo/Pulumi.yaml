@@ -1,0 +1,45 @@
+resources:
+  keypair:
+    type: outscale:Keypair
+    properties:
+      keypairName: keypair
+  net:
+    type: outscale:Net
+    properties:
+      ipRange: "10.0.0.0/16"
+  subnet:
+    type: outscale:Subnet
+    properties:
+      ipRange: "10.0.0.0/24"
+      subregionName: "eu-west-2a"
+      netId: ${net.id}
+  igw:
+    type: outscale:InternetService
+  igw_link:
+    type: outscale:InternetServiceLink
+    properties:
+      internetServiceId: ${igw.id}
+      netId: ${net.id}
+  public_ip:
+    type: outscale:PublicIp    
+  route_table:
+    type: outscale:RouteTable
+    properties:
+      netId: ${net.id}
+  security_group:
+    type: outscale:SecurityGroup
+    properties:
+      description: "test security group"
+      netId: ${net.id}
+  route_table_link:
+    type: outscale:RouteTableLink
+    properties:
+      subnetId: ${subnet.id}
+      routeTableId: ${route_table.id}
+
+  
+
+
+
+
+  

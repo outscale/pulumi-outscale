@@ -1,0 +1,5 @@
+name: pulumi-lab
+description: Try Pulumi
+
+runtime: yaml
+main: yaml-repo/
