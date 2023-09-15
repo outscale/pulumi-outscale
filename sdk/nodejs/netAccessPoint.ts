@@ -6,6 +6,47 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Net access point.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const routeTable01 = new outscale.RouteTable("routeTable01", {netId: net01.netId});
+ * ```
+ * ### Create a Net access point
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const netAccessPoint01 = new outscale.NetAccessPoint("netAccessPoint01", {
+ *     netId: outscale_net.net01.net_id,
+ *     routeTableIds: [outscale_route_table.route_table01.route_table_id],
+ *     serviceName: "com.outscale.eu-west-2.api",
+ *     tags: [{
+ *         key: "name",
+ *         value: "terraform-net-access-point",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A Net access point can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/netAccessPoint:NetAccessPoint ImportedNetAccessPoint vpce-87654321
+ * ```
+ */
 export class NetAccessPoint extends pulumi.CustomResource {
     /**
      * Get an existing NetAccessPoint resource's state with the given name, ID, and optional extra
@@ -34,12 +75,30 @@ export class NetAccessPoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetAccessPoint.__pulumiType;
     }
 
+    /**
+     * The ID of the Net access point.
+     */
     public /*out*/ readonly netAccessPointId!: pulumi.Output<string>;
+    /**
+     * The ID of the Net.
+     */
     public readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * One or more IDs of route tables to use for the connection.
+     */
     public readonly routeTableIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * The name of the service (in the format `com.outscale.region.service`).
+     */
     public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * The state of the Net access point (`pending` \| `available` \| `deleting` \| `deleted`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.NetAccessPointTag[] | undefined>;
 
     /**
@@ -87,12 +146,30 @@ export class NetAccessPoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetAccessPoint resources.
  */
 export interface NetAccessPointState {
+    /**
+     * The ID of the Net access point.
+     */
     netAccessPointId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * One or more IDs of route tables to use for the connection.
+     */
     routeTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the service (in the format `com.outscale.region.service`).
+     */
     serviceName?: pulumi.Input<string>;
+    /**
+     * The state of the Net access point (`pending` \| `available` \| `deleting` \| `deleted`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetAccessPointTag>[]>;
 }
 
@@ -100,8 +177,20 @@ export interface NetAccessPointState {
  * The set of arguments for constructing a NetAccessPoint resource.
  */
 export interface NetAccessPointArgs {
+    /**
+     * The ID of the Net.
+     */
     netId: pulumi.Input<string>;
+    /**
+     * One or more IDs of route tables to use for the connection.
+     */
     routeTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the service (in the format `com.outscale.region.service`).
+     */
     serviceName: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetAccessPointTag>[]>;
 }

@@ -24,6 +24,12 @@ class PublicIpLinkArgs:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PublicIpLink resource.
+        :param pulumi.Input[bool] allow_relink: If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+        :param pulumi.Input[str] nic_id: (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        :param pulumi.Input[str] private_ip: (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+        :param pulumi.Input[str] public_ip: The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        :param pulumi.Input[str] vm_id: The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
         """
         if allow_relink is not None:
             pulumi.set(__self__, "allow_relink", allow_relink)
@@ -41,6 +47,9 @@ class PublicIpLinkArgs:
     @property
     @pulumi.getter(name="allowRelink")
     def allow_relink(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+        """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
@@ -50,6 +59,9 @@ class PublicIpLinkArgs:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -59,6 +71,9 @@ class PublicIpLinkArgs:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -68,6 +83,9 @@ class PublicIpLinkArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -77,6 +95,9 @@ class PublicIpLinkArgs:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -86,6 +107,9 @@ class PublicIpLinkArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -108,6 +132,13 @@ class _PublicIpLinkState:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PublicIpLink resources.
+        :param pulumi.Input[bool] allow_relink: If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+        :param pulumi.Input[str] link_public_ip_id: (Net only) The ID representing the association of the public IP with the VM or the NIC.
+        :param pulumi.Input[str] nic_id: (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        :param pulumi.Input[str] private_ip: (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+        :param pulumi.Input[str] public_ip: The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        :param pulumi.Input[str] vm_id: The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
         """
         if allow_relink is not None:
             pulumi.set(__self__, "allow_relink", allow_relink)
@@ -133,6 +164,9 @@ class _PublicIpLinkState:
     @property
     @pulumi.getter(name="allowRelink")
     def allow_relink(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+        """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
@@ -142,6 +176,9 @@ class _PublicIpLinkState:
     @property
     @pulumi.getter(name="linkPublicIpId")
     def link_public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Net only) The ID representing the association of the public IP with the VM or the NIC.
+        """
         return pulumi.get(self, "link_public_ip_id")
 
     @link_public_ip_id.setter
@@ -160,6 +197,9 @@ class _PublicIpLinkState:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -169,6 +209,9 @@ class _PublicIpLinkState:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -178,6 +221,9 @@ class _PublicIpLinkState:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -187,6 +233,9 @@ class _PublicIpLinkState:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -214,6 +263,9 @@ class _PublicIpLinkState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -234,9 +286,52 @@ class PublicIpLink(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PublicIpLink resource with the given unique name, props, and options.
+        Manages a public IP link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        public_ip01 = outscale.PublicIp("publicIp01")
+        vm01 = outscale.Vm("vm01",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            security_group_ids=[var["security_group_id"]])
+        ```
+        ### Link a public IP address to a VM
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        public_ip_link01 = outscale.PublicIpLink("publicIpLink01",
+            vm_id=outscale_vm["vm01"]["vm_id"],
+            public_ip=outscale_public_ip["public_ip01"]["public_ip"])
+        ```
+
+        ## Import
+
+        A public IP link can be imported using the public IP or the public IP link ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/publicIpLink:PublicIpLink ImportedPublicIpLink eipassoc-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_relink: If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+        :param pulumi.Input[str] nic_id: (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        :param pulumi.Input[str] private_ip: (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+        :param pulumi.Input[str] public_ip: The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        :param pulumi.Input[str] vm_id: The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
         """
         ...
     @overload
@@ -245,7 +340,44 @@ class PublicIpLink(pulumi.CustomResource):
                  args: Optional[PublicIpLinkArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PublicIpLink resource with the given unique name, props, and options.
+        Manages a public IP link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        public_ip01 = outscale.PublicIp("publicIp01")
+        vm01 = outscale.Vm("vm01",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            security_group_ids=[var["security_group_id"]])
+        ```
+        ### Link a public IP address to a VM
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        public_ip_link01 = outscale.PublicIpLink("publicIpLink01",
+            vm_id=outscale_vm["vm01"]["vm_id"],
+            public_ip=outscale_public_ip["public_ip01"]["public_ip"])
+        ```
+
+        ## Import
+
+        A public IP link can be imported using the public IP or the public IP link ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/publicIpLink:PublicIpLink ImportedPublicIpLink eipassoc-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param PublicIpLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -313,6 +445,13 @@ class PublicIpLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_relink: If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+        :param pulumi.Input[str] link_public_ip_id: (Net only) The ID representing the association of the public IP with the VM or the NIC.
+        :param pulumi.Input[str] nic_id: (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        :param pulumi.Input[str] private_ip: (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+        :param pulumi.Input[str] public_ip: The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        :param pulumi.Input[str] vm_id: The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,11 +472,17 @@ class PublicIpLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowRelink")
     def allow_relink(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+        """
         return pulumi.get(self, "allow_relink")
 
     @property
     @pulumi.getter(name="linkPublicIpId")
     def link_public_ip_id(self) -> pulumi.Output[str]:
+        """
+        (Net only) The ID representing the association of the public IP with the VM or the NIC.
+        """
         return pulumi.get(self, "link_public_ip_id")
 
     @property
@@ -348,21 +493,33 @@ class PublicIpLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> pulumi.Output[str]:
+        """
+        (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        """
         return pulumi.get(self, "nic_id")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[str]:
+        """
+        (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[str]:
+        """
+        The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        """
         return pulumi.get(self, "public_ip")
 
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> pulumi.Output[str]:
+        """
+        The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @property
@@ -378,5 +535,8 @@ class PublicIpLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
+        """
         return pulumi.get(self, "vm_id")
 

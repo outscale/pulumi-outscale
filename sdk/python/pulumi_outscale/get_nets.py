@@ -56,11 +56,17 @@ class GetNetsResult:
     @property
     @pulumi.getter(name="netIds")
     def net_ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_ids")
 
     @property
     @pulumi.getter
     def nets(self) -> Sequence['outputs.GetNetsNetResult']:
+        """
+        Information about the described Nets.
+        """
         return pulumi.get(self, "nets")
 
     @property
@@ -86,7 +92,35 @@ def get_nets(filters: Optional[Sequence[pulumi.InputType['GetNetsFilterArgs']]] 
              net_ids: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Nets.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nets01 = outscale.get_nets(filters=[
+        outscale.GetNetsFilterArgs(
+            name="net_ids",
+            values=[
+                "vpc-12345678",
+                "vpc-87654321",
+            ],
+        ),
+        outscale.GetNetsFilterArgs(
+            name="ip_ranges",
+            values=["10.0.0.0/16"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] net_ids: The ID of the Net.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -107,6 +141,34 @@ def get_nets_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Inpu
                     net_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Nets.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nets01 = outscale.get_nets(filters=[
+        outscale.GetNetsFilterArgs(
+            name="net_ids",
+            values=[
+                "vpc-12345678",
+                "vpc-87654321",
+            ],
+        ),
+        outscale.GetNetsFilterArgs(
+            name="ip_ranges",
+            values=["10.0.0.0/16"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] net_ids: The ID of the Net.
     """
     ...

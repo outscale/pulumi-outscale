@@ -61,6 +61,9 @@ class GetImageExportTasksResult:
     @property
     @pulumi.getter(name="imageExportTasks")
     def image_export_tasks(self) -> Sequence['outputs.GetImageExportTasksImageExportTaskResult']:
+        """
+        Information about one or more image export tasks.
+        """
         return pulumi.get(self, "image_export_tasks")
 
     @property
@@ -86,7 +89,28 @@ def get_image_export_tasks(dry_run: Optional[bool] = None,
                            filters: Optional[Sequence[pulumi.InputType['GetImageExportTasksFilterArgs']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageExportTasksResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about image export tasks.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    image_export_tasks01 = outscale.get_image_export_tasks(filters=[outscale.GetImageExportTasksFilterArgs(
+        name="task_ids",
+        values=[
+            "image-export-12345678",
+            "image-export-87654321",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetImageExportTasksFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run
@@ -107,6 +131,27 @@ def get_image_export_tasks_output(dry_run: Optional[pulumi.Input[Optional[bool]]
                                   filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImageExportTasksFilterArgs']]]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageExportTasksResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about image export tasks.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    image_export_tasks01 = outscale.get_image_export_tasks(filters=[outscale.GetImageExportTasksFilterArgs(
+        name="task_ids",
+        values=[
+            "image-export-12345678",
+            "image-export-87654321",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetImageExportTasksFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

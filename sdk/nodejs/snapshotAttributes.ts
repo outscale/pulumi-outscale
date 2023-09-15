@@ -6,6 +6,58 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages snapshot attributes.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatesnapshot).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const volume01 = new outscale.Volume("volume01", {
+ *     subregionName: "eu-west-2a",
+ *     size: 40,
+ * });
+ * const snapshot01 = new outscale.Snapshot("snapshot01", {
+ *     volumeId: volume01.volumeId,
+ *     tags: [{
+ *         key: "name",
+ *         value: "terraform-snapshot-test",
+ *     }],
+ * });
+ * ```
+ * ### Add permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshotAttributes01 = new outscale.SnapshotAttributes("snapshotAttributes01", {
+ *     snapshotId: outscale_snapshot.snapshot01.snapshot_id,
+ *     permissionsToCreateVolumeAdditions: {
+ *         accountIds: ["012345678910"],
+ *     },
+ * });
+ * ```
+ * ### Remove permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshotAttributes02 = new outscale.SnapshotAttributes("snapshotAttributes02", {
+ *     snapshotId: outscale_snapshot.snapshot01.snapshot_id,
+ *     permissionsToCreateVolumeRemovals: [{
+ *         accountIds: ["012345678910"],
+ *     }],
+ * });
+ * ```
+ */
 export class SnapshotAttributes extends pulumi.CustomResource {
     /**
      * Get an existing SnapshotAttributes resource's state with the given name, ID, and optional extra
@@ -34,10 +86,22 @@ export class SnapshotAttributes extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnapshotAttributes.__pulumiType;
     }
 
+    /**
+     * The account ID of the owner of the snapshot.
+     */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
+    /**
+     * Information about the users to whom you want to give permissions for the resource.
+     */
     public readonly permissionsToCreateVolumeAdditions!: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions | undefined>;
+    /**
+     * Information about the users from whom you want to remove permissions for the resource.
+     */
     public readonly permissionsToCreateVolumeRemovals!: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeRemoval[] | undefined>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the snapshot.
+     */
     public readonly snapshotId!: pulumi.Output<string>;
 
     /**
@@ -78,10 +142,22 @@ export class SnapshotAttributes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotAttributes resources.
  */
 export interface SnapshotAttributesState {
+    /**
+     * The account ID of the owner of the snapshot.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * Information about the users to whom you want to give permissions for the resource.
+     */
     permissionsToCreateVolumeAdditions?: pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeAdditions>;
+    /**
+     * Information about the users from whom you want to remove permissions for the resource.
+     */
     permissionsToCreateVolumeRemovals?: pulumi.Input<pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeRemoval>[]>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the snapshot.
+     */
     snapshotId?: pulumi.Input<string>;
 }
 
@@ -89,7 +165,16 @@ export interface SnapshotAttributesState {
  * The set of arguments for constructing a SnapshotAttributes resource.
  */
 export interface SnapshotAttributesArgs {
+    /**
+     * Information about the users to whom you want to give permissions for the resource.
+     */
     permissionsToCreateVolumeAdditions?: pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeAdditions>;
+    /**
+     * Information about the users from whom you want to remove permissions for the resource.
+     */
     permissionsToCreateVolumeRemovals?: pulumi.Input<pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeRemoval>[]>;
+    /**
+     * The ID of the snapshot.
+     */
     snapshotId: pulumi.Input<string>;
 }

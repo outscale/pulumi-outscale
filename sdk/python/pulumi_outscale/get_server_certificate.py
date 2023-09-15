@@ -52,6 +52,9 @@ class GetServerCertificateResult:
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> str:
+        """
+        The date at which the server certificate expires.
+        """
         return pulumi.get(self, "expiration_date")
 
     @property
@@ -70,16 +73,25 @@ class GetServerCertificateResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the server certificate.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def orn(self) -> str:
+        """
+        The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         return pulumi.get(self, "orn")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path to the server certificate.
+        """
         return pulumi.get(self, "path")
 
     @property
@@ -90,6 +102,9 @@ class GetServerCertificateResult:
     @property
     @pulumi.getter(name="uploadDate")
     def upload_date(self) -> str:
+        """
+        The date at which the server certificate has been uploaded.
+        """
         return pulumi.get(self, "upload_date")
 
 
@@ -112,7 +127,13 @@ class AwaitableGetServerCertificateResult(GetServerCertificateResult):
 def get_server_certificate(filters: Optional[Sequence[pulumi.InputType['GetServerCertificateFilterArgs']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerCertificateResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a server certificate.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+
+
+    :param Sequence[pulumi.InputType['GetServerCertificateFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -134,6 +155,12 @@ def get_server_certificate(filters: Optional[Sequence[pulumi.InputType['GetServe
 def get_server_certificate_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServerCertificateFilterArgs']]]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerCertificateResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a server certificate.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+
+
+    :param Sequence[pulumi.InputType['GetServerCertificateFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

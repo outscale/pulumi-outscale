@@ -21,6 +21,10 @@ class NatServiceArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]] = None):
         """
         The set of arguments for constructing a NatService resource.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
+               If the public IP is already associated with another resource, you must first disassociate it.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the NAT service.
+        :param pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "public_ip_id", public_ip_id)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -30,6 +34,10 @@ class NatServiceArgs:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> pulumi.Input[str]:
+        """
+        The allocation ID of the public IP to associate with the NAT service.<br />
+        If the public IP is already associated with another resource, you must first disassociate it.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -39,6 +47,9 @@ class NatServiceArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Subnet in which you want to create the NAT service.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -48,6 +59,9 @@ class NatServiceArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -68,6 +82,14 @@ class _NatServiceState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering NatService resources.
+        :param pulumi.Input[str] nat_service_id: The ID of the NAT service.
+        :param pulumi.Input[str] net_id: The ID of the Net in which the NAT service is.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
+               If the public IP is already associated with another resource, you must first disassociate it.
+        :param pulumi.Input[Sequence[pulumi.Input['NatServicePublicIpArgs']]] public_ips: Information about the public IP or IPs associated with the NAT service.
+        :param pulumi.Input[str] state: The state of the NAT service (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the NAT service.
+        :param pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if nat_service_id is not None:
             pulumi.set(__self__, "nat_service_id", nat_service_id)
@@ -89,6 +111,9 @@ class _NatServiceState:
     @property
     @pulumi.getter(name="natServiceId")
     def nat_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NAT service.
+        """
         return pulumi.get(self, "nat_service_id")
 
     @nat_service_id.setter
@@ -98,6 +123,9 @@ class _NatServiceState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net in which the NAT service is.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -107,6 +135,10 @@ class _NatServiceState:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation ID of the public IP to associate with the NAT service.<br />
+        If the public IP is already associated with another resource, you must first disassociate it.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -116,6 +148,9 @@ class _NatServiceState:
     @property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NatServicePublicIpArgs']]]]:
+        """
+        Information about the public IP or IPs associated with the NAT service.
+        """
         return pulumi.get(self, "public_ips")
 
     @public_ips.setter
@@ -134,6 +169,9 @@ class _NatServiceState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the NAT service (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -143,6 +181,9 @@ class _NatServiceState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Subnet in which you want to create the NAT service.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -152,6 +193,9 @@ class _NatServiceState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -169,9 +213,63 @@ class NatService(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatServiceTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a NatService resource with the given unique name, props, and options.
+        Manages a NAT service.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/18")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        outscale_route_table_link01 = outscale.RouteTableLink("outscaleRouteTableLink01",
+            subnet_id=subnet01.subnet_id,
+            route_table_id=route_table01.route_table_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            net_id=net01.net_id,
+            internet_service_id=internet_service01.internet_service_id)
+        route01 = outscale.Route("route01",
+            destination_ip_range="0.0.0.0/0",
+            gateway_id=internet_service01.internet_service_id,
+            route_table_id=route_table01.route_table_id,
+            opts=pulumi.ResourceOptions(depends_on=[internet_service_link01]))
+        public_ip01 = outscale.PublicIp("publicIp01")
+        ```
+        ### Create a NAT service
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nat_service01 = outscale.NatService("natService01",
+            subnet_id=outscale_subnet["subnet01"]["subnet_id"],
+            public_ip_id=outscale_public_ip["public_ip01"]["public_ip_id"],
+            opts=pulumi.ResourceOptions(depends_on=[outscale_route["route01"]]))
+        ```
+
+        ## Import
+
+        A NAT service can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/natService:NatService ImportedNatService nat-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
+               If the public IP is already associated with another resource, you must first disassociate it.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the NAT service.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatServiceTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -180,7 +278,57 @@ class NatService(pulumi.CustomResource):
                  args: NatServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NatService resource with the given unique name, props, and options.
+        Manages a NAT service.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/18")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        outscale_route_table_link01 = outscale.RouteTableLink("outscaleRouteTableLink01",
+            subnet_id=subnet01.subnet_id,
+            route_table_id=route_table01.route_table_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            net_id=net01.net_id,
+            internet_service_id=internet_service01.internet_service_id)
+        route01 = outscale.Route("route01",
+            destination_ip_range="0.0.0.0/0",
+            gateway_id=internet_service01.internet_service_id,
+            route_table_id=route_table01.route_table_id,
+            opts=pulumi.ResourceOptions(depends_on=[internet_service_link01]))
+        public_ip01 = outscale.PublicIp("publicIp01")
+        ```
+        ### Create a NAT service
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nat_service01 = outscale.NatService("natService01",
+            subnet_id=outscale_subnet["subnet01"]["subnet_id"],
+            public_ip_id=outscale_public_ip["public_ip01"]["public_ip_id"],
+            opts=pulumi.ResourceOptions(depends_on=[outscale_route["route01"]]))
+        ```
+
+        ## Import
+
+        A NAT service can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/natService:NatService ImportedNatService nat-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param NatServiceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -245,6 +393,14 @@ class NatService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] nat_service_id: The ID of the NAT service.
+        :param pulumi.Input[str] net_id: The ID of the Net in which the NAT service is.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
+               If the public IP is already associated with another resource, you must first disassociate it.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatServicePublicIpArgs']]]] public_ips: Information about the public IP or IPs associated with the NAT service.
+        :param pulumi.Input[str] state: The state of the NAT service (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the NAT service.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatServiceTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,21 +419,34 @@ class NatService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="natServiceId")
     def nat_service_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the NAT service.
+        """
         return pulumi.get(self, "nat_service_id")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net in which the NAT service is.
+        """
         return pulumi.get(self, "net_id")
 
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> pulumi.Output[str]:
+        """
+        The allocation ID of the public IP to associate with the NAT service.<br />
+        If the public IP is already associated with another resource, you must first disassociate it.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> pulumi.Output[Sequence['outputs.NatServicePublicIp']]:
+        """
+        Information about the public IP or IPs associated with the NAT service.
+        """
         return pulumi.get(self, "public_ips")
 
     @property
@@ -288,15 +457,24 @@ class NatService(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the NAT service (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Subnet in which you want to create the NAT service.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.NatServiceTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 

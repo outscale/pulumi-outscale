@@ -4,6 +4,52 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a VPN connection route.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Routing-Configuration-for-VPN-Connections.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const clientGateway01 = new outscale.ClientGateway("clientGateway01", {
+ *     bgpAsn: 65000,
+ *     publicIp: "111.11.11.111",
+ *     connectionType: "ipsec.1",
+ * });
+ * const virtualGateway01 = new outscale.VirtualGateway("virtualGateway01", {connectionType: "ipsec.1"});
+ * const vpnConnection01 = new outscale.VpnConnection("vpnConnection01", {
+ *     clientGatewayId: clientGateway01.clientGatewayId,
+ *     virtualGatewayId: virtualGateway01.virtualGatewayId,
+ *     connectionType: "ipsec.1",
+ *     staticRoutesOnly: true,
+ * });
+ * ```
+ * ### Create a static route to a VPN connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vpnConnectionRoute01 = new outscale.VpnConnectionRoute("vpnConnectionRoute01", {
+ *     vpnConnectionId: outscale_vpn_connection.vpn_connection01.vpn_connection_id,
+ *     destinationIpRange: "10.0.0.0/16",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A VPN connection route can be imported using the VPN connection ID and the route destination IP range. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/vpnConnectionRoute:VpnConnectionRoute ImportedRoute vpn-12345678_10.0.0.0/0
+ * ```
+ */
 export class VpnConnectionRoute extends pulumi.CustomResource {
     /**
      * Get an existing VpnConnectionRoute resource's state with the given name, ID, and optional extra
@@ -32,8 +78,14 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
         return obj['__pulumiType'] === VpnConnectionRoute.__pulumiType;
     }
 
+    /**
+     * The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+     */
     public readonly destinationIpRange!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the target VPN connection of the static route.
+     */
     public readonly vpnConnectionId!: pulumi.Output<string>;
 
     /**
@@ -73,8 +125,14 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpnConnectionRoute resources.
  */
 export interface VpnConnectionRouteState {
+    /**
+     * The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+     */
     destinationIpRange?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the target VPN connection of the static route.
+     */
     vpnConnectionId?: pulumi.Input<string>;
 }
 
@@ -82,6 +140,12 @@ export interface VpnConnectionRouteState {
  * The set of arguments for constructing a VpnConnectionRoute resource.
  */
 export interface VpnConnectionRouteArgs {
+    /**
+     * The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+     */
     destinationIpRange: pulumi.Input<string>;
+    /**
+     * The ID of the target VPN connection of the static route.
+     */
     vpnConnectionId: pulumi.Input<string>;
 }

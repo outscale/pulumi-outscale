@@ -19,12 +19,16 @@ class NetPeeringAcceptionArgs:
                  net_peering_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a NetPeeringAcception resource.
+        :param pulumi.Input[str] net_peering_id: The ID of the Net peering you want to accept.
         """
         pulumi.set(__self__, "net_peering_id", net_peering_id)
 
     @property
     @pulumi.getter(name="netPeeringId")
     def net_peering_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Net peering you want to accept.
+        """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
@@ -45,6 +49,11 @@ class _NetPeeringAcceptionState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringAcceptionTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering NetPeeringAcception resources.
+        :param pulumi.Input['NetPeeringAcceptionAccepterNetArgs'] accepter_net: Information about the accepter Net.
+        :param pulumi.Input[str] net_peering_id: The ID of the Net peering you want to accept.
+        :param pulumi.Input['NetPeeringAcceptionSourceNetArgs'] source_net: Information about the source Net.
+        :param pulumi.Input['NetPeeringAcceptionStateArgs'] state: Information about the state of the Net peering.
+        :param pulumi.Input[Sequence[pulumi.Input['NetPeeringAcceptionTagArgs']]] tags: One or more tags associated with the Net peering.
         """
         if accepter_net is not None:
             pulumi.set(__self__, "accepter_net", accepter_net)
@@ -66,6 +75,9 @@ class _NetPeeringAcceptionState:
     @property
     @pulumi.getter(name="accepterNet")
     def accepter_net(self) -> Optional[pulumi.Input['NetPeeringAcceptionAccepterNetArgs']]:
+        """
+        Information about the accepter Net.
+        """
         return pulumi.get(self, "accepter_net")
 
     @accepter_net.setter
@@ -84,6 +96,9 @@ class _NetPeeringAcceptionState:
     @property
     @pulumi.getter(name="netPeeringId")
     def net_peering_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net peering you want to accept.
+        """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
@@ -102,6 +117,9 @@ class _NetPeeringAcceptionState:
     @property
     @pulumi.getter(name="sourceNet")
     def source_net(self) -> Optional[pulumi.Input['NetPeeringAcceptionSourceNetArgs']]:
+        """
+        Information about the source Net.
+        """
         return pulumi.get(self, "source_net")
 
     @source_net.setter
@@ -120,6 +138,9 @@ class _NetPeeringAcceptionState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['NetPeeringAcceptionStateArgs']]:
+        """
+        Information about the state of the Net peering.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -129,6 +150,9 @@ class _NetPeeringAcceptionState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringAcceptionTagArgs']]]]:
+        """
+        One or more tags associated with the Net peering.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -144,9 +168,23 @@ class NetPeeringAcception(pulumi.CustomResource):
                  net_peering_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NetPeeringAcception resource with the given unique name, props, and options.
+        Manages a Net peering acceptation.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Peering-Connections.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netpeering).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net_peering_acceptation01 = outscale.NetPeeringAcception("netPeeringAcceptation01", net_peering_id=outscale_net_peering["net_peering01"]["net_peering_id"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] net_peering_id: The ID of the Net peering you want to accept.
         """
         ...
     @overload
@@ -155,7 +193,20 @@ class NetPeeringAcception(pulumi.CustomResource):
                  args: NetPeeringAcceptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetPeeringAcception resource with the given unique name, props, and options.
+        Manages a Net peering acceptation.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Peering-Connections.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netpeering).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net_peering_acceptation01 = outscale.NetPeeringAcception("netPeeringAcceptation01", net_peering_id=outscale_net_peering["net_peering01"]["net_peering_id"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param NetPeeringAcceptionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -216,6 +267,11 @@ class NetPeeringAcception(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['NetPeeringAcceptionAccepterNetArgs']] accepter_net: Information about the accepter Net.
+        :param pulumi.Input[str] net_peering_id: The ID of the Net peering you want to accept.
+        :param pulumi.Input[pulumi.InputType['NetPeeringAcceptionSourceNetArgs']] source_net: Information about the source Net.
+        :param pulumi.Input[pulumi.InputType['NetPeeringAcceptionStateArgs']] state: Information about the state of the Net peering.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetPeeringAcceptionTagArgs']]]] tags: One or more tags associated with the Net peering.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -234,6 +290,9 @@ class NetPeeringAcception(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accepterNet")
     def accepter_net(self) -> pulumi.Output['outputs.NetPeeringAcceptionAccepterNet']:
+        """
+        Information about the accepter Net.
+        """
         return pulumi.get(self, "accepter_net")
 
     @property
@@ -244,6 +303,9 @@ class NetPeeringAcception(pulumi.CustomResource):
     @property
     @pulumi.getter(name="netPeeringId")
     def net_peering_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net peering you want to accept.
+        """
         return pulumi.get(self, "net_peering_id")
 
     @property
@@ -254,6 +316,9 @@ class NetPeeringAcception(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sourceNet")
     def source_net(self) -> pulumi.Output['outputs.NetPeeringAcceptionSourceNet']:
+        """
+        Information about the source Net.
+        """
         return pulumi.get(self, "source_net")
 
     @property
@@ -264,10 +329,16 @@ class NetPeeringAcception(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output['outputs.NetPeeringAcceptionState']:
+        """
+        Information about the state of the Net peering.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence['outputs.NetPeeringAcceptionTag']]:
+        """
+        One or more tags associated with the Net peering.
+        """
         return pulumi.get(self, "tags")
 

@@ -58,6 +58,9 @@ class GetVmsResult:
     @property
     @pulumi.getter
     def vms(self) -> Sequence['outputs.GetVmsVmResult']:
+        """
+        Information about one or more VMs.
+        """
         return pulumi.get(self, "vms")
 
 
@@ -76,7 +79,34 @@ class AwaitableGetVmsResult(GetVmsResult):
 def get_vms(filters: Optional[Sequence[pulumi.InputType['GetVmsFilterArgs']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about virtual machines (VMs).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instances.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vms01 = outscale.get_vms(filters=[
+        outscale.GetVmsFilterArgs(
+            name="tag_keys",
+            values=["env"],
+        ),
+        outscale.GetVmsFilterArgs(
+            name="tag_values",
+            values=[
+                "prod",
+                "test",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVmsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +124,33 @@ def get_vms(filters: Optional[Sequence[pulumi.InputType['GetVmsFilterArgs']]] = 
 def get_vms_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVmsFilterArgs']]]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVmsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about virtual machines (VMs).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instances.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vms01 = outscale.get_vms(filters=[
+        outscale.GetVmsFilterArgs(
+            name="tag_keys",
+            values=["env"],
+        ),
+        outscale.GetVmsFilterArgs(
+            name="tag_values",
+            values=[
+                "prod",
+                "test",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVmsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

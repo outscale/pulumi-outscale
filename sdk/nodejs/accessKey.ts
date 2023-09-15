@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const accessKey01 = new outscale.AccessKey("accessKey01", {
+ *     expirationDate: "2023-01-01",
+ *     state: "ACTIVE",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An access key can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/accessKey:AccessKey ImportedAccessKey ABCDEFGHIJ0123456789
+ * ```
+ */
 export class AccessKey extends pulumi.CustomResource {
     /**
      * Get an existing AccessKey resource's state with the given name, ID, and optional extra
@@ -32,12 +53,30 @@ export class AccessKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessKey.__pulumiType;
     }
 
+    /**
+     * The ID of the access key.
+     */
     public /*out*/ readonly accessKeyId!: pulumi.Output<string>;
+    /**
+     * The date and time (UTC) of creation of the access key.
+     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    /**
+     * The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+     */
     public readonly expirationDate!: pulumi.Output<string | undefined>;
+    /**
+     * The date and time (UTC) of the last modification of the access key.
+     */
     public /*out*/ readonly lastModificationDate!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The access key that enables you to send requests.
+     */
     public /*out*/ readonly secretKey!: pulumi.Output<string>;
+    /**
+     * The state for the access key (`ACTIVE` | `INACTIVE`).
+     */
     public readonly state!: pulumi.Output<string | undefined>;
 
     /**
@@ -79,12 +118,30 @@ export class AccessKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessKey resources.
  */
 export interface AccessKeyState {
+    /**
+     * The ID of the access key.
+     */
     accessKeyId?: pulumi.Input<string>;
+    /**
+     * The date and time (UTC) of creation of the access key.
+     */
     creationDate?: pulumi.Input<string>;
+    /**
+     * The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+     */
     expirationDate?: pulumi.Input<string>;
+    /**
+     * The date and time (UTC) of the last modification of the access key.
+     */
     lastModificationDate?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The access key that enables you to send requests.
+     */
     secretKey?: pulumi.Input<string>;
+    /**
+     * The state for the access key (`ACTIVE` | `INACTIVE`).
+     */
     state?: pulumi.Input<string>;
 }
 
@@ -92,6 +149,12 @@ export interface AccessKeyState {
  * The set of arguments for constructing a AccessKey resource.
  */
 export interface AccessKeyArgs {
+    /**
+     * The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+     */
     expirationDate?: pulumi.Input<string>;
+    /**
+     * The state for the access key (`ACTIVE` | `INACTIVE`).
+     */
     state?: pulumi.Input<string>;
 }

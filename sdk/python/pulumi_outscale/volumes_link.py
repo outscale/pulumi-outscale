@@ -21,6 +21,9 @@ class VolumesLinkArgs:
                  force_unlink: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VolumesLink resource.
+        :param pulumi.Input[str] device_name: The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the volume to.
+        :param pulumi.Input[str] volume_id: The ID of the volume you want to attach.
         """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "vm_id", vm_id)
@@ -33,6 +36,9 @@ class VolumesLinkArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> pulumi.Input[str]:
+        """
+        The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -42,6 +48,9 @@ class VolumesLinkArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the VM you want to attach the volume to.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -51,6 +60,9 @@ class VolumesLinkArgs:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the volume you want to attach.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -88,6 +100,10 @@ class _VolumesLinkState:
                  volume_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VolumesLink resources.
+        :param pulumi.Input[str] device_name: The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        :param pulumi.Input[str] state: The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the volume to.
+        :param pulumi.Input[str] volume_id: The ID of the volume you want to attach.
         """
         if delete_on_vm_termination is not None:
             pulumi.set(__self__, "delete_on_vm_termination", delete_on_vm_termination)
@@ -116,6 +132,9 @@ class _VolumesLinkState:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -143,6 +162,9 @@ class _VolumesLinkState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -152,6 +174,9 @@ class _VolumesLinkState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM you want to attach the volume to.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -161,6 +186,9 @@ class _VolumesLinkState:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the volume you want to attach.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -180,9 +208,52 @@ class VolumesLink(pulumi.CustomResource):
                  volume_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VolumesLink resource with the given unique name, props, and options.
+        Manages a volume link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name=f"{var['region']}a",
+            size=40)
+        vm01 = outscale.Vm("vm01",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            security_group_ids=[var["security_group_id"]])
+        ```
+        ### Link a volume to a VM
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volumes_link01 = outscale.VolumesLink("volumesLink01",
+            device_name="/dev/xvdc",
+            volume_id=outscale_volume["volume01"]["id"],
+            vm_id=outscale_vm["vm01"]["id"])
+        ```
+
+        ## Import
+
+        A volume link can be imported using a volume ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/volumesLink:VolumesLink ImportedVolumeLink vol-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] device_name: The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the volume to.
+        :param pulumi.Input[str] volume_id: The ID of the volume you want to attach.
         """
         ...
     @overload
@@ -191,7 +262,47 @@ class VolumesLink(pulumi.CustomResource):
                  args: VolumesLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VolumesLink resource with the given unique name, props, and options.
+        Manages a volume link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name=f"{var['region']}a",
+            size=40)
+        vm01 = outscale.Vm("vm01",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            security_group_ids=[var["security_group_id"]])
+        ```
+        ### Link a volume to a VM
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volumes_link01 = outscale.VolumesLink("volumesLink01",
+            device_name="/dev/xvdc",
+            volume_id=outscale_volume["volume01"]["id"],
+            vm_id=outscale_vm["vm01"]["id"])
+        ```
+
+        ## Import
+
+        A volume link can be imported using a volume ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/volumesLink:VolumesLink ImportedVolumeLink vol-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param VolumesLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -258,6 +369,10 @@ class VolumesLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] device_name: The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        :param pulumi.Input[str] state: The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the volume to.
+        :param pulumi.Input[str] volume_id: The ID of the volume you want to attach.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -280,6 +395,9 @@ class VolumesLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> pulumi.Output[str]:
+        """
+        The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         return pulumi.get(self, "device_name")
 
     @property
@@ -295,15 +413,24 @@ class VolumesLink(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM you want to attach the volume to.
+        """
         return pulumi.get(self, "vm_id")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the volume you want to attach.
+        """
         return pulumi.get(self, "volume_id")
 

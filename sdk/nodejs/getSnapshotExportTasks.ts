@@ -6,6 +6,29 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about snapshot export tasks.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshotExportTasks01 = outscale.getSnapshotExportTasks({
+ *     filters: [{
+ *         name: "task_ids",
+ *         values: [
+ *             "snap-export-12345678",
+ *             "snap-export-87654321",
+ *         ],
+ *     }],
+ * });
+ * ```
+ */
 export function getSnapshotExportTasks(args?: GetSnapshotExportTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotExportTasksResult> {
     args = args || {};
 
@@ -21,6 +44,9 @@ export function getSnapshotExportTasks(args?: GetSnapshotExportTasksArgs, opts?:
  */
 export interface GetSnapshotExportTasksArgs {
     dryRun?: boolean;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetSnapshotExportTasksFilter[];
 }
 
@@ -35,8 +61,34 @@ export interface GetSnapshotExportTasksResult {
      */
     readonly id: string;
     readonly requestId: string;
+    /**
+     * Information about one or more snapshot export tasks.
+     */
     readonly snapshotExportTasks: outputs.GetSnapshotExportTasksSnapshotExportTask[];
 }
+/**
+ * Provides information about snapshot export tasks.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshotExportTasks01 = outscale.getSnapshotExportTasks({
+ *     filters: [{
+ *         name: "task_ids",
+ *         values: [
+ *             "snap-export-12345678",
+ *             "snap-export-87654321",
+ *         ],
+ *     }],
+ * });
+ * ```
+ */
 export function getSnapshotExportTasksOutput(args?: GetSnapshotExportTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotExportTasksResult> {
     return pulumi.output(args).apply((a: any) => getSnapshotExportTasks(a, opts))
 }
@@ -46,5 +98,8 @@ export function getSnapshotExportTasksOutput(args?: GetSnapshotExportTasksOutput
  */
 export interface GetSnapshotExportTasksOutputArgs {
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetSnapshotExportTasksFilterArgs>[]>;
 }

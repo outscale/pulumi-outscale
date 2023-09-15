@@ -6,6 +6,41 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the attributes of a Net.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatenet).
+ *
+ * ## Example Usage
+ * ### Required resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * ```
+ * ### Associate a DHCP option set to a Net
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const netAttributes01 = new outscale.NetAttributes("netAttributes01", {
+ *     netId: outscale_net.net01.net_id,
+ *     dhcpOptionsSetId: _var.dhcp_options_set_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A Net attribute can be imported using the Net ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/netAttributes:NetAttributes ImportedNet vpc-12345678
+ * ```
+ */
 export class NetAttributes extends pulumi.CustomResource {
     /**
      * Get an existing NetAttributes resource's state with the given name, ID, and optional extra
@@ -34,12 +69,30 @@ export class NetAttributes extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetAttributes.__pulumiType;
     }
 
+    /**
+     * The ID of the DHCP options set (or `default` if you want to associate the default one).
+     */
     public readonly dhcpOptionsSetId!: pulumi.Output<string>;
+    /**
+     * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+     */
     public /*out*/ readonly ipRange!: pulumi.Output<string>;
+    /**
+     * The ID of the Net.
+     */
     public readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the Net (`pending` \| `available` \| `deleted`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * One or more tags associated with the Net.
+     */
     public /*out*/ readonly tags!: pulumi.Output<outputs.NetAttributesTag[]>;
+    /**
+     * The VM tenancy in a Net.
+     */
     public /*out*/ readonly tenancy!: pulumi.Output<string>;
 
     /**
@@ -84,12 +137,30 @@ export class NetAttributes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetAttributes resources.
  */
 export interface NetAttributesState {
+    /**
+     * The ID of the DHCP options set (or `default` if you want to associate the default one).
+     */
     dhcpOptionsSetId?: pulumi.Input<string>;
+    /**
+     * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+     */
     ipRange?: pulumi.Input<string>;
+    /**
+     * The ID of the Net.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the Net (`pending` \| `available` \| `deleted`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * One or more tags associated with the Net.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetAttributesTag>[]>;
+    /**
+     * The VM tenancy in a Net.
+     */
     tenancy?: pulumi.Input<string>;
 }
 
@@ -97,6 +168,12 @@ export interface NetAttributesState {
  * The set of arguments for constructing a NetAttributes resource.
  */
 export interface NetAttributesArgs {
+    /**
+     * The ID of the DHCP options set (or `default` if you want to associate the default one).
+     */
     dhcpOptionsSetId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net.
+     */
     netId: pulumi.Input<string>;
 }

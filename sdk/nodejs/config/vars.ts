@@ -10,12 +10,12 @@ declare var exports: any;
 const __config = new pulumi.Config("outscale");
 
 /**
- * The Access Key ID for API operations.
+ * The Access Key ID for API operations
  */
-export declare const accessKey: string | undefined;
-Object.defineProperty(exports, "accessKey", {
+export declare const accessKeyId: string | undefined;
+Object.defineProperty(exports, "accessKeyId", {
     get() {
-        return __config.get("accessKey") ?? utilities.getEnv("OSC_ACCESS_KEY");
+        return __config.get("accessKeyId") ?? utilities.getEnv("OUTSCALE_ACCESSKEYID");
     },
     enumerable: true,
 });
@@ -34,7 +34,7 @@ Object.defineProperty(exports, "endpoints", {
 export declare const region: string | undefined;
 Object.defineProperty(exports, "region", {
     get() {
-        return __config.get("region") ?? utilities.getEnv("OSC_DEFAULT_REGION");
+        return __config.get("region") ?? utilities.getEnv("OUTSCALE_REGION");
     },
     enumerable: true,
 });
@@ -42,10 +42,10 @@ Object.defineProperty(exports, "region", {
 /**
  * The Secret Key ID for API operations.
  */
-export declare const secretKey: string | undefined;
-Object.defineProperty(exports, "secretKey", {
+export declare const secretKeyId: string | undefined;
+Object.defineProperty(exports, "secretKeyId", {
     get() {
-        return __config.get("secretKey") ?? utilities.getEnv("OSC_SECRET_KEY");
+        return __config.get("secretKeyId") ?? utilities.getEnv("OUTSCALE_SECRETKEYID");
     },
     enumerable: true,
 });

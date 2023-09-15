@@ -68,11 +68,17 @@ class GetRouteTableResult:
     @property
     @pulumi.getter(name="linkRouteTables")
     def link_route_tables(self) -> Sequence['outputs.GetRouteTableLinkRouteTableResult']:
+        """
+        One or more associations between the route table and Subnets.
+        """
         return pulumi.get(self, "link_route_tables")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net for the route table.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -83,21 +89,33 @@ class GetRouteTableResult:
     @property
     @pulumi.getter(name="routePropagatingVirtualGateways")
     def route_propagating_virtual_gateways(self) -> Sequence['outputs.GetRouteTableRoutePropagatingVirtualGatewayResult']:
+        """
+        Information about virtual gateways propagating routes.
+        """
         return pulumi.get(self, "route_propagating_virtual_gateways")
 
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> str:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetRouteTableRouteResult']:
+        """
+        One or more routes in the route table.
+        """
         return pulumi.get(self, "routes")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetRouteTableTagResult']:
+        """
+        One or more tags associated with the route table.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -122,7 +140,26 @@ def get_route_table(filters: Optional[Sequence[pulumi.InputType['GetRouteTableFi
                     route_table_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTableResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a route table.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    route_table01 = outscale.get_route_table(filters=[outscale.GetRouteTableFilterArgs(
+        name="route_table_ids",
+        values=["rtb-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetRouteTableFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str route_table_id: The ID of the route table.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -147,6 +184,25 @@ def get_route_table_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
                            route_table_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTableResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a route table.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    route_table01 = outscale.get_route_table(filters=[outscale.GetRouteTableFilterArgs(
+        name="route_table_ids",
+        values=["rtb-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetRouteTableFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str route_table_id: The ID of the route table.
     """
     ...

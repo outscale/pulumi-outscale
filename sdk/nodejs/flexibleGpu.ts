@@ -4,6 +4,35 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a flexible GPU.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+ *
+ * ## Example Usage
+ * ### Create a flexible GPU
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const flexibleGpu01 = new outscale.FlexibleGpu("flexibleGpu01", {
+ *     modelName: _var.model_name,
+ *     generation: "v4",
+ *     subregionName: `${_var.region}a`,
+ *     deleteOnVmDeletion: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A flexible GPU can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
+ * ```
+ */
 export class FlexibleGpu extends pulumi.CustomResource {
     /**
      * Get an existing FlexibleGpu resource's state with the given name, ID, and optional extra
@@ -32,13 +61,34 @@ export class FlexibleGpu extends pulumi.CustomResource {
         return obj['__pulumiType'] === FlexibleGpu.__pulumiType;
     }
 
+    /**
+     * If true, the fGPU is deleted when the VM is terminated.
+     */
     public readonly deleteOnVmDeletion!: pulumi.Output<boolean>;
+    /**
+     * The ID of the fGPU.
+     */
     public /*out*/ readonly flexibleGpuId!: pulumi.Output<string>;
+    /**
+     * The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+     */
     public readonly generation!: pulumi.Output<string>;
+    /**
+     * The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+     */
     public readonly modelName!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The Subregion in which you want to create the fGPU.
+     */
     public readonly subregionName!: pulumi.Output<string>;
+    /**
+     * The ID of the VM the fGPU is attached to, if any.
+     */
     public /*out*/ readonly vmId!: pulumi.Output<string>;
 
     /**
@@ -88,13 +138,34 @@ export class FlexibleGpu extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FlexibleGpu resources.
  */
 export interface FlexibleGpuState {
+    /**
+     * If true, the fGPU is deleted when the VM is terminated.
+     */
     deleteOnVmDeletion?: pulumi.Input<boolean>;
+    /**
+     * The ID of the fGPU.
+     */
     flexibleGpuId?: pulumi.Input<string>;
+    /**
+     * The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+     */
     generation?: pulumi.Input<string>;
+    /**
+     * The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+     */
     modelName?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * The Subregion in which you want to create the fGPU.
+     */
     subregionName?: pulumi.Input<string>;
+    /**
+     * The ID of the VM the fGPU is attached to, if any.
+     */
     vmId?: pulumi.Input<string>;
 }
 
@@ -102,8 +173,20 @@ export interface FlexibleGpuState {
  * The set of arguments for constructing a FlexibleGpu resource.
  */
 export interface FlexibleGpuArgs {
+    /**
+     * If true, the fGPU is deleted when the VM is terminated.
+     */
     deleteOnVmDeletion?: pulumi.Input<boolean>;
+    /**
+     * The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+     */
     generation?: pulumi.Input<string>;
+    /**
+     * The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+     */
     modelName: pulumi.Input<string>;
+    /**
+     * The Subregion in which you want to create the fGPU.
+     */
     subregionName: pulumi.Input<string>;
 }

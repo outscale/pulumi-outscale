@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about an API access rule.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const apiAccessRule01 = outscale.getApiAccessRule({
+ *     filters: [{
+ *         name: "api_access_rule_ids",
+ *         values: ["aar-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getApiAccessRule(args?: GetApiAccessRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetApiAccessRuleResult> {
     args = args || {};
 
@@ -19,6 +39,9 @@ export function getApiAccessRule(args?: GetApiAccessRuleArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getApiAccessRule.
  */
 export interface GetApiAccessRuleArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetApiAccessRuleFilter[];
 }
 
@@ -26,18 +49,53 @@ export interface GetApiAccessRuleArgs {
  * A collection of values returned by getApiAccessRule.
  */
 export interface GetApiAccessRuleResult {
+    /**
+     * The ID of the API access rule.
+     */
     readonly apiAccessRuleId: string;
+    /**
+     * One or more IDs of Client Certificate Authorities (CAs) used for the API access rule.
+     */
     readonly caIds: string[];
+    /**
+     * One or more Client Certificate Common Names (CNs).
+     */
     readonly cns: string[];
+    /**
+     * The description of the API access rule.
+     */
     readonly description: string;
     readonly filters?: outputs.GetApiAccessRuleFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * One or more IP ranges used for the API access rule, in CIDR notation (for example, `192.0.2.0/16`).
+     */
     readonly ipRanges: string[];
     readonly requestId: string;
 }
+/**
+ * Provides information about an API access rule.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const apiAccessRule01 = outscale.getApiAccessRule({
+ *     filters: [{
+ *         name: "api_access_rule_ids",
+ *         values: ["aar-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getApiAccessRuleOutput(args?: GetApiAccessRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiAccessRuleResult> {
     return pulumi.output(args).apply((a: any) => getApiAccessRule(a, opts))
 }
@@ -46,5 +104,8 @@ export function getApiAccessRuleOutput(args?: GetApiAccessRuleOutputArgs, opts?:
  * A collection of arguments for invoking getApiAccessRule.
  */
 export interface GetApiAccessRuleOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetApiAccessRuleFilterArgs>[]>;
 }

@@ -41,6 +41,28 @@ class VmArgs:
                  vm_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vm resource.
+        :param pulumi.Input[str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
+        :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]] block_device_mappings_createds: The block device mapping of the VM.
+        :param pulumi.Input[bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
+        :param pulumi.Input[bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        :param pulumi.Input[bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        :param pulumi.Input[str] keypair_name: The name of the keypair.
+        :param pulumi.Input[bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.
+        :param pulumi.Input[str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] placement_subregion_name: The name of the Subregion where the VM is placed.
+        :param pulumi.Input[str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more IDs of security group for the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_names: One or more names of security groups for the VMs.
+        :param pulumi.Input[str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode. Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] vm_id: The ID of the VM.
+        :param pulumi.Input[str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).
         """
         pulumi.set(__self__, "image_id", image_id)
         if block_device_mappings is not None:
@@ -91,6 +113,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -100,6 +125,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]:
+        """
+        One or more block device mappings.
+        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -109,6 +137,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="blockDeviceMappingsCreateds")
     def block_device_mappings_createds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]]:
+        """
+        The block device mapping of the VM.
+        """
         return pulumi.get(self, "block_device_mappings_createds")
 
     @block_device_mappings_createds.setter
@@ -127,6 +158,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, you cannot delete the VM unless you change this parameter back to false.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -136,6 +170,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="getAdminPassword")
     def get_admin_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        """
         return pulumi.get(self, "get_admin_password")
 
     @get_admin_password.setter
@@ -145,6 +182,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="isSourceDestChecked")
     def is_source_dest_checked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        """
         return pulumi.get(self, "is_source_dest_checked")
 
     @is_source_dest_checked.setter
@@ -154,6 +194,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the keypair.
+        """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
@@ -163,6 +206,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="nestedVirtualization")
     def nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
+        """
         return pulumi.get(self, "nested_virtualization")
 
     @nested_virtualization.setter
@@ -172,6 +218,9 @@ class VmArgs:
     @property
     @pulumi.getter
     def nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]:
+        """
+        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.
+        """
         return pulumi.get(self, "nics")
 
     @nics.setter
@@ -181,6 +230,9 @@ class VmArgs:
     @property
     @pulumi.getter
     def performance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "performance")
 
     @performance.setter
@@ -190,6 +242,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="placementSubregionName")
     def placement_subregion_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Subregion where the VM is placed.
+        """
         return pulumi.get(self, "placement_subregion_name")
 
     @placement_subregion_name.setter
@@ -199,6 +254,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tenancy of the VM (`default` | `dedicated`).
+        """
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
@@ -208,6 +266,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more private IPs of the VM.
+        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -217,6 +278,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of security group for the VMs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -226,6 +290,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="securityGroupNames")
     def security_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more names of security groups for the VMs.
+        """
         return pulumi.get(self, "security_group_names")
 
     @security_group_names.setter
@@ -235,6 +302,9 @@ class VmArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -244,6 +314,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -253,6 +326,9 @@ class VmArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -262,6 +338,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode. Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -271,6 +350,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -280,6 +362,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
     def vm_initiated_shutdown_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
     @vm_initiated_shutdown_behavior.setter
@@ -289,6 +374,9 @@ class VmArgs:
     @property
     @pulumi.getter(name="vmType")
     def vm_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).
+        """
         return pulumi.get(self, "vm_type")
 
     @vm_type.setter
@@ -343,6 +431,45 @@ class _VmState:
                  vm_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vm resources.
+        :param pulumi.Input[str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
+        :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]] block_device_mappings_createds: The block device mapping of the VM.
+        :param pulumi.Input[str] client_token: A unique identifier which enables you to manage the idempotency.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the VM.
+        :param pulumi.Input[bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
+        :param pulumi.Input[bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        :param pulumi.Input[str] hypervisor: The hypervisor type of the VMs (`ovm` \\| `xen`).
+        :param pulumi.Input[str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
+        :param pulumi.Input[bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        :param pulumi.Input[str] keypair_name: The name of the keypair.
+        :param pulumi.Input[int] launch_number: The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
+        :param pulumi.Input[bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
+        :param pulumi.Input[str] net_id: The ID of the Net for the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.
+        :param pulumi.Input[str] os_family: Indicates the operating system (OS) of the VM.
+        :param pulumi.Input[str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] placement_subregion_name: The name of the Subregion where the VM is placed.
+        :param pulumi.Input[str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
+        :param pulumi.Input[str] private_dns_name: The name of the private DNS.
+        :param pulumi.Input[str] private_ip: The private IP of the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_codes: The product code associated with the OMI used to create the VM (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        :param pulumi.Input[str] public_dns_name: The name of the public DNS.
+        :param pulumi.Input[str] public_ip: The public IP of the VM.
+        :param pulumi.Input[str] reservation_id: The reservation ID of the VM.
+        :param pulumi.Input[str] root_device_name: The name of the root device for the VM (for example, `/dev/vda1`).
+        :param pulumi.Input[str] root_device_type: The type of root device used by the VM (always `bsu`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more IDs of security group for the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_names: One or more names of security groups for the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]] security_groups: One or more security groups associated with the VM.
+        :param pulumi.Input[str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        :param pulumi.Input[str] state_reason: The reason explaining the current state of the VM.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode. Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] vm_id: The ID of the VM.
+        :param pulumi.Input[str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).
         """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
@@ -441,6 +568,9 @@ class _VmState:
     @property
     @pulumi.getter
     def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The architecture of the VM (`i386` \\| `x86_64`).
+        """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
@@ -450,6 +580,9 @@ class _VmState:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]:
+        """
+        One or more block device mappings.
+        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -459,6 +592,9 @@ class _VmState:
     @property
     @pulumi.getter(name="blockDeviceMappingsCreateds")
     def block_device_mappings_createds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]]:
+        """
+        The block device mapping of the VM.
+        """
         return pulumi.get(self, "block_device_mappings_createds")
 
     @block_device_mappings_createds.setter
@@ -477,6 +613,9 @@ class _VmState:
     @property
     @pulumi.getter(name="clientToken")
     def client_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier which enables you to manage the idempotency.
+        """
         return pulumi.get(self, "client_token")
 
     @client_token.setter
@@ -486,6 +625,9 @@ class _VmState:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time of creation of the VM.
+        """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
@@ -495,6 +637,9 @@ class _VmState:
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, you cannot delete the VM unless you change this parameter back to false.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
@@ -504,6 +649,9 @@ class _VmState:
     @property
     @pulumi.getter(name="getAdminPassword")
     def get_admin_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        """
         return pulumi.get(self, "get_admin_password")
 
     @get_admin_password.setter
@@ -513,6 +661,9 @@ class _VmState:
     @property
     @pulumi.getter
     def hypervisor(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hypervisor type of the VMs (`ovm` \\| `xen`).
+        """
         return pulumi.get(self, "hypervisor")
 
     @hypervisor.setter
@@ -522,6 +673,9 @@ class _VmState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -531,6 +685,9 @@ class _VmState:
     @property
     @pulumi.getter(name="isSourceDestChecked")
     def is_source_dest_checked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        """
         return pulumi.get(self, "is_source_dest_checked")
 
     @is_source_dest_checked.setter
@@ -540,6 +697,9 @@ class _VmState:
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the keypair.
+        """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
@@ -549,6 +709,9 @@ class _VmState:
     @property
     @pulumi.getter(name="launchNumber")
     def launch_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
+        """
         return pulumi.get(self, "launch_number")
 
     @launch_number.setter
@@ -558,6 +721,9 @@ class _VmState:
     @property
     @pulumi.getter(name="nestedVirtualization")
     def nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
+        """
         return pulumi.get(self, "nested_virtualization")
 
     @nested_virtualization.setter
@@ -567,6 +733,9 @@ class _VmState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net for the NIC.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -576,6 +745,9 @@ class _VmState:
     @property
     @pulumi.getter
     def nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]:
+        """
+        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.
+        """
         return pulumi.get(self, "nics")
 
     @nics.setter
@@ -585,6 +757,9 @@ class _VmState:
     @property
     @pulumi.getter(name="osFamily")
     def os_family(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the operating system (OS) of the VM.
+        """
         return pulumi.get(self, "os_family")
 
     @os_family.setter
@@ -594,6 +769,9 @@ class _VmState:
     @property
     @pulumi.getter
     def performance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "performance")
 
     @performance.setter
@@ -603,6 +781,9 @@ class _VmState:
     @property
     @pulumi.getter(name="placementSubregionName")
     def placement_subregion_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Subregion where the VM is placed.
+        """
         return pulumi.get(self, "placement_subregion_name")
 
     @placement_subregion_name.setter
@@ -612,6 +793,9 @@ class _VmState:
     @property
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tenancy of the VM (`default` | `dedicated`).
+        """
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
@@ -621,6 +805,9 @@ class _VmState:
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
@@ -630,6 +817,9 @@ class _VmState:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP of the NIC.
+        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -639,6 +829,9 @@ class _VmState:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more private IPs of the VM.
+        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -648,6 +841,9 @@ class _VmState:
     @property
     @pulumi.getter(name="productCodes")
     def product_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The product code associated with the OMI used to create the VM (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        """
         return pulumi.get(self, "product_codes")
 
     @product_codes.setter
@@ -657,6 +853,9 @@ class _VmState:
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
@@ -666,6 +865,9 @@ class _VmState:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP of the VM.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -684,6 +886,9 @@ class _VmState:
     @property
     @pulumi.getter(name="reservationId")
     def reservation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reservation ID of the VM.
+        """
         return pulumi.get(self, "reservation_id")
 
     @reservation_id.setter
@@ -693,6 +898,9 @@ class _VmState:
     @property
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the root device for the VM (for example, `/dev/vda1`).
+        """
         return pulumi.get(self, "root_device_name")
 
     @root_device_name.setter
@@ -702,6 +910,9 @@ class _VmState:
     @property
     @pulumi.getter(name="rootDeviceType")
     def root_device_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of root device used by the VM (always `bsu`).
+        """
         return pulumi.get(self, "root_device_type")
 
     @root_device_type.setter
@@ -711,6 +922,9 @@ class _VmState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of security group for the VMs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -720,6 +934,9 @@ class _VmState:
     @property
     @pulumi.getter(name="securityGroupNames")
     def security_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more names of security groups for the VMs.
+        """
         return pulumi.get(self, "security_group_names")
 
     @security_group_names.setter
@@ -729,6 +946,9 @@ class _VmState:
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]]]:
+        """
+        One or more security groups associated with the VM.
+        """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
@@ -738,6 +958,9 @@ class _VmState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -747,6 +970,9 @@ class _VmState:
     @property
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason explaining the current state of the VM.
+        """
         return pulumi.get(self, "state_reason")
 
     @state_reason.setter
@@ -756,6 +982,9 @@ class _VmState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -765,6 +994,9 @@ class _VmState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -774,6 +1006,9 @@ class _VmState:
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode. Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -783,6 +1018,9 @@ class _VmState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -792,6 +1030,9 @@ class _VmState:
     @property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
     def vm_initiated_shutdown_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
     @vm_initiated_shutdown_behavior.setter
@@ -801,6 +1042,9 @@ class _VmState:
     @property
     @pulumi.getter(name="vmType")
     def vm_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).
+        """
         return pulumi.get(self, "vm_type")
 
     @vm_type.setter
@@ -838,9 +1082,161 @@ class Vm(pulumi.CustomResource):
                  vm_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Vm resource with the given unique name, props, and options.
+        Manages a virtual machine (VM).
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instances.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+
+        ## Example Usage
+        ### Optional resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        ```
+        ### Create a VM with block device mappings
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        vm02 = outscale.Vm("vm02",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            block_device_mappings=[
+                outscale.VmBlockDeviceMappingArgs(
+                    device_name="/dev/sda1",
+                    bsu=outscale.VmBlockDeviceMappingBsuArgs(
+                        volume_size=15,
+                        volume_type="gp2",
+                        snapshot_id=var["snapshot_id"],
+                    ),
+                ),
+                outscale.VmBlockDeviceMappingArgs(
+                    device_name="/dev/sdb",
+                    bsu=outscale.VmBlockDeviceMappingBsuArgs(
+                        volume_size=22,
+                        volume_type="io1",
+                        iops=150,
+                        delete_on_vm_deletion=True,
+                    ),
+                ),
+            ])
+        ```
+        ### Create a VM in a Net with a network
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[outscale.NetTagArgs(
+                key="name",
+                value="terraform-net-for-vm",
+            )])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b",
+            tags=[outscale.SubnetTagArgs(
+                key="name",
+                value="terraform-subnet-for-vm",
+            )])
+        security_group01 = outscale.SecurityGroup("securityGroup01",
+            description="Terraform security group for VM",
+            security_group_name="terraform-security-group-for-vm",
+            net_id=net01.net_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        route_table01 = outscale.RouteTable("routeTable01",
+            net_id=net01.net_id,
+            tags=[outscale.RouteTableTagArgs(
+                key="name",
+                value="terraform-route-table-for-vm",
+            )])
+        route_table_link01 = outscale.RouteTableLink("routeTableLink01",
+            route_table_id=route_table01.route_table_id,
+            subnet_id=subnet01.subnet_id)
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            internet_service_id=internet_service01.internet_service_id,
+            net_id=net01.net_id)
+        route01 = outscale.Route("route01",
+            gateway_id=internet_service01.internet_service_id,
+            destination_ip_range="0.0.0.0/0",
+            route_table_id=route_table01.route_table_id)
+        vm03 = outscale.Vm("vm03",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            security_group_ids=[security_group01.security_group_id],
+            subnet_id=subnet01.subnet_id)
+        ```
+        ### Create a VM with a NIC
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net02 = outscale.Net("net02",
+            ip_range="10.0.0.0/16",
+            tags=[outscale.NetTagArgs(
+                key="name",
+                value="terraform-net-for-vm-with-nic",
+            )])
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net02.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a",
+            tags=[outscale.SubnetTagArgs(
+                key="name",
+                value="terraform-subnet-for-vm-with-nic",
+            )])
+        nic01 = outscale.Nic("nic01", subnet_id=subnet02.subnet_id)
+        vm04 = outscale.Vm("vm04",
+            image_id=var["image_id"],
+            vm_type="c4.large",
+            keypair_name=var["keypair_name"],
+            nics=[outscale.VmNicArgs(
+                nic_id=nic01.nic_id,
+                device_number=0,
+            )])
+        ```
+
+        ## Import
+
+        A VM can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmBlockDeviceMappingArgs']]]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmBlockDeviceMappingsCreatedArgs']]]] block_device_mappings_createds: The block device mapping of the VM.
+        :param pulumi.Input[bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
+        :param pulumi.Input[bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        :param pulumi.Input[str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
+        :param pulumi.Input[bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        :param pulumi.Input[str] keypair_name: The name of the keypair.
+        :param pulumi.Input[bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmNicArgs']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.
+        :param pulumi.Input[str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] placement_subregion_name: The name of the Subregion where the VM is placed.
+        :param pulumi.Input[str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more IDs of security group for the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_names: One or more names of security groups for the VMs.
+        :param pulumi.Input[str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode. Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] vm_id: The ID of the VM.
+        :param pulumi.Input[str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).
         """
         ...
     @overload
@@ -849,7 +1245,137 @@ class Vm(pulumi.CustomResource):
                  args: VmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Vm resource with the given unique name, props, and options.
+        Manages a virtual machine (VM).
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instances.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+
+        ## Example Usage
+        ### Optional resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        ```
+        ### Create a VM with block device mappings
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        vm02 = outscale.Vm("vm02",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            block_device_mappings=[
+                outscale.VmBlockDeviceMappingArgs(
+                    device_name="/dev/sda1",
+                    bsu=outscale.VmBlockDeviceMappingBsuArgs(
+                        volume_size=15,
+                        volume_type="gp2",
+                        snapshot_id=var["snapshot_id"],
+                    ),
+                ),
+                outscale.VmBlockDeviceMappingArgs(
+                    device_name="/dev/sdb",
+                    bsu=outscale.VmBlockDeviceMappingBsuArgs(
+                        volume_size=22,
+                        volume_type="io1",
+                        iops=150,
+                        delete_on_vm_deletion=True,
+                    ),
+                ),
+            ])
+        ```
+        ### Create a VM in a Net with a network
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[outscale.NetTagArgs(
+                key="name",
+                value="terraform-net-for-vm",
+            )])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b",
+            tags=[outscale.SubnetTagArgs(
+                key="name",
+                value="terraform-subnet-for-vm",
+            )])
+        security_group01 = outscale.SecurityGroup("securityGroup01",
+            description="Terraform security group for VM",
+            security_group_name="terraform-security-group-for-vm",
+            net_id=net01.net_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        route_table01 = outscale.RouteTable("routeTable01",
+            net_id=net01.net_id,
+            tags=[outscale.RouteTableTagArgs(
+                key="name",
+                value="terraform-route-table-for-vm",
+            )])
+        route_table_link01 = outscale.RouteTableLink("routeTableLink01",
+            route_table_id=route_table01.route_table_id,
+            subnet_id=subnet01.subnet_id)
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            internet_service_id=internet_service01.internet_service_id,
+            net_id=net01.net_id)
+        route01 = outscale.Route("route01",
+            gateway_id=internet_service01.internet_service_id,
+            destination_ip_range="0.0.0.0/0",
+            route_table_id=route_table01.route_table_id)
+        vm03 = outscale.Vm("vm03",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            security_group_ids=[security_group01.security_group_id],
+            subnet_id=subnet01.subnet_id)
+        ```
+        ### Create a VM with a NIC
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net02 = outscale.Net("net02",
+            ip_range="10.0.0.0/16",
+            tags=[outscale.NetTagArgs(
+                key="name",
+                value="terraform-net-for-vm-with-nic",
+            )])
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net02.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a",
+            tags=[outscale.SubnetTagArgs(
+                key="name",
+                value="terraform-subnet-for-vm-with-nic",
+            )])
+        nic01 = outscale.Nic("nic01", subnet_id=subnet02.subnet_id)
+        vm04 = outscale.Vm("vm04",
+            image_id=var["image_id"],
+            vm_type="c4.large",
+            keypair_name=var["keypair_name"],
+            nics=[outscale.VmNicArgs(
+                nic_id=nic01.nic_id,
+                device_number=0,
+            )])
+        ```
+
+        ## Import
+
+        A VM can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param VmArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1000,6 +1526,45 @@ class Vm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmBlockDeviceMappingArgs']]]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmBlockDeviceMappingsCreatedArgs']]]] block_device_mappings_createds: The block device mapping of the VM.
+        :param pulumi.Input[str] client_token: A unique identifier which enables you to manage the idempotency.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the VM.
+        :param pulumi.Input[bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
+        :param pulumi.Input[bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        :param pulumi.Input[str] hypervisor: The hypervisor type of the VMs (`ovm` \\| `xen`).
+        :param pulumi.Input[str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
+        :param pulumi.Input[bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        :param pulumi.Input[str] keypair_name: The name of the keypair.
+        :param pulumi.Input[int] launch_number: The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
+        :param pulumi.Input[bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
+        :param pulumi.Input[str] net_id: The ID of the Net for the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmNicArgs']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.
+        :param pulumi.Input[str] os_family: Indicates the operating system (OS) of the VM.
+        :param pulumi.Input[str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] placement_subregion_name: The name of the Subregion where the VM is placed.
+        :param pulumi.Input[str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
+        :param pulumi.Input[str] private_dns_name: The name of the private DNS.
+        :param pulumi.Input[str] private_ip: The private IP of the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_codes: The product code associated with the OMI used to create the VM (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        :param pulumi.Input[str] public_dns_name: The name of the public DNS.
+        :param pulumi.Input[str] public_ip: The public IP of the VM.
+        :param pulumi.Input[str] reservation_id: The reservation ID of the VM.
+        :param pulumi.Input[str] root_device_name: The name of the root device for the VM (for example, `/dev/vda1`).
+        :param pulumi.Input[str] root_device_type: The type of root device used by the VM (always `bsu`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more IDs of security group for the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_names: One or more names of security groups for the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmSecurityGroupArgs']]]] security_groups: One or more security groups associated with the VM.
+        :param pulumi.Input[str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        :param pulumi.Input[str] state_reason: The reason explaining the current state of the VM.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VmTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode. Updating this parameter will trigger a stop/start of the VM.
+        :param pulumi.Input[str] vm_id: The ID of the VM.
+        :param pulumi.Input[str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1057,16 +1622,25 @@ class Vm(pulumi.CustomResource):
     @property
     @pulumi.getter
     def architecture(self) -> pulumi.Output[str]:
+        """
+        The architecture of the VM (`i386` \\| `x86_64`).
+        """
         return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.VmBlockDeviceMapping']]]:
+        """
+        One or more block device mappings.
+        """
         return pulumi.get(self, "block_device_mappings")
 
     @property
     @pulumi.getter(name="blockDeviceMappingsCreateds")
     def block_device_mappings_createds(self) -> pulumi.Output[Sequence['outputs.VmBlockDeviceMappingsCreated']]:
+        """
+        The block device mapping of the VM.
+        """
         return pulumi.get(self, "block_device_mappings_createds")
 
     @property
@@ -1077,111 +1651,177 @@ class Vm(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clientToken")
     def client_token(self) -> pulumi.Output[str]:
+        """
+        A unique identifier which enables you to manage the idempotency.
+        """
         return pulumi.get(self, "client_token")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
+        """
+        The date and time of creation of the VM.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[bool]:
+        """
+        If true, you cannot delete the VM unless you change this parameter back to false.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="getAdminPassword")
     def get_admin_password(self) -> pulumi.Output[Optional[bool]]:
+        """
+        (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        """
         return pulumi.get(self, "get_admin_password")
 
     @property
     @pulumi.getter
     def hypervisor(self) -> pulumi.Output[str]:
+        """
+        The hypervisor type of the VMs (`ovm` \\| `xen`).
+        """
         return pulumi.get(self, "hypervisor")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="isSourceDestChecked")
     def is_source_dest_checked(self) -> pulumi.Output[bool]:
+        """
+        (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        """
         return pulumi.get(self, "is_source_dest_checked")
 
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> pulumi.Output[str]:
+        """
+        The name of the keypair.
+        """
         return pulumi.get(self, "keypair_name")
 
     @property
     @pulumi.getter(name="launchNumber")
     def launch_number(self) -> pulumi.Output[int]:
+        """
+        The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
+        """
         return pulumi.get(self, "launch_number")
 
     @property
     @pulumi.getter(name="nestedVirtualization")
     def nested_virtualization(self) -> pulumi.Output[Optional[bool]]:
+        """
+        (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
+        """
         return pulumi.get(self, "nested_virtualization")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net for the NIC.
+        """
         return pulumi.get(self, "net_id")
 
     @property
     @pulumi.getter
     def nics(self) -> pulumi.Output[Sequence['outputs.VmNic']]:
+        """
+        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.
+        """
         return pulumi.get(self, "nics")
 
     @property
     @pulumi.getter(name="osFamily")
     def os_family(self) -> pulumi.Output[str]:
+        """
+        Indicates the operating system (OS) of the VM.
+        """
         return pulumi.get(self, "os_family")
 
     @property
     @pulumi.getter
     def performance(self) -> pulumi.Output[str]:
+        """
+        The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "performance")
 
     @property
     @pulumi.getter(name="placementSubregionName")
     def placement_subregion_name(self) -> pulumi.Output[str]:
+        """
+        The name of the Subregion where the VM is placed.
+        """
         return pulumi.get(self, "placement_subregion_name")
 
     @property
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> pulumi.Output[str]:
+        """
+        The tenancy of the VM (`default` | `dedicated`).
+        """
         return pulumi.get(self, "placement_tenancy")
 
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> pulumi.Output[str]:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[str]:
+        """
+        The private IP of the NIC.
+        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more private IPs of the VM.
+        """
         return pulumi.get(self, "private_ips")
 
     @property
     @pulumi.getter(name="productCodes")
     def product_codes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The product code associated with the OMI used to create the VM (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        """
         return pulumi.get(self, "product_codes")
 
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> pulumi.Output[str]:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[str]:
+        """
+        The public IP of the VM.
+        """
         return pulumi.get(self, "public_ip")
 
     @property
@@ -1192,70 +1832,112 @@ class Vm(pulumi.CustomResource):
     @property
     @pulumi.getter(name="reservationId")
     def reservation_id(self) -> pulumi.Output[str]:
+        """
+        The reservation ID of the VM.
+        """
         return pulumi.get(self, "reservation_id")
 
     @property
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> pulumi.Output[str]:
+        """
+        The name of the root device for the VM (for example, `/dev/vda1`).
+        """
         return pulumi.get(self, "root_device_name")
 
     @property
     @pulumi.getter(name="rootDeviceType")
     def root_device_type(self) -> pulumi.Output[str]:
+        """
+        The type of root device used by the VM (always `bsu`).
+        """
         return pulumi.get(self, "root_device_type")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more IDs of security group for the VMs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="securityGroupNames")
     def security_group_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more names of security groups for the VMs.
+        """
         return pulumi.get(self, "security_group_names")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Output[Sequence['outputs.VmSecurityGroup']]:
+        """
+        One or more security groups associated with the VM.
+        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[str]]:
+        """
+        The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> pulumi.Output[str]:
+        """
+        The reason explaining the current state of the VM.
+        """
         return pulumi.get(self, "state_reason")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.VmTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
+        """
+        Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode. Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM.
+        """
         return pulumi.get(self, "vm_id")
 
     @property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
     def vm_initiated_shutdown_behavior(self) -> pulumi.Output[str]:
+        """
+        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
     @property
     @pulumi.getter(name="vmType")
     def vm_type(self) -> pulumi.Output[str]:
+        """
+        The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).
+        """
         return pulumi.get(self, "vm_type")
 

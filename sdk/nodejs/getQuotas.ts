@@ -6,6 +6,33 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about quotas.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+ *
+ * ## Example Usage
+ * ### Read specific quotas
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vpcQuotas01 = outscale.getQuotas({
+ *     filters: [{
+ *         name: "collections",
+ *         values: ["VPC"],
+ *     }],
+ * });
+ * ```
+ * ### Read all quotas
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const allQuotas = outscale.getQuotas({});
+ * ```
+ */
 export function getQuotas(args?: GetQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotasResult> {
     args = args || {};
 
@@ -19,6 +46,9 @@ export function getQuotas(args?: GetQuotasArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getQuotas.
  */
 export interface GetQuotasArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetQuotasFilter[];
 }
 
@@ -31,9 +61,39 @@ export interface GetQuotasResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * One or more quotas associated with the user.
+     */
     readonly quotas: outputs.GetQuotasQuota[];
     readonly requestId: string;
 }
+/**
+ * Provides information about quotas.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+ *
+ * ## Example Usage
+ * ### Read specific quotas
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vpcQuotas01 = outscale.getQuotas({
+ *     filters: [{
+ *         name: "collections",
+ *         values: ["VPC"],
+ *     }],
+ * });
+ * ```
+ * ### Read all quotas
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const allQuotas = outscale.getQuotas({});
+ * ```
+ */
 export function getQuotasOutput(args?: GetQuotasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasResult> {
     return pulumi.output(args).apply((a: any) => getQuotas(a, opts))
 }
@@ -42,5 +102,8 @@ export function getQuotasOutput(args?: GetQuotasOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getQuotas.
  */
 export interface GetQuotasOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetQuotasFilterArgs>[]>;
 }

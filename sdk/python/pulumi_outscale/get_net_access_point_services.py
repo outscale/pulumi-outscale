@@ -58,6 +58,9 @@ class GetNetAccessPointServicesResult:
     @property
     @pulumi.getter
     def services(self) -> Sequence['outputs.GetNetAccessPointServicesServiceResult']:
+        """
+        The names of the services you can use for Net access points.
+        """
         return pulumi.get(self, "services")
 
 
@@ -76,7 +79,48 @@ class AwaitableGetNetAccessPointServicesResult(GetNetAccessPointServicesResult):
 def get_net_access_point_services(filters: Optional[Sequence[pulumi.InputType['GetNetAccessPointServicesFilterArgs']]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetAccessPointServicesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Net access point services.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+    ## Example Usage
+    ### List all services available to create Net access points
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_services = outscale.get_net_access_point_services()
+    ```
+    ### List one or more services according to their service IDs
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    services01 = outscale.get_net_access_point_services(filters=[outscale.GetNetAccessPointServicesFilterArgs(
+        name="service_ids",
+        values=[
+            "pl-12345678",
+            "pl-12345679",
+        ],
+    )])
+    ```
+    ### List one or more services according to their service names
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    services02 = outscale.get_net_access_point_services(filters=[outscale.GetNetAccessPointServicesFilterArgs(
+        name="service_names",
+        values=["com.outscale.eu-west-2.api"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetAccessPointServicesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +138,47 @@ def get_net_access_point_services(filters: Optional[Sequence[pulumi.InputType['G
 def get_net_access_point_services_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNetAccessPointServicesFilterArgs']]]]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetAccessPointServicesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Net access point services.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+    ## Example Usage
+    ### List all services available to create Net access points
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_services = outscale.get_net_access_point_services()
+    ```
+    ### List one or more services according to their service IDs
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    services01 = outscale.get_net_access_point_services(filters=[outscale.GetNetAccessPointServicesFilterArgs(
+        name="service_ids",
+        values=[
+            "pl-12345678",
+            "pl-12345679",
+        ],
+    )])
+    ```
+    ### List one or more services according to their service names
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    services02 = outscale.get_net_access_point_services(filters=[outscale.GetNetAccessPointServicesFilterArgs(
+        name="service_names",
+        values=["com.outscale.eu-west-2.api"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetAccessPointServicesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

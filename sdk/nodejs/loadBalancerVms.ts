@@ -4,6 +4,59 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages load balancer VMs.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const outscaleVm01 = new outscale.Vm("outscaleVm01", {
+ *     imageId: "ami-12345678",
+ *     vmType: "t2.small",
+ *     keypairName: _var.keypair_name,
+ * });
+ * const outscaleVm02 = new outscale.Vm("outscaleVm02", {
+ *     imageId: _var.image_id,
+ *     vmType: _var.vm_type,
+ *     keypairName: _var.keypair_name,
+ * });
+ * const loadBalancer01 = new outscale.LoadBalancer("loadBalancer01", {
+ *     loadBalancerName: "load-balancer-for-backend-vms",
+ *     subregionNames: [`${_var.region}a`],
+ *     listeners: [{
+ *         backendPort: 80,
+ *         backendProtocol: "TCP",
+ *         loadBalancerProtocol: "TCP",
+ *         loadBalancerPort: 80,
+ *     }],
+ *     tags: [{
+ *         key: "name",
+ *         value: "outscale_load_balancer01",
+ *     }],
+ * });
+ * ```
+ * ### Register VMs with a load balancer
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const outscaleLoadBalancerVms01 = new outscale.LoadBalancerVms("outscaleLoadBalancerVms01", {
+ *     loadBalancerName: "load-balancer-for-backend-vms",
+ *     backendVmIds: [
+ *         outscale_vm.outscale_vm01.vm_id,
+ *         outscale_vm.outscale_vm_02.vm_id,
+ *     ],
+ * });
+ * ```
+ */
 export class LoadBalancerVms extends pulumi.CustomResource {
     /**
      * Get an existing LoadBalancerVms resource's state with the given name, ID, and optional extra
@@ -32,7 +85,14 @@ export class LoadBalancerVms extends pulumi.CustomResource {
         return obj['__pulumiType'] === LoadBalancerVms.__pulumiType;
     }
 
+    /**
+     * One or more IDs of back-end VMs.<br />
+     * Specifying the same ID several times has no effect as each back-end VM has equal weight.
+     */
     public readonly backendVmIds!: pulumi.Output<string[]>;
+    /**
+     * The name of the load balancer.
+     */
     public readonly loadBalancerName!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
 
@@ -73,7 +133,14 @@ export class LoadBalancerVms extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerVms resources.
  */
 export interface LoadBalancerVmsState {
+    /**
+     * One or more IDs of back-end VMs.<br />
+     * Specifying the same ID several times has no effect as each back-end VM has equal weight.
+     */
     backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the load balancer.
+     */
     loadBalancerName?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
 }
@@ -82,6 +149,13 @@ export interface LoadBalancerVmsState {
  * The set of arguments for constructing a LoadBalancerVms resource.
  */
 export interface LoadBalancerVmsArgs {
+    /**
+     * One or more IDs of back-end VMs.<br />
+     * Specifying the same ID several times has no effect as each back-end VM has equal weight.
+     */
     backendVmIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the load balancer.
+     */
     loadBalancerName: pulumi.Input<string>;
 }

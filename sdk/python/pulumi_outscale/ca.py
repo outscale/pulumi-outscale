@@ -18,6 +18,8 @@ class CaArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ca resource.
+        :param pulumi.Input[str] ca_pem: The CA in PEM format.
+        :param pulumi.Input[str] description: The description of the CA.
         """
         if ca_pem is not None:
             pulumi.set(__self__, "ca_pem", ca_pem)
@@ -27,6 +29,9 @@ class CaArgs:
     @property
     @pulumi.getter(name="caPem")
     def ca_pem(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA in PEM format.
+        """
         return pulumi.get(self, "ca_pem")
 
     @ca_pem.setter
@@ -36,6 +41,9 @@ class CaArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the CA.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -53,6 +61,10 @@ class _CaState:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ca resources.
+        :param pulumi.Input[str] ca_fingerprint: The fingerprint of the CA.
+        :param pulumi.Input[str] ca_id: The ID of the CA.
+        :param pulumi.Input[str] ca_pem: The CA in PEM format.
+        :param pulumi.Input[str] description: The description of the CA.
         """
         if ca_fingerprint is not None:
             pulumi.set(__self__, "ca_fingerprint", ca_fingerprint)
@@ -68,6 +80,9 @@ class _CaState:
     @property
     @pulumi.getter(name="caFingerprint")
     def ca_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fingerprint of the CA.
+        """
         return pulumi.get(self, "ca_fingerprint")
 
     @ca_fingerprint.setter
@@ -77,6 +92,9 @@ class _CaState:
     @property
     @pulumi.getter(name="caId")
     def ca_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the CA.
+        """
         return pulumi.get(self, "ca_id")
 
     @ca_id.setter
@@ -86,6 +104,9 @@ class _CaState:
     @property
     @pulumi.getter(name="caPem")
     def ca_pem(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA in PEM format.
+        """
         return pulumi.get(self, "ca_pem")
 
     @ca_pem.setter
@@ -95,6 +116,9 @@ class _CaState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the CA.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -120,9 +144,34 @@ class Ca(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Ca resource with the given unique name, props, and options.
+        Manages a Certificate Authority (CA).
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=(lambda path: open(path).read())("<PATH>"),
+            description="Terraform certificate authority")
+        ```
+
+        ## Import
+
+        A CA can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/ca:Ca ImportedCa ca-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ca_pem: The CA in PEM format.
+        :param pulumi.Input[str] description: The description of the CA.
         """
         ...
     @overload
@@ -131,7 +180,30 @@ class Ca(pulumi.CustomResource):
                  args: Optional[CaArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Ca resource with the given unique name, props, and options.
+        Manages a Certificate Authority (CA).
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=(lambda path: open(path).read())("<PATH>"),
+            description="Terraform certificate authority")
+        ```
+
+        ## Import
+
+        A CA can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/ca:Ca ImportedCa ca-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param CaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -185,6 +257,10 @@ class Ca(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ca_fingerprint: The fingerprint of the CA.
+        :param pulumi.Input[str] ca_id: The ID of the CA.
+        :param pulumi.Input[str] ca_pem: The CA in PEM format.
+        :param pulumi.Input[str] description: The description of the CA.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -200,21 +276,33 @@ class Ca(pulumi.CustomResource):
     @property
     @pulumi.getter(name="caFingerprint")
     def ca_fingerprint(self) -> pulumi.Output[str]:
+        """
+        The fingerprint of the CA.
+        """
         return pulumi.get(self, "ca_fingerprint")
 
     @property
     @pulumi.getter(name="caId")
     def ca_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the CA.
+        """
         return pulumi.get(self, "ca_id")
 
     @property
     @pulumi.getter(name="caPem")
     def ca_pem(self) -> pulumi.Output[Optional[str]]:
+        """
+        The CA in PEM format.
+        """
         return pulumi.get(self, "ca_pem")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the CA.
+        """
         return pulumi.get(self, "description")
 
     @property

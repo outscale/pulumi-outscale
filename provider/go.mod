@@ -1,4 +1,4 @@
-module github.com/outscale-vbr/pulumi-outscale/provider
+module github.com/outscale/pulumi-outscale/provider
 
 go 1.21.1
 

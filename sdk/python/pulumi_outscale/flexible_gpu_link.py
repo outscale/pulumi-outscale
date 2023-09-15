@@ -18,6 +18,8 @@ class FlexibleGpuLinkArgs:
                  vm_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a FlexibleGpuLink resource.
+        :param pulumi.Input[str] flexible_gpu_id: The ID of the fGPU you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the fGPU to.
         """
         pulumi.set(__self__, "flexible_gpu_id", flexible_gpu_id)
         pulumi.set(__self__, "vm_id", vm_id)
@@ -25,6 +27,9 @@ class FlexibleGpuLinkArgs:
     @property
     @pulumi.getter(name="flexibleGpuId")
     def flexible_gpu_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the fGPU you want to attach.
+        """
         return pulumi.get(self, "flexible_gpu_id")
 
     @flexible_gpu_id.setter
@@ -34,6 +39,9 @@ class FlexibleGpuLinkArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the VM you want to attach the fGPU to.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -49,6 +57,8 @@ class _FlexibleGpuLinkState:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlexibleGpuLink resources.
+        :param pulumi.Input[str] flexible_gpu_id: The ID of the fGPU you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the fGPU to.
         """
         if flexible_gpu_id is not None:
             pulumi.set(__self__, "flexible_gpu_id", flexible_gpu_id)
@@ -60,6 +70,9 @@ class _FlexibleGpuLinkState:
     @property
     @pulumi.getter(name="flexibleGpuId")
     def flexible_gpu_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the fGPU you want to attach.
+        """
         return pulumi.get(self, "flexible_gpu_id")
 
     @flexible_gpu_id.setter
@@ -78,6 +91,9 @@ class _FlexibleGpuLinkState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM you want to attach the fGPU to.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -94,9 +110,54 @@ class FlexibleGpuLink(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a FlexibleGpuLink resource with the given unique name, props, and options.
+        Manages a flexible GPU link.
+
+        When linking a flexible GPU to a VM, the VM will automatically be stopped and started again.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        vm01 = outscale.Vm("vm01",
+            image_id=ami_12345678,
+            vm_type=t2["small"],
+            keypair_name=var["keypair_name"],
+            placement_subregion_name="eu-west-2a")
+        flexible_gpu01 = outscale.FlexibleGpu("flexibleGpu01",
+            model_name=var["model_name"],
+            generation="v4",
+            subregion_name="eu-west-2a",
+            delete_on_vm_deletion=True)
+        ```
+        ### Create a flexible GPU link
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        link_fgpu01 = outscale.FlexibleGpuLink("linkFgpu01",
+            flexible_gpu_id=outscale_flexible_gpu["flexible_gpu01"]["flexible_gpu_id"],
+            vm_id=outscale_vm["vm01"]["vm_id"])
+        ```
+
+        ## Import
+
+        A flexible GPU link can be imported using the flexible GPU ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] flexible_gpu_id: The ID of the fGPU you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the fGPU to.
         """
         ...
     @overload
@@ -105,7 +166,50 @@ class FlexibleGpuLink(pulumi.CustomResource):
                  args: FlexibleGpuLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FlexibleGpuLink resource with the given unique name, props, and options.
+        Manages a flexible GPU link.
+
+        When linking a flexible GPU to a VM, the VM will automatically be stopped and started again.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        vm01 = outscale.Vm("vm01",
+            image_id=ami_12345678,
+            vm_type=t2["small"],
+            keypair_name=var["keypair_name"],
+            placement_subregion_name="eu-west-2a")
+        flexible_gpu01 = outscale.FlexibleGpu("flexibleGpu01",
+            model_name=var["model_name"],
+            generation="v4",
+            subregion_name="eu-west-2a",
+            delete_on_vm_deletion=True)
+        ```
+        ### Create a flexible GPU link
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        link_fgpu01 = outscale.FlexibleGpuLink("linkFgpu01",
+            flexible_gpu_id=outscale_flexible_gpu["flexible_gpu01"]["flexible_gpu_id"],
+            vm_id=outscale_vm["vm01"]["vm_id"])
+        ```
+
+        ## Import
+
+        A flexible GPU link can be imported using the flexible GPU ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param FlexibleGpuLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,6 +263,8 @@ class FlexibleGpuLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] flexible_gpu_id: The ID of the fGPU you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM you want to attach the fGPU to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,6 +278,9 @@ class FlexibleGpuLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="flexibleGpuId")
     def flexible_gpu_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the fGPU you want to attach.
+        """
         return pulumi.get(self, "flexible_gpu_id")
 
     @property
@@ -182,5 +291,8 @@ class FlexibleGpuLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM you want to attach the fGPU to.
+        """
         return pulumi.get(self, "vm_id")
 

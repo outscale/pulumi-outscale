@@ -66,6 +66,9 @@ class GetSnapshotExportTasksResult:
     @property
     @pulumi.getter(name="snapshotExportTasks")
     def snapshot_export_tasks(self) -> Sequence['outputs.GetSnapshotExportTasksSnapshotExportTaskResult']:
+        """
+        Information about one or more snapshot export tasks.
+        """
         return pulumi.get(self, "snapshot_export_tasks")
 
 
@@ -86,7 +89,28 @@ def get_snapshot_export_tasks(dry_run: Optional[bool] = None,
                               filters: Optional[Sequence[pulumi.InputType['GetSnapshotExportTasksFilterArgs']]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotExportTasksResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about snapshot export tasks.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshot_export_tasks01 = outscale.get_snapshot_export_tasks(filters=[outscale.GetSnapshotExportTasksFilterArgs(
+        name="task_ids",
+        values=[
+            "snap-export-12345678",
+            "snap-export-87654321",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSnapshotExportTasksFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run
@@ -107,6 +131,27 @@ def get_snapshot_export_tasks_output(dry_run: Optional[pulumi.Input[Optional[boo
                                      filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSnapshotExportTasksFilterArgs']]]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotExportTasksResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about snapshot export tasks.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshot_export_tasks01 = outscale.get_snapshot_export_tasks(filters=[outscale.GetSnapshotExportTasksFilterArgs(
+        name="task_ids",
+        values=[
+            "snap-export-12345678",
+            "snap-export-87654321",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSnapshotExportTasksFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

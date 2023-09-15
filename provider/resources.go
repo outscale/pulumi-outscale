@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/outscale-vbr/pulumi-outscale/provider/pkg/version"
+	"github.com/outscale/pulumi-outscale/provider/pkg/version"
 	outscale "github.com/outscale/terraform-provider-outscale/outscale"
 	//"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -309,10 +309,10 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:   []string{"pulumi", "outscale", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/outscale-vbr/pulumi-outscale",
+		Repository: "https://github.com/outscale/pulumi-outscale",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "outscale-vbr",
+		GitHubOrg: "outscale",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			"access_key_id": {
 				Default: &tfbridge.DefaultInfo{

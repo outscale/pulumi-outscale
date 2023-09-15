@@ -1,0 +1,11 @@
+{
+    "name": "ts-example",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^16"
+    },
+    "dependencies": {
+        "@pulumi/outscale": "file:./../../sdk/nodejs/",
+        "@pulumi/pulumi": "^3.0.0"
+    }
+}

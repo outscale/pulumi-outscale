@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about a volume.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const outscaleVolume01 = outscale.getVolume({
+ *     filters: [{
+ *         name: "volume_ids",
+ *         values: ["vol-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getVolume(args?: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {
     args = args || {};
 
@@ -21,8 +41,14 @@ export function getVolume(args?: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetVolumeFilter[];
     requestId?: string;
+    /**
+     * The ID of the volume.
+     */
     volumeId?: string;
 }
 
@@ -30,23 +56,73 @@ export interface GetVolumeArgs {
  * A collection of values returned by getVolume.
  */
 export interface GetVolumeResult {
+    /**
+     * The date and time of creation of the volume.
+     */
     readonly creationDate: string;
     readonly filters?: outputs.GetVolumeFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The number of I/O operations per second (IOPS):<br />- For `io1` volumes, the number of provisioned IOPS.<br />- For `gp2` volumes, the baseline performance of the volume.
+     */
     readonly iops: number;
+    /**
+     * Information about your volume attachment.
+     */
     readonly linkedVolumes: outputs.GetVolumeLinkedVolume[];
     readonly requestId?: string;
+    /**
+     * The size of the volume, in gibibytes (GiB).
+     */
     readonly size: number;
+    /**
+     * The snapshot from which the volume was created.
+     */
     readonly snapshotId: string;
+    /**
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     */
     readonly state: string;
+    /**
+     * The Subregion in which the volume was created.
+     */
     readonly subregionName: string;
+    /**
+     * One or more tags associated with the volume.
+     */
     readonly tags: outputs.GetVolumeTag[];
+    /**
+     * The ID of the volume.
+     */
     readonly volumeId?: string;
+    /**
+     * The type of the volume (`standard` \| `gp2` \| `io1`).
+     */
     readonly volumeType: string;
 }
+/**
+ * Provides information about a volume.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const outscaleVolume01 = outscale.getVolume({
+ *     filters: [{
+ *         name: "volume_ids",
+ *         values: ["vol-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getVolumeOutput(args?: GetVolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeResult> {
     return pulumi.output(args).apply((a: any) => getVolume(a, opts))
 }
@@ -55,7 +131,13 @@ export function getVolumeOutput(args?: GetVolumeOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getVolume.
  */
 export interface GetVolumeOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetVolumeFilterArgs>[]>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the volume.
+     */
     volumeId?: pulumi.Input<string>;
 }

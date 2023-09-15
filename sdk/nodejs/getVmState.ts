@@ -6,6 +6,27 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about a VM state.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instance-Lifecycle.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmsstate).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vmState01 = outscale.getVmState({
+ *     allVms: true,
+ *     filters: [{
+ *         name: "vm_ids",
+ *         values: ["i-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getVmState(args?: GetVmStateArgs, opts?: pulumi.InvokeOptions): Promise<GetVmStateResult> {
     args = args || {};
 
@@ -21,8 +42,17 @@ export function getVmState(args?: GetVmStateArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getVmState.
  */
 export interface GetVmStateArgs {
+    /**
+     * If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
+     */
     allVms?: boolean;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetVmStateFilter[];
+    /**
+     * The ID of the VM.
+     */
     vmId?: string;
 }
 
@@ -36,12 +66,45 @@ export interface GetVmStateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * One or more scheduled events associated with the VM.
+     */
     readonly maintenanceEvents: outputs.GetVmStateMaintenanceEvent[];
     readonly requestId: string;
+    /**
+     * The name of the Subregion of the VM.
+     */
     readonly subregionName: string;
+    /**
+     * The ID of the VM.
+     */
     readonly vmId?: string;
+    /**
+     * The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
+     */
     readonly vmState: string;
 }
+/**
+ * Provides information about a VM state.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instance-Lifecycle.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmsstate).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vmState01 = outscale.getVmState({
+ *     allVms: true,
+ *     filters: [{
+ *         name: "vm_ids",
+ *         values: ["i-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getVmStateOutput(args?: GetVmStateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVmStateResult> {
     return pulumi.output(args).apply((a: any) => getVmState(a, opts))
 }
@@ -50,7 +113,16 @@ export function getVmStateOutput(args?: GetVmStateOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getVmState.
  */
 export interface GetVmStateOutputArgs {
+    /**
+     * If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
+     */
     allVms?: pulumi.Input<boolean>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetVmStateFilterArgs>[]>;
+    /**
+     * The ID of the VM.
+     */
     vmId?: pulumi.Input<string>;
 }

@@ -6,6 +6,29 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an Internet service.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const internetService01 = new outscale.InternetService("internetService01", {});
+ * ```
+ *
+ * ## Import
+ *
+ * An internet service can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/internetService:InternetService ImportedInternetService igw-12345678
+ * ```
+ */
 export class InternetService extends pulumi.CustomResource {
     /**
      * Get an existing InternetService resource's state with the given name, ID, and optional extra
@@ -34,10 +57,22 @@ export class InternetService extends pulumi.CustomResource {
         return obj['__pulumiType'] === InternetService.__pulumiType;
     }
 
+    /**
+     * The ID of the Internet service.
+     */
     public /*out*/ readonly internetServiceId!: pulumi.Output<string>;
+    /**
+     * The ID of the Net attached to the Internet service.
+     */
     public /*out*/ readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the attachment of the Internet service to the Net (always `available`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.InternetServiceTag[] | undefined>;
 
     /**
@@ -75,10 +110,22 @@ export class InternetService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InternetService resources.
  */
 export interface InternetServiceState {
+    /**
+     * The ID of the Internet service.
+     */
     internetServiceId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net attached to the Internet service.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the attachment of the Internet service to the Net (always `available`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceTag>[]>;
 }
 
@@ -86,5 +133,8 @@ export interface InternetServiceState {
  * The set of arguments for constructing a InternetService resource.
  */
 export interface InternetServiceArgs {
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceTag>[]>;
 }

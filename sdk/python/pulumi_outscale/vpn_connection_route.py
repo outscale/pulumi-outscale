@@ -18,6 +18,8 @@ class VpnConnectionRouteInitArgs:
                  vpn_connection_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a VpnConnectionRoute resource.
+        :param pulumi.Input[str] destination_ip_range: The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+        :param pulumi.Input[str] vpn_connection_id: The ID of the target VPN connection of the static route.
         """
         pulumi.set(__self__, "destination_ip_range", destination_ip_range)
         pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
@@ -25,6 +27,9 @@ class VpnConnectionRouteInitArgs:
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> pulumi.Input[str]:
+        """
+        The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
@@ -34,6 +39,9 @@ class VpnConnectionRouteInitArgs:
     @property
     @pulumi.getter(name="vpnConnectionId")
     def vpn_connection_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the target VPN connection of the static route.
+        """
         return pulumi.get(self, "vpn_connection_id")
 
     @vpn_connection_id.setter
@@ -49,6 +57,8 @@ class _VpnConnectionRouteState:
                  vpn_connection_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VpnConnectionRoute resources.
+        :param pulumi.Input[str] destination_ip_range: The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+        :param pulumi.Input[str] vpn_connection_id: The ID of the target VPN connection of the static route.
         """
         if destination_ip_range is not None:
             pulumi.set(__self__, "destination_ip_range", destination_ip_range)
@@ -60,6 +70,9 @@ class _VpnConnectionRouteState:
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
@@ -78,6 +91,9 @@ class _VpnConnectionRouteState:
     @property
     @pulumi.getter(name="vpnConnectionId")
     def vpn_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the target VPN connection of the static route.
+        """
         return pulumi.get(self, "vpn_connection_id")
 
     @vpn_connection_id.setter
@@ -94,9 +110,52 @@ class VpnConnectionRoute(pulumi.CustomResource):
                  vpn_connection_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VpnConnectionRoute resource with the given unique name, props, and options.
+        Manages a VPN connection route.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Routing-Configuration-for-VPN-Connections.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        client_gateway01 = outscale.ClientGateway("clientGateway01",
+            bgp_asn=65000,
+            public_ip="111.11.11.111",
+            connection_type="ipsec.1")
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01", connection_type="ipsec.1")
+        vpn_connection01 = outscale.VpnConnection("vpnConnection01",
+            client_gateway_id=client_gateway01.client_gateway_id,
+            virtual_gateway_id=virtual_gateway01.virtual_gateway_id,
+            connection_type="ipsec.1",
+            static_routes_only=True)
+        ```
+        ### Create a static route to a VPN connection
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        vpn_connection_route01 = outscale.VpnConnectionRoute("vpnConnectionRoute01",
+            vpn_connection_id=outscale_vpn_connection["vpn_connection01"]["vpn_connection_id"],
+            destination_ip_range="10.0.0.0/16")
+        ```
+
+        ## Import
+
+        A VPN connection route can be imported using the VPN connection ID and the route destination IP range. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/vpnConnectionRoute:VpnConnectionRoute ImportedRoute vpn-12345678_10.0.0.0/0
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] destination_ip_range: The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+        :param pulumi.Input[str] vpn_connection_id: The ID of the target VPN connection of the static route.
         """
         ...
     @overload
@@ -105,7 +164,48 @@ class VpnConnectionRoute(pulumi.CustomResource):
                  args: VpnConnectionRouteInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VpnConnectionRoute resource with the given unique name, props, and options.
+        Manages a VPN connection route.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Routing-Configuration-for-VPN-Connections.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        client_gateway01 = outscale.ClientGateway("clientGateway01",
+            bgp_asn=65000,
+            public_ip="111.11.11.111",
+            connection_type="ipsec.1")
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01", connection_type="ipsec.1")
+        vpn_connection01 = outscale.VpnConnection("vpnConnection01",
+            client_gateway_id=client_gateway01.client_gateway_id,
+            virtual_gateway_id=virtual_gateway01.virtual_gateway_id,
+            connection_type="ipsec.1",
+            static_routes_only=True)
+        ```
+        ### Create a static route to a VPN connection
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        vpn_connection_route01 = outscale.VpnConnectionRoute("vpnConnectionRoute01",
+            vpn_connection_id=outscale_vpn_connection["vpn_connection01"]["vpn_connection_id"],
+            destination_ip_range="10.0.0.0/16")
+        ```
+
+        ## Import
+
+        A VPN connection route can be imported using the VPN connection ID and the route destination IP range. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/vpnConnectionRoute:VpnConnectionRoute ImportedRoute vpn-12345678_10.0.0.0/0
+        ```
+
         :param str resource_name: The name of the resource.
         :param VpnConnectionRouteInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,6 +259,8 @@ class VpnConnectionRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] destination_ip_range: The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+        :param pulumi.Input[str] vpn_connection_id: The ID of the target VPN connection of the static route.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,6 +274,9 @@ class VpnConnectionRoute(pulumi.CustomResource):
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> pulumi.Output[str]:
+        """
+        The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @property
@@ -182,5 +287,8 @@ class VpnConnectionRoute(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vpnConnectionId")
     def vpn_connection_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the target VPN connection of the static route.
+        """
         return pulumi.get(self, "vpn_connection_id")
 

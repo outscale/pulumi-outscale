@@ -61,11 +61,17 @@ class GetQuotaResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The account ID of the owner of the quotas.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the quota.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -84,21 +90,33 @@ class GetQuotaResult:
     @property
     @pulumi.getter(name="maxValue")
     def max_value(self) -> int:
+        """
+        The maximum value of the quota for the OUTSCALE user account (if there is no limit, `0`).
+        """
         return pulumi.get(self, "max_value")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The unique name of the quota.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="quotaCollection")
     def quota_collection(self) -> str:
+        """
+        The group name of the quota.
+        """
         return pulumi.get(self, "quota_collection")
 
     @property
     @pulumi.getter(name="quotaType")
     def quota_type(self) -> str:
+        """
+        The resource ID if it is a resource-specific quota, `global` if it is not.
+        """
         return pulumi.get(self, "quota_type")
 
     @property
@@ -109,11 +127,17 @@ class GetQuotaResult:
     @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> str:
+        """
+        The description of the quota.
+        """
         return pulumi.get(self, "short_description")
 
     @property
     @pulumi.getter(name="usedValue")
     def used_value(self) -> int:
+        """
+        The limit value currently used by the OUTSCALE user account.
+        """
         return pulumi.get(self, "used_value")
 
 
@@ -139,7 +163,39 @@ class AwaitableGetQuotaResult(GetQuotaResult):
 def get_quota(filters: Optional[Sequence[pulumi.InputType['GetQuotaFilterArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotaResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a quota.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    load_balancer_listeners_quota01 = outscale.get_quota(filters=[
+        outscale.GetQuotaFilterArgs(
+            name="collections",
+            values=["LBU"],
+        ),
+        outscale.GetQuotaFilterArgs(
+            name="quota_names",
+            values=["lb_listeners_limit"],
+        ),
+        outscale.GetQuotaFilterArgs(
+            name="quota_types",
+            values=["global"],
+        ),
+        outscale.GetQuotaFilterArgs(
+            name="short_descriptions",
+            values=["Load Balancer Listeners Limit"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetQuotaFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -164,6 +220,38 @@ def get_quota(filters: Optional[Sequence[pulumi.InputType['GetQuotaFilterArgs']]
 def get_quota_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetQuotaFilterArgs']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a quota.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    load_balancer_listeners_quota01 = outscale.get_quota(filters=[
+        outscale.GetQuotaFilterArgs(
+            name="collections",
+            values=["LBU"],
+        ),
+        outscale.GetQuotaFilterArgs(
+            name="quota_names",
+            values=["lb_listeners_limit"],
+        ),
+        outscale.GetQuotaFilterArgs(
+            name="quota_types",
+            values=["global"],
+        ),
+        outscale.GetQuotaFilterArgs(
+            name="short_descriptions",
+            values=["Load Balancer Listeners Limit"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetQuotaFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

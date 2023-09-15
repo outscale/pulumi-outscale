@@ -26,7 +26,7 @@ setup(name='pulumi_outscale',
       keywords='pulumi outscale category/cloud',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/outscale-vbr/pulumi-outscale'
+          'Repository': 'https://github.com/outscale/pulumi-outscale'
       },
       license='Apache-2.0',
       packages=find_packages(),

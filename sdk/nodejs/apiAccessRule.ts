@@ -4,6 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an API access rule.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+ *
+ * ## Example Usage
+ * ### Create an API access rule based on IPs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const apiAccessRule01 = new outscale.ApiAccessRule("apiAccessRule01", {
+ *     description: "Basic API Access Rule from Terraform",
+ *     ipRanges: [
+ *         "192.0.2.0",
+ *         "192.0.2.0/16",
+ *     ],
+ * });
+ * ```
+ * ### Create an API access rule based on IPs and Certificate Authority (CA)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const ca01 = new outscale.Ca("ca01", {
+ *     caPem: fs.readFileSync("<PATH>"),
+ *     description: "Terraform CA",
+ * });
+ * const apiAccessRule02 = new outscale.ApiAccessRule("apiAccessRule02", {
+ *     ipRanges: [
+ *         "192.0.2.0",
+ *         "192.0.2.0/16",
+ *     ],
+ *     caIds: [ca01.caId],
+ *     description: "API Access Rule with CA from Terraform",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An API access rule can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+ * ```
+ */
 export class ApiAccessRule extends pulumi.CustomResource {
     /**
      * Get an existing ApiAccessRule resource's state with the given name, ID, and optional extra
@@ -32,10 +82,25 @@ export class ApiAccessRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiAccessRule.__pulumiType;
     }
 
+    /**
+     * The ID of the API access rule.
+     */
     public /*out*/ readonly apiAccessRuleId!: pulumi.Output<string>;
+    /**
+     * One or more IDs of Client Certificate Authorities (CAs).
+     */
     public readonly caIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
+     */
     public readonly cns!: pulumi.Output<string[] | undefined>;
+    /**
+     * A description for the API access rule.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
+     */
     public readonly ipRanges!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
 
@@ -76,10 +141,25 @@ export class ApiAccessRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiAccessRule resources.
  */
 export interface ApiAccessRuleState {
+    /**
+     * The ID of the API access rule.
+     */
     apiAccessRuleId?: pulumi.Input<string>;
+    /**
+     * One or more IDs of Client Certificate Authorities (CAs).
+     */
     caIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
+     */
     cns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A description for the API access rule.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
+     */
     ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
     requestId?: pulumi.Input<string>;
 }
@@ -88,8 +168,20 @@ export interface ApiAccessRuleState {
  * The set of arguments for constructing a ApiAccessRule resource.
  */
 export interface ApiAccessRuleArgs {
+    /**
+     * One or more IDs of Client Certificate Authorities (CAs).
+     */
     caIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
+     */
     cns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A description for the API access rule.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
+     */
     ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
 }

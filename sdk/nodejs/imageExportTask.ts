@@ -6,6 +6,48 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an image export task.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ *
+ * ## Example Usage
+ * ### Required resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const image01 = new outscale.Image("image01", {
+ *     imageName: "terraform-image-to-export",
+ *     vmId: "i-12345678",
+ * });
+ * ```
+ * ### Create an image export task
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const imageExportTask01 = new outscale.ImageExportTask("imageExportTask01", {
+ *     imageId: outscale_image.image01.image_id,
+ *     osuExports: [{
+ *         diskImageFormat: "qcow2",
+ *         osuBucket: "terraform-bucket",
+ *         osuPrefix: "new-export",
+ *         osuApiKeys: [{
+ *             apiKeyId: _var.access_key_id,
+ *             secretKey: _var.secret_key_id,
+ *         }],
+ *     }],
+ *     tags: [{
+ *         key: "Name",
+ *         value: "terraform-snapshot-export-task",
+ *     }],
+ * });
+ * ```
+ */
 export class ImageExportTask extends pulumi.CustomResource {
     /**
      * Get an existing ImageExportTask resource's state with the given name, ID, and optional extra
@@ -34,13 +76,34 @@ export class ImageExportTask extends pulumi.CustomResource {
         return obj['__pulumiType'] === ImageExportTask.__pulumiType;
     }
 
+    /**
+     * If the OMI export task fails, an error message appears.
+     */
     public /*out*/ readonly comment!: pulumi.Output<string>;
+    /**
+     * The ID of the OMI to export.
+     */
     public readonly imageId!: pulumi.Output<string>;
+    /**
+     * Information about the OOS export task to create.
+     */
     public readonly osuExports!: pulumi.Output<outputs.ImageExportTaskOsuExport[]>;
+    /**
+     * The progress of the OMI export task, as a percentage.
+     */
     public /*out*/ readonly progress!: pulumi.Output<number>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the OMI export task (`pending/queued` \| `pending` \| `completed` \| `failed` \| `cancelled`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.ImageExportTaskTag[] | undefined>;
+    /**
+     * The ID of the OMI export task.
+     */
     public /*out*/ readonly taskId!: pulumi.Output<string>;
 
     /**
@@ -90,13 +153,34 @@ export class ImageExportTask extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ImageExportTask resources.
  */
 export interface ImageExportTaskState {
+    /**
+     * If the OMI export task fails, an error message appears.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * The ID of the OMI to export.
+     */
     imageId?: pulumi.Input<string>;
+    /**
+     * Information about the OOS export task to create.
+     */
     osuExports?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskOsuExport>[]>;
+    /**
+     * The progress of the OMI export task, as a percentage.
+     */
     progress?: pulumi.Input<number>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the OMI export task (`pending/queued` \| `pending` \| `completed` \| `failed` \| `cancelled`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskTag>[]>;
+    /**
+     * The ID of the OMI export task.
+     */
     taskId?: pulumi.Input<string>;
 }
 
@@ -104,7 +188,16 @@ export interface ImageExportTaskState {
  * The set of arguments for constructing a ImageExportTask resource.
  */
 export interface ImageExportTaskArgs {
+    /**
+     * The ID of the OMI to export.
+     */
     imageId: pulumi.Input<string>;
+    /**
+     * Information about the OOS export task to create.
+     */
     osuExports: pulumi.Input<pulumi.Input<inputs.ImageExportTaskOsuExport>[]>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskTag>[]>;
 }

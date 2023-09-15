@@ -40,6 +40,9 @@ class GetCasResult:
     @property
     @pulumi.getter
     def cas(self) -> Sequence['outputs.GetCasCaResult']:
+        """
+        Information about one or more CAs.
+        """
         return pulumi.get(self, "cas")
 
     @property
@@ -76,7 +79,28 @@ class AwaitableGetCasResult(GetCasResult):
 def get_cas(filters: Optional[Sequence[pulumi.InputType['GetCasFilterArgs']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCasResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Certificate Authorities (CAs).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    cas01 = outscale.get_cas(filters=[outscale.GetCasFilterArgs(
+        name="ca_ids",
+        values=[
+            "ca-12345678",
+            "ca-87654321",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetCasFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +118,27 @@ def get_cas(filters: Optional[Sequence[pulumi.InputType['GetCasFilterArgs']]] = 
 def get_cas_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCasFilterArgs']]]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCasResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Certificate Authorities (CAs).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    cas01 = outscale.get_cas(filters=[outscale.GetCasFilterArgs(
+        name="ca_ids",
+        values=[
+            "ca-12345678",
+            "ca-87654321",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetCasFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

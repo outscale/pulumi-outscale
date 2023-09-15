@@ -61,11 +61,17 @@ class GetVolumesResult:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[str]:
+        """
+        The ID of the volume.
+        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.GetVolumesVolumeResult']:
+        """
+        Information about one or more volumes.
+        """
         return pulumi.get(self, "volumes")
 
 
@@ -87,7 +93,35 @@ def get_volumes(filters: Optional[Sequence[pulumi.InputType['GetVolumesFilterArg
                 volume_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about volumes.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    outscale_volumes01 = outscale.get_volumes(filters=[
+        outscale.GetVolumesFilterArgs(
+            name="volume_states",
+            values=["in-use"],
+        ),
+        outscale.GetVolumesFilterArgs(
+            name="volume_types",
+            values=[
+                "gp2",
+                "io1",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVolumesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str volume_id: The ID of the volume.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -110,6 +144,34 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        volume_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about volumes.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    outscale_volumes01 = outscale.get_volumes(filters=[
+        outscale.GetVolumesFilterArgs(
+            name="volume_states",
+            values=["in-use"],
+        ),
+        outscale.GetVolumesFilterArgs(
+            name="volume_types",
+            values=[
+                "gp2",
+                "io1",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVolumesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str volume_id: The ID of the volume.
     """
     ...

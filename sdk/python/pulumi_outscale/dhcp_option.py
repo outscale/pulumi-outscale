@@ -23,6 +23,11 @@ class DhcpOptionArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]] = None):
         """
         The set of arguments for constructing a DhcpOption resource.
+        :param pulumi.Input[str] domain_name: Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_name_servers: The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] log_servers: The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
@@ -38,6 +43,9 @@ class DhcpOptionArgs:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -47,6 +55,9 @@ class DhcpOptionArgs:
     @property
     @pulumi.getter(name="domainNameServers")
     def domain_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "domain_name_servers")
 
     @domain_name_servers.setter
@@ -56,6 +67,9 @@ class DhcpOptionArgs:
     @property
     @pulumi.getter(name="logServers")
     def log_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        """
         return pulumi.get(self, "log_servers")
 
     @log_servers.setter
@@ -65,6 +79,9 @@ class DhcpOptionArgs:
     @property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -74,6 +91,9 @@ class DhcpOptionArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -94,6 +114,13 @@ class _DhcpOptionState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering DhcpOption resources.
+        :param pulumi.Input[bool] default: If true, the DHCP options set is a default one. If false, it is not.
+        :param pulumi.Input[str] dhcp_options_set_id: The ID of the DHCP options set.
+        :param pulumi.Input[str] domain_name: Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_name_servers: The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] log_servers: The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if default is not None:
             pulumi.set(__self__, "default", default)
@@ -115,6 +142,9 @@ class _DhcpOptionState:
     @property
     @pulumi.getter
     def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the DHCP options set is a default one. If false, it is not.
+        """
         return pulumi.get(self, "default")
 
     @default.setter
@@ -124,6 +154,9 @@ class _DhcpOptionState:
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the DHCP options set.
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @dhcp_options_set_id.setter
@@ -133,6 +166,9 @@ class _DhcpOptionState:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -142,6 +178,9 @@ class _DhcpOptionState:
     @property
     @pulumi.getter(name="domainNameServers")
     def domain_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "domain_name_servers")
 
     @domain_name_servers.setter
@@ -151,6 +190,9 @@ class _DhcpOptionState:
     @property
     @pulumi.getter(name="logServers")
     def log_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        """
         return pulumi.get(self, "log_servers")
 
     @log_servers.setter
@@ -160,6 +202,9 @@ class _DhcpOptionState:
     @property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -178,6 +223,9 @@ class _DhcpOptionState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -197,9 +245,57 @@ class DhcpOption(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a DhcpOption resource with the given unique name, props, and options.
+        Manages a DHCP option.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+
+        ## Example Usage
+        ### Create a basic DHCP options set
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        dhcp_option01 = outscale.DhcpOption("dhcpOption01", domain_name="MyCompany.com")
+        ```
+        ### Create a complete DHCP options set
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        dhcp_option02 = outscale.DhcpOption("dhcpOption02",
+            domain_name="MyCompany.com",
+            domain_name_servers=[
+                "111.111.11.111",
+                "222.222.22.222",
+            ],
+            ntp_servers=[
+                "111.1.1.1",
+                "222.2.2.2",
+            ],
+            tags=[outscale.DhcpOptionTagArgs(
+                key="Name",
+                value="DHCP01",
+            )])
+        ```
+
+        ## Import
+
+        DHCP options can be imported using the DHCP option ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/dhcpOption:DhcpOption ImportedDhcpSet dopt-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_name: Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_name_servers: The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] log_servers: The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -208,7 +304,50 @@ class DhcpOption(pulumi.CustomResource):
                  args: Optional[DhcpOptionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a DhcpOption resource with the given unique name, props, and options.
+        Manages a DHCP option.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+
+        ## Example Usage
+        ### Create a basic DHCP options set
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        dhcp_option01 = outscale.DhcpOption("dhcpOption01", domain_name="MyCompany.com")
+        ```
+        ### Create a complete DHCP options set
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        dhcp_option02 = outscale.DhcpOption("dhcpOption02",
+            domain_name="MyCompany.com",
+            domain_name_servers=[
+                "111.111.11.111",
+                "222.222.22.222",
+            ],
+            ntp_servers=[
+                "111.1.1.1",
+                "222.2.2.2",
+            ],
+            tags=[outscale.DhcpOptionTagArgs(
+                key="Name",
+                value="DHCP01",
+            )])
+        ```
+
+        ## Import
+
+        DHCP options can be imported using the DHCP option ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/dhcpOption:DhcpOption ImportedDhcpSet dopt-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param DhcpOptionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -271,6 +410,13 @@ class DhcpOption(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] default: If true, the DHCP options set is a default one. If false, it is not.
+        :param pulumi.Input[str] dhcp_options_set_id: The ID of the DHCP options set.
+        :param pulumi.Input[str] domain_name: Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_name_servers: The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] log_servers: The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -289,31 +435,49 @@ class DhcpOption(pulumi.CustomResource):
     @property
     @pulumi.getter
     def default(self) -> pulumi.Output[bool]:
+        """
+        If true, the DHCP options set is a default one. If false, it is not.
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the DHCP options set.
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
+        """
+        Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter(name="domainNameServers")
     def domain_name_servers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "domain_name_servers")
 
     @property
     @pulumi.getter(name="logServers")
     def log_servers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        """
         return pulumi.get(self, "log_servers")
 
     @property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
+        """
         return pulumi.get(self, "ntp_servers")
 
     @property
@@ -324,5 +488,8 @@ class DhcpOption(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.DhcpOptionTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 

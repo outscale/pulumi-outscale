@@ -28,9 +28,9 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The Access Key ID for API operations.
+     * The Access Key ID for API operations
      */
-    public readonly accessKey!: pulumi.Output<string | undefined>;
+    public readonly accessKeyId!: pulumi.Output<string | undefined>;
     /**
      * The Region for API operations.
      */
@@ -38,7 +38,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The Secret Key ID for API operations.
      */
-    public readonly secretKey!: pulumi.Output<string | undefined>;
+    public readonly secretKeyId!: pulumi.Output<string | undefined>;
     /**
      * The path to your x509 cert
      */
@@ -59,10 +59,10 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accessKey"] = (args ? args.accessKey : undefined) ?? utilities.getEnv("OSC_ACCESS_KEY");
+            resourceInputs["accessKeyId"] = (args ? args.accessKeyId : undefined) ?? utilities.getEnv("OUTSCALE_ACCESSKEYID");
             resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
-            resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("OSC_DEFAULT_REGION");
-            resourceInputs["secretKey"] = (args ? args.secretKey : undefined) ?? utilities.getEnv("OSC_SECRET_KEY");
+            resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("OUTSCALE_REGION");
+            resourceInputs["secretKeyId"] = (args ? args.secretKeyId : undefined) ?? utilities.getEnv("OUTSCALE_SECRETKEYID");
             resourceInputs["x509CertPath"] = args ? args.x509CertPath : undefined;
             resourceInputs["x509KeyPath"] = args ? args.x509KeyPath : undefined;
         }
@@ -76,9 +76,9 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The Access Key ID for API operations.
+     * The Access Key ID for API operations
      */
-    accessKey?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string>;
     endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
     /**
      * The Region for API operations.
@@ -87,7 +87,7 @@ export interface ProviderArgs {
     /**
      * The Secret Key ID for API operations.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKeyId?: pulumi.Input<string>;
     /**
      * The path to your x509 cert
      */

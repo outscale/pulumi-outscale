@@ -70,21 +70,33 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> str:
+        """
+        The account alias of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_alias")
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The account ID of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
+        """
+        The date and time of creation of the snapshot.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the snapshot.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -103,11 +115,17 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="permissionsToCreateVolumes")
     def permissions_to_create_volumes(self) -> Sequence['outputs.GetSnapshotPermissionsToCreateVolumeResult']:
+        """
+        Information about the users who have permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volumes")
 
     @property
     @pulumi.getter
     def progress(self) -> int:
+        """
+        The progress of the snapshot, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @property
@@ -118,26 +136,41 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the snapshot (`in-queue` \\| `completed` \\| `error`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetSnapshotTagResult']:
+        """
+        One or more tags associated with the snapshot.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> str:
+        """
+        The ID of the volume used to create the snapshot.
+        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> int:
+        """
+        The size of the volume used to create the snapshot, in gibibytes (GiB).
+        """
         return pulumi.get(self, "volume_size")
 
 
@@ -168,7 +201,27 @@ def get_snapshot(account_id: Optional[str] = None,
                  snapshot_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a snapshot.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshot01 = outscale.get_snapshot(filters=[outscale.GetSnapshotFilterArgs(
+        name="snapshot_ids",
+        values=["snap-12345678"],
+    )])
+    ```
+
+
+    :param str account_id: The account ID of the owner of the snapshot.
+    :param Sequence[pulumi.InputType['GetSnapshotFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str snapshot_id: The ID of the snapshot.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -200,6 +253,26 @@ def get_snapshot_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
                         snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a snapshot.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshot01 = outscale.get_snapshot(filters=[outscale.GetSnapshotFilterArgs(
+        name="snapshot_ids",
+        values=["snap-12345678"],
+    )])
+    ```
+
+
+    :param str account_id: The account ID of the owner of the snapshot.
+    :param Sequence[pulumi.InputType['GetSnapshotFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str snapshot_id: The ID of the snapshot.
     """
     ...

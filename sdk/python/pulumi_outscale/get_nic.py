@@ -91,11 +91,17 @@ class GetNicResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The account ID of the owner of the NIC.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the NIC.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -114,46 +120,73 @@ class GetNicResult:
     @property
     @pulumi.getter(name="isSourceDestChecked")
     def is_source_dest_checked(self) -> bool:
+        """
+        (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        """
         return pulumi.get(self, "is_source_dest_checked")
 
     @property
     @pulumi.getter(name="linkNic")
     def link_nic(self) -> 'outputs.GetNicLinkNicResult':
+        """
+        Information about the NIC attachment.
+        """
         return pulumi.get(self, "link_nic")
 
     @property
     @pulumi.getter(name="linkPublicIp")
     def link_public_ip(self) -> 'outputs.GetNicLinkPublicIpResult':
+        """
+        Information about the public IP association.
+        """
         return pulumi.get(self, "link_public_ip")
 
     @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> str:
+        """
+        The Media Access Control (MAC) address of the NIC.
+        """
         return pulumi.get(self, "mac_address")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net for the NIC.
+        """
         return pulumi.get(self, "net_id")
 
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> str:
+        """
+        The ID of the NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> str:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
+        """
+        The private IP of the NIC.
+        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Sequence['outputs.GetNicPrivateIpResult']:
+        """
+        The private IPs of the NIC.
+        """
         return pulumi.get(self, "private_ips")
 
     @property
@@ -169,31 +202,49 @@ class GetNicResult:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[str]:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Sequence['outputs.GetNicSecurityGroupResult']:
+        """
+        One or more IDs of security groups for the NIC.
+        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> str:
+        """
+        The Subregion in which the NIC is located.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetNicTagResult']:
+        """
+        One or more tags associated with the NIC.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -230,7 +281,26 @@ def get_nic(filters: Optional[Sequence[pulumi.InputType['GetNicFilterArgs']]] = 
             nic_id: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNicResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a network interface card (NIC).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nic01 = outscale.get_nic(filters=[outscale.GetNicFilterArgs(
+        name="nic_ids",
+        values=["eni-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNicFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str nic_id: The ID of the NIC.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -267,6 +337,25 @@ def get_nic_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Input
                    nic_id: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNicResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a network interface card (NIC).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nic01 = outscale.get_nic(filters=[outscale.GetNicFilterArgs(
+        name="nic_ids",
+        values=["eni-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNicFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str nic_id: The ID of the NIC.
     """
     ...

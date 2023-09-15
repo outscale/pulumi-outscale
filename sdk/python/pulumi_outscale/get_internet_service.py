@@ -62,11 +62,17 @@ class GetInternetServiceResult:
     @property
     @pulumi.getter(name="internetServiceId")
     def internet_service_id(self) -> str:
+        """
+        The ID of the Internet service.
+        """
         return pulumi.get(self, "internet_service_id")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net attached to the Internet service.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -77,11 +83,17 @@ class GetInternetServiceResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the attachment of the Internet service to the Net (always `available`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetInternetServiceTagResult']:
+        """
+        One or more tags associated with the Internet service.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -103,7 +115,25 @@ class AwaitableGetInternetServiceResult(GetInternetServiceResult):
 def get_internet_service(filters: Optional[Sequence[pulumi.InputType['GetInternetServiceFilterArgs']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInternetServiceResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an Internet service.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    internet_service01 = outscale.get_internet_service(filters=[outscale.GetInternetServiceFilterArgs(
+        name="internet_service_ids",
+        values=["igw-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetInternetServiceFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -124,6 +154,24 @@ def get_internet_service(filters: Optional[Sequence[pulumi.InputType['GetInterne
 def get_internet_service_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInternetServiceFilterArgs']]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInternetServiceResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an Internet service.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    internet_service01 = outscale.get_internet_service(filters=[outscale.GetInternetServiceFilterArgs(
+        name="internet_service_ids",
+        values=["igw-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetInternetServiceFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

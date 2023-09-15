@@ -21,6 +21,9 @@ class SnapshotAttributesArgs:
                  permissions_to_create_volume_removals: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalArgs']]]] = None):
         """
         The set of arguments for constructing a SnapshotAttributes resource.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot.
+        :param pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs'] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalArgs']]] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
         """
         pulumi.set(__self__, "snapshot_id", snapshot_id)
         if permissions_to_create_volume_additions is not None:
@@ -31,6 +34,9 @@ class SnapshotAttributesArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -40,6 +46,9 @@ class SnapshotAttributesArgs:
     @property
     @pulumi.getter(name="permissionsToCreateVolumeAdditions")
     def permissions_to_create_volume_additions(self) -> Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]:
+        """
+        Information about the users to whom you want to give permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volume_additions")
 
     @permissions_to_create_volume_additions.setter
@@ -49,6 +58,9 @@ class SnapshotAttributesArgs:
     @property
     @pulumi.getter(name="permissionsToCreateVolumeRemovals")
     def permissions_to_create_volume_removals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalArgs']]]]:
+        """
+        Information about the users from whom you want to remove permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volume_removals")
 
     @permissions_to_create_volume_removals.setter
@@ -66,6 +78,10 @@ class _SnapshotAttributesState:
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SnapshotAttributes resources.
+        :param pulumi.Input[str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs'] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalArgs']]] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -81,6 +97,9 @@ class _SnapshotAttributesState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -90,6 +109,9 @@ class _SnapshotAttributesState:
     @property
     @pulumi.getter(name="permissionsToCreateVolumeAdditions")
     def permissions_to_create_volume_additions(self) -> Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]:
+        """
+        Information about the users to whom you want to give permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volume_additions")
 
     @permissions_to_create_volume_additions.setter
@@ -99,6 +121,9 @@ class _SnapshotAttributesState:
     @property
     @pulumi.getter(name="permissionsToCreateVolumeRemovals")
     def permissions_to_create_volume_removals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalArgs']]]]:
+        """
+        Information about the users from whom you want to remove permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volume_removals")
 
     @permissions_to_create_volume_removals.setter
@@ -117,6 +142,9 @@ class _SnapshotAttributesState:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -134,9 +162,58 @@ class SnapshotAttributes(pulumi.CustomResource):
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a SnapshotAttributes resource with the given unique name, props, and options.
+        Manages snapshot attributes.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatesnapshot).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name="eu-west-2a",
+            size=40)
+        snapshot01 = outscale.Snapshot("snapshot01",
+            volume_id=volume01.volume_id,
+            tags=[outscale.SnapshotTagArgs(
+                key="name",
+                value="terraform-snapshot-test",
+            )])
+        ```
+        ### Add permissions
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot_attributes01 = outscale.SnapshotAttributes("snapshotAttributes01",
+            snapshot_id=outscale_snapshot["snapshot01"]["snapshot_id"],
+            permissions_to_create_volume_additions=outscale.SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs(
+                account_ids=["012345678910"],
+            ))
+        ```
+        ### Remove permissions
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot_attributes02 = outscale.SnapshotAttributes("snapshotAttributes02",
+            snapshot_id=outscale_snapshot["snapshot01"]["snapshot_id"],
+            permissions_to_create_volume_removals=[outscale.SnapshotAttributesPermissionsToCreateVolumeRemovalArgs(
+                account_ids=["012345678910"],
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotAttributesPermissionsToCreateVolumeRemovalArgs']]]] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot.
         """
         ...
     @overload
@@ -145,7 +222,53 @@ class SnapshotAttributes(pulumi.CustomResource):
                  args: SnapshotAttributesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SnapshotAttributes resource with the given unique name, props, and options.
+        Manages snapshot attributes.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatesnapshot).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name="eu-west-2a",
+            size=40)
+        snapshot01 = outscale.Snapshot("snapshot01",
+            volume_id=volume01.volume_id,
+            tags=[outscale.SnapshotTagArgs(
+                key="name",
+                value="terraform-snapshot-test",
+            )])
+        ```
+        ### Add permissions
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot_attributes01 = outscale.SnapshotAttributes("snapshotAttributes01",
+            snapshot_id=outscale_snapshot["snapshot01"]["snapshot_id"],
+            permissions_to_create_volume_additions=outscale.SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs(
+                account_ids=["012345678910"],
+            ))
+        ```
+        ### Remove permissions
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot_attributes02 = outscale.SnapshotAttributes("snapshotAttributes02",
+            snapshot_id=outscale_snapshot["snapshot01"]["snapshot_id"],
+            permissions_to_create_volume_removals=[outscale.SnapshotAttributesPermissionsToCreateVolumeRemovalArgs(
+                account_ids=["012345678910"],
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param SnapshotAttributesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,6 +325,10 @@ class SnapshotAttributes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input[pulumi.InputType['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotAttributesPermissionsToCreateVolumeRemovalArgs']]]] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -217,16 +344,25 @@ class SnapshotAttributes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account ID of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="permissionsToCreateVolumeAdditions")
     def permissions_to_create_volume_additions(self) -> pulumi.Output[Optional['outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions']]:
+        """
+        Information about the users to whom you want to give permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volume_additions")
 
     @property
     @pulumi.getter(name="permissionsToCreateVolumeRemovals")
     def permissions_to_create_volume_removals(self) -> pulumi.Output[Optional[Sequence['outputs.SnapshotAttributesPermissionsToCreateVolumeRemoval']]]:
+        """
+        Information about the users from whom you want to remove permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volume_removals")
 
     @property
@@ -237,5 +373,8 @@ class SnapshotAttributes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 

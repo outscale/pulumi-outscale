@@ -18,6 +18,8 @@ class AccessKeyArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessKey resource.
+        :param pulumi.Input[str] expiration_date: The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
         """
         if expiration_date is not None:
             pulumi.set(__self__, "expiration_date", expiration_date)
@@ -27,6 +29,9 @@ class AccessKeyArgs:
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+        """
         return pulumi.get(self, "expiration_date")
 
     @expiration_date.setter
@@ -36,6 +41,9 @@ class AccessKeyArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state for the access key (`ACTIVE` | `INACTIVE`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -55,6 +63,12 @@ class _AccessKeyState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessKey resources.
+        :param pulumi.Input[str] access_key_id: The ID of the access key.
+        :param pulumi.Input[str] creation_date: The date and time (UTC) of creation of the access key.
+        :param pulumi.Input[str] expiration_date: The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[str] last_modification_date: The date and time (UTC) of the last modification of the access key.
+        :param pulumi.Input[str] secret_key: The access key that enables you to send requests.
+        :param pulumi.Input[str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
@@ -74,6 +88,9 @@ class _AccessKeyState:
     @property
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the access key.
+        """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
@@ -83,6 +100,9 @@ class _AccessKeyState:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time (UTC) of creation of the access key.
+        """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
@@ -92,6 +112,9 @@ class _AccessKeyState:
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+        """
         return pulumi.get(self, "expiration_date")
 
     @expiration_date.setter
@@ -101,6 +124,9 @@ class _AccessKeyState:
     @property
     @pulumi.getter(name="lastModificationDate")
     def last_modification_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time (UTC) of the last modification of the access key.
+        """
         return pulumi.get(self, "last_modification_date")
 
     @last_modification_date.setter
@@ -119,6 +145,9 @@ class _AccessKeyState:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access key that enables you to send requests.
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -128,6 +157,9 @@ class _AccessKeyState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state for the access key (`ACTIVE` | `INACTIVE`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -144,9 +176,29 @@ class AccessKey(pulumi.CustomResource):
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AccessKey resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        access_key01 = outscale.AccessKey("accessKey01",
+            expiration_date="2023-01-01",
+            state="ACTIVE")
+        ```
+
+        ## Import
+
+        An access key can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/accessKey:AccessKey ImportedAccessKey ABCDEFGHIJ0123456789
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] expiration_date: The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
         """
         ...
     @overload
@@ -155,7 +207,25 @@ class AccessKey(pulumi.CustomResource):
                  args: Optional[AccessKeyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AccessKey resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        access_key01 = outscale.AccessKey("accessKey01",
+            expiration_date="2023-01-01",
+            state="ACTIVE")
+        ```
+
+        ## Import
+
+        An access key can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/accessKey:AccessKey ImportedAccessKey ABCDEFGHIJ0123456789
+        ```
+
         :param str resource_name: The name of the resource.
         :param AccessKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -213,6 +283,12 @@ class AccessKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_key_id: The ID of the access key.
+        :param pulumi.Input[str] creation_date: The date and time (UTC) of creation of the access key.
+        :param pulumi.Input[str] expiration_date: The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[str] last_modification_date: The date and time (UTC) of the last modification of the access key.
+        :param pulumi.Input[str] secret_key: The access key that enables you to send requests.
+        :param pulumi.Input[str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -230,21 +306,33 @@ class AccessKey(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the access key.
+        """
         return pulumi.get(self, "access_key_id")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
+        """
+        The date and time (UTC) of creation of the access key.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> pulumi.Output[Optional[str]]:
+        """
+        The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+        """
         return pulumi.get(self, "expiration_date")
 
     @property
     @pulumi.getter(name="lastModificationDate")
     def last_modification_date(self) -> pulumi.Output[str]:
+        """
+        The date and time (UTC) of the last modification of the access key.
+        """
         return pulumi.get(self, "last_modification_date")
 
     @property
@@ -255,10 +343,16 @@ class AccessKey(pulumi.CustomResource):
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Output[str]:
+        """
+        The access key that enables you to send requests.
+        """
         return pulumi.get(self, "secret_key")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[str]]:
+        """
+        The state for the access key (`ACTIVE` | `INACTIVE`).
+        """
         return pulumi.get(self, "state")
 

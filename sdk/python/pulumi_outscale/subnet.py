@@ -23,6 +23,12 @@ class SubnetArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]] = None):
         """
         The set of arguments for constructing a Subnet resource.
+        :param pulumi.Input[str] ip_range: The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+               The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a Subnet.
+        :param pulumi.Input[bool] map_public_ip_on_launch: If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        :param pulumi.Input[str] subregion_name: The name of the Subregion in which you want to create the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "ip_range", ip_range)
         pulumi.set(__self__, "net_id", net_id)
@@ -36,6 +42,10 @@ class SubnetArgs:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> pulumi.Input[str]:
+        """
+        The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+        The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -45,6 +55,9 @@ class SubnetArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Net for which you want to create a Subnet.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -54,6 +67,9 @@ class SubnetArgs:
     @property
     @pulumi.getter(name="mapPublicIpOnLaunch")
     def map_public_ip_on_launch(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        """
         return pulumi.get(self, "map_public_ip_on_launch")
 
     @map_public_ip_on_launch.setter
@@ -63,6 +79,9 @@ class SubnetArgs:
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Subregion in which you want to create the Subnet.
+        """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
@@ -72,6 +91,9 @@ class SubnetArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -93,6 +115,15 @@ class _SubnetState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
+        :param pulumi.Input[int] available_ips_count: The number of available IPs in the Subnets.
+        :param pulumi.Input[str] ip_range: The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+               The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+        :param pulumi.Input[bool] map_public_ip_on_launch: If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a Subnet.
+        :param pulumi.Input[str] state: The state of the Subnet (`pending` \\| `available` \\| `deleted`).
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet.
+        :param pulumi.Input[str] subregion_name: The name of the Subregion in which you want to create the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if available_ips_count is not None:
             pulumi.set(__self__, "available_ips_count", available_ips_count)
@@ -116,6 +147,9 @@ class _SubnetState:
     @property
     @pulumi.getter(name="availableIpsCount")
     def available_ips_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of available IPs in the Subnets.
+        """
         return pulumi.get(self, "available_ips_count")
 
     @available_ips_count.setter
@@ -125,6 +159,10 @@ class _SubnetState:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+        The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -134,6 +172,9 @@ class _SubnetState:
     @property
     @pulumi.getter(name="mapPublicIpOnLaunch")
     def map_public_ip_on_launch(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        """
         return pulumi.get(self, "map_public_ip_on_launch")
 
     @map_public_ip_on_launch.setter
@@ -143,6 +184,9 @@ class _SubnetState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net for which you want to create a Subnet.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -161,6 +205,9 @@ class _SubnetState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the Subnet (`pending` \\| `available` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -170,6 +217,9 @@ class _SubnetState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -179,6 +229,9 @@ class _SubnetState:
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Subregion in which you want to create the Subnet.
+        """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
@@ -188,6 +241,9 @@ class _SubnetState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -207,9 +263,47 @@ class Subnet(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a Subnet resource with the given unique name, props, and options.
+        Manages a Subnet.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-subnet).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Create a subnet
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=outscale_net["net01"]["net_id"],
+            ip_range="10.0.0.0/18")
+        ```
+
+        ## Import
+
+        A subnet can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ip_range: The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+               The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+        :param pulumi.Input[bool] map_public_ip_on_launch: If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a Subnet.
+        :param pulumi.Input[str] subregion_name: The name of the Subregion in which you want to create the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -218,7 +312,39 @@ class Subnet(pulumi.CustomResource):
                  args: SubnetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Subnet resource with the given unique name, props, and options.
+        Manages a Subnet.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-subnet).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Create a subnet
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=outscale_net["net01"]["net_id"],
+            ip_range="10.0.0.0/18")
+        ```
+
+        ## Import
+
+        A subnet can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param SubnetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -287,6 +413,15 @@ class Subnet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] available_ips_count: The number of available IPs in the Subnets.
+        :param pulumi.Input[str] ip_range: The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+               The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+        :param pulumi.Input[bool] map_public_ip_on_launch: If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a Subnet.
+        :param pulumi.Input[str] state: The state of the Subnet (`pending` \\| `available` \\| `deleted`).
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet.
+        :param pulumi.Input[str] subregion_name: The name of the Subregion in which you want to create the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -306,21 +441,34 @@ class Subnet(pulumi.CustomResource):
     @property
     @pulumi.getter(name="availableIpsCount")
     def available_ips_count(self) -> pulumi.Output[int]:
+        """
+        The number of available IPs in the Subnets.
+        """
         return pulumi.get(self, "available_ips_count")
 
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> pulumi.Output[str]:
+        """
+        The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+        The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+        """
         return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="mapPublicIpOnLaunch")
     def map_public_ip_on_launch(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        """
         return pulumi.get(self, "map_public_ip_on_launch")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net for which you want to create a Subnet.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -331,20 +479,32 @@ class Subnet(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the Subnet (`pending` \\| `available` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> pulumi.Output[str]:
+        """
+        The name of the Subregion in which you want to create the Subnet.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.SubnetTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
