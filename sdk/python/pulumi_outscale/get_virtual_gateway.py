@@ -52,6 +52,9 @@ class GetVirtualGatewayResult:
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> str:
+        """
+        The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @property
@@ -70,6 +73,9 @@ class GetVirtualGatewayResult:
     @property
     @pulumi.getter(name="netToVirtualGatewayLinks")
     def net_to_virtual_gateway_links(self) -> Sequence['outputs.GetVirtualGatewayNetToVirtualGatewayLinkResult']:
+        """
+        The Net to which the virtual gateway is attached.
+        """
         return pulumi.get(self, "net_to_virtual_gateway_links")
 
     @property
@@ -80,16 +86,25 @@ class GetVirtualGatewayResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetVirtualGatewayTagResult']:
+        """
+        One or more tags associated with the virtual gateway.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> str:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
 
@@ -115,7 +130,28 @@ def get_virtual_gateway(connection_type: Optional[str] = None,
                         virtual_gateway_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualGatewayResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a virtual gateway.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    virtual_gateway01 = outscale.get_virtual_gateway(filters=[outscale.GetVirtualGatewayFilterArgs(
+        name="virtual_gateway_ids",
+        values=["vgw-12345678"],
+    )])
+    ```
+
+
+    :param str connection_type: The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+    :param Sequence[pulumi.InputType['GetVirtualGatewayFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+    :param str virtual_gateway_id: The ID of the virtual gateway.
     """
     __args__ = dict()
     __args__['connectionType'] = connection_type
@@ -143,6 +179,27 @@ def get_virtual_gateway_output(connection_type: Optional[pulumi.Input[Optional[s
                                virtual_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualGatewayResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a virtual gateway.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    virtual_gateway01 = outscale.get_virtual_gateway(filters=[outscale.GetVirtualGatewayFilterArgs(
+        name="virtual_gateway_ids",
+        values=["vgw-12345678"],
+    )])
+    ```
+
+
+    :param str connection_type: The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+    :param Sequence[pulumi.InputType['GetVirtualGatewayFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+    :param str virtual_gateway_id: The ID of the virtual gateway.
     """
     ...

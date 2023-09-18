@@ -20,8 +20,8 @@ import (
 	_ "embed"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	outscale "github.com/outscale-vbr/pulumi-outscale/provider"
-	"github.com/outscale-vbr/pulumi-outscale/provider/pkg/version"
+	outscale "github.com/outscale/pulumi-outscale/provider"
+	"github.com/outscale/pulumi-outscale/provider/pkg/version"
 )
 
 //go:embed schema-embed.json

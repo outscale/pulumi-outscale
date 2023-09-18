@@ -6,6 +6,42 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an Internet service link.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/18"});
+ * const internetService01 = new outscale.InternetService("internetService01", {});
+ * ```
+ * ### Link an Internet service to a Net
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const internetServiceLink01 = new outscale.InternetServiceLink("internetServiceLink01", {
+ *     internetServiceId: outscale_internet_service.internet_service01.internet_service_id,
+ *     netId: outscale_net.net01.net_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An internet service link can be imported using the internet service ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/internetServiceLink:InternetServiceLink ImportedInternetServiceLink igw-87654321
+ * ```
+ */
 export class InternetServiceLink extends pulumi.CustomResource {
     /**
      * Get an existing InternetServiceLink resource's state with the given name, ID, and optional extra
@@ -34,10 +70,22 @@ export class InternetServiceLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === InternetServiceLink.__pulumiType;
     }
 
+    /**
+     * The ID of the Internet service you want to attach.
+     */
     public readonly internetServiceId!: pulumi.Output<string>;
+    /**
+     * The ID of the Net to which you want to attach the Internet service.
+     */
     public readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the attachment of the Internet service to the Net (always `available`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * One or more tags associated with the Internet service.
+     */
     public /*out*/ readonly tags!: pulumi.Output<outputs.InternetServiceLinkTag[]>;
 
     /**
@@ -81,10 +129,22 @@ export class InternetServiceLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InternetServiceLink resources.
  */
 export interface InternetServiceLinkState {
+    /**
+     * The ID of the Internet service you want to attach.
+     */
     internetServiceId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net to which you want to attach the Internet service.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the attachment of the Internet service to the Net (always `available`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * One or more tags associated with the Internet service.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceLinkTag>[]>;
 }
 
@@ -92,6 +152,12 @@ export interface InternetServiceLinkState {
  * The set of arguments for constructing a InternetServiceLink resource.
  */
 export interface InternetServiceLinkArgs {
+    /**
+     * The ID of the Internet service you want to attach.
+     */
     internetServiceId: pulumi.Input<string>;
+    /**
+     * The ID of the Net to which you want to attach the Internet service.
+     */
     netId: pulumi.Input<string>;
 }

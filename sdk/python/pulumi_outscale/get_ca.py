@@ -49,11 +49,17 @@ class GetCaResult:
     @property
     @pulumi.getter(name="caFingerprint")
     def ca_fingerprint(self) -> str:
+        """
+        The fingerprint of the CA.
+        """
         return pulumi.get(self, "ca_fingerprint")
 
     @property
     @pulumi.getter(name="caId")
     def ca_id(self) -> str:
+        """
+        The ID of the CA.
+        """
         return pulumi.get(self, "ca_id")
 
     @property
@@ -64,6 +70,9 @@ class GetCaResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the CA.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -103,7 +112,25 @@ class AwaitableGetCaResult(GetCaResult):
 def get_ca(filters: Optional[Sequence[pulumi.InputType['GetCaFilterArgs']]] = None,
            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCaResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Certificate Authority (CA).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    ca01 = outscale.get_ca(filters=[outscale.GetCaFilterArgs(
+        name="ca_ids",
+        values=["ca-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetCaFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -124,6 +151,24 @@ def get_ca(filters: Optional[Sequence[pulumi.InputType['GetCaFilterArgs']]] = No
 def get_ca_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCaFilterArgs']]]]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Certificate Authority (CA).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    ca01 = outscale.get_ca(filters=[outscale.GetCaFilterArgs(
+        name="ca_ids",
+        values=["ca-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetCaFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

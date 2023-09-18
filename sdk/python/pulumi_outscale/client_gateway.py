@@ -22,6 +22,10 @@ class ClientGatewayArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]] = None):
         """
         The set of arguments for constructing a ClientGateway resource.
+        :param pulumi.Input[int] bgp_asn: The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+        :param pulumi.Input[str] connection_type: The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[str] public_ip: The public fixed IPv4 address of your client gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "bgp_asn", bgp_asn)
         pulumi.set(__self__, "connection_type", connection_type)
@@ -32,6 +36,9 @@ class ClientGatewayArgs:
     @property
     @pulumi.getter(name="bgpAsn")
     def bgp_asn(self) -> pulumi.Input[int]:
+        """
+        The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+        """
         return pulumi.get(self, "bgp_asn")
 
     @bgp_asn.setter
@@ -41,6 +48,9 @@ class ClientGatewayArgs:
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Input[str]:
+        """
+        The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
@@ -50,6 +60,9 @@ class ClientGatewayArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Input[str]:
+        """
+        The public fixed IPv4 address of your client gateway.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -59,6 +72,9 @@ class ClientGatewayArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -78,6 +94,12 @@ class _ClientGatewayState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering ClientGateway resources.
+        :param pulumi.Input[int] bgp_asn: The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+        :param pulumi.Input[str] client_gateway_id: The ID of the client gateway.
+        :param pulumi.Input[str] connection_type: The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[str] public_ip: The public fixed IPv4 address of your client gateway.
+        :param pulumi.Input[str] state: The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if bgp_asn is not None:
             pulumi.set(__self__, "bgp_asn", bgp_asn)
@@ -97,6 +119,9 @@ class _ClientGatewayState:
     @property
     @pulumi.getter(name="bgpAsn")
     def bgp_asn(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+        """
         return pulumi.get(self, "bgp_asn")
 
     @bgp_asn.setter
@@ -106,6 +131,9 @@ class _ClientGatewayState:
     @property
     @pulumi.getter(name="clientGatewayId")
     def client_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the client gateway.
+        """
         return pulumi.get(self, "client_gateway_id")
 
     @client_gateway_id.setter
@@ -115,6 +143,9 @@ class _ClientGatewayState:
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
@@ -124,6 +155,9 @@ class _ClientGatewayState:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public fixed IPv4 address of your client gateway.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -142,6 +176,9 @@ class _ClientGatewayState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -151,6 +188,9 @@ class _ClientGatewayState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -169,9 +209,41 @@ class ClientGateway(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientGatewayTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a ClientGateway resource with the given unique name, props, and options.
+        Manages a client gateway.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        client_gateway01 = outscale.ClientGateway("clientGateway01",
+            bgp_asn=65000,
+            connection_type="ipsec.1",
+            public_ip="111.11.11.111",
+            tags=[outscale.ClientGatewayTagArgs(
+                key="Name",
+                value="client_gateway_01",
+            )])
+        ```
+
+        ## Import
+
+        A client gateway can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/clientGateway:ClientGateway ImportedClientGateway cgw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] bgp_asn: The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+        :param pulumi.Input[str] connection_type: The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[str] public_ip: The public fixed IPv4 address of your client gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientGatewayTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -180,7 +252,35 @@ class ClientGateway(pulumi.CustomResource):
                  args: ClientGatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ClientGateway resource with the given unique name, props, and options.
+        Manages a client gateway.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        client_gateway01 = outscale.ClientGateway("clientGateway01",
+            bgp_asn=65000,
+            connection_type="ipsec.1",
+            public_ip="111.11.11.111",
+            tags=[outscale.ClientGatewayTagArgs(
+                key="Name",
+                value="client_gateway_01",
+            )])
+        ```
+
+        ## Import
+
+        A client gateway can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/clientGateway:ClientGateway ImportedClientGateway cgw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param ClientGatewayArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -246,6 +346,12 @@ class ClientGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] bgp_asn: The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+        :param pulumi.Input[str] client_gateway_id: The ID of the client gateway.
+        :param pulumi.Input[str] connection_type: The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[str] public_ip: The public fixed IPv4 address of your client gateway.
+        :param pulumi.Input[str] state: The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientGatewayTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,21 +369,33 @@ class ClientGateway(pulumi.CustomResource):
     @property
     @pulumi.getter(name="bgpAsn")
     def bgp_asn(self) -> pulumi.Output[int]:
+        """
+        The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+        """
         return pulumi.get(self, "bgp_asn")
 
     @property
     @pulumi.getter(name="clientGatewayId")
     def client_gateway_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the client gateway.
+        """
         return pulumi.get(self, "client_gateway_id")
 
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Output[str]:
+        """
+        The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[str]:
+        """
+        The public fixed IPv4 address of your client gateway.
+        """
         return pulumi.get(self, "public_ip")
 
     @property
@@ -288,10 +406,16 @@ class ClientGateway(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ClientGatewayTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 

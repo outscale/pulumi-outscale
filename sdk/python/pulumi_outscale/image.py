@@ -29,6 +29,18 @@ class ImageArgs:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Image resource.
+        :param pulumi.Input[str] architecture: The architecture of the OMI (by default, `i386` if you specified the `file_location` or `root_device_name` parameter).
+        :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[str] description: A description for the new OMI.
+        :param pulumi.Input[str] file_location: The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] image_name: A unique name for the new OMI.<br />
+               Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+        :param pulumi.Input[bool] no_reboot: If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[str] root_device_name: The name of the root device. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] source_image_id: The ID of the OMI you want to copy. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] source_region_name: The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] vm_id: The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -56,6 +68,9 @@ class ImageArgs:
     @property
     @pulumi.getter
     def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The architecture of the OMI (by default, `i386` if you specified the `file_location` or `root_device_name` parameter).
+        """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
@@ -65,6 +80,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
+        """
+        One or more block device mappings.
+        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -74,6 +92,9 @@ class ImageArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the new OMI.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -83,6 +104,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
@@ -92,6 +116,10 @@ class ImageArgs:
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the new OMI.<br />
+        Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -101,6 +129,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="noReboot")
     def no_reboot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        """
         return pulumi.get(self, "no_reboot")
 
     @no_reboot.setter
@@ -110,6 +141,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the root device. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "root_device_name")
 
     @root_device_name.setter
@@ -119,6 +153,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OMI you want to copy. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "source_image_id")
 
     @source_image_id.setter
@@ -128,6 +165,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the source Region, which must be the same as the Region of your account.
+        """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
@@ -137,6 +177,9 @@ class ImageArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -146,6 +189,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -181,6 +227,28 @@ class _ImageState:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+        :param pulumi.Input[str] account_alias: The account alias of the owner of the OMI.
+        :param pulumi.Input[str] account_id: The account ID of the owner of the OMI.
+        :param pulumi.Input[str] architecture: The architecture of the OMI (by default, `i386` if you specified the `file_location` or `root_device_name` parameter).
+        :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the OMI.
+        :param pulumi.Input[str] description: A description for the new OMI.
+        :param pulumi.Input[str] file_location: The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] image_id: The ID of the OMI.
+        :param pulumi.Input[str] image_name: A unique name for the new OMI.<br />
+               Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+        :param pulumi.Input[str] image_type: The type of the OMI.
+        :param pulumi.Input[bool] no_reboot: If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]] permissions_to_launches: Information about the users who have permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_codes: The product code associated with the OMI (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        :param pulumi.Input[str] root_device_name: The name of the root device. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] root_device_type: The type of root device used by the OMI (always `bsu`).
+        :param pulumi.Input[str] source_image_id: The ID of the OMI you want to copy. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] source_region_name: The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[str] state: The state of the OMI (`pending` \\| `available` \\| `failed`).
+        :param pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]] state_comments: Information about the change of state.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] vm_id: The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
         """
         if account_alias is not None:
             pulumi.set(__self__, "account_alias", account_alias)
@@ -232,6 +300,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account alias of the owner of the OMI.
+        """
         return pulumi.get(self, "account_alias")
 
     @account_alias.setter
@@ -241,6 +312,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the OMI.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -250,6 +324,9 @@ class _ImageState:
     @property
     @pulumi.getter
     def architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The architecture of the OMI (by default, `i386` if you specified the `file_location` or `root_device_name` parameter).
+        """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
@@ -259,6 +336,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
+        """
+        One or more block device mappings.
+        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -268,6 +348,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time of creation of the OMI.
+        """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
@@ -277,6 +360,9 @@ class _ImageState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the new OMI.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -286,6 +372,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
@@ -295,6 +384,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OMI.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -304,6 +396,10 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the new OMI.<br />
+        Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -313,6 +409,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the OMI.
+        """
         return pulumi.get(self, "image_type")
 
     @image_type.setter
@@ -331,6 +430,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="noReboot")
     def no_reboot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        """
         return pulumi.get(self, "no_reboot")
 
     @no_reboot.setter
@@ -340,6 +442,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="permissionsToLaunches")
     def permissions_to_launches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]]]:
+        """
+        Information about the users who have permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_launches")
 
     @permissions_to_launches.setter
@@ -349,6 +454,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="productCodes")
     def product_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The product code associated with the OMI (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        """
         return pulumi.get(self, "product_codes")
 
     @product_codes.setter
@@ -367,6 +475,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the root device. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "root_device_name")
 
     @root_device_name.setter
@@ -376,6 +487,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="rootDeviceType")
     def root_device_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of root device used by the OMI (always `bsu`).
+        """
         return pulumi.get(self, "root_device_type")
 
     @root_device_type.setter
@@ -385,6 +499,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OMI you want to copy. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "source_image_id")
 
     @source_image_id.setter
@@ -394,6 +511,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the source Region, which must be the same as the Region of your account.
+        """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
@@ -403,6 +523,9 @@ class _ImageState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the OMI (`pending` \\| `available` \\| `failed`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -412,6 +535,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="stateComments")
     def state_comments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]]]:
+        """
+        Information about the change of state.
+        """
         return pulumi.get(self, "state_comments")
 
     @state_comments.setter
@@ -421,6 +547,9 @@ class _ImageState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -430,6 +559,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -455,9 +587,91 @@ class Image(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Image resource with the given unique name, props, and options.
+        Manages an image.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+        ## Example Usage
+        ### Create an image
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image01 = outscale.Image("image01",
+            image_name="terraform-omi-create",
+            vm_id=var["vm_id"],
+            no_reboot=True)
+        ```
+        ### Import an image
+        > **Important** Make sure the manifest file is still valid.
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image02 = outscale.Image("image02",
+            description="Terraform register OMI",
+            file_location="<URL>",
+            image_name="terraform-omi-register")
+        ```
+        ### Copy an image
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image03 = outscale.Image("image03",
+            description="Terraform copy OMI",
+            image_name="terraform-omi-copy",
+            source_image_id="ami-12345678",
+            source_region_name="eu-west-2")
+        ```
+        ### Create an image with a Block Storage Unit (BSU) volume
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image04 = outscale.Image("image04",
+            block_device_mappings=[outscale.ImageBlockDeviceMappingArgs(
+                bsus=[outscale.ImageBlockDeviceMappingBsusArgs(
+                    delete_on_vm_deletion=True,
+                    iops=150,
+                    snapshot_id="snap-12345678",
+                    volume_size=120,
+                    volume_type="io1",
+                )],
+                device_name="/dev/sda1",
+            )],
+            description="Terraform OMI with BSU",
+            image_name="terraform-omi-bsu",
+            root_device_name="/dev/sda1")
+        ```
+
+        ## Import
+
+        An image can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] architecture: The architecture of the OMI (by default, `i386` if you specified the `file_location` or `root_device_name` parameter).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageBlockDeviceMappingArgs']]]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[str] description: A description for the new OMI.
+        :param pulumi.Input[str] file_location: The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] image_name: A unique name for the new OMI.<br />
+               Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+        :param pulumi.Input[bool] no_reboot: If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[str] root_device_name: The name of the root device. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] source_image_id: The ID of the OMI you want to copy. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] source_region_name: The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] vm_id: The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
         """
         ...
     @overload
@@ -466,7 +680,77 @@ class Image(pulumi.CustomResource):
                  args: Optional[ImageArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Image resource with the given unique name, props, and options.
+        Manages an image.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+        ## Example Usage
+        ### Create an image
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image01 = outscale.Image("image01",
+            image_name="terraform-omi-create",
+            vm_id=var["vm_id"],
+            no_reboot=True)
+        ```
+        ### Import an image
+        > **Important** Make sure the manifest file is still valid.
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image02 = outscale.Image("image02",
+            description="Terraform register OMI",
+            file_location="<URL>",
+            image_name="terraform-omi-register")
+        ```
+        ### Copy an image
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image03 = outscale.Image("image03",
+            description="Terraform copy OMI",
+            image_name="terraform-omi-copy",
+            source_image_id="ami-12345678",
+            source_region_name="eu-west-2")
+        ```
+        ### Create an image with a Block Storage Unit (BSU) volume
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image04 = outscale.Image("image04",
+            block_device_mappings=[outscale.ImageBlockDeviceMappingArgs(
+                bsus=[outscale.ImageBlockDeviceMappingBsusArgs(
+                    delete_on_vm_deletion=True,
+                    iops=150,
+                    snapshot_id="snap-12345678",
+                    volume_size=120,
+                    volume_type="io1",
+                )],
+                device_name="/dev/sda1",
+            )],
+            description="Terraform OMI with BSU",
+            image_name="terraform-omi-bsu",
+            root_device_name="/dev/sda1")
+        ```
+
+        ## Import
+
+        An image can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -565,6 +849,28 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_alias: The account alias of the owner of the OMI.
+        :param pulumi.Input[str] account_id: The account ID of the owner of the OMI.
+        :param pulumi.Input[str] architecture: The architecture of the OMI (by default, `i386` if you specified the `file_location` or `root_device_name` parameter).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageBlockDeviceMappingArgs']]]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the OMI.
+        :param pulumi.Input[str] description: A description for the new OMI.
+        :param pulumi.Input[str] file_location: The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] image_id: The ID of the OMI.
+        :param pulumi.Input[str] image_name: A unique name for the new OMI.<br />
+               Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+        :param pulumi.Input[str] image_type: The type of the OMI.
+        :param pulumi.Input[bool] no_reboot: If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImagePermissionsToLaunchArgs']]]] permissions_to_launches: Information about the users who have permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] product_codes: The product code associated with the OMI (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        :param pulumi.Input[str] root_device_name: The name of the root device. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] root_device_type: The type of root device used by the OMI (always `bsu`).
+        :param pulumi.Input[str] source_image_id: The ID of the OMI you want to copy. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        :param pulumi.Input[str] source_region_name: The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[str] state: The state of the OMI (`pending` \\| `available` \\| `failed`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageStateCommentArgs']]]] state_comments: Information about the change of state.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] vm_id: The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -598,51 +904,82 @@ class Image(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> pulumi.Output[str]:
+        """
+        The account alias of the owner of the OMI.
+        """
         return pulumi.get(self, "account_alias")
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account ID of the owner of the OMI.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def architecture(self) -> pulumi.Output[str]:
+        """
+        The architecture of the OMI (by default, `i386` if you specified the `file_location` or `root_device_name` parameter).
+        """
         return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> pulumi.Output[Sequence['outputs.ImageBlockDeviceMapping']]:
+        """
+        One or more block device mappings.
+        """
         return pulumi.get(self, "block_device_mappings")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
+        """
+        The date and time of creation of the OMI.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        A description for the new OMI.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> pulumi.Output[str]:
+        """
+        The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "file_location")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the OMI.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> pulumi.Output[str]:
+        """
+        A unique name for the new OMI.<br />
+        Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="imageType")
     def image_type(self) -> pulumi.Output[str]:
+        """
+        The type of the OMI.
+        """
         return pulumi.get(self, "image_type")
 
     @property
@@ -653,16 +990,25 @@ class Image(pulumi.CustomResource):
     @property
     @pulumi.getter(name="noReboot")
     def no_reboot(self) -> pulumi.Output[bool]:
+        """
+        If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        """
         return pulumi.get(self, "no_reboot")
 
     @property
     @pulumi.getter(name="permissionsToLaunches")
     def permissions_to_launches(self) -> pulumi.Output[Sequence['outputs.ImagePermissionsToLaunch']]:
+        """
+        Information about the users who have permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_launches")
 
     @property
     @pulumi.getter(name="productCodes")
     def product_codes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The product code associated with the OMI (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        """
         return pulumi.get(self, "product_codes")
 
     @property
@@ -673,40 +1019,64 @@ class Image(pulumi.CustomResource):
     @property
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> pulumi.Output[str]:
+        """
+        The name of the root device. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "root_device_name")
 
     @property
     @pulumi.getter(name="rootDeviceType")
     def root_device_type(self) -> pulumi.Output[str]:
+        """
+        The type of root device used by the OMI (always `bsu`).
+        """
         return pulumi.get(self, "root_device_type")
 
     @property
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the OMI you want to copy. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "source_image_id")
 
     @property
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the source Region, which must be the same as the Region of your account.
+        """
         return pulumi.get(self, "source_region_name")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the OMI (`pending` \\| `available` \\| `failed`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="stateComments")
     def state_comments(self) -> pulumi.Output[Sequence['outputs.ImageStateComment']]:
+        """
+        Information about the change of state.
+        """
         return pulumi.get(self, "state_comments")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ImageTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `file_location`, `root_device_name`, `source_image_id` or `vm_id`.
+        """
         return pulumi.get(self, "vm_id")
 

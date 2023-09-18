@@ -61,6 +61,9 @@ class GetImageExportTaskResult:
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        If the OMI export task fails, an error message appears.
+        """
         return pulumi.get(self, "comment")
 
     @property
@@ -84,16 +87,25 @@ class GetImageExportTaskResult:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> str:
+        """
+        The ID of the OMI to be exported.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> Sequence['outputs.GetImageExportTaskOsuExportResult']:
+        """
+        Information about the OMI export task.
+        """
         return pulumi.get(self, "osu_exports")
 
     @property
     @pulumi.getter
     def progress(self) -> int:
+        """
+        The progress of the OMI export task, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @property
@@ -104,16 +116,25 @@ class GetImageExportTaskResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the OMI export task (`pending/queued` \\| `pending` \\| `completed` \\| `failed` \\| `cancelled`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetImageExportTaskTagResult']:
+        """
+        One or more tags associated with the image export task.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> str:
+        """
+        The ID of the OMI export task.
+        """
         return pulumi.get(self, "task_id")
 
 
@@ -140,7 +161,25 @@ def get_image_export_task(dry_run: Optional[bool] = None,
                           filters: Optional[Sequence[pulumi.InputType['GetImageExportTaskFilterArgs']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageExportTaskResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an image export task.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    image_export_task01 = outscale.get_image_export_task(filters=[outscale.GetImageExportTaskFilterArgs(
+        name="task_ids",
+        values=["image-export-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetImageExportTaskFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run
@@ -167,6 +206,24 @@ def get_image_export_task_output(dry_run: Optional[pulumi.Input[Optional[bool]]]
                                  filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetImageExportTaskFilterArgs']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageExportTaskResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an image export task.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    image_export_task01 = outscale.get_image_export_task(filters=[outscale.GetImageExportTaskFilterArgs(
+        name="task_ids",
+        values=["image-export-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetImageExportTaskFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

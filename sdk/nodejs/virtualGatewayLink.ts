@@ -6,6 +6,42 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a virtual gateway link.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const virtualGateway01 = new outscale.VirtualGateway("virtualGateway01", {connectionType: "ipsec.1"});
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * ```
+ * ### Link a virtual gateway to a Net
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const virtualGatewayLink01 = new outscale.VirtualGatewayLink("virtualGatewayLink01", {
+ *     virtualGatewayId: outscale_virtual_gateway.virtual_gateway01.virtual_gateway_id,
+ *     netId: outscale_net.net01.net_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A virtual gateway link can be imported using its virtual gateway ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/virtualGatewayLink:VirtualGatewayLink ImportedVirtualGatewayLink vgw-12345678
+ * ```
+ */
 export class VirtualGatewayLink extends pulumi.CustomResource {
     /**
      * Get an existing VirtualGatewayLink resource's state with the given name, ID, and optional extra
@@ -35,9 +71,15 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
     }
 
     public readonly dryRun!: pulumi.Output<string>;
+    /**
+     * The ID of the Net to which you want to attach the virtual gateway.
+     */
     public readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly netToVirtualGatewayLinks!: pulumi.Output<outputs.VirtualGatewayLinkNetToVirtualGatewayLink[]>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the virtual gateway.
+     */
     public readonly virtualGatewayId!: pulumi.Output<string>;
 
     /**
@@ -82,9 +124,15 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
  */
 export interface VirtualGatewayLinkState {
     dryRun?: pulumi.Input<string>;
+    /**
+     * The ID of the Net to which you want to attach the virtual gateway.
+     */
     netId?: pulumi.Input<string>;
     netToVirtualGatewayLinks?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayLinkNetToVirtualGatewayLink>[]>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the virtual gateway.
+     */
     virtualGatewayId?: pulumi.Input<string>;
 }
 
@@ -93,6 +141,12 @@ export interface VirtualGatewayLinkState {
  */
 export interface VirtualGatewayLinkArgs {
     dryRun?: pulumi.Input<string>;
+    /**
+     * The ID of the Net to which you want to attach the virtual gateway.
+     */
     netId: pulumi.Input<string>;
+    /**
+     * The ID of the virtual gateway.
+     */
     virtualGatewayId: pulumi.Input<string>;
 }

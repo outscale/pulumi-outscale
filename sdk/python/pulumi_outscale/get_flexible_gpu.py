@@ -58,6 +58,9 @@ class GetFlexibleGpuResult:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> bool:
+        """
+        If true, the fGPU is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @property
@@ -68,11 +71,17 @@ class GetFlexibleGpuResult:
     @property
     @pulumi.getter(name="flexibleGpuId")
     def flexible_gpu_id(self) -> str:
+        """
+        The ID of the fGPU.
+        """
         return pulumi.get(self, "flexible_gpu_id")
 
     @property
     @pulumi.getter
     def generation(self) -> str:
+        """
+        The compatible processor generation.
+        """
         return pulumi.get(self, "generation")
 
     @property
@@ -86,6 +95,9 @@ class GetFlexibleGpuResult:
     @property
     @pulumi.getter(name="modelName")
     def model_name(self) -> str:
+        """
+        The model of fGPU. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        """
         return pulumi.get(self, "model_name")
 
     @property
@@ -96,16 +108,25 @@ class GetFlexibleGpuResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> str:
+        """
+        The Subregion where the fGPU is located.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> str:
+        """
+        The ID of the VM the fGPU is attached to, if any.
+        """
         return pulumi.get(self, "vm_id")
 
 
@@ -130,7 +151,25 @@ class AwaitableGetFlexibleGpuResult(GetFlexibleGpuResult):
 def get_flexible_gpu(filters: Optional[Sequence[pulumi.InputType['GetFlexibleGpuFilterArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlexibleGpuResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a flexible GPU.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    flexible_gpu01 = outscale.get_flexible_gpu(filters=[outscale.GetFlexibleGpuFilterArgs(
+        name="flexible_gpu_ids",
+        values=["fgpu-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetFlexibleGpuFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -154,6 +193,24 @@ def get_flexible_gpu(filters: Optional[Sequence[pulumi.InputType['GetFlexibleGpu
 def get_flexible_gpu_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFlexibleGpuFilterArgs']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlexibleGpuResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a flexible GPU.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    flexible_gpu01 = outscale.get_flexible_gpu(filters=[outscale.GetFlexibleGpuFilterArgs(
+        name="flexible_gpu_ids",
+        values=["fgpu-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetFlexibleGpuFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

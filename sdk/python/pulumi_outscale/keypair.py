@@ -18,6 +18,8 @@ class KeypairArgs:
                  public_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Keypair resource.
+        :param pulumi.Input[str] keypair_name: A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[str] public_key: The public key. It must be Base64-encoded.
         """
         if keypair_name is not None:
             pulumi.set(__self__, "keypair_name", keypair_name)
@@ -27,6 +29,9 @@ class KeypairArgs:
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
@@ -36,6 +41,9 @@ class KeypairArgs:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public key. It must be Base64-encoded.
+        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -53,6 +61,10 @@ class _KeypairState:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Keypair resources.
+        :param pulumi.Input[str] keypair_fingerprint: The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+        :param pulumi.Input[str] keypair_name: A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[str] private_key: The private key. When saving the private key in a .rsa file, replace the `\\n` escape sequences with line breaks.
+        :param pulumi.Input[str] public_key: The public key. It must be Base64-encoded.
         """
         if keypair_fingerprint is not None:
             pulumi.set(__self__, "keypair_fingerprint", keypair_fingerprint)
@@ -68,6 +80,9 @@ class _KeypairState:
     @property
     @pulumi.getter(name="keypairFingerprint")
     def keypair_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+        """
         return pulumi.get(self, "keypair_fingerprint")
 
     @keypair_fingerprint.setter
@@ -77,6 +92,9 @@ class _KeypairState:
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
@@ -86,6 +104,9 @@ class _KeypairState:
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key. When saving the private key in a .rsa file, replace the `\\n` escape sequences with line breaks.
+        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -95,6 +116,9 @@ class _KeypairState:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public key. It must be Base64-encoded.
+        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -120,9 +144,46 @@ class Keypair(pulumi.CustomResource):
                  public_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Keypair resource with the given unique name, props, and options.
+        Manages a keypair.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+
+        ## Example Usage
+        ### Create a keypair
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-create")
+        ```
+        ### Import keypairs
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair02 = outscale.Keypair("keypair02",
+            keypair_name="terraform-keypair-import-file",
+            public_key=(lambda path: open(path).read())("<PATH>"))
+        keypair03 = outscale.Keypair("keypair03",
+            keypair_name="terraform-keypair-import-text",
+            public_key="UFVCTElDIEtFWQ==")
+        ```
+
+        ## Import
+
+        A keypair can be imported using its name. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/keypair:Keypair ImportedKeypair Name-of-the-Keypair
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] keypair_name: A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[str] public_key: The public key. It must be Base64-encoded.
         """
         ...
     @overload
@@ -131,7 +192,42 @@ class Keypair(pulumi.CustomResource):
                  args: Optional[KeypairArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Keypair resource with the given unique name, props, and options.
+        Manages a keypair.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+
+        ## Example Usage
+        ### Create a keypair
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-create")
+        ```
+        ### Import keypairs
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair02 = outscale.Keypair("keypair02",
+            keypair_name="terraform-keypair-import-file",
+            public_key=(lambda path: open(path).read())("<PATH>"))
+        keypair03 = outscale.Keypair("keypair03",
+            keypair_name="terraform-keypair-import-text",
+            public_key="UFVCTElDIEtFWQ==")
+        ```
+
+        ## Import
+
+        A keypair can be imported using its name. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/keypair:Keypair ImportedKeypair Name-of-the-Keypair
+        ```
+
         :param str resource_name: The name of the resource.
         :param KeypairArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -185,6 +281,10 @@ class Keypair(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] keypair_fingerprint: The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+        :param pulumi.Input[str] keypair_name: A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[str] private_key: The private key. When saving the private key in a .rsa file, replace the `\\n` escape sequences with line breaks.
+        :param pulumi.Input[str] public_key: The public key. It must be Base64-encoded.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -200,21 +300,33 @@ class Keypair(pulumi.CustomResource):
     @property
     @pulumi.getter(name="keypairFingerprint")
     def keypair_fingerprint(self) -> pulumi.Output[str]:
+        """
+        The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+        """
         return pulumi.get(self, "keypair_fingerprint")
 
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> pulumi.Output[str]:
+        """
+        A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        """
         return pulumi.get(self, "keypair_name")
 
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[str]:
+        """
+        The private key. When saving the private key in a .rsa file, replace the `\\n` escape sequences with line breaks.
+        """
         return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[str]:
+        """
+        The public key. It must be Base64-encoded.
+        """
         return pulumi.get(self, "public_key")
 
     @property

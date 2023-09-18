@@ -24,6 +24,13 @@ class SecurityGroupArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
+        :param pulumi.Input[str] description: A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[str] net_id: The ID of the Net for the security group.
+        :param pulumi.Input[bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+        :param pulumi.Input[str] security_group_name: The name of the security group.<br />
+               This name must not start with `sg-`.</br>
+               This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -41,6 +48,9 @@ class SecurityGroupArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -50,6 +60,9 @@ class SecurityGroupArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net for the security group.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -59,6 +72,9 @@ class SecurityGroupArgs:
     @property
     @pulumi.getter(name="removeDefaultOutboundRule")
     def remove_default_outbound_rule(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+        """
         return pulumi.get(self, "remove_default_outbound_rule")
 
     @remove_default_outbound_rule.setter
@@ -68,6 +84,11 @@ class SecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.<br />
+        This name must not start with `sg-`.</br>
+        This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -86,6 +107,9 @@ class SecurityGroupArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -109,6 +133,17 @@ class _SecurityGroupState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
+        :param pulumi.Input[str] account_id: The account ID of a user.
+        :param pulumi.Input[str] description: A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupInboundRuleArgs']]] inbound_rules: The inbound rules associated with the security group.
+        :param pulumi.Input[str] net_id: The ID of the Net for the security group.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupOutboundRuleArgs']]] outbound_rules: The outbound rules associated with the security group.
+        :param pulumi.Input[bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.<br />
+               This name must not start with `sg-`.</br>
+               This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -136,6 +171,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of a user.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -145,6 +183,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -154,6 +195,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupInboundRuleArgs']]]]:
+        """
+        The inbound rules associated with the security group.
+        """
         return pulumi.get(self, "inbound_rules")
 
     @inbound_rules.setter
@@ -163,6 +207,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net for the security group.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -172,6 +219,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter(name="outboundRules")
     def outbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupOutboundRuleArgs']]]]:
+        """
+        The outbound rules associated with the security group.
+        """
         return pulumi.get(self, "outbound_rules")
 
     @outbound_rules.setter
@@ -181,6 +231,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter(name="removeDefaultOutboundRule")
     def remove_default_outbound_rule(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+        """
         return pulumi.get(self, "remove_default_outbound_rule")
 
     @remove_default_outbound_rule.setter
@@ -199,6 +252,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -208,6 +264,11 @@ class _SecurityGroupState:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.<br />
+        This name must not start with `sg-`.</br>
+        This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -226,6 +287,9 @@ class _SecurityGroupState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -246,9 +310,63 @@ class SecurityGroup(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a SecurityGroup resource with the given unique name, props, and options.
+        Manages a security group.
+
+        Security groups you create to use in a Net contain a default outbound rule that allows all outbound flows.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygroup).
+
+        ## Example Usage
+        ### Optional resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Create a security group for a Net
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group01 = outscale.SecurityGroup("securityGroup01",
+            description="Terraform security group",
+            security_group_name="terraform-security-group",
+            net_id=outscale_net["net01"]["net_id"])
+        ```
+        ### Create a security group for a Net without the default outbound rule
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group02 = outscale.SecurityGroup("securityGroup02",
+            remove_default_outbound_rule=True,
+            description="Terraform security group without outbound rule",
+            security_group_name="terraform-security-group-empty",
+            net_id=outscale_net["net01"]["net_id"])
+        ```
+
+        ## Import
+
+        A security group can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/securityGroup:SecurityGroup ImportedSecurityGroup sg-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[str] net_id: The ID of the Net for the security group.
+        :param pulumi.Input[bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+        :param pulumi.Input[str] security_group_name: The name of the security group.<br />
+               This name must not start with `sg-`.</br>
+               This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -257,7 +375,54 @@ class SecurityGroup(pulumi.CustomResource):
                  args: Optional[SecurityGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SecurityGroup resource with the given unique name, props, and options.
+        Manages a security group.
+
+        Security groups you create to use in a Net contain a default outbound rule that allows all outbound flows.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygroup).
+
+        ## Example Usage
+        ### Optional resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Create a security group for a Net
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group01 = outscale.SecurityGroup("securityGroup01",
+            description="Terraform security group",
+            security_group_name="terraform-security-group",
+            net_id=outscale_net["net01"]["net_id"])
+        ```
+        ### Create a security group for a Net without the default outbound rule
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group02 = outscale.SecurityGroup("securityGroup02",
+            remove_default_outbound_rule=True,
+            description="Terraform security group without outbound rule",
+            security_group_name="terraform-security-group-empty",
+            net_id=outscale_net["net01"]["net_id"])
+        ```
+
+        ## Import
+
+        A security group can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/securityGroup:SecurityGroup ImportedSecurityGroup sg-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param SecurityGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -327,6 +492,17 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account ID of a user.
+        :param pulumi.Input[str] description: A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupInboundRuleArgs']]]] inbound_rules: The inbound rules associated with the security group.
+        :param pulumi.Input[str] net_id: The ID of the Net for the security group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupOutboundRuleArgs']]]] outbound_rules: The outbound rules associated with the security group.
+        :param pulumi.Input[bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.<br />
+               This name must not start with `sg-`.</br>
+               This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -348,31 +524,49 @@ class SecurityGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account ID of a user.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> pulumi.Output[Sequence['outputs.SecurityGroupInboundRule']]:
+        """
+        The inbound rules associated with the security group.
+        """
         return pulumi.get(self, "inbound_rules")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net for the security group.
+        """
         return pulumi.get(self, "net_id")
 
     @property
     @pulumi.getter(name="outboundRules")
     def outbound_rules(self) -> pulumi.Output[Sequence['outputs.SecurityGroupOutboundRule']]:
+        """
+        The outbound rules associated with the security group.
+        """
         return pulumi.get(self, "outbound_rules")
 
     @property
     @pulumi.getter(name="removeDefaultOutboundRule")
     def remove_default_outbound_rule(self) -> pulumi.Output[Optional[bool]]:
+        """
+        (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+        """
         return pulumi.get(self, "remove_default_outbound_rule")
 
     @property
@@ -383,11 +577,19 @@ class SecurityGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Output[str]:
+        """
+        The name of the security group.<br />
+        This name must not start with `sg-`.</br>
+        This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+        """
         return pulumi.get(self, "security_group_name")
 
     @property
@@ -398,5 +600,8 @@ class SecurityGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.SecurityGroupTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 

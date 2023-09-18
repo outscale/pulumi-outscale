@@ -20,6 +20,10 @@ class FlexibleGpuArgs:
                  generation: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FlexibleGpu resource.
+        :param pulumi.Input[str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the fGPU.
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
+        :param pulumi.Input[str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
         """
         pulumi.set(__self__, "model_name", model_name)
         pulumi.set(__self__, "subregion_name", subregion_name)
@@ -31,6 +35,9 @@ class FlexibleGpuArgs:
     @property
     @pulumi.getter(name="modelName")
     def model_name(self) -> pulumi.Input[str]:
+        """
+        The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        """
         return pulumi.get(self, "model_name")
 
     @model_name.setter
@@ -40,6 +47,9 @@ class FlexibleGpuArgs:
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> pulumi.Input[str]:
+        """
+        The Subregion in which you want to create the fGPU.
+        """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
@@ -49,6 +59,9 @@ class FlexibleGpuArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the fGPU is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -58,6 +71,9 @@ class FlexibleGpuArgs:
     @property
     @pulumi.getter
     def generation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+        """
         return pulumi.get(self, "generation")
 
     @generation.setter
@@ -78,6 +94,13 @@ class _FlexibleGpuState:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlexibleGpu resources.
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
+        :param pulumi.Input[str] flexible_gpu_id: The ID of the fGPU.
+        :param pulumi.Input[str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+        :param pulumi.Input[str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        :param pulumi.Input[str] state: The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the fGPU.
+        :param pulumi.Input[str] vm_id: The ID of the VM the fGPU is attached to, if any.
         """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
@@ -99,6 +122,9 @@ class _FlexibleGpuState:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the fGPU is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -108,6 +134,9 @@ class _FlexibleGpuState:
     @property
     @pulumi.getter(name="flexibleGpuId")
     def flexible_gpu_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the fGPU.
+        """
         return pulumi.get(self, "flexible_gpu_id")
 
     @flexible_gpu_id.setter
@@ -117,6 +146,9 @@ class _FlexibleGpuState:
     @property
     @pulumi.getter
     def generation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+        """
         return pulumi.get(self, "generation")
 
     @generation.setter
@@ -126,6 +158,9 @@ class _FlexibleGpuState:
     @property
     @pulumi.getter(name="modelName")
     def model_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        """
         return pulumi.get(self, "model_name")
 
     @model_name.setter
@@ -144,6 +179,9 @@ class _FlexibleGpuState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -153,6 +191,9 @@ class _FlexibleGpuState:
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Subregion in which you want to create the fGPU.
+        """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
@@ -162,6 +203,9 @@ class _FlexibleGpuState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM the fGPU is attached to, if any.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -180,9 +224,39 @@ class FlexibleGpu(pulumi.CustomResource):
                  subregion_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a FlexibleGpu resource with the given unique name, props, and options.
+        Manages a flexible GPU.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+        ## Example Usage
+        ### Create a flexible GPU
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        flexible_gpu01 = outscale.FlexibleGpu("flexibleGpu01",
+            model_name=var["model_name"],
+            generation="v4",
+            subregion_name=f"{var['region']}a",
+            delete_on_vm_deletion=True)
+        ```
+
+        ## Import
+
+        A flexible GPU can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
+        :param pulumi.Input[str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+        :param pulumi.Input[str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the fGPU.
         """
         ...
     @overload
@@ -191,7 +265,33 @@ class FlexibleGpu(pulumi.CustomResource):
                  args: FlexibleGpuArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FlexibleGpu resource with the given unique name, props, and options.
+        Manages a flexible GPU.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+        ## Example Usage
+        ### Create a flexible GPU
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        flexible_gpu01 = outscale.FlexibleGpu("flexibleGpu01",
+            model_name=var["model_name"],
+            generation="v4",
+            subregion_name=f"{var['region']}a",
+            delete_on_vm_deletion=True)
+        ```
+
+        ## Import
+
+        A flexible GPU can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param FlexibleGpuArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -257,6 +357,13 @@ class FlexibleGpu(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
+        :param pulumi.Input[str] flexible_gpu_id: The ID of the fGPU.
+        :param pulumi.Input[str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+        :param pulumi.Input[str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        :param pulumi.Input[str] state: The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the fGPU.
+        :param pulumi.Input[str] vm_id: The ID of the VM the fGPU is attached to, if any.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -275,21 +382,33 @@ class FlexibleGpu(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> pulumi.Output[bool]:
+        """
+        If true, the fGPU is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @property
     @pulumi.getter(name="flexibleGpuId")
     def flexible_gpu_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the fGPU.
+        """
         return pulumi.get(self, "flexible_gpu_id")
 
     @property
     @pulumi.getter
     def generation(self) -> pulumi.Output[str]:
+        """
+        The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+        """
         return pulumi.get(self, "generation")
 
     @property
     @pulumi.getter(name="modelName")
     def model_name(self) -> pulumi.Output[str]:
+        """
+        The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+        """
         return pulumi.get(self, "model_name")
 
     @property
@@ -300,15 +419,24 @@ class FlexibleGpu(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> pulumi.Output[str]:
+        """
+        The Subregion in which you want to create the fGPU.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM the fGPU is attached to, if any.
+        """
         return pulumi.get(self, "vm_id")
 

@@ -6,6 +6,35 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about client gateways.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const clientGateways01 = outscale.getClientGateways({
+ *     filters: [
+ *         {
+ *             name: "bgp_asns",
+ *             values: ["65000"],
+ *         },
+ *         {
+ *             name: "public_ips",
+ *             values: [
+ *                 "111.11.111.1",
+ *                 "222.22.222.2",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getClientGateways(args?: GetClientGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetClientGatewaysResult> {
     args = args || {};
 
@@ -20,7 +49,13 @@ export function getClientGateways(args?: GetClientGatewaysArgs, opts?: pulumi.In
  * A collection of arguments for invoking getClientGateways.
  */
 export interface GetClientGatewaysArgs {
+    /**
+     * The IDs of the client gateways.
+     */
     clientGatewayIds?: string[];
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetClientGatewaysFilter[];
 }
 
@@ -29,6 +64,9 @@ export interface GetClientGatewaysArgs {
  */
 export interface GetClientGatewaysResult {
     readonly clientGatewayIds?: string[];
+    /**
+     * Information about one or more client gateways.
+     */
     readonly clientGateways: outputs.GetClientGatewaysClientGateway[];
     readonly filters?: outputs.GetClientGatewaysFilter[];
     /**
@@ -37,6 +75,35 @@ export interface GetClientGatewaysResult {
     readonly id: string;
     readonly requestId: string;
 }
+/**
+ * Provides information about client gateways.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const clientGateways01 = outscale.getClientGateways({
+ *     filters: [
+ *         {
+ *             name: "bgp_asns",
+ *             values: ["65000"],
+ *         },
+ *         {
+ *             name: "public_ips",
+ *             values: [
+ *                 "111.11.111.1",
+ *                 "222.22.222.2",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getClientGatewaysOutput(args?: GetClientGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getClientGateways(a, opts))
 }
@@ -45,6 +112,12 @@ export function getClientGatewaysOutput(args?: GetClientGatewaysOutputArgs, opts
  * A collection of arguments for invoking getClientGateways.
  */
 export interface GetClientGatewaysOutputArgs {
+    /**
+     * The IDs of the client gateways.
+     */
     clientGatewayIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetClientGatewaysFilterArgs>[]>;
 }

@@ -52,16 +52,25 @@ class GetAccessKeyResult:
     @property
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[str]:
+        """
+        The ID of the access key.
+        """
         return pulumi.get(self, "access_key_id")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
+        """
+        The date and time (UTC) of creation of the access key.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> str:
+        """
+        The date (UTC) at which the access key expires.
+        """
         return pulumi.get(self, "expiration_date")
 
     @property
@@ -80,6 +89,9 @@ class GetAccessKeyResult:
     @property
     @pulumi.getter(name="lastModificationDate")
     def last_modification_date(self) -> str:
+        """
+        The date and time (UTC) of the last modification of the access key.
+        """
         return pulumi.get(self, "last_modification_date")
 
     @property
@@ -90,6 +102,9 @@ class GetAccessKeyResult:
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
+        """
         return pulumi.get(self, "state")
 
 
@@ -114,7 +129,27 @@ def get_access_key(access_key_id: Optional[str] = None,
                    state: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessKeyResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an access key.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    access_key01 = outscale.get_access_key(filters=[outscale.GetAccessKeyFilterArgs(
+        name="access_key_ids",
+        values=["ABCDEFGHIJ0123456789"],
+    )])
+    ```
+
+
+    :param str access_key_id: The ID of the access key.
+    :param Sequence[pulumi.InputType['GetAccessKeyFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str state: The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
     """
     __args__ = dict()
     __args__['accessKeyId'] = access_key_id
@@ -140,6 +175,26 @@ def get_access_key_output(access_key_id: Optional[pulumi.Input[Optional[str]]] =
                           state: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessKeyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an access key.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    access_key01 = outscale.get_access_key(filters=[outscale.GetAccessKeyFilterArgs(
+        name="access_key_ids",
+        values=["ABCDEFGHIJ0123456789"],
+    )])
+    ```
+
+
+    :param str access_key_id: The ID of the access key.
+    :param Sequence[pulumi.InputType['GetAccessKeyFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str state: The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
     """
     ...

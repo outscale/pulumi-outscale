@@ -68,16 +68,25 @@ class GetNatServiceResult:
     @property
     @pulumi.getter(name="natServiceId")
     def nat_service_id(self) -> Optional[str]:
+        """
+        The ID of the NAT service.
+        """
         return pulumi.get(self, "nat_service_id")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net in which the NAT service is.
+        """
         return pulumi.get(self, "net_id")
 
     @property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> Sequence['outputs.GetNatServicePublicIpResult']:
+        """
+        Information about the public IP or IPs associated with the NAT service.
+        """
         return pulumi.get(self, "public_ips")
 
     @property
@@ -88,16 +97,25 @@ class GetNatServiceResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the NAT service (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
+        """
+        The ID of the Subnet in which the NAT service is.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetNatServiceTagResult']:
+        """
+        One or more tags associated with the NAT service.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -122,7 +140,26 @@ def get_nat_service(filters: Optional[Sequence[pulumi.InputType['GetNatServiceFi
                     nat_service_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNatServiceResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a NAT service.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nat_service01 = outscale.get_nat_service(filters=[outscale.GetNatServiceFilterArgs(
+        name="nat_service_ids",
+        values=["nat-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNatServiceFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str nat_service_id: The ID of the NAT service.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -147,6 +184,25 @@ def get_nat_service_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
                            nat_service_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatServiceResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a NAT service.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nat_service01 = outscale.get_nat_service(filters=[outscale.GetNatServiceFilterArgs(
+        name="nat_service_ids",
+        values=["nat-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNatServiceFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str nat_service_id: The ID of the NAT service.
     """
     ...

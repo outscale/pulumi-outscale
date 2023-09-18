@@ -25,6 +25,13 @@ class SnapshotArgs:
                  volume_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+        :param pulumi.Input[str] description: A description for the snapshot.
+        :param pulumi.Input[str] file_location: (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+        :param pulumi.Input[int] snapshot_size: (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+        :param pulumi.Input[str] source_region_name: (When copying) The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[str] source_snapshot_id: (When copying) The ID of the snapshot you want to copy.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_id: (When creating) The ID of the volume you want to create a snapshot of.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -44,6 +51,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the snapshot.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -53,6 +63,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+        """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
@@ -62,6 +75,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter(name="snapshotSize")
     def snapshot_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+        """
         return pulumi.get(self, "snapshot_size")
 
     @snapshot_size.setter
@@ -71,6 +87,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When copying) The name of the source Region, which must be the same as the Region of your account.
+        """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
@@ -80,6 +99,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When copying) The ID of the snapshot you want to copy.
+        """
         return pulumi.get(self, "source_snapshot_id")
 
     @source_snapshot_id.setter
@@ -89,6 +111,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -98,6 +123,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When creating) The ID of the volume you want to create a snapshot of.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -126,6 +154,21 @@ class _SnapshotState:
                  volume_size: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+        :param pulumi.Input[str] account_alias: The account alias of the owner of the snapshot.
+        :param pulumi.Input[str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the snapshot.
+        :param pulumi.Input[str] description: A description for the snapshot.
+        :param pulumi.Input[str] file_location: (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]] permissions_to_create_volumes: Information about the users who have permissions for the resource.
+        :param pulumi.Input[int] progress: The progress of the snapshot, as a percentage.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot.
+        :param pulumi.Input[int] snapshot_size: (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+        :param pulumi.Input[str] source_region_name: (When copying) The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[str] source_snapshot_id: (When copying) The ID of the snapshot you want to copy.
+        :param pulumi.Input[str] state: The state of the snapshot (`in-queue` \\| `completed` \\| `error`).
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_id: (When creating) The ID of the volume you want to create a snapshot of.
+        :param pulumi.Input[int] volume_size: The size of the volume used to create the snapshot, in gibibytes (GiB).
         """
         if account_alias is not None:
             pulumi.set(__self__, "account_alias", account_alias)
@@ -163,6 +206,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account alias of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_alias")
 
     @account_alias.setter
@@ -172,6 +218,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -181,6 +230,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time of creation of the snapshot.
+        """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
@@ -190,6 +242,9 @@ class _SnapshotState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the snapshot.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -199,6 +254,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+        """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
@@ -208,6 +266,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="permissionsToCreateVolumes")
     def permissions_to_create_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]]]:
+        """
+        Information about the users who have permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volumes")
 
     @permissions_to_create_volumes.setter
@@ -217,6 +278,9 @@ class _SnapshotState:
     @property
     @pulumi.getter
     def progress(self) -> Optional[pulumi.Input[int]]:
+        """
+        The progress of the snapshot, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @progress.setter
@@ -235,6 +299,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -244,6 +311,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="snapshotSize")
     def snapshot_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+        """
         return pulumi.get(self, "snapshot_size")
 
     @snapshot_size.setter
@@ -253,6 +323,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When copying) The name of the source Region, which must be the same as the Region of your account.
+        """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
@@ -262,6 +335,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When copying) The ID of the snapshot you want to copy.
+        """
         return pulumi.get(self, "source_snapshot_id")
 
     @source_snapshot_id.setter
@@ -271,6 +347,9 @@ class _SnapshotState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the snapshot (`in-queue` \\| `completed` \\| `error`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -280,6 +359,9 @@ class _SnapshotState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -289,6 +371,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (When creating) The ID of the volume you want to create a snapshot of.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -298,6 +383,9 @@ class _SnapshotState:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the volume used to create the snapshot, in gibibytes (GiB).
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -319,9 +407,59 @@ class Snapshot(pulumi.CustomResource):
                  volume_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Snapshot resource with the given unique name, props, and options.
+        Manages a snapshot.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            size=40,
+            subregion_name=f"{var['region']}a")
+        ```
+        ### Create a snapshot
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot01 = outscale.Snapshot("snapshot01", volume_id=outscale_volume["volume01"]["volume_id"])
+        ```
+        ### Copy a snapshot
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot02 = outscale.Snapshot("snapshot02",
+            description="Terraform snapshot copy",
+            source_region_name="eu-west-2",
+            source_snapshot_id="snap-12345678")
+        ```
+
+        ## Import
+
+        A snapshot can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description for the snapshot.
+        :param pulumi.Input[str] file_location: (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+        :param pulumi.Input[int] snapshot_size: (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+        :param pulumi.Input[str] source_region_name: (When copying) The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[str] source_snapshot_id: (When copying) The ID of the snapshot you want to copy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_id: (When creating) The ID of the volume you want to create a snapshot of.
         """
         ...
     @overload
@@ -330,7 +468,50 @@ class Snapshot(pulumi.CustomResource):
                  args: Optional[SnapshotArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Snapshot resource with the given unique name, props, and options.
+        Manages a snapshot.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            size=40,
+            subregion_name=f"{var['region']}a")
+        ```
+        ### Create a snapshot
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot01 = outscale.Snapshot("snapshot01", volume_id=outscale_volume["volume01"]["volume_id"])
+        ```
+        ### Copy a snapshot
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot02 = outscale.Snapshot("snapshot02",
+            description="Terraform snapshot copy",
+            source_region_name="eu-west-2",
+            source_snapshot_id="snap-12345678")
+        ```
+
+        ## Import
+
+        A snapshot can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -411,6 +592,21 @@ class Snapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_alias: The account alias of the owner of the snapshot.
+        :param pulumi.Input[str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the snapshot.
+        :param pulumi.Input[str] description: A description for the snapshot.
+        :param pulumi.Input[str] file_location: (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotPermissionsToCreateVolumeArgs']]]] permissions_to_create_volumes: Information about the users who have permissions for the resource.
+        :param pulumi.Input[int] progress: The progress of the snapshot, as a percentage.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot.
+        :param pulumi.Input[int] snapshot_size: (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+        :param pulumi.Input[str] source_region_name: (When copying) The name of the source Region, which must be the same as the Region of your account.
+        :param pulumi.Input[str] source_snapshot_id: (When copying) The ID of the snapshot you want to copy.
+        :param pulumi.Input[str] state: The state of the snapshot (`in-queue` \\| `completed` \\| `error`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_id: (When creating) The ID of the volume you want to create a snapshot of.
+        :param pulumi.Input[int] volume_size: The size of the volume used to create the snapshot, in gibibytes (GiB).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -437,36 +633,57 @@ class Snapshot(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> pulumi.Output[str]:
+        """
+        The account alias of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_alias")
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account ID of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
+        """
+        The date and time of creation of the snapshot.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
+        """
+        A description for the snapshot.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> pulumi.Output[str]:
+        """
+        (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+        """
         return pulumi.get(self, "file_location")
 
     @property
     @pulumi.getter(name="permissionsToCreateVolumes")
     def permissions_to_create_volumes(self) -> pulumi.Output[Sequence['outputs.SnapshotPermissionsToCreateVolume']]:
+        """
+        Information about the users who have permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_create_volumes")
 
     @property
     @pulumi.getter
     def progress(self) -> pulumi.Output[int]:
+        """
+        The progress of the snapshot, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @property
@@ -477,40 +694,64 @@ class Snapshot(pulumi.CustomResource):
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="snapshotSize")
     def snapshot_size(self) -> pulumi.Output[int]:
+        """
+        (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+        """
         return pulumi.get(self, "snapshot_size")
 
     @property
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> pulumi.Output[str]:
+        """
+        (When copying) The name of the source Region, which must be the same as the Region of your account.
+        """
         return pulumi.get(self, "source_region_name")
 
     @property
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        (When copying) The ID of the snapshot you want to copy.
+        """
         return pulumi.get(self, "source_snapshot_id")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the snapshot (`in-queue` \\| `completed` \\| `error`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.SnapshotTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Output[str]:
+        """
+        (When creating) The ID of the volume you want to create a snapshot of.
+        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> pulumi.Output[int]:
+        """
+        The size of the volume used to create the snapshot, in gibibytes (GiB).
+        """
         return pulumi.get(self, "volume_size")
 

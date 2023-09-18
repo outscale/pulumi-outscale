@@ -58,21 +58,33 @@ class GetDhcpOptionResult:
     @property
     @pulumi.getter
     def default(self) -> bool:
+        """
+        If true, the DHCP options set is a default one. If false, it is not.
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> str:
+        """
+        The ID of the DHCP options set.
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
+        """
+        The domain name.
+        """
         return pulumi.get(self, "domain_name")
 
     @property
     @pulumi.getter(name="domainNameServers")
     def domain_name_servers(self) -> Sequence[str]:
+        """
+        One or more IPs for the domain name servers.
+        """
         return pulumi.get(self, "domain_name_servers")
 
     @property
@@ -91,11 +103,17 @@ class GetDhcpOptionResult:
     @property
     @pulumi.getter(name="logServers")
     def log_servers(self) -> Sequence[str]:
+        """
+        One or more IPs for the log servers.
+        """
         return pulumi.get(self, "log_servers")
 
     @property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> Sequence[str]:
+        """
+        One or more IPs for the NTP servers.
+        """
         return pulumi.get(self, "ntp_servers")
 
     @property
@@ -106,6 +124,9 @@ class GetDhcpOptionResult:
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetDhcpOptionTagResult']:
+        """
+        One or more tags associated with the DHCP options set.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -130,7 +151,25 @@ class AwaitableGetDhcpOptionResult(GetDhcpOptionResult):
 def get_dhcp_option(filters: Optional[Sequence[pulumi.InputType['GetDhcpOptionFilterArgs']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDhcpOptionResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a DHCP option.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    dhcp_option01 = outscale.get_dhcp_option(filters=[outscale.GetDhcpOptionFilterArgs(
+        name="dhcp_options_set_id",
+        values=["dopt-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetDhcpOptionFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -154,6 +193,24 @@ def get_dhcp_option(filters: Optional[Sequence[pulumi.InputType['GetDhcpOptionFi
 def get_dhcp_option_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDhcpOptionFilterArgs']]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDhcpOptionResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a DHCP option.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    dhcp_option01 = outscale.get_dhcp_option(filters=[outscale.GetDhcpOptionFilterArgs(
+        name="dhcp_options_set_id",
+        values=["dopt-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetDhcpOptionFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

@@ -19,6 +19,9 @@ class NicLinkArgs:
                  vm_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a NicLink resource.
+        :param pulumi.Input[int] device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+        :param pulumi.Input[str] nic_id: The ID of the NIC you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM to which you want to attach the NIC.
         """
         pulumi.set(__self__, "device_number", device_number)
         pulumi.set(__self__, "nic_id", nic_id)
@@ -27,6 +30,9 @@ class NicLinkArgs:
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> pulumi.Input[int]:
+        """
+        The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+        """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
@@ -36,6 +42,9 @@ class NicLinkArgs:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the NIC you want to attach.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -45,6 +54,9 @@ class NicLinkArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the VM to which you want to attach the NIC.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -65,6 +77,10 @@ class _NicLinkState:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NicLink resources.
+        :param pulumi.Input[int] device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+        :param pulumi.Input[str] link_nic_id: The ID of the NIC attachment.
+        :param pulumi.Input[str] nic_id: The ID of the NIC you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM to which you want to attach the NIC.
         """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
@@ -95,6 +111,9 @@ class _NicLinkState:
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+        """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
@@ -104,6 +123,9 @@ class _NicLinkState:
     @property
     @pulumi.getter(name="linkNicId")
     def link_nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC attachment.
+        """
         return pulumi.get(self, "link_nic_id")
 
     @link_nic_id.setter
@@ -113,6 +135,9 @@ class _NicLinkState:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC you want to attach.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -149,6 +174,9 @@ class _NicLinkState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM to which you want to attach the NIC.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -166,9 +194,55 @@ class NicLink(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NicLink resource with the given unique name, props, and options.
+        Manages a NIC link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            subregion_name=f"{var['region']}a",
+            ip_range="10.0.0.0/16",
+            net_id=net01.net_id)
+        vm01 = outscale.Vm("vm01",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            subnet_id=subnet01.subnet_id)
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        ```
+        ### Link a NIC to a VM
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nic_link01 = outscale.NicLink("nicLink01",
+            device_number=1,
+            vm_id=outscale_vm["vm01"]["vm_id"],
+            nic_id=outscale_nic["nic01"]["nic_id"])
+        ```
+
+        ## Import
+
+        A NIC link can be imported using the NIC ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+        :param pulumi.Input[str] nic_id: The ID of the NIC you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM to which you want to attach the NIC.
         """
         ...
     @overload
@@ -177,7 +251,50 @@ class NicLink(pulumi.CustomResource):
                  args: NicLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NicLink resource with the given unique name, props, and options.
+        Manages a NIC link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            subregion_name=f"{var['region']}a",
+            ip_range="10.0.0.0/16",
+            net_id=net01.net_id)
+        vm01 = outscale.Vm("vm01",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"],
+            subnet_id=subnet01.subnet_id)
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        ```
+        ### Link a NIC to a VM
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nic_link01 = outscale.NicLink("nicLink01",
+            device_number=1,
+            vm_id=outscale_vm["vm01"]["vm_id"],
+            nic_id=outscale_nic["nic01"]["nic_id"])
+        ```
+
+        ## Import
+
+        A NIC link can be imported using the NIC ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param NicLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -244,6 +361,10 @@ class NicLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+        :param pulumi.Input[str] link_nic_id: The ID of the NIC attachment.
+        :param pulumi.Input[str] nic_id: The ID of the NIC you want to attach.
+        :param pulumi.Input[str] vm_id: The ID of the VM to which you want to attach the NIC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -267,16 +388,25 @@ class NicLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> pulumi.Output[int]:
+        """
+        The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+        """
         return pulumi.get(self, "device_number")
 
     @property
     @pulumi.getter(name="linkNicId")
     def link_nic_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the NIC attachment.
+        """
         return pulumi.get(self, "link_nic_id")
 
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the NIC you want to attach.
+        """
         return pulumi.get(self, "nic_id")
 
     @property
@@ -297,5 +427,8 @@ class NicLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM to which you want to attach the NIC.
+        """
         return pulumi.get(self, "vm_id")
 

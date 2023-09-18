@@ -4,6 +4,42 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a virtual gateway route propagation.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Routing-Configuration-for-VPN-Connections.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateroutepropagation).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const virtualGateway01 = new outscale.VirtualGateway("virtualGateway01", {connectionType: "ipsec.1"});
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const routeTable01 = new outscale.RouteTable("routeTable01", {netId: net01.netId});
+ * const virtualGatewayLink01 = new outscale.VirtualGatewayLink("virtualGatewayLink01", {
+ *     virtualGatewayId: virtualGateway01.virtualGatewayId,
+ *     netId: net01.netId,
+ * });
+ * ```
+ * ### Activate the propagation of routes to a route table of a Net by a virtual gateway
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const virtualGatewayRoutePropagation01 = new outscale.VirtualGatewayRoutePropagation("virtualGatewayRoutePropagation01", {
+ *     enable: true,
+ *     virtualGatewayId: outscale_virtual_gateway.virtual_gateway01.virtual_gateway_id,
+ *     routeTableId: outscale_route_table.route_table01.route_table_id,
+ * }, {
+ *     dependsOn: [outscale_virtual_gateway_link.virtual_gateway_link01],
+ * });
+ * ```
+ */
 export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
     /**
      * Get an existing VirtualGatewayRoutePropagation resource's state with the given name, ID, and optional extra
@@ -32,9 +68,18 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualGatewayRoutePropagation.__pulumiType;
     }
 
+    /**
+     * If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+     */
     public readonly enable!: pulumi.Output<boolean>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the route table.
+     */
     public readonly routeTableId!: pulumi.Output<string>;
+    /**
+     * The ID of the virtual gateway.
+     */
     public readonly virtualGatewayId!: pulumi.Output<string>;
 
     /**
@@ -79,9 +124,18 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VirtualGatewayRoutePropagation resources.
  */
 export interface VirtualGatewayRoutePropagationState {
+    /**
+     * If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+     */
     enable?: pulumi.Input<boolean>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the route table.
+     */
     routeTableId?: pulumi.Input<string>;
+    /**
+     * The ID of the virtual gateway.
+     */
     virtualGatewayId?: pulumi.Input<string>;
 }
 
@@ -89,7 +143,16 @@ export interface VirtualGatewayRoutePropagationState {
  * The set of arguments for constructing a VirtualGatewayRoutePropagation resource.
  */
 export interface VirtualGatewayRoutePropagationArgs {
+    /**
+     * If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+     */
     enable: pulumi.Input<boolean>;
+    /**
+     * The ID of the route table.
+     */
     routeTableId: pulumi.Input<string>;
+    /**
+     * The ID of the virtual gateway.
+     */
     virtualGatewayId: pulumi.Input<string>;
 }

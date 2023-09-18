@@ -56,11 +56,17 @@ class GetKeypairResult:
     @property
     @pulumi.getter(name="keypairFingerprint")
     def keypair_fingerprint(self) -> str:
+        """
+        The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+        """
         return pulumi.get(self, "keypair_fingerprint")
 
     @property
     @pulumi.getter(name="keypairName")
     def keypair_name(self) -> str:
+        """
+        The name of the keypair.
+        """
         return pulumi.get(self, "keypair_name")
 
     @property
@@ -86,7 +92,26 @@ def get_keypair(filters: Optional[Sequence[pulumi.InputType['GetKeypairFilterArg
                 keypair_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeypairResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a keypair.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    keypair01 = outscale.get_keypair(filters=[outscale.GetKeypairFilterArgs(
+        name="keypair_names",
+        values=["terraform-keypair-01"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetKeypairFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str keypair_name: The name of the keypair.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -107,6 +132,25 @@ def get_keypair_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.I
                        keypair_name: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeypairResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a keypair.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    keypair01 = outscale.get_keypair(filters=[outscale.GetKeypairFilterArgs(
+        name="keypair_names",
+        values=["terraform-keypair-01"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetKeypairFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str keypair_name: The name of the keypair.
     """
     ...

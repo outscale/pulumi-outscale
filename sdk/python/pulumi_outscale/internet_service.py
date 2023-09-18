@@ -19,6 +19,7 @@ class InternetServiceArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceTagArgs']]]] = None):
         """
         The set of arguments for constructing a InternetService resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InternetServiceTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
@@ -26,6 +27,9 @@ class InternetServiceArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -43,6 +47,10 @@ class _InternetServiceState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering InternetService resources.
+        :param pulumi.Input[str] internet_service_id: The ID of the Internet service.
+        :param pulumi.Input[str] net_id: The ID of the Net attached to the Internet service.
+        :param pulumi.Input[str] state: The state of the attachment of the Internet service to the Net (always `available`).
+        :param pulumi.Input[Sequence[pulumi.Input['InternetServiceTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if internet_service_id is not None:
             pulumi.set(__self__, "internet_service_id", internet_service_id)
@@ -58,6 +66,9 @@ class _InternetServiceState:
     @property
     @pulumi.getter(name="internetServiceId")
     def internet_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Internet service.
+        """
         return pulumi.get(self, "internet_service_id")
 
     @internet_service_id.setter
@@ -67,6 +78,9 @@ class _InternetServiceState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net attached to the Internet service.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -85,6 +99,9 @@ class _InternetServiceState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the attachment of the Internet service to the Net (always `available`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -94,6 +111,9 @@ class _InternetServiceState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -109,9 +129,31 @@ class InternetService(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InternetServiceTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a InternetService resource with the given unique name, props, and options.
+        Manages an Internet service.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        internet_service01 = outscale.InternetService("internetService01")
+        ```
+
+        ## Import
+
+        An internet service can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/internetService:InternetService ImportedInternetService igw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InternetServiceTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -120,7 +162,28 @@ class InternetService(pulumi.CustomResource):
                  args: Optional[InternetServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a InternetService resource with the given unique name, props, and options.
+        Manages an Internet service.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        internet_service01 = outscale.InternetService("internetService01")
+        ```
+
+        ## Import
+
+        An internet service can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/internetService:InternetService ImportedInternetService igw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param InternetServiceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -173,6 +236,10 @@ class InternetService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] internet_service_id: The ID of the Internet service.
+        :param pulumi.Input[str] net_id: The ID of the Net attached to the Internet service.
+        :param pulumi.Input[str] state: The state of the attachment of the Internet service to the Net (always `available`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InternetServiceTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -188,11 +255,17 @@ class InternetService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="internetServiceId")
     def internet_service_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Internet service.
+        """
         return pulumi.get(self, "internet_service_id")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net attached to the Internet service.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -203,10 +276,16 @@ class InternetService(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the attachment of the Internet service to the Net (always `available`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.InternetServiceTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 

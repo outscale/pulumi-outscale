@@ -6,6 +6,49 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a snapshot export task.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const volume01 = new outscale.Volume("volume01", {
+ *     subregionName: `${_var.region}a`,
+ *     size: 40,
+ * });
+ * const snapshot01 = new outscale.Snapshot("snapshot01", {volumeId: volume01.volumeId});
+ * ```
+ * ### Create a snapshot export task
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshotExportTask01 = new outscale.SnapshotExportTask("snapshotExportTask01", {
+ *     snapshotId: outscale_snapshot.snapshot01.snapshot_id,
+ *     osuExports: [{
+ *         diskImageFormat: "qcow2",
+ *         osuBucket: "terraform-bucket",
+ *         osuPrefix: "new-export",
+ *         osuApiKeys: [{
+ *             apiKeyId: _var.access_key_id,
+ *             secretKey: _var.secret_key_id,
+ *         }],
+ *     }],
+ *     tags: [{
+ *         key: "Name",
+ *         value: "terraform-snapshot-export-task",
+ *     }],
+ * });
+ * ```
+ */
 export class SnapshotExportTask extends pulumi.CustomResource {
     /**
      * Get an existing SnapshotExportTask resource's state with the given name, ID, and optional extra
@@ -34,13 +77,34 @@ export class SnapshotExportTask extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnapshotExportTask.__pulumiType;
     }
 
+    /**
+     * If the snapshot export task fails, an error message appears.
+     */
     public /*out*/ readonly comment!: pulumi.Output<string>;
+    /**
+     * Information about the OOS export task to create.
+     */
     public readonly osuExports!: pulumi.Output<outputs.SnapshotExportTaskOsuExport[]>;
+    /**
+     * The progress of the snapshot export task, as a percentage.
+     */
     public /*out*/ readonly progress!: pulumi.Output<number>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the snapshot to export.
+     */
     public readonly snapshotId!: pulumi.Output<string>;
+    /**
+     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.SnapshotExportTaskTag[] | undefined>;
+    /**
+     * The ID of the snapshot export task.
+     */
     public /*out*/ readonly taskId!: pulumi.Output<string>;
 
     /**
@@ -90,13 +154,34 @@ export class SnapshotExportTask extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotExportTask resources.
  */
 export interface SnapshotExportTaskState {
+    /**
+     * If the snapshot export task fails, an error message appears.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * Information about the OOS export task to create.
+     */
     osuExports?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskOsuExport>[]>;
+    /**
+     * The progress of the snapshot export task, as a percentage.
+     */
     progress?: pulumi.Input<number>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the snapshot to export.
+     */
     snapshotId?: pulumi.Input<string>;
+    /**
+     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskTag>[]>;
+    /**
+     * The ID of the snapshot export task.
+     */
     taskId?: pulumi.Input<string>;
 }
 
@@ -104,7 +189,16 @@ export interface SnapshotExportTaskState {
  * The set of arguments for constructing a SnapshotExportTask resource.
  */
 export interface SnapshotExportTaskArgs {
+    /**
+     * Information about the OOS export task to create.
+     */
     osuExports: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskOsuExport>[]>;
+    /**
+     * The ID of the snapshot to export.
+     */
     snapshotId: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskTag>[]>;
 }

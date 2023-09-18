@@ -61,11 +61,17 @@ class GetRouteTablesResult:
     @property
     @pulumi.getter(name="routeTableIds")
     def route_table_ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_ids")
 
     @property
     @pulumi.getter(name="routeTables")
     def route_tables(self) -> Sequence['outputs.GetRouteTablesRouteTableResult']:
+        """
+        Information about one or more route tables.
+        """
         return pulumi.get(self, "route_tables")
 
 
@@ -86,7 +92,35 @@ def get_route_tables(filters: Optional[Sequence[pulumi.InputType['GetRouteTables
                      route_table_ids: Optional[Sequence[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTablesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about route tables.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    route_tables01 = outscale.get_route_tables(filters=[
+        outscale.GetRouteTablesFilterArgs(
+            name="net_ids",
+            values=[
+                "vpc-12345678",
+                "vpc-87654321",
+            ],
+        ),
+        outscale.GetRouteTablesFilterArgs(
+            name="link_route_table_main",
+            values=["true"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetRouteTablesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] route_table_ids: The ID of the route table.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -107,6 +141,34 @@ def get_route_tables_output(filters: Optional[pulumi.Input[Optional[Sequence[pul
                             route_table_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTablesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about route tables.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    route_tables01 = outscale.get_route_tables(filters=[
+        outscale.GetRouteTablesFilterArgs(
+            name="net_ids",
+            values=[
+                "vpc-12345678",
+                "vpc-87654321",
+            ],
+        ),
+        outscale.GetRouteTablesFilterArgs(
+            name="link_route_table_main",
+            values=["true"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetRouteTablesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] route_table_ids: The ID of the route table.
     """
     ...

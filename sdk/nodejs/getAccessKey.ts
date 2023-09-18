@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about an access key.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const accessKey01 = outscale.getAccessKey({
+ *     filters: [{
+ *         name: "access_key_ids",
+ *         values: ["ABCDEFGHIJ0123456789"],
+ *     }],
+ * });
+ * ```
+ */
 export function getAccessKey(args?: GetAccessKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessKeyResult> {
     args = args || {};
 
@@ -21,8 +41,17 @@ export function getAccessKey(args?: GetAccessKeyArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getAccessKey.
  */
 export interface GetAccessKeyArgs {
+    /**
+     * The ID of the access key.
+     */
     accessKeyId?: string;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetAccessKeyFilter[];
+    /**
+     * The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
+     */
     state?: string;
 }
 
@@ -30,18 +59,53 @@ export interface GetAccessKeyArgs {
  * A collection of values returned by getAccessKey.
  */
 export interface GetAccessKeyResult {
+    /**
+     * The ID of the access key.
+     */
     readonly accessKeyId?: string;
+    /**
+     * The date and time (UTC) of creation of the access key.
+     */
     readonly creationDate: string;
+    /**
+     * The date (UTC) at which the access key expires.
+     */
     readonly expirationDate: string;
     readonly filters?: outputs.GetAccessKeyFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The date and time (UTC) of the last modification of the access key.
+     */
     readonly lastModificationDate: string;
     readonly requestId: string;
+    /**
+     * The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
+     */
     readonly state?: string;
 }
+/**
+ * Provides information about an access key.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const accessKey01 = outscale.getAccessKey({
+ *     filters: [{
+ *         name: "access_key_ids",
+ *         values: ["ABCDEFGHIJ0123456789"],
+ *     }],
+ * });
+ * ```
+ */
 export function getAccessKeyOutput(args?: GetAccessKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessKeyResult> {
     return pulumi.output(args).apply((a: any) => getAccessKey(a, opts))
 }
@@ -50,7 +114,16 @@ export function getAccessKeyOutput(args?: GetAccessKeyOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getAccessKey.
  */
 export interface GetAccessKeyOutputArgs {
+    /**
+     * The ID of the access key.
+     */
     accessKeyId?: pulumi.Input<string>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetAccessKeyFilterArgs>[]>;
+    /**
+     * The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
+     */
     state?: pulumi.Input<string>;
 }

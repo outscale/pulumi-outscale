@@ -53,6 +53,9 @@ class GetPublicIpsResult:
     @property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> Sequence['outputs.GetPublicIpsPublicIpResult']:
+        """
+        Information about one or more public IPs.
+        """
         return pulumi.get(self, "public_ips")
 
     @property
@@ -76,7 +79,28 @@ class AwaitableGetPublicIpsResult(GetPublicIpsResult):
 def get_public_ips(filters: Optional[Sequence[pulumi.InputType['GetPublicIpsFilterArgs']]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublicIpsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about public IPs.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    public_ips01 = outscale.get_public_ips(filters=[outscale.GetPublicIpsFilterArgs(
+        name="public_ips",
+        values=[
+            "111.11.111.1",
+            "222.22.222.2",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetPublicIpsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +118,27 @@ def get_public_ips(filters: Optional[Sequence[pulumi.InputType['GetPublicIpsFilt
 def get_public_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPublicIpsFilterArgs']]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicIpsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about public IPs.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    public_ips01 = outscale.get_public_ips(filters=[outscale.GetPublicIpsFilterArgs(
+        name="public_ips",
+        values=[
+            "111.11.111.1",
+            "222.22.222.2",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetPublicIpsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

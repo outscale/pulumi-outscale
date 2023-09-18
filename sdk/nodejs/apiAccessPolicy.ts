@@ -4,6 +4,51 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the API access policy.
+ *
+ * To activate a trusted session, first you must:
+ * * Set expiration dates to all your access keys.
+ * * Specify a Certificate Authority (CA) in all your API access rules.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy).
+ *
+ * ## Example Usage
+ * ### Require expiration dates for your access keys
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const unique = new outscale.ApiAccessPolicy("unique", {
+ *     maxAccessKeyExpirationSeconds: 31536000,
+ *     requireTrustedEnv: false,
+ * });
+ * ```
+ * ### Activate a trusted session
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const unique = new outscale.ApiAccessPolicy("unique", {
+ *     maxAccessKeyExpirationSeconds: 3153600000,
+ *     requireTrustedEnv: true,
+ * });
+ * ```
+ * ### Deactivate a trusted session
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const unique = new outscale.ApiAccessPolicy("unique", {
+ *     maxAccessKeyExpirationSeconds: 0,
+ *     requireTrustedEnv: false,
+ * });
+ * ```
+ */
 export class ApiAccessPolicy extends pulumi.CustomResource {
     /**
      * Get an existing ApiAccessPolicy resource's state with the given name, ID, and optional extra
@@ -32,8 +77,14 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiAccessPolicy.__pulumiType;
     }
 
+    /**
+     * The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+     */
     public readonly maxAccessKeyExpirationSeconds!: pulumi.Output<number>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.
+     */
     public readonly requireTrustedEnv!: pulumi.Output<boolean>;
 
     /**
@@ -73,8 +124,14 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiAccessPolicy resources.
  */
 export interface ApiAccessPolicyState {
+    /**
+     * The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+     */
     maxAccessKeyExpirationSeconds?: pulumi.Input<number>;
     requestId?: pulumi.Input<string>;
+    /**
+     * If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.
+     */
     requireTrustedEnv?: pulumi.Input<boolean>;
 }
 
@@ -82,6 +139,12 @@ export interface ApiAccessPolicyState {
  * The set of arguments for constructing a ApiAccessPolicy resource.
  */
 export interface ApiAccessPolicyArgs {
+    /**
+     * The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+     */
     maxAccessKeyExpirationSeconds: pulumi.Input<number>;
+    /**
+     * If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.
+     */
     requireTrustedEnv: pulumi.Input<boolean>;
 }

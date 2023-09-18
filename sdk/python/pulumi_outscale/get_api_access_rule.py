@@ -52,21 +52,33 @@ class GetApiAccessRuleResult:
     @property
     @pulumi.getter(name="apiAccessRuleId")
     def api_access_rule_id(self) -> str:
+        """
+        The ID of the API access rule.
+        """
         return pulumi.get(self, "api_access_rule_id")
 
     @property
     @pulumi.getter(name="caIds")
     def ca_ids(self) -> Sequence[str]:
+        """
+        One or more IDs of Client Certificate Authorities (CAs) used for the API access rule.
+        """
         return pulumi.get(self, "ca_ids")
 
     @property
     @pulumi.getter
     def cns(self) -> Sequence[str]:
+        """
+        One or more Client Certificate Common Names (CNs).
+        """
         return pulumi.get(self, "cns")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the API access rule.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -85,6 +97,9 @@ class GetApiAccessRuleResult:
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[str]:
+        """
+        One or more IP ranges used for the API access rule, in CIDR notation (for example, `192.0.2.0/16`).
+        """
         return pulumi.get(self, "ip_ranges")
 
     @property
@@ -112,7 +127,25 @@ class AwaitableGetApiAccessRuleResult(GetApiAccessRuleResult):
 def get_api_access_rule(filters: Optional[Sequence[pulumi.InputType['GetApiAccessRuleFilterArgs']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiAccessRuleResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an API access rule.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    api_access_rule01 = outscale.get_api_access_rule(filters=[outscale.GetApiAccessRuleFilterArgs(
+        name="api_access_rule_ids",
+        values=["aar-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetApiAccessRuleFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -134,6 +167,24 @@ def get_api_access_rule(filters: Optional[Sequence[pulumi.InputType['GetApiAcces
 def get_api_access_rule_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetApiAccessRuleFilterArgs']]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiAccessRuleResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an API access rule.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    api_access_rule01 = outscale.get_api_access_rule(filters=[outscale.GetApiAccessRuleFilterArgs(
+        name="api_access_rule_ids",
+        values=["aar-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetApiAccessRuleFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

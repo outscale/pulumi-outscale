@@ -61,11 +61,17 @@ class GetSecurityGroupResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The account ID of a user.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the security group.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -84,16 +90,25 @@ class GetSecurityGroupResult:
     @property
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> Sequence['outputs.GetSecurityGroupInboundRuleResult']:
+        """
+        The inbound rules associated with the security group.
+        """
         return pulumi.get(self, "inbound_rules")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net for the security group.
+        """
         return pulumi.get(self, "net_id")
 
     @property
     @pulumi.getter(name="outboundRules")
     def outbound_rules(self) -> Sequence['outputs.GetSecurityGroupOutboundRuleResult']:
+        """
+        The outbound rules associated with the security group.
+        """
         return pulumi.get(self, "outbound_rules")
 
     @property
@@ -104,16 +119,25 @@ class GetSecurityGroupResult:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> str:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetSecurityGroupTagResult']:
+        """
+        One or more tags associated with the security group.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -141,7 +165,27 @@ def get_security_group(filters: Optional[Sequence[pulumi.InputType['GetSecurityG
                        security_group_name: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a security group.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygroup).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    security_group01 = outscale.get_security_group(filters=[outscale.GetSecurityGroupFilterArgs(
+        name="security_group_ids",
+        values=["sg-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSecurityGroupFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str security_group_id: The ID of the security group.
+    :param str security_group_name: The name of the security group.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -170,6 +214,26 @@ def get_security_group_output(filters: Optional[pulumi.Input[Optional[Sequence[p
                               security_group_name: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a security group.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygroup).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    security_group01 = outscale.get_security_group(filters=[outscale.GetSecurityGroupFilterArgs(
+        name="security_group_ids",
+        values=["sg-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSecurityGroupFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str security_group_id: The ID of the security group.
+    :param str security_group_name: The name of the security group.
     """
     ...

@@ -61,6 +61,9 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="availableIpsCount")
     def available_ips_count(self) -> int:
+        """
+        The number of available IPs in the Subnets.
+        """
         return pulumi.get(self, "available_ips_count")
 
     @property
@@ -79,16 +82,25 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> str:
+        """
+        The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="mapPublicIpOnLaunch")
     def map_public_ip_on_launch(self) -> bool:
+        """
+        If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+        """
         return pulumi.get(self, "map_public_ip_on_launch")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net in which the Subnet is.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -99,21 +111,33 @@ class GetSubnetResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the Subnet (`pending` \\| `available` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> str:
+        """
+        The name of the Subregion in which the Subnet is located.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetSubnetTagResult']:
+        """
+        One or more tags associated with the Subnet.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -140,7 +164,26 @@ def get_subnet(filters: Optional[Sequence[pulumi.InputType['GetSubnetFilterArgs'
                subnet_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Subnet.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-subnet).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    subnet01 = outscale.get_subnet(filters=[outscale.GetSubnetFilterArgs(
+        name="net_ids",
+        values=["vpc-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSubnetFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str subnet_id: The ID of the Subnet.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -167,6 +210,25 @@ def get_subnet_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
                       subnet_id: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Subnet.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-subnet).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    subnet01 = outscale.get_subnet(filters=[outscale.GetSubnetFilterArgs(
+        name="net_ids",
+        values=["vpc-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSubnetFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str subnet_id: The ID of the Subnet.
     """
     ...

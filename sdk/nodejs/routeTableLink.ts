@@ -4,6 +4,46 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a route table link.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/18",
+ * });
+ * const routeTable01 = new outscale.RouteTable("routeTable01", {netId: net01.netId});
+ * ```
+ * ### Link a route table to a subnet
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const routeTableLink01 = new outscale.RouteTableLink("routeTableLink01", {
+ *     subnetId: outscale_subnet.subnet01.subnet_id,
+ *     routeTableId: outscale_route_table.route_table01.route_table_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A route table link can be imported using the route table ID and the route table link ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/routeTableLink:RouteTableLink ImportedRouteTableLink rtb-12345678_rtbassoc-87654321
+ * ```
+ */
 export class RouteTableLink extends pulumi.CustomResource {
     /**
      * Get an existing RouteTableLink resource's state with the given name, ID, and optional extra
@@ -32,10 +72,22 @@ export class RouteTableLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === RouteTableLink.__pulumiType;
     }
 
+    /**
+     * The ID of the association between the route table and the Subnet.
+     */
     public /*out*/ readonly linkRouteTableId!: pulumi.Output<string>;
+    /**
+     * If true, the route table is the main one.
+     */
     public /*out*/ readonly main!: pulumi.Output<boolean>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the route table.
+     */
     public readonly routeTableId!: pulumi.Output<string>;
+    /**
+     * The ID of the Subnet.
+     */
     public readonly subnetId!: pulumi.Output<string>;
 
     /**
@@ -79,10 +131,22 @@ export class RouteTableLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouteTableLink resources.
  */
 export interface RouteTableLinkState {
+    /**
+     * The ID of the association between the route table and the Subnet.
+     */
     linkRouteTableId?: pulumi.Input<string>;
+    /**
+     * If true, the route table is the main one.
+     */
     main?: pulumi.Input<boolean>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the route table.
+     */
     routeTableId?: pulumi.Input<string>;
+    /**
+     * The ID of the Subnet.
+     */
     subnetId?: pulumi.Input<string>;
 }
 
@@ -90,6 +154,12 @@ export interface RouteTableLinkState {
  * The set of arguments for constructing a RouteTableLink resource.
  */
 export interface RouteTableLinkArgs {
+    /**
+     * The ID of the route table.
+     */
     routeTableId: pulumi.Input<string>;
+    /**
+     * The ID of the Subnet.
+     */
     subnetId: pulumi.Input<string>;
 }

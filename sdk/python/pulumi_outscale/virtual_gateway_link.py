@@ -21,6 +21,8 @@ class VirtualGatewayLinkArgs:
                  dry_run: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VirtualGatewayLink resource.
+        :param pulumi.Input[str] net_id: The ID of the Net to which you want to attach the virtual gateway.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         pulumi.set(__self__, "net_id", net_id)
         pulumi.set(__self__, "virtual_gateway_id", virtual_gateway_id)
@@ -30,6 +32,9 @@ class VirtualGatewayLinkArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Net to which you want to attach the virtual gateway.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -39,6 +44,9 @@ class VirtualGatewayLinkArgs:
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
@@ -65,6 +73,8 @@ class _VirtualGatewayLinkState:
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VirtualGatewayLink resources.
+        :param pulumi.Input[str] net_id: The ID of the Net to which you want to attach the virtual gateway.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -89,6 +99,9 @@ class _VirtualGatewayLinkState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net to which you want to attach the virtual gateway.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -116,6 +129,9 @@ class _VirtualGatewayLinkState:
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
@@ -133,9 +149,44 @@ class VirtualGatewayLink(pulumi.CustomResource):
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VirtualGatewayLink resource with the given unique name, props, and options.
+        Manages a virtual gateway link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01", connection_type="ipsec.1")
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Link a virtual gateway to a Net
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway_link01 = outscale.VirtualGatewayLink("virtualGatewayLink01",
+            virtual_gateway_id=outscale_virtual_gateway["virtual_gateway01"]["virtual_gateway_id"],
+            net_id=outscale_net["net01"]["net_id"])
+        ```
+
+        ## Import
+
+        A virtual gateway link can be imported using its virtual gateway ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/virtualGatewayLink:VirtualGatewayLink ImportedVirtualGatewayLink vgw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] net_id: The ID of the Net to which you want to attach the virtual gateway.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         ...
     @overload
@@ -144,7 +195,40 @@ class VirtualGatewayLink(pulumi.CustomResource):
                  args: VirtualGatewayLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VirtualGatewayLink resource with the given unique name, props, and options.
+        Manages a virtual gateway link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01", connection_type="ipsec.1")
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Link a virtual gateway to a Net
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway_link01 = outscale.VirtualGatewayLink("virtualGatewayLink01",
+            virtual_gateway_id=outscale_virtual_gateway["virtual_gateway01"]["virtual_gateway_id"],
+            net_id=outscale_net["net01"]["net_id"])
+        ```
+
+        ## Import
+
+        A virtual gateway link can be imported using its virtual gateway ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/virtualGatewayLink:VirtualGatewayLink ImportedVirtualGatewayLink vgw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param VirtualGatewayLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,6 +287,8 @@ class VirtualGatewayLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] net_id: The ID of the Net to which you want to attach the virtual gateway.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -223,6 +309,9 @@ class VirtualGatewayLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net to which you want to attach the virtual gateway.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -238,5 +327,8 @@ class VirtualGatewayLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 

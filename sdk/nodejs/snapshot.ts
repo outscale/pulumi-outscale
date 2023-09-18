@@ -6,6 +6,53 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a snapshot.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+ *
+ * ## Example Usage
+ * ### Required resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const volume01 = new outscale.Volume("volume01", {
+ *     size: 40,
+ *     subregionName: `${_var.region}a`,
+ * });
+ * ```
+ * ### Create a snapshot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshot01 = new outscale.Snapshot("snapshot01", {volumeId: outscale_volume.volume01.volume_id});
+ * ```
+ * ### Copy a snapshot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshot02 = new outscale.Snapshot("snapshot02", {
+ *     description: "Terraform snapshot copy",
+ *     sourceRegionName: "eu-west-2",
+ *     sourceSnapshotId: "snap-12345678",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A snapshot can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
+ * ```
+ */
 export class Snapshot extends pulumi.CustomResource {
     /**
      * Get an existing Snapshot resource's state with the given name, ID, and optional extra
@@ -34,21 +81,66 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
+    /**
+     * The account alias of the owner of the snapshot.
+     */
     public /*out*/ readonly accountAlias!: pulumi.Output<string>;
+    /**
+     * The account ID of the owner of the snapshot.
+     */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
+    /**
+     * The date and time of creation of the snapshot.
+     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    /**
+     * A description for the snapshot.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+     */
     public readonly fileLocation!: pulumi.Output<string>;
+    /**
+     * Information about the users who have permissions for the resource.
+     */
     public /*out*/ readonly permissionsToCreateVolumes!: pulumi.Output<outputs.SnapshotPermissionsToCreateVolume[]>;
+    /**
+     * The progress of the snapshot, as a percentage.
+     */
     public /*out*/ readonly progress!: pulumi.Output<number>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the snapshot.
+     */
     public /*out*/ readonly snapshotId!: pulumi.Output<string>;
+    /**
+     * (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+     */
     public readonly snapshotSize!: pulumi.Output<number>;
+    /**
+     * (When copying) The name of the source Region, which must be the same as the Region of your account.
+     */
     public readonly sourceRegionName!: pulumi.Output<string>;
+    /**
+     * (When copying) The ID of the snapshot you want to copy.
+     */
     public readonly sourceSnapshotId!: pulumi.Output<string>;
+    /**
+     * The state of the snapshot (`in-queue` \| `completed` \| `error`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.SnapshotTag[] | undefined>;
+    /**
+     * (When creating) The ID of the volume you want to create a snapshot of.
+     */
     public readonly volumeId!: pulumi.Output<string>;
+    /**
+     * The size of the volume used to create the snapshot, in gibibytes (GiB).
+     */
     public /*out*/ readonly volumeSize!: pulumi.Output<number>;
 
     /**
@@ -108,21 +200,66 @@ export class Snapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Snapshot resources.
  */
 export interface SnapshotState {
+    /**
+     * The account alias of the owner of the snapshot.
+     */
     accountAlias?: pulumi.Input<string>;
+    /**
+     * The account ID of the owner of the snapshot.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * The date and time of creation of the snapshot.
+     */
     creationDate?: pulumi.Input<string>;
+    /**
+     * A description for the snapshot.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+     */
     fileLocation?: pulumi.Input<string>;
+    /**
+     * Information about the users who have permissions for the resource.
+     */
     permissionsToCreateVolumes?: pulumi.Input<pulumi.Input<inputs.SnapshotPermissionsToCreateVolume>[]>;
+    /**
+     * The progress of the snapshot, as a percentage.
+     */
     progress?: pulumi.Input<number>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the snapshot.
+     */
     snapshotId?: pulumi.Input<string>;
+    /**
+     * (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+     */
     snapshotSize?: pulumi.Input<number>;
+    /**
+     * (When copying) The name of the source Region, which must be the same as the Region of your account.
+     */
     sourceRegionName?: pulumi.Input<string>;
+    /**
+     * (When copying) The ID of the snapshot you want to copy.
+     */
     sourceSnapshotId?: pulumi.Input<string>;
+    /**
+     * The state of the snapshot (`in-queue` \| `completed` \| `error`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[]>;
+    /**
+     * (When creating) The ID of the volume you want to create a snapshot of.
+     */
     volumeId?: pulumi.Input<string>;
+    /**
+     * The size of the volume used to create the snapshot, in gibibytes (GiB).
+     */
     volumeSize?: pulumi.Input<number>;
 }
 
@@ -130,11 +267,32 @@ export interface SnapshotState {
  * The set of arguments for constructing a Snapshot resource.
  */
 export interface SnapshotArgs {
+    /**
+     * A description for the snapshot.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * (When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).
+     */
     fileLocation?: pulumi.Input<string>;
+    /**
+     * (When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
+     */
     snapshotSize?: pulumi.Input<number>;
+    /**
+     * (When copying) The name of the source Region, which must be the same as the Region of your account.
+     */
     sourceRegionName?: pulumi.Input<string>;
+    /**
+     * (When copying) The ID of the snapshot you want to copy.
+     */
     sourceSnapshotId?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[]>;
+    /**
+     * (When creating) The ID of the volume you want to create a snapshot of.
+     */
     volumeId?: pulumi.Input<string>;
 }

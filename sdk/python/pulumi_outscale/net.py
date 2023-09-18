@@ -21,6 +21,9 @@ class NetArgs:
                  tenancy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Net resource.
+        :param pulumi.Input[str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input['NetTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] tenancy: The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
         """
         pulumi.set(__self__, "ip_range", ip_range)
         if tags is not None:
@@ -31,6 +34,9 @@ class NetArgs:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> pulumi.Input[str]:
+        """
+        The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -40,6 +46,9 @@ class NetArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -49,6 +58,9 @@ class NetArgs:
     @property
     @pulumi.getter
     def tenancy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
+        """
         return pulumi.get(self, "tenancy")
 
     @tenancy.setter
@@ -68,6 +80,12 @@ class _NetState:
                  tenancy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Net resources.
+        :param pulumi.Input[str] dhcp_options_set_id: The ID of the DHCP options set (or `default` if you want to associate the default one).
+        :param pulumi.Input[str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[str] net_id: The ID of the Net.
+        :param pulumi.Input[str] state: The state of the Net (`pending` \\| `available` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input['NetTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] tenancy: The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
         """
         if dhcp_options_set_id is not None:
             pulumi.set(__self__, "dhcp_options_set_id", dhcp_options_set_id)
@@ -87,6 +105,9 @@ class _NetState:
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the DHCP options set (or `default` if you want to associate the default one).
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @dhcp_options_set_id.setter
@@ -96,6 +117,9 @@ class _NetState:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -105,6 +129,9 @@ class _NetState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -123,6 +150,9 @@ class _NetState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the Net (`pending` \\| `available` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -132,6 +162,9 @@ class _NetState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -141,6 +174,9 @@ class _NetState:
     @property
     @pulumi.getter
     def tenancy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
+        """
         return pulumi.get(self, "tenancy")
 
     @tenancy.setter
@@ -158,9 +194,63 @@ class Net(pulumi.CustomResource):
                  tenancy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Net resource with the given unique name, props, and options.
+        Manages a Net.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+
+        ## Example Usage
+        ### Create a Net
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.10.0.0/16",
+            tenancy="default")
+        ```
+        ### Create a Net with a network
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net02 = outscale.Net("net02", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net02.net_id,
+            ip_range="10.0.0.0/18")
+        public_ip01 = outscale.PublicIp("publicIp01")
+        nat_service01 = outscale.NatService("natService01",
+            subnet_id=subnet01.subnet_id,
+            public_ip_id=public_ip01.public_ip_id)
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net02.net_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        route01 = outscale.Route("route01",
+            destination_ip_range="0.0.0.0/0",
+            gateway_id=internet_service01.internet_service_id,
+            route_table_id=route_table01.route_table_id)
+        route_table_link01 = outscale.RouteTableLink("routeTableLink01",
+            subnet_id=subnet01.subnet_id,
+            route_table_id=route_table01.id)
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            net_id=net02.net_id,
+            internet_service_id=internet_service01.id)
+        ```
+
+        ## Import
+
+        A Net can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/net:Net ImportedNet vpc-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] tenancy: The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
         """
         ...
     @overload
@@ -169,7 +259,58 @@ class Net(pulumi.CustomResource):
                  args: NetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Net resource with the given unique name, props, and options.
+        Manages a Net.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+
+        ## Example Usage
+        ### Create a Net
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.10.0.0/16",
+            tenancy="default")
+        ```
+        ### Create a Net with a network
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net02 = outscale.Net("net02", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net02.net_id,
+            ip_range="10.0.0.0/18")
+        public_ip01 = outscale.PublicIp("publicIp01")
+        nat_service01 = outscale.NatService("natService01",
+            subnet_id=subnet01.subnet_id,
+            public_ip_id=public_ip01.public_ip_id)
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net02.net_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        route01 = outscale.Route("route01",
+            destination_ip_range="0.0.0.0/0",
+            gateway_id=internet_service01.internet_service_id,
+            route_table_id=route_table01.route_table_id)
+        route_table_link01 = outscale.RouteTableLink("routeTableLink01",
+            subnet_id=subnet01.subnet_id,
+            route_table_id=route_table01.id)
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            net_id=net02.net_id,
+            internet_service_id=internet_service01.id)
+        ```
+
+        ## Import
+
+        A Net can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/net:Net ImportedNet vpc-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param NetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -230,6 +371,12 @@ class Net(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] dhcp_options_set_id: The ID of the DHCP options set (or `default` if you want to associate the default one).
+        :param pulumi.Input[str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[str] net_id: The ID of the Net.
+        :param pulumi.Input[str] state: The state of the Net (`pending` \\| `available` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] tenancy: The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -247,16 +394,25 @@ class Net(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the DHCP options set (or `default` if you want to associate the default one).
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> pulumi.Output[str]:
+        """
+        The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -267,15 +423,24 @@ class Net(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the Net (`pending` \\| `available` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.NetTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def tenancy(self) -> pulumi.Output[str]:
+        """
+        The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
+        """
         return pulumi.get(self, "tenancy")
 

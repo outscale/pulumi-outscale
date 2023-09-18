@@ -24,6 +24,11 @@ class VirtualGatewayArgs:
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VirtualGateway resource.
+        :param pulumi.Input[str] connection_type: The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
+        :param pulumi.Input[str] state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         pulumi.set(__self__, "connection_type", connection_type)
         if net_to_virtual_gateway_links is not None:
@@ -40,6 +45,9 @@ class VirtualGatewayArgs:
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Input[str]:
+        """
+        The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
@@ -49,6 +57,9 @@ class VirtualGatewayArgs:
     @property
     @pulumi.getter(name="netToVirtualGatewayLinks")
     def net_to_virtual_gateway_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]]]:
+        """
+        The Net to which the virtual gateway is attached.
+        """
         return pulumi.get(self, "net_to_virtual_gateway_links")
 
     @net_to_virtual_gateway_links.setter
@@ -67,6 +78,9 @@ class VirtualGatewayArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -76,6 +90,9 @@ class VirtualGatewayArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -85,6 +102,9 @@ class VirtualGatewayArgs:
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
@@ -103,6 +123,11 @@ class _VirtualGatewayState:
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VirtualGateway resources.
+        :param pulumi.Input[str] connection_type: The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
+        :param pulumi.Input[str] state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
@@ -120,6 +145,9 @@ class _VirtualGatewayState:
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
@@ -129,6 +157,9 @@ class _VirtualGatewayState:
     @property
     @pulumi.getter(name="netToVirtualGatewayLinks")
     def net_to_virtual_gateway_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]]]:
+        """
+        The Net to which the virtual gateway is attached.
+        """
         return pulumi.get(self, "net_to_virtual_gateway_links")
 
     @net_to_virtual_gateway_links.setter
@@ -147,6 +178,9 @@ class _VirtualGatewayState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -156,6 +190,9 @@ class _VirtualGatewayState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -165,6 +202,9 @@ class _VirtualGatewayState:
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
@@ -185,9 +225,40 @@ class VirtualGateway(pulumi.CustomResource):
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VirtualGateway resource with the given unique name, props, and options.
+        Manages a virtual gateway.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01",
+            connection_type="ipsec.1",
+            tags=[outscale.VirtualGatewayTagArgs(
+                key="name",
+                value="terraform-virtual-gateway",
+            )])
+        ```
+
+        ## Import
+
+        A virtual gateway can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/virtualGateway:VirtualGateway ImportedVirtualGateway vgw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_type: The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualGatewayNetToVirtualGatewayLinkArgs']]]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
+        :param pulumi.Input[str] state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualGatewayTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         ...
     @overload
@@ -196,7 +267,33 @@ class VirtualGateway(pulumi.CustomResource):
                  args: VirtualGatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VirtualGateway resource with the given unique name, props, and options.
+        Manages a virtual gateway.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01",
+            connection_type="ipsec.1",
+            tags=[outscale.VirtualGatewayTagArgs(
+                key="name",
+                value="terraform-virtual-gateway",
+            )])
+        ```
+
+        ## Import
+
+        A virtual gateway can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/virtualGateway:VirtualGateway ImportedVirtualGateway vgw-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param VirtualGatewayArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -258,6 +355,11 @@ class VirtualGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_type: The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualGatewayNetToVirtualGatewayLinkArgs']]]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
+        :param pulumi.Input[str] state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VirtualGatewayTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -274,11 +376,17 @@ class VirtualGateway(pulumi.CustomResource):
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Output[str]:
+        """
+        The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @property
     @pulumi.getter(name="netToVirtualGatewayLinks")
     def net_to_virtual_gateway_links(self) -> pulumi.Output[Sequence['outputs.VirtualGatewayNetToVirtualGatewayLink']]:
+        """
+        The Net to which the virtual gateway is attached.
+        """
         return pulumi.get(self, "net_to_virtual_gateway_links")
 
     @property
@@ -289,15 +397,24 @@ class VirtualGateway(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.VirtualGatewayTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 

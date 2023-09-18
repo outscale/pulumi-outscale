@@ -6,6 +6,36 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about product types.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Software-Licenses.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-producttype).
+ *
+ * ## Example Usage
+ * ### Read specific product types
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const productTypes01 = outscale.getProductTypes({
+ *     filters: [{
+ *         name: "product_type_ids",
+ *         values: [
+ *             "0001",
+ *             "0002",
+ *         ],
+ *     }],
+ * });
+ * ```
+ * ### Read all product types
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const allProductTypes = outscale.getProductTypes({});
+ * ```
+ */
 export function getProductTypes(args?: GetProductTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetProductTypesResult> {
     args = args || {};
 
@@ -19,6 +49,9 @@ export function getProductTypes(args?: GetProductTypesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getProductTypes.
  */
 export interface GetProductTypesArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetProductTypesFilter[];
 }
 
@@ -31,9 +64,42 @@ export interface GetProductTypesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Information about one or more product types.
+     */
     readonly productTypes: outputs.GetProductTypesProductType[];
     readonly requestId: string;
 }
+/**
+ * Provides information about product types.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Software-Licenses.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-producttype).
+ *
+ * ## Example Usage
+ * ### Read specific product types
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const productTypes01 = outscale.getProductTypes({
+ *     filters: [{
+ *         name: "product_type_ids",
+ *         values: [
+ *             "0001",
+ *             "0002",
+ *         ],
+ *     }],
+ * });
+ * ```
+ * ### Read all product types
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const allProductTypes = outscale.getProductTypes({});
+ * ```
+ */
 export function getProductTypesOutput(args?: GetProductTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductTypesResult> {
     return pulumi.output(args).apply((a: any) => getProductTypes(a, opts))
 }
@@ -42,5 +108,8 @@ export function getProductTypesOutput(args?: GetProductTypesOutputArgs, opts?: p
  * A collection of arguments for invoking getProductTypes.
  */
 export interface GetProductTypesOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetProductTypesFilterArgs>[]>;
 }

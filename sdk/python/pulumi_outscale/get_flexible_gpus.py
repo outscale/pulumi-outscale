@@ -45,6 +45,9 @@ class GetFlexibleGpusResult:
     @property
     @pulumi.getter(name="flexibleGpuses")
     def flexible_gpuses(self) -> Sequence['outputs.GetFlexibleGpusFlexibleGpusResult']:
+        """
+        Information about one or more fGPUs.
+        """
         return pulumi.get(self, "flexible_gpuses")
 
     @property
@@ -76,7 +79,34 @@ class AwaitableGetFlexibleGpusResult(GetFlexibleGpusResult):
 def get_flexible_gpus(filters: Optional[Sequence[pulumi.InputType['GetFlexibleGpusFilterArgs']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlexibleGpusResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about flexible GPUs.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    flexible_gpus01 = outscale.get_flexible_gpus(filters=[
+        outscale.GetFlexibleGpusFilterArgs(
+            name="model_names",
+            values=[
+                "nvidia-p6",
+                "nvidia-p100",
+            ],
+        ),
+        outscale.GetFlexibleGpusFilterArgs(
+            name="states",
+            values=["attached"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetFlexibleGpusFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +124,33 @@ def get_flexible_gpus(filters: Optional[Sequence[pulumi.InputType['GetFlexibleGp
 def get_flexible_gpus_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFlexibleGpusFilterArgs']]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlexibleGpusResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about flexible GPUs.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    flexible_gpus01 = outscale.get_flexible_gpus(filters=[
+        outscale.GetFlexibleGpusFilterArgs(
+            name="model_names",
+            values=[
+                "nvidia-p6",
+                "nvidia-p100",
+            ],
+        ),
+        outscale.GetFlexibleGpusFilterArgs(
+            name="states",
+            values=["attached"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetFlexibleGpusFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

@@ -18,6 +18,8 @@ class ApiAccessPolicyArgs:
                  require_trusted_env: pulumi.Input[bool]):
         """
         The set of arguments for constructing a ApiAccessPolicy resource.
+        :param pulumi.Input[int] max_access_key_expiration_seconds: The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+        :param pulumi.Input[bool] require_trusted_env: If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.
         """
         pulumi.set(__self__, "max_access_key_expiration_seconds", max_access_key_expiration_seconds)
         pulumi.set(__self__, "require_trusted_env", require_trusted_env)
@@ -25,6 +27,9 @@ class ApiAccessPolicyArgs:
     @property
     @pulumi.getter(name="maxAccessKeyExpirationSeconds")
     def max_access_key_expiration_seconds(self) -> pulumi.Input[int]:
+        """
+        The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+        """
         return pulumi.get(self, "max_access_key_expiration_seconds")
 
     @max_access_key_expiration_seconds.setter
@@ -34,6 +39,9 @@ class ApiAccessPolicyArgs:
     @property
     @pulumi.getter(name="requireTrustedEnv")
     def require_trusted_env(self) -> pulumi.Input[bool]:
+        """
+        If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.
+        """
         return pulumi.get(self, "require_trusted_env")
 
     @require_trusted_env.setter
@@ -49,6 +57,8 @@ class _ApiAccessPolicyState:
                  require_trusted_env: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ApiAccessPolicy resources.
+        :param pulumi.Input[int] max_access_key_expiration_seconds: The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+        :param pulumi.Input[bool] require_trusted_env: If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.
         """
         if max_access_key_expiration_seconds is not None:
             pulumi.set(__self__, "max_access_key_expiration_seconds", max_access_key_expiration_seconds)
@@ -60,6 +70,9 @@ class _ApiAccessPolicyState:
     @property
     @pulumi.getter(name="maxAccessKeyExpirationSeconds")
     def max_access_key_expiration_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+        """
         return pulumi.get(self, "max_access_key_expiration_seconds")
 
     @max_access_key_expiration_seconds.setter
@@ -78,6 +91,9 @@ class _ApiAccessPolicyState:
     @property
     @pulumi.getter(name="requireTrustedEnv")
     def require_trusted_env(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.
+        """
         return pulumi.get(self, "require_trusted_env")
 
     @require_trusted_env.setter
@@ -94,9 +110,51 @@ class ApiAccessPolicy(pulumi.CustomResource):
                  require_trusted_env: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a ApiAccessPolicy resource with the given unique name, props, and options.
+        Manages the API access policy.
+
+        To activate a trusted session, first you must:
+        * Set expiration dates to all your access keys.
+        * Specify a Certificate Authority (CA) in all your API access rules.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy).
+
+        ## Example Usage
+        ### Require expiration dates for your access keys
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        unique = outscale.ApiAccessPolicy("unique",
+            max_access_key_expiration_seconds=31536000,
+            require_trusted_env=False)
+        ```
+        ### Activate a trusted session
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        unique = outscale.ApiAccessPolicy("unique",
+            max_access_key_expiration_seconds=3153600000,
+            require_trusted_env=True)
+        ```
+        ### Deactivate a trusted session
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        unique = outscale.ApiAccessPolicy("unique",
+            max_access_key_expiration_seconds=0,
+            require_trusted_env=False)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] max_access_key_expiration_seconds: The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+        :param pulumi.Input[bool] require_trusted_env: If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.
         """
         ...
     @overload
@@ -105,7 +163,47 @@ class ApiAccessPolicy(pulumi.CustomResource):
                  args: ApiAccessPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ApiAccessPolicy resource with the given unique name, props, and options.
+        Manages the API access policy.
+
+        To activate a trusted session, first you must:
+        * Set expiration dates to all your access keys.
+        * Specify a Certificate Authority (CA) in all your API access rules.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy).
+
+        ## Example Usage
+        ### Require expiration dates for your access keys
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        unique = outscale.ApiAccessPolicy("unique",
+            max_access_key_expiration_seconds=31536000,
+            require_trusted_env=False)
+        ```
+        ### Activate a trusted session
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        unique = outscale.ApiAccessPolicy("unique",
+            max_access_key_expiration_seconds=3153600000,
+            require_trusted_env=True)
+        ```
+        ### Deactivate a trusted session
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        unique = outscale.ApiAccessPolicy("unique",
+            max_access_key_expiration_seconds=0,
+            require_trusted_env=False)
+        ```
+
         :param str resource_name: The name of the resource.
         :param ApiAccessPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,6 +257,8 @@ class ApiAccessPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] max_access_key_expiration_seconds: The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+        :param pulumi.Input[bool] require_trusted_env: If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,6 +272,9 @@ class ApiAccessPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="maxAccessKeyExpirationSeconds")
     def max_access_key_expiration_seconds(self) -> pulumi.Output[int]:
+        """
+        The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+        """
         return pulumi.get(self, "max_access_key_expiration_seconds")
 
     @property
@@ -182,5 +285,8 @@ class ApiAccessPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="requireTrustedEnv")
     def require_trusted_env(self) -> pulumi.Output[bool]:
+        """
+        If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.
+        """
         return pulumi.get(self, "require_trusted_env")
 

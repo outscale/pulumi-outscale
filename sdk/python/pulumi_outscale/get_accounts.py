@@ -35,6 +35,9 @@ class GetAccountsResult:
     @property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetAccountsAccountResult']:
+        """
+        The list of the accounts.
+        """
         return pulumi.get(self, "accounts")
 
     @property
@@ -64,7 +67,19 @@ class AwaitableGetAccountsResult(GetAccountsResult):
 
 def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about accounts.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-account).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_accounts = outscale.get_accounts()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

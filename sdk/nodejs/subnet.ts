@@ -6,6 +6,41 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Subnet.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-subnet).
+ *
+ * ## Example Usage
+ * ### Required resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * ```
+ * ### Create a subnet
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: outscale_net.net01.net_id,
+ *     ipRange: "10.0.0.0/18",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A subnet can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678
+ * ```
+ */
 export class Subnet extends pulumi.CustomResource {
     /**
      * Get an existing Subnet resource's state with the given name, ID, and optional extra
@@ -34,14 +69,39 @@ export class Subnet extends pulumi.CustomResource {
         return obj['__pulumiType'] === Subnet.__pulumiType;
     }
 
+    /**
+     * The number of available IPs in the Subnets.
+     */
     public /*out*/ readonly availableIpsCount!: pulumi.Output<number>;
+    /**
+     * The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+     * The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+     */
     public readonly ipRange!: pulumi.Output<string>;
+    /**
+     * If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+     */
     public readonly mapPublicIpOnLaunch!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the Net for which you want to create a Subnet.
+     */
     public readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the Subnet (`pending` \| `available` \| `deleted`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The ID of the Subnet.
+     */
     public /*out*/ readonly subnetId!: pulumi.Output<string>;
+    /**
+     * The name of the Subregion in which you want to create the Subnet.
+     */
     public readonly subregionName!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.SubnetTag[] | undefined>;
 
     /**
@@ -93,14 +153,39 @@ export class Subnet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Subnet resources.
  */
 export interface SubnetState {
+    /**
+     * The number of available IPs in the Subnets.
+     */
     availableIpsCount?: pulumi.Input<number>;
+    /**
+     * The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+     * The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+     */
     ipRange?: pulumi.Input<string>;
+    /**
+     * If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+     */
     mapPublicIpOnLaunch?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Net for which you want to create a Subnet.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the Subnet (`pending` \| `available` \| `deleted`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * The ID of the Subnet.
+     */
     subnetId?: pulumi.Input<string>;
+    /**
+     * The name of the Subregion in which you want to create the Subnet.
+     */
     subregionName?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SubnetTag>[]>;
 }
 
@@ -108,9 +193,25 @@ export interface SubnetState {
  * The set of arguments for constructing a Subnet resource.
  */
 export interface SubnetArgs {
+    /**
+     * The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
+     * The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
+     */
     ipRange: pulumi.Input<string>;
+    /**
+     * If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
+     */
     mapPublicIpOnLaunch?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Net for which you want to create a Subnet.
+     */
     netId: pulumi.Input<string>;
+    /**
+     * The name of the Subregion in which you want to create the Subnet.
+     */
     subregionName?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SubnetTag>[]>;
 }

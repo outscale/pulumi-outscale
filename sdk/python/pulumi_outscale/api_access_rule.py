@@ -20,6 +20,10 @@ class ApiAccessRuleArgs:
                  ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ApiAccessRule resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_ids: One or more IDs of Client Certificate Authorities (CAs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cns: One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        :param pulumi.Input[str] description: A description for the API access rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
         """
         if ca_ids is not None:
             pulumi.set(__self__, "ca_ids", ca_ids)
@@ -33,6 +37,9 @@ class ApiAccessRuleArgs:
     @property
     @pulumi.getter(name="caIds")
     def ca_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of Client Certificate Authorities (CAs).
+        """
         return pulumi.get(self, "ca_ids")
 
     @ca_ids.setter
@@ -42,6 +49,9 @@ class ApiAccessRuleArgs:
     @property
     @pulumi.getter
     def cns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        """
         return pulumi.get(self, "cns")
 
     @cns.setter
@@ -51,6 +61,9 @@ class ApiAccessRuleArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the API access rule.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -60,6 +73,9 @@ class ApiAccessRuleArgs:
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
+        """
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
@@ -78,6 +94,11 @@ class _ApiAccessRuleState:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApiAccessRule resources.
+        :param pulumi.Input[str] api_access_rule_id: The ID of the API access rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_ids: One or more IDs of Client Certificate Authorities (CAs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cns: One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        :param pulumi.Input[str] description: A description for the API access rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
         """
         if api_access_rule_id is not None:
             pulumi.set(__self__, "api_access_rule_id", api_access_rule_id)
@@ -95,6 +116,9 @@ class _ApiAccessRuleState:
     @property
     @pulumi.getter(name="apiAccessRuleId")
     def api_access_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the API access rule.
+        """
         return pulumi.get(self, "api_access_rule_id")
 
     @api_access_rule_id.setter
@@ -104,6 +128,9 @@ class _ApiAccessRuleState:
     @property
     @pulumi.getter(name="caIds")
     def ca_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of Client Certificate Authorities (CAs).
+        """
         return pulumi.get(self, "ca_ids")
 
     @ca_ids.setter
@@ -113,6 +140,9 @@ class _ApiAccessRuleState:
     @property
     @pulumi.getter
     def cns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        """
         return pulumi.get(self, "cns")
 
     @cns.setter
@@ -122,6 +152,9 @@ class _ApiAccessRuleState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the API access rule.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -131,6 +164,9 @@ class _ApiAccessRuleState:
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
+        """
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
@@ -158,9 +194,57 @@ class ApiAccessRule(pulumi.CustomResource):
                  ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a ApiAccessRule resource with the given unique name, props, and options.
+        Manages an API access rule.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+
+        ## Example Usage
+        ### Create an API access rule based on IPs
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        api_access_rule01 = outscale.ApiAccessRule("apiAccessRule01",
+            description="Basic API Access Rule from Terraform",
+            ip_ranges=[
+                "192.0.2.0",
+                "192.0.2.0/16",
+            ])
+        ```
+        ### Create an API access rule based on IPs and Certificate Authority (CA)
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=(lambda path: open(path).read())("<PATH>"),
+            description="Terraform CA")
+        api_access_rule02 = outscale.ApiAccessRule("apiAccessRule02",
+            ip_ranges=[
+                "192.0.2.0",
+                "192.0.2.0/16",
+            ],
+            ca_ids=[ca01.ca_id],
+            description="API Access Rule with CA from Terraform")
+        ```
+
+        ## Import
+
+        An API access rule can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_ids: One or more IDs of Client Certificate Authorities (CAs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cns: One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        :param pulumi.Input[str] description: A description for the API access rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
         """
         ...
     @overload
@@ -169,7 +253,51 @@ class ApiAccessRule(pulumi.CustomResource):
                  args: Optional[ApiAccessRuleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ApiAccessRule resource with the given unique name, props, and options.
+        Manages an API access rule.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+
+        ## Example Usage
+        ### Create an API access rule based on IPs
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        api_access_rule01 = outscale.ApiAccessRule("apiAccessRule01",
+            description="Basic API Access Rule from Terraform",
+            ip_ranges=[
+                "192.0.2.0",
+                "192.0.2.0/16",
+            ])
+        ```
+        ### Create an API access rule based on IPs and Certificate Authority (CA)
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=(lambda path: open(path).read())("<PATH>"),
+            description="Terraform CA")
+        api_access_rule02 = outscale.ApiAccessRule("apiAccessRule02",
+            ip_ranges=[
+                "192.0.2.0",
+                "192.0.2.0/16",
+            ],
+            ca_ids=[ca01.ca_id],
+            description="API Access Rule with CA from Terraform")
+        ```
+
+        ## Import
+
+        An API access rule can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+        ```
+
         :param str resource_name: The name of the resource.
         :param ApiAccessRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,6 +355,11 @@ class ApiAccessRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_access_rule_id: The ID of the API access rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ca_ids: One or more IDs of Client Certificate Authorities (CAs).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cns: One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        :param pulumi.Input[str] description: A description for the API access rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -243,26 +376,41 @@ class ApiAccessRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiAccessRuleId")
     def api_access_rule_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the API access rule.
+        """
         return pulumi.get(self, "api_access_rule_id")
 
     @property
     @pulumi.getter(name="caIds")
     def ca_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more IDs of Client Certificate Authorities (CAs).
+        """
         return pulumi.get(self, "ca_ids")
 
     @property
     @pulumi.getter
     def cns(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        """
         return pulumi.get(self, "cns")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description for the API access rule.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more IP addresses or CIDR blocks (for example, `192.0.2.0/16`).
+        """
         return pulumi.get(self, "ip_ranges")
 
     @property

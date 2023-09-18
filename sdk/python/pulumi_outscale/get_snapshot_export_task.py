@@ -61,6 +61,9 @@ class GetSnapshotExportTaskResult:
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        If the snapshot export task fails, an error message appears.
+        """
         return pulumi.get(self, "comment")
 
     @property
@@ -84,11 +87,17 @@ class GetSnapshotExportTaskResult:
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> Sequence['outputs.GetSnapshotExportTaskOsuExportResult']:
+        """
+        Information about the snapshot export task.
+        """
         return pulumi.get(self, "osu_exports")
 
     @property
     @pulumi.getter
     def progress(self) -> int:
+        """
+        The progress of the snapshot export task, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @property
@@ -99,21 +108,33 @@ class GetSnapshotExportTaskResult:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
+        """
+        The ID of the snapshot to be exported.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetSnapshotExportTaskTagResult']:
+        """
+        One or more tags associated with the snapshot export task.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> str:
+        """
+        The ID of the snapshot export task.
+        """
         return pulumi.get(self, "task_id")
 
 
@@ -140,7 +161,25 @@ def get_snapshot_export_task(dry_run: Optional[bool] = None,
                              filters: Optional[Sequence[pulumi.InputType['GetSnapshotExportTaskFilterArgs']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotExportTaskResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a snapshot export task.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshot_export_task01 = outscale.get_snapshot_export_task(filters=[outscale.GetSnapshotExportTaskFilterArgs(
+        name="task_ids",
+        values=["snap-export-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSnapshotExportTaskFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run
@@ -167,6 +206,24 @@ def get_snapshot_export_task_output(dry_run: Optional[pulumi.Input[Optional[bool
                                     filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSnapshotExportTaskFilterArgs']]]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotExportTaskResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a snapshot export task.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshot_export_task01 = outscale.get_snapshot_export_task(filters=[outscale.GetSnapshotExportTaskFilterArgs(
+        name="task_ids",
+        values=["snap-export-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSnapshotExportTaskFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

@@ -18,6 +18,9 @@ class LoadBalancerVmsArgs:
                  load_balancer_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a LoadBalancerVms resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backend_vm_ids: One or more IDs of back-end VMs.<br />
+               Specifying the same ID several times has no effect as each back-end VM has equal weight.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
         """
         pulumi.set(__self__, "backend_vm_ids", backend_vm_ids)
         pulumi.set(__self__, "load_balancer_name", load_balancer_name)
@@ -25,6 +28,10 @@ class LoadBalancerVmsArgs:
     @property
     @pulumi.getter(name="backendVmIds")
     def backend_vm_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        One or more IDs of back-end VMs.<br />
+        Specifying the same ID several times has no effect as each back-end VM has equal weight.
+        """
         return pulumi.get(self, "backend_vm_ids")
 
     @backend_vm_ids.setter
@@ -34,6 +41,9 @@ class LoadBalancerVmsArgs:
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Input[str]:
+        """
+        The name of the load balancer.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -49,6 +59,9 @@ class _LoadBalancerVmsState:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerVms resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backend_vm_ids: One or more IDs of back-end VMs.<br />
+               Specifying the same ID several times has no effect as each back-end VM has equal weight.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
         """
         if backend_vm_ids is not None:
             pulumi.set(__self__, "backend_vm_ids", backend_vm_ids)
@@ -60,6 +73,10 @@ class _LoadBalancerVmsState:
     @property
     @pulumi.getter(name="backendVmIds")
     def backend_vm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of back-end VMs.<br />
+        Specifying the same ID several times has no effect as each back-end VM has equal weight.
+        """
         return pulumi.get(self, "backend_vm_ids")
 
     @backend_vm_ids.setter
@@ -69,6 +86,9 @@ class _LoadBalancerVmsState:
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the load balancer.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -94,9 +114,59 @@ class LoadBalancerVms(pulumi.CustomResource):
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LoadBalancerVms resource with the given unique name, props, and options.
+        Manages load balancer VMs.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        outscale_vm01 = outscale.Vm("outscaleVm01",
+            image_id="ami-12345678",
+            vm_type="t2.small",
+            keypair_name=var["keypair_name"])
+        outscale_vm02 = outscale.Vm("outscaleVm02",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"])
+        load_balancer01 = outscale.LoadBalancer("loadBalancer01",
+            load_balancer_name="load-balancer-for-backend-vms",
+            subregion_names=[f"{var['region']}a"],
+            listeners=[outscale.LoadBalancerListenerArgs(
+                backend_port=80,
+                backend_protocol="TCP",
+                load_balancer_protocol="TCP",
+                load_balancer_port=80,
+            )],
+            tags=[outscale.LoadBalancerTagArgs(
+                key="name",
+                value="outscale_load_balancer01",
+            )])
+        ```
+        ### Register VMs with a load balancer
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        outscale_load_balancer_vms01 = outscale.LoadBalancerVms("outscaleLoadBalancerVms01",
+            load_balancer_name="load-balancer-for-backend-vms",
+            backend_vm_ids=[
+                outscale_vm["outscale_vm01"]["vm_id"],
+                outscale_vm["outscale_vm_02"]["vm_id"],
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backend_vm_ids: One or more IDs of back-end VMs.<br />
+               Specifying the same ID several times has no effect as each back-end VM has equal weight.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
         """
         ...
     @overload
@@ -105,7 +175,54 @@ class LoadBalancerVms(pulumi.CustomResource):
                  args: LoadBalancerVmsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LoadBalancerVms resource with the given unique name, props, and options.
+        Manages load balancer VMs.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        outscale_vm01 = outscale.Vm("outscaleVm01",
+            image_id="ami-12345678",
+            vm_type="t2.small",
+            keypair_name=var["keypair_name"])
+        outscale_vm02 = outscale.Vm("outscaleVm02",
+            image_id=var["image_id"],
+            vm_type=var["vm_type"],
+            keypair_name=var["keypair_name"])
+        load_balancer01 = outscale.LoadBalancer("loadBalancer01",
+            load_balancer_name="load-balancer-for-backend-vms",
+            subregion_names=[f"{var['region']}a"],
+            listeners=[outscale.LoadBalancerListenerArgs(
+                backend_port=80,
+                backend_protocol="TCP",
+                load_balancer_protocol="TCP",
+                load_balancer_port=80,
+            )],
+            tags=[outscale.LoadBalancerTagArgs(
+                key="name",
+                value="outscale_load_balancer01",
+            )])
+        ```
+        ### Register VMs with a load balancer
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        outscale_load_balancer_vms01 = outscale.LoadBalancerVms("outscaleLoadBalancerVms01",
+            load_balancer_name="load-balancer-for-backend-vms",
+            backend_vm_ids=[
+                outscale_vm["outscale_vm01"]["vm_id"],
+                outscale_vm["outscale_vm_02"]["vm_id"],
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param LoadBalancerVmsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,6 +276,9 @@ class LoadBalancerVms(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backend_vm_ids: One or more IDs of back-end VMs.<br />
+               Specifying the same ID several times has no effect as each back-end VM has equal weight.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,11 +292,18 @@ class LoadBalancerVms(pulumi.CustomResource):
     @property
     @pulumi.getter(name="backendVmIds")
     def backend_vm_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        One or more IDs of back-end VMs.<br />
+        Specifying the same ID several times has no effect as each back-end VM has equal weight.
+        """
         return pulumi.get(self, "backend_vm_ids")
 
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Output[str]:
+        """
+        The name of the load balancer.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @property

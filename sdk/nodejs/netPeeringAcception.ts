@@ -6,6 +6,21 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Net peering acceptation.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Peering-Connections.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netpeering).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const netPeeringAcceptation01 = new outscale.NetPeeringAcception("netPeeringAcceptation01", {netPeeringId: outscale_net_peering.net_peering01.net_peering_id});
+ * ```
+ */
 export class NetPeeringAcception extends pulumi.CustomResource {
     /**
      * Get an existing NetPeeringAcception resource's state with the given name, ID, and optional extra
@@ -34,13 +49,28 @@ export class NetPeeringAcception extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetPeeringAcception.__pulumiType;
     }
 
+    /**
+     * Information about the accepter Net.
+     */
     public /*out*/ readonly accepterNet!: pulumi.Output<outputs.NetPeeringAcceptionAccepterNet>;
     public /*out*/ readonly accepterNetId!: pulumi.Output<string>;
+    /**
+     * The ID of the Net peering you want to accept.
+     */
     public readonly netPeeringId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * Information about the source Net.
+     */
     public /*out*/ readonly sourceNet!: pulumi.Output<outputs.NetPeeringAcceptionSourceNet>;
     public /*out*/ readonly sourceNetId!: pulumi.Output<string>;
+    /**
+     * Information about the state of the Net peering.
+     */
     public /*out*/ readonly state!: pulumi.Output<outputs.NetPeeringAcceptionState>;
+    /**
+     * One or more tags associated with the Net peering.
+     */
     public /*out*/ readonly tags!: pulumi.Output<outputs.NetPeeringAcceptionTag[]>;
 
     /**
@@ -87,13 +117,28 @@ export class NetPeeringAcception extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetPeeringAcception resources.
  */
 export interface NetPeeringAcceptionState {
+    /**
+     * Information about the accepter Net.
+     */
     accepterNet?: pulumi.Input<inputs.NetPeeringAcceptionAccepterNet>;
     accepterNetId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net peering you want to accept.
+     */
     netPeeringId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Information about the source Net.
+     */
     sourceNet?: pulumi.Input<inputs.NetPeeringAcceptionSourceNet>;
     sourceNetId?: pulumi.Input<string>;
+    /**
+     * Information about the state of the Net peering.
+     */
     state?: pulumi.Input<inputs.NetPeeringAcceptionState>;
+    /**
+     * One or more tags associated with the Net peering.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptionTag>[]>;
 }
 
@@ -101,5 +146,8 @@ export interface NetPeeringAcceptionState {
  * The set of arguments for constructing a NetPeeringAcception resource.
  */
 export interface NetPeeringAcceptionArgs {
+    /**
+     * The ID of the Net peering you want to accept.
+     */
     netPeeringId: pulumi.Input<string>;
 }

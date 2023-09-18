@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about an Internet service.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const internetService01 = outscale.getInternetService({
+ *     filters: [{
+ *         name: "internet_service_ids",
+ *         values: ["igw-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getInternetService(args?: GetInternetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetInternetServiceResult> {
     args = args || {};
 
@@ -19,6 +39,9 @@ export function getInternetService(args?: GetInternetServiceArgs, opts?: pulumi.
  * A collection of arguments for invoking getInternetService.
  */
 export interface GetInternetServiceArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetInternetServiceFilter[];
 }
 
@@ -31,12 +54,44 @@ export interface GetInternetServiceResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ID of the Internet service.
+     */
     readonly internetServiceId: string;
+    /**
+     * The ID of the Net attached to the Internet service.
+     */
     readonly netId: string;
     readonly requestId: string;
+    /**
+     * The state of the attachment of the Internet service to the Net (always `available`).
+     */
     readonly state: string;
+    /**
+     * One or more tags associated with the Internet service.
+     */
     readonly tags: outputs.GetInternetServiceTag[];
 }
+/**
+ * Provides information about an Internet service.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const internetService01 = outscale.getInternetService({
+ *     filters: [{
+ *         name: "internet_service_ids",
+ *         values: ["igw-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getInternetServiceOutput(args?: GetInternetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInternetServiceResult> {
     return pulumi.output(args).apply((a: any) => getInternetService(a, opts))
 }
@@ -45,5 +100,8 @@ export function getInternetServiceOutput(args?: GetInternetServiceOutputArgs, op
  * A collection of arguments for invoking getInternetService.
  */
 export interface GetInternetServiceOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetInternetServiceFilterArgs>[]>;
 }

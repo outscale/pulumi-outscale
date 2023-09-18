@@ -6,6 +6,65 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Net.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+ *
+ * ## Example Usage
+ * ### Create a Net
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {
+ *     ipRange: "10.10.0.0/16",
+ *     tenancy: "default",
+ * });
+ * ```
+ * ### Create a Net with a network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net02 = new outscale.Net("net02", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net02.netId,
+ *     ipRange: "10.0.0.0/18",
+ * });
+ * const publicIp01 = new outscale.PublicIp("publicIp01", {});
+ * const natService01 = new outscale.NatService("natService01", {
+ *     subnetId: subnet01.subnetId,
+ *     publicIpId: publicIp01.publicIpId,
+ * });
+ * const routeTable01 = new outscale.RouteTable("routeTable01", {netId: net02.netId});
+ * const internetService01 = new outscale.InternetService("internetService01", {});
+ * const route01 = new outscale.Route("route01", {
+ *     destinationIpRange: "0.0.0.0/0",
+ *     gatewayId: internetService01.internetServiceId,
+ *     routeTableId: routeTable01.routeTableId,
+ * });
+ * const routeTableLink01 = new outscale.RouteTableLink("routeTableLink01", {
+ *     subnetId: subnet01.subnetId,
+ *     routeTableId: routeTable01.id,
+ * });
+ * const internetServiceLink01 = new outscale.InternetServiceLink("internetServiceLink01", {
+ *     netId: net02.netId,
+ *     internetServiceId: internetService01.id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A Net can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/net:Net ImportedNet vpc-87654321
+ * ```
+ */
 export class Net extends pulumi.CustomResource {
     /**
      * Get an existing Net resource's state with the given name, ID, and optional extra
@@ -34,12 +93,30 @@ export class Net extends pulumi.CustomResource {
         return obj['__pulumiType'] === Net.__pulumiType;
     }
 
+    /**
+     * The ID of the DHCP options set (or `default` if you want to associate the default one).
+     */
     public /*out*/ readonly dhcpOptionsSetId!: pulumi.Output<string>;
+    /**
+     * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+     */
     public readonly ipRange!: pulumi.Output<string>;
+    /**
+     * The ID of the Net.
+     */
     public /*out*/ readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the Net (`pending` \| `available` \| `deleted`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.NetTag[] | undefined>;
+    /**
+     * The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
+     */
     public readonly tenancy!: pulumi.Output<string>;
 
     /**
@@ -84,12 +161,30 @@ export class Net extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Net resources.
  */
 export interface NetState {
+    /**
+     * The ID of the DHCP options set (or `default` if you want to associate the default one).
+     */
     dhcpOptionsSetId?: pulumi.Input<string>;
+    /**
+     * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+     */
     ipRange?: pulumi.Input<string>;
+    /**
+     * The ID of the Net.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the Net (`pending` \| `available` \| `deleted`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[]>;
+    /**
+     * The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
+     */
     tenancy?: pulumi.Input<string>;
 }
 
@@ -97,7 +192,16 @@ export interface NetState {
  * The set of arguments for constructing a Net resource.
  */
 export interface NetArgs {
+    /**
+     * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+     */
     ipRange: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[]>;
+    /**
+     * The tenancy options for the VMs (`default` if a VM created in a Net can be launched with any tenancy, `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware).
+     */
     tenancy?: pulumi.Input<string>;
 }

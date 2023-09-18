@@ -51,6 +51,9 @@ class GetNetAttributesResult:
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> str:
+        """
+        The ID of the DHCP options set (or `default` if you want to associate the default one).
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @property
@@ -64,11 +67,17 @@ class GetNetAttributesResult:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> str:
+        """
+        The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -79,16 +88,25 @@ class GetNetAttributesResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the Net (`pending` \\| `available` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetNetAttributesTagResult']:
+        """
+        One or more tags associated with the Net.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def tenancy(self) -> str:
+        """
+        The VM tenancy in a Net.
+        """
         return pulumi.get(self, "tenancy")
 
 
@@ -111,7 +129,22 @@ class AwaitableGetNetAttributesResult(GetNetAttributesResult):
 def get_net_attributes(net_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetAttributesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about the attributes of a Net.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatenet).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_attributes01 = outscale.get_net_attributes(net_id="vpc-12345678")
+    ```
+
+
+    :param str net_id: The ID of the Net.
     """
     __args__ = dict()
     __args__['netId'] = net_id
@@ -133,6 +166,21 @@ def get_net_attributes(net_id: Optional[str] = None,
 def get_net_attributes_output(net_id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetAttributesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about the attributes of a Net.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatenet).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_attributes01 = outscale.get_net_attributes(net_id="vpc-12345678")
+    ```
+
+
+    :param str net_id: The ID of the Net.
     """
     ...

@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about a DHCP option.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const dhcpOption01 = outscale.getDhcpOption({
+ *     filters: [{
+ *         name: "dhcp_options_set_id",
+ *         values: ["dopt-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getDhcpOption(args?: GetDhcpOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDhcpOptionResult> {
     args = args || {};
 
@@ -19,6 +39,9 @@ export function getDhcpOption(args?: GetDhcpOptionArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getDhcpOption.
  */
 export interface GetDhcpOptionArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetDhcpOptionFilter[];
 }
 
@@ -26,20 +49,61 @@ export interface GetDhcpOptionArgs {
  * A collection of values returned by getDhcpOption.
  */
 export interface GetDhcpOptionResult {
+    /**
+     * If true, the DHCP options set is a default one. If false, it is not.
+     */
     readonly default: boolean;
+    /**
+     * The ID of the DHCP options set.
+     */
     readonly dhcpOptionsSetId: string;
+    /**
+     * The domain name.
+     */
     readonly domainName: string;
+    /**
+     * One or more IPs for the domain name servers.
+     */
     readonly domainNameServers: string[];
     readonly filters?: outputs.GetDhcpOptionFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * One or more IPs for the log servers.
+     */
     readonly logServers: string[];
+    /**
+     * One or more IPs for the NTP servers.
+     */
     readonly ntpServers: string[];
     readonly requestId: string;
+    /**
+     * One or more tags associated with the DHCP options set.
+     */
     readonly tags: outputs.GetDhcpOptionTag[];
 }
+/**
+ * Provides information about a DHCP option.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const dhcpOption01 = outscale.getDhcpOption({
+ *     filters: [{
+ *         name: "dhcp_options_set_id",
+ *         values: ["dopt-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getDhcpOptionOutput(args?: GetDhcpOptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDhcpOptionResult> {
     return pulumi.output(args).apply((a: any) => getDhcpOption(a, opts))
 }
@@ -48,5 +112,8 @@ export function getDhcpOptionOutput(args?: GetDhcpOptionOutputArgs, opts?: pulum
  * A collection of arguments for invoking getDhcpOption.
  */
 export interface GetDhcpOptionOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetDhcpOptionFilterArgs>[]>;
 }

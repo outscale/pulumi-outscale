@@ -74,31 +74,49 @@ class GetPublicIpResult:
     @property
     @pulumi.getter(name="linkPublicIpId")
     def link_public_ip_id(self) -> str:
+        """
+        (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        """
         return pulumi.get(self, "link_public_ip_id")
 
     @property
     @pulumi.getter(name="nicAccountId")
     def nic_account_id(self) -> str:
+        """
+        The account ID of the owner of the NIC.
+        """
         return pulumi.get(self, "nic_account_id")
 
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> str:
+        """
+        The ID of the NIC the public IP is associated with (if any).
+        """
         return pulumi.get(self, "nic_id")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
+        """
+        The private IP associated with the public IP.
+        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
+        """
+        The public IP.
+        """
         return pulumi.get(self, "public_ip")
 
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> str:
+        """
+        The allocation ID of the public IP.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @property
@@ -109,11 +127,17 @@ class GetPublicIpResult:
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetPublicIpTagResult']:
+        """
+        One or more tags associated with the public IP.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> str:
+        """
+        The ID of the VM the public IP is associated with (if any).
+        """
         return pulumi.get(self, "vm_id")
 
 
@@ -141,7 +165,27 @@ def get_public_ip(filters: Optional[Sequence[pulumi.InputType['GetPublicIpFilter
                   public_ip_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublicIpResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a public IP.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    public_ip01 = outscale.get_public_ip(filters=[outscale.GetPublicIpFilterArgs(
+        name="public_ips",
+        values=["111.11.111.1"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetPublicIpFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str public_ip: The public IP.
+    :param str public_ip_id: The allocation ID of the public IP.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -170,6 +214,26 @@ def get_public_ip_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi
                          public_ip_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicIpResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a public IP.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    public_ip01 = outscale.get_public_ip(filters=[outscale.GetPublicIpFilterArgs(
+        name="public_ips",
+        values=["111.11.111.1"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetPublicIpFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str public_ip: The public IP.
+    :param str public_ip_id: The allocation ID of the public IP.
     """
     ...

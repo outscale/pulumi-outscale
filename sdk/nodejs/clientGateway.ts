@@ -6,6 +6,37 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a client gateway.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const clientGateway01 = new outscale.ClientGateway("clientGateway01", {
+ *     bgpAsn: 65000,
+ *     connectionType: "ipsec.1",
+ *     publicIp: "111.11.11.111",
+ *     tags: [{
+ *         key: "Name",
+ *         value: "client_gateway_01",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A client gateway can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/clientGateway:ClientGateway ImportedClientGateway cgw-12345678
+ * ```
+ */
 export class ClientGateway extends pulumi.CustomResource {
     /**
      * Get an existing ClientGateway resource's state with the given name, ID, and optional extra
@@ -34,12 +65,30 @@ export class ClientGateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === ClientGateway.__pulumiType;
     }
 
+    /**
+     * The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+     */
     public readonly bgpAsn!: pulumi.Output<number>;
+    /**
+     * The ID of the client gateway.
+     */
     public /*out*/ readonly clientGatewayId!: pulumi.Output<string>;
+    /**
+     * The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+     */
     public readonly connectionType!: pulumi.Output<string>;
+    /**
+     * The public fixed IPv4 address of your client gateway.
+     */
     public readonly publicIp!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.ClientGatewayTag[] | undefined>;
 
     /**
@@ -90,12 +139,30 @@ export class ClientGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ClientGateway resources.
  */
 export interface ClientGatewayState {
+    /**
+     * The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+     */
     bgpAsn?: pulumi.Input<number>;
+    /**
+     * The ID of the client gateway.
+     */
     clientGatewayId?: pulumi.Input<string>;
+    /**
+     * The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+     */
     connectionType?: pulumi.Input<string>;
+    /**
+     * The public fixed IPv4 address of your client gateway.
+     */
     publicIp?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[]>;
 }
 
@@ -103,8 +170,20 @@ export interface ClientGatewayState {
  * The set of arguments for constructing a ClientGateway resource.
  */
 export interface ClientGatewayArgs {
+    /**
+     * The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between `1` and `4294967295`.
+     */
     bgpAsn: pulumi.Input<number>;
+    /**
+     * The communication protocol used to establish tunnel with your client gateway (only `ipsec.1` is supported).
+     */
     connectionType: pulumi.Input<string>;
+    /**
+     * The public fixed IPv4 address of your client gateway.
+     */
     publicIp: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[]>;
 }

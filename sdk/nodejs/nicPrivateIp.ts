@@ -4,6 +4,53 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a NIC's private IPs.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     subregionName: `${_var.region}a`,
+ *     ipRange: "10.0.0.0/16",
+ *     netId: net01.netId,
+ * });
+ * const nic01 = new outscale.Nic("nic01", {subnetId: subnet01.subnetId});
+ * ```
+ * ### Link a specific secondary private IP address to a NIC
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const nicPrivateIp01 = new outscale.NicPrivateIp("nicPrivateIp01", {
+ *     nicId: outscale_nic.nic01.nic_id,
+ *     privateIps: [
+ *         "10.0.12.34",
+ *         "10.0.12.35",
+ *     ],
+ * });
+ * ```
+ * ### Link several automatic secondary private IP addresses to a NIC
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const nicPrivateIp02 = new outscale.NicPrivateIp("nicPrivateIp02", {
+ *     nicId: outscale_nic.nic01.nic_id,
+ *     secondaryPrivateIpCount: 2,
+ * });
+ * ```
+ */
 export class NicPrivateIp extends pulumi.CustomResource {
     /**
      * Get an existing NicPrivateIp resource's state with the given name, ID, and optional extra
@@ -32,11 +79,23 @@ export class NicPrivateIp extends pulumi.CustomResource {
         return obj['__pulumiType'] === NicPrivateIp.__pulumiType;
     }
 
+    /**
+     * If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+     */
     public readonly allowRelink!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the NIC.
+     */
     public readonly nicId!: pulumi.Output<string>;
     public /*out*/ readonly primaryPrivateIp!: pulumi.Output<string>;
+    /**
+     * The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+     */
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The number of secondary private IPs to assign to the NIC.
+     */
     public readonly secondaryPrivateIpCount!: pulumi.Output<number>;
 
     /**
@@ -79,11 +138,23 @@ export class NicPrivateIp extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NicPrivateIp resources.
  */
 export interface NicPrivateIpState {
+    /**
+     * If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+     */
     allowRelink?: pulumi.Input<boolean>;
+    /**
+     * The ID of the NIC.
+     */
     nicId?: pulumi.Input<string>;
     primaryPrivateIp?: pulumi.Input<string>;
+    /**
+     * The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+     */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The number of secondary private IPs to assign to the NIC.
+     */
     secondaryPrivateIpCount?: pulumi.Input<number>;
 }
 
@@ -91,8 +162,20 @@ export interface NicPrivateIpState {
  * The set of arguments for constructing a NicPrivateIp resource.
  */
 export interface NicPrivateIpArgs {
+    /**
+     * If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+     */
     allowRelink?: pulumi.Input<boolean>;
+    /**
+     * The ID of the NIC.
+     */
     nicId: pulumi.Input<string>;
+    /**
+     * The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+     */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of secondary private IPs to assign to the NIC.
+     */
     secondaryPrivateIpCount?: pulumi.Input<number>;
 }

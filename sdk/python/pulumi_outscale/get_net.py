@@ -55,6 +55,9 @@ class GetNetResult:
     @property
     @pulumi.getter(name="dhcpOptionsSetId")
     def dhcp_options_set_id(self) -> str:
+        """
+        The ID of the DHCP options set (or `default` if you want to associate the default one).
+        """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @property
@@ -73,11 +76,17 @@ class GetNetResult:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> str:
+        """
+        The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -88,16 +97,25 @@ class GetNetResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the Net (`pending` \\| `available` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetNetTagResult']:
+        """
+        One or more tags associated with the Net.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def tenancy(self) -> str:
+        """
+        The VM tenancy in a Net.
+        """
         return pulumi.get(self, "tenancy")
 
 
@@ -122,7 +140,26 @@ def get_net(filters: Optional[Sequence[pulumi.InputType['GetNetFilterArgs']]] = 
             net_id: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Net.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net01 = outscale.get_net(filters=[outscale.GetNetFilterArgs(
+        name="net_ids",
+        values=["vpc-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str net_id: The ID of the Net.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -147,6 +184,25 @@ def get_net_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.Input
                    net_id: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Net.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net01 = outscale.get_net(filters=[outscale.GetNetFilterArgs(
+        name="net_ids",
+        values=["vpc-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str net_id: The ID of the Net.
     """
     ...

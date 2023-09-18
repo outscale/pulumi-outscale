@@ -46,6 +46,9 @@ class GetLoadBalancerVmHealthResult:
     @property
     @pulumi.getter(name="backendVmHealths")
     def backend_vm_healths(self) -> Sequence['outputs.GetLoadBalancerVmHealthBackendVmHealthResult']:
+        """
+        Information about the health of one or more back-end VMs.
+        """
         return pulumi.get(self, "backend_vm_healths")
 
     @property
@@ -96,7 +99,27 @@ def get_load_balancer_vm_health(backend_vm_ids: Optional[Sequence[str]] = None,
                                 load_balancer_name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerVmHealthResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about the health of one or more back-end VMs registered with a specific load balancer.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmshealth).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    load_balancer_vm_health01 = outscale.get_load_balancer_vm_health(backend_vm_ids=[
+            "i-12345678",
+            "i-87654321",
+        ],
+        load_balancer_name="load_balancer01")
+    ```
+
+
+    :param Sequence[str] backend_vm_ids: One or more IDs of back-end VMs.
+    :param str load_balancer_name: The name of the load balancer.
     """
     __args__ = dict()
     __args__['backendVmIds'] = backend_vm_ids
@@ -120,6 +143,26 @@ def get_load_balancer_vm_health_output(backend_vm_ids: Optional[pulumi.Input[Opt
                                        load_balancer_name: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerVmHealthResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about the health of one or more back-end VMs registered with a specific load balancer.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmshealth).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    load_balancer_vm_health01 = outscale.get_load_balancer_vm_health(backend_vm_ids=[
+            "i-12345678",
+            "i-87654321",
+        ],
+        load_balancer_name="load_balancer01")
+    ```
+
+
+    :param Sequence[str] backend_vm_ids: One or more IDs of back-end VMs.
+    :param str load_balancer_name: The name of the load balancer.
     """
     ...

@@ -76,41 +76,65 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The ID of the account.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="additionalEmails")
     def additional_emails(self) -> Sequence[str]:
+        """
+        One or more additional email addresses for the account. These addresses are used for notifications only.
+        """
         return pulumi.get(self, "additional_emails")
 
     @property
     @pulumi.getter
     def city(self) -> str:
+        """
+        The city of the account owner.
+        """
         return pulumi.get(self, "city")
 
     @property
     @pulumi.getter(name="companyName")
     def company_name(self) -> str:
+        """
+        The name of the company for the account.
+        """
         return pulumi.get(self, "company_name")
 
     @property
     @pulumi.getter
     def country(self) -> str:
+        """
+        The country of the account owner.
+        """
         return pulumi.get(self, "country")
 
     @property
     @pulumi.getter(name="customerId")
     def customer_id(self) -> str:
+        """
+        The ID of the customer.
+        """
         return pulumi.get(self, "customer_id")
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The main email address for the account. This address is used for your credentials and for notifications.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="firstName")
     def first_name(self) -> str:
+        """
+        The first name of the account owner.
+        """
         return pulumi.get(self, "first_name")
 
     @property
@@ -124,21 +148,33 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="jobTitle")
     def job_title(self) -> str:
+        """
+        The job title of the account owner.
+        """
         return pulumi.get(self, "job_title")
 
     @property
     @pulumi.getter(name="lastName")
     def last_name(self) -> str:
+        """
+        The last name of the account owner.
+        """
         return pulumi.get(self, "last_name")
 
     @property
     @pulumi.getter(name="mobileNumber")
     def mobile_number(self) -> str:
+        """
+        The mobile phone number of the account owner.
+        """
         return pulumi.get(self, "mobile_number")
 
     @property
     @pulumi.getter(name="phoneNumber")
     def phone_number(self) -> str:
+        """
+        The landline phone number of the account owner.
+        """
         return pulumi.get(self, "phone_number")
 
     @property
@@ -149,16 +185,25 @@ class GetAccountResult:
     @property
     @pulumi.getter(name="stateProvince")
     def state_province(self) -> str:
+        """
+        The state/province of the account.
+        """
         return pulumi.get(self, "state_province")
 
     @property
     @pulumi.getter(name="vatNumber")
     def vat_number(self) -> str:
+        """
+        The value added tax (VAT) number for the account.
+        """
         return pulumi.get(self, "vat_number")
 
     @property
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> str:
+        """
+        The ZIP code of the city.
+        """
         return pulumi.get(self, "zip_code")
 
 
@@ -189,7 +234,19 @@ class AwaitableGetAccountResult(GetAccountResult):
 
 def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an account.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-account).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    account01 = outscale.get_account()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

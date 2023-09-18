@@ -4,6 +4,54 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a flexible GPU link.
+ *
+ * When linking a flexible GPU to a VM, the VM will automatically be stopped and started again.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: ami_12345678,
+ *     vmType: t2.small,
+ *     keypairName: _var.keypair_name,
+ *     placementSubregionName: "eu-west-2a",
+ * });
+ * const flexibleGpu01 = new outscale.FlexibleGpu("flexibleGpu01", {
+ *     modelName: _var.model_name,
+ *     generation: "v4",
+ *     subregionName: "eu-west-2a",
+ *     deleteOnVmDeletion: true,
+ * });
+ * ```
+ * ### Create a flexible GPU link
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const linkFgpu01 = new outscale.FlexibleGpuLink("linkFgpu01", {
+ *     flexibleGpuId: outscale_flexible_gpu.flexible_gpu01.flexible_gpu_id,
+ *     vmId: outscale_vm.vm01.vm_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A flexible GPU link can be imported using the flexible GPU ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+ * ```
+ */
 export class FlexibleGpuLink extends pulumi.CustomResource {
     /**
      * Get an existing FlexibleGpuLink resource's state with the given name, ID, and optional extra
@@ -32,8 +80,14 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === FlexibleGpuLink.__pulumiType;
     }
 
+    /**
+     * The ID of the fGPU you want to attach.
+     */
     public readonly flexibleGpuId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the VM you want to attach the fGPU to.
+     */
     public readonly vmId!: pulumi.Output<string>;
 
     /**
@@ -73,8 +127,14 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FlexibleGpuLink resources.
  */
 export interface FlexibleGpuLinkState {
+    /**
+     * The ID of the fGPU you want to attach.
+     */
     flexibleGpuId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the VM you want to attach the fGPU to.
+     */
     vmId?: pulumi.Input<string>;
 }
 
@@ -82,6 +142,12 @@ export interface FlexibleGpuLinkState {
  * The set of arguments for constructing a FlexibleGpuLink resource.
  */
 export interface FlexibleGpuLinkArgs {
+    /**
+     * The ID of the fGPU you want to attach.
+     */
     flexibleGpuId: pulumi.Input<string>;
+    /**
+     * The ID of the VM you want to attach the fGPU to.
+     */
     vmId: pulumi.Input<string>;
 }

@@ -43,6 +43,9 @@ class GetRegionsResult:
     @property
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
+        """
+        Information about one or more Regions.
+        """
         return pulumi.get(self, "regions")
 
     @property
@@ -64,7 +67,19 @@ class AwaitableGetRegionsResult(GetRegionsResult):
 
 def get_regions(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Regions.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-Endpoints-and-Availability-Zones.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readregions).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_regions = outscale.get_regions()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

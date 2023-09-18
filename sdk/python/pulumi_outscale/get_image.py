@@ -94,36 +94,57 @@ class GetImageResult:
     @property
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> str:
+        """
+        The account alias of the owner of the OMI.
+        """
         return pulumi.get(self, "account_alias")
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The account ID of the owner of the OMI.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def architecture(self) -> str:
+        """
+        The architecture of the OMI (by default, `i386`).
+        """
         return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Sequence['outputs.GetImageBlockDeviceMappingResult']:
+        """
+        One or more block device mappings.
+        """
         return pulumi.get(self, "block_device_mappings")
 
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
+        """
+        The date and time of creation of the OMI.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the OMI.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> str:
+        """
+        The location of the bucket where the OMI files are stored.
+        """
         return pulumi.get(self, "file_location")
 
     @property
@@ -142,16 +163,25 @@ class GetImageResult:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[str]:
+        """
+        The ID of the OMI.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> str:
+        """
+        The name of the OMI.
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="imageType")
     def image_type(self) -> str:
+        """
+        The type of the OMI.
+        """
         return pulumi.get(self, "image_type")
 
     @property
@@ -167,11 +197,17 @@ class GetImageResult:
     @property
     @pulumi.getter(name="permissionsToLaunches")
     def permissions_to_launches(self) -> Sequence['outputs.GetImagePermissionsToLaunchResult']:
+        """
+        Information about the users who have permissions for the resource.
+        """
         return pulumi.get(self, "permissions_to_launches")
 
     @property
     @pulumi.getter(name="productCodes")
     def product_codes(self) -> Sequence[str]:
+        """
+        The product code associated with the OMI (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).
+        """
         return pulumi.get(self, "product_codes")
 
     @property
@@ -182,26 +218,41 @@ class GetImageResult:
     @property
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> str:
+        """
+        The name of the root device.
+        """
         return pulumi.get(self, "root_device_name")
 
     @property
     @pulumi.getter(name="rootDeviceType")
     def root_device_type(self) -> str:
+        """
+        The type of root device used by the OMI (always `bsu`).
+        """
         return pulumi.get(self, "root_device_type")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the OMI (`pending` \\| `available` \\| `failed`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="stateComments")
     def state_comments(self) -> Sequence['outputs.GetImageStateCommentResult']:
+        """
+        Information about the change of state.
+        """
         return pulumi.get(self, "state_comments")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetImageTagResult']:
+        """
+        One or more tags associated with the OMI.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -241,7 +292,27 @@ def get_image(block_device_mappings: Optional[Sequence[pulumi.InputType['GetImag
               permissions: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an image.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    image01 = outscale.get_image(filters=[outscale.GetImageFilterArgs(
+        name="image_ids",
+        values=["ami-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetImageBlockDeviceMappingArgs']] block_device_mappings: One or more block device mappings.
+    :param Sequence[pulumi.InputType['GetImageFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str image_id: The ID of the OMI.
     """
     __args__ = dict()
     __args__['blockDeviceMappings'] = block_device_mappings
@@ -283,6 +354,26 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
                      permissions: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about an image.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    image01 = outscale.get_image(filters=[outscale.GetImageFilterArgs(
+        name="image_ids",
+        values=["ami-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetImageBlockDeviceMappingArgs']] block_device_mappings: One or more block device mappings.
+    :param Sequence[pulumi.InputType['GetImageFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str image_id: The ID of the OMI.
     """
     ...

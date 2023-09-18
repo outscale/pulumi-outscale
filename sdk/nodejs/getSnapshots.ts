@@ -6,6 +6,35 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about snapshots.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshots01 = outscale.getSnapshots({
+ *     filters: [
+ *         {
+ *             name: "tag_keys",
+ *             values: ["env"],
+ *         },
+ *         {
+ *             name: "tag_values",
+ *             values: [
+ *                 "prod",
+ *                 "test",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
 
@@ -22,9 +51,18 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getSnapshots.
  */
 export interface GetSnapshotsArgs {
+    /**
+     * The account ID of the owner of the snapshot.
+     */
     accountIds?: string[];
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetSnapshotsFilter[];
     permissionToCreateVolumes?: string[];
+    /**
+     * The ID of the snapshot.
+     */
     snapshotIds?: string[];
 }
 
@@ -32,6 +70,9 @@ export interface GetSnapshotsArgs {
  * A collection of values returned by getSnapshots.
  */
 export interface GetSnapshotsResult {
+    /**
+     * The account ID of the owner of the snapshot.
+     */
     readonly accountIds?: string[];
     readonly filters?: outputs.GetSnapshotsFilter[];
     /**
@@ -40,9 +81,44 @@ export interface GetSnapshotsResult {
     readonly id: string;
     readonly permissionToCreateVolumes?: string[];
     readonly requestId: string;
+    /**
+     * The ID of the snapshot.
+     */
     readonly snapshotIds?: string[];
+    /**
+     * Information about one or more snapshots and their permissions.
+     */
     readonly snapshots: outputs.GetSnapshotsSnapshot[];
 }
+/**
+ * Provides information about snapshots.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const snapshots01 = outscale.getSnapshots({
+ *     filters: [
+ *         {
+ *             name: "tag_keys",
+ *             values: ["env"],
+ *         },
+ *         {
+ *             name: "tag_values",
+ *             values: [
+ *                 "prod",
+ *                 "test",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
 }
@@ -51,8 +127,17 @@ export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getSnapshots.
  */
 export interface GetSnapshotsOutputArgs {
+    /**
+     * The account ID of the owner of the snapshot.
+     */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetSnapshotsFilterArgs>[]>;
     permissionToCreateVolumes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the snapshot.
+     */
     snapshotIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

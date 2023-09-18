@@ -196,6 +196,10 @@ class ClientGatewayTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -204,6 +208,9 @@ class ClientGatewayTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -213,6 +220,9 @@ class ClientGatewayTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -225,6 +235,10 @@ class DhcpOptionTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -233,6 +247,9 @@ class DhcpOptionTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -242,6 +259,9 @@ class DhcpOptionTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -255,6 +275,11 @@ class ImageBlockDeviceMappingArgs:
                  bsus: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingBsusArgs']]]] = None,
                  device_name: Optional[pulumi.Input[str]] = None,
                  virtual_device_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingBsusArgs']]] bsus: Information about the BSU volume to create.
+        :param pulumi.Input[str] device_name: The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        :param pulumi.Input[str] virtual_device_name: The name of the virtual device (`ephemeralN`).
+        """
         if bsus is not None:
             pulumi.set(__self__, "bsus", bsus)
         if device_name is not None:
@@ -265,6 +290,9 @@ class ImageBlockDeviceMappingArgs:
     @property
     @pulumi.getter
     def bsus(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingBsusArgs']]]]:
+        """
+        Information about the BSU volume to create.
+        """
         return pulumi.get(self, "bsus")
 
     @bsus.setter
@@ -274,6 +302,9 @@ class ImageBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -283,6 +314,9 @@ class ImageBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="virtualDeviceName")
     def virtual_device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the virtual device (`ephemeralN`).
+        """
         return pulumi.get(self, "virtual_device_name")
 
     @virtual_device_name.setter
@@ -298,6 +332,16 @@ class ImageBlockDeviceMappingBsusArgs:
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_vm_deletion: By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the volume.
+        :param pulumi.Input[int] volume_size: The size of the volume, in gibibytes (GiB).<br />
+               If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
+               If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
+        :param pulumi.Input[str] volume_type: The type of the volume (`standard` \\| `io1` \\| `gp2`). If not specified in the request, a `standard` volume is created.<br />
+               For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         if iops is not None:
@@ -312,6 +356,9 @@ class ImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -321,6 +368,9 @@ class ImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -330,6 +380,9 @@ class ImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot used to create the volume.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -339,6 +392,11 @@ class ImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the volume, in gibibytes (GiB).<br />
+        If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
+        If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -348,6 +406,10 @@ class ImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the volume (`standard` \\| `io1` \\| `gp2`). If not specified in the request, a `standard` volume is created.<br />
+        For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -363,6 +425,13 @@ class ImageExportTaskOsuExportArgs:
                  osu_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportOsuApiKeyArgs']]]] = None,
                  osu_manifest_url: Optional[pulumi.Input[str]] = None,
                  osu_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] disk_image_format: The format of the export disk (`qcow2` \\| `raw`).
+        :param pulumi.Input[str] osu_bucket: The name of the OOS bucket where you want to export the object.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportOsuApiKeyArgs']]] osu_api_keys: Information about the OOS API key.
+        :param pulumi.Input[str] osu_manifest_url: The URL of the manifest file.
+        :param pulumi.Input[str] osu_prefix: The prefix for the key of the OOS object.
+        """
         pulumi.set(__self__, "disk_image_format", disk_image_format)
         pulumi.set(__self__, "osu_bucket", osu_bucket)
         if osu_api_keys is not None:
@@ -375,6 +444,9 @@ class ImageExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="diskImageFormat")
     def disk_image_format(self) -> pulumi.Input[str]:
+        """
+        The format of the export disk (`qcow2` \\| `raw`).
+        """
         return pulumi.get(self, "disk_image_format")
 
     @disk_image_format.setter
@@ -384,6 +456,9 @@ class ImageExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="osuBucket")
     def osu_bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the OOS bucket where you want to export the object.
+        """
         return pulumi.get(self, "osu_bucket")
 
     @osu_bucket.setter
@@ -393,6 +468,9 @@ class ImageExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="osuApiKeys")
     def osu_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportOsuApiKeyArgs']]]]:
+        """
+        Information about the OOS API key.
+        """
         return pulumi.get(self, "osu_api_keys")
 
     @osu_api_keys.setter
@@ -402,6 +480,9 @@ class ImageExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="osuManifestUrl")
     def osu_manifest_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the manifest file.
+        """
         return pulumi.get(self, "osu_manifest_url")
 
     @osu_manifest_url.setter
@@ -411,6 +492,9 @@ class ImageExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="osuPrefix")
     def osu_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix for the key of the OOS object.
+        """
         return pulumi.get(self, "osu_prefix")
 
     @osu_prefix.setter
@@ -423,12 +507,19 @@ class ImageExportTaskOsuExportOsuApiKeyArgs:
     def __init__(__self__, *,
                  api_key_id: pulumi.Input[str],
                  secret_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] api_key_id: The API key of the OOS account that enables you to access the bucket.
+        :param pulumi.Input[str] secret_key: The secret key of the OOS account that enables you to access the bucket.
+        """
         pulumi.set(__self__, "api_key_id", api_key_id)
         pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="apiKeyId")
     def api_key_id(self) -> pulumi.Input[str]:
+        """
+        The API key of the OOS account that enables you to access the bucket.
+        """
         return pulumi.get(self, "api_key_id")
 
     @api_key_id.setter
@@ -438,6 +529,9 @@ class ImageExportTaskOsuExportOsuApiKeyArgs:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Input[str]:
+        """
+        The secret key of the OOS account that enables you to access the bucket.
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -450,6 +544,10 @@ class ImageExportTaskTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -458,6 +556,9 @@ class ImageExportTaskTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -467,6 +568,9 @@ class ImageExportTaskTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -479,6 +583,10 @@ class ImageLaunchPermissionPermissionAdditionsArgs:
     def __init__(__self__, *,
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  global_permission: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param pulumi.Input[str] global_permission: If true, the resource is public. If false, the resource is private.
+        """
         if account_ids is not None:
             pulumi.set(__self__, "account_ids", account_ids)
         if global_permission is not None:
@@ -487,6 +595,9 @@ class ImageLaunchPermissionPermissionAdditionsArgs:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The account ID of one or more users from whom you want to remove permissions.
+        """
         return pulumi.get(self, "account_ids")
 
     @account_ids.setter
@@ -496,6 +607,9 @@ class ImageLaunchPermissionPermissionAdditionsArgs:
     @property
     @pulumi.getter(name="globalPermission")
     def global_permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        If true, the resource is public. If false, the resource is private.
+        """
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
@@ -508,6 +622,10 @@ class ImageLaunchPermissionPermissionRemovalsArgs:
     def __init__(__self__, *,
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  global_permission: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param pulumi.Input[str] global_permission: If true, the resource is public. If false, the resource is private.
+        """
         if account_ids is not None:
             pulumi.set(__self__, "account_ids", account_ids)
         if global_permission is not None:
@@ -516,6 +634,9 @@ class ImageLaunchPermissionPermissionRemovalsArgs:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The account ID of one or more users from whom you want to remove permissions.
+        """
         return pulumi.get(self, "account_ids")
 
     @account_ids.setter
@@ -525,6 +646,9 @@ class ImageLaunchPermissionPermissionRemovalsArgs:
     @property
     @pulumi.getter(name="globalPermission")
     def global_permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        If true, the resource is public. If false, the resource is private.
+        """
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
@@ -537,6 +661,10 @@ class ImageLaunchPermissionPermissionsToLaunchArgs:
     def __init__(__self__, *,
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  global_permission: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param pulumi.Input[str] global_permission: If true, the resource is public. If false, the resource is private.
+        """
         if account_ids is not None:
             pulumi.set(__self__, "account_ids", account_ids)
         if global_permission is not None:
@@ -545,6 +673,9 @@ class ImageLaunchPermissionPermissionsToLaunchArgs:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The account ID of one or more users from whom you want to remove permissions.
+        """
         return pulumi.get(self, "account_ids")
 
     @account_ids.setter
@@ -554,6 +685,9 @@ class ImageLaunchPermissionPermissionsToLaunchArgs:
     @property
     @pulumi.getter(name="globalPermission")
     def global_permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        If true, the resource is public. If false, the resource is private.
+        """
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
@@ -566,6 +700,10 @@ class ImagePermissionsToLaunchArgs:
     def __init__(__self__, *,
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  global_permission: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] account_ids: The account ID of one or more users who have permissions for the resource.
+        :param pulumi.Input[bool] global_permission: If true, the resource is public. If false, the resource is private.
+        """
         if account_ids is not None:
             pulumi.set(__self__, "account_ids", account_ids)
         if global_permission is not None:
@@ -574,6 +712,9 @@ class ImagePermissionsToLaunchArgs:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The account ID of one or more users who have permissions for the resource.
+        """
         return pulumi.get(self, "account_ids")
 
     @account_ids.setter
@@ -583,6 +724,9 @@ class ImagePermissionsToLaunchArgs:
     @property
     @pulumi.getter(name="globalPermission")
     def global_permission(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the resource is public. If false, the resource is private.
+        """
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
@@ -595,6 +739,10 @@ class ImageStateCommentArgs:
     def __init__(__self__, *,
                  state_code: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] state_code: The code of the change of state.
+        :param pulumi.Input[str] state_message: A message explaining the change of state.
+        """
         if state_code is not None:
             pulumi.set(__self__, "state_code", state_code)
         if state_message is not None:
@@ -603,6 +751,9 @@ class ImageStateCommentArgs:
     @property
     @pulumi.getter(name="stateCode")
     def state_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The code of the change of state.
+        """
         return pulumi.get(self, "state_code")
 
     @state_code.setter
@@ -612,6 +763,9 @@ class ImageStateCommentArgs:
     @property
     @pulumi.getter(name="stateMessage")
     def state_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        A message explaining the change of state.
+        """
         return pulumi.get(self, "state_message")
 
     @state_message.setter
@@ -624,6 +778,10 @@ class ImageTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -632,6 +790,9 @@ class ImageTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -641,6 +802,9 @@ class ImageTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -653,6 +817,10 @@ class InternetServiceLinkTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -661,6 +829,9 @@ class InternetServiceLinkTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -670,6 +841,9 @@ class InternetServiceLinkTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -682,6 +856,10 @@ class InternetServiceTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -690,6 +868,9 @@ class InternetServiceTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -699,6 +880,9 @@ class InternetServiceTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -713,6 +897,12 @@ class LoadBalancerAccessLogArgs:
                  osu_bucket_name: Optional[pulumi.Input[str]] = None,
                  osu_bucket_prefix: Optional[pulumi.Input[str]] = None,
                  publication_interval: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        :param pulumi.Input[str] osu_bucket_name: The name of the OOS bucket for the access logs.
+        :param pulumi.Input[str] osu_bucket_prefix: The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        :param pulumi.Input[int] publication_interval: The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if osu_bucket_name is not None:
@@ -725,6 +915,9 @@ class LoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -734,6 +927,9 @@ class LoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketName")
     def osu_bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the OOS bucket for the access logs.
+        """
         return pulumi.get(self, "osu_bucket_name")
 
     @osu_bucket_name.setter
@@ -743,6 +939,9 @@ class LoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketPrefix")
     def osu_bucket_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        """
         return pulumi.get(self, "osu_bucket_prefix")
 
     @osu_bucket_prefix.setter
@@ -752,6 +951,9 @@ class LoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="publicationInterval")
     def publication_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         return pulumi.get(self, "publication_interval")
 
     @publication_interval.setter
@@ -764,6 +966,10 @@ class LoadBalancerApplicationStickyCookiePolicyArgs:
     def __init__(__self__, *,
                  cookie_name: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cookie_name: The name of the application cookie used for stickiness.
+        :param pulumi.Input[str] policy_name: The name of the stickiness policy.
+        """
         if cookie_name is not None:
             pulumi.set(__self__, "cookie_name", cookie_name)
         if policy_name is not None:
@@ -772,6 +978,9 @@ class LoadBalancerApplicationStickyCookiePolicyArgs:
     @property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the application cookie used for stickiness.
+        """
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
@@ -781,6 +990,9 @@ class LoadBalancerApplicationStickyCookiePolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the stickiness policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -795,6 +1007,12 @@ class LoadBalancerAttributesAccessLogArgs:
                  osu_bucket_name: Optional[pulumi.Input[str]] = None,
                  osu_bucket_prefix: Optional[pulumi.Input[str]] = None,
                  publication_interval: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        :param pulumi.Input[str] osu_bucket_name: The name of the OOS bucket for the access logs.
+        :param pulumi.Input[str] osu_bucket_prefix: The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        :param pulumi.Input[int] publication_interval: The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if osu_bucket_name is not None:
@@ -807,6 +1025,9 @@ class LoadBalancerAttributesAccessLogArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -816,6 +1037,9 @@ class LoadBalancerAttributesAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketName")
     def osu_bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the OOS bucket for the access logs.
+        """
         return pulumi.get(self, "osu_bucket_name")
 
     @osu_bucket_name.setter
@@ -825,6 +1049,9 @@ class LoadBalancerAttributesAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketPrefix")
     def osu_bucket_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        """
         return pulumi.get(self, "osu_bucket_prefix")
 
     @osu_bucket_prefix.setter
@@ -834,6 +1061,9 @@ class LoadBalancerAttributesAccessLogArgs:
     @property
     @pulumi.getter(name="publicationInterval")
     def publication_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         return pulumi.get(self, "publication_interval")
 
     @publication_interval.setter
@@ -846,6 +1076,10 @@ class LoadBalancerAttributesApplicationStickyCookiePolicyArgs:
     def __init__(__self__, *,
                  cookie_name: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cookie_name: The name of the application cookie used for stickiness.
+        :param pulumi.Input[str] policy_name: The name of the stickiness policy.
+        """
         if cookie_name is not None:
             pulumi.set(__self__, "cookie_name", cookie_name)
         if policy_name is not None:
@@ -854,6 +1088,9 @@ class LoadBalancerAttributesApplicationStickyCookiePolicyArgs:
     @property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the application cookie used for stickiness.
+        """
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
@@ -863,6 +1100,9 @@ class LoadBalancerAttributesApplicationStickyCookiePolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the stickiness policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -880,6 +1120,15 @@ class LoadBalancerAttributesHealthCheckArgs:
                  timeout: pulumi.Input[int],
                  unhealthy_threshold: pulumi.Input[int],
                  path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] check_interval: The number of seconds between two pings (between `5` and `600` both included).
+        :param pulumi.Input[int] healthy_threshold: The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        :param pulumi.Input[int] port: The port number (between `1` and `65535`, both included).
+        :param pulumi.Input[str] protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[int] timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        :param pulumi.Input[int] unhealthy_threshold: The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        :param pulumi.Input[str] path: If you use the HTTP or HTTPS protocols, the ping path.
+        """
         pulumi.set(__self__, "check_interval", check_interval)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         pulumi.set(__self__, "port", port)
@@ -892,6 +1141,9 @@ class LoadBalancerAttributesHealthCheckArgs:
     @property
     @pulumi.getter(name="checkInterval")
     def check_interval(self) -> pulumi.Input[int]:
+        """
+        The number of seconds between two pings (between `5` and `600` both included).
+        """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
@@ -901,6 +1153,9 @@ class LoadBalancerAttributesHealthCheckArgs:
     @property
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> pulumi.Input[int]:
+        """
+        The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
@@ -910,6 +1165,9 @@ class LoadBalancerAttributesHealthCheckArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port number (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -919,6 +1177,9 @@ class LoadBalancerAttributesHealthCheckArgs:
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -928,6 +1189,9 @@ class LoadBalancerAttributesHealthCheckArgs:
     @property
     @pulumi.getter
     def timeout(self) -> pulumi.Input[int]:
+        """
+        The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -937,6 +1201,9 @@ class LoadBalancerAttributesHealthCheckArgs:
     @property
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> pulumi.Input[int]:
+        """
+        The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
@@ -946,6 +1213,9 @@ class LoadBalancerAttributesHealthCheckArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        If you use the HTTP or HTTPS protocols, the ping path.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -962,6 +1232,14 @@ class LoadBalancerAttributesListenerArgs:
                  load_balancer_protocol: Optional[pulumi.Input[str]] = None,
                  policy_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_certificate_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] backend_port: The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        :param pulumi.Input[str] backend_protocol: The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        :param pulumi.Input[str] load_balancer_protocol: The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_names: The name of the policy you want to enable for the listener.
+        :param pulumi.Input[str] server_certificate_id: The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        """
         if backend_port is not None:
             pulumi.set(__self__, "backend_port", backend_port)
         if backend_protocol is not None:
@@ -978,6 +1256,9 @@ class LoadBalancerAttributesListenerArgs:
     @property
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
@@ -987,6 +1268,9 @@ class LoadBalancerAttributesListenerArgs:
     @property
     @pulumi.getter(name="backendProtocol")
     def backend_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "backend_protocol")
 
     @backend_protocol.setter
@@ -996,6 +1280,9 @@ class LoadBalancerAttributesListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerPort")
     def load_balancer_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        """
         return pulumi.get(self, "load_balancer_port")
 
     @load_balancer_port.setter
@@ -1005,6 +1292,9 @@ class LoadBalancerAttributesListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerProtocol")
     def load_balancer_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "load_balancer_protocol")
 
     @load_balancer_protocol.setter
@@ -1014,6 +1304,9 @@ class LoadBalancerAttributesListenerArgs:
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the policy you want to enable for the listener.
+        """
         return pulumi.get(self, "policy_names")
 
     @policy_names.setter
@@ -1023,6 +1316,9 @@ class LoadBalancerAttributesListenerArgs:
     @property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
@@ -1034,12 +1330,18 @@ class LoadBalancerAttributesListenerArgs:
 class LoadBalancerAttributesLoadBalancerStickyCookiePolicyArgs:
     def __init__(__self__, *,
                  policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy_name: The name of the stickiness policy.
+        """
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the stickiness policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -1052,6 +1354,10 @@ class LoadBalancerAttributesSourceSecurityGroupArgs:
     def __init__(__self__, *,
                  security_group_account_id: Optional[pulumi.Input[str]] = None,
                  security_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_group_account_id: The account ID of the owner of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        """
         if security_group_account_id is not None:
             pulumi.set(__self__, "security_group_account_id", security_group_account_id)
         if security_group_name is not None:
@@ -1060,6 +1366,9 @@ class LoadBalancerAttributesSourceSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the security group.
+        """
         return pulumi.get(self, "security_group_account_id")
 
     @security_group_account_id.setter
@@ -1069,6 +1378,9 @@ class LoadBalancerAttributesSourceSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -1081,6 +1393,10 @@ class LoadBalancerAttributesTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1089,6 +1405,9 @@ class LoadBalancerAttributesTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1098,6 +1417,9 @@ class LoadBalancerAttributesTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1115,6 +1437,15 @@ class LoadBalancerHealthCheckArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] check_interval: The number of seconds between two pings (between `5` and `600` both included).
+        :param pulumi.Input[str] healthy_threshold: The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        :param pulumi.Input[str] path: If you use the HTTP or HTTPS protocols, the ping path.
+        :param pulumi.Input[str] port: The port number (between `1` and `65535`, both included).
+        :param pulumi.Input[str] protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[str] timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        :param pulumi.Input[str] unhealthy_threshold: The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        """
         if check_interval is not None:
             pulumi.set(__self__, "check_interval", check_interval)
         if healthy_threshold is not None:
@@ -1133,6 +1464,9 @@ class LoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter(name="checkInterval")
     def check_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of seconds between two pings (between `5` and `600` both included).
+        """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
@@ -1142,6 +1476,9 @@ class LoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
@@ -1151,6 +1488,9 @@ class LoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        If you use the HTTP or HTTPS protocols, the ping path.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -1160,6 +1500,9 @@ class LoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port number (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1169,6 +1512,9 @@ class LoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1178,6 +1524,9 @@ class LoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -1187,6 +1536,9 @@ class LoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
@@ -1203,6 +1555,14 @@ class LoadBalancerListenerArgs:
                  load_balancer_protocol: pulumi.Input[str],
                  policy_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_certificate_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] backend_port: The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        :param pulumi.Input[str] backend_protocol: The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included).
+        :param pulumi.Input[str] load_balancer_protocol: The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_names: The names of the policies. If there are no policies enabled, the list is empty.
+        :param pulumi.Input[str] server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         pulumi.set(__self__, "backend_port", backend_port)
         pulumi.set(__self__, "backend_protocol", backend_protocol)
         pulumi.set(__self__, "load_balancer_port", load_balancer_port)
@@ -1215,6 +1575,9 @@ class LoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> pulumi.Input[int]:
+        """
+        The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
@@ -1224,6 +1587,9 @@ class LoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="backendProtocol")
     def backend_protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "backend_protocol")
 
     @backend_protocol.setter
@@ -1233,6 +1599,9 @@ class LoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerPort")
     def load_balancer_port(self) -> pulumi.Input[int]:
+        """
+        The port on which the load balancer is listening (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "load_balancer_port")
 
     @load_balancer_port.setter
@@ -1242,6 +1611,9 @@ class LoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerProtocol")
     def load_balancer_protocol(self) -> pulumi.Input[str]:
+        """
+        The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "load_balancer_protocol")
 
     @load_balancer_protocol.setter
@@ -1251,6 +1623,9 @@ class LoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of the policies. If there are no policies enabled, the list is empty.
+        """
         return pulumi.get(self, "policy_names")
 
     @policy_names.setter
@@ -1260,6 +1635,9 @@ class LoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
@@ -1271,12 +1649,18 @@ class LoadBalancerListenerArgs:
 class LoadBalancerLoadBalancerStickyCookiePolicyArgs:
     def __init__(__self__, *,
                  policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy_name: The name of the stickiness policy.
+        """
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the stickiness policy.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -1291,6 +1675,12 @@ class LoadBalancerPolicyAccessLogArgs:
                  osu_bucket_name: Optional[pulumi.Input[str]] = None,
                  osu_bucket_prefix: Optional[pulumi.Input[str]] = None,
                  publication_interval: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] is_enabled: If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        :param pulumi.Input[str] osu_bucket_name: The name of the OOS bucket for the access logs.
+        :param pulumi.Input[str] osu_bucket_prefix: The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        :param pulumi.Input[int] publication_interval: The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if osu_bucket_name is not None:
@@ -1303,6 +1693,9 @@ class LoadBalancerPolicyAccessLogArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -1312,6 +1705,9 @@ class LoadBalancerPolicyAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketName")
     def osu_bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the OOS bucket for the access logs.
+        """
         return pulumi.get(self, "osu_bucket_name")
 
     @osu_bucket_name.setter
@@ -1321,6 +1717,9 @@ class LoadBalancerPolicyAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketPrefix")
     def osu_bucket_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        """
         return pulumi.get(self, "osu_bucket_prefix")
 
     @osu_bucket_prefix.setter
@@ -1330,6 +1729,9 @@ class LoadBalancerPolicyAccessLogArgs:
     @property
     @pulumi.getter(name="publicationInterval")
     def publication_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         return pulumi.get(self, "publication_interval")
 
     @publication_interval.setter
@@ -1342,6 +1744,10 @@ class LoadBalancerPolicyApplicationStickyCookiePolicyArgs:
     def __init__(__self__, *,
                  cookie_name: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cookie_name: The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        :param pulumi.Input[str] policy_name: The name of the policy. This name must be unique and consist of alphanumeric characters and dashes (-).
+        """
         if cookie_name is not None:
             pulumi.set(__self__, "cookie_name", cookie_name)
         if policy_name is not None:
@@ -1350,6 +1756,9 @@ class LoadBalancerPolicyApplicationStickyCookiePolicyArgs:
     @property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        """
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
@@ -1359,6 +1768,9 @@ class LoadBalancerPolicyApplicationStickyCookiePolicyArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the policy. This name must be unique and consist of alphanumeric characters and dashes (-).
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -1376,6 +1788,15 @@ class LoadBalancerPolicyHealthCheckArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] check_interval: The number of seconds between two pings (between `5` and `600` both included).
+        :param pulumi.Input[str] healthy_threshold: The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        :param pulumi.Input[str] path: If you use the HTTP or HTTPS protocols, the ping path.
+        :param pulumi.Input[str] port: The port number (between `1` and `65535`, both included).
+        :param pulumi.Input[str] protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[str] timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        :param pulumi.Input[str] unhealthy_threshold: The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        """
         if check_interval is not None:
             pulumi.set(__self__, "check_interval", check_interval)
         if healthy_threshold is not None:
@@ -1394,6 +1815,9 @@ class LoadBalancerPolicyHealthCheckArgs:
     @property
     @pulumi.getter(name="checkInterval")
     def check_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of seconds between two pings (between `5` and `600` both included).
+        """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
@@ -1403,6 +1827,9 @@ class LoadBalancerPolicyHealthCheckArgs:
     @property
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
@@ -1412,6 +1839,9 @@ class LoadBalancerPolicyHealthCheckArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        If you use the HTTP or HTTPS protocols, the ping path.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -1421,6 +1851,9 @@ class LoadBalancerPolicyHealthCheckArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port number (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1430,6 +1863,9 @@ class LoadBalancerPolicyHealthCheckArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1439,6 +1875,9 @@ class LoadBalancerPolicyHealthCheckArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -1448,6 +1887,9 @@ class LoadBalancerPolicyHealthCheckArgs:
     @property
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
@@ -1464,6 +1906,14 @@ class LoadBalancerPolicyListenerArgs:
                  load_balancer_protocol: Optional[pulumi.Input[str]] = None,
                  policy_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_certificate_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] backend_port: The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        :param pulumi.Input[str] backend_protocol: The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included).
+        :param pulumi.Input[str] load_balancer_protocol: The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_names: The names of the policies. If there are no policies enabled, the list is empty.
+        :param pulumi.Input[str] server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         if backend_port is not None:
             pulumi.set(__self__, "backend_port", backend_port)
         if backend_protocol is not None:
@@ -1480,6 +1930,9 @@ class LoadBalancerPolicyListenerArgs:
     @property
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
@@ -1489,6 +1942,9 @@ class LoadBalancerPolicyListenerArgs:
     @property
     @pulumi.getter(name="backendProtocol")
     def backend_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "backend_protocol")
 
     @backend_protocol.setter
@@ -1498,6 +1954,9 @@ class LoadBalancerPolicyListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerPort")
     def load_balancer_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port on which the load balancer is listening (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "load_balancer_port")
 
     @load_balancer_port.setter
@@ -1507,6 +1966,9 @@ class LoadBalancerPolicyListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerProtocol")
     def load_balancer_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "load_balancer_protocol")
 
     @load_balancer_protocol.setter
@@ -1516,6 +1978,9 @@ class LoadBalancerPolicyListenerArgs:
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of the policies. If there are no policies enabled, the list is empty.
+        """
         return pulumi.get(self, "policy_names")
 
     @policy_names.setter
@@ -1525,6 +1990,9 @@ class LoadBalancerPolicyListenerArgs:
     @property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
@@ -1536,12 +2004,18 @@ class LoadBalancerPolicyListenerArgs:
 class LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs:
     def __init__(__self__, *,
                  policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy_name: The name of the policy. This name must be unique and consist of alphanumeric characters and dashes (-).
+        """
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the policy. This name must be unique and consist of alphanumeric characters and dashes (-).
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -1554,6 +2028,10 @@ class LoadBalancerPolicySourceSecurityGroupArgs:
     def __init__(__self__, *,
                  security_group_account_id: Optional[pulumi.Input[str]] = None,
                  security_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_group_account_id: The account ID of the owner of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        """
         if security_group_account_id is not None:
             pulumi.set(__self__, "security_group_account_id", security_group_account_id)
         if security_group_name is not None:
@@ -1562,6 +2040,9 @@ class LoadBalancerPolicySourceSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the security group.
+        """
         return pulumi.get(self, "security_group_account_id")
 
     @security_group_account_id.setter
@@ -1571,6 +2052,9 @@ class LoadBalancerPolicySourceSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -1583,6 +2067,10 @@ class LoadBalancerPolicyTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1591,6 +2079,9 @@ class LoadBalancerPolicyTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1600,6 +2091,9 @@ class LoadBalancerPolicyTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1612,6 +2106,10 @@ class LoadBalancerSourceSecurityGroupArgs:
     def __init__(__self__, *,
                  security_group_account_id: Optional[pulumi.Input[str]] = None,
                  security_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_group_account_id: The account ID of the owner of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        """
         if security_group_account_id is not None:
             pulumi.set(__self__, "security_group_account_id", security_group_account_id)
         if security_group_name is not None:
@@ -1620,6 +2118,9 @@ class LoadBalancerSourceSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the security group.
+        """
         return pulumi.get(self, "security_group_account_id")
 
     @security_group_account_id.setter
@@ -1629,6 +2130,9 @@ class LoadBalancerSourceSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -1641,6 +2145,10 @@ class LoadBalancerTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1649,6 +2157,9 @@ class LoadBalancerTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1658,6 +2169,9 @@ class LoadBalancerTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1670,6 +2184,11 @@ class NatServicePublicIpArgs:
     def __init__(__self__, *,
                  public_ip: Optional[pulumi.Input[str]] = None,
                  public_ip_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_ip: The public IP associated with the NAT service.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
+               If the public IP is already associated with another resource, you must first disassociate it.
+        """
         if public_ip is not None:
             pulumi.set(__self__, "public_ip", public_ip)
         if public_ip_id is not None:
@@ -1678,6 +2197,9 @@ class NatServicePublicIpArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP associated with the NAT service.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -1687,6 +2209,10 @@ class NatServicePublicIpArgs:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation ID of the public IP to associate with the NAT service.<br />
+        If the public IP is already associated with another resource, you must first disassociate it.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -1699,6 +2225,10 @@ class NatServiceTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1707,6 +2237,9 @@ class NatServiceTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1716,6 +2249,9 @@ class NatServiceTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1728,6 +2264,10 @@ class NetAccessPointTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1736,6 +2276,9 @@ class NetAccessPointTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1745,6 +2288,9 @@ class NetAccessPointTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1757,6 +2303,10 @@ class NetAttributesTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1765,6 +2315,9 @@ class NetAttributesTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1774,6 +2327,9 @@ class NetAttributesTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1787,6 +2343,11 @@ class NetPeeringAccepterNetArgs:
                  account_id: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  net_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[str] net_id: The ID of the source Net.
+        """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if ip_range is not None:
@@ -1797,6 +2358,9 @@ class NetPeeringAccepterNetArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the source Net.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -1806,6 +2370,9 @@ class NetPeeringAccepterNetArgs:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -1815,6 +2382,9 @@ class NetPeeringAccepterNetArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source Net.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -1828,6 +2398,11 @@ class NetPeeringAcceptionAccepterNetArgs:
                  account_id: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  net_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[str] net_id: The ID of the source Net.
+        """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if ip_range is not None:
@@ -1838,6 +2413,9 @@ class NetPeeringAcceptionAccepterNetArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the source Net.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -1847,6 +2425,9 @@ class NetPeeringAcceptionAccepterNetArgs:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -1856,6 +2437,9 @@ class NetPeeringAcceptionAccepterNetArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source Net.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -1869,6 +2453,11 @@ class NetPeeringAcceptionSourceNetArgs:
                  account_id: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  net_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[str] net_id: The ID of the source Net.
+        """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if ip_range is not None:
@@ -1879,6 +2468,9 @@ class NetPeeringAcceptionSourceNetArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the source Net.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -1888,6 +2480,9 @@ class NetPeeringAcceptionSourceNetArgs:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -1897,6 +2492,9 @@ class NetPeeringAcceptionSourceNetArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source Net.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -1909,6 +2507,10 @@ class NetPeeringAcceptionStateArgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] message: Additional information about the state of the Net peering.
+        :param pulumi.Input[str] name: The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         if message is not None:
             pulumi.set(__self__, "message", message)
         if name is not None:
@@ -1917,6 +2519,9 @@ class NetPeeringAcceptionStateArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional information about the state of the Net peering.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -1926,6 +2531,9 @@ class NetPeeringAcceptionStateArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1938,6 +2546,10 @@ class NetPeeringAcceptionTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1946,6 +2558,9 @@ class NetPeeringAcceptionTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1955,6 +2570,9 @@ class NetPeeringAcceptionTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1968,6 +2586,11 @@ class NetPeeringSourceNetArgs:
                  account_id: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  net_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[str] net_id: The ID of the source Net.
+        """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if ip_range is not None:
@@ -1978,6 +2601,9 @@ class NetPeeringSourceNetArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the source Net.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -1987,6 +2613,9 @@ class NetPeeringSourceNetArgs:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -1996,6 +2625,9 @@ class NetPeeringSourceNetArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source Net.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -2008,6 +2640,10 @@ class NetPeeringStateArgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] message: Additional information about the state of the Net peering.
+        :param pulumi.Input[str] name: The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         if message is not None:
             pulumi.set(__self__, "message", message)
         if name is not None:
@@ -2016,6 +2652,9 @@ class NetPeeringStateArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional information about the state of the Net peering.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -2025,6 +2664,9 @@ class NetPeeringStateArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2037,6 +2679,10 @@ class NetPeeringTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -2045,6 +2691,9 @@ class NetPeeringTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2054,6 +2703,9 @@ class NetPeeringTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2066,6 +2718,10 @@ class NetTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -2074,6 +2730,9 @@ class NetTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2083,6 +2742,9 @@ class NetTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2099,6 +2761,14 @@ class NicLinkNicArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  vm_account_id: Optional[pulumi.Input[str]] = None,
                  vm_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
+        :param pulumi.Input[int] device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param pulumi.Input[str] link_nic_id: The ID of the NIC to attach.
+        :param pulumi.Input[str] state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
+        :param pulumi.Input[str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[str] vm_id: The ID of the VM.
+        """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         if device_number is not None:
@@ -2115,6 +2785,9 @@ class NicLinkNicArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[str]]:
+        """
+        If true, the NIC is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -2124,6 +2797,9 @@ class NicLinkNicArgs:
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The device index for the NIC attachment (between `1` and `7`, both included).
+        """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
@@ -2133,6 +2809,9 @@ class NicLinkNicArgs:
     @property
     @pulumi.getter(name="linkNicId")
     def link_nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC to attach.
+        """
         return pulumi.get(self, "link_nic_id")
 
     @link_nic_id.setter
@@ -2142,6 +2821,9 @@ class NicLinkNicArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -2151,6 +2833,9 @@ class NicLinkNicArgs:
     @property
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the VM.
+        """
         return pulumi.get(self, "vm_account_id")
 
     @vm_account_id.setter
@@ -2160,6 +2845,9 @@ class NicLinkNicArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -2175,6 +2863,13 @@ class NicLinkPublicIpArgs:
                  public_ip: Optional[pulumi.Input[str]] = None,
                  public_ip_account_id: Optional[pulumi.Input[str]] = None,
                  public_ip_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        :param pulumi.Input[str] public_dns_name: The name of the public DNS.
+        :param pulumi.Input[str] public_ip: The public IP associated with the NIC.
+        :param pulumi.Input[str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP.
+        """
         if link_public_ip_id is not None:
             pulumi.set(__self__, "link_public_ip_id", link_public_ip_id)
         if public_dns_name is not None:
@@ -2189,6 +2884,9 @@ class NicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="linkPublicIpId")
     def link_public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        """
         return pulumi.get(self, "link_public_ip_id")
 
     @link_public_ip_id.setter
@@ -2198,6 +2896,9 @@ class NicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
@@ -2207,6 +2908,9 @@ class NicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP associated with the NIC.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -2216,6 +2920,9 @@ class NicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the public IP.
+        """
         return pulumi.get(self, "public_ip_account_id")
 
     @public_ip_account_id.setter
@@ -2225,6 +2932,9 @@ class NicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation ID of the public IP.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -2239,6 +2949,12 @@ class NicPrivateIpArgs:
                  link_public_ip: Optional[pulumi.Input['NicPrivateIpLinkPublicIpArgs']] = None,
                  private_dns_name: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] is_primary: If true, the IP is the primary private IP of the NIC.
+        :param pulumi.Input['NicPrivateIpLinkPublicIpArgs'] link_public_ip: Information about the public IP association.
+        :param pulumi.Input[str] private_dns_name: The name of the private DNS.
+        :param pulumi.Input[str] private_ip: The private IP of the NIC.
+        """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
         if link_public_ip is not None:
@@ -2251,6 +2967,9 @@ class NicPrivateIpArgs:
     @property
     @pulumi.getter(name="isPrimary")
     def is_primary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the IP is the primary private IP of the NIC.
+        """
         return pulumi.get(self, "is_primary")
 
     @is_primary.setter
@@ -2260,6 +2979,9 @@ class NicPrivateIpArgs:
     @property
     @pulumi.getter(name="linkPublicIp")
     def link_public_ip(self) -> Optional[pulumi.Input['NicPrivateIpLinkPublicIpArgs']]:
+        """
+        Information about the public IP association.
+        """
         return pulumi.get(self, "link_public_ip")
 
     @link_public_ip.setter
@@ -2269,6 +2991,9 @@ class NicPrivateIpArgs:
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
@@ -2278,6 +3003,9 @@ class NicPrivateIpArgs:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP of the NIC.
+        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -2293,6 +3021,13 @@ class NicPrivateIpLinkPublicIpArgs:
                  public_ip: Optional[pulumi.Input[str]] = None,
                  public_ip_account_id: Optional[pulumi.Input[str]] = None,
                  public_ip_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        :param pulumi.Input[str] public_dns_name: The name of the public DNS.
+        :param pulumi.Input[str] public_ip: The public IP associated with the NIC.
+        :param pulumi.Input[str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP.
+        """
         if link_public_ip_id is not None:
             pulumi.set(__self__, "link_public_ip_id", link_public_ip_id)
         if public_dns_name is not None:
@@ -2307,6 +3042,9 @@ class NicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="linkPublicIpId")
     def link_public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        """
         return pulumi.get(self, "link_public_ip_id")
 
     @link_public_ip_id.setter
@@ -2316,6 +3054,9 @@ class NicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
@@ -2325,6 +3066,9 @@ class NicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP associated with the NIC.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -2334,6 +3078,9 @@ class NicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the public IP.
+        """
         return pulumi.get(self, "public_ip_account_id")
 
     @public_ip_account_id.setter
@@ -2343,6 +3090,9 @@ class NicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation ID of the public IP.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -2355,6 +3105,10 @@ class NicSecurityGroupArgs:
     def __init__(__self__, *,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        """
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_name is not None:
@@ -2363,6 +3117,9 @@ class NicSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -2372,6 +3129,9 @@ class NicSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -2384,6 +3144,10 @@ class NicTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -2392,6 +3156,9 @@ class NicTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2401,6 +3168,9 @@ class NicTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2577,6 +3347,10 @@ class PublicIpTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -2585,6 +3359,9 @@ class PublicIpTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2594,6 +3371,9 @@ class PublicIpTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2609,6 +3389,12 @@ class RouteTableLinkRouteTableArgs:
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  route_table_to_subnet_link_id: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] link_route_table_id: The ID of the association between the route table and the Subnet.
+        :param pulumi.Input[bool] main: If true, the route table is the main one.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet.
+        """
         if link_route_table_id is not None:
             pulumi.set(__self__, "link_route_table_id", link_route_table_id)
         if main is not None:
@@ -2623,6 +3409,9 @@ class RouteTableLinkRouteTableArgs:
     @property
     @pulumi.getter(name="linkRouteTableId")
     def link_route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the association between the route table and the Subnet.
+        """
         return pulumi.get(self, "link_route_table_id")
 
     @link_route_table_id.setter
@@ -2632,6 +3421,9 @@ class RouteTableLinkRouteTableArgs:
     @property
     @pulumi.getter
     def main(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the route table is the main one.
+        """
         return pulumi.get(self, "main")
 
     @main.setter
@@ -2641,6 +3433,9 @@ class RouteTableLinkRouteTableArgs:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -2659,6 +3454,9 @@ class RouteTableLinkRouteTableArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -2680,6 +3478,19 @@ class RouteTableRouteArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  vm_account_id: Optional[pulumi.Input[str]] = None,
                  vm_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] creation_method: The method used to create the route.
+        :param pulumi.Input[str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        :param pulumi.Input[str] destination_service_id: The ID of the OUTSCALE service.
+        :param pulumi.Input[str] gateway_id: The ID of the Internet service or virtual gateway attached to the Net.
+        :param pulumi.Input[str] nat_service_id: The ID of a NAT service attached to the Net.
+        :param pulumi.Input[str] net_access_point_id: The ID of the Net access point.
+        :param pulumi.Input[str] net_peering_id: The ID of the Net peering.
+        :param pulumi.Input[str] nic_id: The ID of the NIC.
+        :param pulumi.Input[str] state: The state of a route in the route table (always `active`).
+        :param pulumi.Input[str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[str] vm_id: The ID of a VM specified in a route in the table.
+        """
         if creation_method is not None:
             pulumi.set(__self__, "creation_method", creation_method)
         if destination_ip_range is not None:
@@ -2706,6 +3517,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="creationMethod")
     def creation_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method used to create the route.
+        """
         return pulumi.get(self, "creation_method")
 
     @creation_method.setter
@@ -2715,6 +3529,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
@@ -2724,6 +3541,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="destinationServiceId")
     def destination_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OUTSCALE service.
+        """
         return pulumi.get(self, "destination_service_id")
 
     @destination_service_id.setter
@@ -2733,6 +3553,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Internet service or virtual gateway attached to the Net.
+        """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
@@ -2742,6 +3565,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="natServiceId")
     def nat_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a NAT service attached to the Net.
+        """
         return pulumi.get(self, "nat_service_id")
 
     @nat_service_id.setter
@@ -2751,6 +3577,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="netAccessPointId")
     def net_access_point_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net access point.
+        """
         return pulumi.get(self, "net_access_point_id")
 
     @net_access_point_id.setter
@@ -2760,6 +3589,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="netPeeringId")
     def net_peering_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net peering.
+        """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
@@ -2769,6 +3601,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -2778,6 +3613,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of a route in the route table (always `active`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -2787,6 +3625,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the VM.
+        """
         return pulumi.get(self, "vm_account_id")
 
     @vm_account_id.setter
@@ -2796,6 +3637,9 @@ class RouteTableRouteArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a VM specified in a route in the table.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -2807,12 +3651,18 @@ class RouteTableRouteArgs:
 class RouteTableRoutePropagatingVirtualGatewayArgs:
     def __init__(__self__, *,
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
+        """
         if virtual_gateway_id is not None:
             pulumi.set(__self__, "virtual_gateway_id", virtual_gateway_id)
 
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
@@ -2825,6 +3675,10 @@ class RouteTableTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -2833,6 +3687,9 @@ class RouteTableTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -2842,6 +3699,9 @@ class RouteTableTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2857,6 +3717,13 @@ class SecurityGroupInboundRuleArgs:
                  ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_groups_members: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  to_port_range: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        :param pulumi.Input[str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] security_groups_members: Information about one or more members of a security group.
+        :param pulumi.Input[int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
+        """
         if from_port_range is not None:
             pulumi.set(__self__, "from_port_range", from_port_range)
         if ip_protocol is not None:
@@ -2871,6 +3738,9 @@ class SecurityGroupInboundRuleArgs:
     @property
     @pulumi.getter(name="fromPortRange")
     def from_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        """
         return pulumi.get(self, "from_port_range")
 
     @from_port_range.setter
@@ -2880,6 +3750,9 @@ class SecurityGroupInboundRuleArgs:
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
@@ -2889,6 +3762,9 @@ class SecurityGroupInboundRuleArgs:
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
@@ -2898,6 +3774,9 @@ class SecurityGroupInboundRuleArgs:
     @property
     @pulumi.getter(name="securityGroupsMembers")
     def security_groups_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        Information about one or more members of a security group.
+        """
         return pulumi.get(self, "security_groups_members")
 
     @security_groups_members.setter
@@ -2907,6 +3786,9 @@ class SecurityGroupInboundRuleArgs:
     @property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The end of the port range for the TCP and UDP protocols, or an ICMP code number.
+        """
         return pulumi.get(self, "to_port_range")
 
     @to_port_range.setter
@@ -2922,6 +3804,13 @@ class SecurityGroupOutboundRuleArgs:
                  ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_groups_members: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  to_port_range: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        :param pulumi.Input[str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] security_groups_members: Information about one or more members of a security group.
+        :param pulumi.Input[int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
+        """
         if from_port_range is not None:
             pulumi.set(__self__, "from_port_range", from_port_range)
         if ip_protocol is not None:
@@ -2936,6 +3825,9 @@ class SecurityGroupOutboundRuleArgs:
     @property
     @pulumi.getter(name="fromPortRange")
     def from_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        """
         return pulumi.get(self, "from_port_range")
 
     @from_port_range.setter
@@ -2945,6 +3837,9 @@ class SecurityGroupOutboundRuleArgs:
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
@@ -2954,6 +3849,9 @@ class SecurityGroupOutboundRuleArgs:
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
@@ -2963,6 +3861,9 @@ class SecurityGroupOutboundRuleArgs:
     @property
     @pulumi.getter(name="securityGroupsMembers")
     def security_groups_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        Information about one or more members of a security group.
+        """
         return pulumi.get(self, "security_groups_members")
 
     @security_groups_members.setter
@@ -2972,6 +3873,9 @@ class SecurityGroupOutboundRuleArgs:
     @property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The end of the port range for the TCP and UDP protocols, or an ICMP code number.
+        """
         return pulumi.get(self, "to_port_range")
 
     @to_port_range.setter
@@ -2988,6 +3892,14 @@ class SecurityGroupRuleRuleArgs:
                  security_groups_members: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleSecurityGroupsMemberArgs']]]] = None,
                  service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  to_port_range: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        :param pulumi.Input[str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleSecurityGroupsMemberArgs']]] security_groups_members: Information about one or more members of a security group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+        :param pulumi.Input[int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         if from_port_range is not None:
             pulumi.set(__self__, "from_port_range", from_port_range)
         if ip_protocol is not None:
@@ -3004,6 +3916,9 @@ class SecurityGroupRuleRuleArgs:
     @property
     @pulumi.getter(name="fromPortRange")
     def from_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        """
         return pulumi.get(self, "from_port_range")
 
     @from_port_range.setter
@@ -3013,6 +3928,9 @@ class SecurityGroupRuleRuleArgs:
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
@@ -3022,6 +3940,9 @@ class SecurityGroupRuleRuleArgs:
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        """
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
@@ -3031,6 +3952,9 @@ class SecurityGroupRuleRuleArgs:
     @property
     @pulumi.getter(name="securityGroupsMembers")
     def security_groups_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleSecurityGroupsMemberArgs']]]]:
+        """
+        Information about one or more members of a security group.
+        """
         return pulumi.get(self, "security_groups_members")
 
     @security_groups_members.setter
@@ -3040,6 +3964,9 @@ class SecurityGroupRuleRuleArgs:
     @property
     @pulumi.getter(name="serviceIds")
     def service_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+        """
         return pulumi.get(self, "service_ids")
 
     @service_ids.setter
@@ -3049,6 +3976,9 @@ class SecurityGroupRuleRuleArgs:
     @property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         return pulumi.get(self, "to_port_range")
 
     @to_port_range.setter
@@ -3062,6 +3992,11 @@ class SecurityGroupRuleRuleSecurityGroupsMemberArgs:
                  account_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] account_id: The account ID of a user.
+        :param pulumi.Input[str] security_group_id: The ID of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if security_group_id is not None:
@@ -3072,6 +4007,9 @@ class SecurityGroupRuleRuleSecurityGroupsMemberArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of a user.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -3081,6 +4019,9 @@ class SecurityGroupRuleRuleSecurityGroupsMemberArgs:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security group for which you want to create a rule.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -3090,6 +4031,9 @@ class SecurityGroupRuleRuleSecurityGroupsMemberArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -3102,6 +4046,10 @@ class SecurityGroupTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3110,6 +4058,9 @@ class SecurityGroupTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -3119,6 +4070,9 @@ class SecurityGroupTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -3131,6 +4085,10 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs:
     def __init__(__self__, *,
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  global_permission: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param pulumi.Input[bool] global_permission: If true, the resource is public. If false, the resource is private.
+        """
         if account_ids is not None:
             pulumi.set(__self__, "account_ids", account_ids)
         if global_permission is not None:
@@ -3139,6 +4097,9 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The account ID of one or more users from whom you want to remove permissions.
+        """
         return pulumi.get(self, "account_ids")
 
     @account_ids.setter
@@ -3148,6 +4109,9 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs:
     @property
     @pulumi.getter(name="globalPermission")
     def global_permission(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the resource is public. If false, the resource is private.
+        """
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
@@ -3160,6 +4124,10 @@ class SnapshotAttributesPermissionsToCreateVolumeRemovalArgs:
     def __init__(__self__, *,
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  global_permission: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param pulumi.Input[bool] global_permission: If true, the resource is public. If false, the resource is private.
+        """
         if account_ids is not None:
             pulumi.set(__self__, "account_ids", account_ids)
         if global_permission is not None:
@@ -3168,6 +4136,9 @@ class SnapshotAttributesPermissionsToCreateVolumeRemovalArgs:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The account ID of one or more users from whom you want to remove permissions.
+        """
         return pulumi.get(self, "account_ids")
 
     @account_ids.setter
@@ -3177,6 +4148,9 @@ class SnapshotAttributesPermissionsToCreateVolumeRemovalArgs:
     @property
     @pulumi.getter(name="globalPermission")
     def global_permission(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the resource is public. If false, the resource is private.
+        """
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
@@ -3191,6 +4165,12 @@ class SnapshotExportTaskOsuExportArgs:
                  osu_bucket: pulumi.Input[str],
                  osu_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportOsuApiKeyArgs']]]] = None,
                  osu_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] disk_image_format: The format of the export disk (`qcow2` \\| `raw`).
+        :param pulumi.Input[str] osu_bucket: The name of the OOS bucket where you want to export the object.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportOsuApiKeyArgs']]] osu_api_keys: Information about the OOS API key.
+        :param pulumi.Input[str] osu_prefix: The prefix for the key of the OOS object.
+        """
         pulumi.set(__self__, "disk_image_format", disk_image_format)
         pulumi.set(__self__, "osu_bucket", osu_bucket)
         if osu_api_keys is not None:
@@ -3201,6 +4181,9 @@ class SnapshotExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="diskImageFormat")
     def disk_image_format(self) -> pulumi.Input[str]:
+        """
+        The format of the export disk (`qcow2` \\| `raw`).
+        """
         return pulumi.get(self, "disk_image_format")
 
     @disk_image_format.setter
@@ -3210,6 +4193,9 @@ class SnapshotExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="osuBucket")
     def osu_bucket(self) -> pulumi.Input[str]:
+        """
+        The name of the OOS bucket where you want to export the object.
+        """
         return pulumi.get(self, "osu_bucket")
 
     @osu_bucket.setter
@@ -3219,6 +4205,9 @@ class SnapshotExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="osuApiKeys")
     def osu_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportOsuApiKeyArgs']]]]:
+        """
+        Information about the OOS API key.
+        """
         return pulumi.get(self, "osu_api_keys")
 
     @osu_api_keys.setter
@@ -3228,6 +4217,9 @@ class SnapshotExportTaskOsuExportArgs:
     @property
     @pulumi.getter(name="osuPrefix")
     def osu_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix for the key of the OOS object.
+        """
         return pulumi.get(self, "osu_prefix")
 
     @osu_prefix.setter
@@ -3240,12 +4232,19 @@ class SnapshotExportTaskOsuExportOsuApiKeyArgs:
     def __init__(__self__, *,
                  api_key_id: pulumi.Input[str],
                  secret_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] api_key_id: The API key of the OOS account that enables you to access the bucket.
+        :param pulumi.Input[str] secret_key: The secret key of the OOS account that enables you to access the bucket.
+        """
         pulumi.set(__self__, "api_key_id", api_key_id)
         pulumi.set(__self__, "secret_key", secret_key)
 
     @property
     @pulumi.getter(name="apiKeyId")
     def api_key_id(self) -> pulumi.Input[str]:
+        """
+        The API key of the OOS account that enables you to access the bucket.
+        """
         return pulumi.get(self, "api_key_id")
 
     @api_key_id.setter
@@ -3255,6 +4254,9 @@ class SnapshotExportTaskOsuExportOsuApiKeyArgs:
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Input[str]:
+        """
+        The secret key of the OOS account that enables you to access the bucket.
+        """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
@@ -3267,6 +4269,10 @@ class SnapshotExportTaskTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3275,6 +4281,9 @@ class SnapshotExportTaskTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -3284,6 +4293,9 @@ class SnapshotExportTaskTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -3296,6 +4308,10 @@ class SnapshotPermissionsToCreateVolumeArgs:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  global_permission: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input[bool] global_permission: If true, the resource is public. If false, the resource is private.
+        """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if global_permission is not None:
@@ -3304,6 +4320,9 @@ class SnapshotPermissionsToCreateVolumeArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -3313,6 +4332,9 @@ class SnapshotPermissionsToCreateVolumeArgs:
     @property
     @pulumi.getter(name="globalPermission")
     def global_permission(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the resource is public. If false, the resource is private.
+        """
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
@@ -3325,6 +4347,10 @@ class SnapshotTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3333,6 +4359,9 @@ class SnapshotTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -3342,6 +4371,9 @@ class SnapshotTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -3354,6 +4386,10 @@ class SubnetTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3362,6 +4398,9 @@ class SubnetTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -3371,6 +4410,9 @@ class SubnetTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -3436,6 +4478,10 @@ class VirtualGatewayLinkNetToVirtualGatewayLinkArgs:
     def __init__(__self__, *,
                  net_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] net_id: The ID of the Net to which you want to attach the virtual gateway.
+        :param pulumi.Input[str] state: The state of the attachment (`attaching` \\| `attached` \\| `detaching` \\| `detached`).
+        """
         if net_id is not None:
             pulumi.set(__self__, "net_id", net_id)
         if state is not None:
@@ -3444,6 +4490,9 @@ class VirtualGatewayLinkNetToVirtualGatewayLinkArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net to which you want to attach the virtual gateway.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -3453,6 +4502,9 @@ class VirtualGatewayLinkNetToVirtualGatewayLinkArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the attachment (`attaching` \\| `attached` \\| `detaching` \\| `detached`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -3465,6 +4517,10 @@ class VirtualGatewayNetToVirtualGatewayLinkArgs:
     def __init__(__self__, *,
                  net_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] net_id: The ID of the Net to which the virtual gateway is attached.
+        :param pulumi.Input[str] state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         if net_id is not None:
             pulumi.set(__self__, "net_id", net_id)
         if state is not None:
@@ -3473,6 +4529,9 @@ class VirtualGatewayNetToVirtualGatewayLinkArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net to which the virtual gateway is attached.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -3482,6 +4541,9 @@ class VirtualGatewayNetToVirtualGatewayLinkArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -3494,6 +4556,10 @@ class VirtualGatewayTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3502,6 +4568,9 @@ class VirtualGatewayTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -3511,6 +4580,9 @@ class VirtualGatewayTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -3525,6 +4597,12 @@ class VmBlockDeviceMappingArgs:
                  device_name: Optional[pulumi.Input[str]] = None,
                  no_device: Optional[pulumi.Input[str]] = None,
                  virtual_device_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['VmBlockDeviceMappingBsuArgs'] bsu: Information about the BSU volume to create.
+        :param pulumi.Input[str] device_name: The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        :param pulumi.Input[str] no_device: Removes the device which is included in the block device mapping of the OMI.
+        :param pulumi.Input[str] virtual_device_name: The name of the virtual device (`ephemeralN`).
+        """
         if bsu is not None:
             pulumi.set(__self__, "bsu", bsu)
         if device_name is not None:
@@ -3537,6 +4615,9 @@ class VmBlockDeviceMappingArgs:
     @property
     @pulumi.getter
     def bsu(self) -> Optional[pulumi.Input['VmBlockDeviceMappingBsuArgs']]:
+        """
+        Information about the BSU volume to create.
+        """
         return pulumi.get(self, "bsu")
 
     @bsu.setter
@@ -3546,6 +4627,9 @@ class VmBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -3555,6 +4639,9 @@ class VmBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[pulumi.Input[str]]:
+        """
+        Removes the device which is included in the block device mapping of the OMI.
+        """
         return pulumi.get(self, "no_device")
 
     @no_device.setter
@@ -3564,6 +4651,9 @@ class VmBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="virtualDeviceName")
     def virtual_device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the virtual device (`ephemeralN`).
+        """
         return pulumi.get(self, "virtual_device_name")
 
     @virtual_device_name.setter
@@ -3579,6 +4669,16 @@ class VmBlockDeviceMappingBsuArgs:
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the volume.
+        :param pulumi.Input[int] volume_size: The size of the volume, in gibibytes (GiB).<br />
+               If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
+               If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
+        :param pulumi.Input[str] volume_type: The type of the volume (`standard` \\| `io1` \\| `gp2`). If not specified in the request, a `standard` volume is created.<br />
+               For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         if iops is not None:
@@ -3593,6 +4693,9 @@ class VmBlockDeviceMappingBsuArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -3602,6 +4705,9 @@ class VmBlockDeviceMappingBsuArgs:
     @property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -3611,6 +4717,9 @@ class VmBlockDeviceMappingBsuArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot used to create the volume.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -3620,6 +4729,11 @@ class VmBlockDeviceMappingBsuArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the volume, in gibibytes (GiB).<br />
+        If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
+        If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -3629,6 +4743,10 @@ class VmBlockDeviceMappingBsuArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the volume (`standard` \\| `io1` \\| `gp2`). If not specified in the request, a `standard` volume is created.<br />
+        For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -3641,6 +4759,10 @@ class VmBlockDeviceMappingsCreatedArgs:
     def __init__(__self__, *,
                  bsu: Optional[pulumi.Input['VmBlockDeviceMappingsCreatedBsuArgs']] = None,
                  device_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['VmBlockDeviceMappingsCreatedBsuArgs'] bsu: Information about the BSU volume to create.
+        :param pulumi.Input[str] device_name: The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         if bsu is not None:
             pulumi.set(__self__, "bsu", bsu)
         if device_name is not None:
@@ -3649,6 +4771,9 @@ class VmBlockDeviceMappingsCreatedArgs:
     @property
     @pulumi.getter
     def bsu(self) -> Optional[pulumi.Input['VmBlockDeviceMappingsCreatedBsuArgs']]:
+        """
+        Information about the BSU volume to create.
+        """
         return pulumi.get(self, "bsu")
 
     @bsu.setter
@@ -3658,6 +4783,9 @@ class VmBlockDeviceMappingsCreatedArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -3672,6 +4800,12 @@ class VmBlockDeviceMappingsCreatedBsuArgs:
                  link_date: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[int]] = None,
                  volume_id: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        :param pulumi.Input[str] link_date: The time and date of attachment of the volume to the VM.
+        :param pulumi.Input[int] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        :param pulumi.Input[float] volume_id: The ID of the volume.
+        """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         if link_date is not None:
@@ -3684,6 +4818,9 @@ class VmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -3693,6 +4830,9 @@ class VmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter(name="linkDate")
     def link_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time and date of attachment of the volume to the VM.
+        """
         return pulumi.get(self, "link_date")
 
     @link_date.setter
@@ -3702,6 +4842,9 @@ class VmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[int]]:
+        """
+        The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -3711,6 +4854,9 @@ class VmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[float]]:
+        """
+        The ID of the volume.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -3738,6 +4884,25 @@ class VmNicArgs:
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['VmNicSecurityGroupArgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] device_number: The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+        :param pulumi.Input[str] account_id: The account ID of the owner of the NIC.
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        :param pulumi.Input[str] description: The description of the NIC, if you are creating a NIC when creating the VM.
+        :param pulumi.Input[bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        :param pulumi.Input['VmNicLinkNicArgs'] link_nic: Information about the network interface card (NIC).
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicLinkPublicIpArgs']]] link_public_ips: Information about the public IP associated with the NIC.
+        :param pulumi.Input[str] mac_address: The Media Access Control (MAC) address of the NIC.
+        :param pulumi.Input[str] net_id: The ID of the Net for the NIC.
+        :param pulumi.Input[str] nic_id: The ID of the NIC, if you are attaching an existing NIC when creating a VM.
+        :param pulumi.Input[str] private_dns_name: The name of the private DNS.
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicPrivateIpArgs']]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[int] secondary_private_ip_count: The number of secondary private IPs, if you create a NIC when creating a VM. This parameter cannot be specified if you specified more than one private IP in the `private_ips` parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more IDs of security group for the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicSecurityGroupArgs']]] security_groups: One or more security groups associated with the VM.
+        :param pulumi.Input[str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        """
         pulumi.set(__self__, "device_number", device_number)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -3775,6 +4940,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> pulumi.Input[int]:
+        """
+        The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+        """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
@@ -3784,6 +4952,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the NIC.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -3793,6 +4964,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -3802,6 +4976,9 @@ class VmNicArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the NIC, if you are creating a NIC when creating the VM.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -3811,6 +4988,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="isSourceDestChecked")
     def is_source_dest_checked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        """
         return pulumi.get(self, "is_source_dest_checked")
 
     @is_source_dest_checked.setter
@@ -3820,6 +5000,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="linkNic")
     def link_nic(self) -> Optional[pulumi.Input['VmNicLinkNicArgs']]:
+        """
+        Information about the network interface card (NIC).
+        """
         return pulumi.get(self, "link_nic")
 
     @link_nic.setter
@@ -3829,6 +5012,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="linkPublicIps")
     def link_public_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicLinkPublicIpArgs']]]]:
+        """
+        Information about the public IP associated with the NIC.
+        """
         return pulumi.get(self, "link_public_ips")
 
     @link_public_ips.setter
@@ -3838,6 +5024,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Media Access Control (MAC) address of the NIC.
+        """
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
@@ -3847,6 +5036,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net for the NIC.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -3856,6 +5048,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC, if you are attaching an existing NIC when creating a VM.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -3865,6 +5060,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
@@ -3874,6 +5072,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicPrivateIpArgs']]]]:
+        """
+        One or more private IPs of the VM.
+        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -3883,6 +5084,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="secondaryPrivateIpCount")
     def secondary_private_ip_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of secondary private IPs, if you create a NIC when creating a VM. This parameter cannot be specified if you specified more than one private IP in the `private_ips` parameter.
+        """
         return pulumi.get(self, "secondary_private_ip_count")
 
     @secondary_private_ip_count.setter
@@ -3892,6 +5096,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of security group for the VMs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -3901,6 +5108,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicSecurityGroupArgs']]]]:
+        """
+        One or more security groups associated with the VM.
+        """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
@@ -3910,6 +5120,9 @@ class VmNicArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -3919,6 +5132,9 @@ class VmNicArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -3933,6 +5149,12 @@ class VmNicLinkNicArgs:
                  device_number: Optional[pulumi.Input[str]] = None,
                  link_nic_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        :param pulumi.Input[str] device_number: The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+        :param pulumi.Input[str] link_nic_id: The ID of the NIC to attach.
+        :param pulumi.Input[str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         if device_number is not None:
@@ -3945,6 +5167,9 @@ class VmNicLinkNicArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -3954,6 +5179,9 @@ class VmNicLinkNicArgs:
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+        """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
@@ -3963,6 +5191,9 @@ class VmNicLinkNicArgs:
     @property
     @pulumi.getter(name="linkNicId")
     def link_nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC to attach.
+        """
         return pulumi.get(self, "link_nic_id")
 
     @link_nic_id.setter
@@ -3972,6 +5203,9 @@ class VmNicLinkNicArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -3985,6 +5219,11 @@ class VmNicLinkPublicIpArgs:
                  public_dns_name: Optional[pulumi.Input[str]] = None,
                  public_ip: Optional[pulumi.Input[str]] = None,
                  public_ip_account_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_dns_name: The name of the public DNS.
+        :param pulumi.Input[str] public_ip: The public IP of the VM.
+        :param pulumi.Input[str] public_ip_account_id: The account ID of the owner of the public IP.
+        """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
         if public_ip is not None:
@@ -3995,6 +5234,9 @@ class VmNicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
@@ -4004,6 +5246,9 @@ class VmNicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP of the VM.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -4013,6 +5258,9 @@ class VmNicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the public IP.
+        """
         return pulumi.get(self, "public_ip_account_id")
 
     @public_ip_account_id.setter
@@ -4027,6 +5275,12 @@ class VmNicPrivateIpArgs:
                  link_public_ips: Optional[pulumi.Input[Sequence[pulumi.Input['VmNicPrivateIpLinkPublicIpArgs']]]] = None,
                  private_dns_name: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] is_primary: If true, the IP is the primary private IP of the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicPrivateIpLinkPublicIpArgs']]] link_public_ips: Information about the public IP associated with the NIC.
+        :param pulumi.Input[str] private_dns_name: The name of the private DNS.
+        :param pulumi.Input[str] private_ip: The private IP of the NIC.
+        """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
         if link_public_ips is not None:
@@ -4039,6 +5293,9 @@ class VmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="isPrimary")
     def is_primary(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the IP is the primary private IP of the NIC.
+        """
         return pulumi.get(self, "is_primary")
 
     @is_primary.setter
@@ -4048,6 +5305,9 @@ class VmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="linkPublicIps")
     def link_public_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicPrivateIpLinkPublicIpArgs']]]]:
+        """
+        Information about the public IP associated with the NIC.
+        """
         return pulumi.get(self, "link_public_ips")
 
     @link_public_ips.setter
@@ -4057,6 +5317,9 @@ class VmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
@@ -4066,6 +5329,9 @@ class VmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP of the NIC.
+        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -4079,6 +5345,11 @@ class VmNicPrivateIpLinkPublicIpArgs:
                  public_dns_name: Optional[pulumi.Input[str]] = None,
                  public_ip: Optional[pulumi.Input[str]] = None,
                  public_ip_account_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] public_dns_name: The name of the public DNS.
+        :param pulumi.Input[str] public_ip: The public IP of the VM.
+        :param pulumi.Input[str] public_ip_account_id: The account ID of the owner of the public IP.
+        """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
         if public_ip is not None:
@@ -4089,6 +5360,9 @@ class VmNicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
@@ -4098,6 +5372,9 @@ class VmNicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP of the VM.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -4107,6 +5384,9 @@ class VmNicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the public IP.
+        """
         return pulumi.get(self, "public_ip_account_id")
 
     @public_ip_account_id.setter
@@ -4119,6 +5399,10 @@ class VmNicSecurityGroupArgs:
     def __init__(__self__, *,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        """
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_name is not None:
@@ -4127,6 +5411,9 @@ class VmNicSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -4136,6 +5423,9 @@ class VmNicSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -4148,6 +5438,10 @@ class VmSecurityGroupArgs:
     def __init__(__self__, *,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        """
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_name is not None:
@@ -4156,6 +5450,9 @@ class VmSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -4165,6 +5462,9 @@ class VmSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -4177,6 +5477,10 @@ class VmTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -4185,6 +5489,9 @@ class VmTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -4194,6 +5501,9 @@ class VmTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -4209,6 +5519,13 @@ class VolumeLinkedVolumeArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  vm_id: Optional[pulumi.Input[str]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] delete_on_vm_deletion: If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
+        :param pulumi.Input[str] device_name: The name of the device.
+        :param pulumi.Input[str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param pulumi.Input[str] vm_id: The ID of the VM.
+        :param pulumi.Input[str] volume_id: The ID of the volume.
+        """
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         if device_name is not None:
@@ -4223,6 +5540,9 @@ class VolumeLinkedVolumeArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -4232,6 +5552,9 @@ class VolumeLinkedVolumeArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the device.
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -4241,6 +5564,9 @@ class VolumeLinkedVolumeArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -4250,6 +5576,9 @@ class VolumeLinkedVolumeArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM.
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -4259,6 +5588,9 @@ class VolumeLinkedVolumeArgs:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the volume.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -4271,6 +5603,10 @@ class VolumeTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -4279,6 +5615,9 @@ class VolumeTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -4288,6 +5627,9 @@ class VolumeTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -4301,6 +5643,11 @@ class VpnConnectionRouteArgs:
                  destination_ip_range: Optional[pulumi.Input[str]] = None,
                  route_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        :param pulumi.Input[str] route_type: The type of route (always `static`).
+        :param pulumi.Input[str] state: The state of the IPSEC tunnel (`UP` \\| `DOWN`).
+        """
         if destination_ip_range is not None:
             pulumi.set(__self__, "destination_ip_range", destination_ip_range)
         if route_type is not None:
@@ -4311,6 +5658,9 @@ class VpnConnectionRouteArgs:
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
@@ -4320,6 +5670,9 @@ class VpnConnectionRouteArgs:
     @property
     @pulumi.getter(name="routeType")
     def route_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of route (always `static`).
+        """
         return pulumi.get(self, "route_type")
 
     @route_type.setter
@@ -4329,6 +5682,9 @@ class VpnConnectionRouteArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the IPSEC tunnel (`UP` \\| `DOWN`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -4341,6 +5697,10 @@ class VpnConnectionTagArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[str] value: The value of the tag, between 0 and 255 characters.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -4349,6 +5709,9 @@ class VpnConnectionTagArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -4358,6 +5721,9 @@ class VpnConnectionTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -4373,6 +5739,13 @@ class VpnConnectionVgwTelemetryArgs:
                  outside_ip_address: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] accepted_route_count: The number of routes accepted through BGP (Border Gateway Protocol) route exchanges.
+        :param pulumi.Input[str] last_state_change_date: The date and time (UTC) of the latest state update.
+        :param pulumi.Input[str] outside_ip_address: The IP on the OUTSCALE side of the tunnel.
+        :param pulumi.Input[str] state: The state of the IPSEC tunnel (`UP` \\| `DOWN`).
+        :param pulumi.Input[str] state_description: A description of the current state of the tunnel.
+        """
         if accepted_route_count is not None:
             pulumi.set(__self__, "accepted_route_count", accepted_route_count)
         if last_state_change_date is not None:
@@ -4387,6 +5760,9 @@ class VpnConnectionVgwTelemetryArgs:
     @property
     @pulumi.getter(name="acceptedRouteCount")
     def accepted_route_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of routes accepted through BGP (Border Gateway Protocol) route exchanges.
+        """
         return pulumi.get(self, "accepted_route_count")
 
     @accepted_route_count.setter
@@ -4396,6 +5772,9 @@ class VpnConnectionVgwTelemetryArgs:
     @property
     @pulumi.getter(name="lastStateChangeDate")
     def last_state_change_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time (UTC) of the latest state update.
+        """
         return pulumi.get(self, "last_state_change_date")
 
     @last_state_change_date.setter
@@ -4405,6 +5784,9 @@ class VpnConnectionVgwTelemetryArgs:
     @property
     @pulumi.getter(name="outsideIpAddress")
     def outside_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP on the OUTSCALE side of the tunnel.
+        """
         return pulumi.get(self, "outside_ip_address")
 
     @outside_ip_address.setter
@@ -4414,6 +5796,9 @@ class VpnConnectionVgwTelemetryArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the IPSEC tunnel (`UP` \\| `DOWN`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -4423,6 +5808,9 @@ class VpnConnectionVgwTelemetryArgs:
     @property
     @pulumi.getter(name="stateDescription")
     def state_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the current state of the tunnel.
+        """
         return pulumi.get(self, "state_description")
 
     @state_description.setter
@@ -4787,6 +6175,11 @@ class GetImageBlockDeviceMappingArgs:
                  bsus: Sequence['GetImageBlockDeviceMappingBsusArgs'],
                  device_name: str,
                  virtual_device_name: str):
+        """
+        :param Sequence['GetImageBlockDeviceMappingBsusArgs'] bsus: Information about the BSU volume to create.
+        :param str device_name: The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        :param str virtual_device_name: The name of the virtual device (`ephemeralN`).
+        """
         pulumi.set(__self__, "bsus", bsus)
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "virtual_device_name", virtual_device_name)
@@ -4794,6 +6187,9 @@ class GetImageBlockDeviceMappingArgs:
     @property
     @pulumi.getter
     def bsus(self) -> Sequence['GetImageBlockDeviceMappingBsusArgs']:
+        """
+        Information about the BSU volume to create.
+        """
         return pulumi.get(self, "bsus")
 
     @bsus.setter
@@ -4803,6 +6199,9 @@ class GetImageBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
+        """
+        The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -4812,6 +6211,9 @@ class GetImageBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="virtualDeviceName")
     def virtual_device_name(self) -> str:
+        """
+        The name of the virtual device (`ephemeralN`).
+        """
         return pulumi.get(self, "virtual_device_name")
 
     @virtual_device_name.setter
@@ -4827,6 +6229,16 @@ class GetImageBlockDeviceMappingBsusArgs:
                  snapshot_id: str,
                  volume_size: int,
                  volume_type: str):
+        """
+        :param bool delete_on_vm_deletion: By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
+        :param int iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        :param str snapshot_id: The ID of the snapshot used to create the volume.
+        :param int volume_size: The size of the volume, in gibibytes (GiB).<br />
+               If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
+               If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
+        :param str volume_type: The type of the volume (`standard` \\| `io1` \\| `gp2`). If not specified in the request, a `standard` volume is created.<br />
+               For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         pulumi.set(__self__, "iops", iops)
         pulumi.set(__self__, "snapshot_id", snapshot_id)
@@ -4836,6 +6248,9 @@ class GetImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> bool:
+        """
+        By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -4845,6 +6260,9 @@ class GetImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter
     def iops(self) -> int:
+        """
+        The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -4854,6 +6272,9 @@ class GetImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
+        """
+        The ID of the snapshot used to create the volume.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -4863,6 +6284,11 @@ class GetImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> int:
+        """
+        The size of the volume, in gibibytes (GiB).<br />
+        If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
+        If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
+        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -4872,6 +6298,10 @@ class GetImageBlockDeviceMappingBsusArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
+        """
+        The type of the volume (`standard` \\| `io1` \\| `gp2`). If not specified in the request, a `standard` volume is created.<br />
+        For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -5102,6 +6532,12 @@ class GetLoadBalancerAccessLogArgs:
                  osu_bucket_name: str,
                  osu_bucket_prefix: str,
                  publication_interval: int):
+        """
+        :param bool is_enabled: If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        :param str osu_bucket_name: The name of the OOS bucket for the access logs.
+        :param str osu_bucket_prefix: The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        :param int publication_interval: The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "osu_bucket_name", osu_bucket_name)
         pulumi.set(__self__, "osu_bucket_prefix", osu_bucket_prefix)
@@ -5110,6 +6546,9 @@ class GetLoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
+        """
+        If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -5119,6 +6558,9 @@ class GetLoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketName")
     def osu_bucket_name(self) -> str:
+        """
+        The name of the OOS bucket for the access logs.
+        """
         return pulumi.get(self, "osu_bucket_name")
 
     @osu_bucket_name.setter
@@ -5128,6 +6570,9 @@ class GetLoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="osuBucketPrefix")
     def osu_bucket_prefix(self) -> str:
+        """
+        The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        """
         return pulumi.get(self, "osu_bucket_prefix")
 
     @osu_bucket_prefix.setter
@@ -5137,6 +6582,9 @@ class GetLoadBalancerAccessLogArgs:
     @property
     @pulumi.getter(name="publicationInterval")
     def publication_interval(self) -> int:
+        """
+        The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
+        """
         return pulumi.get(self, "publication_interval")
 
     @publication_interval.setter
@@ -5179,6 +6627,12 @@ class GetLoadBalancerHealthCheckArgs:
                  healthy_threshold: str,
                  timeout: str,
                  unhealthy_threshold: str):
+        """
+        :param str check_interval: The number of seconds between two pings (between `5` and `600` both included).
+        :param str healthy_threshold: The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        :param str timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        :param str unhealthy_threshold: The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        """
         pulumi.set(__self__, "check_interval", check_interval)
         pulumi.set(__self__, "checked_vm", checked_vm)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
@@ -5188,6 +6642,9 @@ class GetLoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter(name="checkInterval")
     def check_interval(self) -> str:
+        """
+        The number of seconds between two pings (between `5` and `600` both included).
+        """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
@@ -5206,6 +6663,9 @@ class GetLoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> str:
+        """
+        The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
@@ -5215,6 +6675,9 @@ class GetLoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter
     def timeout(self) -> str:
+        """
+        The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -5224,6 +6687,9 @@ class GetLoadBalancerHealthCheckArgs:
     @property
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> str:
+        """
+        The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).
+        """
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
@@ -5240,6 +6706,14 @@ class GetLoadBalancerListenerArgs:
                  load_balancer_protocol: str,
                  policy_names: Sequence[str],
                  server_certificate_id: str):
+        """
+        :param int backend_port: The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        :param str backend_protocol: The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param int load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included).
+        :param str load_balancer_protocol: The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        :param Sequence[str] policy_names: The names of the policies. If there are no policies enabled, the list is empty.
+        :param str server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         pulumi.set(__self__, "backend_port", backend_port)
         pulumi.set(__self__, "backend_protocol", backend_protocol)
         pulumi.set(__self__, "load_balancer_port", load_balancer_port)
@@ -5250,6 +6724,9 @@ class GetLoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> int:
+        """
+        The port on which the back-end VM is listening (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
@@ -5259,6 +6736,9 @@ class GetLoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="backendProtocol")
     def backend_protocol(self) -> str:
+        """
+        The protocol for routing traffic to back-end VMs (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "backend_protocol")
 
     @backend_protocol.setter
@@ -5268,6 +6748,9 @@ class GetLoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerPort")
     def load_balancer_port(self) -> int:
+        """
+        The port on which the load balancer is listening (between `1` and `65535`, both included).
+        """
         return pulumi.get(self, "load_balancer_port")
 
     @load_balancer_port.setter
@@ -5277,6 +6760,9 @@ class GetLoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="loadBalancerProtocol")
     def load_balancer_protocol(self) -> str:
+        """
+        The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
+        """
         return pulumi.get(self, "load_balancer_protocol")
 
     @load_balancer_protocol.setter
@@ -5286,6 +6772,9 @@ class GetLoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> Sequence[str]:
+        """
+        The names of the policies. If there are no policies enabled, the list is empty.
+        """
         return pulumi.get(self, "policy_names")
 
     @policy_names.setter
@@ -5295,6 +6784,9 @@ class GetLoadBalancerListenerArgs:
     @property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> str:
+        """
+        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
@@ -5307,12 +6799,19 @@ class GetLoadBalancerTagArgs:
     def __init__(__self__, *,
                  key: str,
                  value: str):
+        """
+        :param str key: The key of the tag, with a minimum of 1 character.
+        :param str value: The value of the tag, between 0 and 255 characters.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The key of the tag, with a minimum of 1 character.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -5322,6 +6821,9 @@ class GetLoadBalancerTagArgs:
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of the tag, between 0 and 255 characters.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -5577,12 +7079,18 @@ class GetNetPeeringFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
+        """
+        :param str name: The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -5604,12 +7112,18 @@ class GetNetPeeringsFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
+        """
+        :param str name: The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The state of the Net peering (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -5820,12 +7334,18 @@ class GetQuotaFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
+        """
+        :param str name: The unique name of the quota.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The unique name of the quota.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -5847,12 +7367,18 @@ class GetQuotasFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
+        """
+        :param str name: The unique name of the quota.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The unique name of the quota.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -5982,12 +7508,18 @@ class GetServerCertificateFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
+        """
+        :param str name: The name of the server certificate.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the server certificate.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -6009,12 +7541,18 @@ class GetServerCertificatesFilterArgs:
     def __init__(__self__, *,
                  name: str,
                  values: Sequence[str]):
+        """
+        :param str name: The name of the server certificate.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the server certificate.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -6306,6 +7844,10 @@ class GetVmBlockDeviceMappingsCreatedArgs:
     def __init__(__self__, *,
                  bsu: 'GetVmBlockDeviceMappingsCreatedBsuArgs',
                  device_name: Optional[str] = None):
+        """
+        :param 'GetVmBlockDeviceMappingsCreatedBsuArgs' bsu: Information about the created BSU volume.
+        :param str device_name: The name of the device.
+        """
         pulumi.set(__self__, "bsu", bsu)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -6313,6 +7855,9 @@ class GetVmBlockDeviceMappingsCreatedArgs:
     @property
     @pulumi.getter
     def bsu(self) -> 'GetVmBlockDeviceMappingsCreatedBsuArgs':
+        """
+        Information about the created BSU volume.
+        """
         return pulumi.get(self, "bsu")
 
     @bsu.setter
@@ -6322,6 +7867,9 @@ class GetVmBlockDeviceMappingsCreatedArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
+        """
+        The name of the device.
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -6336,6 +7884,12 @@ class GetVmBlockDeviceMappingsCreatedBsuArgs:
                  link_date: str,
                  state: int,
                  volume_id: float):
+        """
+        :param bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
+        :param str link_date: The time and date of attachment of the volume to the VM.
+        :param int state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
+        :param float volume_id: The ID of the volume.
+        """
         pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         pulumi.set(__self__, "link_date", link_date)
         pulumi.set(__self__, "state", state)
@@ -6344,6 +7898,9 @@ class GetVmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> bool:
+        """
+        If true, the NIC is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -6353,6 +7910,9 @@ class GetVmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter(name="linkDate")
     def link_date(self) -> str:
+        """
+        The time and date of attachment of the volume to the VM.
+        """
         return pulumi.get(self, "link_date")
 
     @link_date.setter
@@ -6362,6 +7922,9 @@ class GetVmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter
     def state(self) -> int:
+        """
+        The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -6371,6 +7934,9 @@ class GetVmBlockDeviceMappingsCreatedBsuArgs:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> float:
+        """
+        The ID of the volume.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -6426,6 +7992,23 @@ class GetVmNicArgs:
                  security_groups_names: Sequence[str],
                  state: str,
                  subnet_id: str):
+        """
+        :param str account_id: The account ID of the owner of the NIC.
+        :param bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
+        :param str description: The description of the NIC.
+        :param int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        :param 'GetVmNicLinkNicArgs' link_nic: Information about the network interface card (NIC).
+        :param Sequence['GetVmNicLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
+        :param str mac_address: The Media Access Control (MAC) address of the NIC.
+        :param str net_id: The ID of the Net for the NIC.
+        :param str nic_id: The ID of the NIC.
+        :param str private_dns_name: The name of the private DNS.
+        :param Sequence['GetVmNicPrivateIpArgs'] private_ips: The private IP or IPs of the NIC.
+        :param Sequence['GetVmNicSecurityGroupArgs'] security_groups: One or more security groups associated with the VM.
+        :param str state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
+        :param str subnet_id: The ID of the Subnet for the VM.
+        """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         pulumi.set(__self__, "description", description)
@@ -6448,6 +8031,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The account ID of the owner of the NIC.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -6457,6 +8043,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> bool:
+        """
+        If true, the NIC is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -6466,6 +8055,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the NIC.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -6475,6 +8067,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> int:
+        """
+        The device index for the NIC attachment (between `1` and `7`, both included).
+        """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
@@ -6484,6 +8079,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="isSourceDestChecked")
     def is_source_dest_checked(self) -> bool:
+        """
+        (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+        """
         return pulumi.get(self, "is_source_dest_checked")
 
     @is_source_dest_checked.setter
@@ -6493,6 +8091,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="linkNic")
     def link_nic(self) -> 'GetVmNicLinkNicArgs':
+        """
+        Information about the network interface card (NIC).
+        """
         return pulumi.get(self, "link_nic")
 
     @link_nic.setter
@@ -6502,6 +8103,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="linkPublicIps")
     def link_public_ips(self) -> Sequence['GetVmNicLinkPublicIpArgs']:
+        """
+        Information about the public IP associated with the NIC.
+        """
         return pulumi.get(self, "link_public_ips")
 
     @link_public_ips.setter
@@ -6511,6 +8115,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> str:
+        """
+        The Media Access Control (MAC) address of the NIC.
+        """
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
@@ -6520,6 +8127,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net for the NIC.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -6529,6 +8139,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> str:
+        """
+        The ID of the NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -6538,6 +8151,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> str:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
@@ -6547,6 +8163,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Sequence['GetVmNicPrivateIpArgs']:
+        """
+        The private IP or IPs of the NIC.
+        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -6574,6 +8193,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Sequence['GetVmNicSecurityGroupArgs']:
+        """
+        One or more security groups associated with the VM.
+        """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
@@ -6592,6 +8214,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -6601,6 +8226,9 @@ class GetVmNicArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
+        """
+        The ID of the Subnet for the VM.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -6615,6 +8243,12 @@ class GetVmNicLinkNicArgs:
                  device_number: str,
                  link_nic_id: str,
                  state: str):
+        """
+        :param bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
+        :param str device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param str link_nic_id: The ID of the NIC to attach.
+        :param str state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
+        """
         pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         pulumi.set(__self__, "device_number", device_number)
         pulumi.set(__self__, "link_nic_id", link_nic_id)
@@ -6623,6 +8257,9 @@ class GetVmNicLinkNicArgs:
     @property
     @pulumi.getter(name="deleteOnVmDeletion")
     def delete_on_vm_deletion(self) -> bool:
+        """
+        If true, the NIC is deleted when the VM is terminated.
+        """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
@@ -6632,6 +8269,9 @@ class GetVmNicLinkNicArgs:
     @property
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> str:
+        """
+        The device index for the NIC attachment (between `1` and `7`, both included).
+        """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
@@ -6641,6 +8281,9 @@ class GetVmNicLinkNicArgs:
     @property
     @pulumi.getter(name="linkNicId")
     def link_nic_id(self) -> str:
+        """
+        The ID of the NIC to attach.
+        """
         return pulumi.get(self, "link_nic_id")
 
     @link_nic_id.setter
@@ -6650,6 +8293,9 @@ class GetVmNicLinkNicArgs:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -6663,6 +8309,11 @@ class GetVmNicLinkPublicIpArgs:
                  public_dns_name: str,
                  public_ip: str,
                  public_ip_account_id: str):
+        """
+        :param str public_dns_name: The name of the public DNS.
+        :param str public_ip: The public IP of the VM.
+        :param str public_ip_account_id: The account ID of the owner of the public IP.
+        """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
         pulumi.set(__self__, "public_ip_account_id", public_ip_account_id)
@@ -6670,6 +8321,9 @@ class GetVmNicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> str:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
@@ -6679,6 +8333,9 @@ class GetVmNicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
+        """
+        The public IP of the VM.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -6688,6 +8345,9 @@ class GetVmNicLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> str:
+        """
+        The account ID of the owner of the public IP.
+        """
         return pulumi.get(self, "public_ip_account_id")
 
     @public_ip_account_id.setter
@@ -6702,6 +8362,12 @@ class GetVmNicPrivateIpArgs:
                  link_public_ips: Sequence['GetVmNicPrivateIpLinkPublicIpArgs'],
                  private_dns_name: str,
                  private_ip: str):
+        """
+        :param bool is_primary: If true, the IP is the primary private IP of the NIC.
+        :param Sequence['GetVmNicPrivateIpLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
+        :param str private_dns_name: The name of the private DNS.
+        :param str private_ip: The primary private IP of the VM.
+        """
         pulumi.set(__self__, "is_primary", is_primary)
         pulumi.set(__self__, "link_public_ips", link_public_ips)
         pulumi.set(__self__, "private_dns_name", private_dns_name)
@@ -6710,6 +8376,9 @@ class GetVmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="isPrimary")
     def is_primary(self) -> bool:
+        """
+        If true, the IP is the primary private IP of the NIC.
+        """
         return pulumi.get(self, "is_primary")
 
     @is_primary.setter
@@ -6719,6 +8388,9 @@ class GetVmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="linkPublicIps")
     def link_public_ips(self) -> Sequence['GetVmNicPrivateIpLinkPublicIpArgs']:
+        """
+        Information about the public IP associated with the NIC.
+        """
         return pulumi.get(self, "link_public_ips")
 
     @link_public_ips.setter
@@ -6728,6 +8400,9 @@ class GetVmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="privateDnsName")
     def private_dns_name(self) -> str:
+        """
+        The name of the private DNS.
+        """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
@@ -6737,6 +8412,9 @@ class GetVmNicPrivateIpArgs:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
+        """
+        The primary private IP of the VM.
+        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -6750,6 +8428,11 @@ class GetVmNicPrivateIpLinkPublicIpArgs:
                  public_dns_name: str,
                  public_ip: str,
                  public_ip_account_id: str):
+        """
+        :param str public_dns_name: The name of the public DNS.
+        :param str public_ip: The public IP of the VM.
+        :param str public_ip_account_id: The account ID of the owner of the public IP.
+        """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
         pulumi.set(__self__, "public_ip_account_id", public_ip_account_id)
@@ -6757,6 +8440,9 @@ class GetVmNicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicDnsName")
     def public_dns_name(self) -> str:
+        """
+        The name of the public DNS.
+        """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
@@ -6766,6 +8452,9 @@ class GetVmNicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
+        """
+        The public IP of the VM.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -6775,6 +8464,9 @@ class GetVmNicPrivateIpLinkPublicIpArgs:
     @property
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> str:
+        """
+        The account ID of the owner of the public IP.
+        """
         return pulumi.get(self, "public_ip_account_id")
 
     @public_ip_account_id.setter
@@ -6787,12 +8479,19 @@ class GetVmNicSecurityGroupArgs:
     def __init__(__self__, *,
                  security_group_id: str,
                  security_group_name: str):
+        """
+        :param str security_group_id: The ID of the security group.
+        :param str security_group_name: The name of the security group.
+        """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "security_group_name", security_group_name)
 
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
+        """
+        The ID of the security group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -6802,6 +8501,9 @@ class GetVmNicSecurityGroupArgs:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> str:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter

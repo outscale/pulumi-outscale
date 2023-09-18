@@ -18,6 +18,8 @@ class RouteTableLinkArgs:
                  subnet_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a RouteTableLink resource.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet.
         """
         pulumi.set(__self__, "route_table_id", route_table_id)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -25,6 +27,9 @@ class RouteTableLinkArgs:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -34,6 +39,9 @@ class RouteTableLinkArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -51,6 +59,10 @@ class _RouteTableLinkState:
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteTableLink resources.
+        :param pulumi.Input[str] link_route_table_id: The ID of the association between the route table and the Subnet.
+        :param pulumi.Input[bool] main: If true, the route table is the main one.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet.
         """
         if link_route_table_id is not None:
             pulumi.set(__self__, "link_route_table_id", link_route_table_id)
@@ -66,6 +78,9 @@ class _RouteTableLinkState:
     @property
     @pulumi.getter(name="linkRouteTableId")
     def link_route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the association between the route table and the Subnet.
+        """
         return pulumi.get(self, "link_route_table_id")
 
     @link_route_table_id.setter
@@ -75,6 +90,9 @@ class _RouteTableLinkState:
     @property
     @pulumi.getter
     def main(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the route table is the main one.
+        """
         return pulumi.get(self, "main")
 
     @main.setter
@@ -93,6 +111,9 @@ class _RouteTableLinkState:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -102,6 +123,9 @@ class _RouteTableLinkState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -118,9 +142,47 @@ class RouteTableLink(pulumi.CustomResource):
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RouteTableLink resource with the given unique name, props, and options.
+        Manages a route table link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/18")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        ```
+        ### Link a route table to a subnet
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        route_table_link01 = outscale.RouteTableLink("routeTableLink01",
+            subnet_id=outscale_subnet["subnet01"]["subnet_id"],
+            route_table_id=outscale_route_table["route_table01"]["route_table_id"])
+        ```
+
+        ## Import
+
+        A route table link can be imported using the route table ID and the route table link ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/routeTableLink:RouteTableLink ImportedRouteTableLink rtb-12345678_rtbassoc-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet.
         """
         ...
     @overload
@@ -129,7 +191,43 @@ class RouteTableLink(pulumi.CustomResource):
                  args: RouteTableLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RouteTableLink resource with the given unique name, props, and options.
+        Manages a route table link.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/18")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        ```
+        ### Link a route table to a subnet
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        route_table_link01 = outscale.RouteTableLink("routeTableLink01",
+            subnet_id=outscale_subnet["subnet01"]["subnet_id"],
+            route_table_id=outscale_route_table["route_table01"]["route_table_id"])
+        ```
+
+        ## Import
+
+        A route table link can be imported using the route table ID and the route table link ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/routeTableLink:RouteTableLink ImportedRouteTableLink rtb-12345678_rtbassoc-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param RouteTableLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -187,6 +285,10 @@ class RouteTableLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] link_route_table_id: The ID of the association between the route table and the Subnet.
+        :param pulumi.Input[bool] main: If true, the route table is the main one.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] subnet_id: The ID of the Subnet.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -202,11 +304,17 @@ class RouteTableLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="linkRouteTableId")
     def link_route_table_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the association between the route table and the Subnet.
+        """
         return pulumi.get(self, "link_route_table_id")
 
     @property
     @pulumi.getter
     def main(self) -> pulumi.Output[bool]:
+        """
+        If true, the route table is the main one.
+        """
         return pulumi.get(self, "main")
 
     @property
@@ -217,10 +325,16 @@ class RouteTableLink(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Subnet.
+        """
         return pulumi.get(self, "subnet_id")
 

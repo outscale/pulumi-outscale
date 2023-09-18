@@ -66,6 +66,9 @@ class GetVpnConnectionsResult:
     @property
     @pulumi.getter(name="vpnConnections")
     def vpn_connections(self) -> Sequence['outputs.GetVpnConnectionsVpnConnectionResult']:
+        """
+        Information about one or more VPN connections.
+        """
         return pulumi.get(self, "vpn_connections")
 
 
@@ -86,7 +89,35 @@ def get_vpn_connections(filters: Optional[Sequence[pulumi.InputType['GetVpnConne
                         vpn_connection_ids: Optional[Sequence[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnConnectionsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about VPN connections.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPN-Connections.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vpn_connections01 = outscale.get_vpn_connections(filters=[
+        outscale.GetVpnConnectionsFilterArgs(
+            name="client_gateway_ids",
+            values=["cgw-12345678"],
+        ),
+        outscale.GetVpnConnectionsFilterArgs(
+            name="virtual_gateway_ids",
+            values=[
+                "vgw-12345678",
+                "vgw-12345678",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVpnConnectionsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] vpn_connection_ids: The IDs of the VPN connections.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -107,6 +138,34 @@ def get_vpn_connections_output(filters: Optional[pulumi.Input[Optional[Sequence[
                                vpn_connection_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpnConnectionsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about VPN connections.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPN-Connections.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vpn_connections01 = outscale.get_vpn_connections(filters=[
+        outscale.GetVpnConnectionsFilterArgs(
+            name="client_gateway_ids",
+            values=["cgw-12345678"],
+        ),
+        outscale.GetVpnConnectionsFilterArgs(
+            name="virtual_gateway_ids",
+            values=[
+                "vgw-12345678",
+                "vgw-12345678",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVpnConnectionsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] vpn_connection_ids: The IDs of the VPN connections.
     """
     ...

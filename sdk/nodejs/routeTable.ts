@@ -6,6 +6,38 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a route table.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+ *
+ * ## Example Usage
+ * ### Required resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * ```
+ * ### Create a route table
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const routeTable01 = new outscale.RouteTable("routeTable01", {netId: outscale_net.net01.net_id});
+ * ```
+ *
+ * ## Import
+ *
+ * A route table can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/routeTable:RouteTable ImportedRouteTable rtb-12345678
+ * ```
+ */
 export class RouteTable extends pulumi.CustomResource {
     /**
      * Get an existing RouteTable resource's state with the given name, ID, and optional extra
@@ -34,12 +66,30 @@ export class RouteTable extends pulumi.CustomResource {
         return obj['__pulumiType'] === RouteTable.__pulumiType;
     }
 
+    /**
+     * One or more associations between the route table and Subnets.
+     */
     public /*out*/ readonly linkRouteTables!: pulumi.Output<outputs.RouteTableLinkRouteTable[]>;
+    /**
+     * The ID of the Net for which you want to create a route table.
+     */
     public readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * Information about virtual gateways propagating routes.
+     */
     public /*out*/ readonly routePropagatingVirtualGateways!: pulumi.Output<outputs.RouteTableRoutePropagatingVirtualGateway[]>;
+    /**
+     * The ID of the route table.
+     */
     public /*out*/ readonly routeTableId!: pulumi.Output<string>;
+    /**
+     * One or more routes in the route table.
+     */
     public /*out*/ readonly routes!: pulumi.Output<outputs.RouteTableRoute[]>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.RouteTableTag[] | undefined>;
 
     /**
@@ -84,12 +134,30 @@ export class RouteTable extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouteTable resources.
  */
 export interface RouteTableState {
+    /**
+     * One or more associations between the route table and Subnets.
+     */
     linkRouteTables?: pulumi.Input<pulumi.Input<inputs.RouteTableLinkRouteTable>[]>;
+    /**
+     * The ID of the Net for which you want to create a route table.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Information about virtual gateways propagating routes.
+     */
     routePropagatingVirtualGateways?: pulumi.Input<pulumi.Input<inputs.RouteTableRoutePropagatingVirtualGateway>[]>;
+    /**
+     * The ID of the route table.
+     */
     routeTableId?: pulumi.Input<string>;
+    /**
+     * One or more routes in the route table.
+     */
     routes?: pulumi.Input<pulumi.Input<inputs.RouteTableRoute>[]>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.RouteTableTag>[]>;
 }
 
@@ -97,6 +165,12 @@ export interface RouteTableState {
  * The set of arguments for constructing a RouteTable resource.
  */
 export interface RouteTableArgs {
+    /**
+     * The ID of the Net for which you want to create a route table.
+     */
     netId: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.RouteTableTag>[]>;
 }

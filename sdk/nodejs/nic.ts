@@ -6,6 +6,70 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a network interface card (NIC).
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     subregionName: "eu-west-2a",
+ *     ipRange: "10.0.0.0/18",
+ *     netId: net01.netId,
+ * });
+ * const securityGroup01 = new outscale.SecurityGroup("securityGroup01", {
+ *     description: "Terraform security group for nic with private IPs",
+ *     securityGroupName: "terraform-security-group-nic-ips",
+ *     netId: net01.netId,
+ * });
+ * ```
+ * ### Create a NIC
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const nic01 = new outscale.Nic("nic01", {subnetId: outscale_subnet.subnet01.subnet_id});
+ * ```
+ * ### Create a NIC with private IP addresses
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const nic02 = new outscale.Nic("nic02", {
+ *     description: "Terraform nic with private IPs",
+ *     subnetId: outscale_subnet.subnet01.subnet_id,
+ *     securityGroupIds: [outscale_security_group.security_group01.security_group_id],
+ *     privateIps: [
+ *         {
+ *             isPrimary: true,
+ *             privateIp: "10.0.0.1",
+ *         },
+ *         {
+ *             isPrimary: false,
+ *             privateIp: "10.0.0.2",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A NIC can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/nic:Nic ImportedNic eni-12345678
+ * ```
+ */
 export class Nic extends pulumi.CustomResource {
     /**
      * Get an existing Nic resource's state with the given name, ID, and optional extra
@@ -34,24 +98,77 @@ export class Nic extends pulumi.CustomResource {
         return obj['__pulumiType'] === Nic.__pulumiType;
     }
 
+    /**
+     * The account ID of the owner of the NIC.
+     */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
+    /**
+     * A description for the NIC.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+     */
     public /*out*/ readonly isSourceDestChecked!: pulumi.Output<boolean>;
+    /**
+     * Information about the NIC attachment.
+     */
     public /*out*/ readonly linkNic!: pulumi.Output<outputs.NicLinkNic>;
+    /**
+     * Information about the public IP association.
+     */
     public /*out*/ readonly linkPublicIp!: pulumi.Output<outputs.NicLinkPublicIp>;
+    /**
+     * The Media Access Control (MAC) address of the NIC.
+     */
     public /*out*/ readonly macAddress!: pulumi.Output<string>;
+    /**
+     * The ID of the Net for the NIC.
+     */
     public /*out*/ readonly netId!: pulumi.Output<string>;
+    /**
+     * The ID of the NIC.
+     */
     public /*out*/ readonly nicId!: pulumi.Output<string>;
+    /**
+     * The name of the private DNS.
+     */
     public /*out*/ readonly privateDnsName!: pulumi.Output<string>;
+    /**
+     * The private IP of the NIC.
+     */
     public readonly privateIp!: pulumi.Output<string>;
+    /**
+     * The primary private IP for the NIC.<br />
+     * This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
+     * If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+     */
     public readonly privateIps!: pulumi.Output<outputs.NicPrivateIp[]>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
     public /*out*/ readonly requesterManaged!: pulumi.Output<boolean>;
+    /**
+     * One or more IDs of security groups for the NIC.
+     */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * One or more IDs of security groups for the NIC.
+     */
     public /*out*/ readonly securityGroups!: pulumi.Output<outputs.NicSecurityGroup[]>;
+    /**
+     * The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The ID of the Subnet in which you want to create the NIC.
+     */
     public readonly subnetId!: pulumi.Output<string>;
+    /**
+     * The Subregion in which the NIC is located.
+     */
     public /*out*/ readonly subregionName!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.NicTag[] | undefined>;
 
     /**
@@ -120,24 +237,77 @@ export class Nic extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Nic resources.
  */
 export interface NicState {
+    /**
+     * The account ID of the owner of the NIC.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * A description for the NIC.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.
+     */
     isSourceDestChecked?: pulumi.Input<boolean>;
+    /**
+     * Information about the NIC attachment.
+     */
     linkNic?: pulumi.Input<inputs.NicLinkNic>;
+    /**
+     * Information about the public IP association.
+     */
     linkPublicIp?: pulumi.Input<inputs.NicLinkPublicIp>;
+    /**
+     * The Media Access Control (MAC) address of the NIC.
+     */
     macAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the Net for the NIC.
+     */
     netId?: pulumi.Input<string>;
+    /**
+     * The ID of the NIC.
+     */
     nicId?: pulumi.Input<string>;
+    /**
+     * The name of the private DNS.
+     */
     privateDnsName?: pulumi.Input<string>;
+    /**
+     * The private IP of the NIC.
+     */
     privateIp?: pulumi.Input<string>;
+    /**
+     * The primary private IP for the NIC.<br />
+     * This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
+     * If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+     */
     privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[]>;
     requestId?: pulumi.Input<string>;
     requesterManaged?: pulumi.Input<boolean>;
+    /**
+     * One or more IDs of security groups for the NIC.
+     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more IDs of security groups for the NIC.
+     */
     securityGroups?: pulumi.Input<pulumi.Input<inputs.NicSecurityGroup>[]>;
+    /**
+     * The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * The ID of the Subnet in which you want to create the NIC.
+     */
     subnetId?: pulumi.Input<string>;
+    /**
+     * The Subregion in which the NIC is located.
+     */
     subregionName?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NicTag>[]>;
 }
 
@@ -145,10 +315,30 @@ export interface NicState {
  * The set of arguments for constructing a Nic resource.
  */
 export interface NicArgs {
+    /**
+     * A description for the NIC.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The private IP of the NIC.
+     */
     privateIp?: pulumi.Input<string>;
+    /**
+     * The primary private IP for the NIC.<br />
+     * This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
+     * If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+     */
     privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[]>;
+    /**
+     * One or more IDs of security groups for the NIC.
+     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the Subnet in which you want to create the NIC.
+     */
     subnetId: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NicTag>[]>;
 }

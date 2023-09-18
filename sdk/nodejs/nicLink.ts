@@ -4,6 +4,54 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a NIC link.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     subregionName: `${_var.region}a`,
+ *     ipRange: "10.0.0.0/16",
+ *     netId: net01.netId,
+ * });
+ * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: _var.image_id,
+ *     vmType: _var.vm_type,
+ *     keypairName: _var.keypair_name,
+ *     subnetId: subnet01.subnetId,
+ * });
+ * const nic01 = new outscale.Nic("nic01", {subnetId: subnet01.subnetId});
+ * ```
+ * ### Link a NIC to a VM
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const nicLink01 = new outscale.NicLink("nicLink01", {
+ *     deviceNumber: 1,
+ *     vmId: outscale_vm.vm01.vm_id,
+ *     nicId: outscale_nic.nic01.nic_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A NIC link can be imported using the NIC ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
+ * ```
+ */
 export class NicLink extends pulumi.CustomResource {
     /**
      * Get an existing NicLink resource's state with the given name, ID, and optional extra
@@ -33,12 +81,24 @@ export class NicLink extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly deleteOnVmDeletion!: pulumi.Output<boolean>;
+    /**
+     * The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+     */
     public readonly deviceNumber!: pulumi.Output<number>;
+    /**
+     * The ID of the NIC attachment.
+     */
     public /*out*/ readonly linkNicId!: pulumi.Output<string>;
+    /**
+     * The ID of the NIC you want to attach.
+     */
     public readonly nicId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
     public /*out*/ readonly state!: pulumi.Output<string>;
     public /*out*/ readonly vmAccountId!: pulumi.Output<string>;
+    /**
+     * The ID of the VM to which you want to attach the NIC.
+     */
     public readonly vmId!: pulumi.Output<string>;
 
     /**
@@ -92,12 +152,24 @@ export class NicLink extends pulumi.CustomResource {
  */
 export interface NicLinkState {
     deleteOnVmDeletion?: pulumi.Input<boolean>;
+    /**
+     * The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+     */
     deviceNumber?: pulumi.Input<number>;
+    /**
+     * The ID of the NIC attachment.
+     */
     linkNicId?: pulumi.Input<string>;
+    /**
+     * The ID of the NIC you want to attach.
+     */
     nicId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     state?: pulumi.Input<string>;
     vmAccountId?: pulumi.Input<string>;
+    /**
+     * The ID of the VM to which you want to attach the NIC.
+     */
     vmId?: pulumi.Input<string>;
 }
 
@@ -105,7 +177,16 @@ export interface NicLinkState {
  * The set of arguments for constructing a NicLink resource.
  */
 export interface NicLinkArgs {
+    /**
+     * The index of the VM device for the NIC attachment (between `1` and `7`, both included).
+     */
     deviceNumber: pulumi.Input<number>;
+    /**
+     * The ID of the NIC you want to attach.
+     */
     nicId: pulumi.Input<string>;
+    /**
+     * The ID of the VM to which you want to attach the NIC.
+     */
     vmId: pulumi.Input<string>;
 }

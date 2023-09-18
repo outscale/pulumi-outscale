@@ -85,7 +85,34 @@ class AwaitableGetDhcpOptionsResult(GetDhcpOptionsResult):
 def get_dhcp_options(filters: Optional[Sequence[pulumi.InputType['GetDhcpOptionsFilterArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDhcpOptionsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about DHCP options.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    dhcp_options01 = outscale.get_dhcp_options(filters=[
+        outscale.GetDhcpOptionsFilterArgs(
+            name="domain_name_servers",
+            values=[
+                "111.11.111.1",
+                "222.22.222.2",
+            ],
+        ),
+        outscale.GetDhcpOptionsFilterArgs(
+            name="domain_names",
+            values=["example.com"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetDhcpOptionsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -104,6 +131,33 @@ def get_dhcp_options(filters: Optional[Sequence[pulumi.InputType['GetDhcpOptions
 def get_dhcp_options_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDhcpOptionsFilterArgs']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDhcpOptionsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about DHCP options.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    dhcp_options01 = outscale.get_dhcp_options(filters=[
+        outscale.GetDhcpOptionsFilterArgs(
+            name="domain_name_servers",
+            values=[
+                "111.11.111.1",
+                "222.22.222.2",
+            ],
+        ),
+        outscale.GetDhcpOptionsFilterArgs(
+            name="domain_names",
+            values=["example.com"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetDhcpOptionsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

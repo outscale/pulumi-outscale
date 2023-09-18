@@ -51,6 +51,9 @@ class GetAccessKeysResult:
     @property
     @pulumi.getter(name="accessKeys")
     def access_keys(self) -> Sequence['outputs.GetAccessKeysAccessKeyResult']:
+        """
+        A list of access keys.
+        """
         return pulumi.get(self, "access_keys")
 
     @property
@@ -96,7 +99,30 @@ def get_access_keys(access_key_ids: Optional[Sequence[str]] = None,
                     states: Optional[Sequence[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessKeysResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about access keys.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    access_keys01 = outscale.get_access_keys(filters=[outscale.GetAccessKeysFilterArgs(
+        name="access_key_ids",
+        values=[
+            "ABCDEFGHIJ0123456789",
+            "0123456789ABCDEFGHIJ",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[str] access_key_ids: The IDs of the access keys.
+    :param Sequence[pulumi.InputType['GetAccessKeysFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] states: The states of the access keys (`ACTIVE` \\| `INACTIVE`).
     """
     __args__ = dict()
     __args__['accessKeyIds'] = access_key_ids
@@ -120,6 +146,29 @@ def get_access_keys_output(access_key_ids: Optional[pulumi.Input[Optional[Sequen
                            states: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessKeysResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about access keys.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    access_keys01 = outscale.get_access_keys(filters=[outscale.GetAccessKeysFilterArgs(
+        name="access_key_ids",
+        values=[
+            "ABCDEFGHIJ0123456789",
+            "0123456789ABCDEFGHIJ",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[str] access_key_ids: The IDs of the access keys.
+    :param Sequence[pulumi.InputType['GetAccessKeysFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] states: The states of the access keys (`ACTIVE` \\| `INACTIVE`).
     """
     ...
