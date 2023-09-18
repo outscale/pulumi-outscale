@@ -6,6 +6,23 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about the attributes of a Net.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatenet).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const netAttributes01 = outscale.getNetAttributes({
+ *     netId: "vpc-12345678",
+ * });
+ * ```
+ */
 export function getNetAttributes(args: GetNetAttributesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetAttributesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,6 +35,9 @@ export function getNetAttributes(args: GetNetAttributesArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getNetAttributes.
  */
 export interface GetNetAttributesArgs {
+    /**
+     * The ID of the Net.
+     */
     netId: string;
 }
 
@@ -25,18 +45,53 @@ export interface GetNetAttributesArgs {
  * A collection of values returned by getNetAttributes.
  */
 export interface GetNetAttributesResult {
+    /**
+     * The ID of the DHCP options set (or `default` if you want to associate the default one).
+     */
     readonly dhcpOptionsSetId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
+     */
     readonly ipRange: string;
+    /**
+     * The ID of the Net.
+     */
     readonly netId: string;
     readonly requestId: string;
+    /**
+     * The state of the Net (`pending` \| `available` \| `deleted`).
+     */
     readonly state: string;
+    /**
+     * One or more tags associated with the Net.
+     */
     readonly tags: outputs.GetNetAttributesTag[];
+    /**
+     * The VM tenancy in a Net.
+     */
     readonly tenancy: string;
 }
+/**
+ * Provides information about the attributes of a Net.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updatenet).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const netAttributes01 = outscale.getNetAttributes({
+ *     netId: "vpc-12345678",
+ * });
+ * ```
+ */
 export function getNetAttributesOutput(args: GetNetAttributesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetAttributesResult> {
     return pulumi.output(args).apply((a: any) => getNetAttributes(a, opts))
 }
@@ -45,5 +100,8 @@ export function getNetAttributesOutput(args: GetNetAttributesOutputArgs, opts?: 
  * A collection of arguments for invoking getNetAttributes.
  */
 export interface GetNetAttributesOutputArgs {
+    /**
+     * The ID of the Net.
+     */
     netId: pulumi.Input<string>;
 }

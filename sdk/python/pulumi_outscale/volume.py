@@ -24,6 +24,13 @@ class VolumeArgs:
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Volume resource.
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the volume.
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        :param pulumi.Input[int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot from which you want to create the volume.
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_type: The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
+               For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         """
         pulumi.set(__self__, "subregion_name", subregion_name)
         if iops is not None:
@@ -40,6 +47,9 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> pulumi.Input[str]:
+        """
+        The Subregion in which you want to create the volume.
+        """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
@@ -49,6 +59,9 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -58,6 +71,9 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -67,6 +83,9 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot from which you want to create the volume.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -76,6 +95,9 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -85,6 +107,10 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
+        For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -108,6 +134,17 @@ class _VolumeState:
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the volume.
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]] linked_volumes: Information about your volume attachment.
+        :param pulumi.Input[int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot from which you want to create the volume.
+        :param pulumi.Input[str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the volume.
+        :param pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_id: The ID of the volume.
+        :param pulumi.Input[str] volume_type: The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
+               For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         """
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
@@ -135,6 +172,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time of creation of the volume.
+        """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
@@ -144,6 +184,9 @@ class _VolumeState:
     @property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -153,6 +196,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="linkedVolumes")
     def linked_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]]]:
+        """
+        Information about your volume attachment.
+        """
         return pulumi.get(self, "linked_volumes")
 
     @linked_volumes.setter
@@ -171,6 +217,9 @@ class _VolumeState:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -180,6 +229,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot from which you want to create the volume.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -189,6 +241,9 @@ class _VolumeState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -198,6 +253,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Subregion in which you want to create the volume.
+        """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
@@ -207,6 +265,9 @@ class _VolumeState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -216,6 +277,9 @@ class _VolumeState:
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the volume.
+        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
@@ -225,6 +289,10 @@ class _VolumeState:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
+        For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -245,9 +313,41 @@ class Volume(pulumi.CustomResource):
                  volume_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Volume resource with the given unique name, props, and options.
+        Manages a volume.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            iops=100,
+            size=10,
+            subregion_name=f"{var['region']}a",
+            volume_type="io1")
+        ```
+
+        ## Import
+
+        A volume can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/volume:Volume ImportedVolume vol-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        :param pulumi.Input[int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot from which you want to create the volume.
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the volume.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_type: The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
+               For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         """
         ...
     @overload
@@ -256,7 +356,32 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Volume resource with the given unique name, props, and options.
+        Manages a volume.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            iops=100,
+            size=10,
+            subregion_name=f"{var['region']}a",
+            volume_type="io1")
+        ```
+
+        ## Import
+
+        A volume can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/volume:Volume ImportedVolume vol-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,6 +453,17 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] creation_date: The date and time of creation of the volume.
+        :param pulumi.Input[int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeLinkedVolumeArgs']]]] linked_volumes: Information about your volume attachment.
+        :param pulumi.Input[int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot from which you want to create the volume.
+        :param pulumi.Input[str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param pulumi.Input[str] subregion_name: The Subregion in which you want to create the volume.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] volume_id: The ID of the volume.
+        :param pulumi.Input[str] volume_type: The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
+               For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -349,16 +485,25 @@ class Volume(pulumi.CustomResource):
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[str]:
+        """
+        The date and time of creation of the volume.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
     @pulumi.getter
     def iops(self) -> pulumi.Output[int]:
+        """
+        The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="linkedVolumes")
     def linked_volumes(self) -> pulumi.Output[Sequence['outputs.VolumeLinkedVolume']]:
+        """
+        Information about your volume attachment.
+        """
         return pulumi.get(self, "linked_volumes")
 
     @property
@@ -369,35 +514,57 @@ class Volume(pulumi.CustomResource):
     @property
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
+        """
+        The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the snapshot from which you want to create the volume.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> pulumi.Output[str]:
+        """
+        The Subregion in which you want to create the volume.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.VolumeTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the volume.
+        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Output[str]:
+        """
+        The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
+        For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
+        """
         return pulumi.get(self, "volume_type")
 

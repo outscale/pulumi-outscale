@@ -6,6 +6,35 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about images.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const images01 = outscale.getImages({
+ *     filters: [
+ *         {
+ *             name: "account_aliases",
+ *             values: ["Outscale"],
+ *         },
+ *         {
+ *             name: "image_names",
+ *             values: [
+ *                 "Ubuntu*",
+ *                 "RockyLinux*",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
 
@@ -22,8 +51,17 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesArgs {
+    /**
+     * The account IDs of the owners of the OMIs. By default, all the OMIs for which you have launch permissions are described.
+     */
     accountIds?: string[];
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetImagesFilter[];
+    /**
+     * The IDs of the OMIs.
+     */
     imageIds?: string[];
     permissions?: string[];
 }
@@ -32,6 +70,9 @@ export interface GetImagesArgs {
  * A collection of values returned by getImages.
  */
 export interface GetImagesResult {
+    /**
+     * The account ID of one or more users who have permissions for the resource.
+     */
     readonly accountIds?: string[];
     readonly filters?: outputs.GetImagesFilter[];
     /**
@@ -39,10 +80,42 @@ export interface GetImagesResult {
      */
     readonly id: string;
     readonly imageIds?: string[];
+    /**
+     * Information about one or more OMIs.
+     */
     readonly images: outputs.GetImagesImage[];
     readonly permissions?: string[];
     readonly requestId: string;
 }
+/**
+ * Provides information about images.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const images01 = outscale.getImages({
+ *     filters: [
+ *         {
+ *             name: "account_aliases",
+ *             values: ["Outscale"],
+ *         },
+ *         {
+ *             name: "image_names",
+ *             values: [
+ *                 "Ubuntu*",
+ *                 "RockyLinux*",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
     return pulumi.output(args).apply((a: any) => getImages(a, opts))
 }
@@ -51,8 +124,17 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesOutputArgs {
+    /**
+     * The account IDs of the owners of the OMIs. By default, all the OMIs for which you have launch permissions are described.
+     */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
+    /**
+     * The IDs of the OMIs.
+     */
     imageIds?: pulumi.Input<pulumi.Input<string>[]>;
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
 }

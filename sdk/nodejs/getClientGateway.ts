@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about a client gateway.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const clientGateway01 = outscale.getClientGateway({
+ *     filters: [{
+ *         name: "client_gateway_ids",
+ *         values: ["cgw-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getClientGateway(args?: GetClientGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetClientGatewayResult> {
     args = args || {};
 
@@ -20,7 +40,13 @@ export function getClientGateway(args?: GetClientGatewayArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getClientGateway.
  */
 export interface GetClientGatewayArgs {
+    /**
+     * The ID of the client gateway.
+     */
     clientGatewayId?: string;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetClientGatewayFilter[];
 }
 
@@ -28,19 +54,57 @@ export interface GetClientGatewayArgs {
  * A collection of values returned by getClientGateway.
  */
 export interface GetClientGatewayResult {
+    /**
+     * The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet.
+     */
     readonly bgpAsn: number;
+    /**
+     * The ID of the client gateway.
+     */
     readonly clientGatewayId?: string;
+    /**
+     * The type of communication tunnel used by the client gateway (only `ipsec.1` is supported).
+     */
     readonly connectionType: string;
     readonly filters?: outputs.GetClientGatewayFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The public IPv4 address of the client gateway (must be a fixed address into a NATed network).
+     */
     readonly publicIp: string;
     readonly requestId: string;
+    /**
+     * The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+     */
     readonly state: string;
+    /**
+     * One or more tags associated with the client gateway.
+     */
     readonly tags: outputs.GetClientGatewayTag[];
 }
+/**
+ * Provides information about a client gateway.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const clientGateway01 = outscale.getClientGateway({
+ *     filters: [{
+ *         name: "client_gateway_ids",
+ *         values: ["cgw-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getClientGatewayOutput(args?: GetClientGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientGatewayResult> {
     return pulumi.output(args).apply((a: any) => getClientGateway(a, opts))
 }
@@ -49,6 +113,12 @@ export function getClientGatewayOutput(args?: GetClientGatewayOutputArgs, opts?:
  * A collection of arguments for invoking getClientGateway.
  */
 export interface GetClientGatewayOutputArgs {
+    /**
+     * The ID of the client gateway.
+     */
     clientGatewayId?: pulumi.Input<string>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetClientGatewayFilterArgs>[]>;
 }

@@ -53,6 +53,9 @@ class GetQuotasResult:
     @property
     @pulumi.getter
     def quotas(self) -> Sequence['outputs.GetQuotasQuotaResult']:
+        """
+        One or more quotas associated with the user.
+        """
         return pulumi.get(self, "quotas")
 
     @property
@@ -76,7 +79,32 @@ class AwaitableGetQuotasResult(GetQuotasResult):
 def get_quotas(filters: Optional[Sequence[pulumi.InputType['GetQuotasFilterArgs']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotasResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about quotas.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+
+    ## Example Usage
+    ### Read specific quotas
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vpc_quotas01 = outscale.get_quotas(filters=[outscale.GetQuotasFilterArgs(
+        name="collections",
+        values=["VPC"],
+    )])
+    ```
+    ### Read all quotas
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_quotas = outscale.get_quotas()
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetQuotasFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +122,31 @@ def get_quotas(filters: Optional[Sequence[pulumi.InputType['GetQuotasFilterArgs'
 def get_quotas_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetQuotasFilterArgs']]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotasResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about quotas.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+
+    ## Example Usage
+    ### Read specific quotas
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vpc_quotas01 = outscale.get_quotas(filters=[outscale.GetQuotasFilterArgs(
+        name="collections",
+        values=["VPC"],
+    )])
+    ```
+    ### Read all quotas
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_quotas = outscale.get_quotas()
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetQuotasFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

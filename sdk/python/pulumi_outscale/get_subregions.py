@@ -58,6 +58,9 @@ class GetSubregionsResult:
     @property
     @pulumi.getter
     def subregions(self) -> Sequence['outputs.GetSubregionsSubregionResult']:
+        """
+        Information about one or more Subregions.
+        """
         return pulumi.get(self, "subregions")
 
 
@@ -76,7 +79,48 @@ class AwaitableGetSubregionsResult(GetSubregionsResult):
 def get_subregions(filters: Optional[Sequence[pulumi.InputType['GetSubregionsFilterArgs']]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubregionsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about subregions.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-Endpoints-and-Availability-Zones.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readsubregions).
+
+    ## Example Usage
+    ### List a specific Subregion in the current Region
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    subregions01 = outscale.get_subregions(filters=[outscale.GetSubregionsFilterArgs(
+        name="subregion_names",
+        values=["eu-west-2a"],
+    )])
+    ```
+    ### List two specific Subregions in the current Region
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    subregions02 = outscale.get_subregions(filters=[outscale.GetSubregionsFilterArgs(
+        name="subregion_names",
+        values=[
+            "eu-west-2a",
+            "eu-west-2b",
+        ],
+    )])
+    ```
+    ### List all accessible Subregions in the current Region
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_subregions = outscale.get_subregions()
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSubregionsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +138,47 @@ def get_subregions(filters: Optional[Sequence[pulumi.InputType['GetSubregionsFil
 def get_subregions_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSubregionsFilterArgs']]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubregionsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about subregions.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-Endpoints-and-Availability-Zones.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readsubregions).
+
+    ## Example Usage
+    ### List a specific Subregion in the current Region
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    subregions01 = outscale.get_subregions(filters=[outscale.GetSubregionsFilterArgs(
+        name="subregion_names",
+        values=["eu-west-2a"],
+    )])
+    ```
+    ### List two specific Subregions in the current Region
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    subregions02 = outscale.get_subregions(filters=[outscale.GetSubregionsFilterArgs(
+        name="subregion_names",
+        values=[
+            "eu-west-2a",
+            "eu-west-2b",
+        ],
+    )])
+    ```
+    ### List all accessible Subregions in the current Region
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_subregions = outscale.get_subregions()
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetSubregionsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

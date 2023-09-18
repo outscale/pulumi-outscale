@@ -24,6 +24,14 @@ class RouteArgs:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Route resource.
+        :param pulumi.Input[str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        :param pulumi.Input[str] route_table_id: The ID of the route table for which you want to create a route.
+        :param pulumi.Input[bool] await_active_state: By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        :param pulumi.Input[str] gateway_id: The ID of an Internet service or virtual gateway attached to your Net.
+        :param pulumi.Input[str] nat_service_id: The ID of a NAT service.
+        :param pulumi.Input[str] net_peering_id: The ID of a Net peering.
+        :param pulumi.Input[str] nic_id: The ID of a NIC.
+        :param pulumi.Input[str] vm_id: The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         pulumi.set(__self__, "destination_ip_range", destination_ip_range)
         pulumi.set(__self__, "route_table_id", route_table_id)
@@ -43,6 +51,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> pulumi.Input[str]:
+        """
+        The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
@@ -52,6 +63,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the route table for which you want to create a route.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -61,6 +75,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="awaitActiveState")
     def await_active_state(self) -> Optional[pulumi.Input[bool]]:
+        """
+        By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        """
         return pulumi.get(self, "await_active_state")
 
     @await_active_state.setter
@@ -70,6 +87,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of an Internet service or virtual gateway attached to your Net.
+        """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
@@ -79,6 +99,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="natServiceId")
     def nat_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a NAT service.
+        """
         return pulumi.get(self, "nat_service_id")
 
     @nat_service_id.setter
@@ -88,6 +111,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="netPeeringId")
     def net_peering_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a Net peering.
+        """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
@@ -97,6 +123,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -106,6 +135,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a NAT VM in your Net (attached to exactly one NIC).
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -132,6 +164,18 @@ class _RouteState:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Route resources.
+        :param pulumi.Input[bool] await_active_state: By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        :param pulumi.Input[str] creation_method: The method used to create the route.
+        :param pulumi.Input[str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        :param pulumi.Input[str] destination_service_id: The ID of the OUTSCALE service.
+        :param pulumi.Input[str] gateway_id: The ID of an Internet service or virtual gateway attached to your Net.
+        :param pulumi.Input[str] nat_service_id: The ID of a NAT service.
+        :param pulumi.Input[str] net_peering_id: The ID of a Net peering.
+        :param pulumi.Input[str] nic_id: The ID of a NIC.
+        :param pulumi.Input[str] route_table_id: The ID of the route table for which you want to create a route.
+        :param pulumi.Input[str] state: The state of a route in the route table (always `active`).
+        :param pulumi.Input[str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[str] vm_id: The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         if await_active_state is not None:
             pulumi.set(__self__, "await_active_state", await_active_state)
@@ -165,6 +209,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="awaitActiveState")
     def await_active_state(self) -> Optional[pulumi.Input[bool]]:
+        """
+        By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        """
         return pulumi.get(self, "await_active_state")
 
     @await_active_state.setter
@@ -174,6 +221,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="creationMethod")
     def creation_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method used to create the route.
+        """
         return pulumi.get(self, "creation_method")
 
     @creation_method.setter
@@ -183,6 +233,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
@@ -192,6 +245,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="destinationServiceId")
     def destination_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OUTSCALE service.
+        """
         return pulumi.get(self, "destination_service_id")
 
     @destination_service_id.setter
@@ -201,6 +257,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of an Internet service or virtual gateway attached to your Net.
+        """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
@@ -219,6 +278,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="natServiceId")
     def nat_service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a NAT service.
+        """
         return pulumi.get(self, "nat_service_id")
 
     @nat_service_id.setter
@@ -228,6 +290,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="netPeeringId")
     def net_peering_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a Net peering.
+        """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
@@ -237,6 +302,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -255,6 +323,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the route table for which you want to create a route.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -264,6 +335,9 @@ class _RouteState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of a route in the route table (always `active`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -273,6 +347,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the VM.
+        """
         return pulumi.get(self, "vm_account_id")
 
     @vm_account_id.setter
@@ -282,6 +359,9 @@ class _RouteState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of a NAT VM in your Net (attached to exactly one NIC).
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -304,9 +384,55 @@ class Route(pulumi.CustomResource):
                  vm_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Route resource with the given unique name, props, and options.
+        Manages a route.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-route).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            internet_service_id=internet_service01.internet_service_id,
+            net_id=net01.net_id)
+        ```
+        ### Create a route to an Internet service
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        route01 = outscale.Route("route01",
+            gateway_id=outscale_internet_service["internet_service01"]["internet_service_id"],
+            destination_ip_range="0.0.0.0/0",
+            route_table_id=outscale_route_table["route_table01"]["route_table_id"])
+        ```
+
+        ## Import
+
+        A route can be imported using the route table ID and the destination IP range. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/route:Route outscale_routeImportedRoute rtb-12345678_10.0.0.0/0
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] await_active_state: By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        :param pulumi.Input[str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        :param pulumi.Input[str] gateway_id: The ID of an Internet service or virtual gateway attached to your Net.
+        :param pulumi.Input[str] nat_service_id: The ID of a NAT service.
+        :param pulumi.Input[str] net_peering_id: The ID of a Net peering.
+        :param pulumi.Input[str] nic_id: The ID of a NIC.
+        :param pulumi.Input[str] route_table_id: The ID of the route table for which you want to create a route.
+        :param pulumi.Input[str] vm_id: The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         ...
     @overload
@@ -315,7 +441,45 @@ class Route(pulumi.CustomResource):
                  args: RouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Route resource with the given unique name, props, and options.
+        Manages a route.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-route).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        internet_service01 = outscale.InternetService("internetService01")
+        internet_service_link01 = outscale.InternetServiceLink("internetServiceLink01",
+            internet_service_id=internet_service01.internet_service_id,
+            net_id=net01.net_id)
+        ```
+        ### Create a route to an Internet service
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        route01 = outscale.Route("route01",
+            gateway_id=outscale_internet_service["internet_service01"]["internet_service_id"],
+            destination_ip_range="0.0.0.0/0",
+            route_table_id=outscale_route_table["route_table01"]["route_table_id"])
+        ```
+
+        ## Import
+
+        A route can be imported using the route table ID and the destination IP range. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/route:Route outscale_routeImportedRoute rtb-12345678_10.0.0.0/0
+        ```
+
         :param str resource_name: The name of the resource.
         :param RouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -397,6 +561,18 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] await_active_state: By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        :param pulumi.Input[str] creation_method: The method used to create the route.
+        :param pulumi.Input[str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        :param pulumi.Input[str] destination_service_id: The ID of the OUTSCALE service.
+        :param pulumi.Input[str] gateway_id: The ID of an Internet service or virtual gateway attached to your Net.
+        :param pulumi.Input[str] nat_service_id: The ID of a NAT service.
+        :param pulumi.Input[str] net_peering_id: The ID of a Net peering.
+        :param pulumi.Input[str] nic_id: The ID of a NIC.
+        :param pulumi.Input[str] route_table_id: The ID of the route table for which you want to create a route.
+        :param pulumi.Input[str] state: The state of a route in the route table (always `active`).
+        :param pulumi.Input[str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[str] vm_id: The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -421,26 +597,41 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="awaitActiveState")
     def await_active_state(self) -> pulumi.Output[Optional[bool]]:
+        """
+        By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        """
         return pulumi.get(self, "await_active_state")
 
     @property
     @pulumi.getter(name="creationMethod")
     def creation_method(self) -> pulumi.Output[str]:
+        """
+        The method used to create the route.
+        """
         return pulumi.get(self, "creation_method")
 
     @property
     @pulumi.getter(name="destinationIpRange")
     def destination_ip_range(self) -> pulumi.Output[str]:
+        """
+        The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+        """
         return pulumi.get(self, "destination_ip_range")
 
     @property
     @pulumi.getter(name="destinationServiceId")
     def destination_service_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the OUTSCALE service.
+        """
         return pulumi.get(self, "destination_service_id")
 
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of an Internet service or virtual gateway attached to your Net.
+        """
         return pulumi.get(self, "gateway_id")
 
     @property
@@ -451,16 +642,25 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="natServiceId")
     def nat_service_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of a NAT service.
+        """
         return pulumi.get(self, "nat_service_id")
 
     @property
     @pulumi.getter(name="netPeeringId")
     def net_peering_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of a Net peering.
+        """
         return pulumi.get(self, "net_peering_id")
 
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> pulumi.Output[str]:
+        """
+        The ID of a NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @property
@@ -471,20 +671,32 @@ class Route(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the route table for which you want to create a route.
+        """
         return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of a route in the route table (always `active`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> pulumi.Output[str]:
+        """
+        The account ID of the owner of the VM.
+        """
         return pulumi.get(self, "vm_account_id")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of a NAT VM in your Net (attached to exactly one NIC).
+        """
         return pulumi.get(self, "vm_id")
 

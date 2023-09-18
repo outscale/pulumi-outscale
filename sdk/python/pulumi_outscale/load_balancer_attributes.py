@@ -25,6 +25,13 @@ class LoadBalancerAttributesArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]]] = None):
         """
         The set of arguments for constructing a LoadBalancerAttributes resource.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
+        :param pulumi.Input['LoadBalancerAttributesAccessLogArgs'] access_log: Information about access logs.
+        :param pulumi.Input['LoadBalancerAttributesHealthCheckArgs'] health_check: Information about the health check configuration.
+        :param pulumi.Input[int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_names: The name of the policy you want to enable for the listener.
+        :param pulumi.Input[str] server_certificate_id: The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]] tags: One or more tags associated with the load balancer.
         """
         pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if access_log is not None:
@@ -43,6 +50,9 @@ class LoadBalancerAttributesArgs:
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Input[str]:
+        """
+        The name of the load balancer.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -52,6 +62,9 @@ class LoadBalancerAttributesArgs:
     @property
     @pulumi.getter(name="accessLog")
     def access_log(self) -> Optional[pulumi.Input['LoadBalancerAttributesAccessLogArgs']]:
+        """
+        Information about access logs.
+        """
         return pulumi.get(self, "access_log")
 
     @access_log.setter
@@ -61,6 +74,9 @@ class LoadBalancerAttributesArgs:
     @property
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input['LoadBalancerAttributesHealthCheckArgs']]:
+        """
+        Information about the health check configuration.
+        """
         return pulumi.get(self, "health_check")
 
     @health_check.setter
@@ -70,6 +86,9 @@ class LoadBalancerAttributesArgs:
     @property
     @pulumi.getter(name="loadBalancerPort")
     def load_balancer_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        """
         return pulumi.get(self, "load_balancer_port")
 
     @load_balancer_port.setter
@@ -79,6 +98,9 @@ class LoadBalancerAttributesArgs:
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the policy you want to enable for the listener.
+        """
         return pulumi.get(self, "policy_names")
 
     @policy_names.setter
@@ -88,6 +110,9 @@ class LoadBalancerAttributesArgs:
     @property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
@@ -97,6 +122,9 @@ class LoadBalancerAttributesArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]]]:
+        """
+        One or more tags associated with the load balancer.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -127,6 +155,26 @@ class _LoadBalancerAttributesState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerAttributes resources.
+        :param pulumi.Input['LoadBalancerAttributesAccessLogArgs'] access_log: Information about access logs.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesApplicationStickyCookiePolicyArgs']]] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backend_vm_ids: One or more IDs of back-end VMs for the load balancer.
+        :param pulumi.Input[str] dns_name: The DNS name of the load balancer.
+        :param pulumi.Input['LoadBalancerAttributesHealthCheckArgs'] health_check: Information about the health check configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesListenerArgs']]] listeners: The listeners for the load balancer.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
+        :param pulumi.Input[int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesLoadBalancerStickyCookiePolicyArgs']]] load_balancer_sticky_cookie_policies: The policies defined for the load balancer.
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. Valid only for load balancers in a Net.<br />
+               If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
+               If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_names: The name of the policy you want to enable for the listener.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
+        :param pulumi.Input[str] server_certificate_id: The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        :param pulumi.Input['LoadBalancerAttributesSourceSecurityGroupArgs'] source_security_group: Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
+               To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The ID of the Subnet in which the load balancer was created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subregion_names: The ID of the Subregion in which the load balancer was created.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]] tags: One or more tags associated with the load balancer.
         """
         if access_log is not None:
             pulumi.set(__self__, "access_log", access_log)
@@ -168,6 +216,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="accessLog")
     def access_log(self) -> Optional[pulumi.Input['LoadBalancerAttributesAccessLogArgs']]:
+        """
+        Information about access logs.
+        """
         return pulumi.get(self, "access_log")
 
     @access_log.setter
@@ -177,6 +228,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="applicationStickyCookiePolicies")
     def application_sticky_cookie_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesApplicationStickyCookiePolicyArgs']]]]:
+        """
+        The stickiness policies defined for the load balancer.
+        """
         return pulumi.get(self, "application_sticky_cookie_policies")
 
     @application_sticky_cookie_policies.setter
@@ -186,6 +240,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="backendVmIds")
     def backend_vm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of back-end VMs for the load balancer.
+        """
         return pulumi.get(self, "backend_vm_ids")
 
     @backend_vm_ids.setter
@@ -195,6 +252,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS name of the load balancer.
+        """
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
@@ -204,6 +264,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input['LoadBalancerAttributesHealthCheckArgs']]:
+        """
+        Information about the health check configuration.
+        """
         return pulumi.get(self, "health_check")
 
     @health_check.setter
@@ -213,6 +276,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter
     def listeners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesListenerArgs']]]]:
+        """
+        The listeners for the load balancer.
+        """
         return pulumi.get(self, "listeners")
 
     @listeners.setter
@@ -222,6 +288,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the load balancer.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
@@ -231,6 +300,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="loadBalancerPort")
     def load_balancer_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        """
         return pulumi.get(self, "load_balancer_port")
 
     @load_balancer_port.setter
@@ -240,6 +312,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="loadBalancerStickyCookiePolicies")
     def load_balancer_sticky_cookie_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesLoadBalancerStickyCookiePolicyArgs']]]]:
+        """
+        The policies defined for the load balancer.
+        """
         return pulumi.get(self, "load_balancer_sticky_cookie_policies")
 
     @load_balancer_sticky_cookie_policies.setter
@@ -249,6 +324,11 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of load balancer. Valid only for load balancers in a Net.<br />
+        If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
+        If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        """
         return pulumi.get(self, "load_balancer_type")
 
     @load_balancer_type.setter
@@ -258,6 +338,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The name of the policy you want to enable for the listener.
+        """
         return pulumi.get(self, "policy_names")
 
     @policy_names.setter
@@ -276,6 +359,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
+        """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
@@ -285,6 +371,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
@@ -294,6 +383,10 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="sourceSecurityGroup")
     def source_security_group(self) -> Optional[pulumi.Input['LoadBalancerAttributesSourceSecurityGroupArgs']]:
+        """
+        Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
+        To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+        """
         return pulumi.get(self, "source_security_group")
 
     @source_security_group.setter
@@ -303,6 +396,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of the Subnet in which the load balancer was created.
+        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -312,6 +408,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter(name="subregionNames")
     def subregion_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of the Subregion in which the load balancer was created.
+        """
         return pulumi.get(self, "subregion_names")
 
     @subregion_names.setter
@@ -321,6 +420,9 @@ class _LoadBalancerAttributesState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]]]:
+        """
+        One or more tags associated with the load balancer.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -342,9 +444,118 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerAttributesTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a LoadBalancerAttributes resource with the given unique name, props, and options.
+        Manages load balancer attributes.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateloadbalancer).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        load_balancer01 = outscale.LoadBalancer("loadBalancer01",
+            listeners=[
+                outscale.LoadBalancerListenerArgs(
+                    backend_port=80,
+                    backend_protocol="HTTP",
+                    load_balancer_port=80,
+                    load_balancer_protocol="HTTP",
+                ),
+                outscale.LoadBalancerListenerArgs(
+                    backend_port=8080,
+                    backend_protocol="HTTPS",
+                    load_balancer_port=8080,
+                    load_balancer_protocol="HTTPS",
+                    server_certificate_id="arn:aws:iam::012345678910:server-certificate/MyCertificates/Certificate",
+                ),
+                outscale.LoadBalancerListenerArgs(
+                    backend_port=1024,
+                    backend_protocol="TCP",
+                    load_balancer_port=1024,
+                    load_balancer_protocol="TCP",
+                ),
+            ],
+            load_balancer_name="terraform-load-balancer",
+            subregion_names=["eu-west-2a"],
+            tags=[
+                outscale.LoadBalancerTagArgs(
+                    key="name",
+                    value="terraform-load-balancer",
+                ),
+                outscale.LoadBalancerTagArgs(
+                    key="platform",
+                    value="eu-west-2",
+                ),
+            ])
+        ```
+        ### Update health check
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes01 = outscale.LoadBalancerAttributes("attributes01",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            health_check=outscale.LoadBalancerAttributesHealthCheckArgs(
+                healthy_threshold=10,
+                check_interval=30,
+                path="/index.html",
+                port=8080,
+                protocol="HTTPS",
+                timeout=5,
+                unhealthy_threshold=5,
+            ))
+        ```
+        ### Update access log
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes02 = outscale.LoadBalancerAttributes("attributes02",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            access_log=outscale.LoadBalancerAttributesAccessLogArgs(
+                publication_interval=5,
+                is_enabled=True,
+                osu_bucket_name="terraform-access-logs",
+                osu_bucket_prefix="access-logs-01234",
+            ))
+        ```
+        ### Update policies
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes03 = outscale.LoadBalancerAttributes("attributes03",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            load_balancer_port=80,
+            policy_names=["policy-name-01"])
+        ```
+        ### Update SSL certificate
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes04 = outscale.LoadBalancerAttributes("attributes04",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            load_balancer_port=8080,
+            server_certificate_id="arn:aws:iam::012345678910:server-certificate/MyCertificates/Certificate")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerAttributesAccessLogArgs']] access_log: Information about access logs.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerAttributesHealthCheckArgs']] health_check: Information about the health check configuration.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
+        :param pulumi.Input[int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_names: The name of the policy you want to enable for the listener.
+        :param pulumi.Input[str] server_certificate_id: The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerAttributesTagArgs']]]] tags: One or more tags associated with the load balancer.
         """
         ...
     @overload
@@ -353,7 +564,109 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                  args: LoadBalancerAttributesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LoadBalancerAttributes resource with the given unique name, props, and options.
+        Manages load balancer attributes.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateloadbalancer).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        load_balancer01 = outscale.LoadBalancer("loadBalancer01",
+            listeners=[
+                outscale.LoadBalancerListenerArgs(
+                    backend_port=80,
+                    backend_protocol="HTTP",
+                    load_balancer_port=80,
+                    load_balancer_protocol="HTTP",
+                ),
+                outscale.LoadBalancerListenerArgs(
+                    backend_port=8080,
+                    backend_protocol="HTTPS",
+                    load_balancer_port=8080,
+                    load_balancer_protocol="HTTPS",
+                    server_certificate_id="arn:aws:iam::012345678910:server-certificate/MyCertificates/Certificate",
+                ),
+                outscale.LoadBalancerListenerArgs(
+                    backend_port=1024,
+                    backend_protocol="TCP",
+                    load_balancer_port=1024,
+                    load_balancer_protocol="TCP",
+                ),
+            ],
+            load_balancer_name="terraform-load-balancer",
+            subregion_names=["eu-west-2a"],
+            tags=[
+                outscale.LoadBalancerTagArgs(
+                    key="name",
+                    value="terraform-load-balancer",
+                ),
+                outscale.LoadBalancerTagArgs(
+                    key="platform",
+                    value="eu-west-2",
+                ),
+            ])
+        ```
+        ### Update health check
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes01 = outscale.LoadBalancerAttributes("attributes01",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            health_check=outscale.LoadBalancerAttributesHealthCheckArgs(
+                healthy_threshold=10,
+                check_interval=30,
+                path="/index.html",
+                port=8080,
+                protocol="HTTPS",
+                timeout=5,
+                unhealthy_threshold=5,
+            ))
+        ```
+        ### Update access log
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes02 = outscale.LoadBalancerAttributes("attributes02",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            access_log=outscale.LoadBalancerAttributesAccessLogArgs(
+                publication_interval=5,
+                is_enabled=True,
+                osu_bucket_name="terraform-access-logs",
+                osu_bucket_prefix="access-logs-01234",
+            ))
+        ```
+        ### Update policies
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes03 = outscale.LoadBalancerAttributes("attributes03",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            load_balancer_port=80,
+            policy_names=["policy-name-01"])
+        ```
+        ### Update SSL certificate
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        attributes04 = outscale.LoadBalancerAttributes("attributes04",
+            load_balancer_name=outscale_load_balancer["load_balancer01"]["id"],
+            load_balancer_port=8080,
+            server_certificate_id="arn:aws:iam::012345678910:server-certificate/MyCertificates/Certificate")
+        ```
+
         :param str resource_name: The name of the resource.
         :param LoadBalancerAttributesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -440,6 +753,26 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerAttributesAccessLogArgs']] access_log: Information about access logs.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerAttributesApplicationStickyCookiePolicyArgs']]]] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backend_vm_ids: One or more IDs of back-end VMs for the load balancer.
+        :param pulumi.Input[str] dns_name: The DNS name of the load balancer.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerAttributesHealthCheckArgs']] health_check: Information about the health check configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerAttributesListenerArgs']]]] listeners: The listeners for the load balancer.
+        :param pulumi.Input[str] load_balancer_name: The name of the load balancer.
+        :param pulumi.Input[int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerAttributesLoadBalancerStickyCookiePolicyArgs']]]] load_balancer_sticky_cookie_policies: The policies defined for the load balancer.
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. Valid only for load balancers in a Net.<br />
+               If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
+               If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_names: The name of the policy you want to enable for the listener.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
+        :param pulumi.Input[str] server_certificate_id: The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        :param pulumi.Input[pulumi.InputType['LoadBalancerAttributesSourceSecurityGroupArgs']] source_security_group: Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
+               To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: The ID of the Subnet in which the load balancer was created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subregion_names: The ID of the Subregion in which the load balancer was created.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerAttributesTagArgs']]]] tags: One or more tags associated with the load balancer.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -468,56 +801,91 @@ class LoadBalancerAttributes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accessLog")
     def access_log(self) -> pulumi.Output['outputs.LoadBalancerAttributesAccessLog']:
+        """
+        Information about access logs.
+        """
         return pulumi.get(self, "access_log")
 
     @property
     @pulumi.getter(name="applicationStickyCookiePolicies")
     def application_sticky_cookie_policies(self) -> pulumi.Output[Sequence['outputs.LoadBalancerAttributesApplicationStickyCookiePolicy']]:
+        """
+        The stickiness policies defined for the load balancer.
+        """
         return pulumi.get(self, "application_sticky_cookie_policies")
 
     @property
     @pulumi.getter(name="backendVmIds")
     def backend_vm_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        One or more IDs of back-end VMs for the load balancer.
+        """
         return pulumi.get(self, "backend_vm_ids")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> pulumi.Output[str]:
+        """
+        The DNS name of the load balancer.
+        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Output['outputs.LoadBalancerAttributesHealthCheck']:
+        """
+        Information about the health check configuration.
+        """
         return pulumi.get(self, "health_check")
 
     @property
     @pulumi.getter
     def listeners(self) -> pulumi.Output[Sequence['outputs.LoadBalancerAttributesListener']]:
+        """
+        The listeners for the load balancer.
+        """
         return pulumi.get(self, "listeners")
 
     @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Output[str]:
+        """
+        The name of the load balancer.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @property
     @pulumi.getter(name="loadBalancerPort")
     def load_balancer_port(self) -> pulumi.Output[Optional[int]]:
+        """
+        The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+        """
         return pulumi.get(self, "load_balancer_port")
 
     @property
     @pulumi.getter(name="loadBalancerStickyCookiePolicies")
     def load_balancer_sticky_cookie_policies(self) -> pulumi.Output[Sequence['outputs.LoadBalancerAttributesLoadBalancerStickyCookiePolicy']]:
+        """
+        The policies defined for the load balancer.
+        """
         return pulumi.get(self, "load_balancer_sticky_cookie_policies")
 
     @property
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> pulumi.Output[str]:
+        """
+        The type of load balancer. Valid only for load balancers in a Net.<br />
+        If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
+        If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        """
         return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter(name="policyNames")
     def policy_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The name of the policy you want to enable for the listener.
+        """
         return pulumi.get(self, "policy_names")
 
     @property
@@ -528,30 +896,49 @@ class LoadBalancerAttributes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Output[Sequence[str]]:
+        """
+        One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
+        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        """
         return pulumi.get(self, "server_certificate_id")
 
     @property
     @pulumi.getter(name="sourceSecurityGroup")
     def source_security_group(self) -> pulumi.Output['outputs.LoadBalancerAttributesSourceSecurityGroup']:
+        """
+        Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
+        To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+        """
         return pulumi.get(self, "source_security_group")
 
     @property
     @pulumi.getter
     def subnets(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The ID of the Subnet in which the load balancer was created.
+        """
         return pulumi.get(self, "subnets")
 
     @property
     @pulumi.getter(name="subregionNames")
     def subregion_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The ID of the Subregion in which the load balancer was created.
+        """
         return pulumi.get(self, "subregion_names")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence['outputs.LoadBalancerAttributesTag']]:
+        """
+        One or more tags associated with the load balancer.
+        """
         return pulumi.get(self, "tags")
 

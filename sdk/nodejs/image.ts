@@ -6,6 +6,82 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an image.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ *
+ * ## Example Usage
+ * ### Create an image
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const image01 = new outscale.Image("image01", {
+ *     imageName: "terraform-omi-create",
+ *     vmId: _var.vm_id,
+ *     noReboot: true,
+ * });
+ * ```
+ * ### Import an image
+ * > **Important** Make sure the manifest file is still valid.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const image02 = new outscale.Image("image02", {
+ *     description: "Terraform register OMI",
+ *     fileLocation: "<URL>",
+ *     imageName: "terraform-omi-register",
+ * });
+ * ```
+ * ### Copy an image
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const image03 = new outscale.Image("image03", {
+ *     description: "Terraform copy OMI",
+ *     imageName: "terraform-omi-copy",
+ *     sourceImageId: "ami-12345678",
+ *     sourceRegionName: "eu-west-2",
+ * });
+ * ```
+ * ### Create an image with a Block Storage Unit (BSU) volume
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const image04 = new outscale.Image("image04", {
+ *     blockDeviceMappings: [{
+ *         bsus: [{
+ *             deleteOnVmDeletion: true,
+ *             iops: 150,
+ *             snapshotId: "snap-12345678",
+ *             volumeSize: 120,
+ *             volumeType: "io1",
+ *         }],
+ *         deviceName: "/dev/sda1",
+ *     }],
+ *     description: "Terraform OMI with BSU",
+ *     imageName: "terraform-omi-bsu",
+ *     rootDeviceName: "/dev/sda1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An image can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
+ * ```
+ */
 export class Image extends pulumi.CustomResource {
     /**
      * Get an existing Image resource's state with the given name, ID, and optional extra
@@ -34,28 +110,92 @@ export class Image extends pulumi.CustomResource {
         return obj['__pulumiType'] === Image.__pulumiType;
     }
 
+    /**
+     * The account alias of the owner of the OMI.
+     */
     public /*out*/ readonly accountAlias!: pulumi.Output<string>;
+    /**
+     * The account ID of the owner of the OMI.
+     */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
+    /**
+     * The architecture of the OMI (by default, `i386` if you specified the `fileLocation` or `rootDeviceName` parameter).
+     */
     public readonly architecture!: pulumi.Output<string>;
+    /**
+     * One or more block device mappings.
+     */
     public readonly blockDeviceMappings!: pulumi.Output<outputs.ImageBlockDeviceMapping[]>;
+    /**
+     * The date and time of creation of the OMI.
+     */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    /**
+     * A description for the new OMI.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     public readonly fileLocation!: pulumi.Output<string>;
+    /**
+     * The ID of the OMI.
+     */
     public /*out*/ readonly imageId!: pulumi.Output<string>;
+    /**
+     * A unique name for the new OMI.<br />
+     * Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+     */
     public readonly imageName!: pulumi.Output<string>;
+    /**
+     * The type of the OMI.
+     */
     public /*out*/ readonly imageType!: pulumi.Output<string>;
     public /*out*/ readonly isPublic!: pulumi.Output<boolean>;
+    /**
+     * If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+     */
     public readonly noReboot!: pulumi.Output<boolean>;
+    /**
+     * Information about the users who have permissions for the resource.
+     */
     public /*out*/ readonly permissionsToLaunches!: pulumi.Output<outputs.ImagePermissionsToLaunch[]>;
+    /**
+     * The product code associated with the OMI (`0001` Linux/Unix \| `0002` Windows \| `0004` Linux/Oracle \| `0005` Windows 10).
+     */
     public /*out*/ readonly productCodes!: pulumi.Output<string[]>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The name of the root device. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     public readonly rootDeviceName!: pulumi.Output<string>;
+    /**
+     * The type of root device used by the OMI (always `bsu`).
+     */
     public /*out*/ readonly rootDeviceType!: pulumi.Output<string>;
+    /**
+     * The ID of the OMI you want to copy. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     public readonly sourceImageId!: pulumi.Output<string>;
+    /**
+     * The name of the source Region, which must be the same as the Region of your account.
+     */
     public readonly sourceRegionName!: pulumi.Output<string | undefined>;
+    /**
+     * The state of the OMI (`pending` \| `available` \| `failed`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Information about the change of state.
+     */
     public /*out*/ readonly stateComments!: pulumi.Output<outputs.ImageStateComment[]>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.ImageTag[] | undefined>;
+    /**
+     * The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     public readonly vmId!: pulumi.Output<string>;
 
     /**
@@ -129,28 +269,92 @@ export class Image extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Image resources.
  */
 export interface ImageState {
+    /**
+     * The account alias of the owner of the OMI.
+     */
     accountAlias?: pulumi.Input<string>;
+    /**
+     * The account ID of the owner of the OMI.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * The architecture of the OMI (by default, `i386` if you specified the `fileLocation` or `rootDeviceName` parameter).
+     */
     architecture?: pulumi.Input<string>;
+    /**
+     * One or more block device mappings.
+     */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[]>;
+    /**
+     * The date and time of creation of the OMI.
+     */
     creationDate?: pulumi.Input<string>;
+    /**
+     * A description for the new OMI.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     fileLocation?: pulumi.Input<string>;
+    /**
+     * The ID of the OMI.
+     */
     imageId?: pulumi.Input<string>;
+    /**
+     * A unique name for the new OMI.<br />
+     * Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+     */
     imageName?: pulumi.Input<string>;
+    /**
+     * The type of the OMI.
+     */
     imageType?: pulumi.Input<string>;
     isPublic?: pulumi.Input<boolean>;
+    /**
+     * If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+     */
     noReboot?: pulumi.Input<boolean>;
+    /**
+     * Information about the users who have permissions for the resource.
+     */
     permissionsToLaunches?: pulumi.Input<pulumi.Input<inputs.ImagePermissionsToLaunch>[]>;
+    /**
+     * The product code associated with the OMI (`0001` Linux/Unix \| `0002` Windows \| `0004` Linux/Oracle \| `0005` Windows 10).
+     */
     productCodes?: pulumi.Input<pulumi.Input<string>[]>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The name of the root device. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     rootDeviceName?: pulumi.Input<string>;
+    /**
+     * The type of root device used by the OMI (always `bsu`).
+     */
     rootDeviceType?: pulumi.Input<string>;
+    /**
+     * The ID of the OMI you want to copy. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     sourceImageId?: pulumi.Input<string>;
+    /**
+     * The name of the source Region, which must be the same as the Region of your account.
+     */
     sourceRegionName?: pulumi.Input<string>;
+    /**
+     * The state of the OMI (`pending` \| `available` \| `failed`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * Information about the change of state.
+     */
     stateComments?: pulumi.Input<pulumi.Input<inputs.ImageStateComment>[]>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[]>;
+    /**
+     * The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     vmId?: pulumi.Input<string>;
 }
 
@@ -158,15 +362,49 @@ export interface ImageState {
  * The set of arguments for constructing a Image resource.
  */
 export interface ImageArgs {
+    /**
+     * The architecture of the OMI (by default, `i386` if you specified the `fileLocation` or `rootDeviceName` parameter).
+     */
     architecture?: pulumi.Input<string>;
+    /**
+     * One or more block device mappings.
+     */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[]>;
+    /**
+     * A description for the new OMI.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The pre-signed URL of the OMI manifest file, or the full path to the OMI stored in a bucket. If you specify this parameter, a copy of the OMI is created in your account. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     fileLocation?: pulumi.Input<string>;
+    /**
+     * A unique name for the new OMI.<br />
+     * Constraints: 3-128 alphanumeric characters, underscores (_), spaces ( ), parentheses (()), slashes (/), periods (.), or dashes (-).
+     */
     imageName?: pulumi.Input<string>;
+    /**
+     * If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+     */
     noReboot?: pulumi.Input<boolean>;
+    /**
+     * The name of the root device. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     rootDeviceName?: pulumi.Input<string>;
+    /**
+     * The ID of the OMI you want to copy. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     sourceImageId?: pulumi.Input<string>;
+    /**
+     * The name of the source Region, which must be the same as the Region of your account.
+     */
     sourceRegionName?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[]>;
+    /**
+     * The ID of the VM from which you want to create the OMI. You must specify only one of the following parameters: `fileLocation`, `rootDeviceName`, `sourceImageId` or `vmId`.
+     */
     vmId?: pulumi.Input<string>;
 }

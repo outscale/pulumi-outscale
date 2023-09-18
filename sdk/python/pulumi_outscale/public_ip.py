@@ -19,6 +19,7 @@ class PublicIpArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]] = None):
         """
         The set of arguments for constructing a PublicIp resource.
+        :param pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
@@ -26,6 +27,9 @@ class PublicIpArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -47,6 +51,14 @@ class _PublicIpState:
                  vm_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PublicIp resources.
+        :param pulumi.Input[str] link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        :param pulumi.Input[str] nic_account_id: The account ID of the owner of the NIC.
+        :param pulumi.Input[str] nic_id: The ID of the NIC the public IP is associated with (if any).
+        :param pulumi.Input[str] private_ip: The private IP associated with the public IP.
+        :param pulumi.Input[str] public_ip: The public IP.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP.
+        :param pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] vm_id: The ID of the VM the public IP is associated with (if any).
         """
         if link_public_ip_id is not None:
             pulumi.set(__self__, "link_public_ip_id", link_public_ip_id)
@@ -70,6 +82,9 @@ class _PublicIpState:
     @property
     @pulumi.getter(name="linkPublicIpId")
     def link_public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        """
         return pulumi.get(self, "link_public_ip_id")
 
     @link_public_ip_id.setter
@@ -79,6 +94,9 @@ class _PublicIpState:
     @property
     @pulumi.getter(name="nicAccountId")
     def nic_account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the NIC.
+        """
         return pulumi.get(self, "nic_account_id")
 
     @nic_account_id.setter
@@ -88,6 +106,9 @@ class _PublicIpState:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC the public IP is associated with (if any).
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -97,6 +118,9 @@ class _PublicIpState:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP associated with the public IP.
+        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -106,6 +130,9 @@ class _PublicIpState:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public IP.
+        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -115,6 +142,9 @@ class _PublicIpState:
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allocation ID of the public IP.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
@@ -133,6 +163,9 @@ class _PublicIpState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -142,6 +175,9 @@ class _PublicIpState:
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the VM the public IP is associated with (if any).
+        """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
@@ -157,9 +193,31 @@ class PublicIp(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicIpTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a PublicIp resource with the given unique name, props, and options.
+        Manages a public IP.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        public_ip01 = outscale.PublicIp("publicIp01")
+        ```
+
+        ## Import
+
+        A public IP can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/publicIp:PublicIp ImportedPublicIp eipalloc-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicIpTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -168,7 +226,28 @@ class PublicIp(pulumi.CustomResource):
                  args: Optional[PublicIpArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PublicIp resource with the given unique name, props, and options.
+        Manages a public IP.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        public_ip01 = outscale.PublicIp("publicIp01")
+        ```
+
+        ## Import
+
+        A public IP can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/publicIp:PublicIp ImportedPublicIp eipalloc-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param PublicIpArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,6 +308,14 @@ class PublicIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        :param pulumi.Input[str] nic_account_id: The account ID of the owner of the NIC.
+        :param pulumi.Input[str] nic_id: The ID of the NIC the public IP is associated with (if any).
+        :param pulumi.Input[str] private_ip: The private IP associated with the public IP.
+        :param pulumi.Input[str] public_ip: The public IP.
+        :param pulumi.Input[str] public_ip_id: The allocation ID of the public IP.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicIpTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] vm_id: The ID of the VM the public IP is associated with (if any).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -248,31 +335,49 @@ class PublicIp(pulumi.CustomResource):
     @property
     @pulumi.getter(name="linkPublicIpId")
     def link_public_ip_id(self) -> pulumi.Output[str]:
+        """
+        (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+        """
         return pulumi.get(self, "link_public_ip_id")
 
     @property
     @pulumi.getter(name="nicAccountId")
     def nic_account_id(self) -> pulumi.Output[str]:
+        """
+        The account ID of the owner of the NIC.
+        """
         return pulumi.get(self, "nic_account_id")
 
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the NIC the public IP is associated with (if any).
+        """
         return pulumi.get(self, "nic_id")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[str]:
+        """
+        The private IP associated with the public IP.
+        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[str]:
+        """
+        The public IP.
+        """
         return pulumi.get(self, "public_ip")
 
     @property
     @pulumi.getter(name="publicIpId")
     def public_ip_id(self) -> pulumi.Output[str]:
+        """
+        The allocation ID of the public IP.
+        """
         return pulumi.get(self, "public_ip_id")
 
     @property
@@ -283,10 +388,16 @@ class PublicIp(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.PublicIpTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the VM the public IP is associated with (if any).
+        """
         return pulumi.get(self, "vm_id")
 

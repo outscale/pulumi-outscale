@@ -58,6 +58,9 @@ class GetVmTypesResult:
     @property
     @pulumi.getter(name="vmTypes")
     def vm_types(self) -> Sequence['outputs.GetVmTypesVmTypeResult']:
+        """
+        Information about one or more VM types.
+        """
         return pulumi.get(self, "vm_types")
 
 
@@ -76,7 +79,42 @@ class AwaitableGetVmTypesResult(GetVmTypesResult):
 def get_vm_types(filters: Optional[Sequence[pulumi.InputType['GetVmTypesFilterArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmTypesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about VM types.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Instance-Types.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmtypes).
+
+    ## Example Usage
+    ### All types of VMs
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_vm_types = outscale.get_vm_types()
+    ```
+    ### VMs optimized for Block Storage Unit (BSU)
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vm_types01 = outscale.get_vm_types(filters=[outscale.GetVmTypesFilterArgs(
+        name="bsu_optimized",
+        values=["true"],
+    )])
+    ```
+    ### Specific VM type
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vm_types02 = outscale.get_vm_types(filters=[outscale.GetVmTypesFilterArgs(
+        name="vm_type_names",
+        values=["m3.large"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVmTypesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +132,41 @@ def get_vm_types(filters: Optional[Sequence[pulumi.InputType['GetVmTypesFilterAr
 def get_vm_types_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVmTypesFilterArgs']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVmTypesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about VM types.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Instance-Types.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmtypes).
+
+    ## Example Usage
+    ### All types of VMs
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_vm_types = outscale.get_vm_types()
+    ```
+    ### VMs optimized for Block Storage Unit (BSU)
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vm_types01 = outscale.get_vm_types(filters=[outscale.GetVmTypesFilterArgs(
+        name="bsu_optimized",
+        values=["true"],
+    )])
+    ```
+    ### Specific VM type
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vm_types02 = outscale.get_vm_types(filters=[outscale.GetVmTypesFilterArgs(
+        name="vm_type_names",
+        values=["m3.large"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVmTypesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

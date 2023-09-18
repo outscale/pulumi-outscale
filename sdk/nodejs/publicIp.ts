@@ -6,6 +6,29 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a public IP.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const publicIp01 = new outscale.PublicIp("publicIp01", {});
+ * ```
+ *
+ * ## Import
+ *
+ * A public IP can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/publicIp:PublicIp ImportedPublicIp eipalloc-12345678
+ * ```
+ */
 export class PublicIp extends pulumi.CustomResource {
     /**
      * Get an existing PublicIp resource's state with the given name, ID, and optional extra
@@ -34,14 +57,38 @@ export class PublicIp extends pulumi.CustomResource {
         return obj['__pulumiType'] === PublicIp.__pulumiType;
     }
 
+    /**
+     * (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+     */
     public /*out*/ readonly linkPublicIpId!: pulumi.Output<string>;
+    /**
+     * The account ID of the owner of the NIC.
+     */
     public /*out*/ readonly nicAccountId!: pulumi.Output<string>;
+    /**
+     * The ID of the NIC the public IP is associated with (if any).
+     */
     public /*out*/ readonly nicId!: pulumi.Output<string>;
+    /**
+     * The private IP associated with the public IP.
+     */
     public /*out*/ readonly privateIp!: pulumi.Output<string>;
+    /**
+     * The public IP.
+     */
     public /*out*/ readonly publicIp!: pulumi.Output<string>;
+    /**
+     * The allocation ID of the public IP.
+     */
     public /*out*/ readonly publicIpId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.PublicIpTag[] | undefined>;
+    /**
+     * The ID of the VM the public IP is associated with (if any).
+     */
     public /*out*/ readonly vmId!: pulumi.Output<string>;
 
     /**
@@ -87,14 +134,38 @@ export class PublicIp extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PublicIp resources.
  */
 export interface PublicIpState {
+    /**
+     * (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
+     */
     linkPublicIpId?: pulumi.Input<string>;
+    /**
+     * The account ID of the owner of the NIC.
+     */
     nicAccountId?: pulumi.Input<string>;
+    /**
+     * The ID of the NIC the public IP is associated with (if any).
+     */
     nicId?: pulumi.Input<string>;
+    /**
+     * The private IP associated with the public IP.
+     */
     privateIp?: pulumi.Input<string>;
+    /**
+     * The public IP.
+     */
     publicIp?: pulumi.Input<string>;
+    /**
+     * The allocation ID of the public IP.
+     */
     publicIpId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.PublicIpTag>[]>;
+    /**
+     * The ID of the VM the public IP is associated with (if any).
+     */
     vmId?: pulumi.Input<string>;
 }
 
@@ -102,5 +173,8 @@ export interface PublicIpState {
  * The set of arguments for constructing a PublicIp resource.
  */
 export interface PublicIpArgs {
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.PublicIpTag>[]>;
 }

@@ -6,6 +6,57 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a security group.
+ *
+ * Security groups you create to use in a Net contain a default outbound rule that allows all outbound flows.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygroup).
+ *
+ * ## Example Usage
+ * ### Optional resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * ```
+ * ### Create a security group for a Net
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const securityGroup01 = new outscale.SecurityGroup("securityGroup01", {
+ *     description: "Terraform security group",
+ *     securityGroupName: "terraform-security-group",
+ *     netId: outscale_net.net01.net_id,
+ * });
+ * ```
+ * ### Create a security group for a Net without the default outbound rule
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const securityGroup02 = new outscale.SecurityGroup("securityGroup02", {
+ *     removeDefaultOutboundRule: true,
+ *     description: "Terraform security group without outbound rule",
+ *     securityGroupName: "terraform-security-group-empty",
+ *     netId: outscale_net.net01.net_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A security group can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/securityGroup:SecurityGroup ImportedSecurityGroup sg-87654321
+ * ```
+ */
 export class SecurityGroup extends pulumi.CustomResource {
     /**
      * Get an existing SecurityGroup resource's state with the given name, ID, and optional extra
@@ -34,16 +85,45 @@ export class SecurityGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecurityGroup.__pulumiType;
     }
 
+    /**
+     * The account ID of a user.
+     */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
+    /**
+     * A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The inbound rules associated with the security group.
+     */
     public /*out*/ readonly inboundRules!: pulumi.Output<outputs.SecurityGroupInboundRule[]>;
+    /**
+     * The ID of the Net for the security group.
+     */
     public readonly netId!: pulumi.Output<string>;
+    /**
+     * The outbound rules associated with the security group.
+     */
     public /*out*/ readonly outboundRules!: pulumi.Output<outputs.SecurityGroupOutboundRule[]>;
+    /**
+     * (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+     */
     public readonly removeDefaultOutboundRule!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the security group.
+     */
     public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * The name of the security group.<br />
+     * This name must not start with `sg-`.</br>
+     * This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+     */
     public readonly securityGroupName!: pulumi.Output<string>;
     public readonly tag!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.SecurityGroupTag[] | undefined>;
 
     /**
@@ -93,16 +173,45 @@ export class SecurityGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityGroup resources.
  */
 export interface SecurityGroupState {
+    /**
+     * The account ID of a user.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The inbound rules associated with the security group.
+     */
     inboundRules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupInboundRule>[]>;
+    /**
+     * The ID of the Net for the security group.
+     */
     netId?: pulumi.Input<string>;
+    /**
+     * The outbound rules associated with the security group.
+     */
     outboundRules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupOutboundRule>[]>;
+    /**
+     * (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+     */
     removeDefaultOutboundRule?: pulumi.Input<boolean>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the security group.
+     */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the security group.<br />
+     * This name must not start with `sg-`.</br>
+     * This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+     */
     securityGroupName?: pulumi.Input<string>;
     tag?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[]>;
 }
 
@@ -110,10 +219,27 @@ export interface SecurityGroupState {
  * The set of arguments for constructing a SecurityGroup resource.
  */
 export interface SecurityGroupArgs {
+    /**
+     * A description for the security group, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The ID of the Net for the security group.
+     */
     netId?: pulumi.Input<string>;
+    /**
+     * (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
+     */
     removeDefaultOutboundRule?: pulumi.Input<boolean>;
+    /**
+     * The name of the security group.<br />
+     * This name must not start with `sg-`.</br>
+     * This name must be unique and contain between 1 and 255 ASCII characters. Accented letters are not allowed.
+     */
     securityGroupName?: pulumi.Input<string>;
     tag?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[]>;
 }

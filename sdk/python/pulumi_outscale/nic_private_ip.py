@@ -20,6 +20,10 @@ class NicPrivateIpInitArgs:
                  secondary_private_ip_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a NicPrivateIp resource.
+        :param pulumi.Input[str] nic_id: The ID of the NIC.
+        :param pulumi.Input[bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         pulumi.set(__self__, "nic_id", nic_id)
         if allow_relink is not None:
@@ -32,6 +36,9 @@ class NicPrivateIpInitArgs:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -41,6 +48,9 @@ class NicPrivateIpInitArgs:
     @property
     @pulumi.getter(name="allowRelink")
     def allow_relink(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+        """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
@@ -50,6 +60,9 @@ class NicPrivateIpInitArgs:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -59,6 +72,9 @@ class NicPrivateIpInitArgs:
     @property
     @pulumi.getter(name="secondaryPrivateIpCount")
     def secondary_private_ip_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of secondary private IPs to assign to the NIC.
+        """
         return pulumi.get(self, "secondary_private_ip_count")
 
     @secondary_private_ip_count.setter
@@ -77,6 +93,10 @@ class _NicPrivateIpState:
                  secondary_private_ip_count: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering NicPrivateIp resources.
+        :param pulumi.Input[bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+        :param pulumi.Input[str] nic_id: The ID of the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         if allow_relink is not None:
             pulumi.set(__self__, "allow_relink", allow_relink)
@@ -94,6 +114,9 @@ class _NicPrivateIpState:
     @property
     @pulumi.getter(name="allowRelink")
     def allow_relink(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+        """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
@@ -103,6 +126,9 @@ class _NicPrivateIpState:
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
@@ -121,6 +147,9 @@ class _NicPrivateIpState:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -139,6 +168,9 @@ class _NicPrivateIpState:
     @property
     @pulumi.getter(name="secondaryPrivateIpCount")
     def secondary_private_ip_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of secondary private IPs to assign to the NIC.
+        """
         return pulumi.get(self, "secondary_private_ip_count")
 
     @secondary_private_ip_count.setter
@@ -157,9 +189,55 @@ class NicPrivateIp(pulumi.CustomResource):
                  secondary_private_ip_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a NicPrivateIp resource with the given unique name, props, and options.
+        Manages a NIC's private IPs.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            subregion_name=f"{var['region']}a",
+            ip_range="10.0.0.0/16",
+            net_id=net01.net_id)
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        ```
+        ### Link a specific secondary private IP address to a NIC
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nic_private_ip01 = outscale.NicPrivateIp("nicPrivateIp01",
+            nic_id=outscale_nic["nic01"]["nic_id"],
+            private_ips=[
+                "10.0.12.34",
+                "10.0.12.35",
+            ])
+        ```
+        ### Link several automatic secondary private IP addresses to a NIC
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nic_private_ip02 = outscale.NicPrivateIp("nicPrivateIp02",
+            nic_id=outscale_nic["nic01"]["nic_id"],
+            secondary_private_ip_count=2)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+        :param pulumi.Input[str] nic_id: The ID of the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         ...
     @overload
@@ -168,7 +246,49 @@ class NicPrivateIp(pulumi.CustomResource):
                  args: NicPrivateIpInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NicPrivateIp resource with the given unique name, props, and options.
+        Manages a NIC's private IPs.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            subregion_name=f"{var['region']}a",
+            ip_range="10.0.0.0/16",
+            net_id=net01.net_id)
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        ```
+        ### Link a specific secondary private IP address to a NIC
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nic_private_ip01 = outscale.NicPrivateIp("nicPrivateIp01",
+            nic_id=outscale_nic["nic01"]["nic_id"],
+            private_ips=[
+                "10.0.12.34",
+                "10.0.12.35",
+            ])
+        ```
+        ### Link several automatic secondary private IP addresses to a NIC
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        nic_private_ip02 = outscale.NicPrivateIp("nicPrivateIp02",
+            nic_id=outscale_nic["nic01"]["nic_id"],
+            secondary_private_ip_count=2)
+        ```
+
         :param str resource_name: The name of the resource.
         :param NicPrivateIpInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,6 +348,10 @@ class NicPrivateIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+        :param pulumi.Input[str] nic_id: The ID of the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -244,11 +368,17 @@ class NicPrivateIp(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowRelink")
     def allow_relink(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
+        """
         return pulumi.get(self, "allow_relink")
 
     @property
     @pulumi.getter(name="nicId")
     def nic_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the NIC.
+        """
         return pulumi.get(self, "nic_id")
 
     @property
@@ -259,6 +389,9 @@ class NicPrivateIp(pulumi.CustomResource):
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        """
         return pulumi.get(self, "private_ips")
 
     @property
@@ -269,5 +402,8 @@ class NicPrivateIp(pulumi.CustomResource):
     @property
     @pulumi.getter(name="secondaryPrivateIpCount")
     def secondary_private_ip_count(self) -> pulumi.Output[int]:
+        """
+        The number of secondary private IPs to assign to the NIC.
+        """
         return pulumi.get(self, "secondary_private_ip_count")
 

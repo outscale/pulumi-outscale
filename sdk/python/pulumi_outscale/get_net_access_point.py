@@ -68,11 +68,17 @@ class GetNetAccessPointResult:
     @property
     @pulumi.getter(name="netAccessPointId")
     def net_access_point_id(self) -> str:
+        """
+        The ID of the Net access point.
+        """
         return pulumi.get(self, "net_access_point_id")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> str:
+        """
+        The ID of the Net with which the Net access point is associated.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -83,21 +89,33 @@ class GetNetAccessPointResult:
     @property
     @pulumi.getter(name="routeTableIds")
     def route_table_ids(self) -> Sequence[str]:
+        """
+        The ID of the route tables associated with the Net access point.
+        """
         return pulumi.get(self, "route_table_ids")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The name of the service with which the Net access point is associated.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetNetAccessPointTagResult']:
+        """
+        One or more tags associated with the Net access point.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -121,7 +139,43 @@ class AwaitableGetNetAccessPointResult(GetNetAccessPointResult):
 def get_net_access_point(filters: Optional[Sequence[pulumi.InputType['GetNetAccessPointFilterArgs']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetAccessPointResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Net access point.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+    ## Example Usage
+    ### List a Net access point
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_point01 = outscale.get_net_access_point(filters=[outscale.GetNetAccessPointFilterArgs(
+        name="net_access_point_ids",
+        values=["vpce-12345678"],
+    )])
+    ```
+    ### List a Net access point according to its Net and state
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_point02 = outscale.get_net_access_point(filters=[
+        outscale.GetNetAccessPointFilterArgs(
+            name="net_ids",
+            values=["vpc-12345678"],
+        ),
+        outscale.GetNetAccessPointFilterArgs(
+            name="states",
+            values=["available"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetAccessPointFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -144,6 +198,42 @@ def get_net_access_point(filters: Optional[Sequence[pulumi.InputType['GetNetAcce
 def get_net_access_point_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNetAccessPointFilterArgs']]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetAccessPointResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a Net access point.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+    ## Example Usage
+    ### List a Net access point
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_point01 = outscale.get_net_access_point(filters=[outscale.GetNetAccessPointFilterArgs(
+        name="net_access_point_ids",
+        values=["vpce-12345678"],
+    )])
+    ```
+    ### List a Net access point according to its Net and state
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_point02 = outscale.get_net_access_point(filters=[
+        outscale.GetNetAccessPointFilterArgs(
+            name="net_ids",
+            values=["vpc-12345678"],
+        ),
+        outscale.GetNetAccessPointFilterArgs(
+            name="states",
+            values=["available"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetAccessPointFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

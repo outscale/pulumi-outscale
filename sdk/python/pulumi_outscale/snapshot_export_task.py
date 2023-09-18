@@ -21,6 +21,9 @@ class SnapshotExportTaskArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]]] = None):
         """
         The set of arguments for constructing a SnapshotExportTask resource.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to export.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "osu_exports", osu_exports)
         pulumi.set(__self__, "snapshot_id", snapshot_id)
@@ -30,6 +33,9 @@ class SnapshotExportTaskArgs:
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportArgs']]]:
+        """
+        Information about the OOS export task to create.
+        """
         return pulumi.get(self, "osu_exports")
 
     @osu_exports.setter
@@ -39,6 +45,9 @@ class SnapshotExportTaskArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the snapshot to export.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -48,6 +57,9 @@ class SnapshotExportTaskArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -68,6 +80,13 @@ class _SnapshotExportTaskState:
                  task_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SnapshotExportTask resources.
+        :param pulumi.Input[str] comment: If the snapshot export task fails, an error message appears.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[int] progress: The progress of the snapshot export task, as a percentage.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to export.
+        :param pulumi.Input[str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] task_id: The ID of the snapshot export task.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -89,6 +108,9 @@ class _SnapshotExportTaskState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the snapshot export task fails, an error message appears.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -98,6 +120,9 @@ class _SnapshotExportTaskState:
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportArgs']]]]:
+        """
+        Information about the OOS export task to create.
+        """
         return pulumi.get(self, "osu_exports")
 
     @osu_exports.setter
@@ -107,6 +132,9 @@ class _SnapshotExportTaskState:
     @property
     @pulumi.getter
     def progress(self) -> Optional[pulumi.Input[int]]:
+        """
+        The progress of the snapshot export task, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @progress.setter
@@ -125,6 +153,9 @@ class _SnapshotExportTaskState:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot to export.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -134,6 +165,9 @@ class _SnapshotExportTaskState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -143,6 +177,9 @@ class _SnapshotExportTaskState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -152,6 +189,9 @@ class _SnapshotExportTaskState:
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot export task.
+        """
         return pulumi.get(self, "task_id")
 
     @task_id.setter
@@ -169,9 +209,51 @@ class SnapshotExportTask(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotExportTaskTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a SnapshotExportTask resource with the given unique name, props, and options.
+        Manages a snapshot export task.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name=f"{var['region']}a",
+            size=40)
+        snapshot01 = outscale.Snapshot("snapshot01", volume_id=volume01.volume_id)
+        ```
+        ### Create a snapshot export task
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot_export_task01 = outscale.SnapshotExportTask("snapshotExportTask01",
+            snapshot_id=outscale_snapshot["snapshot01"]["snapshot_id"],
+            osu_exports=[outscale.SnapshotExportTaskOsuExportArgs(
+                disk_image_format="qcow2",
+                osu_bucket="terraform-bucket",
+                osu_prefix="new-export",
+                osu_api_keys=[outscale.SnapshotExportTaskOsuExportOsuApiKeyArgs(
+                    api_key_id=var["access_key_id"],
+                    secret_key=var["secret_key_id"],
+                )],
+            )],
+            tags=[outscale.SnapshotExportTaskTagArgs(
+                key="Name",
+                value="terraform-snapshot-export-task",
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotExportTaskOsuExportArgs']]]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to export.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotExportTaskTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -180,7 +262,46 @@ class SnapshotExportTask(pulumi.CustomResource):
                  args: SnapshotExportTaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SnapshotExportTask resource with the given unique name, props, and options.
+        Manages a snapshot export task.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name=f"{var['region']}a",
+            size=40)
+        snapshot01 = outscale.Snapshot("snapshot01", volume_id=volume01.volume_id)
+        ```
+        ### Create a snapshot export task
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        snapshot_export_task01 = outscale.SnapshotExportTask("snapshotExportTask01",
+            snapshot_id=outscale_snapshot["snapshot01"]["snapshot_id"],
+            osu_exports=[outscale.SnapshotExportTaskOsuExportArgs(
+                disk_image_format="qcow2",
+                osu_bucket="terraform-bucket",
+                osu_prefix="new-export",
+                osu_api_keys=[outscale.SnapshotExportTaskOsuExportOsuApiKeyArgs(
+                    api_key_id=var["access_key_id"],
+                    secret_key=var["secret_key_id"],
+                )],
+            )],
+            tags=[outscale.SnapshotExportTaskTagArgs(
+                key="Name",
+                value="terraform-snapshot-export-task",
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param SnapshotExportTaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -245,6 +366,13 @@ class SnapshotExportTask(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] comment: If the snapshot export task fails, an error message appears.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotExportTaskOsuExportArgs']]]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[int] progress: The progress of the snapshot export task, as a percentage.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to export.
+        :param pulumi.Input[str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SnapshotExportTaskTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] task_id: The ID of the snapshot export task.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,16 +391,25 @@ class SnapshotExportTask(pulumi.CustomResource):
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[str]:
+        """
+        If the snapshot export task fails, an error message appears.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> pulumi.Output[Sequence['outputs.SnapshotExportTaskOsuExport']]:
+        """
+        Information about the OOS export task to create.
+        """
         return pulumi.get(self, "osu_exports")
 
     @property
     @pulumi.getter
     def progress(self) -> pulumi.Output[int]:
+        """
+        The progress of the snapshot export task, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @property
@@ -283,20 +420,32 @@ class SnapshotExportTask(pulumi.CustomResource):
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the snapshot to export.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.SnapshotExportTaskTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the snapshot export task.
+        """
         return pulumi.get(self, "task_id")
 

@@ -4,6 +4,35 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a server certificate.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const serverCertificate01 = new outscale.ServerCertificate("serverCertificate01", {
+ *     body: fs.readFileSync("<PATH>"),
+ *     chain: fs.readFileSync("<PATH>"),
+ *     privateKey: fs.readFileSync("<PATH>"),
+ *     path: "<PATH>",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A server certificate can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+ * ```
+ */
 export class ServerCertificate extends pulumi.CustomResource {
     /**
      * Get an existing ServerCertificate resource's state with the given name, ID, and optional extra
@@ -32,15 +61,39 @@ export class ServerCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServerCertificate.__pulumiType;
     }
 
+    /**
+     * The PEM-encoded X509 certificate.
+     */
     public readonly body!: pulumi.Output<string | undefined>;
+    /**
+     * The PEM-encoded intermediate certification authorities.
+     */
     public readonly chain!: pulumi.Output<string | undefined>;
     public readonly dryRun!: pulumi.Output<string | undefined>;
+    /**
+     * The date at which the server certificate expires.
+     */
     public /*out*/ readonly expirationDate!: pulumi.Output<string>;
+    /**
+     * A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+     */
     public /*out*/ readonly orn!: pulumi.Output<string>;
+    /**
+     * The path to the server certificate, set to a slash (/) if not specified.
+     */
     public readonly path!: pulumi.Output<string>;
+    /**
+     * The PEM-encoded private key matching the certificate.
+     */
     public readonly privateKey!: pulumi.Output<string | undefined>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The date at which the server certificate has been uploaded.
+     */
     public /*out*/ readonly uploadDate!: pulumi.Output<string>;
 
     /**
@@ -88,15 +141,39 @@ export class ServerCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServerCertificate resources.
  */
 export interface ServerCertificateState {
+    /**
+     * The PEM-encoded X509 certificate.
+     */
     body?: pulumi.Input<string>;
+    /**
+     * The PEM-encoded intermediate certification authorities.
+     */
     chain?: pulumi.Input<string>;
     dryRun?: pulumi.Input<string>;
+    /**
+     * The date at which the server certificate expires.
+     */
     expirationDate?: pulumi.Input<string>;
+    /**
+     * A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+     */
     orn?: pulumi.Input<string>;
+    /**
+     * The path to the server certificate, set to a slash (/) if not specified.
+     */
     path?: pulumi.Input<string>;
+    /**
+     * The PEM-encoded private key matching the certificate.
+     */
     privateKey?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The date at which the server certificate has been uploaded.
+     */
     uploadDate?: pulumi.Input<string>;
 }
 
@@ -104,10 +181,25 @@ export interface ServerCertificateState {
  * The set of arguments for constructing a ServerCertificate resource.
  */
 export interface ServerCertificateArgs {
+    /**
+     * The PEM-encoded X509 certificate.
+     */
     body?: pulumi.Input<string>;
+    /**
+     * The PEM-encoded intermediate certification authorities.
+     */
     chain?: pulumi.Input<string>;
     dryRun?: pulumi.Input<string>;
+    /**
+     * A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The path to the server certificate, set to a slash (/) if not specified.
+     */
     path?: pulumi.Input<string>;
+    /**
+     * The PEM-encoded private key matching the certificate.
+     */
     privateKey?: pulumi.Input<string>;
 }

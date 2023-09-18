@@ -53,6 +53,9 @@ class GetProductTypesResult:
     @property
     @pulumi.getter(name="productTypes")
     def product_types(self) -> Sequence['outputs.GetProductTypesProductTypeResult']:
+        """
+        Information about one or more product types.
+        """
         return pulumi.get(self, "product_types")
 
     @property
@@ -76,7 +79,35 @@ class AwaitableGetProductTypesResult(GetProductTypesResult):
 def get_product_types(filters: Optional[Sequence[pulumi.InputType['GetProductTypesFilterArgs']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProductTypesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about product types.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Software-Licenses.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-producttype).
+
+    ## Example Usage
+    ### Read specific product types
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    product_types01 = outscale.get_product_types(filters=[outscale.GetProductTypesFilterArgs(
+        name="product_type_ids",
+        values=[
+            "0001",
+            "0002",
+        ],
+    )])
+    ```
+    ### Read all product types
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_product_types = outscale.get_product_types()
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetProductTypesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +125,34 @@ def get_product_types(filters: Optional[Sequence[pulumi.InputType['GetProductTyp
 def get_product_types_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProductTypesFilterArgs']]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductTypesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about product types.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Software-Licenses.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-producttype).
+
+    ## Example Usage
+    ### Read specific product types
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    product_types01 = outscale.get_product_types(filters=[outscale.GetProductTypesFilterArgs(
+        name="product_type_ids",
+        values=[
+            "0001",
+            "0002",
+        ],
+    )])
+    ```
+    ### Read all product types
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    all_product_types = outscale.get_product_types()
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetProductTypesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

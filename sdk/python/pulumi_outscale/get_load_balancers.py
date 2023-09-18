@@ -56,6 +56,9 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter(name="loadBalancerNames")
     def load_balancer_names(self) -> Optional[Sequence[str]]:
+        """
+        The name of the load balancer.
+        """
         return pulumi.get(self, "load_balancer_names")
 
     @property
@@ -86,7 +89,29 @@ def get_load_balancers(filters: Optional[Sequence[pulumi.InputType['GetLoadBalan
                        load_balancer_names: Optional[Sequence[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about load balancers.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    load_balancers01 = outscale.get_load_balancers(filters=[outscale.GetLoadBalancersFilterArgs(
+        name="load_balancer_names",
+        values=[
+            "load_balancer01",
+            "load_balancer02",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetLoadBalancersFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] load_balancer_names: The name of the load balancer.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -107,6 +132,28 @@ def get_load_balancers_output(filters: Optional[pulumi.Input[Optional[Sequence[p
                               load_balancer_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about load balancers.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    load_balancers01 = outscale.get_load_balancers(filters=[outscale.GetLoadBalancersFilterArgs(
+        name="load_balancer_names",
+        values=[
+            "load_balancer01",
+            "load_balancer02",
+        ],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetLoadBalancersFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] load_balancer_names: The name of the load balancer.
     """
     ...

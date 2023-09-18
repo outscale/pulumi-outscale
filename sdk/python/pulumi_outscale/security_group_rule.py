@@ -27,6 +27,15 @@ class SecurityGroupRuleArgs:
                  to_port_range: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
+        :param pulumi.Input[str] flow: The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+        :param pulumi.Input[str] security_group_id: The ID of the security group for which you want to create a rule.
+        :param pulumi.Input[int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        :param pulumi.Input[str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        :param pulumi.Input[str] ip_range: The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleArgs']]] rules: Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        :param pulumi.Input[str] security_group_account_id_to_link: The account ID of the owner of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_name_to_link: The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+        :param pulumi.Input[int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
         """
         pulumi.set(__self__, "flow", flow)
         pulumi.set(__self__, "security_group_id", security_group_id)
@@ -48,6 +57,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def flow(self) -> pulumi.Input[str]:
+        """
+        The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+        """
         return pulumi.get(self, "flow")
 
     @flow.setter
@@ -57,6 +69,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the security group for which you want to create a rule.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -66,6 +81,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter(name="fromPortRange")
     def from_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        """
         return pulumi.get(self, "from_port_range")
 
     @from_port_range.setter
@@ -75,6 +93,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
@@ -84,6 +105,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -93,6 +117,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleArgs']]]]:
+        """
+        Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        """
         return pulumi.get(self, "rules")
 
     @rules.setter
@@ -102,6 +129,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter(name="securityGroupAccountIdToLink")
     def security_group_account_id_to_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the security group for which you want to create a rule.
+        """
         return pulumi.get(self, "security_group_account_id_to_link")
 
     @security_group_account_id_to_link.setter
@@ -111,6 +141,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter(name="securityGroupNameToLink")
     def security_group_name_to_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+        """
         return pulumi.get(self, "security_group_name_to_link")
 
     @security_group_name_to_link.setter
@@ -120,6 +153,9 @@ class SecurityGroupRuleArgs:
     @property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         return pulumi.get(self, "to_port_range")
 
     @to_port_range.setter
@@ -144,6 +180,17 @@ class _SecurityGroupRuleState:
                  to_port_range: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering SecurityGroupRule resources.
+        :param pulumi.Input[str] flow: The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+        :param pulumi.Input[int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        :param pulumi.Input[str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        :param pulumi.Input[str] ip_range: The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        :param pulumi.Input[str] net_id: The ID of the Net for the security group.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleArgs']]] rules: Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        :param pulumi.Input[str] security_group_account_id_to_link: The account ID of the owner of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_id: The ID of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        :param pulumi.Input[str] security_group_name_to_link: The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+        :param pulumi.Input[int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
         """
         if flow is not None:
             pulumi.set(__self__, "flow", flow)
@@ -173,6 +220,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter
     def flow(self) -> Optional[pulumi.Input[str]]:
+        """
+        The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+        """
         return pulumi.get(self, "flow")
 
     @flow.setter
@@ -182,6 +232,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="fromPortRange")
     def from_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        """
         return pulumi.get(self, "from_port_range")
 
     @from_port_range.setter
@@ -191,6 +244,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
@@ -200,6 +256,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
@@ -209,6 +268,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net for the security group.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -227,6 +289,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleArgs']]]]:
+        """
+        Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        """
         return pulumi.get(self, "rules")
 
     @rules.setter
@@ -236,6 +301,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="securityGroupAccountIdToLink")
     def security_group_account_id_to_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID of the owner of the security group for which you want to create a rule.
+        """
         return pulumi.get(self, "security_group_account_id_to_link")
 
     @security_group_account_id_to_link.setter
@@ -245,6 +313,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the security group for which you want to create a rule.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -254,6 +325,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
@@ -263,6 +337,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="securityGroupNameToLink")
     def security_group_name_to_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+        """
         return pulumi.get(self, "security_group_name_to_link")
 
     @security_group_name_to_link.setter
@@ -272,6 +349,9 @@ class _SecurityGroupRuleState:
     @property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         return pulumi.get(self, "to_port_range")
 
     @to_port_range.setter
@@ -295,9 +375,78 @@ class SecurityGroupRule(pulumi.CustomResource):
                  to_port_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a SecurityGroupRule resource with the given unique name, props, and options.
+        Manages a security group rule.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Group-Rules.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygrouprule).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group01 = outscale.SecurityGroup("securityGroup01",
+            description="Terraform target security group for SG rule from IP and SG",
+            security_group_name="terraform-security-group-test-01")
+        security_group02 = outscale.SecurityGroup("securityGroup02",
+            description="Terraform source security group for SG rule from SG",
+            security_group_name="terraform-security-group-test-02")
+        ```
+        ### Set an inbound rule from an IP range
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group_rule01 = outscale.SecurityGroupRule("securityGroupRule01",
+            flow="Inbound",
+            security_group_id=outscale_security_group["security_group01"]["security_group_id"],
+            from_port_range=80,
+            to_port_range=80,
+            ip_protocol="tcp",
+            ip_range="10.0.0.0/16")
+        ```
+        ### Set an inbound rule from another security group
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group_rule02 = outscale.SecurityGroupRule("securityGroupRule02",
+            flow="Inbound",
+            security_group_id=outscale_security_group["security_group01"]["security_group_id"],
+            rules=[outscale.SecurityGroupRuleRuleArgs(
+                from_port_range=22,
+                to_port_range=22,
+                ip_protocol="tcp",
+                security_groups_members=[outscale.SecurityGroupRuleRuleSecurityGroupsMemberArgs(
+                    account_id="012345678910",
+                    security_group_name="terraform-security-group-test-02",
+                )],
+            )])
+        ```
+
+        ## Import
+
+        A security group rule can be imported using the following format`SecurityGroupId_Flow_IpProtocol_FromPortRange_ToPortRange_IpRange`. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] flow: The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+        :param pulumi.Input[int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        :param pulumi.Input[str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        :param pulumi.Input[str] ip_range: The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRuleRuleArgs']]]] rules: Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        :param pulumi.Input[str] security_group_account_id_to_link: The account ID of the owner of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_id: The ID of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_name_to_link: The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+        :param pulumi.Input[int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
         """
         ...
     @overload
@@ -306,7 +455,67 @@ class SecurityGroupRule(pulumi.CustomResource):
                  args: SecurityGroupRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SecurityGroupRule resource with the given unique name, props, and options.
+        Manages a security group rule.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Group-Rules.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygrouprule).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group01 = outscale.SecurityGroup("securityGroup01",
+            description="Terraform target security group for SG rule from IP and SG",
+            security_group_name="terraform-security-group-test-01")
+        security_group02 = outscale.SecurityGroup("securityGroup02",
+            description="Terraform source security group for SG rule from SG",
+            security_group_name="terraform-security-group-test-02")
+        ```
+        ### Set an inbound rule from an IP range
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group_rule01 = outscale.SecurityGroupRule("securityGroupRule01",
+            flow="Inbound",
+            security_group_id=outscale_security_group["security_group01"]["security_group_id"],
+            from_port_range=80,
+            to_port_range=80,
+            ip_protocol="tcp",
+            ip_range="10.0.0.0/16")
+        ```
+        ### Set an inbound rule from another security group
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        security_group_rule02 = outscale.SecurityGroupRule("securityGroupRule02",
+            flow="Inbound",
+            security_group_id=outscale_security_group["security_group01"]["security_group_id"],
+            rules=[outscale.SecurityGroupRuleRuleArgs(
+                from_port_range=22,
+                to_port_range=22,
+                ip_protocol="tcp",
+                security_groups_members=[outscale.SecurityGroupRuleRuleSecurityGroupsMemberArgs(
+                    account_id="012345678910",
+                    security_group_name="terraform-security-group-test-02",
+                )],
+            )])
+        ```
+
+        ## Import
+
+        A security group rule can be imported using the following format`SecurityGroupId_Flow_IpProtocol_FromPortRange_ToPortRange_IpRange`. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
+        ```
+
         :param str resource_name: The name of the resource.
         :param SecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -385,6 +594,17 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] flow: The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+        :param pulumi.Input[int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        :param pulumi.Input[str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        :param pulumi.Input[str] ip_range: The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        :param pulumi.Input[str] net_id: The ID of the Net for the security group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityGroupRuleRuleArgs']]]] rules: Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        :param pulumi.Input[str] security_group_account_id_to_link: The account ID of the owner of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_id: The ID of the security group for which you want to create a rule.
+        :param pulumi.Input[str] security_group_name: The name of the security group.
+        :param pulumi.Input[str] security_group_name_to_link: The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+        :param pulumi.Input[int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -407,26 +627,41 @@ class SecurityGroupRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def flow(self) -> pulumi.Output[str]:
+        """
+        The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+        """
         return pulumi.get(self, "flow")
 
     @property
     @pulumi.getter(name="fromPortRange")
     def from_port_range(self) -> pulumi.Output[Optional[int]]:
+        """
+        The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+        """
         return pulumi.get(self, "from_port_range")
 
     @property
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Output[Optional[str]]:
+        """
+        The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        """
         return pulumi.get(self, "ip_protocol")
 
     @property
     @pulumi.getter(name="ipRange")
     def ip_range(self) -> pulumi.Output[Optional[str]]:
+        """
+        The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         return pulumi.get(self, "ip_range")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net for the security group.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -437,30 +672,48 @@ class SecurityGroupRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Optional[Sequence['outputs.SecurityGroupRuleRule']]]:
+        """
+        Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter(name="securityGroupAccountIdToLink")
     def security_group_account_id_to_link(self) -> pulumi.Output[Optional[str]]:
+        """
+        The account ID of the owner of the security group for which you want to create a rule.
+        """
         return pulumi.get(self, "security_group_account_id_to_link")
 
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the security group for which you want to create a rule.
+        """
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Output[str]:
+        """
+        The name of the security group.
+        """
         return pulumi.get(self, "security_group_name")
 
     @property
     @pulumi.getter(name="securityGroupNameToLink")
     def security_group_name_to_link(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+        """
         return pulumi.get(self, "security_group_name_to_link")
 
     @property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> pulumi.Output[Optional[int]]:
+        """
+        The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        """
         return pulumi.get(self, "to_port_range")
 

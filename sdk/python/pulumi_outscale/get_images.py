@@ -49,6 +49,9 @@ class GetImagesResult:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[str]]:
+        """
+        The account ID of one or more users who have permissions for the resource.
+        """
         return pulumi.get(self, "account_ids")
 
     @property
@@ -72,6 +75,9 @@ class GetImagesResult:
     @property
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetImagesImageResult']:
+        """
+        Information about one or more OMIs.
+        """
         return pulumi.get(self, "images")
 
     @property
@@ -106,7 +112,36 @@ def get_images(account_ids: Optional[Sequence[str]] = None,
                permissions: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about images.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    images01 = outscale.get_images(filters=[
+        outscale.GetImagesFilterArgs(
+            name="account_aliases",
+            values=["Outscale"],
+        ),
+        outscale.GetImagesFilterArgs(
+            name="image_names",
+            values=[
+                "Ubuntu*",
+                "RockyLinux*",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[str] account_ids: The account IDs of the owners of the OMIs. By default, all the OMIs for which you have launch permissions are described.
+    :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] image_ids: The IDs of the OMIs.
     """
     __args__ = dict()
     __args__['accountIds'] = account_ids
@@ -133,6 +168,35 @@ def get_images_output(account_ids: Optional[pulumi.Input[Optional[Sequence[str]]
                       permissions: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about images.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    images01 = outscale.get_images(filters=[
+        outscale.GetImagesFilterArgs(
+            name="account_aliases",
+            values=["Outscale"],
+        ),
+        outscale.GetImagesFilterArgs(
+            name="image_names",
+            values=[
+                "Ubuntu*",
+                "RockyLinux*",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[str] account_ids: The account IDs of the owners of the OMIs. By default, all the OMIs for which you have launch permissions are described.
+    :param Sequence[pulumi.InputType['GetImagesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] image_ids: The IDs of the OMIs.
     """
     ...

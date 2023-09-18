@@ -6,6 +6,65 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a NAT service.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/18",
+ * });
+ * const routeTable01 = new outscale.RouteTable("routeTable01", {netId: net01.netId});
+ * const outscaleRouteTableLink01 = new outscale.RouteTableLink("outscaleRouteTableLink01", {
+ *     subnetId: subnet01.subnetId,
+ *     routeTableId: routeTable01.routeTableId,
+ * });
+ * const internetService01 = new outscale.InternetService("internetService01", {});
+ * const internetServiceLink01 = new outscale.InternetServiceLink("internetServiceLink01", {
+ *     netId: net01.netId,
+ *     internetServiceId: internetService01.internetServiceId,
+ * });
+ * const route01 = new outscale.Route("route01", {
+ *     destinationIpRange: "0.0.0.0/0",
+ *     gatewayId: internetService01.internetServiceId,
+ *     routeTableId: routeTable01.routeTableId,
+ * }, {
+ *     dependsOn: [internetServiceLink01],
+ * });
+ * const publicIp01 = new outscale.PublicIp("publicIp01", {});
+ * ```
+ * ### Create a NAT service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const natService01 = new outscale.NatService("natService01", {
+ *     subnetId: outscale_subnet.subnet01.subnet_id,
+ *     publicIpId: outscale_public_ip.public_ip01.public_ip_id,
+ * }, {
+ *     dependsOn: [outscale_route.route01],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A NAT service can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/natService:NatService ImportedNatService nat-87654321
+ * ```
+ */
 export class NatService extends pulumi.CustomResource {
     /**
      * Get an existing NatService resource's state with the given name, ID, and optional extra
@@ -34,13 +93,35 @@ export class NatService extends pulumi.CustomResource {
         return obj['__pulumiType'] === NatService.__pulumiType;
     }
 
+    /**
+     * The ID of the NAT service.
+     */
     public /*out*/ readonly natServiceId!: pulumi.Output<string>;
+    /**
+     * The ID of the Net in which the NAT service is.
+     */
     public /*out*/ readonly netId!: pulumi.Output<string>;
+    /**
+     * The allocation ID of the public IP to associate with the NAT service.<br />
+     * If the public IP is already associated with another resource, you must first disassociate it.
+     */
     public readonly publicIpId!: pulumi.Output<string>;
+    /**
+     * Information about the public IP or IPs associated with the NAT service.
+     */
     public /*out*/ readonly publicIps!: pulumi.Output<outputs.NatServicePublicIp[]>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The state of the NAT service (`pending` \| `available` \| `deleting` \| `deleted`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The ID of the Subnet in which you want to create the NAT service.
+     */
     public readonly subnetId!: pulumi.Output<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.NatServiceTag[] | undefined>;
 
     /**
@@ -90,13 +171,35 @@ export class NatService extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NatService resources.
  */
 export interface NatServiceState {
+    /**
+     * The ID of the NAT service.
+     */
     natServiceId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net in which the NAT service is.
+     */
     netId?: pulumi.Input<string>;
+    /**
+     * The allocation ID of the public IP to associate with the NAT service.<br />
+     * If the public IP is already associated with another resource, you must first disassociate it.
+     */
     publicIpId?: pulumi.Input<string>;
+    /**
+     * Information about the public IP or IPs associated with the NAT service.
+     */
     publicIps?: pulumi.Input<pulumi.Input<inputs.NatServicePublicIp>[]>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The state of the NAT service (`pending` \| `available` \| `deleting` \| `deleted`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * The ID of the Subnet in which you want to create the NAT service.
+     */
     subnetId?: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[]>;
 }
 
@@ -104,7 +207,17 @@ export interface NatServiceState {
  * The set of arguments for constructing a NatService resource.
  */
 export interface NatServiceArgs {
+    /**
+     * The allocation ID of the public IP to associate with the NAT service.<br />
+     * If the public IP is already associated with another resource, you must first disassociate it.
+     */
     publicIpId: pulumi.Input<string>;
+    /**
+     * The ID of the Subnet in which you want to create the NAT service.
+     */
     subnetId: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[]>;
 }

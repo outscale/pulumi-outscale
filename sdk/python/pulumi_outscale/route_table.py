@@ -20,6 +20,8 @@ class RouteTableArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]] = None):
         """
         The set of arguments for constructing a RouteTable resource.
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a route table.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "net_id", net_id)
         if tags is not None:
@@ -28,6 +30,9 @@ class RouteTableArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Net for which you want to create a route table.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -37,6 +42,9 @@ class RouteTableArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -56,6 +64,12 @@ class _RouteTableState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering RouteTable resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]] link_route_tables: One or more associations between the route table and Subnets.
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a route table.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]] route_propagating_virtual_gateways: Information about virtual gateways propagating routes.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]] routes: One or more routes in the route table.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if link_route_tables is not None:
             pulumi.set(__self__, "link_route_tables", link_route_tables)
@@ -75,6 +89,9 @@ class _RouteTableState:
     @property
     @pulumi.getter(name="linkRouteTables")
     def link_route_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]]]:
+        """
+        One or more associations between the route table and Subnets.
+        """
         return pulumi.get(self, "link_route_tables")
 
     @link_route_tables.setter
@@ -84,6 +101,9 @@ class _RouteTableState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net for which you want to create a route table.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -102,6 +122,9 @@ class _RouteTableState:
     @property
     @pulumi.getter(name="routePropagatingVirtualGateways")
     def route_propagating_virtual_gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]]]:
+        """
+        Information about virtual gateways propagating routes.
+        """
         return pulumi.get(self, "route_propagating_virtual_gateways")
 
     @route_propagating_virtual_gateways.setter
@@ -111,6 +134,9 @@ class _RouteTableState:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -120,6 +146,9 @@ class _RouteTableState:
     @property
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]]]:
+        """
+        One or more routes in the route table.
+        """
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -129,6 +158,9 @@ class _RouteTableState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -145,9 +177,41 @@ class RouteTable(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a RouteTable resource with the given unique name, props, and options.
+        Manages a route table.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Create a route table
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        route_table01 = outscale.RouteTable("routeTable01", net_id=outscale_net["net01"]["net_id"])
+        ```
+
+        ## Import
+
+        A route table can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/routeTable:RouteTable ImportedRouteTable rtb-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a route table.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -156,7 +220,37 @@ class RouteTable(pulumi.CustomResource):
                  args: RouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RouteTable resource with the given unique name, props, and options.
+        Manages a route table.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        ```
+        ### Create a route table
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        route_table01 = outscale.RouteTable("routeTable01", net_id=outscale_net["net01"]["net_id"])
+        ```
+
+        ## Import
+
+        A route table can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/routeTable:RouteTable ImportedRouteTable rtb-12345678
+        ```
+
         :param str resource_name: The name of the resource.
         :param RouteTableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -216,6 +310,12 @@ class RouteTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableLinkRouteTableArgs']]]] link_route_tables: One or more associations between the route table and Subnets.
+        :param pulumi.Input[str] net_id: The ID of the Net for which you want to create a route table.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableRoutePropagatingVirtualGatewayArgs']]]] route_propagating_virtual_gateways: Information about virtual gateways propagating routes.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableRouteArgs']]]] routes: One or more routes in the route table.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -233,11 +333,17 @@ class RouteTable(pulumi.CustomResource):
     @property
     @pulumi.getter(name="linkRouteTables")
     def link_route_tables(self) -> pulumi.Output[Sequence['outputs.RouteTableLinkRouteTable']]:
+        """
+        One or more associations between the route table and Subnets.
+        """
         return pulumi.get(self, "link_route_tables")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net for which you want to create a route table.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -248,20 +354,32 @@ class RouteTable(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routePropagatingVirtualGateways")
     def route_propagating_virtual_gateways(self) -> pulumi.Output[Sequence['outputs.RouteTableRoutePropagatingVirtualGateway']]:
+        """
+        Information about virtual gateways propagating routes.
+        """
         return pulumi.get(self, "route_propagating_virtual_gateways")
 
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter
     def routes(self) -> pulumi.Output[Sequence['outputs.RouteTableRoute']]:
+        """
+        One or more routes in the route table.
+        """
         return pulumi.get(self, "routes")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.RouteTableTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 

@@ -6,6 +6,47 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a public IP link.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIPs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const publicIp01 = new outscale.PublicIp("publicIp01", {});
+ * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: _var.image_id,
+ *     vmType: _var.vm_type,
+ *     keypairName: _var.keypair_name,
+ *     securityGroupIds: [_var.security_group_id],
+ * });
+ * ```
+ * ### Link a public IP address to a VM
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const publicIpLink01 = new outscale.PublicIpLink("publicIpLink01", {
+ *     vmId: outscale_vm.vm01.vm_id,
+ *     publicIp: outscale_public_ip.public_ip01.public_ip,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A public IP link can be imported using the public IP or the public IP link ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/publicIpLink:PublicIpLink ImportedPublicIpLink eipassoc-12345678
+ * ```
+ */
 export class PublicIpLink extends pulumi.CustomResource {
     /**
      * Get an existing PublicIpLink resource's state with the given name, ID, and optional extra
@@ -34,15 +75,36 @@ export class PublicIpLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === PublicIpLink.__pulumiType;
     }
 
+    /**
+     * If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+     */
     public readonly allowRelink!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Net only) The ID representing the association of the public IP with the VM or the NIC.
+     */
     public /*out*/ readonly linkPublicIpId!: pulumi.Output<string>;
     public /*out*/ readonly nicAccountId!: pulumi.Output<string>;
+    /**
+     * (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vmId` parameter instead. You cannot specify both parameters at the same time.
+     */
     public readonly nicId!: pulumi.Output<string>;
+    /**
+     * (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+     */
     public readonly privateIp!: pulumi.Output<string>;
+    /**
+     * The public IP. This parameter is required unless you use the `publicIpId` parameter.
+     */
     public readonly publicIp!: pulumi.Output<string>;
+    /**
+     * The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
+     */
     public readonly publicIpId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
     public /*out*/ readonly tags!: pulumi.Output<outputs.PublicIpLinkTag[]>;
+    /**
+     * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
+     */
     public readonly vmId!: pulumi.Output<string>;
 
     /**
@@ -90,15 +152,36 @@ export class PublicIpLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PublicIpLink resources.
  */
 export interface PublicIpLinkState {
+    /**
+     * If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+     */
     allowRelink?: pulumi.Input<boolean>;
+    /**
+     * (Net only) The ID representing the association of the public IP with the VM or the NIC.
+     */
     linkPublicIpId?: pulumi.Input<string>;
     nicAccountId?: pulumi.Input<string>;
+    /**
+     * (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vmId` parameter instead. You cannot specify both parameters at the same time.
+     */
     nicId?: pulumi.Input<string>;
+    /**
+     * (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+     */
     privateIp?: pulumi.Input<string>;
+    /**
+     * The public IP. This parameter is required unless you use the `publicIpId` parameter.
+     */
     publicIp?: pulumi.Input<string>;
+    /**
+     * The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
+     */
     publicIpId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<inputs.PublicIpLinkTag>[]>;
+    /**
+     * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
+     */
     vmId?: pulumi.Input<string>;
 }
 
@@ -106,10 +189,28 @@ export interface PublicIpLinkState {
  * The set of arguments for constructing a PublicIpLink resource.
  */
 export interface PublicIpLinkArgs {
+    /**
+     * If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the EIP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
+     */
     allowRelink?: pulumi.Input<boolean>;
+    /**
+     * (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vmId` parameter instead. You cannot specify both parameters at the same time.
+     */
     nicId?: pulumi.Input<string>;
+    /**
+     * (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
+     */
     privateIp?: pulumi.Input<string>;
+    /**
+     * The public IP. This parameter is required unless you use the `publicIpId` parameter.
+     */
     publicIp?: pulumi.Input<string>;
+    /**
+     * The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
+     */
     publicIpId?: pulumi.Input<string>;
+    /**
+     * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
+     */
     vmId?: pulumi.Input<string>;
 }

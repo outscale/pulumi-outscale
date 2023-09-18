@@ -61,11 +61,17 @@ class GetVirtualGatewaysResult:
     @property
     @pulumi.getter(name="virtualGatewayIds")
     def virtual_gateway_ids(self) -> Sequence[str]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_ids")
 
     @property
     @pulumi.getter(name="virtualGateways")
     def virtual_gateways(self) -> Sequence['outputs.GetVirtualGatewaysVirtualGatewayResult']:
+        """
+        Information about one or more virtual gateways.
+        """
         return pulumi.get(self, "virtual_gateways")
 
 
@@ -86,7 +92,35 @@ def get_virtual_gateways(filters: Optional[Sequence[pulumi.InputType['GetVirtual
                          virtual_gateway_ids: Optional[Sequence[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualGatewaysResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about virtual gateways.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    virtual_gateways01 = outscale.get_virtual_gateways(filters=[
+        outscale.GetVirtualGatewaysFilterArgs(
+            name="states",
+            values=["available"],
+        ),
+        outscale.GetVirtualGatewaysFilterArgs(
+            name="link_states",
+            values=[
+                "attached",
+                "detached",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVirtualGatewaysFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] virtual_gateway_ids: The ID of the virtual gateway.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -107,6 +141,34 @@ def get_virtual_gateways_output(filters: Optional[pulumi.Input[Optional[Sequence
                                 virtual_gateway_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualGatewaysResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about virtual gateways.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Private-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    virtual_gateways01 = outscale.get_virtual_gateways(filters=[
+        outscale.GetVirtualGatewaysFilterArgs(
+            name="states",
+            values=["available"],
+        ),
+        outscale.GetVirtualGatewaysFilterArgs(
+            name="link_states",
+            values=[
+                "attached",
+                "detached",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVirtualGatewaysFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] virtual_gateway_ids: The ID of the virtual gateway.
     """
     ...

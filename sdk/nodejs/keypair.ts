@@ -4,6 +4,46 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a keypair.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+ *
+ * ## Example Usage
+ * ### Create a keypair
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-create"});
+ * ```
+ * ### Import keypairs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const keypair02 = new outscale.Keypair("keypair02", {
+ *     keypairName: "terraform-keypair-import-file",
+ *     publicKey: fs.readFileSync("<PATH>"),
+ * });
+ * const keypair03 = new outscale.Keypair("keypair03", {
+ *     keypairName: "terraform-keypair-import-text",
+ *     publicKey: "UFVCTElDIEtFWQ==",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A keypair can be imported using its name. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/keypair:Keypair ImportedKeypair Name-of-the-Keypair
+ * ```
+ */
 export class Keypair extends pulumi.CustomResource {
     /**
      * Get an existing Keypair resource's state with the given name, ID, and optional extra
@@ -32,9 +72,21 @@ export class Keypair extends pulumi.CustomResource {
         return obj['__pulumiType'] === Keypair.__pulumiType;
     }
 
+    /**
+     * The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+     */
     public /*out*/ readonly keypairFingerprint!: pulumi.Output<string>;
+    /**
+     * A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+     */
     public readonly keypairName!: pulumi.Output<string>;
+    /**
+     * The private key. When saving the private key in a .rsa file, replace the `\n` escape sequences with line breaks.
+     */
     public /*out*/ readonly privateKey!: pulumi.Output<string>;
+    /**
+     * The public key. It must be Base64-encoded.
+     */
     public readonly publicKey!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
 
@@ -73,9 +125,21 @@ export class Keypair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Keypair resources.
  */
 export interface KeypairState {
+    /**
+     * The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+     */
     keypairFingerprint?: pulumi.Input<string>;
+    /**
+     * A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+     */
     keypairName?: pulumi.Input<string>;
+    /**
+     * The private key. When saving the private key in a .rsa file, replace the `\n` escape sequences with line breaks.
+     */
     privateKey?: pulumi.Input<string>;
+    /**
+     * The public key. It must be Base64-encoded.
+     */
     publicKey?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
 }
@@ -84,6 +148,12 @@ export interface KeypairState {
  * The set of arguments for constructing a Keypair resource.
  */
 export interface KeypairArgs {
+    /**
+     * A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
+     */
     keypairName?: pulumi.Input<string>;
+    /**
+     * The public key. It must be Base64-encoded.
+     */
     publicKey?: pulumi.Input<string>;
 }

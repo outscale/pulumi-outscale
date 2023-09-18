@@ -21,6 +21,9 @@ class ImageExportTaskArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]] = None):
         """
         The set of arguments for constructing a ImageExportTask resource.
+        :param pulumi.Input[str] image_id: The ID of the OMI to export.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "osu_exports", osu_exports)
@@ -30,6 +33,9 @@ class ImageExportTaskArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the OMI to export.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -39,6 +45,9 @@ class ImageExportTaskArgs:
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]:
+        """
+        Information about the OOS export task to create.
+        """
         return pulumi.get(self, "osu_exports")
 
     @osu_exports.setter
@@ -48,6 +57,9 @@ class ImageExportTaskArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -68,6 +80,13 @@ class _ImageExportTaskState:
                  task_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ImageExportTask resources.
+        :param pulumi.Input[str] comment: If the OMI export task fails, an error message appears.
+        :param pulumi.Input[str] image_id: The ID of the OMI to export.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[int] progress: The progress of the OMI export task, as a percentage.
+        :param pulumi.Input[str] state: The state of the OMI export task (`pending/queued` \\| `pending` \\| `completed` \\| `failed` \\| `cancelled`).
+        :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] task_id: The ID of the OMI export task.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -89,6 +108,9 @@ class _ImageExportTaskState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the OMI export task fails, an error message appears.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -98,6 +120,9 @@ class _ImageExportTaskState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OMI to export.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -107,6 +132,9 @@ class _ImageExportTaskState:
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]]:
+        """
+        Information about the OOS export task to create.
+        """
         return pulumi.get(self, "osu_exports")
 
     @osu_exports.setter
@@ -116,6 +144,9 @@ class _ImageExportTaskState:
     @property
     @pulumi.getter
     def progress(self) -> Optional[pulumi.Input[int]]:
+        """
+        The progress of the OMI export task, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @progress.setter
@@ -134,6 +165,9 @@ class _ImageExportTaskState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the OMI export task (`pending/queued` \\| `pending` \\| `completed` \\| `failed` \\| `cancelled`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -143,6 +177,9 @@ class _ImageExportTaskState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -152,6 +189,9 @@ class _ImageExportTaskState:
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the OMI export task.
+        """
         return pulumi.get(self, "task_id")
 
     @task_id.setter
@@ -169,9 +209,50 @@ class ImageExportTask(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageExportTaskTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a ImageExportTask resource with the given unique name, props, and options.
+        Manages an image export task.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image01 = outscale.Image("image01",
+            image_name="terraform-image-to-export",
+            vm_id="i-12345678")
+        ```
+        ### Create an image export task
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image_export_task01 = outscale.ImageExportTask("imageExportTask01",
+            image_id=outscale_image["image01"]["image_id"],
+            osu_exports=[outscale.ImageExportTaskOsuExportArgs(
+                disk_image_format="qcow2",
+                osu_bucket="terraform-bucket",
+                osu_prefix="new-export",
+                osu_api_keys=[outscale.ImageExportTaskOsuExportOsuApiKeyArgs(
+                    api_key_id=var["access_key_id"],
+                    secret_key=var["secret_key_id"],
+                )],
+            )],
+            tags=[outscale.ImageExportTaskTagArgs(
+                key="Name",
+                value="terraform-snapshot-export-task",
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] image_id: The ID of the OMI to export.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageExportTaskOsuExportArgs']]]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageExportTaskTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -180,7 +261,45 @@ class ImageExportTask(pulumi.CustomResource):
                  args: ImageExportTaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ImageExportTask resource with the given unique name, props, and options.
+        Manages an image export task.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+
+        ## Example Usage
+        ### Required resource
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image01 = outscale.Image("image01",
+            image_name="terraform-image-to-export",
+            vm_id="i-12345678")
+        ```
+        ### Create an image export task
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        image_export_task01 = outscale.ImageExportTask("imageExportTask01",
+            image_id=outscale_image["image01"]["image_id"],
+            osu_exports=[outscale.ImageExportTaskOsuExportArgs(
+                disk_image_format="qcow2",
+                osu_bucket="terraform-bucket",
+                osu_prefix="new-export",
+                osu_api_keys=[outscale.ImageExportTaskOsuExportOsuApiKeyArgs(
+                    api_key_id=var["access_key_id"],
+                    secret_key=var["secret_key_id"],
+                )],
+            )],
+            tags=[outscale.ImageExportTaskTagArgs(
+                key="Name",
+                value="terraform-snapshot-export-task",
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param ImageExportTaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -245,6 +364,13 @@ class ImageExportTask(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] comment: If the OMI export task fails, an error message appears.
+        :param pulumi.Input[str] image_id: The ID of the OMI to export.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageExportTaskOsuExportArgs']]]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[int] progress: The progress of the OMI export task, as a percentage.
+        :param pulumi.Input[str] state: The state of the OMI export task (`pending/queued` \\| `pending` \\| `completed` \\| `failed` \\| `cancelled`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageExportTaskTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[str] task_id: The ID of the OMI export task.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,21 +389,33 @@ class ImageExportTask(pulumi.CustomResource):
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[str]:
+        """
+        If the OMI export task fails, an error message appears.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the OMI to export.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="osuExports")
     def osu_exports(self) -> pulumi.Output[Sequence['outputs.ImageExportTaskOsuExport']]:
+        """
+        Information about the OOS export task to create.
+        """
         return pulumi.get(self, "osu_exports")
 
     @property
     @pulumi.getter
     def progress(self) -> pulumi.Output[int]:
+        """
+        The progress of the OMI export task, as a percentage.
+        """
         return pulumi.get(self, "progress")
 
     @property
@@ -288,15 +426,24 @@ class ImageExportTask(pulumi.CustomResource):
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the OMI export task (`pending/queued` \\| `pending` \\| `completed` \\| `failed` \\| `cancelled`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ImageExportTaskTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the OMI export task.
+        """
         return pulumi.get(self, "task_id")
 

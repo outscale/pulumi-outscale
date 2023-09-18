@@ -53,6 +53,9 @@ class GetNicsResult:
     @property
     @pulumi.getter
     def nics(self) -> Sequence['outputs.GetNicsNicResult']:
+        """
+        Information about one or more NICs.
+        """
         return pulumi.get(self, "nics")
 
     @property
@@ -76,7 +79,34 @@ class AwaitableGetNicsResult(GetNicsResult):
 def get_nics(filters: Optional[Sequence[pulumi.InputType['GetNicsFilterArgs']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNicsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about network interface cards (NICs).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nics01 = outscale.get_nics(filters=[
+        outscale.GetNicsFilterArgs(
+            name="nic_ids",
+            values=[
+                "eni-12345678",
+                "eni-87654321",
+            ],
+        ),
+        outscale.GetNicsFilterArgs(
+            name="link_nic_vm_ids",
+            values=["i-12345678"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNicsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +124,33 @@ def get_nics(filters: Optional[Sequence[pulumi.InputType['GetNicsFilterArgs']]] 
 def get_nics_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNicsFilterArgs']]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNicsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about network interface cards (NICs).
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-FNIs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nics01 = outscale.get_nics(filters=[
+        outscale.GetNicsFilterArgs(
+            name="nic_ids",
+            values=[
+                "eni-12345678",
+                "eni-87654321",
+            ],
+        ),
+        outscale.GetNicsFilterArgs(
+            name="link_nic_vm_ids",
+            values=["i-12345678"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNicsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

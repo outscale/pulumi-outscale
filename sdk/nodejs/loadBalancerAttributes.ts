@@ -6,6 +6,115 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages load balancer attributes.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateloadbalancer).
+ *
+ * ## Example Usage
+ * ### Required resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const loadBalancer01 = new outscale.LoadBalancer("loadBalancer01", {
+ *     listeners: [
+ *         {
+ *             backendPort: 80,
+ *             backendProtocol: "HTTP",
+ *             loadBalancerPort: 80,
+ *             loadBalancerProtocol: "HTTP",
+ *         },
+ *         {
+ *             backendPort: 8080,
+ *             backendProtocol: "HTTPS",
+ *             loadBalancerPort: 8080,
+ *             loadBalancerProtocol: "HTTPS",
+ *             serverCertificateId: "arn:aws:iam::012345678910:server-certificate/MyCertificates/Certificate",
+ *         },
+ *         {
+ *             backendPort: 1024,
+ *             backendProtocol: "TCP",
+ *             loadBalancerPort: 1024,
+ *             loadBalancerProtocol: "TCP",
+ *         },
+ *     ],
+ *     loadBalancerName: "terraform-load-balancer",
+ *     subregionNames: ["eu-west-2a"],
+ *     tags: [
+ *         {
+ *             key: "name",
+ *             value: "terraform-load-balancer",
+ *         },
+ *         {
+ *             key: "platform",
+ *             value: "eu-west-2",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### Update health check
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const attributes01 = new outscale.LoadBalancerAttributes("attributes01", {
+ *     loadBalancerName: outscale_load_balancer.load_balancer01.id,
+ *     healthCheck: {
+ *         healthyThreshold: 10,
+ *         checkInterval: 30,
+ *         path: "/index.html",
+ *         port: 8080,
+ *         protocol: "HTTPS",
+ *         timeout: 5,
+ *         unhealthyThreshold: 5,
+ *     },
+ * });
+ * ```
+ * ### Update access log
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const attributes02 = new outscale.LoadBalancerAttributes("attributes02", {
+ *     loadBalancerName: outscale_load_balancer.load_balancer01.id,
+ *     accessLog: {
+ *         publicationInterval: 5,
+ *         isEnabled: true,
+ *         osuBucketName: "terraform-access-logs",
+ *         osuBucketPrefix: "access-logs-01234",
+ *     },
+ * });
+ * ```
+ * ### Update policies
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const attributes03 = new outscale.LoadBalancerAttributes("attributes03", {
+ *     loadBalancerName: outscale_load_balancer.load_balancer01.id,
+ *     loadBalancerPort: 80,
+ *     policyNames: ["policy-name-01"],
+ * });
+ * ```
+ * ### Update SSL certificate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const attributes04 = new outscale.LoadBalancerAttributes("attributes04", {
+ *     loadBalancerName: outscale_load_balancer.load_balancer01.id,
+ *     loadBalancerPort: 8080,
+ *     serverCertificateId: "arn:aws:iam::012345678910:server-certificate/MyCertificates/Certificate",
+ * });
+ * ```
+ */
 export class LoadBalancerAttributes extends pulumi.CustomResource {
     /**
      * Get an existing LoadBalancerAttributes resource's state with the given name, ID, and optional extra
@@ -34,23 +143,77 @@ export class LoadBalancerAttributes extends pulumi.CustomResource {
         return obj['__pulumiType'] === LoadBalancerAttributes.__pulumiType;
     }
 
+    /**
+     * Information about access logs.
+     */
     public readonly accessLog!: pulumi.Output<outputs.LoadBalancerAttributesAccessLog>;
+    /**
+     * The stickiness policies defined for the load balancer.
+     */
     public /*out*/ readonly applicationStickyCookiePolicies!: pulumi.Output<outputs.LoadBalancerAttributesApplicationStickyCookiePolicy[]>;
+    /**
+     * One or more IDs of back-end VMs for the load balancer.
+     */
     public /*out*/ readonly backendVmIds!: pulumi.Output<string[]>;
+    /**
+     * The DNS name of the load balancer.
+     */
     public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    /**
+     * Information about the health check configuration.
+     */
     public readonly healthCheck!: pulumi.Output<outputs.LoadBalancerAttributesHealthCheck>;
+    /**
+     * The listeners for the load balancer.
+     */
     public /*out*/ readonly listeners!: pulumi.Output<outputs.LoadBalancerAttributesListener[]>;
+    /**
+     * The name of the load balancer.
+     */
     public readonly loadBalancerName!: pulumi.Output<string>;
+    /**
+     * The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+     */
     public readonly loadBalancerPort!: pulumi.Output<number | undefined>;
+    /**
+     * The policies defined for the load balancer.
+     */
     public /*out*/ readonly loadBalancerStickyCookiePolicies!: pulumi.Output<outputs.LoadBalancerAttributesLoadBalancerStickyCookiePolicy[]>;
+    /**
+     * The type of load balancer. Valid only for load balancers in a Net.<br />
+     * If `loadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
+     * If `loadBalancerType` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+     */
     public /*out*/ readonly loadBalancerType!: pulumi.Output<string>;
+    /**
+     * The name of the policy you want to enable for the listener.
+     */
     public readonly policyNames!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
+     */
     public /*out*/ readonly securityGroups!: pulumi.Output<string[]>;
+    /**
+     * The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `loadBalancerPort` parameter.
+     */
     public readonly serverCertificateId!: pulumi.Output<string | undefined>;
+    /**
+     * Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
+     * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+     */
     public /*out*/ readonly sourceSecurityGroup!: pulumi.Output<outputs.LoadBalancerAttributesSourceSecurityGroup>;
+    /**
+     * The ID of the Subnet in which the load balancer was created.
+     */
     public /*out*/ readonly subnets!: pulumi.Output<string[]>;
+    /**
+     * The ID of the Subregion in which the load balancer was created.
+     */
     public /*out*/ readonly subregionNames!: pulumi.Output<string[]>;
+    /**
+     * One or more tags associated with the load balancer.
+     */
     public readonly tags!: pulumi.Output<outputs.LoadBalancerAttributesTag[]>;
 
     /**
@@ -117,23 +280,77 @@ export class LoadBalancerAttributes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerAttributes resources.
  */
 export interface LoadBalancerAttributesState {
+    /**
+     * Information about access logs.
+     */
     accessLog?: pulumi.Input<inputs.LoadBalancerAttributesAccessLog>;
+    /**
+     * The stickiness policies defined for the load balancer.
+     */
     applicationStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAttributesApplicationStickyCookiePolicy>[]>;
+    /**
+     * One or more IDs of back-end VMs for the load balancer.
+     */
     backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The DNS name of the load balancer.
+     */
     dnsName?: pulumi.Input<string>;
+    /**
+     * Information about the health check configuration.
+     */
     healthCheck?: pulumi.Input<inputs.LoadBalancerAttributesHealthCheck>;
+    /**
+     * The listeners for the load balancer.
+     */
     listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAttributesListener>[]>;
+    /**
+     * The name of the load balancer.
+     */
     loadBalancerName?: pulumi.Input<string>;
+    /**
+     * The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+     */
     loadBalancerPort?: pulumi.Input<number>;
+    /**
+     * The policies defined for the load balancer.
+     */
     loadBalancerStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAttributesLoadBalancerStickyCookiePolicy>[]>;
+    /**
+     * The type of load balancer. Valid only for load balancers in a Net.<br />
+     * If `loadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
+     * If `loadBalancerType` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+     */
     loadBalancerType?: pulumi.Input<string>;
+    /**
+     * The name of the policy you want to enable for the listener.
+     */
     policyNames?: pulumi.Input<pulumi.Input<string>[]>;
     requestId?: pulumi.Input<string>;
+    /**
+     * One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
+     */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `loadBalancerPort` parameter.
+     */
     serverCertificateId?: pulumi.Input<string>;
+    /**
+     * Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
+     * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+     */
     sourceSecurityGroup?: pulumi.Input<inputs.LoadBalancerAttributesSourceSecurityGroup>;
+    /**
+     * The ID of the Subnet in which the load balancer was created.
+     */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the Subregion in which the load balancer was created.
+     */
     subregionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more tags associated with the load balancer.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAttributesTag>[]>;
 }
 
@@ -141,11 +358,32 @@ export interface LoadBalancerAttributesState {
  * The set of arguments for constructing a LoadBalancerAttributes resource.
  */
 export interface LoadBalancerAttributesArgs {
+    /**
+     * Information about access logs.
+     */
     accessLog?: pulumi.Input<inputs.LoadBalancerAttributesAccessLog>;
+    /**
+     * Information about the health check configuration.
+     */
     healthCheck?: pulumi.Input<inputs.LoadBalancerAttributesHealthCheck>;
+    /**
+     * The name of the load balancer.
+     */
     loadBalancerName: pulumi.Input<string>;
+    /**
+     * The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
+     */
     loadBalancerPort?: pulumi.Input<number>;
+    /**
+     * The name of the policy you want to enable for the listener.
+     */
     policyNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `loadBalancerPort` parameter.
+     */
     serverCertificateId?: pulumi.Input<string>;
+    /**
+     * One or more tags associated with the load balancer.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAttributesTag>[]>;
 }

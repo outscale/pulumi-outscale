@@ -6,6 +6,42 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Net peering.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Peering-Connections.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netpeering).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.10.0.0/24"});
+ * const net02 = new outscale.Net("net02", {ipRange: "10.31.0.0/16"});
+ * ```
+ * ### Peer Nets
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const netPeering01 = new outscale.NetPeering("netPeering01", {
+ *     accepterNetId: outscale_net.net01.net_id,
+ *     sourceNetId: outscale_net.net02.net_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A Net peering can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/netPeering:NetPeering ImportedNetPeering pcx-12345678
+ * ```
+ */
 export class NetPeering extends pulumi.CustomResource {
     /**
      * Get an existing NetPeering resource's state with the given name, ID, and optional extra
@@ -34,14 +70,35 @@ export class NetPeering extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetPeering.__pulumiType;
     }
 
+    /**
+     * Information about the accepter Net.
+     */
     public /*out*/ readonly accepterNet!: pulumi.Output<outputs.NetPeeringAccepterNet>;
+    /**
+     * The ID of the Net you want to connect with.
+     */
     public readonly accepterNetId!: pulumi.Output<string>;
+    /**
+     * The ID of the Net peering.
+     */
     public /*out*/ readonly netPeeringId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * Information about the source Net.
+     */
     public /*out*/ readonly sourceNet!: pulumi.Output<outputs.NetPeeringSourceNet>;
     public readonly sourceNetAccountId!: pulumi.Output<string>;
+    /**
+     * The ID of the Net you send the peering request from.
+     */
     public readonly sourceNetId!: pulumi.Output<string>;
+    /**
+     * Information about the state of the Net peering.
+     */
     public /*out*/ readonly state!: pulumi.Output<outputs.NetPeeringState>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     public readonly tags!: pulumi.Output<outputs.NetPeeringTag[] | undefined>;
 
     /**
@@ -93,14 +150,35 @@ export class NetPeering extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetPeering resources.
  */
 export interface NetPeeringState {
+    /**
+     * Information about the accepter Net.
+     */
     accepterNet?: pulumi.Input<inputs.NetPeeringAccepterNet>;
+    /**
+     * The ID of the Net you want to connect with.
+     */
     accepterNetId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net peering.
+     */
     netPeeringId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Information about the source Net.
+     */
     sourceNet?: pulumi.Input<inputs.NetPeeringSourceNet>;
     sourceNetAccountId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net you send the peering request from.
+     */
     sourceNetId?: pulumi.Input<string>;
+    /**
+     * Information about the state of the Net peering.
+     */
     state?: pulumi.Input<inputs.NetPeeringState>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringTag>[]>;
 }
 
@@ -108,8 +186,17 @@ export interface NetPeeringState {
  * The set of arguments for constructing a NetPeering resource.
  */
 export interface NetPeeringArgs {
+    /**
+     * The ID of the Net you want to connect with.
+     */
     accepterNetId: pulumi.Input<string>;
     sourceNetAccountId?: pulumi.Input<string>;
+    /**
+     * The ID of the Net you send the peering request from.
+     */
     sourceNetId: pulumi.Input<string>;
+    /**
+     * A tag to add to this resource. You can specify this argument several times.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringTag>[]>;
 }

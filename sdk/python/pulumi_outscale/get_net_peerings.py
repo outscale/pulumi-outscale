@@ -53,6 +53,9 @@ class GetNetPeeringsResult:
     @property
     @pulumi.getter(name="netPeerings")
     def net_peerings(self) -> Sequence['outputs.GetNetPeeringsNetPeeringResult']:
+        """
+        Information about one or more Net peerings.
+        """
         return pulumi.get(self, "net_peerings")
 
     @property
@@ -76,7 +79,34 @@ class AwaitableGetNetPeeringsResult(GetNetPeeringsResult):
 def get_net_peerings(filters: Optional[Sequence[pulumi.InputType['GetNetPeeringsFilterArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetPeeringsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Net peerings.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Peering-Connections.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netpeering).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_peerings01 = outscale.get_net_peerings(filters=[
+        outscale.GetNetPeeringsFilterArgs(
+            name="source_net_net_ids",
+            values=["vpc-12345678"],
+        ),
+        outscale.GetNetPeeringsFilterArgs(
+            name="state_names",
+            values=[
+                "active",
+                "pending-acceptance",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetPeeringsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +124,33 @@ def get_net_peerings(filters: Optional[Sequence[pulumi.InputType['GetNetPeerings
 def get_net_peerings_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNetPeeringsFilterArgs']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetPeeringsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Net peerings.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Peering-Connections.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netpeering).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_peerings01 = outscale.get_net_peerings(filters=[
+        outscale.GetNetPeeringsFilterArgs(
+            name="source_net_net_ids",
+            values=["vpc-12345678"],
+        ),
+        outscale.GetNetPeeringsFilterArgs(
+            name="state_names",
+            values=[
+                "active",
+                "pending-acceptance",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetPeeringsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

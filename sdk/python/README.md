@@ -43,7 +43,11 @@ To use from .NET, install using `dotnet add package`:
 ```bash
 dotnet add package Pulumi.Foo
 ```
+## Patch
 
+```bash
+patch /home/outscale/go/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.17.2/internal/configs/configload/loader_snapshot.go /home/outscale/pulumi-outscale/.osc-patch/patch.go
+```
 ## Configuration
 
 The following configuration points are available for the `OUTSCALE` provider:

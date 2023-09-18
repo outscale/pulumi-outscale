@@ -67,6 +67,9 @@ class GetVolumeResult:
     @property
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> str:
+        """
+        The date and time of creation of the volume.
+        """
         return pulumi.get(self, "creation_date")
 
     @property
@@ -85,11 +88,17 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def iops(self) -> int:
+        """
+        The number of I/O operations per second (IOPS):<br />- For `io1` volumes, the number of provisioned IOPS.<br />- For `gp2` volumes, the baseline performance of the volume.
+        """
         return pulumi.get(self, "iops")
 
     @property
     @pulumi.getter(name="linkedVolumes")
     def linked_volumes(self) -> Sequence['outputs.GetVolumeLinkedVolumeResult']:
+        """
+        Information about your volume attachment.
+        """
         return pulumi.get(self, "linked_volumes")
 
     @property
@@ -100,36 +109,57 @@ class GetVolumeResult:
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        The size of the volume, in gibibytes (GiB).
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
+        """
+        The snapshot from which the volume was created.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> str:
+        """
+        The Subregion in which the volume was created.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetVolumeTagResult']:
+        """
+        One or more tags associated with the volume.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[str]:
+        """
+        The ID of the volume.
+        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
+        """
+        The type of the volume (`standard` \\| `gp2` \\| `io1`).
+        """
         return pulumi.get(self, "volume_type")
 
 
@@ -159,7 +189,26 @@ def get_volume(filters: Optional[Sequence[pulumi.InputType['GetVolumeFilterArgs'
                volume_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a volume.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    outscale_volume01 = outscale.get_volume(filters=[outscale.GetVolumeFilterArgs(
+        name="volume_ids",
+        values=["vol-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVolumeFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str volume_id: The ID of the volume.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -190,6 +239,25 @@ def get_volume_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.In
                       volume_id: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a volume.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-volume).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    outscale_volume01 = outscale.get_volume(filters=[outscale.GetVolumeFilterArgs(
+        name="volume_ids",
+        values=["vol-12345678"],
+    )])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetVolumeFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str volume_id: The ID of the volume.
     """
     ...

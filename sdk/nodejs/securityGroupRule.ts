@@ -6,6 +6,72 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a security group rule.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Group-Rules.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-securitygrouprule).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const securityGroup01 = new outscale.SecurityGroup("securityGroup01", {
+ *     description: "Terraform target security group for SG rule from IP and SG",
+ *     securityGroupName: "terraform-security-group-test-01",
+ * });
+ * const securityGroup02 = new outscale.SecurityGroup("securityGroup02", {
+ *     description: "Terraform source security group for SG rule from SG",
+ *     securityGroupName: "terraform-security-group-test-02",
+ * });
+ * ```
+ * ### Set an inbound rule from an IP range
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const securityGroupRule01 = new outscale.SecurityGroupRule("securityGroupRule01", {
+ *     flow: "Inbound",
+ *     securityGroupId: outscale_security_group.security_group01.security_group_id,
+ *     fromPortRange: 80,
+ *     toPortRange: 80,
+ *     ipProtocol: "tcp",
+ *     ipRange: "10.0.0.0/16",
+ * });
+ * ```
+ * ### Set an inbound rule from another security group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const securityGroupRule02 = new outscale.SecurityGroupRule("securityGroupRule02", {
+ *     flow: "Inbound",
+ *     securityGroupId: outscale_security_group.security_group01.security_group_id,
+ *     rules: [{
+ *         fromPortRange: 22,
+ *         toPortRange: 22,
+ *         ipProtocol: "tcp",
+ *         securityGroupsMembers: [{
+ *             accountId: "012345678910",
+ *             securityGroupName: "terraform-security-group-test-02",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A security group rule can be imported using the following format`SecurityGroupId_Flow_IpProtocol_FromPortRange_ToPortRange_IpRange`. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
+ * ```
+ */
 export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * Get an existing SecurityGroupRule resource's state with the given name, ID, and optional extra
@@ -34,17 +100,50 @@ export class SecurityGroupRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecurityGroupRule.__pulumiType;
     }
 
+    /**
+     * The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+     */
     public readonly flow!: pulumi.Output<string>;
+    /**
+     * The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+     */
     public readonly fromPortRange!: pulumi.Output<number | undefined>;
+    /**
+     * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+     */
     public readonly ipProtocol!: pulumi.Output<string | undefined>;
+    /**
+     * The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+     */
     public readonly ipRange!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the Net for the security group.
+     */
     public /*out*/ readonly netId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
+     */
     public readonly rules!: pulumi.Output<outputs.SecurityGroupRuleRule[] | undefined>;
+    /**
+     * The account ID of the owner of the security group for which you want to create a rule.
+     */
     public readonly securityGroupAccountIdToLink!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the security group for which you want to create a rule.
+     */
     public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * The name of the security group.
+     */
     public /*out*/ readonly securityGroupName!: pulumi.Output<string>;
+    /**
+     * The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+     */
     public readonly securityGroupNameToLink!: pulumi.Output<string | undefined>;
+    /**
+     * The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+     */
     public readonly toPortRange!: pulumi.Output<number | undefined>;
 
     /**
@@ -102,17 +201,50 @@ export class SecurityGroupRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityGroupRule resources.
  */
 export interface SecurityGroupRuleState {
+    /**
+     * The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+     */
     flow?: pulumi.Input<string>;
+    /**
+     * The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+     */
     fromPortRange?: pulumi.Input<number>;
+    /**
+     * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+     */
     ipProtocol?: pulumi.Input<string>;
+    /**
+     * The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+     */
     ipRange?: pulumi.Input<string>;
+    /**
+     * The ID of the Net for the security group.
+     */
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
+     */
     rules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRuleRule>[]>;
+    /**
+     * The account ID of the owner of the security group for which you want to create a rule.
+     */
     securityGroupAccountIdToLink?: pulumi.Input<string>;
+    /**
+     * The ID of the security group for which you want to create a rule.
+     */
     securityGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the security group.
+     */
     securityGroupName?: pulumi.Input<string>;
+    /**
+     * The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+     */
     securityGroupNameToLink?: pulumi.Input<string>;
+    /**
+     * The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+     */
     toPortRange?: pulumi.Input<number>;
 }
 
@@ -120,13 +252,40 @@ export interface SecurityGroupRuleState {
  * The set of arguments for constructing a SecurityGroupRule resource.
  */
 export interface SecurityGroupRuleArgs {
+    /**
+     * The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
+     */
     flow: pulumi.Input<string>;
+    /**
+     * The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
+     */
     fromPortRange?: pulumi.Input<number>;
+    /**
+     * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+     */
     ipProtocol?: pulumi.Input<string>;
+    /**
+     * The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+     */
     ipRange?: pulumi.Input<string>;
+    /**
+     * Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
+     */
     rules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRuleRule>[]>;
+    /**
+     * The account ID of the owner of the security group for which you want to create a rule.
+     */
     securityGroupAccountIdToLink?: pulumi.Input<string>;
+    /**
+     * The ID of the security group for which you want to create a rule.
+     */
     securityGroupId: pulumi.Input<string>;
+    /**
+     * The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.
+     */
     securityGroupNameToLink?: pulumi.Input<string>;
+    /**
+     * The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+     */
     toPortRange?: pulumi.Input<number>;
 }

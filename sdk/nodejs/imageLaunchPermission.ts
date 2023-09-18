@@ -6,6 +6,40 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an image launch permission.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateimage).
+ *
+ * ## Example Usage
+ * ### Add permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const image01 = new outscale.ImageLaunchPermission("image01", {
+ *     imageId: "ami-12345678",
+ *     permissionAdditions: {
+ *         accountIds: ["012345678910"],
+ *     },
+ * });
+ * ```
+ * ### Remove permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const image02 = new outscale.ImageLaunchPermission("image02", {
+ *     imageId: "ami-12345678",
+ *     permissionRemovals: {
+ *         accountIds: ["012345678910"],
+ *     },
+ * });
+ * ```
+ */
 export class ImageLaunchPermission extends pulumi.CustomResource {
     /**
      * Get an existing ImageLaunchPermission resource's state with the given name, ID, and optional extra
@@ -34,10 +68,25 @@ export class ImageLaunchPermission extends pulumi.CustomResource {
         return obj['__pulumiType'] === ImageLaunchPermission.__pulumiType;
     }
 
+    /**
+     * The description of the OMI.
+     */
     public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * The ID of the OMI you want to modify.
+     */
     public readonly imageId!: pulumi.Output<string>;
+    /**
+     * Information about the users to whom you want to give permissions for the resource.
+     */
     public readonly permissionAdditions!: pulumi.Output<outputs.ImageLaunchPermissionPermissionAdditions | undefined>;
+    /**
+     * Information about the users from whom you want to remove permissions for the resource.
+     */
     public readonly permissionRemovals!: pulumi.Output<outputs.ImageLaunchPermissionPermissionRemovals | undefined>;
+    /**
+     * Information about the users who have permissions for the resource.
+     */
     public /*out*/ readonly permissionsToLaunch!: pulumi.Output<outputs.ImageLaunchPermissionPermissionsToLaunch>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
 
@@ -81,10 +130,25 @@ export class ImageLaunchPermission extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ImageLaunchPermission resources.
  */
 export interface ImageLaunchPermissionState {
+    /**
+     * The description of the OMI.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The ID of the OMI you want to modify.
+     */
     imageId?: pulumi.Input<string>;
+    /**
+     * Information about the users to whom you want to give permissions for the resource.
+     */
     permissionAdditions?: pulumi.Input<inputs.ImageLaunchPermissionPermissionAdditions>;
+    /**
+     * Information about the users from whom you want to remove permissions for the resource.
+     */
     permissionRemovals?: pulumi.Input<inputs.ImageLaunchPermissionPermissionRemovals>;
+    /**
+     * Information about the users who have permissions for the resource.
+     */
     permissionsToLaunch?: pulumi.Input<inputs.ImageLaunchPermissionPermissionsToLaunch>;
     requestId?: pulumi.Input<string>;
 }
@@ -93,7 +157,16 @@ export interface ImageLaunchPermissionState {
  * The set of arguments for constructing a ImageLaunchPermission resource.
  */
 export interface ImageLaunchPermissionArgs {
+    /**
+     * The ID of the OMI you want to modify.
+     */
     imageId: pulumi.Input<string>;
+    /**
+     * Information about the users to whom you want to give permissions for the resource.
+     */
     permissionAdditions?: pulumi.Input<inputs.ImageLaunchPermissionPermissionAdditions>;
+    /**
+     * Information about the users from whom you want to remove permissions for the resource.
+     */
     permissionRemovals?: pulumi.Input<inputs.ImageLaunchPermissionPermissionRemovals>;
 }

@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about a Certificate Authority (CA).
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const ca01 = outscale.getCa({
+ *     filters: [{
+ *         name: "ca_ids",
+ *         values: ["ca-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getCa(args?: GetCaArgs, opts?: pulumi.InvokeOptions): Promise<GetCaResult> {
     args = args || {};
 
@@ -19,6 +39,9 @@ export function getCa(args?: GetCaArgs, opts?: pulumi.InvokeOptions): Promise<Ge
  * A collection of arguments for invoking getCa.
  */
 export interface GetCaArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetCaFilter[];
 }
 
@@ -26,9 +49,18 @@ export interface GetCaArgs {
  * A collection of values returned by getCa.
  */
 export interface GetCaResult {
+    /**
+     * The fingerprint of the CA.
+     */
     readonly caFingerprint: string;
+    /**
+     * The ID of the CA.
+     */
     readonly caId: string;
     readonly caPem: string;
+    /**
+     * The description of the CA.
+     */
     readonly description: string;
     readonly filters?: outputs.GetCaFilter[];
     /**
@@ -37,6 +69,26 @@ export interface GetCaResult {
     readonly id: string;
     readonly requestId: string;
 }
+/**
+ * Provides information about a Certificate Authority (CA).
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const ca01 = outscale.getCa({
+ *     filters: [{
+ *         name: "ca_ids",
+ *         values: ["ca-12345678"],
+ *     }],
+ * });
+ * ```
+ */
 export function getCaOutput(args?: GetCaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaResult> {
     return pulumi.output(args).apply((a: any) => getCa(a, opts))
 }
@@ -45,5 +97,8 @@ export function getCaOutput(args?: GetCaOutputArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getCa.
  */
 export interface GetCaOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetCaFilterArgs>[]>;
 }

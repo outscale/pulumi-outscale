@@ -61,6 +61,9 @@ class GetNatServicesResult:
     @property
     @pulumi.getter(name="natServices")
     def nat_services(self) -> Sequence['outputs.GetNatServicesNatServiceResult']:
+        """
+        Information about one or more NAT services.
+        """
         return pulumi.get(self, "nat_services")
 
     @property
@@ -86,7 +89,35 @@ def get_nat_services(filters: Optional[Sequence[pulumi.InputType['GetNatServices
                      nat_service_ids: Optional[Sequence[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNatServicesResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about NAT services.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nat_services01 = outscale.get_nat_services(filters=[
+        outscale.GetNatServicesFilterArgs(
+            name="net_ids",
+            values=[
+                "vpc-12345678",
+                "vpc-87654321",
+            ],
+        ),
+        outscale.GetNatServicesFilterArgs(
+            name="subnet_ids",
+            values=["eu-west-2a"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNatServicesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] nat_service_ids: The IDs of the NAT services.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -107,6 +138,34 @@ def get_nat_services_output(filters: Optional[pulumi.Input[Optional[Sequence[pul
                             nat_service_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatServicesResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about NAT services.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    nat_services01 = outscale.get_nat_services(filters=[
+        outscale.GetNatServicesFilterArgs(
+            name="net_ids",
+            values=[
+                "vpc-12345678",
+                "vpc-87654321",
+            ],
+        ),
+        outscale.GetNatServicesFilterArgs(
+            name="subnet_ids",
+            values=["eu-west-2a"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNatServicesFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] nat_service_ids: The IDs of the NAT services.
     """
     ...

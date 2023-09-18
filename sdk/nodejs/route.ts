@@ -4,6 +4,48 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a route.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-route).
+ *
+ * ## Example Usage
+ * ### Required resources
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const routeTable01 = new outscale.RouteTable("routeTable01", {netId: net01.netId});
+ * const internetService01 = new outscale.InternetService("internetService01", {});
+ * const internetServiceLink01 = new outscale.InternetServiceLink("internetServiceLink01", {
+ *     internetServiceId: internetService01.internetServiceId,
+ *     netId: net01.netId,
+ * });
+ * ```
+ * ### Create a route to an Internet service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const route01 = new outscale.Route("route01", {
+ *     gatewayId: outscale_internet_service.internet_service01.internet_service_id,
+ *     destinationIpRange: "0.0.0.0/0",
+ *     routeTableId: outscale_route_table.route_table01.route_table_id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A route can be imported using the route table ID and the destination IP range. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/route:Route outscale_routeImportedRoute rtb-12345678_10.0.0.0/0
+ * ```
+ */
 export class Route extends pulumi.CustomResource {
     /**
      * Get an existing Route resource's state with the given name, ID, and optional extra
@@ -32,19 +74,55 @@ export class Route extends pulumi.CustomResource {
         return obj['__pulumiType'] === Route.__pulumiType;
     }
 
+    /**
+     * By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+     */
     public readonly awaitActiveState!: pulumi.Output<boolean | undefined>;
+    /**
+     * The method used to create the route.
+     */
     public /*out*/ readonly creationMethod!: pulumi.Output<string>;
+    /**
+     * The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+     */
     public readonly destinationIpRange!: pulumi.Output<string>;
+    /**
+     * The ID of the OUTSCALE service.
+     */
     public /*out*/ readonly destinationServiceId!: pulumi.Output<string>;
+    /**
+     * The ID of an Internet service or virtual gateway attached to your Net.
+     */
     public readonly gatewayId!: pulumi.Output<string | undefined>;
     public /*out*/ readonly natAccessPoint!: pulumi.Output<string>;
+    /**
+     * The ID of a NAT service.
+     */
     public readonly natServiceId!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of a Net peering.
+     */
     public readonly netPeeringId!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of a NIC.
+     */
     public readonly nicId!: pulumi.Output<string>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
+    /**
+     * The ID of the route table for which you want to create a route.
+     */
     public readonly routeTableId!: pulumi.Output<string>;
+    /**
+     * The state of a route in the route table (always `active`).
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The account ID of the owner of the VM.
+     */
     public /*out*/ readonly vmAccountId!: pulumi.Output<string>;
+    /**
+     * The ID of a NAT VM in your Net (attached to exactly one NIC).
+     */
     public readonly vmId!: pulumi.Output<string>;
 
     /**
@@ -106,19 +184,55 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
+    /**
+     * By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+     */
     awaitActiveState?: pulumi.Input<boolean>;
+    /**
+     * The method used to create the route.
+     */
     creationMethod?: pulumi.Input<string>;
+    /**
+     * The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+     */
     destinationIpRange?: pulumi.Input<string>;
+    /**
+     * The ID of the OUTSCALE service.
+     */
     destinationServiceId?: pulumi.Input<string>;
+    /**
+     * The ID of an Internet service or virtual gateway attached to your Net.
+     */
     gatewayId?: pulumi.Input<string>;
     natAccessPoint?: pulumi.Input<string>;
+    /**
+     * The ID of a NAT service.
+     */
     natServiceId?: pulumi.Input<string>;
+    /**
+     * The ID of a Net peering.
+     */
     netPeeringId?: pulumi.Input<string>;
+    /**
+     * The ID of a NIC.
+     */
     nicId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * The ID of the route table for which you want to create a route.
+     */
     routeTableId?: pulumi.Input<string>;
+    /**
+     * The state of a route in the route table (always `active`).
+     */
     state?: pulumi.Input<string>;
+    /**
+     * The account ID of the owner of the VM.
+     */
     vmAccountId?: pulumi.Input<string>;
+    /**
+     * The ID of a NAT VM in your Net (attached to exactly one NIC).
+     */
     vmId?: pulumi.Input<string>;
 }
 
@@ -126,12 +240,36 @@ export interface RouteState {
  * The set of arguments for constructing a Route resource.
  */
 export interface RouteArgs {
+    /**
+     * By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+     */
     awaitActiveState?: pulumi.Input<boolean>;
+    /**
+     * The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
+     */
     destinationIpRange: pulumi.Input<string>;
+    /**
+     * The ID of an Internet service or virtual gateway attached to your Net.
+     */
     gatewayId?: pulumi.Input<string>;
+    /**
+     * The ID of a NAT service.
+     */
     natServiceId?: pulumi.Input<string>;
+    /**
+     * The ID of a Net peering.
+     */
     netPeeringId?: pulumi.Input<string>;
+    /**
+     * The ID of a NIC.
+     */
     nicId?: pulumi.Input<string>;
+    /**
+     * The ID of the route table for which you want to create a route.
+     */
     routeTableId: pulumi.Input<string>;
+    /**
+     * The ID of a NAT VM in your Net (attached to exactly one NIC).
+     */
     vmId?: pulumi.Input<string>;
 }

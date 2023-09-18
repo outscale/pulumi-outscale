@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Certificate Authority (CA).
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const ca01 = new outscale.Ca("ca01", {
+ *     caPem: fs.readFileSync("<PATH>"),
+ *     description: "Terraform certificate authority",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A CA can be imported using its ID. For exampleconsole
+ *
+ * ```sh
+ *  $ pulumi import outscale:index/ca:Ca ImportedCa ca-12345678
+ * ```
+ */
 export class Ca extends pulumi.CustomResource {
     /**
      * Get an existing Ca resource's state with the given name, ID, and optional extra
@@ -32,9 +59,21 @@ export class Ca extends pulumi.CustomResource {
         return obj['__pulumiType'] === Ca.__pulumiType;
     }
 
+    /**
+     * The fingerprint of the CA.
+     */
     public /*out*/ readonly caFingerprint!: pulumi.Output<string>;
+    /**
+     * The ID of the CA.
+     */
     public /*out*/ readonly caId!: pulumi.Output<string>;
+    /**
+     * The CA in PEM format.
+     */
     public readonly caPem!: pulumi.Output<string | undefined>;
+    /**
+     * The description of the CA.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly requestId!: pulumi.Output<string>;
 
@@ -73,9 +112,21 @@ export class Ca extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Ca resources.
  */
 export interface CaState {
+    /**
+     * The fingerprint of the CA.
+     */
     caFingerprint?: pulumi.Input<string>;
+    /**
+     * The ID of the CA.
+     */
     caId?: pulumi.Input<string>;
+    /**
+     * The CA in PEM format.
+     */
     caPem?: pulumi.Input<string>;
+    /**
+     * The description of the CA.
+     */
     description?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
 }
@@ -84,6 +135,12 @@ export interface CaState {
  * The set of arguments for constructing a Ca resource.
  */
 export interface CaArgs {
+    /**
+     * The CA in PEM format.
+     */
     caPem?: pulumi.Input<string>;
+    /**
+     * The description of the CA.
+     */
     description?: pulumi.Input<string>;
 }

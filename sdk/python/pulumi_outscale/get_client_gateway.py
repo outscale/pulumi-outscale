@@ -55,16 +55,25 @@ class GetClientGatewayResult:
     @property
     @pulumi.getter(name="bgpAsn")
     def bgp_asn(self) -> int:
+        """
+        The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet.
+        """
         return pulumi.get(self, "bgp_asn")
 
     @property
     @pulumi.getter(name="clientGatewayId")
     def client_gateway_id(self) -> Optional[str]:
+        """
+        The ID of the client gateway.
+        """
         return pulumi.get(self, "client_gateway_id")
 
     @property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> str:
+        """
+        The type of communication tunnel used by the client gateway (only `ipsec.1` is supported).
+        """
         return pulumi.get(self, "connection_type")
 
     @property
@@ -83,6 +92,9 @@ class GetClientGatewayResult:
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
+        """
+        The public IPv4 address of the client gateway (must be a fixed address into a NATed network).
+        """
         return pulumi.get(self, "public_ip")
 
     @property
@@ -93,11 +105,17 @@ class GetClientGatewayResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetClientGatewayTagResult']:
+        """
+        One or more tags associated with the client gateway.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -122,7 +140,26 @@ def get_client_gateway(client_gateway_id: Optional[str] = None,
                        filters: Optional[Sequence[pulumi.InputType['GetClientGatewayFilterArgs']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientGatewayResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a client gateway.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    client_gateway01 = outscale.get_client_gateway(filters=[outscale.GetClientGatewayFilterArgs(
+        name="client_gateway_ids",
+        values=["cgw-12345678"],
+    )])
+    ```
+
+
+    :param str client_gateway_id: The ID of the client gateway.
+    :param Sequence[pulumi.InputType['GetClientGatewayFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['clientGatewayId'] = client_gateway_id
@@ -147,6 +184,25 @@ def get_client_gateway_output(client_gateway_id: Optional[pulumi.Input[Optional[
                               filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetClientGatewayFilterArgs']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientGatewayResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a client gateway.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    client_gateway01 = outscale.get_client_gateway(filters=[outscale.GetClientGatewayFilterArgs(
+        name="client_gateway_ids",
+        values=["cgw-12345678"],
+    )])
+    ```
+
+
+    :param str client_gateway_id: The ID of the client gateway.
+    :param Sequence[pulumi.InputType['GetClientGatewayFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

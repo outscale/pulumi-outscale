@@ -45,6 +45,9 @@ class GetFlexibleGpuCatalogResult:
     @property
     @pulumi.getter(name="flexibleGpuCatalogs")
     def flexible_gpu_catalogs(self) -> Sequence['outputs.GetFlexibleGpuCatalogFlexibleGpuCatalogResult']:
+        """
+        Information about one or more fGPUs available in the public catalog.
+        """
         return pulumi.get(self, "flexible_gpu_catalogs")
 
     @property
@@ -76,7 +79,19 @@ class AwaitableGetFlexibleGpuCatalogResult(GetFlexibleGpuCatalogResult):
 def get_flexible_gpu_catalog(filters: Optional[Sequence[pulumi.InputType['GetFlexibleGpuCatalogFilterArgs']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlexibleGpuCatalogResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about the flexible GPU catalog.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readflexiblegpucatalog).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    flexible_gpu_catalog01 = outscale.get_flexible_gpu_catalog()
+    ```
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +109,18 @@ def get_flexible_gpu_catalog(filters: Optional[Sequence[pulumi.InputType['GetFle
 def get_flexible_gpu_catalog_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFlexibleGpuCatalogFilterArgs']]]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlexibleGpuCatalogResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about the flexible GPU catalog.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readflexiblegpucatalog).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    flexible_gpu_catalog01 = outscale.get_flexible_gpu_catalog()
+    ```
     """
     ...

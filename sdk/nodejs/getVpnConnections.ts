@@ -6,6 +6,35 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about VPN connections.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPN-Connections.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vpnConnections01 = outscale.getVpnConnections({
+ *     filters: [
+ *         {
+ *             name: "client_gateway_ids",
+ *             values: ["cgw-12345678"],
+ *         },
+ *         {
+ *             name: "virtual_gateway_ids",
+ *             values: [
+ *                 "vgw-12345678",
+ *                 "vgw-12345678",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getVpnConnections(args?: GetVpnConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnConnectionsResult> {
     args = args || {};
 
@@ -20,7 +49,13 @@ export function getVpnConnections(args?: GetVpnConnectionsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getVpnConnections.
  */
 export interface GetVpnConnectionsArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetVpnConnectionsFilter[];
+    /**
+     * The IDs of the VPN connections.
+     */
     vpnConnectionIds?: string[];
 }
 
@@ -35,8 +70,40 @@ export interface GetVpnConnectionsResult {
     readonly id: string;
     readonly requestId: string;
     readonly vpnConnectionIds?: string[];
+    /**
+     * Information about one or more VPN connections.
+     */
     readonly vpnConnections: outputs.GetVpnConnectionsVpnConnection[];
 }
+/**
+ * Provides information about VPN connections.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPN-Connections.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const vpnConnections01 = outscale.getVpnConnections({
+ *     filters: [
+ *         {
+ *             name: "client_gateway_ids",
+ *             values: ["cgw-12345678"],
+ *         },
+ *         {
+ *             name: "virtual_gateway_ids",
+ *             values: [
+ *                 "vgw-12345678",
+ *                 "vgw-12345678",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getVpnConnectionsOutput(args?: GetVpnConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getVpnConnections(a, opts))
 }
@@ -45,6 +112,12 @@ export function getVpnConnectionsOutput(args?: GetVpnConnectionsOutputArgs, opts
  * A collection of arguments for invoking getVpnConnections.
  */
 export interface GetVpnConnectionsOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetVpnConnectionsFilterArgs>[]>;
+    /**
+     * The IDs of the VPN connections.
+     */
     vpnConnectionIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

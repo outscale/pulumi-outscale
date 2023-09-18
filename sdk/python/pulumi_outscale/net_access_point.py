@@ -22,6 +22,10 @@ class NetAccessPointArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]] = None):
         """
         The set of arguments for constructing a NetAccessPoint resource.
+        :param pulumi.Input[str] net_id: The ID of the Net.
+        :param pulumi.Input[str] service_name: The name of the service (in the format `com.outscale.region.service`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_table_ids: One or more IDs of route tables to use for the connection.
+        :param pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "net_id", net_id)
         pulumi.set(__self__, "service_name", service_name)
@@ -33,6 +37,9 @@ class NetAccessPointArgs:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -42,6 +49,9 @@ class NetAccessPointArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
+        """
+        The name of the service (in the format `com.outscale.region.service`).
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -51,6 +61,9 @@ class NetAccessPointArgs:
     @property
     @pulumi.getter(name="routeTableIds")
     def route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of route tables to use for the connection.
+        """
         return pulumi.get(self, "route_table_ids")
 
     @route_table_ids.setter
@@ -60,6 +73,9 @@ class NetAccessPointArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -79,6 +95,12 @@ class _NetAccessPointState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering NetAccessPoint resources.
+        :param pulumi.Input[str] net_access_point_id: The ID of the Net access point.
+        :param pulumi.Input[str] net_id: The ID of the Net.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_table_ids: One or more IDs of route tables to use for the connection.
+        :param pulumi.Input[str] service_name: The name of the service (in the format `com.outscale.region.service`).
+        :param pulumi.Input[str] state: The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if net_access_point_id is not None:
             pulumi.set(__self__, "net_access_point_id", net_access_point_id)
@@ -98,6 +120,9 @@ class _NetAccessPointState:
     @property
     @pulumi.getter(name="netAccessPointId")
     def net_access_point_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net access point.
+        """
         return pulumi.get(self, "net_access_point_id")
 
     @net_access_point_id.setter
@@ -107,6 +132,9 @@ class _NetAccessPointState:
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
@@ -125,6 +153,9 @@ class _NetAccessPointState:
     @property
     @pulumi.getter(name="routeTableIds")
     def route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more IDs of route tables to use for the connection.
+        """
         return pulumi.get(self, "route_table_ids")
 
     @route_table_ids.setter
@@ -134,6 +165,9 @@ class _NetAccessPointState:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the service (in the format `com.outscale.region.service`).
+        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -143,6 +177,9 @@ class _NetAccessPointState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -152,6 +189,9 @@ class _NetAccessPointState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -170,9 +210,51 @@ class NetAccessPoint(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetAccessPointTagArgs']]]]] = None,
                  __props__=None):
         """
-        Create a NetAccessPoint resource with the given unique name, props, and options.
+        Manages a Net access point.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        ```
+        ### Create a Net access point
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net_access_point01 = outscale.NetAccessPoint("netAccessPoint01",
+            net_id=outscale_net["net01"]["net_id"],
+            route_table_ids=[outscale_route_table["route_table01"]["route_table_id"]],
+            service_name="com.outscale.eu-west-2.api",
+            tags=[outscale.NetAccessPointTagArgs(
+                key="name",
+                value="terraform-net-access-point",
+            )])
+        ```
+
+        ## Import
+
+        A Net access point can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/netAccessPoint:NetAccessPoint ImportedNetAccessPoint vpce-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] net_id: The ID of the Net.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_table_ids: One or more IDs of route tables to use for the connection.
+        :param pulumi.Input[str] service_name: The name of the service (in the format `com.outscale.region.service`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetAccessPointTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -181,7 +263,45 @@ class NetAccessPoint(pulumi.CustomResource):
                  args: NetAccessPointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetAccessPoint resource with the given unique name, props, and options.
+        Manages a Net access point.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        ```
+        ### Create a Net access point
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net_access_point01 = outscale.NetAccessPoint("netAccessPoint01",
+            net_id=outscale_net["net01"]["net_id"],
+            route_table_ids=[outscale_route_table["route_table01"]["route_table_id"]],
+            service_name="com.outscale.eu-west-2.api",
+            tags=[outscale.NetAccessPointTagArgs(
+                key="name",
+                value="terraform-net-access-point",
+            )])
+        ```
+
+        ## Import
+
+        A Net access point can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/netAccessPoint:NetAccessPoint ImportedNetAccessPoint vpce-87654321
+        ```
+
         :param str resource_name: The name of the resource.
         :param NetAccessPointArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -245,6 +365,12 @@ class NetAccessPoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] net_access_point_id: The ID of the Net access point.
+        :param pulumi.Input[str] net_id: The ID of the Net.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_table_ids: One or more IDs of route tables to use for the connection.
+        :param pulumi.Input[str] service_name: The name of the service (in the format `com.outscale.region.service`).
+        :param pulumi.Input[str] state: The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetAccessPointTagArgs']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,11 +388,17 @@ class NetAccessPoint(pulumi.CustomResource):
     @property
     @pulumi.getter(name="netAccessPointId")
     def net_access_point_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net access point.
+        """
         return pulumi.get(self, "net_access_point_id")
 
     @property
     @pulumi.getter(name="netId")
     def net_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Net.
+        """
         return pulumi.get(self, "net_id")
 
     @property
@@ -277,20 +409,32 @@ class NetAccessPoint(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routeTableIds")
     def route_table_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more IDs of route tables to use for the connection.
+        """
         return pulumi.get(self, "route_table_ids")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
+        """
+        The name of the service (in the format `com.outscale.region.service`).
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.NetAccessPointTag']]]:
+        """
+        A tag to add to this resource. You can specify this argument several times.
+        """
         return pulumi.get(self, "tags")
 

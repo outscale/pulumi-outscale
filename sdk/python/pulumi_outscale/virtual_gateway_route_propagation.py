@@ -19,6 +19,9 @@ class VirtualGatewayRoutePropagationArgs:
                  virtual_gateway_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a VirtualGatewayRoutePropagation resource.
+        :param pulumi.Input[bool] enable: If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "route_table_id", route_table_id)
@@ -27,6 +30,9 @@ class VirtualGatewayRoutePropagationArgs:
     @property
     @pulumi.getter
     def enable(self) -> pulumi.Input[bool]:
+        """
+        If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -36,6 +42,9 @@ class VirtualGatewayRoutePropagationArgs:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -45,6 +54,9 @@ class VirtualGatewayRoutePropagationArgs:
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
@@ -61,6 +73,9 @@ class _VirtualGatewayRoutePropagationState:
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VirtualGatewayRoutePropagation resources.
+        :param pulumi.Input[bool] enable: If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -74,6 +89,9 @@ class _VirtualGatewayRoutePropagationState:
     @property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -92,6 +110,9 @@ class _VirtualGatewayRoutePropagationState:
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
@@ -101,6 +122,9 @@ class _VirtualGatewayRoutePropagationState:
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
@@ -118,9 +142,43 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
                  virtual_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VirtualGatewayRoutePropagation resource with the given unique name, props, and options.
+        Manages a virtual gateway route propagation.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Routing-Configuration-for-VPN-Connections.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateroutepropagation).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01", connection_type="ipsec.1")
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        virtual_gateway_link01 = outscale.VirtualGatewayLink("virtualGatewayLink01",
+            virtual_gateway_id=virtual_gateway01.virtual_gateway_id,
+            net_id=net01.net_id)
+        ```
+        ### Activate the propagation of routes to a route table of a Net by a virtual gateway
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway_route_propagation01 = outscale.VirtualGatewayRoutePropagation("virtualGatewayRoutePropagation01",
+            enable=True,
+            virtual_gateway_id=outscale_virtual_gateway["virtual_gateway01"]["virtual_gateway_id"],
+            route_table_id=outscale_route_table["route_table01"]["route_table_id"],
+            opts=pulumi.ResourceOptions(depends_on=[outscale_virtual_gateway_link["virtual_gateway_link01"]]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] enable: If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         ...
     @overload
@@ -129,7 +187,38 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
                  args: VirtualGatewayRoutePropagationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VirtualGatewayRoutePropagation resource with the given unique name, props, and options.
+        Manages a virtual gateway route propagation.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Routing-Configuration-for-VPN-Connections.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateroutepropagation).
+
+        ## Example Usage
+        ### Required resources
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway01 = outscale.VirtualGateway("virtualGateway01", connection_type="ipsec.1")
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        route_table01 = outscale.RouteTable("routeTable01", net_id=net01.net_id)
+        virtual_gateway_link01 = outscale.VirtualGatewayLink("virtualGatewayLink01",
+            virtual_gateway_id=virtual_gateway01.virtual_gateway_id,
+            net_id=net01.net_id)
+        ```
+        ### Activate the propagation of routes to a route table of a Net by a virtual gateway
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        virtual_gateway_route_propagation01 = outscale.VirtualGatewayRoutePropagation("virtualGatewayRoutePropagation01",
+            enable=True,
+            virtual_gateway_id=outscale_virtual_gateway["virtual_gateway01"]["virtual_gateway_id"],
+            route_table_id=outscale_route_table["route_table01"]["route_table_id"],
+            opts=pulumi.ResourceOptions(depends_on=[outscale_virtual_gateway_link["virtual_gateway_link01"]]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param VirtualGatewayRoutePropagationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -188,6 +277,9 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] enable: If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] virtual_gateway_id: The ID of the virtual gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -202,6 +294,9 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enable(self) -> pulumi.Output[bool]:
+        """
+        If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
+        """
         return pulumi.get(self, "enable")
 
     @property
@@ -212,10 +307,16 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the route table.
+        """
         return pulumi.get(self, "route_table_id")
 
     @property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the virtual gateway.
+        """
         return pulumi.get(self, "virtual_gateway_id")
 

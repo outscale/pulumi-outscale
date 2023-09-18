@@ -53,6 +53,9 @@ class GetNetAccessPointsResult:
     @property
     @pulumi.getter(name="netAccessPoints")
     def net_access_points(self) -> Sequence['outputs.GetNetAccessPointsNetAccessPointResult']:
+        """
+        One or more Net access points.
+        """
         return pulumi.get(self, "net_access_points")
 
     @property
@@ -76,7 +79,46 @@ class AwaitableGetNetAccessPointsResult(GetNetAccessPointsResult):
 def get_net_access_points(filters: Optional[Sequence[pulumi.InputType['GetNetAccessPointsFilterArgs']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetAccessPointsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Net access points.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+    ## Example Usage
+    ### List Net access points
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_points01 = outscale.get_net_access_points(filters=[outscale.GetNetAccessPointsFilterArgs(
+        name="net_access_point_ids",
+        values=[
+            "vpce-12345678",
+            "vpce-12345679",
+        ],
+    )])
+    ```
+    ### List Net access points according to their Net and state
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_points02 = outscale.get_net_access_points(filters=[
+        outscale.GetNetAccessPointsFilterArgs(
+            name="net_ids",
+            values=["vpc-12345678"],
+        ),
+        outscale.GetNetAccessPointsFilterArgs(
+            name="states",
+            values=["available"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetAccessPointsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -94,6 +136,45 @@ def get_net_access_points(filters: Optional[Sequence[pulumi.InputType['GetNetAcc
 def get_net_access_points_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNetAccessPointsFilterArgs']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetAccessPointsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about Net access points.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPC-Endpoints.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+
+    ## Example Usage
+    ### List Net access points
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_points01 = outscale.get_net_access_points(filters=[outscale.GetNetAccessPointsFilterArgs(
+        name="net_access_point_ids",
+        values=[
+            "vpce-12345678",
+            "vpce-12345679",
+        ],
+    )])
+    ```
+    ### List Net access points according to their Net and state
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    net_access_points02 = outscale.get_net_access_points(filters=[
+        outscale.GetNetAccessPointsFilterArgs(
+            name="net_ids",
+            values=["vpc-12345678"],
+        ),
+        outscale.GetNetAccessPointsFilterArgs(
+            name="states",
+            values=["available"],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[pulumi.InputType['GetNetAccessPointsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

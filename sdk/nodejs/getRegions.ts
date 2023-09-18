@@ -6,6 +6,21 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about Regions.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-Endpoints-and-Availability-Zones.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readregions).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const allRegions = outscale.getRegions({});
+ * ```
+ */
 export function getRegions(opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -21,9 +36,27 @@ export interface GetRegionsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Information about one or more Regions.
+     */
     readonly regions: outputs.GetRegionsRegion[];
     readonly requestId: string;
 }
+/**
+ * Provides information about Regions.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-Endpoints-and-Availability-Zones.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readregions).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const allRegions = outscale.getRegions({});
+ * ```
+ */
 export function getRegionsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(getRegions(opts))
 }

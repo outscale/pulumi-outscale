@@ -6,6 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about a keypair.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const keypair01 = outscale.getKeypair({
+ *     filters: [{
+ *         name: "keypair_names",
+ *         values: ["terraform-keypair-01"],
+ *     }],
+ * });
+ * ```
+ */
 export function getKeypair(args?: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
     args = args || {};
 
@@ -20,7 +40,13 @@ export function getKeypair(args?: GetKeypairArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getKeypair.
  */
 export interface GetKeypairArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetKeypairFilter[];
+    /**
+     * The name of the keypair.
+     */
     keypairName?: string;
 }
 
@@ -33,10 +59,36 @@ export interface GetKeypairResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+     */
     readonly keypairFingerprint: string;
+    /**
+     * The name of the keypair.
+     */
     readonly keypairName: string;
     readonly requestId: string;
 }
+/**
+ * Provides information about a keypair.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const keypair01 = outscale.getKeypair({
+ *     filters: [{
+ *         name: "keypair_names",
+ *         values: ["terraform-keypair-01"],
+ *     }],
+ * });
+ * ```
+ */
 export function getKeypairOutput(args?: GetKeypairOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeypairResult> {
     return pulumi.output(args).apply((a: any) => getKeypair(a, opts))
 }
@@ -45,6 +97,12 @@ export function getKeypairOutput(args?: GetKeypairOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getKeypair.
  */
 export interface GetKeypairOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetKeypairFilterArgs>[]>;
+    /**
+     * The name of the keypair.
+     */
     keypairName?: pulumi.Input<string>;
 }

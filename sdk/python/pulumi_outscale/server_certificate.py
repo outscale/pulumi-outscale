@@ -22,6 +22,11 @@ class ServerCertificateArgs:
                  private_key: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServerCertificate resource.
+        :param pulumi.Input[str] body: The PEM-encoded X509 certificate.
+        :param pulumi.Input[str] chain: The PEM-encoded intermediate certification authorities.
+        :param pulumi.Input[str] name: A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+        :param pulumi.Input[str] path: The path to the server certificate, set to a slash (/) if not specified.
+        :param pulumi.Input[str] private_key: The PEM-encoded private key matching the certificate.
         """
         if body is not None:
             pulumi.set(__self__, "body", body)
@@ -39,6 +44,9 @@ class ServerCertificateArgs:
     @property
     @pulumi.getter
     def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PEM-encoded X509 certificate.
+        """
         return pulumi.get(self, "body")
 
     @body.setter
@@ -48,6 +56,9 @@ class ServerCertificateArgs:
     @property
     @pulumi.getter
     def chain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PEM-encoded intermediate certification authorities.
+        """
         return pulumi.get(self, "chain")
 
     @chain.setter
@@ -66,6 +77,9 @@ class ServerCertificateArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -75,6 +89,9 @@ class ServerCertificateArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the server certificate, set to a slash (/) if not specified.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -84,6 +101,9 @@ class ServerCertificateArgs:
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PEM-encoded private key matching the certificate.
+        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -106,6 +126,14 @@ class _ServerCertificateState:
                  upload_date: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerCertificate resources.
+        :param pulumi.Input[str] body: The PEM-encoded X509 certificate.
+        :param pulumi.Input[str] chain: The PEM-encoded intermediate certification authorities.
+        :param pulumi.Input[str] expiration_date: The date at which the server certificate expires.
+        :param pulumi.Input[str] name: A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+        :param pulumi.Input[str] orn: The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        :param pulumi.Input[str] path: The path to the server certificate, set to a slash (/) if not specified.
+        :param pulumi.Input[str] private_key: The PEM-encoded private key matching the certificate.
+        :param pulumi.Input[str] upload_date: The date at which the server certificate has been uploaded.
         """
         if body is not None:
             pulumi.set(__self__, "body", body)
@@ -131,6 +159,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter
     def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PEM-encoded X509 certificate.
+        """
         return pulumi.get(self, "body")
 
     @body.setter
@@ -140,6 +171,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter
     def chain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PEM-encoded intermediate certification authorities.
+        """
         return pulumi.get(self, "chain")
 
     @chain.setter
@@ -158,6 +192,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date at which the server certificate expires.
+        """
         return pulumi.get(self, "expiration_date")
 
     @expiration_date.setter
@@ -167,6 +204,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -176,6 +216,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter
     def orn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         return pulumi.get(self, "orn")
 
     @orn.setter
@@ -185,6 +228,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the server certificate, set to a slash (/) if not specified.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -194,6 +240,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PEM-encoded private key matching the certificate.
+        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -212,6 +261,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter(name="uploadDate")
     def upload_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date at which the server certificate has been uploaded.
+        """
         return pulumi.get(self, "upload_date")
 
     @upload_date.setter
@@ -232,9 +284,39 @@ class ServerCertificate(pulumi.CustomResource):
                  private_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServerCertificate resource with the given unique name, props, and options.
+        Manages a server certificate.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        server_certificate01 = outscale.ServerCertificate("serverCertificate01",
+            body=(lambda path: open(path).read())("<PATH>"),
+            chain=(lambda path: open(path).read())("<PATH>"),
+            private_key=(lambda path: open(path).read())("<PATH>"),
+            path="<PATH>")
+        ```
+
+        ## Import
+
+        A server certificate can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] body: The PEM-encoded X509 certificate.
+        :param pulumi.Input[str] chain: The PEM-encoded intermediate certification authorities.
+        :param pulumi.Input[str] name: A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+        :param pulumi.Input[str] path: The path to the server certificate, set to a slash (/) if not specified.
+        :param pulumi.Input[str] private_key: The PEM-encoded private key matching the certificate.
         """
         ...
     @overload
@@ -243,7 +325,32 @@ class ServerCertificate(pulumi.CustomResource):
                  args: Optional[ServerCertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServerCertificate resource with the given unique name, props, and options.
+        Manages a server certificate.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        server_certificate01 = outscale.ServerCertificate("serverCertificate01",
+            body=(lambda path: open(path).read())("<PATH>"),
+            chain=(lambda path: open(path).read())("<PATH>"),
+            private_key=(lambda path: open(path).read())("<PATH>"),
+            path="<PATH>")
+        ```
+
+        ## Import
+
+        A server certificate can be imported using its ID. For exampleconsole
+
+        ```sh
+         $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServerCertificateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -311,6 +418,14 @@ class ServerCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] body: The PEM-encoded X509 certificate.
+        :param pulumi.Input[str] chain: The PEM-encoded intermediate certification authorities.
+        :param pulumi.Input[str] expiration_date: The date at which the server certificate expires.
+        :param pulumi.Input[str] name: A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+        :param pulumi.Input[str] orn: The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        :param pulumi.Input[str] path: The path to the server certificate, set to a slash (/) if not specified.
+        :param pulumi.Input[str] private_key: The PEM-encoded private key matching the certificate.
+        :param pulumi.Input[str] upload_date: The date at which the server certificate has been uploaded.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -331,11 +446,17 @@ class ServerCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter
     def body(self) -> pulumi.Output[Optional[str]]:
+        """
+        The PEM-encoded X509 certificate.
+        """
         return pulumi.get(self, "body")
 
     @property
     @pulumi.getter
     def chain(self) -> pulumi.Output[Optional[str]]:
+        """
+        The PEM-encoded intermediate certification authorities.
+        """
         return pulumi.get(self, "chain")
 
     @property
@@ -346,26 +467,41 @@ class ServerCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> pulumi.Output[str]:
+        """
+        The date at which the server certificate expires.
+        """
         return pulumi.get(self, "expiration_date")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (=), commas (,), periods (.), at signs (@), minuses (-), or underscores (_).
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def orn(self) -> pulumi.Output[str]:
+        """
+        The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        """
         return pulumi.get(self, "orn")
 
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
+        """
+        The path to the server certificate, set to a slash (/) if not specified.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The PEM-encoded private key matching the certificate.
+        """
         return pulumi.get(self, "private_key")
 
     @property
@@ -376,5 +512,8 @@ class ServerCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="uploadDate")
     def upload_date(self) -> pulumi.Output[str]:
+        """
+        The date at which the server certificate has been uploaded.
+        """
         return pulumi.get(self, "upload_date")
 

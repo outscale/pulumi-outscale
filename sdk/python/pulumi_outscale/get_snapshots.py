@@ -49,6 +49,9 @@ class GetSnapshotsResult:
     @property
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[str]]:
+        """
+        The account ID of the owner of the snapshot.
+        """
         return pulumi.get(self, "account_ids")
 
     @property
@@ -77,11 +80,17 @@ class GetSnapshotsResult:
     @property
     @pulumi.getter(name="snapshotIds")
     def snapshot_ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_ids")
 
     @property
     @pulumi.getter
     def snapshots(self) -> Sequence['outputs.GetSnapshotsSnapshotResult']:
+        """
+        Information about one or more snapshots and their permissions.
+        """
         return pulumi.get(self, "snapshots")
 
 
@@ -106,7 +115,36 @@ def get_snapshots(account_ids: Optional[Sequence[str]] = None,
                   snapshot_ids: Optional[Sequence[str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotsResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about snapshots.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshots01 = outscale.get_snapshots(filters=[
+        outscale.GetSnapshotsFilterArgs(
+            name="tag_keys",
+            values=["env"],
+        ),
+        outscale.GetSnapshotsFilterArgs(
+            name="tag_values",
+            values=[
+                "prod",
+                "test",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[str] account_ids: The account ID of the owner of the snapshot.
+    :param Sequence[pulumi.InputType['GetSnapshotsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] snapshot_ids: The ID of the snapshot.
     """
     __args__ = dict()
     __args__['accountIds'] = account_ids
@@ -133,6 +171,35 @@ def get_snapshots_output(account_ids: Optional[pulumi.Input[Optional[Sequence[st
                          snapshot_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about snapshots.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Snapshots.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-snapshot).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    snapshots01 = outscale.get_snapshots(filters=[
+        outscale.GetSnapshotsFilterArgs(
+            name="tag_keys",
+            values=["env"],
+        ),
+        outscale.GetSnapshotsFilterArgs(
+            name="tag_values",
+            values=[
+                "prod",
+                "test",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[str] account_ids: The account ID of the owner of the snapshot.
+    :param Sequence[pulumi.InputType['GetSnapshotsFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[str] snapshot_ids: The ID of the snapshot.
     """
     ...

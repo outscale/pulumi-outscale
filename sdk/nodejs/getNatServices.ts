@@ -6,6 +6,35 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about NAT services.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const natServices01 = outscale.getNatServices({
+ *     filters: [
+ *         {
+ *             name: "net_ids",
+ *             values: [
+ *                 "vpc-12345678",
+ *                 "vpc-87654321",
+ *             ],
+ *         },
+ *         {
+ *             name: "subnet_ids",
+ *             values: ["eu-west-2a"],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getNatServices(args?: GetNatServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetNatServicesResult> {
     args = args || {};
 
@@ -20,7 +49,13 @@ export function getNatServices(args?: GetNatServicesArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getNatServices.
  */
 export interface GetNatServicesArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetNatServicesFilter[];
+    /**
+     * The IDs of the NAT services.
+     */
     natServiceIds?: string[];
 }
 
@@ -34,9 +69,41 @@ export interface GetNatServicesResult {
      */
     readonly id: string;
     readonly natServiceIds?: string[];
+    /**
+     * Information about one or more NAT services.
+     */
     readonly natServices: outputs.GetNatServicesNatService[];
     readonly requestId: string;
 }
+/**
+ * Provides information about NAT services.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NAT-Gateways.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-natservice).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const natServices01 = outscale.getNatServices({
+ *     filters: [
+ *         {
+ *             name: "net_ids",
+ *             values: [
+ *                 "vpc-12345678",
+ *                 "vpc-87654321",
+ *             ],
+ *         },
+ *         {
+ *             name: "subnet_ids",
+ *             values: ["eu-west-2a"],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getNatServicesOutput(args?: GetNatServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatServicesResult> {
     return pulumi.output(args).apply((a: any) => getNatServices(a, opts))
 }
@@ -45,6 +112,12 @@ export function getNatServicesOutput(args?: GetNatServicesOutputArgs, opts?: pul
  * A collection of arguments for invoking getNatServices.
  */
 export interface GetNatServicesOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetNatServicesFilterArgs>[]>;
+    /**
+     * The IDs of the NAT services.
+     */
     natServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -48,6 +48,9 @@ class GetClientGatewaysResult:
     @property
     @pulumi.getter(name="clientGateways")
     def client_gateways(self) -> Sequence['outputs.GetClientGatewaysClientGatewayResult']:
+        """
+        Information about one or more client gateways.
+        """
         return pulumi.get(self, "client_gateways")
 
     @property
@@ -86,7 +89,35 @@ def get_client_gateways(client_gateway_ids: Optional[Sequence[str]] = None,
                         filters: Optional[Sequence[pulumi.InputType['GetClientGatewaysFilterArgs']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientGatewaysResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about client gateways.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    client_gateways01 = outscale.get_client_gateways(filters=[
+        outscale.GetClientGatewaysFilterArgs(
+            name="bgp_asns",
+            values=["65000"],
+        ),
+        outscale.GetClientGatewaysFilterArgs(
+            name="public_ips",
+            values=[
+                "111.11.111.1",
+                "222.22.222.2",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[str] client_gateway_ids: The IDs of the client gateways.
+    :param Sequence[pulumi.InputType['GetClientGatewaysFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['clientGatewayIds'] = client_gateway_ids
@@ -107,6 +138,34 @@ def get_client_gateways_output(client_gateway_ids: Optional[pulumi.Input[Optiona
                                filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetClientGatewaysFilterArgs']]]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientGatewaysResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about client gateways.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Customer-Gateways.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    client_gateways01 = outscale.get_client_gateways(filters=[
+        outscale.GetClientGatewaysFilterArgs(
+            name="bgp_asns",
+            values=["65000"],
+        ),
+        outscale.GetClientGatewaysFilterArgs(
+            name="public_ips",
+            values=[
+                "111.11.111.1",
+                "222.22.222.2",
+            ],
+        ),
+    ])
+    ```
+
+
+    :param Sequence[str] client_gateway_ids: The IDs of the client gateways.
+    :param Sequence[pulumi.InputType['GetClientGatewaysFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     ...

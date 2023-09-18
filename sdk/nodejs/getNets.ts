@@ -6,6 +6,35 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about Nets.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const nets01 = outscale.getNets({
+ *     filters: [
+ *         {
+ *             name: "net_ids",
+ *             values: [
+ *                 "vpc-12345678",
+ *                 "vpc-87654321",
+ *             ],
+ *         },
+ *         {
+ *             name: "ip_ranges",
+ *             values: ["10.0.0.0/16"],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getNets(args?: GetNetsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetsResult> {
     args = args || {};
 
@@ -20,7 +49,13 @@ export function getNets(args?: GetNetsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getNets.
  */
 export interface GetNetsArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetNetsFilter[];
+    /**
+     * The ID of the Net.
+     */
     netIds?: string[];
 }
 
@@ -33,10 +68,45 @@ export interface GetNetsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ID of the Net.
+     */
     readonly netIds?: string[];
+    /**
+     * Information about the described Nets.
+     */
     readonly nets: outputs.GetNetsNet[];
     readonly requestId: string;
 }
+/**
+ * Provides information about Nets.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPCs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-net).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const nets01 = outscale.getNets({
+ *     filters: [
+ *         {
+ *             name: "net_ids",
+ *             values: [
+ *                 "vpc-12345678",
+ *                 "vpc-87654321",
+ *             ],
+ *         },
+ *         {
+ *             name: "ip_ranges",
+ *             values: ["10.0.0.0/16"],
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export function getNetsOutput(args?: GetNetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetsResult> {
     return pulumi.output(args).apply((a: any) => getNets(a, opts))
 }
@@ -45,6 +115,12 @@ export function getNetsOutput(args?: GetNetsOutputArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getNets.
  */
 export interface GetNetsOutputArgs {
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetNetsFilterArgs>[]>;
+    /**
+     * The ID of the Net.
+     */
     netIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -6,6 +6,29 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about image export tasks.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const imageExportTasks01 = outscale.getImageExportTasks({
+ *     filters: [{
+ *         name: "task_ids",
+ *         values: [
+ *             "image-export-12345678",
+ *             "image-export-87654321",
+ *         ],
+ *     }],
+ * });
+ * ```
+ */
 export function getImageExportTasks(args?: GetImageExportTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetImageExportTasksResult> {
     args = args || {};
 
@@ -21,6 +44,9 @@ export function getImageExportTasks(args?: GetImageExportTasksArgs, opts?: pulum
  */
 export interface GetImageExportTasksArgs {
     dryRun?: boolean;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: inputs.GetImageExportTasksFilter[];
 }
 
@@ -34,9 +60,35 @@ export interface GetImageExportTasksResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Information about one or more image export tasks.
+     */
     readonly imageExportTasks: outputs.GetImageExportTasksImageExportTask[];
     readonly requestId: string;
 }
+/**
+ * Provides information about image export tasks.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@pulumi/outscale";
+ *
+ * const imageExportTasks01 = outscale.getImageExportTasks({
+ *     filters: [{
+ *         name: "task_ids",
+ *         values: [
+ *             "image-export-12345678",
+ *             "image-export-87654321",
+ *         ],
+ *     }],
+ * });
+ * ```
+ */
 export function getImageExportTasksOutput(args?: GetImageExportTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageExportTasksResult> {
     return pulumi.output(args).apply((a: any) => getImageExportTasks(a, opts))
 }
@@ -46,5 +98,8 @@ export function getImageExportTasksOutput(args?: GetImageExportTasksOutputArgs, 
  */
 export interface GetImageExportTasksOutputArgs {
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.GetImageExportTasksFilterArgs>[]>;
 }

@@ -70,6 +70,9 @@ class GetVmStateResult:
     @property
     @pulumi.getter(name="maintenanceEvents")
     def maintenance_events(self) -> Sequence['outputs.GetVmStateMaintenanceEventResult']:
+        """
+        One or more scheduled events associated with the VM.
+        """
         return pulumi.get(self, "maintenance_events")
 
     @property
@@ -80,16 +83,25 @@ class GetVmStateResult:
     @property
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> str:
+        """
+        The name of the Subregion of the VM.
+        """
         return pulumi.get(self, "subregion_name")
 
     @property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[str]:
+        """
+        The ID of the VM.
+        """
         return pulumi.get(self, "vm_id")
 
     @property
     @pulumi.getter(name="vmState")
     def vm_state(self) -> str:
+        """
+        The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
+        """
         return pulumi.get(self, "vm_state")
 
 
@@ -114,7 +126,28 @@ def get_vm_state(all_vms: Optional[bool] = None,
                  vm_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmStateResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a VM state.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instance-Lifecycle.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmsstate).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vm_state01 = outscale.get_vm_state(all_vms=True,
+        filters=[outscale.GetVmStateFilterArgs(
+            name="vm_ids",
+            values=["i-12345678"],
+        )])
+    ```
+
+
+    :param bool all_vms: If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
+    :param Sequence[pulumi.InputType['GetVmStateFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str vm_id: The ID of the VM.
     """
     __args__ = dict()
     __args__['allVms'] = all_vms
@@ -140,6 +173,27 @@ def get_vm_state_output(all_vms: Optional[pulumi.Input[Optional[bool]]] = None,
                         vm_id: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVmStateResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about a VM state.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Instance-Lifecycle.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmsstate).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    vm_state01 = outscale.get_vm_state(all_vms=True,
+        filters=[outscale.GetVmStateFilterArgs(
+            name="vm_ids",
+            values=["i-12345678"],
+        )])
+    ```
+
+
+    :param bool all_vms: If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
+    :param Sequence[pulumi.InputType['GetVmStateFilterArgs']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param str vm_id: The ID of the VM.
     """
     ...
