@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/foo
+npm install @pulumi/outscale
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/foo
+yarn add @pulumi/outscale
 ```
 
 ### Python
@@ -25,7 +25,7 @@ yarn add @pulumi/foo
 To use from Python, install using `pip`:
 
 ```bash
-pip install pulumi_foo
+pip install pulumi_outscale
 ```
 
 ### Go
@@ -33,7 +33,7 @@ pip install pulumi_foo
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/pulumi/pulumi-foo/sdk/go/...
+go get github.com/pulumi/pulumi-outscale/sdk/go/...
 ```
 
 ### .NET
@@ -41,24 +41,31 @@ go get github.com/pulumi/pulumi-foo/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Pulumi.Foo
+dotnet add package Pulumi.Outscale
 ```
-## Patch
 
-```bash
-patch /home/outscale/go/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.17.2/internal/configs/configload/loader_snapshot.go /home/outscale/pulumi-outscale/.osc-patch/patch.go
-```
 ## Configuration
 
 The following configuration points are available for the `OUTSCALE` provider:
 
 - `osc:region` - (Required) This is the OSC region.
 
-- `osc:accessKey` - (Optional) This is the OSC access key. It can also be sourced from the
+- `osc:accessKeyId` - (Optional) This is the OSC access key. It can also be sourced from the
   `OSC_ACCESS_KEY` environment variable.
-- `osc:secretKey` - (Optional) This is the OSC secret key. It can also be sourced from the
+- `osc:secretKeyId` - (Optional) This is the OSC secret key. It can also be sourced from the
   `OSC_SECRET_KEY` environment variable.
 
 ## Reference
 
 For detailed reference documentation, please visit .
+
+
+# To start developping Outscale Cluster Api
+Please look at [Development](./docs/developement.md)
+
+# Contribution
+Please look at [Contribution](./docs/contributing.md)
+
+
+
+
