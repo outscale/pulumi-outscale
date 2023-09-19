@@ -10,6 +10,12 @@ Ensure the following tools are installed and present in your `$PATH`:
 - [Python](https://www.python.org/downloads/) (called as `python3`).  
 
 
+## Patch
+
+Please patch
+```bash
+patch /home/outscale/go/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.17.2/internal/configs/configload/loader_snapshot.go /home/outscale/.osc-patch/patch.go
+```
 ## Building the Provider and SDKs
 
 To build python provider
