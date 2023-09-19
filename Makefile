@@ -21,6 +21,11 @@ WORKING_DIR     := $(shell pwd)
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
+help::
+	@grep '^[^.#]\+:\s\+.*#' Makefile | \
+	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
+	expand -t20
+
 prepare::
 	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
 	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
@@ -34,7 +39,7 @@ prepare::
 		find ./ ! -path './.git/*' -type f -exec sed -i 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
 	fi
 
-	# In MacOS the -i parameter needs an empty string to execute in place.
+# In MacOS the -i parameter needs an empty string to execute in place.
 	if [[ "${OS}" == "Darwin" ]]; then \
 		sed -i '' 's,github.com/outscale/pulumi-outscale,${REPOSITORY},g' provider/go.mod; \
 		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
@@ -105,11 +110,6 @@ lint_provider:: provider # lint the provider code
 cleanup:: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
 	rm -f provider/cmd/${PROVIDER}/schema.go
-
-help::
-	@grep '^[^.#]\+:\s\+.*#' Makefile | \
- 	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
- 	expand -t20
 
 clean::
 	rm -rf sdk/{dotnet,nodejs,go,python}
