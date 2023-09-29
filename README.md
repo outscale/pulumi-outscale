@@ -48,11 +48,11 @@ dotnet add package Pulumi.Outscale
 
 The following configuration points are available for the `OUTSCALE` provider:
 
-- `osc:region` - (Required) This is the OSC region.
+- `outscale:region` - (Required) This is the OSC region.
 
-- `osc:accessKeyId` - (Optional) This is the OSC access key. It can also be sourced from the
+- `outscale:accessKeyId` - (Optional) This is the OSC access key. It can also be sourced from the
   `OSC_ACCESS_KEY` environment variable.
-- `osc:secretKeyId` - (Optional) This is the OSC secret key. It can also be sourced from the
+- `outscale:secretKeyId` - (Optional) This is the OSC secret key. It can also be sourced from the
   `OSC_SECRET_KEY` environment variable.
 
 ## Reference
