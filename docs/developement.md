@@ -14,7 +14,10 @@ Ensure the following tools are installed and present in your `$PATH`:
 
 Please patch
 ```bash
-patch $HOME/go/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.17.2/internal/configs/configload/loader_snapshot.go $HOME/.osc-patch/patch.go
+export GOPATH=$PWD # not needed but recomended as you patch $GOPATH/pkg/
+chmod -R a+r $GOPATH/pkg/
+chmod -R a+w $GOPATH/pkg/
+patch $GOPATH/pkg/mod/github.com/hashicorp/terraform-plugin-sdk@v1.17.2/internal/configs/configload/loader_snapshot.go .osc-patch/patch.go
 ```
 ## Building the Provider and SDKs
 
