@@ -60,7 +60,7 @@ The following configuration points are available for the `OUTSCALE` provider:
 For detailed reference documentation, please visit .
 
 
-# To start developping Outscale Cluster Api
+# To start developping Pulumi Outscale
 Please look at [Development](./docs/developement.md)
 
 # Contribution
