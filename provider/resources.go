@@ -513,7 +513,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", outscalePkg),
+				fmt.Sprintf("github.com/outscale/pulumi-%[1]s/sdk/", outscalePkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				outscalePkg,
