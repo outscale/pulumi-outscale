@@ -33,7 +33,7 @@ pip install pulumi_outscale
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/pulumi/pulumi-outscale/sdk/go/...
+go get github.com/outscale/pulumi-outscale/sdk/go/...
 ```
 
 ### .NET
