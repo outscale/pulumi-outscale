@@ -6,6 +6,8 @@ OS test table:
 |--------|---|-------|
 |python|Arch Linux|OK|
 |yaml|Arch Linux|OK (require yaml plugin on AUR)| 
+|python|Ubuntu|OK|
+|yaml|Ubuntu|OK|
 |python|Mac OS ARM|OK| 
 |yaml|Mac OS ARM|KO (segfaul)|
 
