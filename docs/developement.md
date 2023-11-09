@@ -29,7 +29,7 @@ make build_python
 
 To build typescript provider
 ```bash
-make build_typescript
+make build_nodejs
 ```
 
 ```text
