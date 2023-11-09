@@ -92,13 +92,13 @@ func providerConfigureClient(d *schema.ResourceData) (interface{}, error) {
 
 
 
-	if ak, ok := d.GetOk("access_key_id"); ok {	
+	if ak, ok := d.GetOk("access_key_id"); ok {
 		config.AccessKeyID = ak.(string)
 	}
-	if sk, ok := d.GetOk("secret_key_id"); ok {	
+	if sk, ok := d.GetOk("secret_key_id"); ok {
 		config.SecretKeyID = sk.(string)
 	}
-	if region, ok := d.GetOk("region"); ok {	
+	if region, ok := d.GetOk("region"); ok {
 		config.Region = region.(string)
 	}
 	endpointsSet := d.Get("endpoints").(*schema.Set)
@@ -106,7 +106,6 @@ func providerConfigureClient(d *schema.ResourceData) (interface{}, error) {
 	for _, endpointsSetI := range endpointsSet.List() {
 		endpoints := endpointsSetI.(map[string]interface{})
 		config.Endpoints["api"] = endpoints["api"].(string)
-		
 	}
 
 	return config.Client()
@@ -279,7 +278,7 @@ func Provider() tfbridge.ProviderInfo {
 
 		ConfigureFunc: providerConfigureClient,
 	}
-	
+
 	prov := tfbridge.ProviderInfo{
 
 		P: shimv1.NewProvider(outscaleSchemaProvider),
