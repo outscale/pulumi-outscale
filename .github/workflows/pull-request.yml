@@ -1,0 +1,19 @@
+name: pull-request
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  examples-test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '>=1.17.0'
+      - name: setup
+        run: |
+          curl -fsSL https://get.pulumi.com | sh
+      - name: Local Tests
+        run: ./local_tests.sh
