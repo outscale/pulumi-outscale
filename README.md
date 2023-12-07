@@ -2,6 +2,10 @@
 
 The Outscale Resource Provider lets you manage [Outscale](https://fr.outscale.com/api-outscale/) resources.
 
+## Work In Progress
+
+This project is still very unstable, use it at your own risk
+
 ## Installing
 
 This package is available for several languages/platforms:
