@@ -40,9 +40,11 @@ export PATH=$PATH:$HOME/.pulumi/bin
 # a strong password is important
 export PULUMI_CONFIG_PASSPHRASE=wololo
 
+PULUMICTL_VERSION=v0.0.32
+
 cd $HOME/.pulumi/bin
-wget https://github.com/pulumi/pulumictl/releases/download/v0.0.32/pulumictl-v0.0.32-linux-amd64.tar.gz
-tar -xvf pulumictl-v0.0.32-linux-amd64.tar.gz
+wget https://github.com/pulumi/pulumictl/releases/download/$PULUMICTL_VERSION/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
+tar -xvf pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
 cd -
 
 make provider build_python
