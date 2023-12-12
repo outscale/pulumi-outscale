@@ -10,7 +10,7 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/outscale/terraform-provider-outscale v0.9.2-0.20231120135808-7663a2a61360
+	github.com/outscale/terraform-provider-outscale v0.9.2-0.20231208144406-679d25d02252
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.0
 	github.com/pulumi/pulumi/sdk/v3 v3.90.1
 )

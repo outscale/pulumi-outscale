@@ -1702,8 +1702,10 @@ github.com/outscale-mgo/terraform-plugin-sdk v1.17.3 h1:yGrd9xBktcA9zXHgMAjyMDgV
 github.com/outscale-mgo/terraform-plugin-sdk v1.17.3/go.mod h1:wkvldbraEMkz23NxkkAsFS88A1R9eUiooiaUZyS6TLw=
 github.com/outscale/osc-sdk-go/v2 v2.12.0 h1:N++txOT8CDR6+W6/Qc2L0kDHwdUZq62vbDVhkE8dOJo=
 github.com/outscale/osc-sdk-go/v2 v2.12.0/go.mod h1:kzhtUErCzKYl87bZ+kDMphDafmnwbsyFJY9iHF7NgNE=
-github.com/outscale/terraform-provider-outscale v0.9.2-0.20231120135808-7663a2a61360 h1:dT8RS4cUqB4g02CswtIlTDNnWNWQ2HflnUu4WS0p2Ic=
-github.com/outscale/terraform-provider-outscale v0.9.2-0.20231120135808-7663a2a61360/go.mod h1:jt06sR5vi+4IJ+/DnoTvyfAjoJujggvQeKMZb27hGlM=
+github.com/outscale/terraform-provider-outscale v0.9.2-0.20231128175237-a685d8a4a60d h1:ChGLtRSZqZ44HK0jzQzEDiV4wQKkmcGu6zAr4Atlgko=
+github.com/outscale/terraform-provider-outscale v0.9.2-0.20231128175237-a685d8a4a60d/go.mod h1:jt06sR5vi+4IJ+/DnoTvyfAjoJujggvQeKMZb27hGlM=
+github.com/outscale/terraform-provider-outscale v0.9.2-0.20231208144406-679d25d02252 h1:RRmgenKqFDp68qvQblPyVH96AJSXsKjmTpF3UU8ZZMA=
+github.com/outscale/terraform-provider-outscale v0.9.2-0.20231208144406-679d25d02252/go.mod h1:jt06sR5vi+4IJ+/DnoTvyfAjoJujggvQeKMZb27hGlM=
 github.com/packer-community/winrmcp v0.0.0-20180921211025-c76d91c1e7db/go.mod h1:f6Izs6JvFTdnRbziASagjZ2vmf55NSIkC/weStxCHqk=
 github.com/pact-foundation/pact-go v1.0.4/go.mod h1:uExwJY4kCzNPcHRj+hCR/HBbOOIwwtUjcrb0b5/5kLM=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
