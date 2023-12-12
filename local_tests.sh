@@ -79,6 +79,8 @@ set +e
 
 cd ../python/
 
+set -e
+
 python -m venv venv
 source venv/bin/activate
 
