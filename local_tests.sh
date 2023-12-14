@@ -34,30 +34,39 @@ fi
 
 set -e
 
-#make example-node-create-volumes
 export GOPATH=$PWD
-export PATH=$PATH:$HOME/.pulumi/bin
+
+if [ "$#" -eq 0 ]; then
+    export PATH=$PATH:$HOME/.pulumi/bin
+fi
 # a strong password is important
 export PULUMI_CONFIG_PASSPHRASE=wololo
 
 MSG_BASE="Test"
 PULUMICTL_VERSION=v0.0.32
 
-cd $HOME/.pulumi/bin
-wget https://github.com/pulumi/pulumictl/releases/download/$PULUMICTL_VERSION/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
-tar -xvf pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
-cd -
+if [ "$#" -eq 0 ]; then
+    cd $HOME/.pulumi/bin
+    wget https://github.com/pulumi/pulumictl/releases/download/$PULUMICTL_VERSION/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
+    tar -xvf pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
+    cd -
+fi
 
+echo "BUILD provider and build_python"
 make provider build_python
 
+echo "pulumi login --local"
 pulumi login --local
 
-# yaml
-
+echo "cd examples/yaml"
 cd examples/yaml
-
+set +e
+echo "pulumi stack init staging"
 pulumi stack init staging
+pulumi stack select staging
+set -e
 
+echo "pulumi set all stuffs"
 pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
 pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
 pulumi config set outscale:region "eu-west-2"
@@ -73,30 +82,35 @@ trap "echo [$MSG_BASE yaml pulumi down FAIL]" ERR
 PATH=$PATH:$GOPATH/bin pulumi down --yes
 echo "[$MSG_BASE yaml pulumi down OK]"
 
-set +e
+set -e
 
-# examples python
-
+echo "../python/"
 cd ../python/
 
-set -e
+# because I use outscale-pulumi as go path, I can use it here too
+
+cd user/
 
 python -m venv venv
 source venv/bin/activate
 
-# because I use outscale-pulumi as go path, I can use it here too
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
-cd user/
 
+set +e
+echo "pulumi stack init staging"
 pulumi stack init staging
+pulumi stack select staging
+set -e
 
 pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
 pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
 pulumi config set outscale:region "eu-west-2"
 pulumi config set outscale:insecure true
 pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+
+pip freeze
 
 set -eE
 
