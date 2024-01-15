@@ -53,7 +53,7 @@ if [ "$#" -eq 0 ]; then
 fi
 
 echo "BUILD provider and build_python"
-make provider build_python
+make provider build_python build_nodejs
 
 echo "pulumi login --local"
 pulumi login --local
@@ -97,7 +97,6 @@ source venv/bin/activate
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
-
 set +e
 echo "pulumi stack init staging"
 pulumi stack init staging
@@ -121,4 +120,65 @@ trap "echo [$MSG_BASE python user pulumi down FAIL]" ERR
 PATH=$PATH:$GOPATH/bin pulumi down --yes
 echo "[$MSG_BASE python user pulumi down OK]"
 
+set -e
+deactivate
+
+cd ../hello/
+
+python -m venv venv
+source venv/bin/activate
+
+pip install pulumi_cloudinit
+pip install $GOPATH/sdk/python/
+
 set +e
+echo "pulumi stack init staging"
+pulumi stack init staging
+pulumi stack select staging
+set -e
+
+pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
+pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
+pulumi config set outscale:region "eu-west-2"
+pulumi config set outscale:insecure true
+pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+
+pip freeze
+
+set -eE
+
+trap "echo [$MSG_BASE python hello pulumi up FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi up --yes
+echo "[$MSG_BASE python hello pulumi up OK]"
+trap "echo [$MSG_BASE python hello pulumi down FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi down --yes
+echo "[$MSG_BASE python hello pulumi down OK]"
+
+set +e
+set -e
+
+echo "../../ts/user/"
+cd ../../ts/user/
+
+set +e
+echo "pulumi stack init staging"
+pulumi stack init staging
+pulumi stack select staging
+set -e
+
+npm install $GOPATH/sdk/nodejs/bin
+
+pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
+pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
+pulumi config set outscale:region "eu-west-2"
+pulumi config set outscale:insecure true
+pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+
+set -eE
+
+trap "echo [$MSG_BASE ty/js user pulumi up FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi up --yes
+echo "[$MSG_BASE ty/js user pulumi up OK]"
+trap "echo [$MSG_BASE ty/js user pulumi down FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi down --yes
+echo "[$MSG_BASE ty/js user pulumi down OK]"
