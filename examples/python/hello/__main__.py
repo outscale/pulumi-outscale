@@ -3,9 +3,6 @@
 import pulumi_cloudinit as cloudinit
 import pulumi_outscale as outscale
 
-
-
-
 KEYPAIR = outscale.Keypair(resource_name="hello",
                            keypair_name="hello-kp")
 
