@@ -11,7 +11,13 @@ This project is still very unstable, use it at your own risk
 
 This package is available for several languages/platforms:
 
+### yaml
+
+[Examples here](https://github.com/outscale/pulumi-outscale/tree/master/examples/yaml)
+
 ### Node.js (JavaScript/TypeScript)
+
+[Examples here](https://github.com/outscale/pulumi-outscale/tree/master/examples/ts)
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
@@ -27,6 +33,8 @@ yarn add @pulumi/outscale
 
 ### Python
 
+[Examples here](https://github.com/outscale/pulumi-outscale/tree/master/examples/python)
+
 To use from Python, install using `pip`:
 
 ```bash
@@ -35,6 +43,8 @@ pip install pulumi_outscale
 
 ### Go
 
+__Not yet tested, and posibly broken__
+
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
@@ -42,6 +52,8 @@ go get github.com/outscale/pulumi-outscale/sdk/go/...
 ```
 
 ### .NET
+
+__Not yet tested, and posibly broken__
 
 To use from .NET, install using `dotnet add package`:
 
