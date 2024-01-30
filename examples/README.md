@@ -5,10 +5,11 @@ OS test table:
 |Example | OS| State |
 |--------|---|-------|
 |python|Arch Linux|OK|
+|ts |Arch Linux|OK|
 |yaml|Arch Linux|OK (require yaml plugin on AUR)| 
 |python|Ubuntu|OK|
 |yaml|Ubuntu|OK|
-|ts | Ubuntu| KO (import * as pulumi from "@pulumi/pulumi" SyntaxError: Cannot use import statement outside a module))|
+|ts | Ubuntu|OK|
 |python|Mac OS ARM|OK| 
 |yaml|Mac OS ARM|KO (segfaul)|
 
