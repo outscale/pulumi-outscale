@@ -32,6 +32,14 @@ import (
 	//"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
+var endpointServiceNames []string
+
+func init() {
+        endpointServiceNames = []string{
+                "api",
+        }
+}
+
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
@@ -80,6 +88,27 @@ func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProvider
 	return &license
 }
 
+
+func endpointsSchema() *schema.Schema {
+        endpointsAttributes := make(map[string]*schema.Schema)
+
+        for _, endpointServiceName := range endpointServiceNames {
+                endpointsAttributes[endpointServiceName] = &schema.Schema{
+                        Type:        schema.TypeString,
+                        Optional:    true,
+                        Default:     "",
+                        Description: "Use this to override the default service endpoint URL",
+                }
+        }
+
+        return &schema.Schema{
+                Type:     schema.TypeSet,
+                Optional: true,
+                Elem: &schema.Resource{
+                        Schema: endpointsAttributes,
+                },
+        }
+}
 
 func providerConfigureClient(d *schema.ResourceData) (interface{}, error) {
 
@@ -138,6 +167,7 @@ func Provider() tfbridge.ProviderInfo {
 				DefaultFunc: schema.EnvDefaultFunc("OUTSCALE_X509CERT", nil),
 				Description: "The path to your x509 cert",
 			},
+			"endpoints": endpointsSchema(),
 			"x509_key_path": {
 				Type:        schema.TypeString,
 				Optional:    true,
