@@ -47,11 +47,11 @@ VM = outscale.Vm(resource_name="hello-vm",
                  security_group_ids=[SECURITY_GROUP.id],
                  placement_subregion_name="eu-west-2a",
                  placement_tenancy="default",
-                 block_device_mappings=[outscale.VmBlockDeviceMappingsCreatedArgs(
+                 block_device_mappings=[outscale.VmBlockDeviceMappingArgs(
                      device_name="/dev/sda1",
                      bsu=outscale.VmBlockDeviceMappingBsuArgs(volume_size=30,
-                                                              volume_type="gp2",
-                                                              delete_on_vm_deletion=True))],
+                                                                volume_type="gp2",
+                                                                delete_on_vm_deletion=True))],
                  user_data=VM_STARTUP.rendered
                 )
 
