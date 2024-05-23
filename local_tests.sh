@@ -75,7 +75,7 @@ if [ "$#" -eq 0 ]; then
 fi
 
 echo "BUILD provider and build_python"
-make provider build_python build_nodejs
+make provider build_python build_nodejs build_dotnet
 
 echo "pulumi login --local"
 pulumi login --local
@@ -92,6 +92,29 @@ pulumi_setup_local
 
 pulumi_up_dowm "yaml"
 
+echo "../dotnet/"
+cd ../dotnet/
+
+
+cd user/
+
+# without that I have dependencies errors.
+rm -rvf ~/.nuget
+
+nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
+
+set +e
+echo "pulumi stack init staging"
+pulumi stack init staging
+pulumi stack select staging
+set -e
+
+pulumi_setup_local
+
+pulumi_up_dowm "dotnet"
+
+cd .. # user dotnet out
+
 echo "../python/"
 cd ../python/
 
@@ -102,6 +125,7 @@ cd user/
 python -m venv venv
 source venv/bin/activate
 
+pip install setuptools
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
@@ -125,6 +149,7 @@ cd ../hello/
 python -m venv venv
 source venv/bin/activate
 
+pip install setuptools
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
