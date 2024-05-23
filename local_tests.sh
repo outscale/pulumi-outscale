@@ -91,7 +91,14 @@ cd ../dotnet/
 cd user/
 
 nuget add  ../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
-
+pwd
+echo "check local dir:"
+ls
+ls pulumi.outscale/
+cat user.csproj
+echo "build now"
+dotnet build -nologo .
+echo "build done"
 set +e
 echo "pulumi stack init staging"
 pulumi stack init staging
