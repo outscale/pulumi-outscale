@@ -109,8 +109,6 @@ pulumi stack init staging
 pulumi stack select staging
 set -e
 
-
-#nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
 dotnet nuget add source $ROOT/sdk/dotnet/bin/Debug/
 
 pulumi_setup_local
