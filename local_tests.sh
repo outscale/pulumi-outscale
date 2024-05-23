@@ -53,7 +53,7 @@ if [ "$#" -eq 0 ]; then
 fi
 
 echo "BUILD provider and build_python"
-make provider build_python build_nodejs
+make provider build_python build_nodejs build_dotnet
 
 echo "pulumi login --local"
 pulumi login --local
@@ -83,6 +83,39 @@ PATH=$PATH:$GOPATH/bin pulumi down --yes
 echo "[$MSG_BASE yaml pulumi down OK]"
 
 set -e
+
+echo "../dotnet/"
+cd ../dotnet/
+
+
+cd user/
+
+nuget add  ../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
+
+set +e
+echo "pulumi stack init staging"
+pulumi stack init staging
+pulumi stack select staging
+set -e
+
+pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
+pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
+pulumi config set outscale:region "eu-west-2"
+pulumi config set outscale:insecure true
+pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+
+set -eE
+
+trap "echo [$MSG_BASE ty/js user pulumi up FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi up --yes
+echo "[$MSG_BASE ty/js user pulumi up OK]"
+trap "echo [$MSG_BASE ty/js user pulumi down FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi down --yes
+echo "[$MSG_BASE ty/js user pulumi down OK]"
+
+set -e
+
+cd .. # user dotnet out
 
 echo "../python/"
 cd ../python/
