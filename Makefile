@@ -84,7 +84,7 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
 	cat PublicIp.cs | sed 's|PublicIp { get; set; }|MyPublicIp { get; set; }|;s|("publicIp")|("myPublicIp")|' > PublicIp.cs && \
-	cat sdk/dotnet/Tag.cs | sed 's|Tag { get; set; }|MyTag { get; set; }|;s|("tag")|("myTag")|' > Tag.cs && \
+	cat Tag.cs | sed 's|Tag { get; set; }|MyTag { get; set; }|;s|("tag")|("myTag")|' > Tag.cs && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
