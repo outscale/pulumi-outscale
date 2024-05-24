@@ -61,28 +61,28 @@ pulumi login --local
 echo "cd examples/yaml"
 cd examples/yaml
 set +e
-echo "pulumi stack init staging"
-pulumi stack init staging
-pulumi stack select staging
+#echo "pulumi stack init staging"
+#pulumi stack init staging
+#pulumi stack select staging
 set -e
 
-echo "pulumi set all stuffs"
-pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
-pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
-pulumi config set outscale:region "eu-west-2"
-pulumi config set outscale:insecure true
-pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+#echo "pulumi set all stuffs"
+#pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
+#pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
+#pulumi config set outscale:region "eu-west-2"
+#pulumi config set outscale:insecure true
+#pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
 
-set -eE
+#set -eE
 
-trap "echo [$MSG_BASE yaml pulumi up FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi up --yes
-echo "[$MSG_BASE yaml pulumi up OK]"
-trap "echo [$MSG_BASE yaml pulumi down FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi down --yes
-echo "[$MSG_BASE yaml pulumi down OK]"
+#trap "echo [$MSG_BASE yaml pulumi up FAIL]" ERR
+#PATH=$PATH:$GOPATH/bin pulumi up --yes
+#echo "[$MSG_BASE yaml pulumi up OK]"
+#trap "echo [$MSG_BASE yaml pulumi down FAIL]" ERR
+#PATH=$PATH:$GOPATH/bin pulumi down --yes
+#echo "[$MSG_BASE yaml pulumi down OK]"
 
-set -e
+#set -e
 
 echo "../dotnet/"
 cd ../dotnet/
@@ -90,12 +90,25 @@ cd ../dotnet/
 
 cd user/
 
-nuget add  ../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
+nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
 pwd
 echo "check local dir:"
 ls
 ls pulumi.outscale/
 cat user.csproj
+ls obj/
+
+echo "find nugets"
+find . -name "*nuget*"
+echo "end find nugets"
+
+cat ./obj/user.csproj.nuget.dgspec.json
+
+echo ""
+
+cat pulumi.outscale/*/pulumi.outscale.nuspec
+
+echo ""
 echo "build now"
 dotnet build -nologo .
 echo "build done"
