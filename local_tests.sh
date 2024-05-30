@@ -91,24 +91,7 @@ cd ../dotnet/
 cd user/
 
 nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
-pwd
-echo "check local dir:"
-ls
-ls pulumi.outscale/
-cat user.csproj
-ls obj/
 
-echo "find nugets"
-find . -name "*nuget*"
-echo "end find nugets"
-
-cat ./obj/user.csproj.nuget.dgspec.json
-
-echo ""
-
-cat pulumi.outscale/*/pulumi.outscale.nuspec
-
-echo ""
 echo "build now"
 dotnet build -nologo .
 echo "build done"
