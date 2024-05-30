@@ -92,6 +92,8 @@ cd user/
 
 nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
 
+ls -R ~/.nuget
+
 echo "build now"
 dotnet build -nologo .
 echo "build done"
