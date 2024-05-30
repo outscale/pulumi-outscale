@@ -90,9 +90,10 @@ cd ../dotnet/
 
 cd user/
 
-nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
+# without that I have dependencies errors.
+rm -rvf ~/.nuget
 
-ls -R ~/.nuget
+nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
 
 echo "build now"
 dotnet build -nologo .
