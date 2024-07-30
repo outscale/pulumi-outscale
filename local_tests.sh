@@ -14,6 +14,28 @@ export OSC_ACCESS_KEY=11112211111110000000
 
 export OSC_USING_RICOCHET="oui"
 
+function pulumi_up_dowm() {
+    set -eE
+
+    trap "echo [$MSG_BASE $1 pulumi up FAIL]" ERR
+    PATH=$PATH:$GOPATH/bin pulumi up --yes
+    echo "[$MSG_BASE $1 pulumi up OK]"
+    trap "echo [$MSG_BASE python $1 down FAIL]" ERR
+    PATH=$PATH:$GOPATH/bin pulumi down --yes
+    echo "[$MSG_BASE $1 pulumi down OK]"
+
+    set -e
+}
+
+function pulumi_setup_local() {
+    echo "pulumi set all stuffs"
+    pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
+    pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
+    pulumi config set outscale:region "eu-west-2"
+    pulumi config set outscale:insecure true
+    pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+}
+
 
 if [ "$#" -eq 0 ]; then
 
@@ -66,23 +88,9 @@ pulumi stack init staging
 pulumi stack select staging
 set -e
 
-echo "pulumi set all stuffs"
-pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
-pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
-pulumi config set outscale:region "eu-west-2"
-pulumi config set outscale:insecure true
-pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+pulumi_setup_local
 
-set -eE
-
-trap "echo [$MSG_BASE yaml pulumi up FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi up --yes
-echo "[$MSG_BASE yaml pulumi up OK]"
-trap "echo [$MSG_BASE yaml pulumi down FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi down --yes
-echo "[$MSG_BASE yaml pulumi down OK]"
-
-set -e
+pulumi_up_dowm "yaml"
 
 echo "../python/"
 cd ../python/
@@ -103,24 +111,13 @@ pulumi stack init staging
 pulumi stack select staging
 set -e
 
-pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
-pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
-pulumi config set outscale:region "eu-west-2"
-pulumi config set outscale:insecure true
-pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+pulumi_setup_local
 
 pip freeze
 
-set -eE
 
-trap "echo [$MSG_BASE python user pulumi up FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi up --yes
-echo "[$MSG_BASE python user pulumi up OK]"
-trap "echo [$MSG_BASE python user pulumi down FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi down --yes
-echo "[$MSG_BASE python user pulumi down OK]"
+pulumi_up_dowm "python user"
 
-set -e
 deactivate
 
 cd ../hello/
@@ -137,25 +134,11 @@ pulumi stack init staging
 pulumi stack select staging
 set -e
 
-pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
-pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
-pulumi config set outscale:region "eu-west-2"
-pulumi config set outscale:insecure true
-pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+pulumi_setup_local
 
 pip freeze
 
-set -eE
-
-trap "echo [$MSG_BASE python hello pulumi up FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi up --yes
-echo "[$MSG_BASE python hello pulumi up OK]"
-trap "echo [$MSG_BASE python hello pulumi down FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi down --yes
-echo "[$MSG_BASE python hello pulumi down OK]"
-
-set +e
-set -e
+pulumi_up_dowm "python hello"
 
 echo "../../ts/user/"
 cd ../../ts/user/
@@ -168,23 +151,9 @@ set -e
 
 npm install $GOPATH/sdk/nodejs/bin
 
-pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
-pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
-pulumi config set outscale:region "eu-west-2"
-pulumi config set outscale:insecure true
-pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+pulumi_setup_local
 
-set -eE
-
-trap "echo [$MSG_BASE ty/js user pulumi up FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi up --yes
-echo "[$MSG_BASE ty/js user pulumi up OK]"
-trap "echo [$MSG_BASE ty/js user pulumi down FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi down --yes
-echo "[$MSG_BASE ty/js user pulumi down OK]"
-
-set +e
-set -e
+pulumi_up_dowm "ty/js user"
 
 echo "../../go/vm/"
 cd ../../go/vm/
@@ -195,17 +164,6 @@ pulumi stack init staging
 pulumi stack select staging
 set -e
 
-pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
-pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
-pulumi config set outscale:region "eu-west-2"
-pulumi config set outscale:insecure true
-pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+pulumi_setup_local
 
-set -eE
-
-trap "echo [$MSG_BASE go/vm user pulumi up FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi up --yes
-echo "[$MSG_BASE go/vm user pulumi up OK]"
-trap "echo [$MSG_BASE go/vm user pulumi down FAIL]" ERR
-PATH=$PATH:$GOPATH/bin pulumi down --yes
-echo "[$MSG_BASE go/vm user pulumi down OK]"
+pulumi_up_dowm "go/vm"
