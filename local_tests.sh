@@ -182,3 +182,30 @@ echo "[$MSG_BASE ty/js user pulumi up OK]"
 trap "echo [$MSG_BASE ty/js user pulumi down FAIL]" ERR
 PATH=$PATH:$GOPATH/bin pulumi down --yes
 echo "[$MSG_BASE ty/js user pulumi down OK]"
+
+set +e
+set -e
+
+echo "../../go/vm/"
+cd ../../go/vm/
+
+set +e
+echo "pulumi stack init staging"
+pulumi stack init staging
+pulumi stack select staging
+set -e
+
+pulumi config set outscale:secretKeyId $OSC_SECRET_KEY
+pulumi config set outscale:accessKeyId $OSC_ACCESS_KEY
+pulumi config set outscale:region "eu-west-2"
+pulumi config set outscale:insecure true
+pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
+
+set -eE
+
+trap "echo [$MSG_BASE go/vm user pulumi up FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi up --yes
+echo "[$MSG_BASE go/vm user pulumi up OK]"
+trap "echo [$MSG_BASE go/vm user pulumi down FAIL]" ERR
+PATH=$PATH:$GOPATH/bin pulumi down --yes
+echo "[$MSG_BASE go/vm user pulumi down OK]"
