@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-outscale/sdk/v2
+module github.com/pulumi/pulumi-outscale/sdk
 
 go 1.22.5
 
