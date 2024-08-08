@@ -14,6 +14,8 @@ export OSC_ACCESS_KEY=11112211111110000000
 
 export OSC_USING_RICOCHET="oui"
 
+export ROOT=$PWD
+
 function pulumi_up_dowm() {
     set -eE
 
@@ -101,13 +103,15 @@ cd user/
 # without that I have dependencies errors.
 rm -rvf ~/.nuget
 
-nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
-
 set +e
 echo "pulumi stack init staging"
 pulumi stack init staging
 pulumi stack select staging
 set -e
+
+
+#nuget add  $PWD/../../../sdk/dotnet/bin/Debug/Pulumi.Outscale*.nupkg -Source .
+dotnet nuget add source $ROOT/sdk/dotnet/bin/Debug/
 
 pulumi_setup_local
 
