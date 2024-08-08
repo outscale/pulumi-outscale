@@ -102,6 +102,7 @@ cd user/
 python -m venv venv
 source venv/bin/activate
 
+pip install setuptools
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
@@ -125,6 +126,7 @@ cd ../hello/
 python -m venv venv
 source venv/bin/activate
 
+pip install setuptools
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
