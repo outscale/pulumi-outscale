@@ -74,8 +74,8 @@ if [ "$#" -eq 0 ]; then
     cd -
 fi
 
-echo "BUILD provider and build_python"
-make provider build_python build_nodejs
+echo "BUILD provider"
+make provider
 
 echo "pulumi login --local"
 pulumi login --local
