@@ -1,0 +1,7 @@
+name: user
+runtime: dotnet
+description: Outscale csharp example
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: ""
