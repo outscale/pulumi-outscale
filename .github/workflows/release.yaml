@@ -31,7 +31,7 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1.5.0
         with:
           repo: pulumi/pulumictl
-      - name: publish sdks:
+      - name: publish sdks
         uses: pulumi/pulumi-package-publisher@main
         with:
           sdk: python,nodejs
