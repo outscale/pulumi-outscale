@@ -34,4 +34,4 @@ jobs:
       - name: publish sdks
         uses: pulumi/pulumi-package-publisher@main
         with:
-          sdk: python,nodejs
+          sdk: python
