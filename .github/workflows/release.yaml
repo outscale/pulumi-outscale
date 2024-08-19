@@ -31,6 +31,16 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1.5.0
         with:
           repo: pulumi/pulumictl
+      - name: build
+        run: |
+          make build_python
+          cp ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz python-sdk.tar.gz
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: python-sdk.tar.gz
+          path: |
+            ./python-sdk.tar.gz
       - name: publish sdks
         uses: pulumi/pulumi-package-publisher@main
         with:
