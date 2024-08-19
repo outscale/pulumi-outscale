@@ -21,7 +21,17 @@ jobs:
   publish:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - uses: pulumi/pulumi-package-publisher@main
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+        go-version: ${{matrix.goversion}}
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        with:
+          repo: pulumi/pulumictl
+      - name: publish sdks:
+        uses: pulumi/pulumi-package-publisher@main
         with:
           sdk: python,nodejs
