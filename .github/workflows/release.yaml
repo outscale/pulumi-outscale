@@ -35,14 +35,13 @@ jobs:
       - name: build
         run: |
           make build_python
-          cp -v ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz python-sdk.tar.gz
-          ls
+          cp -v ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz sdk/python.tar.gz
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: python-sdk.tar.gz
           path: |
-            ./python-sdk.tar.gz
+            ./sdk/python.tar.gz
       - name: publish sdks
         uses: pulumi/pulumi-package-publisher@main
         with:
