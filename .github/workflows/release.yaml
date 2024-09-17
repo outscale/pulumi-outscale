@@ -38,7 +38,7 @@ jobs:
           cp -v ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz python-sdk.tar.gz
           ls
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: python-sdk.tar.gz
           path: |
