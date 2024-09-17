@@ -14,6 +14,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PROVIDER: outscale
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+  #token have been remove, need to recreate it
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   PYPI_USERNAME: "__token__"
 
@@ -34,7 +35,8 @@ jobs:
       - name: build
         run: |
           make build_python
-          cp ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz python-sdk.tar.gz
+          cp -v ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz python-sdk.tar.gz
+          ls
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
