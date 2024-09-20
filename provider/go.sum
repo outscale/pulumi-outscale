@@ -781,7 +781,6 @@ github.com/apparentlymart/go-cidr v1.0.1/go.mod h1:EBcsNrHc3zQeuaeCeCtQruQm+n9/Y
 github.com/apparentlymart/go-cidr v1.1.0 h1:2mAhrMoF+nhXqxTzSZMUzDHkLjmIHC+Zzn4tdgBZjnU=
 github.com/apparentlymart/go-cidr v1.1.0/go.mod h1:EBcsNrHc3zQeuaeCeCtQruQm+n9/YjEn/vI25Lg7Gwc=
 github.com/apparentlymart/go-dump v0.0.0-20180507223929-23540a00eaa3/go.mod h1:oL81AME2rN47vu18xqj1S1jPIPuN7afo62yKTNn3XMM=
-github.com/apparentlymart/go-dump v0.0.0-20190214190832-042adf3cf4a0 h1:MzVXffFUye+ZcSR6opIgz9Co7WcDx6ZcY+RjfFHoA0I=
 github.com/apparentlymart/go-dump v0.0.0-20190214190832-042adf3cf4a0/go.mod h1:oL81AME2rN47vu18xqj1S1jPIPuN7afo62yKTNn3XMM=
 github.com/apparentlymart/go-textseg v1.0.0/go.mod h1:z96Txxhf3xSFMPmb5X/1W05FF/Nj9VFpLOpjS5yuumk=
 github.com/apparentlymart/go-textseg/v12 v12.0.0/go.mod h1:S/4uRK2UtaQttw1GenVJEynmyUenKwP++x/+DdGV/Ec=
@@ -1572,8 +1571,8 @@ github.com/hashicorp/go-cleanhttp v0.5.2/go.mod h1:kO/YDlP8L1346E6Sodw+PrpBSV4/S
 github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320 h1:1/D3zfFHttUKaCaGKZ/dR2roBXv0vKbSCnssIldfQdI=
 github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320/go.mod h1:EiZBMaudVLy8fmjf9Npq1dq9RalhveqZG5w/yz3mHWs=
 github.com/hashicorp/go-getter v1.4.0/go.mod h1:7qxyCd8rBfcShwsvxgIguu4KbS3l8bUCwg2Umn7RjeY=
-github.com/hashicorp/go-getter v1.7.1 h1:SWiSWN/42qdpR0MdhaOc/bLR48PLuP1ZQtYLRlM69uY=
-github.com/hashicorp/go-getter v1.7.1/go.mod h1:W7TalhMmbPmsSMdNjD0ZskARur/9GJ17cfHTRtXV744=
+github.com/hashicorp/go-getter v1.7.5 h1:dT58k9hQ/vbxNMwoI5+xFYAJuv6152UNvdHokfI5wE4=
+github.com/hashicorp/go-getter v1.7.5/go.mod h1:W7TalhMmbPmsSMdNjD0ZskARur/9GJ17cfHTRtXV744=
 github.com/hashicorp/go-hclog v0.0.0-20180709165350-ff2cf002a8dd/go.mod h1:9bjs9uLqI8l75knNv3lV1kA55veR+WUPSiKIWcQHudI=
 github.com/hashicorp/go-hclog v0.9.2/go.mod h1:5CU+agLiy3J7N7QjHK5d05KxGsuXiQLrjA0H7acj2lQ=
 github.com/hashicorp/go-hclog v0.12.0/go.mod h1:whpDNt7SSdeAju8AWKIWsul05p54N/39EeqMAyrmvFQ=
@@ -1663,8 +1662,6 @@ github.com/hashicorp/nomad/api v0.0.0-20220629141207-c2428e1673ec/go.mod h1:jP79
 github.com/hashicorp/serf v0.8.2/go.mod h1:6hOLApaqBFA1NXqRQAsxw9QxuDEvNxSQRwA/JwenrHc=
 github.com/hashicorp/serf v0.9.6/go.mod h1:TXZNMjZQijwlDvp+r0b63xZ45H7JmCmgg4gpTwn9UV4=
 github.com/hashicorp/terraform-config-inspect v0.0.0-20191115094559-17f92b0546e8/go.mod h1:p+ivJws3dpqbp1iP84+npOyAmTTOLMgCzrXd3GSdn/A=
-github.com/hashicorp/terraform-config-inspect v0.0.0-20191212124732-c6ae6269b9d7 h1:Pc5TCv9mbxFN6UVX0LH6CpQrdTM5YjbVI2w15237Pjk=
-github.com/hashicorp/terraform-config-inspect v0.0.0-20191212124732-c6ae6269b9d7/go.mod h1:p+ivJws3dpqbp1iP84+npOyAmTTOLMgCzrXd3GSdn/A=
 github.com/hashicorp/terraform-exec v0.19.0/go.mod h1:tbxUpe3JKruE9Cuf65mycSIT8KiNPZ0FkuTE3H4urQg=
 github.com/hashicorp/terraform-exec v0.20.0 h1:DIZnPsqzPGuUnq6cH8jWcPunBfY+C+M8JyYF3vpnuEo=
 github.com/hashicorp/terraform-exec v0.20.0/go.mod h1:ckKGkJWbsNqFKV1itgMnE0hY9IYf1HoiekpuN0eWoDw=
@@ -1686,8 +1683,6 @@ github.com/hashicorp/terraform-plugin-mux v0.15.0/go.mod h1:9ezplb1Dyq394zQ+ldB0
 github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
-github.com/hashicorp/terraform-plugin-testing v1.7.0 h1:I6aeCyZ30z4NiI3tzyDoO6fS7YxP5xSL1ceOon3gTe8=
-github.com/hashicorp/terraform-plugin-testing v1.7.0/go.mod h1:sbAreCleJNOCz+y5vVHV8EJkIWZKi/t4ndKiUjM9vao=
 github.com/hashicorp/terraform-registry-address v0.2.2/go.mod h1:LtwNbCihUoUZ3RYriyS2wF/lGPB6gF9ICLRtuDk7hSo=
 github.com/hashicorp/terraform-registry-address v0.2.3 h1:2TAiKJ1A3MAkZlH1YI/aTVcLZRu7JseiXNRHbOAyoTI=
 github.com/hashicorp/terraform-registry-address v0.2.3/go.mod h1:lFHA76T8jfQteVfT7caREqguFrW3c4MFSPhZB7HHgUM=
@@ -1740,8 +1735,6 @@ github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLf
 github.com/influxdata/influxdb1-client v0.0.0-20191209144304-8bf82d3c094d/go.mod h1:qj24IKcXYK6Iy9ceXlo3Tc+vtHo9lIhSX5JddghvEPo=
 github.com/intel/goresctrl v0.2.0/go.mod h1:+CZdzouYFn5EsxgqAQTEzMfwKwuc0fVdMrT9FCCAVRQ=
 github.com/ionos-cloud/sdk-go/v6 v6.1.0/go.mod h1:Ox3W0iiEz0GHnfY9e5LmAxwklsxguuNFEUSu0gVRTME=
-github.com/iwahbe/terraform-provider-xyz v0.0.0-20240313122825-ee5a73cbac8d h1:qeVFO+mMuXJRhvFujx8o0dm+QRdrcxYCDOwqY5XDJVk=
-github.com/iwahbe/terraform-provider-xyz v0.0.0-20240313122825-ee5a73cbac8d/go.mod h1:3d2OzkdX7UQSJhK8Iy9hBHFeNlRnL4RwfwbDXrLFk7M=
 github.com/j-keck/arping v0.0.0-20160618110441-2cf9dc699c56/go.mod h1:ymszkNOg6tORTn+6F6j+Jc8TOr5osrynvN6ivFWZ2GA=
 github.com/j-keck/arping v1.0.2/go.mod h1:aJbELhR92bSk7tp79AWM/ftfc90EfEi2bQJrbBFOsPw=
 github.com/jackc/chunkreader v1.0.0/go.mod h1:RT6O25fNZIuasFJRyZ4R/Y2BbhasbmZXF9QQ7T3kePo=
@@ -2100,12 +2093,6 @@ github.com/openzipkin/zipkin-go v0.2.1/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnh
 github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
 github.com/outscale/osc-sdk-go/v2 v2.20.0 h1:vaRZrx4bUAyfdxQM0LnJjnmp6JL82iZjCYgEqp2Gh6g=
 github.com/outscale/osc-sdk-go/v2 v2.20.0/go.mod h1:kzhtUErCzKYl87bZ+kDMphDafmnwbsyFJY9iHF7NgNE=
-github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404102410-21d7730fe747 h1:Rt8BYjRqXzw33QwA0S+mi5GRW+4nS/P+eWqa6kWFvdU=
-github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404102410-21d7730fe747/go.mod h1:rehjh5sgRwXxbWEIVtjhnnKV3q6ooTDlfV9KJHsgOk4=
-github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404131631-0cad81ef233d h1:CAZl1IIEpnqYlfvjIhP059LIHqBRdafyndteSVka0ss=
-github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404131631-0cad81ef233d/go.mod h1:rehjh5sgRwXxbWEIVtjhnnKV3q6ooTDlfV9KJHsgOk4=
-github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404132444-4558f05c6d13 h1:sg+fWWiRxvMPmb883KVMEohtY2jf+G9qpUDts9FHMcg=
-github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404132444-4558f05c6d13/go.mod h1:rehjh5sgRwXxbWEIVtjhnnKV3q6ooTDlfV9KJHsgOk4=
 github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404133224-2b1c3e15280e h1:Lud6j+s6p0ng32kmxvGt4hYMzJibxiA0Ddg06u0Kqpk=
 github.com/outscale/terraform-provider-outscale v0.11.1-0.20240404133224-2b1c3e15280e/go.mod h1:rehjh5sgRwXxbWEIVtjhnnKV3q6ooTDlfV9KJHsgOk4=
 github.com/pact-foundation/pact-go v1.0.4/go.mod h1:uExwJY4kCzNPcHRj+hCR/HBbOOIwwtUjcrb0b5/5kLM=
@@ -2223,8 +2210,6 @@ github.com/pulumi/pulumi-terraform-bridge/v3 v3.69.0 h1:PsIB738ZqrQbHKe5Q5Ag8Kq/
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.69.0/go.mod h1:/wXhD95iSr4FlmGtVN/H8hXriMW4isDDrAUprozXG4A=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 h1:rIzMmtcVpPX8ynaz6/nW5AHNY63DiNfCohqmxWvMpM4=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4/go.mod h1:Kt8RIZWa/N8rW3+0g6NrqCBmF3o+HuIhFaZpssEkG6w=
-github.com/pulumi/pulumi-xyz/provider v0.0.0-20240322114436-00fbadd198d4 h1:AoVVHaQEwAwPqrojUL2F+zTCOEZhPvBBz0PHerMYpjY=
-github.com/pulumi/pulumi-xyz/provider v0.0.0-20240322114436-00fbadd198d4/go.mod h1:UMTeG+0pPVuxLvh5Rj99WV6XG+EDMu/q7K46QQJtWq8=
 github.com/pulumi/pulumi-yaml v1.4.3 h1:GO36c7FTl8If20Dn/w2Hi3huP7kmsO00KNaz3GJU0Ws=
 github.com/pulumi/pulumi-yaml v1.4.3/go.mod h1:1hwsXFnT7hm2ZeftY5fzjkngjs2eT/rv9MsPE48Leb4=
 github.com/pulumi/pulumi/pkg/v3 v3.98.0 h1:lQyjy31az5bMfTmsyqeeAEQMKjrLyx8IL+C27D6b+x4=
