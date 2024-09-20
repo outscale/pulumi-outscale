@@ -42,9 +42,8 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           PROVIDER: outscale
           PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
-          #token have been remove, need to recreate it
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
           PYPI_USERNAME: "__token__"
         uses: pulumi/pulumi-package-publisher@main
         with:
-          sdk: python
+          sdk: nodejs
