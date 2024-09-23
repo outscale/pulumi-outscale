@@ -32,7 +32,7 @@ jobs:
           cp -v ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz sdk/python.tar.gz
           cd sdk/nodejs/ && npm pack && cd ../../
           ls sdk/nodejs/
-          cp -v sdk/nodejs/pulumi-outscale-*tgz sdk/nodejs.tar.gz
+          cp -v sdk/nodejs/pulumi-outscale-*tgz sdk/nodejs-sdk.tar.gz
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
