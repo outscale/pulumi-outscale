@@ -30,7 +30,7 @@ jobs:
           make build_python
           make build_nodejs
           cp -v ./sdk/python/bin/dist/pulumi_outscale-*.tar.gz sdk/python.tar.gz
-          cd sdk/nodejs/bin/ && npm pack && cd ../../
+          cd sdk/nodejs/bin/ && npm pack && cd ../../../
           cp -v sdk/nodejs/bin/pulumi-outscale-*tgz sdk/nodejs.tar.gz
       - name: Upload python artifacts
         uses: actions/upload-artifact@v4
