@@ -56,3 +56,4 @@ jobs:
         uses: pulumi/pulumi-package-publisher@main
         with:
           sdk: nodejs
+          version: "v0.0.2"
