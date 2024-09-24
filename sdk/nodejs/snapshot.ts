@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const volume01 = new outscale.Volume("volume01", {
  *     size: 40,
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshot01 = new outscale.Snapshot("snapshot01", {volumeId: outscale_volume.volume01.volume_id});
  * ```
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshot02 = new outscale.Snapshot("snapshot02", {
  *     description: "Terraform snapshot copy",

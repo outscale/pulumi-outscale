@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const virtualGateway01 = new outscale.VirtualGateway("virtualGateway01", {
  *     connectionType: "ipsec.1",

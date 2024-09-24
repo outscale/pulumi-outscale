@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const volume01 = new outscale.Volume("volume01", {
  *     iops: 100,
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const volume01 = new outscale.Volume("volume01", {
  *     size: 40,

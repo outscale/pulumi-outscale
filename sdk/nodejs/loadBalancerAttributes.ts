@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer01 = new outscale.LoadBalancer("loadBalancer01", {
  *     listeners: [
@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const attributes01 = new outscale.LoadBalancerAttributes("attributes01", {
  *     loadBalancerName: outscale_load_balancer.load_balancer01.id,
@@ -78,7 +78,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const attributes02 = new outscale.LoadBalancerAttributes("attributes02", {
  *     loadBalancerName: outscale_load_balancer.load_balancer01.id,
@@ -94,7 +94,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const attributes03 = new outscale.LoadBalancerAttributes("attributes03", {
  *     loadBalancerName: outscale_load_balancer.load_balancer01.id,
@@ -106,7 +106,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const attributes04 = new outscale.LoadBalancerAttributes("attributes04", {
  *     loadBalancerName: outscale_load_balancer.load_balancer01.id,

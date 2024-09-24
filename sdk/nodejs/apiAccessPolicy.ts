@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const unique = new outscale.ApiAccessPolicy("unique", {
  *     maxAccessKeyExpirationSeconds: 31536000,
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const unique = new outscale.ApiAccessPolicy("unique", {
  *     maxAccessKeyExpirationSeconds: 3153600000,
@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const unique = new outscale.ApiAccessPolicy("unique", {
  *     maxAccessKeyExpirationSeconds: 0,

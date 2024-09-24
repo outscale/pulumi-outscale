@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const securityGroup01 = new outscale.SecurityGroup("securityGroup01", {
  *     description: "Terraform target security group for SG rule from IP and SG",
@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const securityGroupRule01 = new outscale.SecurityGroupRule("securityGroupRule01", {
  *     flow: "Inbound",
@@ -47,7 +47,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const securityGroupRule02 = new outscale.SecurityGroupRule("securityGroupRule02", {
  *     flow: "Inbound",

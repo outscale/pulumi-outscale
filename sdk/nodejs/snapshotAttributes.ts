@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const volume01 = new outscale.Volume("volume01", {
  *     subregionName: "eu-west-2a",
@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshotAttributes01 = new outscale.SnapshotAttributes("snapshotAttributes01", {
  *     snapshotId: outscale_snapshot.snapshot01.snapshot_id,
@@ -48,7 +48,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshotAttributes02 = new outscale.SnapshotAttributes("snapshotAttributes02", {
  *     snapshotId: outscale_snapshot.snapshot01.snapshot_id,

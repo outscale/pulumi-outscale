@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const image01 = new outscale.Image("image01", {
  *     imageName: "terraform-image-to-export",
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const imageExportTask01 = new outscale.ImageExportTask("imageExportTask01", {
  *     imageId: outscale_image.image01.image_id,

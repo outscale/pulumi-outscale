@@ -1,4 +1,4 @@
-import * as outscale from "@pulumi/outscale";
+import * as outscale from "@outscale/pulumi-outscale";
 import * as cloudinit from "@pulumi/cloudinit";
 import { readFileSync } from "fs";
 

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const volume01 = new outscale.Volume("volume01", {
  *     subregionName: `${_var.region}a`,
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshotExportTask01 = new outscale.SnapshotExportTask("snapshotExportTask01", {
  *     snapshotId: outscale_snapshot.snapshot01.snapshot_id,

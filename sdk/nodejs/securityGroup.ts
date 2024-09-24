@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
  * ```
@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const securityGroup01 = new outscale.SecurityGroup("securityGroup01", {
  *     description: "Terraform security group",
@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const securityGroup02 = new outscale.SecurityGroup("securityGroup02", {
  *     removeDefaultOutboundRule: true,

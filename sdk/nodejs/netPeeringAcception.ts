@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const netPeeringAcceptation01 = new outscale.NetPeeringAcception("netPeeringAcceptation01", {netPeeringId: outscale_net_peering.net_peering01.net_peering_id});
  * ```

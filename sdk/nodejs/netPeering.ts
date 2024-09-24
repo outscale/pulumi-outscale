@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const net01 = new outscale.Net("net01", {ipRange: "10.10.0.0/24"});
  * const net02 = new outscale.Net("net02", {ipRange: "10.31.0.0/16"});
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const netPeering01 = new outscale.NetPeering("netPeering01", {
  *     accepterNetId: outscale_net.net01.net_id,

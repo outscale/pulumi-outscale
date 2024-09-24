@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const dhcpOption01 = new outscale.DhcpOption("dhcpOption01", {domainName: "MyCompany.com"});
  * ```
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const dhcpOption02 = new outscale.DhcpOption("dhcpOption02", {
  *     domainName: "MyCompany.com",

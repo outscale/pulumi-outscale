@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const publicIp01 = new outscale.PublicIp("publicIp01", {});
  * const vm01 = new outscale.Vm("vm01", {
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const publicIpLink01 = new outscale.PublicIpLink("publicIpLink01", {
  *     vmId: outscale_vm.vm01.vm_id,

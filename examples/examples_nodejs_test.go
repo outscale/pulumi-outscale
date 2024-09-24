@@ -25,7 +25,7 @@ func getJsBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	baseJS := base.With(integration.ProgramTestOptions{
 		ExpectRefreshChanges: true,
 		Dependencies: []string{
-			"@pulumi/outscale",
+			"@outscale/pulumi-outscale",
 		},
 	})
 	return baseJS

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const virtualGateway01 = new outscale.VirtualGateway("virtualGateway01", {connectionType: "ipsec.1"});
  * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const virtualGatewayLink01 = new outscale.VirtualGatewayLink("virtualGatewayLink01", {
  *     virtualGatewayId: outscale_virtual_gateway.virtual_gateway01.virtual_gateway_id,

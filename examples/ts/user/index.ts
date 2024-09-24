@@ -1,5 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as outscale from "@pulumi/outscale";
+import * as outscale from "@outscale/pulumi-outscale";
 
 // How to use and set simple example
 const keypair = new outscale.Keypair("ts-demo", {

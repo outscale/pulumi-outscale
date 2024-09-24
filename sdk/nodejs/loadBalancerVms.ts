@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const outscaleVm01 = new outscale.Vm("outscaleVm01", {
  *     imageId: "ami-12345678",
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const outscaleLoadBalancerVms01 = new outscale.LoadBalancerVms("outscaleLoadBalancerVms01", {
  *     loadBalancerName: "load-balancer-for-backend-vms",

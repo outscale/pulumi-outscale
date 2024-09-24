@@ -524,6 +524,7 @@ func Provider() tfbridge.ProviderInfo {
 			"outscale_vpn_connection_route": {Tok: outscaleDataSource(outscaleMod, "getVpnConnectionRoute")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName: "@outscale/pulumi-outscale",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",

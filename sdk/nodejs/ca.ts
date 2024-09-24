@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const ca01 = new outscale.Ca("ca01", {
  *     caPem: fs.readFileSync("<PATH>", "utf8"),

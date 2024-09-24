@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const clientGateway01 = new outscale.ClientGateway("clientGateway01", {
  *     bgpAsn: 65000,
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const vpnConnection01 = new outscale.VpnConnection("vpnConnection01", {
  *     clientGatewayId: outscale_client_gateway.client_gateway01.client_gateway_id,

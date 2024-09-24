@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/18"});
  * const internetService01 = new outscale.InternetService("internetService01", {});
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@pulumi/outscale";
+ * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const internetServiceLink01 = new outscale.InternetServiceLink("internetServiceLink01", {
  *     internetServiceId: outscale_internet_service.internet_service01.internet_service_id,

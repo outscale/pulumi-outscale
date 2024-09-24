@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/outscale",
+    "name": "@outscale/pulumi-outscale",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing outscale cloud resources.",
     "keywords": [
