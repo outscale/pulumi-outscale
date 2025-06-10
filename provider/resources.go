@@ -196,15 +196,18 @@ func Provider() tfbridge.ProviderInfo {
 		ConfigureFunc: providerConfigureClient,
 	}
 
+	// Map the Terraform resources to Pulumi resources.
+	// For example a resource named `outscale_api_access_policy` will be mapped to ApiAccessPolicy
 	resourceMap := make(map[string]*tfbridge.ResourceInfo)
 
-	// outscale_api_access_policy => ApiAccessPolicy
+	// Map the sdkv2 resources to Pulumi resources.
 	for resourceName := range outscaleSchemaProvider.ResourcesMap {
 		resourceMap[resourceName] = &tfbridge.ResourceInfo{
 			Tok: outscaleResource(outscaleMod, resourceNameToPulumiIdentifier(resourceName)),
 		}
 	}
 
+	// Map the Terraform framework resources to Pulumi resources.
 	for _, ressourceFactory := range tfFrameworkProvider.Resources(context.Background()) {
 		res := ressourceFactory()
 		resp := resource.MetadataResponse{}
@@ -216,20 +219,28 @@ func Provider() tfbridge.ProviderInfo {
 		}
 	}
 
+	// Map the Terraform data sources to Pulumi data sources.
+	// For example a datasource named `outscale_api_access_policy` will be mapped to getApiAccessPolicy
 	dsMap := make(map[string]*tfbridge.DataSourceInfo)
-	// outscale_api_access_policy => getApiAccessPolicy
+
+	// Map the sdkv2 data sources to Pulumi data sources.
 	for datasourceName := range outscaleSchemaProvider.DataSourcesMap {
 		dsMap[datasourceName] = &tfbridge.DataSourceInfo{
 			Tok: outscaleDataSource(outscaleMod, "get"+resourceNameToPulumiIdentifier(datasourceName)),
 		}
 	}
 
+	// Map the Terraform framework data sources to Pulumi data sources.
 	for _, datasourceFactory := range tfFrameworkProvider.DataSources(context.Background()) {
-		ds := datasourceFactory()
+		ds := datasourceFactory() // Create a new datasource instance
 		resp := datasource.MetadataResponse{}
+
+		// Call the Metadata API to get the type name.
 		ds.Metadata(ctx, datasource.MetadataRequest{
 			ProviderTypeName: "outscale",
 		}, &resp)
+		fmt.Println("resp.TypeName", resp.TypeName)
+
 		dsMap[resp.TypeName] = &tfbridge.DataSourceInfo{
 			Tok: outscaleDataSource(outscaleMod, "get"+resourceNameToPulumiIdentifier(resp.TypeName)),
 		}
@@ -340,7 +351,7 @@ func resourceNameToPulumiIdentifier(resourceName string) string {
 		panic(fmt.Sprintf("unexpected resource name %q", resourceName))
 	}
 	name := ""
-	for _, component := range components {
+	for _, component := range components[1:] {
 		if len(component) == 0 {
 			panic(fmt.Sprintf("unexpected empty component in resource name %q", resourceName))
 		}
