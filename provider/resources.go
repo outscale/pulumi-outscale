@@ -239,7 +239,6 @@ func Provider() tfbridge.ProviderInfo {
 		ds.Metadata(ctx, datasource.MetadataRequest{
 			ProviderTypeName: "outscale",
 		}, &resp)
-		fmt.Println("resp.TypeName", resp.TypeName)
 
 		dsMap[resp.TypeName] = &tfbridge.DataSourceInfo{
 			Tok: outscaleDataSource(outscaleMod, "get"+resourceNameToPulumiIdentifier(resp.TypeName)),
