@@ -271,6 +271,7 @@ func Provider() tfbridge.ProviderInfo {
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "",
 		Description:       "A Pulumi package for creating and managing outscale cloud resources.",
+		Version:           version.Version,
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
