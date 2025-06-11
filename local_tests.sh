@@ -71,10 +71,15 @@ PULUMICTL_VERSION=v0.0.32
 
 if [ "$#" -eq 0 ]; then
     cd $HOME/.pulumi/bin
-    wget https://github.com/pulumi/pulumictl/releases/download/$PULUMICTL_VERSION/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
+    if [ ! -f "pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz" ]; then
+        wget https://github.com/pulumi/pulumictl/releases/download/$PULUMICTL_VERSION/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
+    fi
     tar -xvf pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
     cd -
 fi
+
+# without that I have dependencies errors.
+rm -rvf ~/.nuget
 
 echo "BUILD provider and build_python"
 make provider build_python build_nodejs build_dotnet
@@ -92,16 +97,12 @@ set -e
 
 pulumi_setup_local
 
-pulumi_up_dowm "yaml"
+# pulumi_up_dowm "yaml"
 
 echo "../dotnet/"
 cd ../dotnet/
 
-
 cd user/
-
-# without that I have dependencies errors.
-rm -rvf ~/.nuget
 
 set +e
 echo "pulumi stack init staging"
@@ -124,7 +125,7 @@ cd ../python/
 
 cd user/
 
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 
 pip install setuptools
@@ -148,7 +149,7 @@ deactivate
 
 cd ../hello/
 
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 
 pip install setuptools

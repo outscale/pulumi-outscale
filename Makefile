@@ -83,7 +83,7 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
-	cat PublicIp.cs | sed 's|PublicIp { get; set; }|MyPublicIp { get; set; }|;s|("publicIp")|("myPublicIp")|' > PublicIp.cs && \
+	cat PublicIp.cs | sed 's|PublicIp { get; private set; }|MyPublicIp { get; private set; }|;s|("publicIp")|("myPublicIp")|' > PublicIp.cs && \
 	cat Tag.cs | sed 's|Tag { get; set; }|MyTag { get; set; }|;s|("tag")|("myTag")|' > Tag.cs && \
         dotnet build /p:Version=${DOTNET_VERSION}
 
