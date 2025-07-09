@@ -22,7 +22,7 @@ function pulumi_up_dowm() {
     trap "echo [$MSG_BASE $1 pulumi up FAIL]" ERR
     PATH=$PATH:$GOPATH/bin pulumi up --yes
     echo "[$MSG_BASE $1 pulumi up OK]"
-    trap "echo [$MSG_BASE python $1 down FAIL]" ERR
+    trap "echo [$MSG_BASE $1 pulumi down FAIL]" ERR
     PATH=$PATH:$GOPATH/bin pulumi down --yes
     echo "[$MSG_BASE $1 pulumi down OK]"
 
@@ -38,22 +38,30 @@ function pulumi_setup_local() {
     pulumi config set outscale:endpoints '[{"api": "127.0.0.1:3000"}]'
 }
 
+function pulumi_setup_state() {
+  pulumi stack rm -fy staging || true
+
+  set +e
+  echo "pulumi stack init staging"
+  pulumi stack init staging
+  pulumi stack select staging
+  set -e
+}
 
 if [ "$#" -eq 0 ]; then
+  if [ ! -d "osc-ricochet-2" ]; then
+    git clone https://github.com/outscale/osc-ricochet-2
+  fi
 
-    if [ ! -d "osc-ricochet-2" ]; then
-	git clone https://github.com/outscale/osc-ricochet-2
-    fi
+  cd osc-ricochet-2
+  pkill ricochet
 
-    cd osc-ricochet-2
-    pkill ricochet
+  cargo build --profile 'sdks'
+  ./mk_cert.sh
+  cargo run --profile 'sdks' -- ./ricochet-ssl.json &> /dev/null  &
+  cd ..
 
-    cargo build --profile 'sdks'
-    ./mk_cert.sh
-    cargo run --profile 'sdks' -- ./ricochet-ssl.json &> /dev/null  &
-    cd ..
-
-    sleep 5
+  sleep 5
 fi
 
 set -e
@@ -71,10 +79,15 @@ PULUMICTL_VERSION=v0.0.32
 
 if [ "$#" -eq 0 ]; then
     cd $HOME/.pulumi/bin
-    wget https://github.com/pulumi/pulumictl/releases/download/$PULUMICTL_VERSION/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
+    if [ ! -f "pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz" ]; then
+        wget https://github.com/pulumi/pulumictl/releases/download/$PULUMICTL_VERSION/pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
+    fi
     tar -xvf pulumictl-${PULUMICTL_VERSION}-linux-amd64.tar.gz
     cd -
 fi
+
+# without that I have dependencies errors.
+rm -rvf ~/.nuget
 
 echo "BUILD provider and build_python"
 make provider build_python build_nodejs build_dotnet
@@ -84,12 +97,8 @@ pulumi login --local
 
 echo "cd examples/yaml"
 cd examples/yaml
-set +e
-echo "pulumi stack init staging"
-pulumi stack init staging
-pulumi stack select staging
-set -e
 
+pulumi_setup_state
 pulumi_setup_local
 
 pulumi_up_dowm "yaml"
@@ -97,20 +106,11 @@ pulumi_up_dowm "yaml"
 echo "../dotnet/"
 cd ../dotnet/
 
-
 cd user/
-
-# without that I have dependencies errors.
-rm -rvf ~/.nuget
-
-set +e
-echo "pulumi stack init staging"
-pulumi stack init staging
-pulumi stack select staging
-set -e
 
 dotnet nuget add source $ROOT/sdk/dotnet/bin/Debug/
 
+pulumi_setup_state
 pulumi_setup_local
 
 pulumi_up_dowm "dotnet"
@@ -124,23 +124,17 @@ cd ../python/
 
 cd user/
 
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 
 pip install setuptools
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
-set +e
-echo "pulumi stack init staging"
-pulumi stack init staging
-pulumi stack select staging
-set -e
-
+pulumi_setup_state
 pulumi_setup_local
 
 pip freeze
-
 
 pulumi_up_dowm "python user"
 
@@ -148,36 +142,28 @@ deactivate
 
 cd ../hello/
 
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 
 pip install setuptools
 pip install pulumi_cloudinit
 pip install $GOPATH/sdk/python/
 
-set +e
-echo "pulumi stack init staging"
-pulumi stack init staging
-pulumi stack select staging
-set -e
-
+pulumi_setup_state
 pulumi_setup_local
 
 pip freeze
 
 pulumi_up_dowm "python hello"
 
+deactivate
+
 echo "../../ts/user/"
 cd ../../ts/user/
 
-set +e
-echo "pulumi stack init staging"
-pulumi stack init staging
-pulumi stack select staging
-set -e
-
 npm install $GOPATH/sdk/nodejs/bin
 
+pulumi_setup_state
 pulumi_setup_local
 
 pulumi_up_dowm "ty/js user"
@@ -185,12 +171,7 @@ pulumi_up_dowm "ty/js user"
 echo "../../go/vm/"
 cd ../../go/vm/
 
-set +e
-echo "pulumi stack init staging"
-pulumi stack init staging
-pulumi stack select staging
-set -e
-
+pulumi_setup_state
 pulumi_setup_local
 
 pulumi_up_dowm "go/vm"
