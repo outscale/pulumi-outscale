@@ -1,0 +1,36 @@
+name: "🧪 Local tests"
+
+on:
+    workflow_call:
+
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+    PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+    TF_APPEND_USER_AGENT: pulumi
+
+jobs:
+    test:
+        permissions:
+            contents: read
+        runs-on: ubuntu-latest
+        steps:
+            - name: 📦 Checkout repo
+              uses: actions/checkout@v4
+              with:
+                  ref: ${{ env.PR_COMMIT_SHA }}
+                  persist-credentials: false
+            - name: 🔧 Setup tools
+              uses: ./.github/actions/setup-tools
+              with:
+                  tools: pulumictl, pulumicli, ${{ matrix.language }}
+            - name: 🧪 Run tests
+              run: make test_${{ matrix.language }}
+        strategy:
+            fail-fast: false
+            matrix:
+                language:
+                    - dotnet
+                    - go
+                    - nodejs
+                    - python

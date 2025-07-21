@@ -1,0 +1,92 @@
+name: 🚀 Publish
+
+on:
+    workflow_call:
+        inputs:
+            version:
+                required: true
+                type: string
+            isPrerelease:
+                required: true
+                type: boolean
+            skipGoSdk:
+                default: false
+                type: boolean
+                description: Skip publishing & verifying the Go SDK
+            skipJavaSdk:
+                default: false
+                type: boolean
+                description: Skip publishing the Java SDK
+
+env:
+    IS_PRERELEASE: ${{ inputs.isPrerelease }}
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+    PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+    TF_APPEND_USER_AGENT: pulumi
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - name: ✅ Validate prerelease
+              if: inputs.isPrerelease == false && (contains(inputs.version, '-') || contains(inputs.version, '+'))
+              run: echo "Can't publish a prerelease version as a stable release. This is likely a bug in the calling workflow." && exit 1
+            - name: ✅ Validate skipGoSdk
+              if: inputs.skipGoSdk && inputs.isPrerelease == false
+              run: echo "Can't skip Go SDK for stable releases. This is likely a bug in the calling workflow." && exit 1
+            - name: 📦 Checkout repo
+              uses: actions/checkout@v4
+              with:
+                  persist-credentials: false
+            - name: 🔧 Setup tools
+              uses: ./.github/actions/setup-tools
+              with:
+                  tools: pulumictl, pulumicli, go, schema-tools
+                  cache-go: false
+            - name: 📁 Create dist directory
+              run: mkdir -p dist
+            - name: 📦 Download provider assets
+              uses: actions/download-artifact@v4
+              with:
+                  pattern: pulumi-resource-outscale-v${{ inputs.version }}-*
+                  path: dist
+                  # Don't create a directory for each artifact
+                  merge-multiple: true
+            - name: 📦 Download schema
+              uses: actions/download-artifact@v4
+              with:
+                  # Use a pattern to avoid failing if the artifact doesn't exist
+                  pattern: schema-embed.*
+                  # Avoid creating directories for each artifact
+                  merge-multiple: true
+                  path: dist
+            - name: 🔧 Calculate checksums
+              working-directory: dist
+              run: shasum ./*.tar.gz > "pulumi-outscale_${{ inputs.version }}_checksums.txt"
+            - name: 📊 Get schema change summary
+              id: schema-summary
+              shell: bash
+              run: |
+                  # Get latest stable release. Return only first column from result (tag).
+                  LAST_VERSION=$(gh release view --repo pulumi/pulumi-outscale --json tagName -q .tagName || echo "No stable release" )
+                  {
+                    echo 'summary<<EOF'
+                    if [[ "$LAST_VERSION" != "No stable release" ]]; then
+                      schema-tools compare --provider="outscale" --old-commit="$LAST_VERSION" --repository="github://api.github.com/pulumi" --new-commit="--local-path=provider/cmd/pulumi-resource-outscale/schema.json"
+                    fi
+                    echo 'EOF'
+                  } >> "$GITHUB_OUTPUT"
+            - name: 🚀 Create GH release
+              uses: softprops/action-gh-release@v2
+              if: inputs.isPrerelease == false
+              with:
+                  tag_name: v${{ inputs.version }}
+                  prerelease: ${{ inputs.isPrerelease }}
+                  # We keep pre-releases as drafts so they're not visible until we manually publish them.
+                  draft: ${{ inputs.isPrerelease }}
+                  body: ${{ steps.schema-summary.outputs.summary }}
+                  generate_release_notes: true
+                  files: dist/*
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

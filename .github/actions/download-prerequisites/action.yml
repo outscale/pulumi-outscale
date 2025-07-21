@@ -1,0 +1,28 @@
+name: 📦 Download the code generator binary
+description: Downloads the code generator binary to `bin/`.
+
+runs:
+    using: "composite"
+    steps:
+        - name: 📦 Download the prerequisites bin
+          uses: actions/download-artifact@v4
+          with:
+              name: prerequisites-bin
+              path: bin
+
+        - name: 🔧 Restore executable permissions
+          shell: bash
+          run: chmod +x $(< bin/executables.txt)
+
+        - name: 🔥 Remove executables list
+          shell: bash
+          run: rm bin/executables.txt
+
+        - name: 📦 Download schema-embed.json
+          uses: actions/download-artifact@v4
+          with:
+              # Use a pattern to avoid failing if the artifact doesn't exist
+              pattern: schema-embed.*
+              # Avoid creating directories for each artifact
+              merge-multiple: true
+              path: provider/cmd/pulumi-resource-outscale

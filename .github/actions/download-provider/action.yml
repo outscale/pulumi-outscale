@@ -1,0 +1,22 @@
+name: 📦 Download the provider binary
+description: Downloads the provider binary to `bin/`.
+
+runs:
+    using: "composite"
+    steps:
+        - name: 📦 Download pulumi-resource-outscale
+          uses: actions/download-artifact@v4
+          with:
+              pattern: pulumi-resource-outscale-*-linux-amd64.tar.gz
+              path: ${{ github.workspace }}/bin
+              merge-multiple: true
+
+        - name: 📦 Untar pulumi-resource-outscale
+          shell: bash
+          run: |
+              tar -zxf ${{ github.workspace }}/bin/*amd64.tar.gz -C ${{ github.workspace}}/bin
+
+        - name: 🔧 Mark pulumi-resource-outscale as executable
+          shell: bash
+          run: |
+              find ${{ github.workspace }} -name "pulumi-*-outscale" -print -exec chmod +x {} \;
