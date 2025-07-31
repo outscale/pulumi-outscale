@@ -68,7 +68,7 @@ jobs:
               id: upgrade_provider
               if: steps.target_version.outputs.version != ''
               continue-on-error: true
-              uses: pulumi/pulumi-upgrade-provider-action@v0
+              uses: pulumi/pulumi-upgrade-provider-action@v0.0.17
               with:
                   kind: provider
                   email: opensource+bot@outscale.com
