@@ -1,0 +1,5 @@
+---
+upstream-provider-name: terraform-provider-outscale
+upstream-provider-org: outscale
+remove-plugins: true
+pulumi-infer-version: true
