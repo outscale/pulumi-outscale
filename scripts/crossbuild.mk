@@ -69,7 +69,7 @@ bin/$(PROVIDER)-v$(PROVIDER_VERSION)-%.tar.gz:
 	@mkdir -p dist
 	@# $< is the last dependency (the binary path from above) e.g. bin/linux-amd64/pulumi-resource-outscale
 	@# $@ is the current target e.g. bin/pulumi-resource-outscale-v1.2.3-linux-amd64.tar.gz
-	tar --gzip -cf $@ README.md LICENSE -C $$(dirname $<) .
+	tar --gzip -cf $@ README.md LICENSES -C $$(dirname $<) .
 
 provider_dist-linux-amd64: bin/$(PROVIDER)-v$(PROVIDER_VERSION)-linux-amd64.tar.gz
 provider_dist-linux-arm64: bin/$(PROVIDER)-v$(PROVIDER_VERSION)-linux-arm64.tar.gz

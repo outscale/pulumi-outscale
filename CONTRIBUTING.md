@@ -1,36 +1,56 @@
-# Contributing to the Pulumi ecosystem
+# Contributing Guidelines
 
-Do you want to contribute to Pulumi? Awesome! We are so happy to have you.
-We have a few tips and housekeeping items to help you get up and running.
+First off, thank you for taking the time to contribute! 🙌  
+Your help is appreciated and helps make this project better for everyone.
 
-## Code of Conduct
+---
 
-Please make sure to read and observe our [Code of Conduct](./CODE-OF-CONDUCT.md)
+## How to Contribute
 
-## Community Expectations
+### 🐛 Reporting Bugs
+If you find a bug, please open an issue and include:
+- A clear and descriptive title
+- Steps to reproduce the issue
+- Expected and actual behavior
+- Any relevant logs, screenshots, or environment information
 
-Please read about our [contribution guidelines here.](https://github.com/pulumi/pulumi/blob/master/CONTRIBUTING.md#communications)
+### ✨ Suggesting Enhancements
+Have an idea for a new feature or improvement?
+- Open an issue and describe your suggestion
+- Explain the use case and potential benefits
+- Optional: propose an implementation strategy
 
-## Setting up your development environment
+### 🛠️ Submitting Code Changes
+To submit a patch or enhancement:
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature-name`)
+3. Make your changes
+4. Test your changes (if applicable)
+5. Open a pull request with a clear description of your changes
 
-### Pulumi prerequisites
+### ✅ Code of Conduct
+By participating, you agree to uphold our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-Please refer to the [main Pulumi repo](https://github.com/pulumi/pulumi/)'s [CONTRIBUTING.md file](
-https://github.com/pulumi/pulumi/blob/master/CONTRIBUTING.md#developing) for details on how to get set up with Pulumi.
+---
 
-## Committing Generated Code
+## Guidelines
 
-You must generate and check in the SDKs on each pull request containing a code change, e.g. adding a new resource to `resources.go`.
+- Keep pull requests focused and atomic (one feature or fix per PR).
+- Follow any existing code style or formatting conventions.
+- Document your code where necessary.
+- Include tests when adding new logic (if applicable).
+- Use clear, meaningful commit messages (optionally following [Conventional Commits](https://www.conventionalcommits.org/) and using [Gitmoji](https://gitmoji.dev/) for added clarity and consistency).
 
-1. Run `make build_sdks` from the root of this repository
-1. Open a pull request containing all changes
-1. *Note:* If a large number of seemingly-unrelated diffs are produced by `make build_sdks` (for example, lots of changes to comments unrelated to the change you are making), ensure that the latest dependencies for the provider are installed by running `go mod tidy` in the `provider/` directory of this repository.
+## 📝 Commit Template
 
-## Running Integration Tests
+To help you follow the Gitmoji and Conventional Commit format, you can enable the local commit template:
 
-The examples and integration tests in this repository will create and destroy real
-cloud resources while running. Before running these tests, make sure that you have
-configured access to your cloud provider with Pulumi.
+```bash
+git config commit.template .github/commit-template.txt
+```
 
-_TODO: Add any steps you need to take to run integration tests here_
+---
 
+## Questions?
+
+If you have any questions or need help, feel free to [open an issue](../../issues) or reach out to the maintainers on [Discord](https://discord.gg/HUVtY5gT6s).
