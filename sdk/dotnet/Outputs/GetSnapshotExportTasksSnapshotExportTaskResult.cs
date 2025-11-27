@@ -30,7 +30,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// The state of the snapshot export task (`Pending` \| `Active` \| `Completed` \| `Failed`).
+        /// The state of the snapshot export task (`Pending` \| `Active` \| `Completed` \| `Cancelled` \| `Failed`).
         /// </summary>
         public readonly string State;
         /// <summary>

@@ -23,6 +23,7 @@ class ImageArgs:
     def __init__(__self__, *,
                  architecture: Optional[pulumi.Input[_builtins.str]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]] = None,
+                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_location: Optional[pulumi.Input[_builtins.str]] = None,
                  image_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,6 +37,7 @@ class ImageArgs:
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
         :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         :param pulumi.Input[_builtins.str] image_name: A unique name for the new OMI.<br />
@@ -51,6 +53,8 @@ class ImageArgs:
             pulumi.set(__self__, "architecture", architecture)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if boot_modes is not None:
+            pulumi.set(__self__, "boot_modes", boot_modes)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if file_location is not None:
@@ -93,6 +97,18 @@ class ImageArgs:
     @block_device_mappings.setter
     def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootModes")
+    def boot_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+        """
+        return pulumi.get(self, "boot_modes")
+
+    @boot_modes.setter
+    def boot_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "boot_modes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -211,6 +227,7 @@ class _ImageState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  architecture: Optional[pulumi.Input[_builtins.str]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]] = None,
+                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creation_date: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -236,6 +253,7 @@ class _ImageState:
         :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the OMI.
         :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the OMI was created.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
         :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
@@ -263,6 +281,8 @@ class _ImageState:
             pulumi.set(__self__, "architecture", architecture)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if boot_modes is not None:
+            pulumi.set(__self__, "boot_modes", boot_modes)
         if creation_date is not None:
             pulumi.set(__self__, "creation_date", creation_date)
         if description is not None:
@@ -349,6 +369,18 @@ class _ImageState:
     @block_device_mappings.setter
     def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootModes")
+    def boot_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+        """
+        return pulumi.get(self, "boot_modes")
+
+    @boot_modes.setter
+    def boot_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "boot_modes", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
@@ -582,6 +614,7 @@ class Image(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[_builtins.str]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]]] = None,
+                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_location: Optional[pulumi.Input[_builtins.str]] = None,
                  image_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -674,6 +707,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
         :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         :param pulumi.Input[_builtins.str] image_name: A unique name for the new OMI.<br />
@@ -786,6 +820,7 @@ class Image(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input[_builtins.str]] = None,
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]]] = None,
+                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  file_location: Optional[pulumi.Input[_builtins.str]] = None,
                  image_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -806,6 +841,7 @@ class Image(pulumi.CustomResource):
 
             __props__.__dict__["architecture"] = architecture
             __props__.__dict__["block_device_mappings"] = block_device_mappings
+            __props__.__dict__["boot_modes"] = boot_modes
             __props__.__dict__["description"] = description
             __props__.__dict__["file_location"] = file_location
             __props__.__dict__["image_name"] = image_name
@@ -841,6 +877,7 @@ class Image(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             architecture: Optional[pulumi.Input[_builtins.str]] = None,
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]]] = None,
+            boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             creation_date: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             file_location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -871,6 +908,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the OMI.
         :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the OMI was created.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
         :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
@@ -898,6 +936,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["architecture"] = architecture
         __props__.__dict__["block_device_mappings"] = block_device_mappings
+        __props__.__dict__["boot_modes"] = boot_modes
         __props__.__dict__["creation_date"] = creation_date
         __props__.__dict__["description"] = description
         __props__.__dict__["file_location"] = file_location
@@ -950,6 +989,14 @@ class Image(pulumi.CustomResource):
         **(required) When registering from a snapshot:** One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="bootModes")
+    def boot_modes(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+        """
+        return pulumi.get(self, "boot_modes")
 
     @_builtins.property
     @pulumi.getter(name="creationDate")

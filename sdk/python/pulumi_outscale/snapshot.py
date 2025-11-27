@@ -170,7 +170,7 @@ class _SnapshotState:
         :param pulumi.Input[_builtins.int] snapshot_size: **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         :param pulumi.Input[_builtins.str] source_region_name: **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         :param pulumi.Input[_builtins.str] source_snapshot_id: **(when copying a snapshot)** The ID of the snapshot you want to copy.
-        :param pulumi.Input[_builtins.str] state: The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`)).
+        :param pulumi.Input[_builtins.str] state: The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         :param pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] volume_id: **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
         :param pulumi.Input[_builtins.int] volume_size: The size of the volume used to create the snapshot, in gibibytes (GiB).
@@ -353,7 +353,7 @@ class _SnapshotState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`)).
+        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         """
         return pulumi.get(self, "state")
 
@@ -619,7 +619,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] snapshot_size: **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         :param pulumi.Input[_builtins.str] source_region_name: **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         :param pulumi.Input[_builtins.str] source_snapshot_id: **(when copying a snapshot)** The ID of the snapshot you want to copy.
-        :param pulumi.Input[_builtins.str] state: The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`)).
+        :param pulumi.Input[_builtins.str] state: The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] volume_id: **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
         :param pulumi.Input[_builtins.int] volume_size: The size of the volume used to create the snapshot, in gibibytes (GiB).
@@ -743,7 +743,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`)).
+        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         """
         return pulumi.get(self, "state")
 

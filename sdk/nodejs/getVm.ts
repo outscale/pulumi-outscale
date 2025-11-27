@@ -48,6 +48,9 @@ export interface GetVmArgs {
  * A collection of values returned by getVm.
  */
 export interface GetVmResult {
+    /**
+     * The action to perform on the next boot of the VM.
+     */
     readonly actionsOnNextBoots: outputs.GetVmActionsOnNextBoot[];
     /**
      * The architecture of the VM (`i386` \| `x8664`).
@@ -57,6 +60,9 @@ export interface GetVmResult {
      * The block device mapping of the VM.
      */
     readonly blockDeviceMappingsCreateds: outputs.GetVmBlockDeviceMappingsCreated[];
+    /**
+     * The boot mode of the VM. Possible values: `uefi` | `legacy`.
+     */
     readonly bootMode: string;
     readonly bsuOptimized: boolean;
     /**

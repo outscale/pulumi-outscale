@@ -82,7 +82,7 @@ export interface GetVolumeResult {
      */
     readonly snapshotId: string;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     readonly state: string;
     /**

@@ -66,13 +66,15 @@ type LookupVmArgs struct {
 
 // A collection of values returned by getVm.
 type LookupVmResult struct {
+	// The action to perform on the next boot of the VM.
 	ActionsOnNextBoots []GetVmActionsOnNextBoot `pulumi:"actionsOnNextBoots"`
 	// The architecture of the VM (`i386` \| `x8664`).
 	Architecture string `pulumi:"architecture"`
 	// The block device mapping of the VM.
 	BlockDeviceMappingsCreateds []GetVmBlockDeviceMappingsCreated `pulumi:"blockDeviceMappingsCreateds"`
-	BootMode                    string                            `pulumi:"bootMode"`
-	BsuOptimized                bool                              `pulumi:"bsuOptimized"`
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
+	BootMode     string `pulumi:"bootMode"`
+	BsuOptimized bool   `pulumi:"bsuOptimized"`
 	// The idempotency token provided when launching the VM.
 	ClientToken string `pulumi:"clientToken"`
 	// The date and time (UTC) at which the VM was created.
@@ -180,6 +182,7 @@ func (o LookupVmResultOutput) ToLookupVmResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The action to perform on the next boot of the VM.
 func (o LookupVmResultOutput) ActionsOnNextBoots() GetVmActionsOnNextBootArrayOutput {
 	return o.ApplyT(func(v LookupVmResult) []GetVmActionsOnNextBoot { return v.ActionsOnNextBoots }).(GetVmActionsOnNextBootArrayOutput)
 }
@@ -194,6 +197,7 @@ func (o LookupVmResultOutput) BlockDeviceMappingsCreateds() GetVmBlockDeviceMapp
 	return o.ApplyT(func(v LookupVmResult) []GetVmBlockDeviceMappingsCreated { return v.BlockDeviceMappingsCreateds }).(GetVmBlockDeviceMappingsCreatedArrayOutput)
 }
 
+// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 func (o LookupVmResultOutput) BootMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmResult) string { return v.BootMode }).(pulumi.StringOutput)
 }

@@ -74,7 +74,7 @@ export interface GetSnapshotExportTaskResult {
      */
     readonly snapshotId: string;
     /**
-     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
      */
     readonly state: string;
     /**

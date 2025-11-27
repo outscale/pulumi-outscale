@@ -80,7 +80,7 @@ type LookupSnapshotExportTaskResult struct {
 	RequestId string `pulumi:"requestId"`
 	// The ID of the snapshot to be exported.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 	State string `pulumi:"state"`
 	// One or more tags associated with the snapshot export task.
 	Tags []GetSnapshotExportTaskTag `pulumi:"tags"`
@@ -160,7 +160,7 @@ func (o LookupSnapshotExportTaskResultOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotExportTaskResult) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 func (o LookupSnapshotExportTaskResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotExportTaskResult) string { return v.State }).(pulumi.StringOutput)
 }

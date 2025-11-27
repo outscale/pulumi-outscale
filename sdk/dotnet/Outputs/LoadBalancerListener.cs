@@ -34,7 +34,8 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PolicyNames;
         /// <summary>
-        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).&lt;br/&gt;
+        /// This parameter is required for `HTTPS` and `SSL` protocols.
         /// </summary>
         public readonly string? ServerCertificateId;
 

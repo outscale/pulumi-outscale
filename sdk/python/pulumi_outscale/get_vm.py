@@ -165,6 +165,9 @@ class GetVmResult:
     @_builtins.property
     @pulumi.getter(name="actionsOnNextBoots")
     def actions_on_next_boots(self) -> Sequence['outputs.GetVmActionsOnNextBootResult']:
+        """
+        The action to perform on the next boot of the VM.
+        """
         return pulumi.get(self, "actions_on_next_boots")
 
     @_builtins.property
@@ -186,6 +189,9 @@ class GetVmResult:
     @_builtins.property
     @pulumi.getter(name="bootMode")
     def boot_mode(self) -> _builtins.str:
+        """
+        The boot mode of the VM. Possible values: `uefi` | `legacy`.
+        """
         return pulumi.get(self, "boot_mode")
 
     @_builtins.property

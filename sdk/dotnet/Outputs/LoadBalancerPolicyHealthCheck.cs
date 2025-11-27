@@ -22,7 +22,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly int? HealthyThreshold;
         /// <summary>
-        /// If you use the HTTP or HTTPS protocols, the request URL path.
+        /// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         /// </summary>
         public readonly string? Path;
         /// <summary>

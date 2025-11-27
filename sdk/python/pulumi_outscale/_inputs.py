@@ -2196,7 +2196,7 @@ if not MYPY:
         """
         path: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -2224,7 +2224,7 @@ class LoadBalancerAttributesHealthCheckArgs:
         :param pulumi.Input[_builtins.str] protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param pulumi.Input[_builtins.int] check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param pulumi.Input[_builtins.int] healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param pulumi.Input[_builtins.str] path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param pulumi.Input[_builtins.str] path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param pulumi.Input[_builtins.int] timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
         :param pulumi.Input[_builtins.int] unhealthy_threshold: The number of consecutive failed requests before considering the VM as unhealthy (between `2` and `10` both included).
         """
@@ -2293,7 +2293,7 @@ class LoadBalancerAttributesHealthCheckArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -2606,7 +2606,7 @@ if not MYPY:
         """
         path: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         port: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -2640,7 +2640,7 @@ class LoadBalancerHealthCheckArgs:
         """
         :param pulumi.Input[_builtins.int] check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param pulumi.Input[_builtins.int] healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param pulumi.Input[_builtins.str] path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param pulumi.Input[_builtins.str] path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param pulumi.Input[_builtins.int] port: The port number (between `1` and `65535`, both included).
         :param pulumi.Input[_builtins.str] protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param pulumi.Input[_builtins.int] timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
@@ -2689,7 +2689,7 @@ class LoadBalancerHealthCheckArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -2770,7 +2770,8 @@ if not MYPY:
         """
         server_certificate_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+        This parameter is required for `HTTPS` and `SSL` protocols.
         """
 elif False:
     LoadBalancerListenerArgsDict: TypeAlias = Mapping[str, Any]
@@ -2790,7 +2791,8 @@ class LoadBalancerListenerArgs:
         :param pulumi.Input[_builtins.int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included).
         :param pulumi.Input[_builtins.str] load_balancer_protocol: The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policy_names: The names of the policies. If there are no policies enabled, the list is empty.
-        :param pulumi.Input[_builtins.str] server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        :param pulumi.Input[_builtins.str] server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+               This parameter is required for `HTTPS` and `SSL` protocols.
         """
         pulumi.set(__self__, "backend_port", backend_port)
         pulumi.set(__self__, "backend_protocol", backend_protocol)
@@ -2865,7 +2867,8 @@ class LoadBalancerListenerArgs:
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+        This parameter is required for `HTTPS` and `SSL` protocols.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -3262,7 +3265,7 @@ if not MYPY:
         """
         path: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         port: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -3296,7 +3299,7 @@ class LoadBalancerPolicyHealthCheckArgs:
         """
         :param pulumi.Input[_builtins.int] check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param pulumi.Input[_builtins.int] healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param pulumi.Input[_builtins.str] path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param pulumi.Input[_builtins.str] path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param pulumi.Input[_builtins.int] port: The port number (between `1` and `65535`, both included).
         :param pulumi.Input[_builtins.str] protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param pulumi.Input[_builtins.int] timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
@@ -3345,7 +3348,7 @@ class LoadBalancerPolicyHealthCheckArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -8155,7 +8158,7 @@ if not MYPY:
     class VmActionsOnNextBootArgsDict(TypedDict):
         secure_boot: NotRequired[pulumi.Input[_builtins.str]]
         """
-        One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         """
 elif False:
     VmActionsOnNextBootArgsDict: TypeAlias = Mapping[str, Any]
@@ -8165,7 +8168,7 @@ class VmActionsOnNextBootArgs:
     def __init__(__self__, *,
                  secure_boot: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] secure_boot: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        :param pulumi.Input[_builtins.str] secure_boot: One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         """
         if secure_boot is not None:
             pulumi.set(__self__, "secure_boot", secure_boot)
@@ -8174,7 +8177,7 @@ class VmActionsOnNextBootArgs:
     @pulumi.getter(name="secureBoot")
     def secure_boot(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         """
         return pulumi.get(self, "secure_boot")
 
@@ -10324,7 +10327,7 @@ if not MYPY:
         """
         state: pulumi.Input[_builtins.str]
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         vm_id: pulumi.Input[_builtins.str]
         """
@@ -10348,7 +10351,7 @@ class VolumeLinkedVolumeArgs:
         """
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
         :param pulumi.Input[_builtins.str] device_name: The name of the device.
-        :param pulumi.Input[_builtins.str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param pulumi.Input[_builtins.str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the volume.
         """
@@ -10386,7 +10389,7 @@ class VolumeLinkedVolumeArgs:
     @pulumi.getter
     def state(self) -> pulumi.Input[_builtins.str]:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 
@@ -11831,7 +11834,7 @@ if not MYPY:
         """
         path: _builtins.str
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         port: _builtins.int
         """
@@ -11865,7 +11868,7 @@ class GetLoadBalancerHealthCheckArgs:
         """
         :param _builtins.int check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param _builtins.int healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param _builtins.int port: The port number (between `1` and `65535`, both included).
         :param _builtins.str protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param _builtins.int timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
@@ -11907,7 +11910,7 @@ class GetLoadBalancerHealthCheckArgs:
     @pulumi.getter
     def path(self) -> _builtins.str:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 

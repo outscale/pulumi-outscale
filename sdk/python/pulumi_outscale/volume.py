@@ -174,7 +174,7 @@ class _VolumeState:
         :param pulumi.Input[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]] linked_volumes: Information about your volume attachment.
         :param pulumi.Input[_builtins.int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot from which you want to create the volume.
-        :param pulumi.Input[_builtins.str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param pulumi.Input[_builtins.str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the volume.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] termination_snapshot_name: Whether you want to create a snapshot before the volume deletion.
@@ -282,7 +282,7 @@ class _VolumeState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 
@@ -561,7 +561,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeLinkedVolumeArgs', 'VolumeLinkedVolumeArgsDict']]]] linked_volumes: Information about your volume attachment.
         :param pulumi.Input[_builtins.int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot from which you want to create the volume.
-        :param pulumi.Input[_builtins.str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param pulumi.Input[_builtins.str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the volume.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] termination_snapshot_name: Whether you want to create a snapshot before the volume deletion.
@@ -637,7 +637,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 

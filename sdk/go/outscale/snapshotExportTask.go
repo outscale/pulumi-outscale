@@ -110,7 +110,7 @@ type SnapshotExportTask struct {
 	RequestId pulumi.StringOutput `pulumi:"requestId"`
 	// The ID of the snapshot to export.
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 	State pulumi.StringOutput `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags SnapshotExportTaskTagArrayOutput `pulumi:"tags"`
@@ -163,7 +163,7 @@ type snapshotExportTaskState struct {
 	RequestId *string `pulumi:"requestId"`
 	// The ID of the snapshot to export.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 	State *string `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []SnapshotExportTaskTag `pulumi:"tags"`
@@ -181,7 +181,7 @@ type SnapshotExportTaskState struct {
 	RequestId pulumi.StringPtrInput
 	// The ID of the snapshot to export.
 	SnapshotId pulumi.StringPtrInput
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 	State pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags SnapshotExportTaskTagArrayInput
@@ -323,7 +323,7 @@ func (o SnapshotExportTaskOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotExportTask) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 func (o SnapshotExportTaskOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotExportTask) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

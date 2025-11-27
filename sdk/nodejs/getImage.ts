@@ -77,6 +77,10 @@ export interface GetImageResult {
      */
     readonly blockDeviceMappings: outputs.GetImageBlockDeviceMapping[];
     /**
+     * The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+     */
+    readonly bootModes: string[];
+    /**
      * The date and time (UTC) at which the OMI was created.
      */
     readonly creationDate: string;
@@ -124,6 +128,10 @@ export interface GetImageResult {
      * The type of root device used by the OMI (always `bsu`).
      */
     readonly rootDeviceType: string;
+    /**
+     * Whether secure boot is activated or not.
+     */
+    readonly secureBoot: boolean;
     /**
      * The state of the OMI (`pending` \| `available` \| `failed`).
      */

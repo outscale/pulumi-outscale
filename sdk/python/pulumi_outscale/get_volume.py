@@ -131,7 +131,7 @@ class GetVolumeResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 

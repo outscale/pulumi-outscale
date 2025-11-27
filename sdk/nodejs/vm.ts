@@ -63,7 +63,7 @@ export class Vm extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly blockDeviceMappingsCreateds: pulumi.Output<outputs.VmBlockDeviceMappingsCreated[]>;
     /**
-     * Information about the boot mode of the VM (`legacy` | `uefi`).
+     * The boot mode of the VM. Possible values: `uefi` | `legacy`.
      */
     declare public readonly bootMode: pulumi.Output<string>;
     declare public readonly bsuOptimized: pulumi.Output<boolean>;
@@ -365,7 +365,7 @@ export interface VmState {
      */
     blockDeviceMappingsCreateds?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingsCreated>[]>;
     /**
-     * Information about the boot mode of the VM (`legacy` | `uefi`).
+     * The boot mode of the VM. Possible values: `uefi` | `legacy`.
      */
     bootMode?: pulumi.Input<string>;
     bsuOptimized?: pulumi.Input<boolean>;
@@ -535,7 +535,7 @@ export interface VmArgs {
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMapping>[]>;
     /**
-     * Information about the boot mode of the VM (`legacy` | `uefi`).
+     * The boot mode of the VM. Possible values: `uefi` | `legacy`.
      */
     bootMode?: pulumi.Input<string>;
     bsuOptimized?: pulumi.Input<boolean>;

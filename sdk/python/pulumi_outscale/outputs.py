@@ -1757,7 +1757,7 @@ class LoadBalancerAttributesHealthCheck(dict):
         :param _builtins.str protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param _builtins.int check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param _builtins.int healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param _builtins.int timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
         :param _builtins.int unhealthy_threshold: The number of consecutive failed requests before considering the VM as unhealthy (between `2` and `10` both included).
         """
@@ -1810,7 +1810,7 @@ class LoadBalancerAttributesHealthCheck(dict):
     @pulumi.getter
     def path(self) -> Optional[_builtins.str]:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -2088,7 +2088,7 @@ class LoadBalancerHealthCheck(dict):
         """
         :param _builtins.int check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param _builtins.int healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param _builtins.int port: The port number (between `1` and `65535`, both included).
         :param _builtins.str protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param _builtins.int timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
@@ -2129,7 +2129,7 @@ class LoadBalancerHealthCheck(dict):
     @pulumi.getter
     def path(self) -> Optional[_builtins.str]:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -2208,7 +2208,8 @@ class LoadBalancerListener(dict):
         :param _builtins.int load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included).
         :param _builtins.str load_balancer_protocol: The routing protocol (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param Sequence[_builtins.str] policy_names: The names of the policies. If there are no policies enabled, the list is empty.
-        :param _builtins.str server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        :param _builtins.str server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+               This parameter is required for `HTTPS` and `SSL` protocols.
         """
         pulumi.set(__self__, "backend_port", backend_port)
         pulumi.set(__self__, "backend_protocol", backend_protocol)
@@ -2263,7 +2264,8 @@ class LoadBalancerListener(dict):
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[_builtins.str]:
         """
-        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+        The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+        This parameter is required for `HTTPS` and `SSL` protocols.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -2628,7 +2630,7 @@ class LoadBalancerPolicyHealthCheck(dict):
         """
         :param _builtins.int check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param _builtins.int healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param _builtins.int port: The port number (between `1` and `65535`, both included).
         :param _builtins.str protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param _builtins.int timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
@@ -2669,7 +2671,7 @@ class LoadBalancerPolicyHealthCheck(dict):
     @pulumi.getter
     def path(self) -> Optional[_builtins.str]:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -6261,7 +6263,7 @@ class VmActionsOnNextBoot(dict):
     def __init__(__self__, *,
                  secure_boot: Optional[_builtins.str] = None):
         """
-        :param _builtins.str secure_boot: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        :param _builtins.str secure_boot: One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         """
         if secure_boot is not None:
             pulumi.set(__self__, "secure_boot", secure_boot)
@@ -6270,7 +6272,7 @@ class VmActionsOnNextBoot(dict):
     @pulumi.getter(name="secureBoot")
     def secure_boot(self) -> Optional[_builtins.str]:
         """
-        One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         """
         return pulumi.get(self, "secure_boot")
 
@@ -7983,7 +7985,7 @@ class VolumeLinkedVolume(dict):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
         :param _builtins.str device_name: The name of the device.
-        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param _builtins.str vm_id: The ID of the VM.
         :param _builtins.str volume_id: The ID of the volume.
         """
@@ -8013,7 +8015,7 @@ class VolumeLinkedVolume(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 
@@ -9109,9 +9111,9 @@ class GetEntitiesLinkedToPolicyPolicyEntityResult(dict):
                  groups: Sequence['outputs.GetEntitiesLinkedToPolicyPolicyEntityGroupResult'],
                  users: Sequence['outputs.GetEntitiesLinkedToPolicyPolicyEntityUserResult']):
         """
-        :param Sequence['GetEntitiesLinkedToPolicyPolicyEntityAccountArgs'] accounts: TODO_ARRAY
-        :param Sequence['GetEntitiesLinkedToPolicyPolicyEntityGroupArgs'] groups: TODO_ARRAY
-        :param Sequence['GetEntitiesLinkedToPolicyPolicyEntityUserArgs'] users: TODO_ARRAY
+        :param Sequence['GetEntitiesLinkedToPolicyPolicyEntityAccountArgs'] accounts: The accounts linked to the specified policy.
+        :param Sequence['GetEntitiesLinkedToPolicyPolicyEntityGroupArgs'] groups: The groups linked to the specified policy.
+        :param Sequence['GetEntitiesLinkedToPolicyPolicyEntityUserArgs'] users: The users linked to the specified policy.
         """
         pulumi.set(__self__, "accounts", accounts)
         pulumi.set(__self__, "groups", groups)
@@ -9121,7 +9123,7 @@ class GetEntitiesLinkedToPolicyPolicyEntityResult(dict):
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetEntitiesLinkedToPolicyPolicyEntityAccountResult']:
         """
-        TODO_ARRAY
+        The accounts linked to the specified policy.
         """
         return pulumi.get(self, "accounts")
 
@@ -9129,7 +9131,7 @@ class GetEntitiesLinkedToPolicyPolicyEntityResult(dict):
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetEntitiesLinkedToPolicyPolicyEntityGroupResult']:
         """
-        TODO_ARRAY
+        The groups linked to the specified policy.
         """
         return pulumi.get(self, "groups")
 
@@ -9137,7 +9139,7 @@ class GetEntitiesLinkedToPolicyPolicyEntityResult(dict):
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetEntitiesLinkedToPolicyPolicyEntityUserResult']:
         """
-        TODO_ARRAY
+        The users linked to the specified policy.
         """
         return pulumi.get(self, "users")
 
@@ -9991,6 +9993,7 @@ class GetImagesImageResult(dict):
                  account_id: _builtins.str,
                  architecture: _builtins.str,
                  block_device_mappings: Sequence['outputs.GetImagesImageBlockDeviceMappingResult'],
+                 boot_modes: Sequence[_builtins.str],
                  creation_date: _builtins.str,
                  description: _builtins.str,
                  file_location: _builtins.str,
@@ -10001,6 +10004,7 @@ class GetImagesImageResult(dict):
                  product_codes: Sequence[_builtins.str],
                  root_device_name: _builtins.str,
                  root_device_type: _builtins.str,
+                 secure_boot: _builtins.bool,
                  state: _builtins.str,
                  state_comments: Sequence['outputs.GetImagesImageStateCommentResult'],
                  tags: Sequence['outputs.GetImagesImageTagResult']):
@@ -10009,6 +10013,7 @@ class GetImagesImageResult(dict):
         :param _builtins.str account_id: The account ID of the owner of the OMI.
         :param _builtins.str architecture: The architecture of the OMI.
         :param Sequence['GetImagesImageBlockDeviceMappingArgs'] block_device_mappings: One or more block device mappings.
+        :param Sequence[_builtins.str] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param _builtins.str creation_date: The date and time (UTC) at which the OMI was created.
         :param _builtins.str description: The description of the OMI.
         :param _builtins.str file_location: The location from which the OMI files were created.
@@ -10019,6 +10024,7 @@ class GetImagesImageResult(dict):
         :param Sequence[_builtins.str] product_codes: The product codes associated with the OMI.
         :param _builtins.str root_device_name: The name of the root device.
         :param _builtins.str root_device_type: The type of root device used by the OMI (always `bsu`).
+        :param _builtins.bool secure_boot: Whether secure boot is activated or not.
         :param _builtins.str state: The state of the OMI (`pending` \\| `available` \\| `failed`).
         :param Sequence['GetImagesImageStateCommentArgs'] state_comments: Information about the change of state.
         :param Sequence['GetImagesImageTagArgs'] tags: One or more tags associated with the OMI.
@@ -10027,6 +10033,7 @@ class GetImagesImageResult(dict):
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        pulumi.set(__self__, "boot_modes", boot_modes)
         pulumi.set(__self__, "creation_date", creation_date)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "file_location", file_location)
@@ -10037,6 +10044,7 @@ class GetImagesImageResult(dict):
         pulumi.set(__self__, "product_codes", product_codes)
         pulumi.set(__self__, "root_device_name", root_device_name)
         pulumi.set(__self__, "root_device_type", root_device_type)
+        pulumi.set(__self__, "secure_boot", secure_boot)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_comments", state_comments)
         pulumi.set(__self__, "tags", tags)
@@ -10072,6 +10080,14 @@ class GetImagesImageResult(dict):
         One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="bootModes")
+    def boot_modes(self) -> Sequence[_builtins.str]:
+        """
+        The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+        """
+        return pulumi.get(self, "boot_modes")
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
@@ -10152,6 +10168,14 @@ class GetImagesImageResult(dict):
         The type of root device used by the OMI (always `bsu`).
         """
         return pulumi.get(self, "root_device_type")
+
+    @_builtins.property
+    @pulumi.getter(name="secureBoot")
+    def secure_boot(self) -> _builtins.bool:
+        """
+        Whether secure boot is activated or not.
+        """
+        return pulumi.get(self, "secure_boot")
 
     @_builtins.property
     @pulumi.getter
@@ -10794,7 +10818,7 @@ class GetLoadBalancerHealthCheckResult(dict):
         """
         :param _builtins.int check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param _builtins.int healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param _builtins.int port: The port number (between `1` and `65535`, both included).
         :param _builtins.str protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param _builtins.int timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
@@ -10828,7 +10852,7 @@ class GetLoadBalancerHealthCheckResult(dict):
     @pulumi.getter
     def path(self) -> _builtins.str:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -11591,7 +11615,7 @@ class GetLoadBalancersLoadBalancerHealthCheckResult(dict):
         """
         :param _builtins.int check_interval: The number of seconds between two requests (between `5` and `600` both included).
         :param _builtins.int healthy_threshold: The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
-        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path.
+        :param _builtins.str path: If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         :param _builtins.int port: The port number (between `1` and `65535`, both included).
         :param _builtins.str protocol: The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).
         :param _builtins.int timeout: The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
@@ -11625,7 +11649,7 @@ class GetLoadBalancersLoadBalancerHealthCheckResult(dict):
     @pulumi.getter
     def path(self) -> _builtins.str:
         """
-        If you use the HTTP or HTTPS protocols, the request URL path.
+        If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         """
         return pulumi.get(self, "path")
 
@@ -15918,7 +15942,7 @@ class GetSnapshotExportTasksSnapshotExportTaskResult(dict):
         :param Sequence['GetSnapshotExportTasksSnapshotExportTaskOsuExportArgs'] osu_exports: Information about the snapshot export task.
         :param _builtins.int progress: The progress of the snapshot export task, as a percentage.
         :param _builtins.str snapshot_id: The ID of the snapshot to be exported.
-        :param _builtins.str state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        :param _builtins.str state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         :param Sequence['GetSnapshotExportTasksSnapshotExportTaskTagArgs'] tags: One or more tags associated with the snapshot export task.
         :param _builtins.str task_id: The ID of the snapshot export task.
         """
@@ -15966,7 +15990,7 @@ class GetSnapshotExportTasksSnapshotExportTaskResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         """
         return pulumi.get(self, "state")
 
@@ -16178,7 +16202,7 @@ class GetSnapshotsSnapshotResult(dict):
         :param Sequence['GetSnapshotsSnapshotPermissionsToCreateVolumeArgs'] permissions_to_create_volumes: Permissions for the resource.
         :param _builtins.int progress: The progress of the snapshot, as a percentage.
         :param _builtins.str snapshot_id: The ID of the snapshot.
-        :param _builtins.str state: The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`)).
+        :param _builtins.str state: The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         :param Sequence['GetSnapshotsSnapshotTagArgs'] tags: One or more tags associated with the snapshot.
         :param _builtins.str volume_id: The ID of the volume used to create the snapshot.
         :param _builtins.int volume_size: The size of the volume used to create the snapshot, in gibibytes (GiB).
@@ -16255,7 +16279,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`)).
+        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         """
         return pulumi.get(self, "state")
 
@@ -17245,11 +17269,17 @@ class GetVirtualGatewaysVirtualGatewayTagResult(dict):
 class GetVmActionsOnNextBootResult(dict):
     def __init__(__self__, *,
                  secure_boot: _builtins.str):
+        """
+        :param _builtins.str secure_boot: One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        """
         pulumi.set(__self__, "secure_boot", secure_boot)
 
     @_builtins.property
     @pulumi.getter(name="secureBoot")
     def secure_boot(self) -> _builtins.str:
+        """
+        One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        """
         return pulumi.get(self, "secure_boot")
 
 
@@ -18632,8 +18662,10 @@ class GetVmsVmResult(dict):
                  vm_initiated_shutdown_behavior: _builtins.str,
                  vm_type: _builtins.str):
         """
+        :param Sequence['GetVmsVmActionsOnNextBootArgs'] actions_on_next_boots: The action to perform on the next boot of the VM.
         :param _builtins.str architecture: The architecture of the VM (`i386` \\| `x86_64`).
         :param Sequence['GetVmsVmBlockDeviceMappingsCreatedArgs'] block_device_mappings_createds: The block device mapping of the VM.
+        :param _builtins.str boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
         :param _builtins.str client_token: The idempotency token provided when launching the VM.
         :param _builtins.str creation_date: The date and time (UTC) at which the VM was created.
         :param _builtins.bool deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
@@ -18714,6 +18746,9 @@ class GetVmsVmResult(dict):
     @_builtins.property
     @pulumi.getter(name="actionsOnNextBoots")
     def actions_on_next_boots(self) -> Sequence['outputs.GetVmsVmActionsOnNextBootResult']:
+        """
+        The action to perform on the next boot of the VM.
+        """
         return pulumi.get(self, "actions_on_next_boots")
 
     @_builtins.property
@@ -18735,6 +18770,9 @@ class GetVmsVmResult(dict):
     @_builtins.property
     @pulumi.getter(name="bootMode")
     def boot_mode(self) -> _builtins.str:
+        """
+        The boot mode of the VM. Possible values: `uefi` | `legacy`.
+        """
         return pulumi.get(self, "boot_mode")
 
     @_builtins.property
@@ -19031,11 +19069,17 @@ class GetVmsVmResult(dict):
 class GetVmsVmActionsOnNextBootResult(dict):
     def __init__(__self__, *,
                  secure_boot: _builtins.str):
+        """
+        :param _builtins.str secure_boot: One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        """
         pulumi.set(__self__, "secure_boot", secure_boot)
 
     @_builtins.property
     @pulumi.getter(name="secureBoot")
     def secure_boot(self) -> _builtins.str:
+        """
+        One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        """
         return pulumi.get(self, "secure_boot")
 
 
@@ -20057,7 +20101,7 @@ class GetVolumeLinkedVolumeResult(dict):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
         :param _builtins.str device_name: The name of the device.
-        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param _builtins.str vm_id: The ID of the VM.
         :param _builtins.str volume_id: The ID of the volume.
         """
@@ -20087,7 +20131,7 @@ class GetVolumeLinkedVolumeResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 
@@ -20175,7 +20219,7 @@ class GetVolumesVolumeResult(dict):
         :param Sequence['GetVolumesVolumeLinkedVolumeArgs'] linked_volumes: Information about your volume attachment.
         :param _builtins.int size: The size of the volume, in gibibytes (GiB).
         :param _builtins.str snapshot_id: The snapshot from which the volume was created.
-        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param _builtins.str subregion_name: The Subregion in which the volume was created.
         :param Sequence['GetVolumesVolumeTagArgs'] tags: One or more tags associated with the volume.
         :param _builtins.str volume_id: The ID of the volume.
@@ -20236,7 +20280,7 @@ class GetVolumesVolumeResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 
@@ -20284,7 +20328,7 @@ class GetVolumesVolumeLinkedVolumeResult(dict):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
         :param _builtins.str device_name: The name of the device.
-        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        :param _builtins.str state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param _builtins.str vm_id: The ID of the VM.
         :param _builtins.str volume_id: The ID of the volume.
         """
@@ -20314,7 +20358,7 @@ class GetVolumesVolumeLinkedVolumeResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).
+        The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 

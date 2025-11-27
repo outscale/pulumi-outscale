@@ -25,7 +25,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// If you use the HTTP or HTTPS protocols, the request URL path.
+        /// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

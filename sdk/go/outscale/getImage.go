@@ -79,6 +79,8 @@ type LookupImageResult struct {
 	Architecture string `pulumi:"architecture"`
 	// One or more block device mappings.
 	BlockDeviceMappings []GetImageBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes []string `pulumi:"bootModes"`
 	// The date and time (UTC) at which the OMI was created.
 	CreationDate string `pulumi:"creationDate"`
 	// The description of the OMI.
@@ -105,6 +107,8 @@ type LookupImageResult struct {
 	RootDeviceName string `pulumi:"rootDeviceName"`
 	// The type of root device used by the OMI (always `bsu`).
 	RootDeviceType string `pulumi:"rootDeviceType"`
+	// Whether secure boot is activated or not.
+	SecureBoot bool `pulumi:"secureBoot"`
 	// The state of the OMI (`pending` \| `available` \| `failed`).
 	State string `pulumi:"state"`
 	// Information about the change of state.
@@ -170,6 +174,11 @@ func (o LookupImageResultOutput) Architecture() pulumi.StringOutput {
 // One or more block device mappings.
 func (o LookupImageResultOutput) BlockDeviceMappings() GetImageBlockDeviceMappingArrayOutput {
 	return o.ApplyT(func(v LookupImageResult) []GetImageBlockDeviceMapping { return v.BlockDeviceMappings }).(GetImageBlockDeviceMappingArrayOutput)
+}
+
+// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+func (o LookupImageResultOutput) BootModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupImageResult) []string { return v.BootModes }).(pulumi.StringArrayOutput)
 }
 
 // The date and time (UTC) at which the OMI was created.
@@ -241,6 +250,11 @@ func (o LookupImageResultOutput) RootDeviceName() pulumi.StringOutput {
 // The type of root device used by the OMI (always `bsu`).
 func (o LookupImageResultOutput) RootDeviceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.RootDeviceType }).(pulumi.StringOutput)
+}
+
+// Whether secure boot is activated or not.
+func (o LookupImageResultOutput) SecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageResult) bool { return v.SecureBoot }).(pulumi.BoolOutput)
 }
 
 // The state of the OMI (`pending` \| `available` \| `failed`).

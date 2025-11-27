@@ -89,7 +89,7 @@ class _SnapshotExportTaskState:
         :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
         :param pulumi.Input[_builtins.int] progress: The progress of the snapshot export task, as a percentage.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to export.
-        :param pulumi.Input[_builtins.str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        :param pulumi.Input[_builtins.str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] task_id: The ID of the snapshot export task.
         """
@@ -171,7 +171,7 @@ class _SnapshotExportTaskState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         """
         return pulumi.get(self, "state")
 
@@ -380,7 +380,7 @@ class SnapshotExportTask(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskOsuExportArgs', 'SnapshotExportTaskOsuExportArgsDict']]]] osu_exports: Information about the OOS export task to create.
         :param pulumi.Input[_builtins.int] progress: The progress of the snapshot export task, as a percentage.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to export.
-        :param pulumi.Input[_builtins.str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        :param pulumi.Input[_builtins.str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskTagArgs', 'SnapshotExportTaskTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] task_id: The ID of the snapshot export task.
         """
@@ -439,7 +439,7 @@ class SnapshotExportTask(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         """
         return pulumi.get(self, "state")
 

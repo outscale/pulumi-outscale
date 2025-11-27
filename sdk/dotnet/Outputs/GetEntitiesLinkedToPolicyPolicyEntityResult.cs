@@ -14,15 +14,15 @@ namespace Pulumi.Outscale.Outputs
     public sealed class GetEntitiesLinkedToPolicyPolicyEntityResult
     {
         /// <summary>
-        /// TODO_ARRAY
+        /// The accounts linked to the specified policy.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEntitiesLinkedToPolicyPolicyEntityAccountResult> Accounts;
         /// <summary>
-        /// TODO_ARRAY
+        /// The groups linked to the specified policy.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEntitiesLinkedToPolicyPolicyEntityGroupResult> Groups;
         /// <summary>
-        /// TODO_ARRAY
+        /// The users linked to the specified policy.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEntitiesLinkedToPolicyPolicyEntityUserResult> Users;
 

@@ -28,7 +28,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, account_alias=None, account_id=None, architecture=None, block_device_mappings=None, creation_date=None, description=None, file_location=None, filters=None, id=None, image_id=None, image_name=None, image_type=None, is_public=None, permissions=None, permissions_to_launches=None, product_codes=None, request_id=None, root_device_name=None, root_device_type=None, state=None, state_comments=None, tags=None):
+    def __init__(__self__, account_alias=None, account_id=None, architecture=None, block_device_mappings=None, boot_modes=None, creation_date=None, description=None, file_location=None, filters=None, id=None, image_id=None, image_name=None, image_type=None, is_public=None, permissions=None, permissions_to_launches=None, product_codes=None, request_id=None, root_device_name=None, root_device_type=None, secure_boot=None, state=None, state_comments=None, tags=None):
         if account_alias and not isinstance(account_alias, str):
             raise TypeError("Expected argument 'account_alias' to be a str")
         pulumi.set(__self__, "account_alias", account_alias)
@@ -41,6 +41,9 @@ class GetImageResult:
         if block_device_mappings and not isinstance(block_device_mappings, list):
             raise TypeError("Expected argument 'block_device_mappings' to be a list")
         pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if boot_modes and not isinstance(boot_modes, list):
+            raise TypeError("Expected argument 'boot_modes' to be a list")
+        pulumi.set(__self__, "boot_modes", boot_modes)
         if creation_date and not isinstance(creation_date, str):
             raise TypeError("Expected argument 'creation_date' to be a str")
         pulumi.set(__self__, "creation_date", creation_date)
@@ -86,6 +89,9 @@ class GetImageResult:
         if root_device_type and not isinstance(root_device_type, str):
             raise TypeError("Expected argument 'root_device_type' to be a str")
         pulumi.set(__self__, "root_device_type", root_device_type)
+        if secure_boot and not isinstance(secure_boot, bool):
+            raise TypeError("Expected argument 'secure_boot' to be a bool")
+        pulumi.set(__self__, "secure_boot", secure_boot)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -127,6 +133,14 @@ class GetImageResult:
         One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="bootModes")
+    def boot_modes(self) -> Sequence[_builtins.str]:
+        """
+        The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+        """
+        return pulumi.get(self, "boot_modes")
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
@@ -237,6 +251,14 @@ class GetImageResult:
         return pulumi.get(self, "root_device_type")
 
     @_builtins.property
+    @pulumi.getter(name="secureBoot")
+    def secure_boot(self) -> _builtins.bool:
+        """
+        Whether secure boot is activated or not.
+        """
+        return pulumi.get(self, "secure_boot")
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
@@ -271,6 +293,7 @@ class AwaitableGetImageResult(GetImageResult):
             account_id=self.account_id,
             architecture=self.architecture,
             block_device_mappings=self.block_device_mappings,
+            boot_modes=self.boot_modes,
             creation_date=self.creation_date,
             description=self.description,
             file_location=self.file_location,
@@ -286,6 +309,7 @@ class AwaitableGetImageResult(GetImageResult):
             request_id=self.request_id,
             root_device_name=self.root_device_name,
             root_device_type=self.root_device_type,
+            secure_boot=self.secure_boot,
             state=self.state,
             state_comments=self.state_comments,
             tags=self.tags)
@@ -332,6 +356,7 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
         account_id=pulumi.get(__ret__, 'account_id'),
         architecture=pulumi.get(__ret__, 'architecture'),
         block_device_mappings=pulumi.get(__ret__, 'block_device_mappings'),
+        boot_modes=pulumi.get(__ret__, 'boot_modes'),
         creation_date=pulumi.get(__ret__, 'creation_date'),
         description=pulumi.get(__ret__, 'description'),
         file_location=pulumi.get(__ret__, 'file_location'),
@@ -347,6 +372,7 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
         request_id=pulumi.get(__ret__, 'request_id'),
         root_device_name=pulumi.get(__ret__, 'root_device_name'),
         root_device_type=pulumi.get(__ret__, 'root_device_type'),
+        secure_boot=pulumi.get(__ret__, 'secure_boot'),
         state=pulumi.get(__ret__, 'state'),
         state_comments=pulumi.get(__ret__, 'state_comments'),
         tags=pulumi.get(__ret__, 'tags'))
@@ -390,6 +416,7 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
         account_id=pulumi.get(__response__, 'account_id'),
         architecture=pulumi.get(__response__, 'architecture'),
         block_device_mappings=pulumi.get(__response__, 'block_device_mappings'),
+        boot_modes=pulumi.get(__response__, 'boot_modes'),
         creation_date=pulumi.get(__response__, 'creation_date'),
         description=pulumi.get(__response__, 'description'),
         file_location=pulumi.get(__response__, 'file_location'),
@@ -405,6 +432,7 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
         request_id=pulumi.get(__response__, 'request_id'),
         root_device_name=pulumi.get(__response__, 'root_device_name'),
         root_device_type=pulumi.get(__response__, 'root_device_type'),
+        secure_boot=pulumi.get(__response__, 'secure_boot'),
         state=pulumi.get(__response__, 'state'),
         state_comments=pulumi.get(__response__, 'state_comments'),
         tags=pulumi.get(__response__, 'tags')))

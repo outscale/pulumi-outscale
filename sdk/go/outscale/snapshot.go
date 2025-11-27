@@ -136,7 +136,7 @@ type Snapshot struct {
 	SourceRegionName pulumi.StringOutput `pulumi:"sourceRegionName"`
 	// **(when copying a snapshot)** The ID of the snapshot you want to copy.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
-	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State pulumi.StringOutput `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags SnapshotTagArrayOutput `pulumi:"tags"`
@@ -199,7 +199,7 @@ type snapshotState struct {
 	SourceRegionName *string `pulumi:"sourceRegionName"`
 	// **(when copying a snapshot)** The ID of the snapshot you want to copy.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
-	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State *string `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []SnapshotTag `pulumi:"tags"`
@@ -233,7 +233,7 @@ type SnapshotState struct {
 	SourceRegionName pulumi.StringPtrInput
 	// **(when copying a snapshot)** The ID of the snapshot you want to copy.
 	SourceSnapshotId pulumi.StringPtrInput
-	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags SnapshotTagArrayInput
@@ -428,7 +428,7 @@ func (o SnapshotOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 func (o SnapshotOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

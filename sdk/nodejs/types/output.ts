@@ -343,15 +343,15 @@ export interface GetDhcpOptionsFilter {
 
 export interface GetEntitiesLinkedToPolicyPolicyEntity {
     /**
-     * TODO_ARRAY
+     * The accounts linked to the specified policy.
      */
     accounts: outputs.GetEntitiesLinkedToPolicyPolicyEntityAccount[];
     /**
-     * TODO_ARRAY
+     * The groups linked to the specified policy.
      */
     groups: outputs.GetEntitiesLinkedToPolicyPolicyEntityGroup[];
     /**
-     * TODO_ARRAY
+     * The users linked to the specified policy.
      */
     users: outputs.GetEntitiesLinkedToPolicyPolicyEntityUser[];
 }
@@ -675,6 +675,10 @@ export interface GetImagesImage {
      */
     blockDeviceMappings: outputs.GetImagesImageBlockDeviceMapping[];
     /**
+     * The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+     */
+    bootModes: string[];
+    /**
      * The date and time (UTC) at which the OMI was created.
      */
     creationDate: string;
@@ -714,6 +718,10 @@ export interface GetImagesImage {
      * The type of root device used by the OMI (always `bsu`).
      */
     rootDeviceType: string;
+    /**
+     * Whether secure boot is activated or not.
+     */
+    secureBoot: boolean;
     /**
      * The state of the OMI (`pending` \| `available` \| `failed`).
      */
@@ -955,7 +963,7 @@ export interface GetLoadBalancerHealthCheck {
      */
     healthyThreshold: number;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path: string;
     /**
@@ -1234,7 +1242,7 @@ export interface GetLoadBalancersLoadBalancerHealthCheck {
      */
     healthyThreshold: number;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path: string;
     /**
@@ -2780,7 +2788,7 @@ export interface GetSnapshotExportTasksSnapshotExportTask {
      */
     snapshotId: string;
     /**
-     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
      */
     state: string;
     /**
@@ -2883,7 +2891,7 @@ export interface GetSnapshotsSnapshot {
      */
     snapshotId: string;
     /**
-     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
      */
     state: string;
     /**
@@ -3230,6 +3238,9 @@ export interface GetVirtualGatewaysVirtualGatewayTag {
 }
 
 export interface GetVmActionsOnNextBoot {
+    /**
+     * One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+     */
     secureBoot: string;
 }
 
@@ -3713,6 +3724,9 @@ export interface GetVmsFilter {
 }
 
 export interface GetVmsVm {
+    /**
+     * The action to perform on the next boot of the VM.
+     */
     actionsOnNextBoots: outputs.GetVmsVmActionsOnNextBoot[];
     /**
      * The architecture of the VM (`i386` \| `x8664`).
@@ -3722,6 +3736,9 @@ export interface GetVmsVm {
      * The block device mapping of the VM.
      */
     blockDeviceMappingsCreateds: outputs.GetVmsVmBlockDeviceMappingsCreated[];
+    /**
+     * The boot mode of the VM. Possible values: `uefi` | `legacy`.
+     */
     bootMode: string;
     bsuOptimized: boolean;
     /**
@@ -3863,6 +3880,9 @@ export interface GetVmsVm {
 }
 
 export interface GetVmsVmActionsOnNextBoot {
+    /**
+     * One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+     */
     secureBoot: string;
 }
 
@@ -4243,7 +4263,7 @@ export interface GetVolumeLinkedVolume {
      */
     deviceName: string;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     state: string;
     /**
@@ -4294,7 +4314,7 @@ export interface GetVolumesVolume {
      */
     snapshotId: string;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     state: string;
     /**
@@ -4325,7 +4345,7 @@ export interface GetVolumesVolumeLinkedVolume {
      */
     deviceName: string;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     state: string;
     /**
@@ -4816,7 +4836,7 @@ export interface LoadBalancerAttributesHealthCheck {
      */
     healthyThreshold: number;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path?: string;
     /**
@@ -4903,7 +4923,7 @@ export interface LoadBalancerHealthCheck {
      */
     healthyThreshold: number;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path: string;
     /**
@@ -4946,7 +4966,8 @@ export interface LoadBalancerListener {
      */
     policyNames: string[];
     /**
-     * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+     * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+     * This parameter is required for `HTTPS` and `SSL` protocols.
      */
     serverCertificateId?: string;
 }
@@ -5040,7 +5061,7 @@ export interface LoadBalancerPolicyHealthCheck {
      */
     healthyThreshold: number;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path: string;
     /**
@@ -6026,7 +6047,7 @@ export interface VirtualGatewayTag {
 
 export interface VmActionsOnNextBoot {
     /**
-     * One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+     * One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
      */
     secureBoot: string;
 }
@@ -6475,7 +6496,7 @@ export interface VolumeLinkedVolume {
      */
     deviceName: string;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     state: string;
     /**

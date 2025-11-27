@@ -105,7 +105,7 @@ namespace Pulumi.Outscale
         public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Updating` \| `Deleting` \| `Error`).
+        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Deleting` \| `Error`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.Outscale
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Updating` \| `Deleting` \| `Error`).
+        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Deleting` \| `Error`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

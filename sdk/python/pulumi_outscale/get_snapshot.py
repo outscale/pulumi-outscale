@@ -150,7 +150,7 @@ class GetSnapshotResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`)).
+        The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         """
         return pulumi.get(self, "state")
 

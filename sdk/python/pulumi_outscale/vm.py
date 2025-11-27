@@ -51,7 +51,7 @@ class VmArgs:
         The set of arguments for constructing a Vm resource.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
         :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
-        :param pulumi.Input[_builtins.str] boot_mode: Information about the boot mode of the VM (`legacy` | `uefi`).
+        :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
         :param pulumi.Input[_builtins.bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
@@ -155,7 +155,7 @@ class VmArgs:
     @pulumi.getter(name="bootMode")
     def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Information about the boot mode of the VM (`legacy` | `uefi`).
+        The boot mode of the VM. Possible values: `uefi` | `legacy`.
         """
         return pulumi.get(self, "boot_mode")
 
@@ -491,7 +491,7 @@ class _VmState:
         :param pulumi.Input[_builtins.str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]] block_device_mappings_createds: The block device mapping of the VM.
-        :param pulumi.Input[_builtins.str] boot_mode: Information about the boot mode of the VM (`legacy` | `uefi`).
+        :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] client_token: A unique identifier which enables you to manage the idempotency.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the VM was created.
         :param pulumi.Input[_builtins.bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
@@ -688,7 +688,7 @@ class _VmState:
     @pulumi.getter(name="bootMode")
     def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Information about the boot mode of the VM (`legacy` | `uefi`).
+        The boot mode of the VM. Possible values: `uefi` | `legacy`.
         """
         return pulumi.get(self, "boot_mode")
 
@@ -1228,7 +1228,7 @@ class Vm(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]] block_device_mappings: One or more block device mappings.
-        :param pulumi.Input[_builtins.str] boot_mode: Information about the boot mode of the VM (`legacy` | `uefi`).
+        :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
         :param pulumi.Input[_builtins.bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
@@ -1439,7 +1439,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]] block_device_mappings: One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingsCreatedArgs', 'VmBlockDeviceMappingsCreatedArgsDict']]]] block_device_mappings_createds: The block device mapping of the VM.
-        :param pulumi.Input[_builtins.str] boot_mode: Information about the boot mode of the VM (`legacy` | `uefi`).
+        :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] client_token: A unique identifier which enables you to manage the idempotency.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the VM was created.
         :param pulumi.Input[_builtins.bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
@@ -1574,7 +1574,7 @@ class Vm(pulumi.CustomResource):
     @pulumi.getter(name="bootMode")
     def boot_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        Information about the boot mode of the VM (`legacy` | `uefi`).
+        The boot mode of the VM. Possible values: `uefi` | `legacy`.
         """
         return pulumi.get(self, "boot_mode")
 
