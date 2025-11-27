@@ -46,7 +46,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string NicId;
         /// <summary>
-        /// The state of a route in the route table (always `active`).
+        /// The state of a route in the route table (always `Active`).
         /// </summary>
         public readonly string State;
         /// <summary>

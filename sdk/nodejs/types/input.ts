@@ -2614,13 +2614,6 @@ export interface SubnetTimeouts {
     update?: pulumi.Input<string>;
 }
 
-export interface TagTag {
-    key?: pulumi.Input<string>;
-    resourceId?: pulumi.Input<string>;
-    resourceType?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-}
-
 export interface UserGroupPolicy {
     /**
      * The date and time (UTC) of creation of the user group.

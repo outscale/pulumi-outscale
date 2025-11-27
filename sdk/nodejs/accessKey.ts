@@ -77,32 +77,32 @@ export class AccessKey extends pulumi.CustomResource {
     /**
      * The ID of the access key.
      */
-    public /*out*/ readonly accessKeyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKeyId: pulumi.Output<string>;
     /**
      * The date and time (UTC) at which the access key was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
      */
-    public readonly expirationDate!: pulumi.Output<string | undefined>;
+    declare public readonly expirationDate: pulumi.Output<string | undefined>;
     /**
      * The date and time (UTC) at which the access key was last modified.
      */
-    public /*out*/ readonly lastModificationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModificationDate: pulumi.Output<string>;
     /**
      * The secret key that enables you to send requests.
      */
-    public /*out*/ readonly secretKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly secretKey: pulumi.Output<string>;
     /**
      * The state for the access key (`ACTIVE` | `INACTIVE`).
      */
-    public readonly state!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.AccessKeyTimeouts | undefined>;
+    declare public readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.AccessKeyTimeouts | undefined>;
     /**
      * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
      */
-    public readonly userName!: pulumi.Output<string | undefined>;
+    declare public readonly userName: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessKey resource with the given unique name, arguments, and options.
@@ -117,20 +117,20 @@ export class AccessKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessKeyState | undefined;
-            resourceInputs["accessKeyId"] = state ? state.accessKeyId : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["lastModificationDate"] = state ? state.lastModificationDate : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["accessKeyId"] = state?.accessKeyId;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["lastModificationDate"] = state?.lastModificationDate;
+            resourceInputs["secretKey"] = state?.secretKey;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as AccessKeyArgs | undefined;
-            resourceInputs["expirationDate"] = args ? args.expirationDate : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["expirationDate"] = args?.expirationDate;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["accessKeyId"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["lastModificationDate"] = undefined /*out*/;

@@ -87,44 +87,44 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * Example configuration for the client gateway.
      */
-    public /*out*/ readonly clientGatewayConfiguration!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientGatewayConfiguration: pulumi.Output<string>;
     /**
      * The ID of the client gateway.
      */
-    public readonly clientGatewayId!: pulumi.Output<string>;
+    declare public readonly clientGatewayId: pulumi.Output<string>;
     /**
      * The type of VPN connection (always `ipsec.1`).
      */
-    public readonly connectionType!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly connectionType: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * Information about one or more static routes associated with the VPN connection, if any.
      */
-    public /*out*/ readonly routes!: pulumi.Output<outputs.VpnConnectionRoute[]>;
+    declare public /*out*/ readonly routes: pulumi.Output<outputs.VpnConnectionRoute[]>;
     /**
      * The state of the IPSEC tunnel (`UP` \| `DOWN`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
      */
-    public readonly staticRoutesOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly staticRoutesOnly: pulumi.Output<boolean | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.VpnConnectionTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.VpnConnectionTag[] | undefined>;
     /**
      * Information about the current state of one or more of the VPN tunnels.
      */
-    public /*out*/ readonly vgwTelemetries!: pulumi.Output<outputs.VpnConnectionVgwTelemetry[]>;
+    declare public /*out*/ readonly vgwTelemetries: pulumi.Output<outputs.VpnConnectionVgwTelemetry[]>;
     /**
      * The ID of the virtual gateway.
      */
-    public readonly virtualGatewayId!: pulumi.Output<string>;
+    declare public readonly virtualGatewayId: pulumi.Output<string>;
     /**
      * The ID of the VPN connection.
      */
-    public /*out*/ readonly vpnConnectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpnConnectionId: pulumi.Output<string>;
 
     /**
      * Create a VpnConnection resource with the given unique name, arguments, and options.
@@ -139,33 +139,33 @@ export class VpnConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnConnectionState | undefined;
-            resourceInputs["clientGatewayConfiguration"] = state ? state.clientGatewayConfiguration : undefined;
-            resourceInputs["clientGatewayId"] = state ? state.clientGatewayId : undefined;
-            resourceInputs["connectionType"] = state ? state.connectionType : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["routes"] = state ? state.routes : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["staticRoutesOnly"] = state ? state.staticRoutesOnly : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vgwTelemetries"] = state ? state.vgwTelemetries : undefined;
-            resourceInputs["virtualGatewayId"] = state ? state.virtualGatewayId : undefined;
-            resourceInputs["vpnConnectionId"] = state ? state.vpnConnectionId : undefined;
+            resourceInputs["clientGatewayConfiguration"] = state?.clientGatewayConfiguration;
+            resourceInputs["clientGatewayId"] = state?.clientGatewayId;
+            resourceInputs["connectionType"] = state?.connectionType;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["routes"] = state?.routes;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["staticRoutesOnly"] = state?.staticRoutesOnly;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vgwTelemetries"] = state?.vgwTelemetries;
+            resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
+            resourceInputs["vpnConnectionId"] = state?.vpnConnectionId;
         } else {
             const args = argsOrState as VpnConnectionArgs | undefined;
-            if ((!args || args.clientGatewayId === undefined) && !opts.urn) {
+            if (args?.clientGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientGatewayId'");
             }
-            if ((!args || args.connectionType === undefined) && !opts.urn) {
+            if (args?.connectionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionType'");
             }
-            if ((!args || args.virtualGatewayId === undefined) && !opts.urn) {
+            if (args?.virtualGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualGatewayId'");
             }
-            resourceInputs["clientGatewayId"] = args ? args.clientGatewayId : undefined;
-            resourceInputs["connectionType"] = args ? args.connectionType : undefined;
-            resourceInputs["staticRoutesOnly"] = args ? args.staticRoutesOnly : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualGatewayId"] = args ? args.virtualGatewayId : undefined;
+            resourceInputs["clientGatewayId"] = args?.clientGatewayId;
+            resourceInputs["connectionType"] = args?.connectionType;
+            resourceInputs["staticRoutesOnly"] = args?.staticRoutesOnly;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
             resourceInputs["clientGatewayConfiguration"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["routes"] = undefined /*out*/;

@@ -191,7 +191,7 @@ namespace Pulumi.Outscale
         public readonly string ModelName;
         public readonly string RequestId;
         /// <summary>
-        /// The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
+        /// The state of the fGPU (`Allocated` \| `Attaching` \| `Attached` \| `Detaching`).
         /// </summary>
         public readonly string State;
         /// <summary>

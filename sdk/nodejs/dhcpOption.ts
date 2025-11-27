@@ -87,32 +87,32 @@ export class DhcpOption extends pulumi.CustomResource {
     /**
      * If true, the DHCP options set is a default one. If false, it is not.
      */
-    public /*out*/ readonly default!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly default: pulumi.Output<boolean>;
     /**
      * The ID of the DHCP options set.
      */
-    public /*out*/ readonly dhcpOptionsSetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dhcpOptionsSetId: pulumi.Output<string>;
     /**
      * Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    public readonly domainNameServers!: pulumi.Output<string[]>;
+    declare public readonly domainNameServers: pulumi.Output<string[]>;
     /**
      * The IPs of the log servers. You must specify at least one of the following parameters: `domainName`, `domainNameServers`, `logServers`, or `ntpServers`.
      */
-    public readonly logServers!: pulumi.Output<string[]>;
+    declare public readonly logServers: pulumi.Output<string[]>;
     /**
      * The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    public readonly ntpServers!: pulumi.Output<string[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly ntpServers: pulumi.Output<string[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.DhcpOptionTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.DhcpOptionTag[] | undefined>;
 
     /**
      * Create a DhcpOption resource with the given unique name, arguments, and options.
@@ -127,21 +127,21 @@ export class DhcpOption extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DhcpOptionState | undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["dhcpOptionsSetId"] = state ? state.dhcpOptionsSetId : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["domainNameServers"] = state ? state.domainNameServers : undefined;
-            resourceInputs["logServers"] = state ? state.logServers : undefined;
-            resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["dhcpOptionsSetId"] = state?.dhcpOptionsSetId;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["domainNameServers"] = state?.domainNameServers;
+            resourceInputs["logServers"] = state?.logServers;
+            resourceInputs["ntpServers"] = state?.ntpServers;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as DhcpOptionArgs | undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["domainNameServers"] = args ? args.domainNameServers : undefined;
-            resourceInputs["logServers"] = args ? args.logServers : undefined;
-            resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["domainNameServers"] = args?.domainNameServers;
+            resourceInputs["logServers"] = args?.logServers;
+            resourceInputs["ntpServers"] = args?.ntpServers;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["dhcpOptionsSetId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

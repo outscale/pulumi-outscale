@@ -188,77 +188,77 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Information about access logs.
      */
-    public readonly accessLogs!: pulumi.Output<outputs.LoadBalancerAccessLog[]>;
+    declare public readonly accessLogs: pulumi.Output<outputs.LoadBalancerAccessLog[]>;
     /**
      * The stickiness policies defined for the load balancer.
      */
-    public /*out*/ readonly applicationStickyCookiePolicies!: pulumi.Output<outputs.LoadBalancerApplicationStickyCookiePolicy[]>;
+    declare public /*out*/ readonly applicationStickyCookiePolicies: pulumi.Output<outputs.LoadBalancerApplicationStickyCookiePolicy[]>;
     /**
      * One or more public IPs of backend VMs.
      */
-    public /*out*/ readonly backendIps!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly backendIps: pulumi.Output<string[]>;
     /**
      * One or more IDs of backend VMs for the load balancer.
      */
-    public /*out*/ readonly backendVmIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly backendVmIds: pulumi.Output<string[]>;
     /**
      * The DNS name of the load balancer.
      */
-    public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    declare public /*out*/ readonly dnsName: pulumi.Output<string>;
     /**
      * Information about the health check configuration.
      */
-    public /*out*/ readonly healthChecks!: pulumi.Output<outputs.LoadBalancerHealthCheck[]>;
+    declare public /*out*/ readonly healthChecks: pulumi.Output<outputs.LoadBalancerHealthCheck[]>;
     /**
      * One or more listeners to create.
      */
-    public readonly listeners!: pulumi.Output<outputs.LoadBalancerListener[]>;
+    declare public readonly listeners: pulumi.Output<outputs.LoadBalancerListener[]>;
     /**
      * The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
      */
-    public readonly loadBalancerName!: pulumi.Output<string>;
+    declare public readonly loadBalancerName: pulumi.Output<string>;
     /**
      * The policies defined for the load balancer.
      */
-    public /*out*/ readonly loadBalancerStickyCookiePolicies!: pulumi.Output<outputs.LoadBalancerLoadBalancerStickyCookiePolicy[]>;
+    declare public /*out*/ readonly loadBalancerStickyCookiePolicies: pulumi.Output<outputs.LoadBalancerLoadBalancerStickyCookiePolicy[]>;
     /**
      * The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
      */
-    public readonly loadBalancerType!: pulumi.Output<string>;
+    declare public readonly loadBalancerType: pulumi.Output<string>;
     /**
      * The ID of the Net for the load balancer.
      */
-    public /*out*/ readonly netId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
     /**
      * (internet-facing only) The public IP you want to associate with the load balancer. If not specified, a public IP owned by 3DS OUTSCALE is associated.
      */
-    public readonly publicIp!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly publicIp: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * Whether secure cookies are enabled for the load balancer.
      */
-    public readonly securedCookies!: pulumi.Output<boolean>;
+    declare public readonly securedCookies: pulumi.Output<boolean>;
     /**
      * (Net only) One or more IDs of security groups you want to assign to the load balancer. If not specified, the default security group of the Net is assigned to the load balancer.
      */
-    public readonly securityGroups!: pulumi.Output<string[]>;
+    declare public readonly securityGroups: pulumi.Output<string[]>;
     /**
      * Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
      * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
      */
-    public /*out*/ readonly sourceSecurityGroups!: pulumi.Output<outputs.LoadBalancerSourceSecurityGroup[]>;
+    declare public /*out*/ readonly sourceSecurityGroups: pulumi.Output<outputs.LoadBalancerSourceSecurityGroup[]>;
     /**
      * (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
      */
-    public readonly subnets!: pulumi.Output<string[]>;
+    declare public readonly subnets: pulumi.Output<string[]>;
     /**
      * (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
      */
-    public readonly subregionNames!: pulumi.Output<string[]>;
+    declare public readonly subregionNames: pulumi.Output<string[]>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.LoadBalancerTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.LoadBalancerTag[] | undefined>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -273,43 +273,43 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["accessLogs"] = state ? state.accessLogs : undefined;
-            resourceInputs["applicationStickyCookiePolicies"] = state ? state.applicationStickyCookiePolicies : undefined;
-            resourceInputs["backendIps"] = state ? state.backendIps : undefined;
-            resourceInputs["backendVmIds"] = state ? state.backendVmIds : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
-            resourceInputs["listeners"] = state ? state.listeners : undefined;
-            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            resourceInputs["loadBalancerStickyCookiePolicies"] = state ? state.loadBalancerStickyCookiePolicies : undefined;
-            resourceInputs["loadBalancerType"] = state ? state.loadBalancerType : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["securedCookies"] = state ? state.securedCookies : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["sourceSecurityGroups"] = state ? state.sourceSecurityGroups : undefined;
-            resourceInputs["subnets"] = state ? state.subnets : undefined;
-            resourceInputs["subregionNames"] = state ? state.subregionNames : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accessLogs"] = state?.accessLogs;
+            resourceInputs["applicationStickyCookiePolicies"] = state?.applicationStickyCookiePolicies;
+            resourceInputs["backendIps"] = state?.backendIps;
+            resourceInputs["backendVmIds"] = state?.backendVmIds;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["healthChecks"] = state?.healthChecks;
+            resourceInputs["listeners"] = state?.listeners;
+            resourceInputs["loadBalancerName"] = state?.loadBalancerName;
+            resourceInputs["loadBalancerStickyCookiePolicies"] = state?.loadBalancerStickyCookiePolicies;
+            resourceInputs["loadBalancerType"] = state?.loadBalancerType;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["securedCookies"] = state?.securedCookies;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["sourceSecurityGroups"] = state?.sourceSecurityGroups;
+            resourceInputs["subnets"] = state?.subnets;
+            resourceInputs["subregionNames"] = state?.subregionNames;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.listeners === undefined) && !opts.urn) {
+            if (args?.listeners === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listeners'");
             }
-            if ((!args || args.loadBalancerName === undefined) && !opts.urn) {
+            if (args?.loadBalancerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerName'");
             }
-            resourceInputs["accessLogs"] = args ? args.accessLogs : undefined;
-            resourceInputs["listeners"] = args ? args.listeners : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["loadBalancerType"] = args ? args.loadBalancerType : undefined;
-            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
-            resourceInputs["securedCookies"] = args ? args.securedCookies : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["subnets"] = args ? args.subnets : undefined;
-            resourceInputs["subregionNames"] = args ? args.subregionNames : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accessLogs"] = args?.accessLogs;
+            resourceInputs["listeners"] = args?.listeners;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["loadBalancerType"] = args?.loadBalancerType;
+            resourceInputs["publicIp"] = args?.publicIp;
+            resourceInputs["securedCookies"] = args?.securedCookies;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["subnets"] = args?.subnets;
+            resourceInputs["subregionNames"] = args?.subregionNames;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["applicationStickyCookiePolicies"] = undefined /*out*/;
             resourceInputs["backendIps"] = undefined /*out*/;
             resourceInputs["backendVmIds"] = undefined /*out*/;

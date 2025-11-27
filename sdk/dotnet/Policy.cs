@@ -15,6 +15,31 @@ namespace Pulumi.Outscale
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
     /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#3ds-outscale-api-policy).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///    var policy_1 = new Outscale.Policy("policy-1", new()
+    ///    {
+    ///        PolicyName = "terraform-policy-1",
+    ///        Description = "test-terraform",
+    ///        Document = Std.Index.File.Invoke(new()
+    ///        {
+    ///            Input = "policy.json",
+    ///        }).Result,
+    ///        Path = "/",
+    ///    });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A policy can be imported using its ORN. For example:

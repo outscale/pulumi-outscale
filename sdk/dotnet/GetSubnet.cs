@@ -203,7 +203,7 @@ namespace Pulumi.Outscale
         public readonly string NetId;
         public readonly string RequestId;
         /// <summary>
-        /// The state of the Subnet (`pending` \| `available` \| `deleted`).
+        /// The state of the Subnet (`Pending` \| `Available` \| `Deleted`).
         /// </summary>
         public readonly string State;
         /// <summary>

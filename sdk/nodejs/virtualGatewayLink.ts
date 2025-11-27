@@ -74,17 +74,17 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualGatewayLink.__pulumiType;
     }
 
-    public readonly dryRun!: pulumi.Output<string>;
+    declare public readonly dryRun: pulumi.Output<string>;
     /**
      * The ID of the Net to which you want to attach the virtual gateway.
      */
-    public readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly netToVirtualGatewayLinks!: pulumi.Output<outputs.VirtualGatewayLinkNetToVirtualGatewayLink[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly netToVirtualGatewayLinks: pulumi.Output<outputs.VirtualGatewayLinkNetToVirtualGatewayLink[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the virtual gateway.
      */
-    public readonly virtualGatewayId!: pulumi.Output<string>;
+    declare public readonly virtualGatewayId: pulumi.Output<string>;
 
     /**
      * Create a VirtualGatewayLink resource with the given unique name, arguments, and options.
@@ -99,22 +99,22 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualGatewayLinkState | undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["netToVirtualGatewayLinks"] = state ? state.netToVirtualGatewayLinks : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["virtualGatewayId"] = state ? state.virtualGatewayId : undefined;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["netToVirtualGatewayLinks"] = state?.netToVirtualGatewayLinks;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
         } else {
             const args = argsOrState as VirtualGatewayLinkArgs | undefined;
-            if ((!args || args.netId === undefined) && !opts.urn) {
+            if (args?.netId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netId'");
             }
-            if ((!args || args.virtualGatewayId === undefined) && !opts.urn) {
+            if (args?.virtualGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualGatewayId'");
             }
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["virtualGatewayId"] = args ? args.virtualGatewayId : undefined;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
             resourceInputs["netToVirtualGatewayLinks"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
         }

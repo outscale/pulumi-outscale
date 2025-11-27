@@ -10,6 +10,28 @@ import * as utilities from "./utilities";
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const serverCertificate01 = new outscale.ServerCertificate("server_certificate_01", {
+ *     name: "terraform-server-certificate",
+ *     body: std.index.file({
+ *         input: "<PATH>",
+ *     }).result,
+ *     chain: std.index.file({
+ *         input: "<PATH>",
+ *     }).result,
+ *     privateKey: std.index.file({
+ *         input: "<PATH>",
+ *     }).result,
+ *     path: "<PATH>",
+ * });
+ * ```
+ *
  * ## Import
  *
  * A server certificate can be imported using its ID. For example:
@@ -51,37 +73,37 @@ export class ServerCertificate extends pulumi.CustomResource {
     /**
      * The PEM-encoded X509 certificate.
      */
-    public readonly body!: pulumi.Output<string | undefined>;
+    declare public readonly body: pulumi.Output<string | undefined>;
     /**
      * The PEM-encoded intermediate certification authorities.
      */
-    public readonly chain!: pulumi.Output<string | undefined>;
-    public readonly dryRun!: pulumi.Output<string | undefined>;
+    declare public readonly chain: pulumi.Output<string | undefined>;
+    declare public readonly dryRun: pulumi.Output<string | undefined>;
     /**
      * The date on which the server certificate expires.
      */
-    public /*out*/ readonly expirationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly expirationDate: pulumi.Output<string>;
     /**
      * A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
      */
-    public /*out*/ readonly orn!: pulumi.Output<string>;
+    declare public /*out*/ readonly orn: pulumi.Output<string>;
     /**
      * The path to the server certificate, set to a slash (`/`) if not specified.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The PEM-encoded private key matching the certificate.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The date on which the server certificate has been uploaded.
      */
-    public /*out*/ readonly uploadDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly uploadDate: pulumi.Output<string>;
 
     /**
      * Create a ServerCertificate resource with the given unique name, arguments, and options.
@@ -96,24 +118,24 @@ export class ServerCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerCertificateState | undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["chain"] = state ? state.chain : undefined;
-            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orn"] = state ? state.orn : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["uploadDate"] = state ? state.uploadDate : undefined;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["chain"] = state?.chain;
+            resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orn"] = state?.orn;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["uploadDate"] = state?.uploadDate;
         } else {
             const args = argsOrState as ServerCertificateArgs | undefined;
-            resourceInputs["body"] = args ? args.body : undefined;
-            resourceInputs["chain"] = args ? args.chain : undefined;
-            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["body"] = args?.body;
+            resourceInputs["chain"] = args?.chain;
+            resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["privateKey"] = args?.privateKey;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["orn"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

@@ -30,7 +30,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string ModelName;
         /// <summary>
-        /// The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
+        /// The state of the fGPU (`Allocated` \| `Attaching` \| `Attached` \| `Detaching`).
         /// </summary>
         public readonly string State;
         /// <summary>

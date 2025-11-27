@@ -221,6 +221,25 @@ class ApiAccessRule(pulumi.CustomResource):
             description="Basic API Access Rule from Terraform")
         ```
 
+        ### Create an API access rule based on IPs and Certificate Authority (CA)
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=std.index.file(input="<PATH>")["result"],
+            description="Terraform CA")
+        api_access_rule02 = outscale.ApiAccessRule("api_access_rule02",
+            ip_ranges=[
+                "192.0.2.0",
+                "192.0.2.0/16",
+            ],
+            ca_ids=[ca01.ca_id],
+            description="API Access Rule with CA from Terraform")
+        ```
+
         ## Import
 
         An API access rule can be imported using its ID. For example:
@@ -264,6 +283,25 @@ class ApiAccessRule(pulumi.CustomResource):
                 "192.0.2.0/16",
             ],
             description="Basic API Access Rule from Terraform")
+        ```
+
+        ### Create an API access rule based on IPs and Certificate Authority (CA)
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=std.index.file(input="<PATH>")["result"],
+            description="Terraform CA")
+        api_access_rule02 = outscale.ApiAccessRule("api_access_rule02",
+            ip_ranges=[
+                "192.0.2.0",
+                "192.0.2.0/16",
+            ],
+            ca_ids=[ca01.ca_id],
+            description="API Access Rule with CA from Terraform")
         ```
 
         ## Import

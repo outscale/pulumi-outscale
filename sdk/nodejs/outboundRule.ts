@@ -34,18 +34,18 @@ export class OutboundRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === OutboundRule.__pulumiType;
     }
 
-    public readonly flow!: pulumi.Output<string>;
-    public readonly fromPortRange!: pulumi.Output<number | undefined>;
-    public readonly ipProtocol!: pulumi.Output<string | undefined>;
-    public readonly ipRange!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
-    public readonly rules!: pulumi.Output<outputs.OutboundRuleRule[] | undefined>;
-    public readonly securityGroupAccountIdToLink!: pulumi.Output<string | undefined>;
-    public readonly securityGroupId!: pulumi.Output<string>;
-    public /*out*/ readonly securityGroupName!: pulumi.Output<string>;
-    public readonly securityGroupNameToLink!: pulumi.Output<string | undefined>;
-    public readonly toPortRange!: pulumi.Output<number | undefined>;
+    declare public readonly flow: pulumi.Output<string>;
+    declare public readonly fromPortRange: pulumi.Output<number | undefined>;
+    declare public readonly ipProtocol: pulumi.Output<string | undefined>;
+    declare public readonly ipRange: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly rules: pulumi.Output<outputs.OutboundRuleRule[] | undefined>;
+    declare public readonly securityGroupAccountIdToLink: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
+    declare public /*out*/ readonly securityGroupName: pulumi.Output<string>;
+    declare public readonly securityGroupNameToLink: pulumi.Output<string | undefined>;
+    declare public readonly toPortRange: pulumi.Output<number | undefined>;
 
     /**
      * Create a OutboundRule resource with the given unique name, arguments, and options.
@@ -60,35 +60,35 @@ export class OutboundRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OutboundRuleState | undefined;
-            resourceInputs["flow"] = state ? state.flow : undefined;
-            resourceInputs["fromPortRange"] = state ? state.fromPortRange : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["securityGroupAccountIdToLink"] = state ? state.securityGroupAccountIdToLink : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
-            resourceInputs["securityGroupNameToLink"] = state ? state.securityGroupNameToLink : undefined;
-            resourceInputs["toPortRange"] = state ? state.toPortRange : undefined;
+            resourceInputs["flow"] = state?.flow;
+            resourceInputs["fromPortRange"] = state?.fromPortRange;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["securityGroupAccountIdToLink"] = state?.securityGroupAccountIdToLink;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupName"] = state?.securityGroupName;
+            resourceInputs["securityGroupNameToLink"] = state?.securityGroupNameToLink;
+            resourceInputs["toPortRange"] = state?.toPortRange;
         } else {
             const args = argsOrState as OutboundRuleArgs | undefined;
-            if ((!args || args.flow === undefined) && !opts.urn) {
+            if (args?.flow === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flow'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            resourceInputs["flow"] = args ? args.flow : undefined;
-            resourceInputs["fromPortRange"] = args ? args.fromPortRange : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["securityGroupAccountIdToLink"] = args ? args.securityGroupAccountIdToLink : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityGroupNameToLink"] = args ? args.securityGroupNameToLink : undefined;
-            resourceInputs["toPortRange"] = args ? args.toPortRange : undefined;
+            resourceInputs["flow"] = args?.flow;
+            resourceInputs["fromPortRange"] = args?.fromPortRange;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["securityGroupAccountIdToLink"] = args?.securityGroupAccountIdToLink;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityGroupNameToLink"] = args?.securityGroupNameToLink;
+            resourceInputs["toPortRange"] = args?.toPortRange;
             resourceInputs["netId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["securityGroupName"] = undefined /*out*/;

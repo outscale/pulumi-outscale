@@ -133,7 +133,7 @@ class _PublicIpState:
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
-    @pulumi.getter(name="publicIp")
+    @pulumi.getter(name="publicIP")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The public IP.
@@ -375,7 +375,7 @@ class PublicIp(pulumi.CustomResource):
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
-    @pulumi.getter(name="publicIp")
+    @pulumi.getter(name="publicIP")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
         """
         The public IP.

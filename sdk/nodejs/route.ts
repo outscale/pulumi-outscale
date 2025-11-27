@@ -85,57 +85,57 @@ export class Route extends pulumi.CustomResource {
      *
      * @deprecated Route's state is always active. The attribute will be removed in the next major version.
      */
-    public readonly awaitActiveState!: pulumi.Output<boolean>;
+    declare public readonly awaitActiveState: pulumi.Output<boolean>;
     /**
      * The method used to create the route.
      */
-    public /*out*/ readonly creationMethod!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationMethod: pulumi.Output<string>;
     /**
      * The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
      */
-    public readonly destinationIpRange!: pulumi.Output<string>;
+    declare public readonly destinationIpRange: pulumi.Output<string>;
     /**
      * The ID of the OUTSCALE service.
      */
-    public /*out*/ readonly destinationServiceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly destinationServiceId: pulumi.Output<string>;
     /**
      * The ID of an internet service or virtual gateway attached to your Net.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The ID of a NAT service.
      */
-    public readonly natServiceId!: pulumi.Output<string>;
+    declare public readonly natServiceId: pulumi.Output<string>;
     /**
      * The ID of the Net access point.
      */
-    public /*out*/ readonly netAccessPointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netAccessPointId: pulumi.Output<string>;
     /**
      * The ID of a Net peering.
      */
-    public readonly netPeeringId!: pulumi.Output<string>;
+    declare public readonly netPeeringId: pulumi.Output<string>;
     /**
      * The ID of a NIC.
      */
-    public readonly nicId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly nicId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the route table for which you want to create a route.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * The state of a route in the route table (always `active`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.RouteTimeouts | undefined>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.RouteTimeouts | undefined>;
     /**
      * The account ID of the owner of the VM.
      */
-    public /*out*/ readonly vmAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmAccountId: pulumi.Output<string>;
     /**
      * The ID of a NAT VM in your Net (attached to exactly one NIC).
      */
-    public readonly vmId!: pulumi.Output<string>;
+    declare public readonly vmId: pulumi.Output<string>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -150,38 +150,38 @@ export class Route extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteState | undefined;
-            resourceInputs["awaitActiveState"] = state ? state.awaitActiveState : undefined;
-            resourceInputs["creationMethod"] = state ? state.creationMethod : undefined;
-            resourceInputs["destinationIpRange"] = state ? state.destinationIpRange : undefined;
-            resourceInputs["destinationServiceId"] = state ? state.destinationServiceId : undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["natServiceId"] = state ? state.natServiceId : undefined;
-            resourceInputs["netAccessPointId"] = state ? state.netAccessPointId : undefined;
-            resourceInputs["netPeeringId"] = state ? state.netPeeringId : undefined;
-            resourceInputs["nicId"] = state ? state.nicId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["vmAccountId"] = state ? state.vmAccountId : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["awaitActiveState"] = state?.awaitActiveState;
+            resourceInputs["creationMethod"] = state?.creationMethod;
+            resourceInputs["destinationIpRange"] = state?.destinationIpRange;
+            resourceInputs["destinationServiceId"] = state?.destinationServiceId;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["natServiceId"] = state?.natServiceId;
+            resourceInputs["netAccessPointId"] = state?.netAccessPointId;
+            resourceInputs["netPeeringId"] = state?.netPeeringId;
+            resourceInputs["nicId"] = state?.nicId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["vmAccountId"] = state?.vmAccountId;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as RouteArgs | undefined;
-            if ((!args || args.destinationIpRange === undefined) && !opts.urn) {
+            if (args?.destinationIpRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationIpRange'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["awaitActiveState"] = args ? args.awaitActiveState : undefined;
-            resourceInputs["destinationIpRange"] = args ? args.destinationIpRange : undefined;
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["natServiceId"] = args ? args.natServiceId : undefined;
-            resourceInputs["netPeeringId"] = args ? args.netPeeringId : undefined;
-            resourceInputs["nicId"] = args ? args.nicId : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["awaitActiveState"] = args?.awaitActiveState;
+            resourceInputs["destinationIpRange"] = args?.destinationIpRange;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["natServiceId"] = args?.natServiceId;
+            resourceInputs["netPeeringId"] = args?.netPeeringId;
+            resourceInputs["nicId"] = args?.nicId;
+            resourceInputs["routeTableId"] = args?.routeTableId;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["vmId"] = args?.vmId;
             resourceInputs["creationMethod"] = undefined /*out*/;
             resourceInputs["destinationServiceId"] = undefined /*out*/;
             resourceInputs["netAccessPointId"] = undefined /*out*/;

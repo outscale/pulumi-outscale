@@ -18,7 +18,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string CreationDate;
         /// <summary>
-        /// The number of I/O operations per second (IOPS):&lt;br /&gt;- For `io1` volumes, the number of provisioned IOPS.&lt;br /&gt;- For `gp2` volumes, the baseline performance of the volume.
+        /// The number of I/O operations per second (IOPS):&lt;br /&gt;- For `Io1` volumes, the number of provisioned IOPS.&lt;br /&gt;- For `Gp2` volumes, the baseline performance of the volume.
         /// </summary>
         public readonly int Iops;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Updating` \| `Deleting` \| `Error`).
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string VolumeId;
         /// <summary>
-        /// The type of the volume (`standard` \| `gp2` \| `io1`).
+        /// The type of the volume (`Standard` \| `Gp2` \| `Io1`).
         /// </summary>
         public readonly string VolumeType;
 

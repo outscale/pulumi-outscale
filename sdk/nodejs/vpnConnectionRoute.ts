@@ -85,12 +85,12 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
     /**
      * The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
      */
-    public readonly destinationIpRange!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly destinationIpRange: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the target VPN connection of the static route.
      */
-    public readonly vpnConnectionId!: pulumi.Output<string>;
+    declare public readonly vpnConnectionId: pulumi.Output<string>;
 
     /**
      * Create a VpnConnectionRoute resource with the given unique name, arguments, and options.
@@ -105,19 +105,19 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnConnectionRouteState | undefined;
-            resourceInputs["destinationIpRange"] = state ? state.destinationIpRange : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["vpnConnectionId"] = state ? state.vpnConnectionId : undefined;
+            resourceInputs["destinationIpRange"] = state?.destinationIpRange;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["vpnConnectionId"] = state?.vpnConnectionId;
         } else {
             const args = argsOrState as VpnConnectionRouteArgs | undefined;
-            if ((!args || args.destinationIpRange === undefined) && !opts.urn) {
+            if (args?.destinationIpRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationIpRange'");
             }
-            if ((!args || args.vpnConnectionId === undefined) && !opts.urn) {
+            if (args?.vpnConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnConnectionId'");
             }
-            resourceInputs["destinationIpRange"] = args ? args.destinationIpRange : undefined;
-            resourceInputs["vpnConnectionId"] = args ? args.vpnConnectionId : undefined;
+            resourceInputs["destinationIpRange"] = args?.destinationIpRange;
+            resourceInputs["vpnConnectionId"] = args?.vpnConnectionId;
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

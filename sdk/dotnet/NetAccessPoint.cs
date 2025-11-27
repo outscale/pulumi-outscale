@@ -112,7 +112,7 @@ namespace Pulumi.Outscale
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the Net access point (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the Net access point (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.Outscale
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The state of the Net access point (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the Net access point (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

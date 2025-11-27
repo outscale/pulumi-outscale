@@ -85,21 +85,21 @@ export class NicPrivateIp extends pulumi.CustomResource {
     /**
      * If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
      */
-    public readonly allowRelink!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowRelink: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the NIC.
      */
-    public readonly nicId!: pulumi.Output<string>;
-    public /*out*/ readonly primaryPrivateIp!: pulumi.Output<string>;
+    declare public readonly nicId: pulumi.Output<string>;
+    declare public /*out*/ readonly primaryPrivateIp: pulumi.Output<string>;
     /**
      * The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
      */
-    public readonly privateIps!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly privateIps: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The number of secondary private IPs to assign to the NIC.
      */
-    public readonly secondaryPrivateIpCount!: pulumi.Output<number>;
+    declare public readonly secondaryPrivateIpCount: pulumi.Output<number>;
 
     /**
      * Create a NicPrivateIp resource with the given unique name, arguments, and options.
@@ -114,21 +114,21 @@ export class NicPrivateIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NicPrivateIpState | undefined;
-            resourceInputs["allowRelink"] = state ? state.allowRelink : undefined;
-            resourceInputs["nicId"] = state ? state.nicId : undefined;
-            resourceInputs["primaryPrivateIp"] = state ? state.primaryPrivateIp : undefined;
-            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["secondaryPrivateIpCount"] = state ? state.secondaryPrivateIpCount : undefined;
+            resourceInputs["allowRelink"] = state?.allowRelink;
+            resourceInputs["nicId"] = state?.nicId;
+            resourceInputs["primaryPrivateIp"] = state?.primaryPrivateIp;
+            resourceInputs["privateIps"] = state?.privateIps;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["secondaryPrivateIpCount"] = state?.secondaryPrivateIpCount;
         } else {
             const args = argsOrState as NicPrivateIpArgs | undefined;
-            if ((!args || args.nicId === undefined) && !opts.urn) {
+            if (args?.nicId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nicId'");
             }
-            resourceInputs["allowRelink"] = args ? args.allowRelink : undefined;
-            resourceInputs["nicId"] = args ? args.nicId : undefined;
-            resourceInputs["privateIps"] = args ? args.privateIps : undefined;
-            resourceInputs["secondaryPrivateIpCount"] = args ? args.secondaryPrivateIpCount : undefined;
+            resourceInputs["allowRelink"] = args?.allowRelink;
+            resourceInputs["nicId"] = args?.nicId;
+            resourceInputs["privateIps"] = args?.privateIps;
+            resourceInputs["secondaryPrivateIpCount"] = args?.secondaryPrivateIpCount;
             resourceInputs["primaryPrivateIp"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
         }

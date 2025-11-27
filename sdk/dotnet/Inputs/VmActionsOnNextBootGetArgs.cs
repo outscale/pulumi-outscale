@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class VmActionsOnNextBootGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        /// One action to perform on the next boot of the VM (`Enable` | `Disable` | `setup-mode` |`None`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         /// </summary>
         [Input("secureBoot")]
         public Input<string>? SecureBoot { get; set; }

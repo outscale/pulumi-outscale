@@ -16,6 +16,30 @@ namespace Pulumi.Outscale
     /// 
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Editing-Managed-Policies-Using-Policy-Versions.html).\
     /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#createpolicyversion).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy2_version_02 = new Outscale.PolicyVersion("Policy2-version-02", new()
+    ///     {
+    ///         PolicyOrn = policy_2.Orn,
+    ///         Document = Std.Index.File.Invoke(new()
+    ///         {
+    ///             Input = "policy.json",
+    ///         }).Result,
+    ///         SetAsDefault = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/policyVersion:PolicyVersion")]
     public partial class PolicyVersion : global::Pulumi.CustomResource
@@ -51,7 +75,7 @@ namespace Pulumi.Outscale
         public Output<string> PolicyOrn { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `default_version_id` is specified in the `outscale.User` or `outscale.UserGroup` resources.
+        /// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `DefaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
         /// </summary>
         [Output("setAsDefault")]
         public Output<bool> SetAsDefault { get; private set; } = null!;
@@ -121,7 +145,7 @@ namespace Pulumi.Outscale
         public Input<string> PolicyOrn { get; set; } = null!;
 
         /// <summary>
-        /// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `default_version_id` is specified in the `outscale.User` or `outscale.UserGroup` resources.
+        /// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `DefaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
         /// </summary>
         [Input("setAsDefault")]
         public Input<bool>? SetAsDefault { get; set; }
@@ -165,7 +189,7 @@ namespace Pulumi.Outscale
         public Input<string>? PolicyOrn { get; set; }
 
         /// <summary>
-        /// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `default_version_id` is specified in the `outscale.User` or `outscale.UserGroup` resources.
+        /// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `DefaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
         /// </summary>
         [Input("setAsDefault")]
         public Input<bool>? SetAsDefault { get; set; }

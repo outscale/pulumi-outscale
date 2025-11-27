@@ -91,7 +91,7 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.&lt;br /&gt;
+        /// If true, a trusted session is activated, provided that you specify the `MaxAccessKeyExpirationSeconds` parameter with a value greater than `0`.&lt;br /&gt;
         /// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication &gt; Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
         /// </summary>
         [Output("requireTrustedEnv")]
@@ -150,7 +150,7 @@ namespace Pulumi.Outscale
         public Input<int> MaxAccessKeyExpirationSeconds { get; set; } = null!;
 
         /// <summary>
-        /// If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.&lt;br /&gt;
+        /// If true, a trusted session is activated, provided that you specify the `MaxAccessKeyExpirationSeconds` parameter with a value greater than `0`.&lt;br /&gt;
         /// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication &gt; Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
         /// </summary>
         [Input("requireTrustedEnv", required: true)]
@@ -174,7 +174,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`.&lt;br /&gt;
+        /// If true, a trusted session is activated, provided that you specify the `MaxAccessKeyExpirationSeconds` parameter with a value greater than `0`.&lt;br /&gt;
         /// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication &gt; Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
         /// </summary>
         [Input("requireTrustedEnv")]

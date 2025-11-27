@@ -100,33 +100,33 @@ export class NatService extends pulumi.CustomResource {
     /**
      * The ID of the NAT service.
      */
-    public /*out*/ readonly natServiceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly natServiceId: pulumi.Output<string>;
     /**
      * The ID of the Net in which the NAT service is.
      */
-    public /*out*/ readonly netId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
     /**
      * The allocation ID of the public IP to associate with the NAT service.<br />
      * If the public IP is already associated with another resource, you must first disassociate it.
      */
-    public readonly publicIpId!: pulumi.Output<string>;
+    declare public readonly publicIpId: pulumi.Output<string>;
     /**
      * Information about the public IP or IPs associated with the NAT service.
      */
-    public /*out*/ readonly publicIps!: pulumi.Output<outputs.NatServicePublicIp[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIps: pulumi.Output<outputs.NatServicePublicIp[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the NAT service (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID of the Subnet in which you want to create the NAT service.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.NatServiceTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.NatServiceTag[] | undefined>;
 
     /**
      * Create a NatService resource with the given unique name, arguments, and options.
@@ -141,25 +141,25 @@ export class NatService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatServiceState | undefined;
-            resourceInputs["natServiceId"] = state ? state.natServiceId : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["publicIpId"] = state ? state.publicIpId : undefined;
-            resourceInputs["publicIps"] = state ? state.publicIps : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["natServiceId"] = state?.natServiceId;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["publicIpId"] = state?.publicIpId;
+            resourceInputs["publicIps"] = state?.publicIps;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as NatServiceArgs | undefined;
-            if ((!args || args.publicIpId === undefined) && !opts.urn) {
+            if (args?.publicIpId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publicIpId'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            resourceInputs["publicIpId"] = args ? args.publicIpId : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["publicIpId"] = args?.publicIpId;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["natServiceId"] = undefined /*out*/;
             resourceInputs["netId"] = undefined /*out*/;
             resourceInputs["publicIps"] = undefined /*out*/;

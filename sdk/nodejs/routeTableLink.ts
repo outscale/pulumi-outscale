@@ -81,22 +81,22 @@ export class RouteTableLink extends pulumi.CustomResource {
     /**
      * The ID of the association between the route table and the Subnet.
      */
-    public /*out*/ readonly linkRouteTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly linkRouteTableId: pulumi.Output<string>;
     /**
      * If true, the route table is the main one.
      */
-    public /*out*/ readonly main!: pulumi.Output<boolean>;
-    public /*out*/ readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly main: pulumi.Output<boolean>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the route table.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * The ID of the Net.
      */
-    public readonly subnetId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.RouteTableLinkTimeouts | undefined>;
+    declare public readonly subnetId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.RouteTableLinkTimeouts | undefined>;
 
     /**
      * Create a RouteTableLink resource with the given unique name, arguments, and options.
@@ -111,24 +111,24 @@ export class RouteTableLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteTableLinkState | undefined;
-            resourceInputs["linkRouteTableId"] = state ? state.linkRouteTableId : undefined;
-            resourceInputs["main"] = state ? state.main : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["linkRouteTableId"] = state?.linkRouteTableId;
+            resourceInputs["main"] = state?.main;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as RouteTableLinkArgs | undefined;
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["routeTableId"] = args?.routeTableId;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["linkRouteTableId"] = undefined /*out*/;
             resourceInputs["main"] = undefined /*out*/;
             resourceInputs["netId"] = undefined /*out*/;

@@ -12840,118 +12840,6 @@ func (o SubnetTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type TagTag struct {
-	Key          *string `pulumi:"key"`
-	ResourceId   *string `pulumi:"resourceId"`
-	ResourceType *string `pulumi:"resourceType"`
-	Value        *string `pulumi:"value"`
-}
-
-// TagTagInput is an input type that accepts TagTagArgs and TagTagOutput values.
-// You can construct a concrete instance of `TagTagInput` via:
-//
-//	TagTagArgs{...}
-type TagTagInput interface {
-	pulumi.Input
-
-	ToTagTagOutput() TagTagOutput
-	ToTagTagOutputWithContext(context.Context) TagTagOutput
-}
-
-type TagTagArgs struct {
-	Key          pulumi.StringPtrInput `pulumi:"key"`
-	ResourceId   pulumi.StringPtrInput `pulumi:"resourceId"`
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
-	Value        pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (TagTagArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagTag)(nil)).Elem()
-}
-
-func (i TagTagArgs) ToTagTagOutput() TagTagOutput {
-	return i.ToTagTagOutputWithContext(context.Background())
-}
-
-func (i TagTagArgs) ToTagTagOutputWithContext(ctx context.Context) TagTagOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagTagOutput)
-}
-
-// TagTagArrayInput is an input type that accepts TagTagArray and TagTagArrayOutput values.
-// You can construct a concrete instance of `TagTagArrayInput` via:
-//
-//	TagTagArray{ TagTagArgs{...} }
-type TagTagArrayInput interface {
-	pulumi.Input
-
-	ToTagTagArrayOutput() TagTagArrayOutput
-	ToTagTagArrayOutputWithContext(context.Context) TagTagArrayOutput
-}
-
-type TagTagArray []TagTagInput
-
-func (TagTagArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TagTag)(nil)).Elem()
-}
-
-func (i TagTagArray) ToTagTagArrayOutput() TagTagArrayOutput {
-	return i.ToTagTagArrayOutputWithContext(context.Background())
-}
-
-func (i TagTagArray) ToTagTagArrayOutputWithContext(ctx context.Context) TagTagArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagTagArrayOutput)
-}
-
-type TagTagOutput struct{ *pulumi.OutputState }
-
-func (TagTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagTag)(nil)).Elem()
-}
-
-func (o TagTagOutput) ToTagTagOutput() TagTagOutput {
-	return o
-}
-
-func (o TagTagOutput) ToTagTagOutputWithContext(ctx context.Context) TagTagOutput {
-	return o
-}
-
-func (o TagTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TagTag) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-func (o TagTagOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TagTag) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-func (o TagTagOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TagTag) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
-}
-
-func (o TagTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TagTag) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type TagTagArrayOutput struct{ *pulumi.OutputState }
-
-func (TagTagArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TagTag)(nil)).Elem()
-}
-
-func (o TagTagArrayOutput) ToTagTagArrayOutput() TagTagArrayOutput {
-	return o
-}
-
-func (o TagTagArrayOutput) ToTagTagArrayOutputWithContext(ctx context.Context) TagTagArrayOutput {
-	return o
-}
-
-func (o TagTagArrayOutput) Index(i pulumi.IntInput) TagTagOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagTag {
-		return vs[0].([]TagTag)[vs[1].(int)]
-	}).(TagTagOutput)
-}
-
 type UserGroupPolicy struct {
 	// The date and time (UTC) of creation of the user group.
 	CreationDate *string `pulumi:"creationDate"`
@@ -50750,8 +50638,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetTagArrayInput)(nil)).Elem(), SubnetTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetTimeoutsInput)(nil)).Elem(), SubnetTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetTimeoutsPtrInput)(nil)).Elem(), SubnetTimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagTagInput)(nil)).Elem(), TagTagArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagTagArrayInput)(nil)).Elem(), TagTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPolicyInput)(nil)).Elem(), UserGroupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupPolicyArrayInput)(nil)).Elem(), UserGroupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserGroupUserInput)(nil)).Elem(), UserGroupUserArgs{})
@@ -51564,8 +51450,6 @@ func init() {
 	pulumi.RegisterOutputType(SubnetTagArrayOutput{})
 	pulumi.RegisterOutputType(SubnetTimeoutsOutput{})
 	pulumi.RegisterOutputType(SubnetTimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(TagTagOutput{})
-	pulumi.RegisterOutputType(TagTagArrayOutput{})
 	pulumi.RegisterOutputType(UserGroupPolicyOutput{})
 	pulumi.RegisterOutputType(UserGroupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(UserGroupUserOutput{})

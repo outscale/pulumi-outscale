@@ -76,7 +76,7 @@ namespace Pulumi.Outscale
         public Output<string> ModelName { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
+        /// The state of the fGPU (`Allocated` \| `Attaching` \| `Attached` \| `Detaching`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.Outscale
         public Input<string>? ModelName { get; set; }
 
         /// <summary>
-        /// The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
+        /// The state of the fGPU (`Allocated` \| `Attaching` \| `Attached` \| `Detaching`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

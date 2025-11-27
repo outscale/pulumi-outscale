@@ -69,32 +69,32 @@ export class FlexibleGpu extends pulumi.CustomResource {
     /**
      * If true, the fGPU is deleted when the VM is terminated.
      */
-    public readonly deleteOnVmDeletion!: pulumi.Output<boolean>;
+    declare public readonly deleteOnVmDeletion: pulumi.Output<boolean>;
     /**
      * The ID of the fGPU.
      */
-    public /*out*/ readonly flexibleGpuId!: pulumi.Output<string>;
+    declare public /*out*/ readonly flexibleGpuId: pulumi.Output<string>;
     /**
      * The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
      */
-    public readonly generation!: pulumi.Output<string>;
+    declare public readonly generation: pulumi.Output<string>;
     /**
      * The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
      */
-    public readonly modelName!: pulumi.Output<string>;
+    declare public readonly modelName: pulumi.Output<string>;
     /**
      * The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The Subregion in which you want to create the fGPU.
      */
-    public readonly subregionName!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.FlexibleGpuTimeouts | undefined>;
+    declare public readonly subregionName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.FlexibleGpuTimeouts | undefined>;
     /**
      * The ID of the VM the fGPU is attached to, if any.
      */
-    public /*out*/ readonly vmId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmId: pulumi.Output<string>;
 
     /**
      * Create a FlexibleGpu resource with the given unique name, arguments, and options.
@@ -109,27 +109,27 @@ export class FlexibleGpu extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlexibleGpuState | undefined;
-            resourceInputs["deleteOnVmDeletion"] = state ? state.deleteOnVmDeletion : undefined;
-            resourceInputs["flexibleGpuId"] = state ? state.flexibleGpuId : undefined;
-            resourceInputs["generation"] = state ? state.generation : undefined;
-            resourceInputs["modelName"] = state ? state.modelName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subregionName"] = state ? state.subregionName : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["deleteOnVmDeletion"] = state?.deleteOnVmDeletion;
+            resourceInputs["flexibleGpuId"] = state?.flexibleGpuId;
+            resourceInputs["generation"] = state?.generation;
+            resourceInputs["modelName"] = state?.modelName;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subregionName"] = state?.subregionName;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FlexibleGpuArgs | undefined;
-            if ((!args || args.modelName === undefined) && !opts.urn) {
+            if (args?.modelName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'modelName'");
             }
-            if ((!args || args.subregionName === undefined) && !opts.urn) {
+            if (args?.subregionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subregionName'");
             }
-            resourceInputs["deleteOnVmDeletion"] = args ? args.deleteOnVmDeletion : undefined;
-            resourceInputs["generation"] = args ? args.generation : undefined;
-            resourceInputs["modelName"] = args ? args.modelName : undefined;
-            resourceInputs["subregionName"] = args ? args.subregionName : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["deleteOnVmDeletion"] = args?.deleteOnVmDeletion;
+            resourceInputs["generation"] = args?.generation;
+            resourceInputs["modelName"] = args?.modelName;
+            resourceInputs["subregionName"] = args?.subregionName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["flexibleGpuId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["vmId"] = undefined /*out*/;

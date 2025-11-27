@@ -18,16 +18,17 @@ package main
 
 import (
 	"context"
-	_ "embed"
+
+	_ "embed" // Required for go:embed directive
+
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	outscale "github.com/outscale/pulumi-outscale/provider"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
 func main() {
-	// Modify the path to point to the new provider
 	tfbridge.MainWithMuxer(context.Background(), "outscale", outscale.Provider(), pulumiSchema)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class ImageExportTaskOsuExport
     {
         /// <summary>
-        /// The format of the export disk (`qcow2` \| `raw`).
+        /// The format of the export disk (`Qcow2` \| `Raw`).
         /// </summary>
         public readonly string DiskImageFormat;
         /// <summary>

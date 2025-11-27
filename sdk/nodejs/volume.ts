@@ -82,50 +82,50 @@ export class Volume extends pulumi.CustomResource {
     /**
      * The date and time (UTC) at which the volume was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
      */
-    public readonly iops!: pulumi.Output<number>;
+    declare public readonly iops: pulumi.Output<number>;
     /**
      * Information about your volume attachment.
      */
-    public /*out*/ readonly linkedVolumes!: pulumi.Output<outputs.VolumeLinkedVolume[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly linkedVolumes: pulumi.Output<outputs.VolumeLinkedVolume[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshotId` unspecified).
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The ID of the snapshot from which you want to create the volume.
      */
-    public readonly snapshotId!: pulumi.Output<string>;
+    declare public readonly snapshotId: pulumi.Output<string>;
     /**
      * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The Subregion in which you want to create the volume.
      */
-    public readonly subregionName!: pulumi.Output<string>;
+    declare public readonly subregionName: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.VolumeTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.VolumeTag[] | undefined>;
     /**
      * Whether you want to create a snapshot before the volume deletion.
      */
-    public readonly terminationSnapshotName!: pulumi.Output<string | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.VolumeTimeouts | undefined>;
+    declare public readonly terminationSnapshotName: pulumi.Output<string | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.VolumeTimeouts | undefined>;
     /**
      * The ID of the volume.
      */
-    public /*out*/ readonly volumeId!: pulumi.Output<string>;
+    declare public /*out*/ readonly volumeId: pulumi.Output<string>;
     /**
      * The type of volume you want to create (`io1` \| `gp2` \| `standard`). If not specified, a `standard` volume is created.<br />
      * For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
      */
-    public readonly volumeType!: pulumi.Output<string>;
+    declare public readonly volumeType: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -140,32 +140,32 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["iops"] = state ? state.iops : undefined;
-            resourceInputs["linkedVolumes"] = state ? state.linkedVolumes : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subregionName"] = state ? state.subregionName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["terminationSnapshotName"] = state ? state.terminationSnapshotName : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
-            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["iops"] = state?.iops;
+            resourceInputs["linkedVolumes"] = state?.linkedVolumes;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subregionName"] = state?.subregionName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["terminationSnapshotName"] = state?.terminationSnapshotName;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["volumeId"] = state?.volumeId;
+            resourceInputs["volumeType"] = state?.volumeType;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if ((!args || args.subregionName === undefined) && !opts.urn) {
+            if (args?.subregionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subregionName'");
             }
-            resourceInputs["iops"] = args ? args.iops : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["subregionName"] = args ? args.subregionName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["terminationSnapshotName"] = args ? args.terminationSnapshotName : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["iops"] = args?.iops;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["subregionName"] = args?.subregionName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["terminationSnapshotName"] = args?.terminationSnapshotName;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["volumeType"] = args?.volumeType;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["linkedVolumes"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

@@ -287,6 +287,20 @@ class Policy(pulumi.CustomResource):
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#3ds-outscale-api-policy).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        policy_1 = outscale.Policy("policy-1",
+           policy_name="terraform-policy-1",
+           description="test-terraform",
+           document=std.index.file(input="policy.json")["result"],
+           path="/")
+        ```
+
         ## Import
 
         A policy can be imported using its ORN. For example:
@@ -315,6 +329,20 @@ class Policy(pulumi.CustomResource):
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#3ds-outscale-api-policy).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        policy_1 = outscale.Policy("policy-1",
+           policy_name="terraform-policy-1",
+           description="test-terraform",
+           document=std.index.file(input="policy.json")["result"],
+           path="/")
+        ```
 
         ## Import
 

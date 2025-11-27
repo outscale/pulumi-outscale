@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string>? DestinationIpRange { get; set; }
 
         /// <summary>
-        /// The type of route (always `static`).
+        /// The type of route (always `Static`).
         /// </summary>
         [Input("routeType")]
         public Input<string>? RouteType { get; set; }

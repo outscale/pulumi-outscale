@@ -281,11 +281,11 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string RootDeviceName;
         /// <summary>
-        /// The type of root device used by the OMI (always `bsu`).
+        /// The type of root device used by the OMI (always `Bsu`).
         /// </summary>
         public readonly string RootDeviceType;
         /// <summary>
-        /// The state of the OMI (`pending` \| `available` \| `failed`).
+        /// The state of the OMI (`Pending` \| `Available` \| `Failed`).
         /// </summary>
         public readonly string State;
         /// <summary>

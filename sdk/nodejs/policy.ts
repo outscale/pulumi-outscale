@@ -10,6 +10,23 @@ import * as utilities from "./utilities";
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#3ds-outscale-api-policy).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const policy_1 = new outscale.Policy("policy-1", {
+ *    policyName: "terraform-policy-1",
+ *    description: "test-terraform",
+ *    document: std.index.file({
+ *        input: "policy.json",
+ *    }).result,
+ *    path: "/",
+ * });
+ * ```
+ *
  * ## Import
  *
  * A policy can be imported using its ORN. For example:
@@ -51,47 +68,47 @@ export class Policy extends pulumi.CustomResource {
     /**
      * The date and time (UTC) at which the policy was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * A description for the policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
      */
-    public readonly document!: pulumi.Output<string>;
+    declare public readonly document: pulumi.Output<string>;
     /**
      * Indicates whether the policy can be linked to a group or an EIM user.
      */
-    public /*out*/ readonly isLinkable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isLinkable: pulumi.Output<boolean>;
     /**
      * The date and time (UTC) at which the policy was last modified.
      */
-    public /*out*/ readonly lastModificationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModificationDate: pulumi.Output<string>;
     /**
      * The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
      */
-    public /*out*/ readonly orn!: pulumi.Output<string>;
+    declare public /*out*/ readonly orn: pulumi.Output<string>;
     /**
      * The path of the policy.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The ID of the policy default version.
      */
-    public /*out*/ readonly policyDefaultVersionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyDefaultVersionId: pulumi.Output<string>;
     /**
      * The ID of the policy.
      */
-    public /*out*/ readonly policyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly policyId: pulumi.Output<string>;
     /**
      * The name of the policy.
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The number of resources attached to the policy.
      */
-    public /*out*/ readonly resourcesCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly resourcesCount: pulumi.Output<number>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -106,29 +123,29 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["document"] = state ? state.document : undefined;
-            resourceInputs["isLinkable"] = state ? state.isLinkable : undefined;
-            resourceInputs["lastModificationDate"] = state ? state.lastModificationDate : undefined;
-            resourceInputs["orn"] = state ? state.orn : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["policyDefaultVersionId"] = state ? state.policyDefaultVersionId : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["resourcesCount"] = state ? state.resourcesCount : undefined;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["document"] = state?.document;
+            resourceInputs["isLinkable"] = state?.isLinkable;
+            resourceInputs["lastModificationDate"] = state?.lastModificationDate;
+            resourceInputs["orn"] = state?.orn;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["policyDefaultVersionId"] = state?.policyDefaultVersionId;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["resourcesCount"] = state?.resourcesCount;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.document === undefined) && !opts.urn) {
+            if (args?.document === undefined && !opts.urn) {
                 throw new Error("Missing required property 'document'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["document"] = args ? args.document : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["document"] = args?.document;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["policyName"] = args?.policyName;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["isLinkable"] = undefined /*out*/;
             resourceInputs["lastModificationDate"] = undefined /*out*/;

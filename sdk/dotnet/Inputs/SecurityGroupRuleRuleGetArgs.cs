@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<int>? FromPortRange { get; set; }
 
         /// <summary>
-        /// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        /// The IP protocol name (`Tcp`, `Udp`, `Icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }

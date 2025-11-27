@@ -82,32 +82,32 @@ export class SnapshotExportTask extends pulumi.CustomResource {
     /**
      * If the snapshot export task fails, an error message appears.
      */
-    public /*out*/ readonly comment!: pulumi.Output<string>;
+    declare public /*out*/ readonly comment: pulumi.Output<string>;
     /**
      * Information about the OOS export task to create.
      */
-    public readonly osuExports!: pulumi.Output<outputs.SnapshotExportTaskOsuExport[]>;
+    declare public readonly osuExports: pulumi.Output<outputs.SnapshotExportTaskOsuExport[]>;
     /**
      * The progress of the snapshot export task, as a percentage.
      */
-    public /*out*/ readonly progress!: pulumi.Output<number>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly progress: pulumi.Output<number>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the snapshot to export.
      */
-    public readonly snapshotId!: pulumi.Output<string>;
+    declare public readonly snapshotId: pulumi.Output<string>;
     /**
      * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.SnapshotExportTaskTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.SnapshotExportTaskTag[] | undefined>;
     /**
      * The ID of the snapshot export task.
      */
-    public /*out*/ readonly taskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly taskId: pulumi.Output<string>;
 
     /**
      * Create a SnapshotExportTask resource with the given unique name, arguments, and options.
@@ -122,25 +122,25 @@ export class SnapshotExportTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotExportTaskState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["osuExports"] = state ? state.osuExports : undefined;
-            resourceInputs["progress"] = state ? state.progress : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taskId"] = state ? state.taskId : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["osuExports"] = state?.osuExports;
+            resourceInputs["progress"] = state?.progress;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taskId"] = state?.taskId;
         } else {
             const args = argsOrState as SnapshotExportTaskArgs | undefined;
-            if ((!args || args.osuExports === undefined) && !opts.urn) {
+            if (args?.osuExports === undefined && !opts.urn) {
                 throw new Error("Missing required property 'osuExports'");
             }
-            if ((!args || args.snapshotId === undefined) && !opts.urn) {
+            if (args?.snapshotId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snapshotId'");
             }
-            resourceInputs["osuExports"] = args ? args.osuExports : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["osuExports"] = args?.osuExports;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["comment"] = undefined /*out*/;
             resourceInputs["progress"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

@@ -23,6 +23,25 @@ import * as utilities from "./utilities";
  * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-create"});
  * ```
  *
+ * ### Import keypairs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const keypair02 = new outscale.Keypair("keypair02", {
+ *     keypairName: "terraform-keypair-import-file",
+ *     publicKey: std.index.file({
+ *         input: "<PATH>",
+ *     }).result,
+ * });
+ * const keypair03 = new outscale.Keypair("keypair03", {
+ *     keypairName: "terraform-keypair-import-text",
+ *     publicKey: "UFVCTElDIEtFWQ==",
+ * });
+ * ```
+ *
  * ## Import
  *
  * A keypair can be imported using its name. For example:
@@ -64,33 +83,33 @@ export class Keypair extends pulumi.CustomResource {
     /**
      * The MD5 public key fingerprint, as specified in section 4 of RFC 4716.
      */
-    public /*out*/ readonly keypairFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly keypairFingerprint: pulumi.Output<string>;
     /**
      * The ID of the keypair.
      */
-    public /*out*/ readonly keypairId!: pulumi.Output<string>;
+    declare public /*out*/ readonly keypairId: pulumi.Output<string>;
     /**
      * A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
      */
-    public readonly keypairName!: pulumi.Output<string>;
+    declare public readonly keypairName: pulumi.Output<string>;
     /**
      * The type of the keypair (`ssh-rsa`, `ssh-ed25519`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`, or `ecdsa-sha2-nistp521`).
      */
-    public /*out*/ readonly keypairType!: pulumi.Output<string>;
+    declare public /*out*/ readonly keypairType: pulumi.Output<string>;
     /**
      * The private key, returned only if you are creating a keypair (not if you are importing). When you save this private key in a .rsa file, make sure you replace the `\n` escape sequences with real line breaks.
      */
-    public /*out*/ readonly privateKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateKey: pulumi.Output<string>;
     /**
      * The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
      */
-    public readonly publicKey!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly publicKey: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.KeypairTag[] | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.KeypairTimeouts | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.KeypairTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.KeypairTimeouts | undefined>;
 
     /**
      * Create a Keypair resource with the given unique name, arguments, and options.
@@ -105,24 +124,24 @@ export class Keypair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeypairState | undefined;
-            resourceInputs["keypairFingerprint"] = state ? state.keypairFingerprint : undefined;
-            resourceInputs["keypairId"] = state ? state.keypairId : undefined;
-            resourceInputs["keypairName"] = state ? state.keypairName : undefined;
-            resourceInputs["keypairType"] = state ? state.keypairType : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["keypairFingerprint"] = state?.keypairFingerprint;
+            resourceInputs["keypairId"] = state?.keypairId;
+            resourceInputs["keypairName"] = state?.keypairName;
+            resourceInputs["keypairType"] = state?.keypairType;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as KeypairArgs | undefined;
-            if ((!args || args.keypairName === undefined) && !opts.urn) {
+            if (args?.keypairName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keypairName'");
             }
-            resourceInputs["keypairName"] = args ? args.keypairName : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["keypairName"] = args?.keypairName;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["keypairFingerprint"] = undefined /*out*/;
             resourceInputs["keypairId"] = undefined /*out*/;
             resourceInputs["keypairType"] = undefined /*out*/;

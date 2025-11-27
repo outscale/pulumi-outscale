@@ -164,8 +164,8 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         [Output("loadBalancerType")]
         public Output<string> LoadBalancerType { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Outscale
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of stickiness policy you want to create: `app` or `load_balancer`.
+        /// The type of stickiness policy you want to create: `App` or `LoadBalancer`.
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
@@ -315,8 +315,8 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.Outscale
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// The type of stickiness policy you want to create: `app` or `load_balancer`.
+        /// The type of stickiness policy you want to create: `App` or `LoadBalancer`.
         /// </summary>
         [Input("policyType", required: true)]
         public Input<string> PolicyType { get; set; } = null!;
@@ -484,8 +484,8 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
@@ -503,7 +503,7 @@ namespace Pulumi.Outscale
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// The type of stickiness policy you want to create: `app` or `load_balancer`.
+        /// The type of stickiness policy you want to create: `App` or `LoadBalancer`.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

@@ -72,28 +72,28 @@ export class ClientGateway extends pulumi.CustomResource {
      * This number must be between `1` and `4294967295`, except `50624`, `53306`, and `132418`. <br/>
      * If you do not have an ASN, you can choose one between `64512` and `65534` (both included), or between `4200000000` and `4294967295` (both included).
      */
-    public readonly bgpAsn!: pulumi.Output<number>;
+    declare public readonly bgpAsn: pulumi.Output<number>;
     /**
      * The ID of the client gateway.
      */
-    public /*out*/ readonly clientGatewayId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientGatewayId: pulumi.Output<string>;
     /**
      * The communication protocol used to establish tunnel with your client gateway (always `ipsec.1`).
      */
-    public readonly connectionType!: pulumi.Output<string>;
+    declare public readonly connectionType: pulumi.Output<string>;
     /**
      * The public fixed IPv4 address of your client gateway.
      */
-    public readonly publicIp!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly publicIp: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.ClientGatewayTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.ClientGatewayTag[] | undefined>;
 
     /**
      * Create a ClientGateway resource with the given unique name, arguments, and options.
@@ -108,28 +108,28 @@ export class ClientGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientGatewayState | undefined;
-            resourceInputs["bgpAsn"] = state ? state.bgpAsn : undefined;
-            resourceInputs["clientGatewayId"] = state ? state.clientGatewayId : undefined;
-            resourceInputs["connectionType"] = state ? state.connectionType : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["bgpAsn"] = state?.bgpAsn;
+            resourceInputs["clientGatewayId"] = state?.clientGatewayId;
+            resourceInputs["connectionType"] = state?.connectionType;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ClientGatewayArgs | undefined;
-            if ((!args || args.bgpAsn === undefined) && !opts.urn) {
+            if (args?.bgpAsn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bgpAsn'");
             }
-            if ((!args || args.connectionType === undefined) && !opts.urn) {
+            if (args?.connectionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionType'");
             }
-            if ((!args || args.publicIp === undefined) && !opts.urn) {
+            if (args?.publicIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publicIp'");
             }
-            resourceInputs["bgpAsn"] = args ? args.bgpAsn : undefined;
-            resourceInputs["connectionType"] = args ? args.connectionType : undefined;
-            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["bgpAsn"] = args?.bgpAsn;
+            resourceInputs["connectionType"] = args?.connectionType;
+            resourceInputs["publicIp"] = args?.publicIp;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["clientGatewayId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

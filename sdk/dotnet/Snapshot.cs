@@ -157,7 +157,7 @@ namespace Pulumi.Outscale
         public Output<string> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+        /// The state of the snapshot (`in-queue` \| `Pending` \| `Completed` \| `Error` \| `Deleting`)).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -358,7 +358,7 @@ namespace Pulumi.Outscale
         public Input<string>? SourceSnapshotId { get; set; }
 
         /// <summary>
-        /// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+        /// The state of the snapshot (`in-queue` \| `Pending` \| `Completed` \| `Error` \| `Deleting`)).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

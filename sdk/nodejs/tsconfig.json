@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "bin",
-        "target": "es2016",
+        "target": "ES2020",
         "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
@@ -147,7 +147,6 @@
         "snapshotAttributes.ts",
         "snapshotExportTask.ts",
         "subnet.ts",
-        "tag.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",

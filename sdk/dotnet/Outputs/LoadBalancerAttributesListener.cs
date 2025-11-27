@@ -34,7 +34,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PolicyNames;
         /// <summary>
-        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `LoadBalancerPort` parameter.
         /// </summary>
         public readonly string? ServerCertificateId;
 

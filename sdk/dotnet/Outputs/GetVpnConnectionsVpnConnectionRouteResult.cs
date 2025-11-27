@@ -18,7 +18,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string DestinationIpRange;
         /// <summary>
-        /// The type of route (always `static`).
+        /// The type of route (always `Static`).
         /// </summary>
         public readonly string RouteType;
         /// <summary>

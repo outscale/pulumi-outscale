@@ -33,7 +33,7 @@ namespace Pulumi.Outscale
         public Output<string> AdminPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The architecture of the VM (`i386` \| `x86_64`).
+        /// The architecture of the VM (`I386` \| `X8664`).
         /// </summary>
         [Output("architecture")]
         public Output<string> Architecture { get; private set; } = null!;
@@ -51,7 +51,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.VmBlockDeviceMappingsCreated>> BlockDeviceMappingsCreateds { get; private set; } = null!;
 
         /// <summary>
-        /// Information about the boot mode of the VM (`legacy` | `uefi`).
+        /// Information about the boot mode of the VM (`Legacy` | `Uefi`).
         /// </summary>
         [Output("bootMode")]
         public Output<string> BootMode { get; private set; } = null!;
@@ -78,13 +78,13 @@ namespace Pulumi.Outscale
         public Output<bool> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        /// (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `AdminPassword` attribute.
         /// </summary>
         [Output("getAdminPassword")]
         public Output<bool?> GetAdminPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The hypervisor type of the VMs (`ovm` \| `xen`).
+        /// The hypervisor type of the VMs (`Ovm` \| `Xen`).
         /// </summary>
         [Output("hypervisor")]
         public Output<string> Hypervisor { get; private set; } = null!;
@@ -108,6 +108,13 @@ namespace Pulumi.Outscale
         public Output<string> KeypairName { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+        /// </summary>
+        [Output("keypairNameWo")]
+        public Output<string?> KeypairNameWo { get; private set; } = null!;
+
+        /// <summary>
         /// The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
         /// </summary>
         [Output("launchNumber")]
@@ -126,7 +133,7 @@ namespace Pulumi.Outscale
         public Output<string> NetId { get; private set; } = null!;
 
         /// <summary>
-        /// One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        /// One or more NICs. If you specify this parameter, you must not specify the `SubnetId` and `SubregionName` parameters. To define a NIC as the primary network interface of the VM, use the `PrimaryNic` argument.
         /// </summary>
         [Output("nics")]
         public Output<ImmutableArray<Outputs.VmNic>> Nics { get; private set; } = null!;
@@ -138,7 +145,7 @@ namespace Pulumi.Outscale
         public Output<string> OsFamily { get; private set; } = null!;
 
         /// <summary>
-        /// The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        /// The performance of the VM (`Medium` | `High` | `Highest`). Updating this parameter will trigger a stop/start of the VM.
         /// </summary>
         [Output("performance")]
         public Output<string> Performance { get; private set; } = null!;
@@ -150,7 +157,7 @@ namespace Pulumi.Outscale
         public Output<string> PlacementSubregionName { get; private set; } = null!;
 
         /// <summary>
-        /// The tenancy of the VM (`default` | `dedicated`).
+        /// The tenancy of the VM (`Default` | `Dedicated`).
         /// </summary>
         [Output("placementTenancy")]
         public Output<string> PlacementTenancy { get; private set; } = null!;
@@ -213,25 +220,25 @@ namespace Pulumi.Outscale
         public Output<string> RootDeviceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of root device used by the VM (always `bsu`).
+        /// The type of root device used by the VM (always `Bsu`).
         /// </summary>
         [Output("rootDeviceType")]
         public Output<string> RootDeviceType { get; private set; } = null!;
 
         /// <summary>
-        /// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).&lt;br /&gt; For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        /// One action to perform on the next boot of the VM (`Enable` | `Disable` | `setup-mode` |`None`).&lt;br /&gt; For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         /// </summary>
         [Output("secureBootAction")]
         public Output<string?> SecureBootAction { get; private set; } = null!;
 
         /// <summary>
-        /// One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        /// One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `SecurityGroupIds` or `SecurityGroupNames`.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        /// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `SecurityGroupIds` or `SecurityGroupNames`.
         /// </summary>
         [Output("securityGroupNames")]
         public Output<ImmutableArray<string>> SecurityGroupNames { get; private set; } = null!;
@@ -243,7 +250,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.VmSecurityGroup>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -255,7 +262,7 @@ namespace Pulumi.Outscale
         public Output<string> StateReason { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `Nics` parameter.
         /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -276,7 +283,7 @@ namespace Pulumi.Outscale
         public Output<string> VmId { get; private set; } = null!;
 
         /// <summary>
-        /// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated.
         /// </summary>
         [Output("vmInitiatedShutdownBehavior")]
         public Output<string> VmInitiatedShutdownBehavior { get; private set; } = null!;
@@ -310,6 +317,10 @@ namespace Pulumi.Outscale
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "keypairNameWo",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -346,7 +357,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// Information about the boot mode of the VM (`legacy` | `uefi`).
+        /// Information about the boot mode of the VM (`Legacy` | `Uefi`).
         /// </summary>
         [Input("bootMode")]
         public Input<string>? BootMode { get; set; }
@@ -361,7 +372,7 @@ namespace Pulumi.Outscale
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        /// (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `AdminPassword` attribute.
         /// </summary>
         [Input("getAdminPassword")]
         public Input<bool>? GetAdminPassword { get; set; }
@@ -384,6 +395,23 @@ namespace Pulumi.Outscale
         [Input("keypairName")]
         public Input<string>? KeypairName { get; set; }
 
+        [Input("keypairNameWo")]
+        private Input<string>? _keypairNameWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+        /// </summary>
+        public Input<string>? KeypairNameWo
+        {
+            get => _keypairNameWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keypairNameWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         /// </summary>
@@ -394,7 +422,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.VmNicArgs>? _nics;
 
         /// <summary>
-        /// One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        /// One or more NICs. If you specify this parameter, you must not specify the `SubnetId` and `SubregionName` parameters. To define a NIC as the primary network interface of the VM, use the `PrimaryNic` argument.
         /// </summary>
         public InputList<Inputs.VmNicArgs> Nics
         {
@@ -403,7 +431,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        /// The performance of the VM (`Medium` | `High` | `Highest`). Updating this parameter will trigger a stop/start of the VM.
         /// </summary>
         [Input("performance")]
         public Input<string>? Performance { get; set; }
@@ -415,7 +443,7 @@ namespace Pulumi.Outscale
         public Input<string>? PlacementSubregionName { get; set; }
 
         /// <summary>
-        /// The tenancy of the VM (`default` | `dedicated`).
+        /// The tenancy of the VM (`Default` | `Dedicated`).
         /// </summary>
         [Input("placementTenancy")]
         public Input<string>? PlacementTenancy { get; set; }
@@ -445,7 +473,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).&lt;br /&gt; For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        /// One action to perform on the next boot of the VM (`Enable` | `Disable` | `setup-mode` |`None`).&lt;br /&gt; For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         /// </summary>
         [Input("secureBootAction")]
         public Input<string>? SecureBootAction { get; set; }
@@ -454,7 +482,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        /// One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `SecurityGroupIds` or `SecurityGroupNames`.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -466,7 +494,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _securityGroupNames;
 
         /// <summary>
-        /// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        /// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `SecurityGroupIds` or `SecurityGroupNames`.
         /// </summary>
         public InputList<string> SecurityGroupNames
         {
@@ -475,13 +503,13 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `Nics` parameter.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
@@ -508,7 +536,7 @@ namespace Pulumi.Outscale
         public Input<string>? VmId { get; set; }
 
         /// <summary>
-        /// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated.
         /// </summary>
         [Input("vmInitiatedShutdownBehavior")]
         public Input<string>? VmInitiatedShutdownBehavior { get; set; }
@@ -543,7 +571,7 @@ namespace Pulumi.Outscale
         public Input<string>? AdminPassword { get; set; }
 
         /// <summary>
-        /// The architecture of the VM (`i386` \| `x86_64`).
+        /// The architecture of the VM (`I386` \| `X8664`).
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -573,7 +601,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// Information about the boot mode of the VM (`legacy` | `uefi`).
+        /// Information about the boot mode of the VM (`Legacy` | `Uefi`).
         /// </summary>
         [Input("bootMode")]
         public Input<string>? BootMode { get; set; }
@@ -600,13 +628,13 @@ namespace Pulumi.Outscale
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
+        /// (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `AdminPassword` attribute.
         /// </summary>
         [Input("getAdminPassword")]
         public Input<bool>? GetAdminPassword { get; set; }
 
         /// <summary>
-        /// The hypervisor type of the VMs (`ovm` \| `xen`).
+        /// The hypervisor type of the VMs (`Ovm` \| `Xen`).
         /// </summary>
         [Input("hypervisor")]
         public Input<string>? Hypervisor { get; set; }
@@ -628,6 +656,23 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("keypairName")]
         public Input<string>? KeypairName { get; set; }
+
+        [Input("keypairNameWo")]
+        private Input<string>? _keypairNameWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+        /// </summary>
+        public Input<string>? KeypairNameWo
+        {
+            get => _keypairNameWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keypairNameWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
@@ -651,7 +696,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.VmNicGetArgs>? _nics;
 
         /// <summary>
-        /// One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        /// One or more NICs. If you specify this parameter, you must not specify the `SubnetId` and `SubregionName` parameters. To define a NIC as the primary network interface of the VM, use the `PrimaryNic` argument.
         /// </summary>
         public InputList<Inputs.VmNicGetArgs> Nics
         {
@@ -666,7 +711,7 @@ namespace Pulumi.Outscale
         public Input<string>? OsFamily { get; set; }
 
         /// <summary>
-        /// The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
+        /// The performance of the VM (`Medium` | `High` | `Highest`). Updating this parameter will trigger a stop/start of the VM.
         /// </summary>
         [Input("performance")]
         public Input<string>? Performance { get; set; }
@@ -678,7 +723,7 @@ namespace Pulumi.Outscale
         public Input<string>? PlacementSubregionName { get; set; }
 
         /// <summary>
-        /// The tenancy of the VM (`default` | `dedicated`).
+        /// The tenancy of the VM (`Default` | `Dedicated`).
         /// </summary>
         [Input("placementTenancy")]
         public Input<string>? PlacementTenancy { get; set; }
@@ -759,13 +804,13 @@ namespace Pulumi.Outscale
         public Input<string>? RootDeviceName { get; set; }
 
         /// <summary>
-        /// The type of root device used by the VM (always `bsu`).
+        /// The type of root device used by the VM (always `Bsu`).
         /// </summary>
         [Input("rootDeviceType")]
         public Input<string>? RootDeviceType { get; set; }
 
         /// <summary>
-        /// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).&lt;br /&gt; For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        /// One action to perform on the next boot of the VM (`Enable` | `Disable` | `setup-mode` |`None`).&lt;br /&gt; For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         /// </summary>
         [Input("secureBootAction")]
         public Input<string>? SecureBootAction { get; set; }
@@ -774,7 +819,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        /// One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `SecurityGroupIds` or `SecurityGroupNames`.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -786,7 +831,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _securityGroupNames;
 
         /// <summary>
-        /// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        /// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `SecurityGroupIds` or `SecurityGroupNames`.
         /// </summary>
         public InputList<string> SecurityGroupNames
         {
@@ -807,7 +852,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -819,7 +864,7 @@ namespace Pulumi.Outscale
         public Input<string>? StateReason { get; set; }
 
         /// <summary>
-        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `Nics` parameter.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
@@ -846,7 +891,7 @@ namespace Pulumi.Outscale
         public Input<string>? VmId { get; set; }
 
         /// <summary>
-        /// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated.
         /// </summary>
         [Input("vmInitiatedShutdownBehavior")]
         public Input<string>? VmInitiatedShutdownBehavior { get; set; }

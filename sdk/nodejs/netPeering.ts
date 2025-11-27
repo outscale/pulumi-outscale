@@ -77,43 +77,43 @@ export class NetPeering extends pulumi.CustomResource {
     /**
      * The ID of the Net you want to connect with.
      */
-    public readonly accepterNetId!: pulumi.Output<string>;
+    declare public readonly accepterNetId: pulumi.Output<string>;
     /**
      * Information about the accepter Net.
      */
-    public /*out*/ readonly accepterNets!: pulumi.Output<outputs.NetPeeringAccepterNet[]>;
+    declare public /*out*/ readonly accepterNets: pulumi.Output<outputs.NetPeeringAccepterNet[]>;
     /**
      * The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
      * This parameter is required if the Net you want to connect with does not belong to you.
      */
-    public readonly accepterOwnerId!: pulumi.Output<string>;
+    declare public readonly accepterOwnerId: pulumi.Output<string>;
     /**
      * The date and time (UTC) at which the Net peerings expire.
      */
-    public /*out*/ readonly expirationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly expirationDate: pulumi.Output<string>;
     /**
      * The ID of the Net peering.
      */
-    public /*out*/ readonly netPeeringId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
-    public readonly sourceNetAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netPeeringId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly sourceNetAccountId: pulumi.Output<string>;
     /**
      * The ID of the Net you send the peering request from.
      */
-    public readonly sourceNetId!: pulumi.Output<string>;
+    declare public readonly sourceNetId: pulumi.Output<string>;
     /**
      * Information about the source Net.
      */
-    public /*out*/ readonly sourceNets!: pulumi.Output<outputs.NetPeeringSourceNet[]>;
+    declare public /*out*/ readonly sourceNets: pulumi.Output<outputs.NetPeeringSourceNet[]>;
     /**
      * Information about the state of the Net peering.
      */
-    public /*out*/ readonly states!: pulumi.Output<outputs.NetPeeringState[]>;
+    declare public /*out*/ readonly states: pulumi.Output<outputs.NetPeeringState[]>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.NetPeeringTag[] | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.NetPeeringTimeouts | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.NetPeeringTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.NetPeeringTimeouts | undefined>;
 
     /**
      * Create a NetPeering resource with the given unique name, arguments, and options.
@@ -128,32 +128,32 @@ export class NetPeering extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetPeeringState | undefined;
-            resourceInputs["accepterNetId"] = state ? state.accepterNetId : undefined;
-            resourceInputs["accepterNets"] = state ? state.accepterNets : undefined;
-            resourceInputs["accepterOwnerId"] = state ? state.accepterOwnerId : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["netPeeringId"] = state ? state.netPeeringId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["sourceNetAccountId"] = state ? state.sourceNetAccountId : undefined;
-            resourceInputs["sourceNetId"] = state ? state.sourceNetId : undefined;
-            resourceInputs["sourceNets"] = state ? state.sourceNets : undefined;
-            resourceInputs["states"] = state ? state.states : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["accepterNetId"] = state?.accepterNetId;
+            resourceInputs["accepterNets"] = state?.accepterNets;
+            resourceInputs["accepterOwnerId"] = state?.accepterOwnerId;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["netPeeringId"] = state?.netPeeringId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["sourceNetAccountId"] = state?.sourceNetAccountId;
+            resourceInputs["sourceNetId"] = state?.sourceNetId;
+            resourceInputs["sourceNets"] = state?.sourceNets;
+            resourceInputs["states"] = state?.states;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as NetPeeringArgs | undefined;
-            if ((!args || args.accepterNetId === undefined) && !opts.urn) {
+            if (args?.accepterNetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accepterNetId'");
             }
-            if ((!args || args.sourceNetId === undefined) && !opts.urn) {
+            if (args?.sourceNetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceNetId'");
             }
-            resourceInputs["accepterNetId"] = args ? args.accepterNetId : undefined;
-            resourceInputs["accepterOwnerId"] = args ? args.accepterOwnerId : undefined;
-            resourceInputs["sourceNetAccountId"] = args ? args.sourceNetAccountId : undefined;
-            resourceInputs["sourceNetId"] = args ? args.sourceNetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["accepterNetId"] = args?.accepterNetId;
+            resourceInputs["accepterOwnerId"] = args?.accepterOwnerId;
+            resourceInputs["sourceNetAccountId"] = args?.sourceNetAccountId;
+            resourceInputs["sourceNetId"] = args?.sourceNetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["accepterNets"] = undefined /*out*/;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["netPeeringId"] = undefined /*out*/;

@@ -11,6 +11,22 @@ import * as utilities from "./utilities";
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Editing-Managed-Policies-Using-Policy-Versions.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#createpolicyversion).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const policy2_version_02 = new outscale.PolicyVersion("Policy2-version-02", {
+ *     policyOrn: policy_2.orn,
+ *     document: std.index.file({
+ *         input: "policy.json",
+ *     }).result,
+ *     setAsDefault: true,
+ * });
+ * ```
  */
 export class PolicyVersion extends pulumi.CustomResource {
     /**
@@ -43,31 +59,31 @@ export class PolicyVersion extends pulumi.CustomResource {
     /**
      * The policy document, corresponding to a JSON string that contains the policy. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
      */
-    public /*out*/ readonly body!: pulumi.Output<string>;
+    declare public /*out*/ readonly body: pulumi.Output<string>;
     /**
      * The date and time (UTC) at which the version was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * If true, the version is the default one.
      */
-    public /*out*/ readonly defaultVersion!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly defaultVersion: pulumi.Output<boolean>;
     /**
      * The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
      */
-    public readonly document!: pulumi.Output<string>;
+    declare public readonly document: pulumi.Output<string>;
     /**
      * The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
      */
-    public readonly policyOrn!: pulumi.Output<string>;
+    declare public readonly policyOrn: pulumi.Output<string>;
     /**
      * If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
      */
-    public readonly setAsDefault!: pulumi.Output<boolean>;
+    declare public readonly setAsDefault: pulumi.Output<boolean>;
     /**
      * The ID of the version.
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a PolicyVersion resource with the given unique name, arguments, and options.
@@ -82,24 +98,24 @@ export class PolicyVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyVersionState | undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
-            resourceInputs["document"] = state ? state.document : undefined;
-            resourceInputs["policyOrn"] = state ? state.policyOrn : undefined;
-            resourceInputs["setAsDefault"] = state ? state.setAsDefault : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["defaultVersion"] = state?.defaultVersion;
+            resourceInputs["document"] = state?.document;
+            resourceInputs["policyOrn"] = state?.policyOrn;
+            resourceInputs["setAsDefault"] = state?.setAsDefault;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as PolicyVersionArgs | undefined;
-            if ((!args || args.document === undefined) && !opts.urn) {
+            if (args?.document === undefined && !opts.urn) {
                 throw new Error("Missing required property 'document'");
             }
-            if ((!args || args.policyOrn === undefined) && !opts.urn) {
+            if (args?.policyOrn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyOrn'");
             }
-            resourceInputs["document"] = args ? args.document : undefined;
-            resourceInputs["policyOrn"] = args ? args.policyOrn : undefined;
-            resourceInputs["setAsDefault"] = args ? args.setAsDefault : undefined;
+            resourceInputs["document"] = args?.document;
+            resourceInputs["policyOrn"] = args?.policyOrn;
+            resourceInputs["setAsDefault"] = args?.setAsDefault;
             resourceInputs["body"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["defaultVersion"] = undefined /*out*/;

@@ -7,7 +7,6 @@
 
     "dependencies": {
         "@pulumi/cloudinit": "^1.3.0",
-        "@outscale/pulumi-outscale": "../../../sdk/nodejs/",
         "@pulumi/pulumi": "^3.83.0",
         "ts-node": "^10.9.1"
     }

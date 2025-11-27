@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class LoadBalancerListenerRuleListenerRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of action for the rule (always `forward`).
+        /// The type of action for the rule (always `Forward`).
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

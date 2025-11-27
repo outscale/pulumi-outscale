@@ -16,6 +16,55 @@ import (
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
 // For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "<PATH>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, map[string]interface{}{
+//				"input": "<PATH>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile2, err := std.File(ctx, map[string]interface{}{
+//				"input": "<PATH>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewServerCertificate(ctx, "server_certificate_01", &outscale.ServerCertificateArgs{
+//				Name:       pulumi.String("terraform-server-certificate"),
+//				Body:       invokeFile.Result,
+//				Chain:      invokeFile1.Result,
+//				PrivateKey: invokeFile2.Result,
+//				Path:       pulumi.String("<PATH>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A server certificate can be imported using its ID. For example:

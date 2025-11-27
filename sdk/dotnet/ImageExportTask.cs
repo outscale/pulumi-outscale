@@ -110,7 +110,7 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the OMI export task (`pending/queued` \| `pending` \| `completed` \| `failed` \| `cancelled`).
+        /// The state of the OMI export task (`pending/queued` \| `Pending` \| `Completed` \| `Failed` \| `Cancelled`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The state of the OMI export task (`pending/queued` \| `pending` \| `completed` \| `failed` \| `cancelled`).
+        /// The state of the OMI export task (`pending/queued` \| `Pending` \| `Completed` \| `Failed` \| `Cancelled`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

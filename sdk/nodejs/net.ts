@@ -100,29 +100,29 @@ export class Net extends pulumi.CustomResource {
     /**
      * The ID of the DHCP options set (or `default` if you want to associate the default one).
      */
-    public /*out*/ readonly dhcpOptionsSetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dhcpOptionsSetId: pulumi.Output<string>;
     /**
      * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
      */
-    public readonly ipRange!: pulumi.Output<string>;
+    declare public readonly ipRange: pulumi.Output<string>;
     /**
      * The ID of the Net.
      */
-    public /*out*/ readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the Net (`pending` \| `available` \| `deleting`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.NetTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.NetTag[] | undefined>;
     /**
      * The tenancy options for the VMs:<br />
      */
-    public readonly tenancy!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.NetTimeouts | undefined>;
+    declare public readonly tenancy: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.NetTimeouts | undefined>;
 
     /**
      * Create a Net resource with the given unique name, arguments, and options.
@@ -137,23 +137,23 @@ export class Net extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetState | undefined;
-            resourceInputs["dhcpOptionsSetId"] = state ? state.dhcpOptionsSetId : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenancy"] = state ? state.tenancy : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["dhcpOptionsSetId"] = state?.dhcpOptionsSetId;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenancy"] = state?.tenancy;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as NetArgs | undefined;
-            if ((!args || args.ipRange === undefined) && !opts.urn) {
+            if (args?.ipRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipRange'");
             }
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenancy"] = args ? args.tenancy : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenancy"] = args?.tenancy;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["dhcpOptionsSetId"] = undefined /*out*/;
             resourceInputs["netId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

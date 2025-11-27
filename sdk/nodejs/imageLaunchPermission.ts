@@ -73,24 +73,24 @@ export class ImageLaunchPermission extends pulumi.CustomResource {
     /**
      * The description of the OMI.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The ID of the OMI you want to modify.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * Information about the users to whom you want to give permissions for the resource.
      */
-    public readonly permissionAdditions!: pulumi.Output<outputs.ImageLaunchPermissionPermissionAdditions | undefined>;
+    declare public readonly permissionAdditions: pulumi.Output<outputs.ImageLaunchPermissionPermissionAdditions | undefined>;
     /**
      * Information about the users from whom you want to remove permissions for the resource.
      */
-    public readonly permissionRemovals!: pulumi.Output<outputs.ImageLaunchPermissionPermissionRemovals | undefined>;
+    declare public readonly permissionRemovals: pulumi.Output<outputs.ImageLaunchPermissionPermissionRemovals | undefined>;
     /**
      * Permissions for the resource.
      */
-    public /*out*/ readonly permissionsToLaunches!: pulumi.Output<outputs.ImageLaunchPermissionPermissionsToLaunch[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly permissionsToLaunches: pulumi.Output<outputs.ImageLaunchPermissionPermissionsToLaunch[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
 
     /**
      * Create a ImageLaunchPermission resource with the given unique name, arguments, and options.
@@ -105,20 +105,20 @@ export class ImageLaunchPermission extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageLaunchPermissionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["permissionAdditions"] = state ? state.permissionAdditions : undefined;
-            resourceInputs["permissionRemovals"] = state ? state.permissionRemovals : undefined;
-            resourceInputs["permissionsToLaunches"] = state ? state.permissionsToLaunches : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["permissionAdditions"] = state?.permissionAdditions;
+            resourceInputs["permissionRemovals"] = state?.permissionRemovals;
+            resourceInputs["permissionsToLaunches"] = state?.permissionsToLaunches;
+            resourceInputs["requestId"] = state?.requestId;
         } else {
             const args = argsOrState as ImageLaunchPermissionArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["permissionAdditions"] = args ? args.permissionAdditions : undefined;
-            resourceInputs["permissionRemovals"] = args ? args.permissionRemovals : undefined;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["permissionAdditions"] = args?.permissionAdditions;
+            resourceInputs["permissionRemovals"] = args?.permissionRemovals;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["permissionsToLaunches"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

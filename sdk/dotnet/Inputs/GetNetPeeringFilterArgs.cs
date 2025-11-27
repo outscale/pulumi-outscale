@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class GetNetPeeringFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The state of the Net peering (`pending-acceptance` \| `active` \| `rejected` \| `failed` \| `expired` \| `deleted`).
+        /// The state of the Net peering (`pending-acceptance` \| `Active` \| `Rejected` \| `Failed` \| `Expired` \| `Deleted`).
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

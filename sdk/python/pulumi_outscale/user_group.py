@@ -272,6 +272,29 @@ class UserGroup(pulumi.CustomResource):
             ])
         ```
 
+        ### Create a user group, and add a user and a policy to it
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        group_1 = outscale.UserGroup("group-1",
+            user_group_name="Group-TF-test-1",
+            users=[
+                {
+                    "user_name": "user-name-1",
+                    "path": "/terraform/",
+                },
+                {
+                    "user_name": "user-name-2",
+                },
+            ],
+            policies=[{
+                "policy_orn": policy_2["orn"],
+                "version_id": "V2",
+            }])
+        ```
+
         ## Import
 
         A user group can be imported using its group ID. For example:
@@ -343,6 +366,29 @@ class UserGroup(pulumi.CustomResource):
                     "user_name": "user-name-2",
                 },
             ])
+        ```
+
+        ### Create a user group, and add a user and a policy to it
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        group_1 = outscale.UserGroup("group-1",
+            user_group_name="Group-TF-test-1",
+            users=[
+                {
+                    "user_name": "user-name-1",
+                    "path": "/terraform/",
+                },
+                {
+                    "user_name": "user-name-2",
+                },
+            ],
+            policies=[{
+                "policy_orn": policy_2["orn"],
+                "version_id": "V2",
+            }])
         ```
 
         ## Import

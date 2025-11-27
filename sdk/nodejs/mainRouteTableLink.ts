@@ -73,26 +73,26 @@ export class MainRouteTableLink extends pulumi.CustomResource {
     /**
      * The ID of the default route table.
      */
-    public /*out*/ readonly defaultRouteTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultRouteTableId: pulumi.Output<string>;
     /**
      * The ID of the association between the route table and the Subnet.
      */
-    public /*out*/ readonly linkRouteTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly linkRouteTableId: pulumi.Output<string>;
     /**
      * If true, the route table is the main one.
      */
-    public /*out*/ readonly main!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly main: pulumi.Output<boolean>;
     /**
      * The ID of the Net.
      */
-    public readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the route table.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
-    public /*out*/ readonly subnetId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.MainRouteTableLinkTimeouts | undefined>;
+    declare public readonly routeTableId: pulumi.Output<string>;
+    declare public /*out*/ readonly subnetId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.MainRouteTableLinkTimeouts | undefined>;
 
     /**
      * Create a MainRouteTableLink resource with the given unique name, arguments, and options.
@@ -107,25 +107,25 @@ export class MainRouteTableLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MainRouteTableLinkState | undefined;
-            resourceInputs["defaultRouteTableId"] = state ? state.defaultRouteTableId : undefined;
-            resourceInputs["linkRouteTableId"] = state ? state.linkRouteTableId : undefined;
-            resourceInputs["main"] = state ? state.main : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["defaultRouteTableId"] = state?.defaultRouteTableId;
+            resourceInputs["linkRouteTableId"] = state?.linkRouteTableId;
+            resourceInputs["main"] = state?.main;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as MainRouteTableLinkArgs | undefined;
-            if ((!args || args.netId === undefined) && !opts.urn) {
+            if (args?.netId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netId'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["routeTableId"] = args?.routeTableId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["defaultRouteTableId"] = undefined /*out*/;
             resourceInputs["linkRouteTableId"] = undefined /*out*/;
             resourceInputs["main"] = undefined /*out*/;

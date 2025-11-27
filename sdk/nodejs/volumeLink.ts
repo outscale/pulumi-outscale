@@ -86,26 +86,26 @@ export class VolumeLink extends pulumi.CustomResource {
     /**
      * If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
      */
-    public /*out*/ readonly deleteOnVmDeletion!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly deleteOnVmDeletion: pulumi.Output<boolean>;
     /**
      * The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
      */
-    public readonly deviceName!: pulumi.Output<string>;
-    public readonly forceUnlink!: pulumi.Output<boolean>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly deviceName: pulumi.Output<string>;
+    declare public readonly forceUnlink: pulumi.Output<boolean>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.VolumeLinkTimeouts | undefined>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.VolumeLinkTimeouts | undefined>;
     /**
      * The ID of the VM you want to attach the volume to.
      */
-    public readonly vmId!: pulumi.Output<string>;
+    declare public readonly vmId: pulumi.Output<string>;
     /**
      * The ID of the volume you want to attach.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
 
     /**
      * Create a VolumeLink resource with the given unique name, arguments, and options.
@@ -120,30 +120,30 @@ export class VolumeLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeLinkState | undefined;
-            resourceInputs["deleteOnVmDeletion"] = state ? state.deleteOnVmDeletion : undefined;
-            resourceInputs["deviceName"] = state ? state.deviceName : undefined;
-            resourceInputs["forceUnlink"] = state ? state.forceUnlink : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["deleteOnVmDeletion"] = state?.deleteOnVmDeletion;
+            resourceInputs["deviceName"] = state?.deviceName;
+            resourceInputs["forceUnlink"] = state?.forceUnlink;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["vmId"] = state?.vmId;
+            resourceInputs["volumeId"] = state?.volumeId;
         } else {
             const args = argsOrState as VolumeLinkArgs | undefined;
-            if ((!args || args.deviceName === undefined) && !opts.urn) {
+            if (args?.deviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceName'");
             }
-            if ((!args || args.vmId === undefined) && !opts.urn) {
+            if (args?.vmId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmId'");
             }
-            if ((!args || args.volumeId === undefined) && !opts.urn) {
+            if (args?.volumeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["deviceName"] = args ? args.deviceName : undefined;
-            resourceInputs["forceUnlink"] = args ? args.forceUnlink : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["deviceName"] = args?.deviceName;
+            resourceInputs["forceUnlink"] = args?.forceUnlink;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["vmId"] = args?.vmId;
+            resourceInputs["volumeId"] = args?.volumeId;
             resourceInputs["deleteOnVmDeletion"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

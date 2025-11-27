@@ -29,6 +29,7 @@ class VmArgs:
                  get_admin_password: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
                  keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
                  nics: Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]] = None,
                  performance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -55,6 +56,8 @@ class VmArgs:
         :param pulumi.Input[_builtins.bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair.
+        :param pulumi.Input[_builtins.str] keypair_name_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         :param pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
@@ -87,6 +90,8 @@ class VmArgs:
             pulumi.set(__self__, "is_source_dest_checked", is_source_dest_checked)
         if keypair_name is not None:
             pulumi.set(__self__, "keypair_name", keypair_name)
+        if keypair_name_wo is not None:
+            pulumi.set(__self__, "keypair_name_wo", keypair_name_wo)
         if nested_virtualization is not None:
             pulumi.set(__self__, "nested_virtualization", nested_virtualization)
         if nics is not None:
@@ -214,6 +219,19 @@ class VmArgs:
     @keypair_name.setter
     def keypair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "keypair_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keypairNameWo")
+    def keypair_name_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+        """
+        return pulumi.get(self, "keypair_name_wo")
+
+    @keypair_name_wo.setter
+    def keypair_name_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "keypair_name_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="nestedVirtualization")
@@ -435,6 +453,7 @@ class _VmState:
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
                  keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  launch_number: Optional[pulumi.Input[_builtins.int]] = None,
                  nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
                  net_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -481,6 +500,8 @@ class _VmState:
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair.
+        :param pulumi.Input[_builtins.str] keypair_name_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
         :param pulumi.Input[_builtins.int] launch_number: The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the NIC.
@@ -541,6 +562,8 @@ class _VmState:
             pulumi.set(__self__, "is_source_dest_checked", is_source_dest_checked)
         if keypair_name is not None:
             pulumi.set(__self__, "keypair_name", keypair_name)
+        if keypair_name_wo is not None:
+            pulumi.set(__self__, "keypair_name_wo", keypair_name_wo)
         if launch_number is not None:
             pulumi.set(__self__, "launch_number", launch_number)
         if nested_virtualization is not None:
@@ -777,6 +800,19 @@ class _VmState:
     @keypair_name.setter
     def keypair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "keypair_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keypairNameWo")
+    def keypair_name_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+        """
+        return pulumi.get(self, "keypair_name_wo")
+
+    @keypair_name_wo.setter
+    def keypair_name_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "keypair_name_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="launchNumber")
@@ -1159,6 +1195,7 @@ class Vm(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
                  keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
                  nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]]] = None,
                  performance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1197,6 +1234,8 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair.
+        :param pulumi.Input[_builtins.str] keypair_name_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
@@ -1254,6 +1293,7 @@ class Vm(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
                  keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
                  nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
                  nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]]] = None,
                  performance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1290,6 +1330,7 @@ class Vm(pulumi.CustomResource):
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["is_source_dest_checked"] = is_source_dest_checked
             __props__.__dict__["keypair_name"] = keypair_name
+            __props__.__dict__["keypair_name_wo"] = None if keypair_name_wo is None else pulumi.Output.secret(keypair_name_wo)
             __props__.__dict__["nested_virtualization"] = nested_virtualization
             __props__.__dict__["nics"] = nics
             __props__.__dict__["performance"] = performance
@@ -1328,6 +1369,8 @@ class Vm(pulumi.CustomResource):
             __props__.__dict__["root_device_type"] = None
             __props__.__dict__["security_groups"] = None
             __props__.__dict__["state_reason"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["keypairNameWo"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Vm, __self__).__init__(
             'outscale:index/vm:Vm',
             resource_name,
@@ -1353,6 +1396,7 @@ class Vm(pulumi.CustomResource):
             image_id: Optional[pulumi.Input[_builtins.str]] = None,
             is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
             keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
+            keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
             launch_number: Optional[pulumi.Input[_builtins.int]] = None,
             nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
             net_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1404,6 +1448,8 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair.
+        :param pulumi.Input[_builtins.str] keypair_name_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
         :param pulumi.Input[_builtins.int] launch_number: The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the NIC.
@@ -1453,6 +1499,7 @@ class Vm(pulumi.CustomResource):
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["is_source_dest_checked"] = is_source_dest_checked
         __props__.__dict__["keypair_name"] = keypair_name
+        __props__.__dict__["keypair_name_wo"] = keypair_name_wo
         __props__.__dict__["launch_number"] = launch_number
         __props__.__dict__["nested_virtualization"] = nested_virtualization
         __props__.__dict__["net_id"] = net_id
@@ -1599,6 +1646,15 @@ class Vm(pulumi.CustomResource):
         The name of the keypair.
         """
         return pulumi.get(self, "keypair_name")
+
+    @_builtins.property
+    @pulumi.getter(name="keypairNameWo")
+    def keypair_name_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+        """
+        return pulumi.get(self, "keypair_name_wo")
 
     @_builtins.property
     @pulumi.getter(name="launchNumber")

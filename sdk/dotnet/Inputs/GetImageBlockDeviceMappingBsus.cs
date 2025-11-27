@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Inputs
         public bool DeleteOnVmDeletion { get; set; }
 
         /// <summary>
-        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `Io1` volume. The maximum number of IOPS allowed for `Io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         /// </summary>
         [Input("iops", required: true)]
         public int Iops { get; set; }
@@ -39,7 +39,7 @@ namespace Pulumi.Outscale.Inputs
         public int VolumeSize { get; set; }
 
         /// <summary>
-        /// The type of the volume (`standard` \| `io1` \| `gp2`). If not specified in the request, a `standard` volume is created.&lt;br /&gt;
+        /// The type of the volume (`Standard` \| `Io1` \| `Gp2`). If not specified in the request, a `Standard` volume is created.&lt;br /&gt;
         /// For more information about volume types, see [About Volumes &gt; Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         /// </summary>
         [Input("volumeType", required: true)]

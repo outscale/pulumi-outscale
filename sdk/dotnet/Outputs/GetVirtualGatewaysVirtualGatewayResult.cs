@@ -22,7 +22,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVirtualGatewaysVirtualGatewayNetToVirtualGatewayLinkResult> NetToVirtualGatewayLinks;
         /// <summary>
-        /// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the virtual gateway (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         public readonly string State;
         /// <summary>

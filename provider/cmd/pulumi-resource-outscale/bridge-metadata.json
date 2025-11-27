@@ -45,7 +45,6 @@
             "outscale:index/snapshotAttributes:SnapshotAttributes": 0,
             "outscale:index/snapshotExportTask:SnapshotExportTask": 0,
             "outscale:index/subnet:Subnet": 1,
-            "outscale:index/tag:Tag": 0,
             "outscale:index/user:User": 0,
             "outscale:index/userGroup:UserGroup": 0,
             "outscale:index/virtualGateway:VirtualGateway": 0,

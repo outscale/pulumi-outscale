@@ -137,7 +137,6 @@ from .snapshot import *
 from .snapshot_attributes import *
 from .snapshot_export_task import *
 from .subnet import *
-from .tag import *
 from .user import *
 from .user_group import *
 from .virtual_gateway import *
@@ -511,14 +510,6 @@ _utilities.register(
   "fqn": "pulumi_outscale",
   "classes": {
    "outscale:index/subnet:Subnet": "Subnet"
-  }
- },
- {
-  "pkg": "outscale",
-  "mod": "index/tag",
-  "fqn": "pulumi_outscale",
-  "classes": {
-   "outscale:index/tag:Tag": "Tag"
   }
  },
  {

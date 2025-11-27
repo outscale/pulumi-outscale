@@ -207,8 +207,6 @@ __all__ = [
     'SubnetTagArgsDict',
     'SubnetTimeoutsArgs',
     'SubnetTimeoutsArgsDict',
-    'TagTagArgs',
-    'TagTagArgsDict',
     'UserGroupPolicyArgs',
     'UserGroupPolicyArgsDict',
     'UserGroupUserArgs',
@@ -7678,68 +7676,6 @@ class SubnetTimeoutsArgs:
     @update.setter
     def update(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "update", value)
-
-
-if not MYPY:
-    class TagTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        resource_id: NotRequired[pulumi.Input[_builtins.str]]
-        resource_type: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    TagTagArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class TagTagArgs:
-    def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
-        if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "resource_id")
-
-    @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "resource_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "resource_type")
-
-    @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "resource_type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "value", value)
 
 
 if not MYPY:

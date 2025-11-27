@@ -40,6 +40,43 @@ namespace Pulumi.Outscale
     /// });
     /// ```
     /// 
+    /// ### Create an API access rule based on IPs and Certificate Authority (CA)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ca01 = new Outscale.Ca("ca01", new()
+    ///     {
+    ///         CaPem = Std.Index.File.Invoke(new()
+    ///         {
+    ///             Input = "&lt;PATH&gt;",
+    ///         }).Result,
+    ///         Description = "Terraform CA",
+    ///     });
+    /// 
+    ///     var apiAccessRule02 = new Outscale.ApiAccessRule("api_access_rule02", new()
+    ///     {
+    ///         IpRanges = new[]
+    ///         {
+    ///             "192.0.2.0",
+    ///             "192.0.2.0/16",
+    ///         },
+    ///         CaIds = new[]
+    ///         {
+    ///             ca01.CaId,
+    ///         },
+    ///         Description = "API Access Rule with CA from Terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An API access rule can be imported using its ID. For example:
@@ -66,7 +103,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<string>> CaIds { get; private set; } = null!;
 
         /// <summary>
-        /// One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        /// One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `CaIds` parameter.
         /// </summary>
         [Output("cns")]
         public Output<ImmutableArray<string>> Cns { get; private set; } = null!;
@@ -148,7 +185,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _cns;
 
         /// <summary>
-        /// One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        /// One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `CaIds` parameter.
         /// </summary>
         public InputList<string> Cns
         {
@@ -204,7 +241,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _cns;
 
         /// <summary>
-        /// One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
+        /// One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `CaIds` parameter.
         /// </summary>
         public InputList<string> Cns
         {

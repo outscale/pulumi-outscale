@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string>? NetId { get; set; }
 
         /// <summary>
-        /// The state of the attachment (`attaching` \| `attached` \| `detaching` \| `detached`).
+        /// The state of the attachment (`Attaching` \| `Attached` \| `Detaching` \| `Detached`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

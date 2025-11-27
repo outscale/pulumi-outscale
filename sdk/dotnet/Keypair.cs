@@ -35,6 +35,35 @@ namespace Pulumi.Outscale
     /// });
     /// ```
     /// 
+    /// ### Import keypairs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keypair02 = new Outscale.Keypair("keypair02", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-import-file",
+    ///         PublicKey = Std.Index.File.Invoke(new()
+    ///         {
+    ///             Input = "&lt;PATH&gt;",
+    ///         }).Result,
+    ///     });
+    /// 
+    ///     var keypair03 = new Outscale.Keypair("keypair03", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-import-text",
+    ///         PublicKey = "UFVCTElDIEtFWQ==",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A keypair can be imported using its name. For example:

@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Pulumi</Authors>
-    <Company>Pulumi</Company>
+    <Authors>Outscale</Authors>
+    <Company>Outscale</Company>
     <Description>A Pulumi package for creating and managing outscale cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/outscale/pulumi-outscale</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
-    <Version>0.0.1-alpha.0+dev</Version>
+    <Version>1.0.0-alpha.0+dev</Version>
 
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>

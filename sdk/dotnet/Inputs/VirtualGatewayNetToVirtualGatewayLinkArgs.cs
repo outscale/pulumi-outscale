@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string>? NetId { get; set; }
 
         /// <summary>
-        /// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the virtual gateway (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

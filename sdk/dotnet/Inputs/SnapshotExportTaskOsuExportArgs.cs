@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class SnapshotExportTaskOsuExportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The format of the export disk (`qcow2` \| `raw`).
+        /// The format of the export disk (`Qcow2` \| `Raw`).
         /// </summary>
         [Input("diskImageFormat", required: true)]
         public Input<string> DiskImageFormat { get; set; } = null!;

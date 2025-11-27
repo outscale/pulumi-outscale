@@ -1,6 +1,6 @@
 {
     "name": "@outscale/pulumi-outscale",
-    "version": "0.0.1-alpha.0+dev",
+    "version": "1.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing outscale cloud resources.",
     "keywords": [
         "pulumi",
@@ -24,6 +24,6 @@
     "pulumi": {
         "resource": true,
         "name": "outscale",
-        "version": "0.0.1-alpha.0+dev"
+        "version": "1.0.0-alpha.0+dev"
     }
 }

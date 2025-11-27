@@ -1,6 +1,23 @@
 """A Python Pulumi program"""
 
+import pulumi
 import pulumi_outscale as outscale
+
+CONFIG = pulumi.Config()
+
+# Get the latest Outscale image
+IMAGES = outscale.get_images(filters=[
+    outscale.GetImagesFilterArgs(
+        name="account_aliases",
+        values=["Outscale"],
+    ),
+    outscale.GetImagesFilterArgs(
+        name="image_names",
+        values=["Ubuntu*", "RockyLinux*"],
+    ),
+])
+
+IMAGE_ID = CONFIG.get("imageId") or IMAGES.images[0].image_id
 
 # How to use and to set a simple example
 DEPLOYER = outscale.Keypair(resource_name="deployer",
@@ -37,7 +54,7 @@ SECURITY_GROUP_RULE = outscale.SecurityGroupRule(resource_name="demo-pulumi-sgr"
                                                  ip_protocol="tcp",
                                                  ip_range="0.0.0.0/0")
 VM = outscale.Vm(resource_name="demo-pulumi-vm",
-                 image_id="ami-cd8d714e",
+                 image_id=IMAGE_ID,
                  vm_type="tinav4.c1r1p2",
                  keypair_name=DEPLOYER.keypair_name,
                  security_group_ids=[SECURITY_GROUP.id],

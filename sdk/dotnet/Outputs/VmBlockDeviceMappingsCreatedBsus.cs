@@ -22,7 +22,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string? LinkDate;
         /// <summary>
-        /// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         public readonly string? State;
         /// <summary>

@@ -48,8 +48,8 @@ namespace Pulumi.Outscale.Outputs
         public readonly ImmutableArray<Outputs.GetLoadBalancersLoadBalancerLoadBalancerStickyCookiePolicyResult> LoadBalancerStickyCookiePolicies;
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         public readonly string LoadBalancerType;
         /// <summary>

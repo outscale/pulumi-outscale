@@ -198,7 +198,7 @@ namespace Pulumi.Outscale
         public readonly int Progress;
         public readonly string RequestId;
         /// <summary>
-        /// The state of the OMI export task (`pending/queued` \| `pending` \| `completed` \| `failed` \| `cancelled`).
+        /// The state of the OMI export task (`pending/queued` \| `Pending` \| `Completed` \| `Failed` \| `Cancelled`).
         /// </summary>
         public readonly string State;
         /// <summary>

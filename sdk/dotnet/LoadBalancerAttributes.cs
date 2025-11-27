@@ -232,8 +232,8 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         [Output("loadBalancerType")]
         public Output<string> LoadBalancerType { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `LoadBalancerPort` parameter.
         /// </summary>
         [Output("serverCertificateId")]
         public Output<string?> ServerCertificateId { get; private set; } = null!;
@@ -367,7 +367,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `LoadBalancerPort` parameter.
         /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
@@ -472,8 +472,8 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
@@ -506,7 +506,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
+        /// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers &gt; OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `LoadBalancerPort` parameter.
         /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }

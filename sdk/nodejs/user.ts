@@ -83,28 +83,28 @@ export class User extends pulumi.CustomResource {
     /**
      * The date and time (UTC) of creation of the EIM user.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * The date and time (UTC) of the last modification of the EIM user.
      */
-    public /*out*/ readonly lastModificationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModificationDate: pulumi.Output<string>;
     /**
      * The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
      */
-    public readonly path!: pulumi.Output<string | undefined>;
-    public readonly policies!: pulumi.Output<outputs.UserPolicy[] | undefined>;
+    declare public readonly path: pulumi.Output<string | undefined>;
+    declare public readonly policies: pulumi.Output<outputs.UserPolicy[] | undefined>;
     /**
      * The email address of the EIM user.
      */
-    public readonly userEmail!: pulumi.Output<string>;
+    declare public readonly userEmail: pulumi.Output<string>;
     /**
      * The ID of the EIM user.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
      * The name of the EIM user. This user name must contain between 1 and 64 alphanumeric characters and/or pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), dashes (`-`), or underscores (`_`).
      */
-    public readonly userName!: pulumi.Output<string>;
+    declare public readonly userName: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -119,22 +119,22 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["lastModificationDate"] = state ? state.lastModificationDate : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["lastModificationDate"] = state?.lastModificationDate;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["userEmail"] = state?.userEmail;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.userName === undefined) && !opts.urn) {
+            if (args?.userName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["userEmail"] = args ? args.userEmail : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["userEmail"] = args?.userEmail;
+            resourceInputs["userName"] = args?.userName;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["lastModificationDate"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;

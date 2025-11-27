@@ -119,90 +119,90 @@ export class Image extends pulumi.CustomResource {
     /**
      * The account alias of the owner of the OMI.
      */
-    public /*out*/ readonly accountAlias!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountAlias: pulumi.Output<string>;
     /**
      * The account ID of the owner of the OMI.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * **When registering from a snapshot:** The architecture of the OMI (`i386` or `x8664`).
      */
-    public readonly architecture!: pulumi.Output<string>;
+    declare public readonly architecture: pulumi.Output<string>;
     /**
      * **(required) When registering from a snapshot:** One or more block device mappings.
      */
-    public readonly blockDeviceMappings!: pulumi.Output<outputs.ImageBlockDeviceMapping[]>;
+    declare public readonly blockDeviceMappings: pulumi.Output<outputs.ImageBlockDeviceMapping[]>;
     /**
      * The date and time (UTC) at which the OMI was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * A description for the new OMI.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
      */
-    public readonly fileLocation!: pulumi.Output<string>;
+    declare public readonly fileLocation: pulumi.Output<string>;
     /**
      * The ID of the OMI.
      */
-    public /*out*/ readonly imageId!: pulumi.Output<string>;
+    declare public /*out*/ readonly imageId: pulumi.Output<string>;
     /**
      * A unique name for the new OMI.<br />
      * Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
      */
-    public readonly imageName!: pulumi.Output<string>;
+    declare public readonly imageName: pulumi.Output<string>;
     /**
      * The type of the OMI.
      */
-    public /*out*/ readonly imageType!: pulumi.Output<string>;
-    public /*out*/ readonly isPublic!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly imageType: pulumi.Output<string>;
+    declare public /*out*/ readonly isPublic: pulumi.Output<boolean>;
     /**
      * **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
      */
-    public readonly noReboot!: pulumi.Output<boolean>;
+    declare public readonly noReboot: pulumi.Output<boolean>;
     /**
      * Permissions for the resource.
      */
-    public /*out*/ readonly permissionsToLaunches!: pulumi.Output<outputs.ImagePermissionsToLaunch[]>;
+    declare public /*out*/ readonly permissionsToLaunches: pulumi.Output<outputs.ImagePermissionsToLaunch[]>;
     /**
      * The product codes associated with the OMI.
      */
-    public /*out*/ readonly productCodes!: pulumi.Output<string[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly productCodes: pulumi.Output<string[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * **(required) When registering from a snapshot:** The name of the root device for the new OMI.
      */
-    public readonly rootDeviceName!: pulumi.Output<string>;
+    declare public readonly rootDeviceName: pulumi.Output<string>;
     /**
      * The type of root device used by the OMI (always `bsu`).
      */
-    public /*out*/ readonly rootDeviceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootDeviceType: pulumi.Output<string>;
     /**
      * **(required) When copying an OMI:** The ID of the OMI you want to copy.
      */
-    public readonly sourceImageId!: pulumi.Output<string>;
+    declare public readonly sourceImageId: pulumi.Output<string>;
     /**
      * **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
      */
-    public readonly sourceRegionName!: pulumi.Output<string | undefined>;
+    declare public readonly sourceRegionName: pulumi.Output<string | undefined>;
     /**
      * The state of the OMI (`pending` \| `available` \| `failed`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Information about the change of state.
      */
-    public /*out*/ readonly stateComments!: pulumi.Output<outputs.ImageStateComment[]>;
+    declare public /*out*/ readonly stateComments: pulumi.Output<outputs.ImageStateComment[]>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.ImageTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.ImageTag[] | undefined>;
     /**
      * **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
      */
-    public readonly vmId!: pulumi.Output<string>;
+    declare public readonly vmId: pulumi.Output<string>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -217,42 +217,42 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["accountAlias"] = state ? state.accountAlias : undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["architecture"] = state ? state.architecture : undefined;
-            resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileLocation"] = state ? state.fileLocation : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["imageName"] = state ? state.imageName : undefined;
-            resourceInputs["imageType"] = state ? state.imageType : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["noReboot"] = state ? state.noReboot : undefined;
-            resourceInputs["permissionsToLaunches"] = state ? state.permissionsToLaunches : undefined;
-            resourceInputs["productCodes"] = state ? state.productCodes : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["rootDeviceName"] = state ? state.rootDeviceName : undefined;
-            resourceInputs["rootDeviceType"] = state ? state.rootDeviceType : undefined;
-            resourceInputs["sourceImageId"] = state ? state.sourceImageId : undefined;
-            resourceInputs["sourceRegionName"] = state ? state.sourceRegionName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateComments"] = state ? state.stateComments : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["accountAlias"] = state?.accountAlias;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["architecture"] = state?.architecture;
+            resourceInputs["blockDeviceMappings"] = state?.blockDeviceMappings;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileLocation"] = state?.fileLocation;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["imageName"] = state?.imageName;
+            resourceInputs["imageType"] = state?.imageType;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["noReboot"] = state?.noReboot;
+            resourceInputs["permissionsToLaunches"] = state?.permissionsToLaunches;
+            resourceInputs["productCodes"] = state?.productCodes;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["rootDeviceName"] = state?.rootDeviceName;
+            resourceInputs["rootDeviceType"] = state?.rootDeviceType;
+            resourceInputs["sourceImageId"] = state?.sourceImageId;
+            resourceInputs["sourceRegionName"] = state?.sourceRegionName;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateComments"] = state?.stateComments;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            resourceInputs["architecture"] = args ? args.architecture : undefined;
-            resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileLocation"] = args ? args.fileLocation : undefined;
-            resourceInputs["imageName"] = args ? args.imageName : undefined;
-            resourceInputs["noReboot"] = args ? args.noReboot : undefined;
-            resourceInputs["rootDeviceName"] = args ? args.rootDeviceName : undefined;
-            resourceInputs["sourceImageId"] = args ? args.sourceImageId : undefined;
-            resourceInputs["sourceRegionName"] = args ? args.sourceRegionName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["architecture"] = args?.architecture;
+            resourceInputs["blockDeviceMappings"] = args?.blockDeviceMappings;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileLocation"] = args?.fileLocation;
+            resourceInputs["imageName"] = args?.imageName;
+            resourceInputs["noReboot"] = args?.noReboot;
+            resourceInputs["rootDeviceName"] = args?.rootDeviceName;
+            resourceInputs["sourceImageId"] = args?.sourceImageId;
+            resourceInputs["sourceRegionName"] = args?.sourceRegionName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vmId"] = args?.vmId;
             resourceInputs["accountAlias"] = undefined /*out*/;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;

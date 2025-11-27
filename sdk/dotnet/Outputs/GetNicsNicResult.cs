@@ -58,7 +58,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNicsNicSecurityGroupResult> SecurityGroups;
         /// <summary>
-        /// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
+        /// The state of the NIC (`Available` \| `Attaching` \| `in-use` \| `Detaching`).
         /// </summary>
         public readonly string State;
         /// <summary>

@@ -82,29 +82,29 @@ export class NetAccessPoint extends pulumi.CustomResource {
     /**
      * The ID of the Net access point.
      */
-    public /*out*/ readonly netAccessPointId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netAccessPointId: pulumi.Output<string>;
     /**
      * The ID of the Net.
      */
-    public readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * One or more IDs of route tables to use for the connection.
      */
-    public readonly routeTableIds!: pulumi.Output<string[]>;
+    declare public readonly routeTableIds: pulumi.Output<string[]>;
     /**
      * The name of the service (in the format `com.outscale.region.service`).
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    declare public readonly serviceName: pulumi.Output<string>;
     /**
      * The state of the Net access point (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.NetAccessPointTag[] | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.NetAccessPointTimeouts | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.NetAccessPointTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.NetAccessPointTimeouts | undefined>;
 
     /**
      * Create a NetAccessPoint resource with the given unique name, arguments, and options.
@@ -119,27 +119,27 @@ export class NetAccessPoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetAccessPointState | undefined;
-            resourceInputs["netAccessPointId"] = state ? state.netAccessPointId : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["routeTableIds"] = state ? state.routeTableIds : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["netAccessPointId"] = state?.netAccessPointId;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["routeTableIds"] = state?.routeTableIds;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as NetAccessPointArgs | undefined;
-            if ((!args || args.netId === undefined) && !opts.urn) {
+            if (args?.netId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netId'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
+            if (args?.serviceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["routeTableIds"] = args ? args.routeTableIds : undefined;
-            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["routeTableIds"] = args?.routeTableIds;
+            resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["netAccessPointId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

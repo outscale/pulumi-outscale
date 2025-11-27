@@ -18,7 +18,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// The state of the Net peering (`pending-acceptance` \| `active` \| `rejected` \| `failed` \| `expired` \| `deleted`).
+        /// The state of the Net peering (`pending-acceptance` \| `Active` \| `Rejected` \| `Failed` \| `Expired` \| `Deleted`).
         /// </summary>
         public readonly string Name;
 
