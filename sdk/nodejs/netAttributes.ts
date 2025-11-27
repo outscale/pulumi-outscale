@@ -76,29 +76,29 @@ export class NetAttributes extends pulumi.CustomResource {
     /**
      * The ID of the DHCP options set (or `default` if you want to associate the default one).
      */
-    public readonly dhcpOptionsSetId!: pulumi.Output<string>;
+    declare public readonly dhcpOptionsSetId: pulumi.Output<string>;
     /**
      * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
      */
-    public /*out*/ readonly ipRange!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipRange: pulumi.Output<string>;
     /**
      * The ID of the Net.
      */
-    public readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the Net (`pending` \| `available` \| `deleting`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * One or more tags associated with the Net.
      */
-    public /*out*/ readonly tags!: pulumi.Output<outputs.NetAttributesTag[]>;
+    declare public /*out*/ readonly tags: pulumi.Output<outputs.NetAttributesTag[]>;
     /**
      * The VM tenancy in a Net.
      */
-    public /*out*/ readonly tenancy!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.NetAttributesTimeouts | undefined>;
+    declare public /*out*/ readonly tenancy: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.NetAttributesTimeouts | undefined>;
 
     /**
      * Create a NetAttributes resource with the given unique name, arguments, and options.
@@ -113,25 +113,25 @@ export class NetAttributes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetAttributesState | undefined;
-            resourceInputs["dhcpOptionsSetId"] = state ? state.dhcpOptionsSetId : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenancy"] = state ? state.tenancy : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["dhcpOptionsSetId"] = state?.dhcpOptionsSetId;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenancy"] = state?.tenancy;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as NetAttributesArgs | undefined;
-            if ((!args || args.dhcpOptionsSetId === undefined) && !opts.urn) {
+            if (args?.dhcpOptionsSetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dhcpOptionsSetId'");
             }
-            if ((!args || args.netId === undefined) && !opts.urn) {
+            if (args?.netId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netId'");
             }
-            resourceInputs["dhcpOptionsSetId"] = args ? args.dhcpOptionsSetId : undefined;
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["dhcpOptionsSetId"] = args?.dhcpOptionsSetId;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["ipRange"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

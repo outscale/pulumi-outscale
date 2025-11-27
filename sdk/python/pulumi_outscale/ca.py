@@ -155,6 +155,18 @@ class Ca(pulumi.CustomResource):
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=std.index.file(input="<PATH>")["result"],
+            description="Terraform certificate authority")
+        ```
+
         ## Import
 
         A CA can be imported using its ID. For example:
@@ -181,6 +193,18 @@ class Ca(pulumi.CustomResource):
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        ca01 = outscale.Ca("ca01",
+            ca_pem=std.index.file(input="<PATH>")["result"],
+            description="Terraform certificate authority")
+        ```
 
         ## Import
 

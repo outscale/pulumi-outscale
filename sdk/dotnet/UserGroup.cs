@@ -92,6 +92,44 @@ namespace Pulumi.Outscale
     /// });
     /// ```
     /// 
+    /// ### Create a user group, and add a user and a policy to it
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var group_1 = new Outscale.UserGroup("group-1", new()
+    ///     {
+    ///         UserGroupName = "Group-TF-test-1",
+    ///         Users = new[]
+    ///         {
+    ///             new Outscale.Inputs.UserGroupUserArgs
+    ///             {
+    ///                 UserName = "user-name-1",
+    ///                 Path = "/terraform/",
+    ///             },
+    ///             new Outscale.Inputs.UserGroupUserArgs
+    ///             {
+    ///                 UserName = "user-name-2",
+    ///             },
+    ///         },
+    ///         Policies = new[]
+    ///         {
+    ///             new Outscale.Inputs.UserGroupPolicyArgs
+    ///             {
+    ///                 PolicyOrn = policy_2.Orn,
+    ///                 VersionId = "V2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A user group can be imported using its group ID. For example:

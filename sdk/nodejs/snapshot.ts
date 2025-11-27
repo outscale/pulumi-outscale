@@ -89,64 +89,64 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The account alias of the owner of the snapshot.
      */
-    public /*out*/ readonly accountAlias!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountAlias: pulumi.Output<string>;
     /**
      * The account ID of the owner of the snapshot.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * The date and time (UTC) at which the snapshot was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * A description for the snapshot.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
      */
-    public readonly fileLocation!: pulumi.Output<string>;
+    declare public readonly fileLocation: pulumi.Output<string>;
     /**
      * Permissions for the resource.
      */
-    public /*out*/ readonly permissionsToCreateVolumes!: pulumi.Output<outputs.SnapshotPermissionsToCreateVolume[]>;
+    declare public /*out*/ readonly permissionsToCreateVolumes: pulumi.Output<outputs.SnapshotPermissionsToCreateVolume[]>;
     /**
      * The progress of the snapshot, as a percentage.
      */
-    public /*out*/ readonly progress!: pulumi.Output<number>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly progress: pulumi.Output<number>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the snapshot.
      */
-    public /*out*/ readonly snapshotId!: pulumi.Output<string>;
+    declare public /*out*/ readonly snapshotId: pulumi.Output<string>;
     /**
      * **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
      */
-    public readonly snapshotSize!: pulumi.Output<number>;
+    declare public readonly snapshotSize: pulumi.Output<number>;
     /**
      * **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
      */
-    public readonly sourceRegionName!: pulumi.Output<string>;
+    declare public readonly sourceRegionName: pulumi.Output<string>;
     /**
      * **(when copying a snapshot)** The ID of the snapshot you want to copy.
      */
-    public readonly sourceSnapshotId!: pulumi.Output<string>;
+    declare public readonly sourceSnapshotId: pulumi.Output<string>;
     /**
      * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.SnapshotTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.SnapshotTag[] | undefined>;
     /**
      * **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
     /**
      * The size of the volume used to create the snapshot, in gibibytes (GiB).
      */
-    public /*out*/ readonly volumeSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly volumeSize: pulumi.Output<number>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -161,31 +161,31 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["accountAlias"] = state ? state.accountAlias : undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileLocation"] = state ? state.fileLocation : undefined;
-            resourceInputs["permissionsToCreateVolumes"] = state ? state.permissionsToCreateVolumes : undefined;
-            resourceInputs["progress"] = state ? state.progress : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["snapshotSize"] = state ? state.snapshotSize : undefined;
-            resourceInputs["sourceRegionName"] = state ? state.sourceRegionName : undefined;
-            resourceInputs["sourceSnapshotId"] = state ? state.sourceSnapshotId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
-            resourceInputs["volumeSize"] = state ? state.volumeSize : undefined;
+            resourceInputs["accountAlias"] = state?.accountAlias;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileLocation"] = state?.fileLocation;
+            resourceInputs["permissionsToCreateVolumes"] = state?.permissionsToCreateVolumes;
+            resourceInputs["progress"] = state?.progress;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["snapshotSize"] = state?.snapshotSize;
+            resourceInputs["sourceRegionName"] = state?.sourceRegionName;
+            resourceInputs["sourceSnapshotId"] = state?.sourceSnapshotId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["volumeId"] = state?.volumeId;
+            resourceInputs["volumeSize"] = state?.volumeSize;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["fileLocation"] = args ? args.fileLocation : undefined;
-            resourceInputs["snapshotSize"] = args ? args.snapshotSize : undefined;
-            resourceInputs["sourceRegionName"] = args ? args.sourceRegionName : undefined;
-            resourceInputs["sourceSnapshotId"] = args ? args.sourceSnapshotId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["fileLocation"] = args?.fileLocation;
+            resourceInputs["snapshotSize"] = args?.snapshotSize;
+            resourceInputs["sourceRegionName"] = args?.sourceRegionName;
+            resourceInputs["sourceSnapshotId"] = args?.sourceSnapshotId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["volumeId"] = args?.volumeId;
             resourceInputs["accountAlias"] = undefined /*out*/;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;

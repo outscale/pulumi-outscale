@@ -145,7 +145,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the virtual gateway (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the virtual gateway (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.Outscale
         public readonly ImmutableArray<Outputs.GetVirtualGatewayNetToVirtualGatewayLinkResult> NetToVirtualGatewayLinks;
         public readonly string RequestId;
         /// <summary>
-        /// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the virtual gateway (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         public readonly string State;
         /// <summary>

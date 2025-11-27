@@ -109,75 +109,75 @@ export class Nic extends pulumi.CustomResource {
     /**
      * The account ID of the owner of the NIC.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * A description for the NIC.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * (Net only) If true, the source/destination check is enabled. If false, it is disabled.
      */
-    public /*out*/ readonly isSourceDestChecked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isSourceDestChecked: pulumi.Output<boolean>;
     /**
      * Information about the NIC attachment.
      */
-    public /*out*/ readonly linkNics!: pulumi.Output<outputs.NicLinkNic[]>;
+    declare public /*out*/ readonly linkNics: pulumi.Output<outputs.NicLinkNic[]>;
     /**
      * Information about the public IP association.
      */
-    public /*out*/ readonly linkPublicIps!: pulumi.Output<outputs.NicLinkPublicIp[]>;
+    declare public /*out*/ readonly linkPublicIps: pulumi.Output<outputs.NicLinkPublicIp[]>;
     /**
      * The Media Access Control (MAC) address of the NIC.
      */
-    public /*out*/ readonly macAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly macAddress: pulumi.Output<string>;
     /**
      * The ID of the Net for the NIC.
      */
-    public /*out*/ readonly netId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
     /**
      * The ID of the NIC.
      */
-    public /*out*/ readonly nicId!: pulumi.Output<string>;
+    declare public /*out*/ readonly nicId: pulumi.Output<string>;
     /**
      * The name of the private DNS.
      */
-    public /*out*/ readonly privateDnsName!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateDnsName: pulumi.Output<string>;
     /**
      * The private IP of the NIC.
      */
-    public readonly privateIp!: pulumi.Output<string>;
+    declare public readonly privateIp: pulumi.Output<string>;
     /**
      * The primary private IP for the NIC.<br />
      * This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
      * If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
      */
-    public readonly privateIps!: pulumi.Output<outputs.NicPrivateIp[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
-    public /*out*/ readonly requesterManaged!: pulumi.Output<boolean>;
+    declare public readonly privateIps: pulumi.Output<outputs.NicPrivateIp[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public /*out*/ readonly requesterManaged: pulumi.Output<boolean>;
     /**
      * One or more IDs of security groups for the NIC.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * One or more IDs of security groups for the NIC.
      */
-    public /*out*/ readonly securityGroups!: pulumi.Output<outputs.NicSecurityGroup[]>;
+    declare public /*out*/ readonly securityGroups: pulumi.Output<outputs.NicSecurityGroup[]>;
     /**
      * The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID of the Subnet in which you want to create the NIC.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * The Subregion in which the NIC is located.
      */
-    public /*out*/ readonly subregionName!: pulumi.Output<string>;
+    declare public /*out*/ readonly subregionName: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.NicTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.NicTag[] | undefined>;
 
     /**
      * Create a Nic resource with the given unique name, arguments, and options.
@@ -192,36 +192,36 @@ export class Nic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NicState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isSourceDestChecked"] = state ? state.isSourceDestChecked : undefined;
-            resourceInputs["linkNics"] = state ? state.linkNics : undefined;
-            resourceInputs["linkPublicIps"] = state ? state.linkPublicIps : undefined;
-            resourceInputs["macAddress"] = state ? state.macAddress : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["nicId"] = state ? state.nicId : undefined;
-            resourceInputs["privateDnsName"] = state ? state.privateDnsName : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["requesterManaged"] = state ? state.requesterManaged : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["subregionName"] = state ? state.subregionName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isSourceDestChecked"] = state?.isSourceDestChecked;
+            resourceInputs["linkNics"] = state?.linkNics;
+            resourceInputs["linkPublicIps"] = state?.linkPublicIps;
+            resourceInputs["macAddress"] = state?.macAddress;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["nicId"] = state?.nicId;
+            resourceInputs["privateDnsName"] = state?.privateDnsName;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["privateIps"] = state?.privateIps;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["requesterManaged"] = state?.requesterManaged;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["subregionName"] = state?.subregionName;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as NicArgs | undefined;
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
-            resourceInputs["privateIps"] = args ? args.privateIps : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["privateIp"] = args?.privateIp;
+            resourceInputs["privateIps"] = args?.privateIps;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["isSourceDestChecked"] = undefined /*out*/;
             resourceInputs["linkNics"] = undefined /*out*/;

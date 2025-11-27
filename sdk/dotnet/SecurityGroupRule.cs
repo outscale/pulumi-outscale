@@ -123,19 +123,19 @@ namespace Pulumi.Outscale
         public Output<string> Flow { get; private set; } = null!;
 
         /// <summary>
-        /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Output("fromPortRange")]
         public Output<int?> FromPortRange { get; private set; } = null!;
 
         /// <summary>
-        /// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The IP protocol name (`Tcp`, `Udp`, `Icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string?> IpProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Output("ipRange")]
         public Output<string?> IpRange { get; private set; } = null!;
@@ -150,13 +150,13 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        /// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `FromPortRange`, `IpProtocol`, `IpRange`, and `ToPortRange`.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SecurityGroupRuleRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID that owns the source or destination security group specified in the `security_group_name_to_link` parameter.
+        /// The account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
         /// </summary>
         [Output("securityGroupAccountIdToLink")]
         public Output<string?> SecurityGroupAccountIdToLink { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Outscale
         public Output<string?> SecurityGroupNameToLink { get; private set; } = null!;
 
         /// <summary>
-        /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Output("toPortRange")]
         public Output<int?> ToPortRange { get; private set; } = null!;
@@ -238,19 +238,19 @@ namespace Pulumi.Outscale
         public Input<string> Flow { get; set; } = null!;
 
         /// <summary>
-        /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("fromPortRange")]
         public Input<int>? FromPortRange { get; set; }
 
         /// <summary>
-        /// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The IP protocol name (`Tcp`, `Udp`, `Icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("ipRange")]
         public Input<string>? IpRange { get; set; }
@@ -259,7 +259,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.SecurityGroupRuleRuleArgs>? _rules;
 
         /// <summary>
-        /// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        /// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `FromPortRange`, `IpProtocol`, `IpRange`, and `ToPortRange`.
         /// </summary>
         public InputList<Inputs.SecurityGroupRuleRuleArgs> Rules
         {
@@ -268,7 +268,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The account ID that owns the source or destination security group specified in the `security_group_name_to_link` parameter.
+        /// The account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
         /// </summary>
         [Input("securityGroupAccountIdToLink")]
         public Input<string>? SecurityGroupAccountIdToLink { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumi.Outscale
         public Input<string>? SecurityGroupNameToLink { get; set; }
 
         /// <summary>
-        /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("toPortRange")]
         public Input<int>? ToPortRange { get; set; }
@@ -306,19 +306,19 @@ namespace Pulumi.Outscale
         public Input<string>? Flow { get; set; }
 
         /// <summary>
-        /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("fromPortRange")]
         public Input<int>? FromPortRange { get; set; }
 
         /// <summary>
-        /// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The IP protocol name (`Tcp`, `Udp`, `Icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("ipRange")]
         public Input<string>? IpRange { get; set; }
@@ -336,7 +336,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.SecurityGroupRuleRuleGetArgs>? _rules;
 
         /// <summary>
-        /// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `from_port_range`, `ip_protocol`, `ip_range`, and `to_port_range`.
+        /// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `FromPortRange`, `IpProtocol`, `IpRange`, and `ToPortRange`.
         /// </summary>
         public InputList<Inputs.SecurityGroupRuleRuleGetArgs> Rules
         {
@@ -345,7 +345,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The account ID that owns the source or destination security group specified in the `security_group_name_to_link` parameter.
+        /// The account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
         /// </summary>
         [Input("securityGroupAccountIdToLink")]
         public Input<string>? SecurityGroupAccountIdToLink { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.Outscale
         public Input<string>? SecurityGroupNameToLink { get; set; }
 
         /// <summary>
-        /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+        /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("toPortRange")]
         public Input<int>? ToPortRange { get; set; }

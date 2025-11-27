@@ -263,7 +263,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string QuotaCollection;
         /// <summary>
-        /// The resource ID if it is a resource-specific quota, `global` if it is not.
+        /// The resource ID if it is a resource-specific quota, `Global` if it is not.
         /// </summary>
         public readonly string QuotaType;
         public readonly string RequestId;

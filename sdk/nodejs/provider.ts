@@ -30,23 +30,23 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The Access Key ID for API operations
      */
-    public readonly accessKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly accessKeyId: pulumi.Output<string | undefined>;
     /**
      * The Region for API operations.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The Secret Key ID for API operations.
      */
-    public readonly secretKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly secretKeyId: pulumi.Output<string | undefined>;
     /**
      * The path to your x509 cert
      */
-    public readonly x509CertPath!: pulumi.Output<string | undefined>;
+    declare public readonly x509CertPath: pulumi.Output<string | undefined>;
     /**
      * The path to your x509 key
      */
-    public readonly x509KeyPath!: pulumi.Output<string | undefined>;
+    declare public readonly x509KeyPath: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -59,13 +59,13 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accessKeyId"] = (args ? args.accessKeyId : undefined) ?? utilities.getEnv("OUTSCALE_ACCESSKEYID");
-            resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
-            resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-            resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("OUTSCALE_REGION");
-            resourceInputs["secretKeyId"] = (args ? args.secretKeyId : undefined) ?? utilities.getEnv("OUTSCALE_SECRETKEYID");
-            resourceInputs["x509CertPath"] = args ? args.x509CertPath : undefined;
-            resourceInputs["x509KeyPath"] = args ? args.x509KeyPath : undefined;
+            resourceInputs["accessKeyId"] = (args?.accessKeyId) ?? utilities.getEnv("OUTSCALE_ACCESSKEYID");
+            resourceInputs["endpoints"] = pulumi.output(args?.endpoints).apply(JSON.stringify);
+            resourceInputs["insecure"] = pulumi.output(args?.insecure).apply(JSON.stringify);
+            resourceInputs["region"] = (args?.region) ?? utilities.getEnv("OUTSCALE_REGION");
+            resourceInputs["secretKeyId"] = (args?.secretKeyId) ?? utilities.getEnv("OUTSCALE_SECRETKEYID");
+            resourceInputs["x509CertPath"] = args?.x509CertPath;
+            resourceInputs["x509KeyPath"] = args?.x509KeyPath;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

@@ -26,7 +26,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string LinkNicId;
         /// <summary>
-        /// The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
+        /// The state of the VM (`Pending` \| `Running` \| `Stopping` \| `Stopped` \| `shutting-down` \| `Terminated` \| `Quarantine`).
         /// </summary>
         public readonly string State;
 

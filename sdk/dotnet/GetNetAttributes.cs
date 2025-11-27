@@ -127,7 +127,7 @@ namespace Pulumi.Outscale
     public sealed class GetNetAttributesResult
     {
         /// <summary>
-        /// The ID of the DHCP options set (or `default` if you want to associate the default one).
+        /// The ID of the DHCP options set (or `Default` if you want to associate the default one).
         /// </summary>
         public readonly string DhcpOptionsSetId;
         /// <summary>
@@ -144,7 +144,7 @@ namespace Pulumi.Outscale
         public readonly string NetId;
         public readonly string RequestId;
         /// <summary>
-        /// The state of the Net (`pending` \| `available` \| `deleting`).
+        /// The state of the Net (`Pending` \| `Available` \| `Deleting`).
         /// </summary>
         public readonly string State;
         /// <summary>

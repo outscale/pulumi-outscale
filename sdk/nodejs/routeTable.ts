@@ -73,29 +73,29 @@ export class RouteTable extends pulumi.CustomResource {
     /**
      * One or more associations between the route table and Subnets.
      */
-    public /*out*/ readonly linkRouteTables!: pulumi.Output<outputs.RouteTableLinkRouteTable[]>;
+    declare public /*out*/ readonly linkRouteTables: pulumi.Output<outputs.RouteTableLinkRouteTable[]>;
     /**
      * The ID of the Net for which you want to create a route table.
      */
-    public readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * Information about virtual gateways propagating routes.
      */
-    public /*out*/ readonly routePropagatingVirtualGateways!: pulumi.Output<outputs.RouteTableRoutePropagatingVirtualGateway[]>;
+    declare public /*out*/ readonly routePropagatingVirtualGateways: pulumi.Output<outputs.RouteTableRoutePropagatingVirtualGateway[]>;
     /**
      * The ID of the route table.
      */
-    public /*out*/ readonly routeTableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeTableId: pulumi.Output<string>;
     /**
      * One or more routes in the route table.
      */
-    public /*out*/ readonly routes!: pulumi.Output<outputs.RouteTableRoute[]>;
+    declare public /*out*/ readonly routes: pulumi.Output<outputs.RouteTableRoute[]>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.RouteTableTag[] | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.RouteTableTimeouts | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.RouteTableTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.RouteTableTimeouts | undefined>;
 
     /**
      * Create a RouteTable resource with the given unique name, arguments, and options.
@@ -110,22 +110,22 @@ export class RouteTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteTableState | undefined;
-            resourceInputs["linkRouteTables"] = state ? state.linkRouteTables : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["routePropagatingVirtualGateways"] = state ? state.routePropagatingVirtualGateways : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["routes"] = state ? state.routes : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["linkRouteTables"] = state?.linkRouteTables;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["routePropagatingVirtualGateways"] = state?.routePropagatingVirtualGateways;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["routes"] = state?.routes;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as RouteTableArgs | undefined;
-            if ((!args || args.netId === undefined) && !opts.urn) {
+            if (args?.netId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netId'");
             }
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["linkRouteTables"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["routePropagatingVirtualGateways"] = undefined /*out*/;

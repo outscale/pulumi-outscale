@@ -76,38 +76,38 @@ export class Subnet extends pulumi.CustomResource {
     /**
      * The number of available IPs in the Subnets.
      */
-    public /*out*/ readonly availableIpsCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly availableIpsCount: pulumi.Output<number>;
     /**
      * The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
      * The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    public readonly ipRange!: pulumi.Output<string>;
+    declare public readonly ipRange: pulumi.Output<string>;
     /**
      * If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
      */
-    public readonly mapPublicIpOnLaunch!: pulumi.Output<boolean>;
+    declare public readonly mapPublicIpOnLaunch: pulumi.Output<boolean>;
     /**
      * The ID of the Net for which you want to create a Subnet.
      */
-    public readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the Subnet (`pending` \| `available` \| `deleted`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The ID of the Subnet.
      */
-    public /*out*/ readonly subnetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly subnetId: pulumi.Output<string>;
     /**
      * The name of the Subregion in which you want to create the Subnet.
      */
-    public readonly subregionName!: pulumi.Output<string>;
+    declare public readonly subregionName: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.SubnetTag[] | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.SubnetTimeouts | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.SubnetTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.SubnetTimeouts | undefined>;
 
     /**
      * Create a Subnet resource with the given unique name, arguments, and options.
@@ -122,30 +122,30 @@ export class Subnet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetState | undefined;
-            resourceInputs["availableIpsCount"] = state ? state.availableIpsCount : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["mapPublicIpOnLaunch"] = state ? state.mapPublicIpOnLaunch : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["subregionName"] = state ? state.subregionName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["availableIpsCount"] = state?.availableIpsCount;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["mapPublicIpOnLaunch"] = state?.mapPublicIpOnLaunch;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["subregionName"] = state?.subregionName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
-            if ((!args || args.ipRange === undefined) && !opts.urn) {
+            if (args?.ipRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipRange'");
             }
-            if ((!args || args.netId === undefined) && !opts.urn) {
+            if (args?.netId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netId'");
             }
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["mapPublicIpOnLaunch"] = args ? args.mapPublicIpOnLaunch : undefined;
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["subregionName"] = args ? args.subregionName : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["mapPublicIpOnLaunch"] = args?.mapPublicIpOnLaunch;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["subregionName"] = args?.subregionName;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["availableIpsCount"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

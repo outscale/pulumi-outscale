@@ -91,7 +91,7 @@ namespace Pulumi.Outscale
         public Output<string> NicAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        /// (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `VmId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
         [Output("nicId")]
         public Output<string> NicId { get; private set; } = null!;
@@ -103,13 +103,13 @@ namespace Pulumi.Outscale
         public Output<string> PrivateIp { get; private set; } = null!;
 
         /// <summary>
-        /// The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        /// The public IP. This parameter is required unless you use the `PublicIpId` parameter.
         /// </summary>
         [Output("publicIp")]
         public Output<string> PublicIp { get; private set; } = null!;
 
         /// <summary>
-        /// The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        /// The allocation ID of the public IP. This parameter is required unless you use the `PublicIp` parameter.
         /// </summary>
         [Output("publicIpId")]
         public Output<string> PublicIpId { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.PublicIpLinkTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
+        /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `NicId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
         [Output("vmId")]
         public Output<string> VmId { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Outscale
         public Input<bool>? AllowRelink { get; set; }
 
         /// <summary>
-        /// (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        /// (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `VmId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
         [Input("nicId")]
         public Input<string>? NicId { get; set; }
@@ -191,19 +191,19 @@ namespace Pulumi.Outscale
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
-        /// The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        /// The public IP. This parameter is required unless you use the `PublicIpId` parameter.
         /// </summary>
         [Input("publicIp")]
         public Input<string>? PublicIp { get; set; }
 
         /// <summary>
-        /// The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        /// The allocation ID of the public IP. This parameter is required unless you use the `PublicIp` parameter.
         /// </summary>
         [Input("publicIpId")]
         public Input<string>? PublicIpId { get; set; }
 
         /// <summary>
-        /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
+        /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `NicId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
         [Input("vmId")]
         public Input<string>? VmId { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Outscale
         public Input<string>? NicAccountId { get; set; }
 
         /// <summary>
-        /// (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
+        /// (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `VmId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
         [Input("nicId")]
         public Input<string>? NicId { get; set; }
@@ -244,13 +244,13 @@ namespace Pulumi.Outscale
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
-        /// The public IP. This parameter is required unless you use the `public_ip_id` parameter.
+        /// The public IP. This parameter is required unless you use the `PublicIpId` parameter.
         /// </summary>
         [Input("publicIp")]
         public Input<string>? PublicIp { get; set; }
 
         /// <summary>
-        /// The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
+        /// The allocation ID of the public IP. This parameter is required unless you use the `PublicIp` parameter.
         /// </summary>
         [Input("publicIpId")]
         public Input<string>? PublicIpId { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
+        /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `NicId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
         [Input("vmId")]
         public Input<string>? VmId { get; set; }

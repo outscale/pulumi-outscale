@@ -92,20 +92,20 @@ export class SnapshotAttributes extends pulumi.CustomResource {
     /**
      * The account ID of the owner of the snapshot.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * Information about the users to whom you want to give permissions for the resource.
      */
-    public readonly permissionsToCreateVolumeAdditions!: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions | undefined>;
+    declare public readonly permissionsToCreateVolumeAdditions: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions | undefined>;
     /**
      * Information about the users from whom you want to remove permissions for the resource.
      */
-    public readonly permissionsToCreateVolumeRemovals!: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeRemoval[] | undefined>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly permissionsToCreateVolumeRemovals: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeRemoval[] | undefined>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the snapshot.
      */
-    public readonly snapshotId!: pulumi.Output<string>;
+    declare public readonly snapshotId: pulumi.Output<string>;
 
     /**
      * Create a SnapshotAttributes resource with the given unique name, arguments, and options.
@@ -120,19 +120,19 @@ export class SnapshotAttributes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotAttributesState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["permissionsToCreateVolumeAdditions"] = state ? state.permissionsToCreateVolumeAdditions : undefined;
-            resourceInputs["permissionsToCreateVolumeRemovals"] = state ? state.permissionsToCreateVolumeRemovals : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["permissionsToCreateVolumeAdditions"] = state?.permissionsToCreateVolumeAdditions;
+            resourceInputs["permissionsToCreateVolumeRemovals"] = state?.permissionsToCreateVolumeRemovals;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["snapshotId"] = state?.snapshotId;
         } else {
             const args = argsOrState as SnapshotAttributesArgs | undefined;
-            if ((!args || args.snapshotId === undefined) && !opts.urn) {
+            if (args?.snapshotId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snapshotId'");
             }
-            resourceInputs["permissionsToCreateVolumeAdditions"] = args ? args.permissionsToCreateVolumeAdditions : undefined;
-            resourceInputs["permissionsToCreateVolumeRemovals"] = args ? args.permissionsToCreateVolumeRemovals : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["permissionsToCreateVolumeAdditions"] = args?.permissionsToCreateVolumeAdditions;
+            resourceInputs["permissionsToCreateVolumeRemovals"] = args?.permissionsToCreateVolumeRemovals;
+            resourceInputs["snapshotId"] = args?.snapshotId;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
         }

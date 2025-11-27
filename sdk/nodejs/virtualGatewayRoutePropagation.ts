@@ -73,16 +73,16 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
     /**
      * If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
      */
-    public readonly enable!: pulumi.Output<boolean>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly enable: pulumi.Output<boolean>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the route table.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * The ID of the virtual gateway.
      */
-    public readonly virtualGatewayId!: pulumi.Output<string>;
+    declare public readonly virtualGatewayId: pulumi.Output<string>;
 
     /**
      * Create a VirtualGatewayRoutePropagation resource with the given unique name, arguments, and options.
@@ -97,24 +97,24 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualGatewayRoutePropagationState | undefined;
-            resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["virtualGatewayId"] = state ? state.virtualGatewayId : undefined;
+            resourceInputs["enable"] = state?.enable;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
         } else {
             const args = argsOrState as VirtualGatewayRoutePropagationArgs | undefined;
-            if ((!args || args.enable === undefined) && !opts.urn) {
+            if (args?.enable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enable'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            if ((!args || args.virtualGatewayId === undefined) && !opts.urn) {
+            if (args?.virtualGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualGatewayId'");
             }
-            resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
-            resourceInputs["virtualGatewayId"] = args ? args.virtualGatewayId : undefined;
+            resourceInputs["enable"] = args?.enable;
+            resourceInputs["routeTableId"] = args?.routeTableId;
+            resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -111,7 +111,6 @@ __all__ = [
     'SnapshotTag',
     'SubnetTag',
     'SubnetTimeouts',
-    'TagTag',
     'UserGroupPolicy',
     'UserGroupUser',
     'UserPolicy',
@@ -5844,62 +5843,6 @@ class SubnetTimeouts(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "update")
-
-
-@pulumi.output_type
-class TagTag(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "resourceId":
-            suggest = "resource_id"
-        elif key == "resourceType":
-            suggest = "resource_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TagTag. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TagTag.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TagTag.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
-                 resource_id: Optional[_builtins.str] = None,
-                 resource_type: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
-        if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "resource_id")
-
-    @_builtins.property
-    @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "resource_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

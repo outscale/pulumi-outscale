@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<bool>? DeleteOnVmDeletion { get; set; }
 
         /// <summary>
-        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `Io1` volume. The maximum number of IOPS allowed for `Io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         /// </summary>
         [Input("iops")]
         public Input<int>? Iops { get; set; }

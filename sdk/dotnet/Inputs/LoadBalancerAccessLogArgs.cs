@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class LoadBalancerAccessLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osu_bucket_name` parameter is required.
+        /// If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `OsuBucketName` parameter is required.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string>? OsuBucketName { get; set; }
 
         /// <summary>
-        /// The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
+        /// The path to the folder of the access logs in your OOS bucket (by default, the `Root` level of your bucket).
         /// </summary>
         [Input("osuBucketPrefix")]
         public Input<string>? OsuBucketPrefix { get; set; }

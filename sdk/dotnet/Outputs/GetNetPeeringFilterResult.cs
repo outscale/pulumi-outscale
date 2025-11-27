@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class GetNetPeeringFilterResult
     {
         /// <summary>
-        /// The state of the Net peering (`pending-acceptance` \| `active` \| `rejected` \| `failed` \| `expired` \| `deleted`).
+        /// The state of the Net peering (`pending-acceptance` \| `Active` \| `Rejected` \| `Failed` \| `Expired` \| `Deleted`).
         /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<string> Values;

@@ -5938,13 +5938,6 @@ export interface SubnetTimeouts {
     update?: string;
 }
 
-export interface TagTag {
-    key: string;
-    resourceId: string;
-    resourceType: string;
-    value: string;
-}
-
 export interface UserGroupPolicy {
     /**
      * The date and time (UTC) of creation of the user group.

@@ -82,7 +82,7 @@ namespace Pulumi.Outscale
     public partial class Route : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        /// By default or if set to true, waits for the route to be in the `Active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `Active` state if available, or the `Blackhole` state if not available.
         /// </summary>
         [Output("awaitActiveState")]
         public Output<bool> AwaitActiveState { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Outscale
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of a route in the route table (always `active`).
+        /// The state of a route in the route table (always `Active`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.Outscale
     public sealed class RouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        /// By default or if set to true, waits for the route to be in the `Active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `Active` state if available, or the `Blackhole` state if not available.
         /// </summary>
         [Input("awaitActiveState")]
         public Input<bool>? AwaitActiveState { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.Outscale
     public sealed class RouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
+        /// By default or if set to true, waits for the route to be in the `Active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `Active` state if available, or the `Blackhole` state if not available.
         /// </summary>
         [Input("awaitActiveState")]
         public Input<bool>? AwaitActiveState { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.Outscale
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// The state of a route in the route table (always `active`).
+        /// The state of a route in the route table (always `Active`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -77,21 +77,21 @@ export class InternetServiceLink extends pulumi.CustomResource {
     /**
      * The ID of the internet service you want to attach.
      */
-    public readonly internetServiceId!: pulumi.Output<string>;
+    declare public readonly internetServiceId: pulumi.Output<string>;
     /**
      * The ID of the Net to which you want to attach the internet service.
      */
-    public readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the attachment of the Internet service to the Net (always `available`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * One or more tags associated with the Internet service.
      */
-    public /*out*/ readonly tags!: pulumi.Output<outputs.InternetServiceLinkTag[]>;
-    public readonly timeouts!: pulumi.Output<outputs.InternetServiceLinkTimeouts | undefined>;
+    declare public /*out*/ readonly tags: pulumi.Output<outputs.InternetServiceLinkTag[]>;
+    declare public readonly timeouts: pulumi.Output<outputs.InternetServiceLinkTimeouts | undefined>;
 
     /**
      * Create a InternetServiceLink resource with the given unique name, arguments, and options.
@@ -106,23 +106,23 @@ export class InternetServiceLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InternetServiceLinkState | undefined;
-            resourceInputs["internetServiceId"] = state ? state.internetServiceId : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["internetServiceId"] = state?.internetServiceId;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as InternetServiceLinkArgs | undefined;
-            if ((!args || args.internetServiceId === undefined) && !opts.urn) {
+            if (args?.internetServiceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internetServiceId'");
             }
-            if ((!args || args.netId === undefined) && !opts.urn) {
+            if (args?.netId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'netId'");
             }
-            resourceInputs["internetServiceId"] = args ? args.internetServiceId : undefined;
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["internetServiceId"] = args?.internetServiceId;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;

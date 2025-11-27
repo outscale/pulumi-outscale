@@ -27,6 +27,29 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Create an API access rule based on IPs and Certificate Authority (CA)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const ca01 = new outscale.Ca("ca01", {
+ *     caPem: std.index.file({
+ *         input: "<PATH>",
+ *     }).result,
+ *     description: "Terraform CA",
+ * });
+ * const apiAccessRule02 = new outscale.ApiAccessRule("api_access_rule02", {
+ *     ipRanges: [
+ *         "192.0.2.0",
+ *         "192.0.2.0/16",
+ *     ],
+ *     caIds: [ca01.caId],
+ *     description: "API Access Rule with CA from Terraform",
+ * });
+ * ```
+ *
  * ## Import
  *
  * An API access rule can be imported using its ID. For example:
@@ -68,24 +91,24 @@ export class ApiAccessRule extends pulumi.CustomResource {
     /**
      * The ID of the API access rule.
      */
-    public /*out*/ readonly apiAccessRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiAccessRuleId: pulumi.Output<string>;
     /**
      * One or more IDs of Client Certificate Authorities (CAs).
      */
-    public readonly caIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly caIds: pulumi.Output<string[] | undefined>;
     /**
      * One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
      */
-    public readonly cns!: pulumi.Output<string[] | undefined>;
+    declare public readonly cns: pulumi.Output<string[] | undefined>;
     /**
      * A description for the API access rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
      */
-    public readonly ipRanges!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly ipRanges: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
 
     /**
      * Create a ApiAccessRule resource with the given unique name, arguments, and options.
@@ -100,18 +123,18 @@ export class ApiAccessRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiAccessRuleState | undefined;
-            resourceInputs["apiAccessRuleId"] = state ? state.apiAccessRuleId : undefined;
-            resourceInputs["caIds"] = state ? state.caIds : undefined;
-            resourceInputs["cns"] = state ? state.cns : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipRanges"] = state ? state.ipRanges : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
+            resourceInputs["apiAccessRuleId"] = state?.apiAccessRuleId;
+            resourceInputs["caIds"] = state?.caIds;
+            resourceInputs["cns"] = state?.cns;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipRanges"] = state?.ipRanges;
+            resourceInputs["requestId"] = state?.requestId;
         } else {
             const args = argsOrState as ApiAccessRuleArgs | undefined;
-            resourceInputs["caIds"] = args ? args.caIds : undefined;
-            resourceInputs["cns"] = args ? args.cns : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipRanges"] = args ? args.ipRanges : undefined;
+            resourceInputs["caIds"] = args?.caIds;
+            resourceInputs["cns"] = args?.cns;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipRanges"] = args?.ipRanges;
             resourceInputs["apiAccessRuleId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
         }

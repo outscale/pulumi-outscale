@@ -182,7 +182,7 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The primary private IP for the NIC.&lt;br /&gt;
-        /// This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.&lt;br /&gt;
+        /// This IP must be within the IP range of the Subnet that you specify with the `SubnetId` attribute.&lt;br /&gt;
         /// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
         /// </summary>
         [Output("privateIps")]
@@ -207,7 +207,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.NicSecurityGroup>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
+        /// The state of the NIC (`Available` \| `Attaching` \| `in-use` \| `Detaching`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The primary private IP for the NIC.&lt;br /&gt;
-        /// This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.&lt;br /&gt;
+        /// This IP must be within the IP range of the Subnet that you specify with the `SubnetId` attribute.&lt;br /&gt;
         /// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
         /// </summary>
         public InputList<Inputs.NicPrivateIpArgs> PrivateIps
@@ -417,7 +417,7 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The primary private IP for the NIC.&lt;br /&gt;
-        /// This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.&lt;br /&gt;
+        /// This IP must be within the IP range of the Subnet that you specify with the `SubnetId` attribute.&lt;br /&gt;
         /// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
         /// </summary>
         public InputList<Inputs.NicPrivateIpGetArgs> PrivateIps
@@ -457,7 +457,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
+        /// The state of the NIC (`Available` \| `Attaching` \| `in-use` \| `Detaching`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

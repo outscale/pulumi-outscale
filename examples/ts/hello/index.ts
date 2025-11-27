@@ -1,11 +1,33 @@
+import * as pulumi from "@pulumi/pulumi";
 import * as outscale from "@outscale/pulumi-outscale";
 import * as cloudinit from "@pulumi/cloudinit";
 import { readFileSync } from "fs";
 
+const config = new pulumi.Config();
 const script = readFileSync("./hello_startup.sh", "utf-8");
 
+// Get the latest Outscale image
+const images = outscale.getImagesOutput({
+  filters: [
+    {
+      name: "account_aliases",
+      values: ["Outscale"],
+    },
+    {
+      name: "image_names",
+      values: ["Ubuntu*", "RockyLinux*"],
+    },
+  ],
+});
+
+const imageId = config.get("imageId") || images.images[0].imageId;
+
+// Use stack name to generate deterministic but unique keypair name
+const stackName = pulumi.getStack();
+const keypairName = `hello-kp-${stackName}`;
+
 new outscale.Keypair("hello", {
-  keypairName: "hello",
+  keypairName: keypairName,
 });
 
 const public_ip = new outscale.PublicIp("hello", {});
@@ -47,9 +69,9 @@ const resourceConf = new cloudinit.Config("hello", {
 });
 
 const vm = new outscale.Vm("hello", {
-  imageId: "ami-cd8d714e",
+  imageId: imageId,
   vmType: "tinav6.c4r8p2",
-  keypairName: "hello",
+  keypairName: keypairName,
   securityGroupIds: [security_group.id],
   placementSubregionName: "eu-west-2a",
   placementTenancy: "default",
@@ -62,7 +84,7 @@ const volume = new outscale.Volume("hello", {
   size: 80,
 });
 
-const volumeLink = new outscale.VolumesLink("hello", {
+const volumeLink = new outscale.VolumeLink("hello", {
   deviceName: "/dev/sdb",
   volumeId: volume.id,
   vmId: vm.id,

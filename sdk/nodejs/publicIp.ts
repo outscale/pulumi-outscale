@@ -62,36 +62,36 @@ export class PublicIp extends pulumi.CustomResource {
     /**
      * (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
      */
-    public /*out*/ readonly linkPublicIpId!: pulumi.Output<string>;
+    declare public /*out*/ readonly linkPublicIpId: pulumi.Output<string>;
     /**
      * The account ID of the owner of the NIC.
      */
-    public /*out*/ readonly nicAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly nicAccountId: pulumi.Output<string>;
     /**
      * The ID of the NIC the public IP is associated with (if any).
      */
-    public /*out*/ readonly nicId!: pulumi.Output<string>;
+    declare public /*out*/ readonly nicId: pulumi.Output<string>;
     /**
      * The private IP associated with the public IP.
      */
-    public /*out*/ readonly privateIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
      * The public IP.
      */
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIP: pulumi.Output<string>;
     /**
      * The allocation ID of the public IP.
      */
-    public /*out*/ readonly publicIpId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIpId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.PublicIpTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.PublicIpTag[] | undefined>;
     /**
      * The ID of the VM the public IP is associated with (if any).
      */
-    public /*out*/ readonly vmId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vmId: pulumi.Output<string>;
 
     /**
      * Create a PublicIp resource with the given unique name, arguments, and options.
@@ -106,23 +106,23 @@ export class PublicIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicIpState | undefined;
-            resourceInputs["linkPublicIpId"] = state ? state.linkPublicIpId : undefined;
-            resourceInputs["nicAccountId"] = state ? state.nicAccountId : undefined;
-            resourceInputs["nicId"] = state ? state.nicId : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["publicIpId"] = state ? state.publicIpId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["linkPublicIpId"] = state?.linkPublicIpId;
+            resourceInputs["nicAccountId"] = state?.nicAccountId;
+            resourceInputs["nicId"] = state?.nicId;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["publicIP"] = state?.publicIP;
+            resourceInputs["publicIpId"] = state?.publicIpId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as PublicIpArgs | undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["linkPublicIpId"] = undefined /*out*/;
             resourceInputs["nicAccountId"] = undefined /*out*/;
             resourceInputs["nicId"] = undefined /*out*/;
             resourceInputs["privateIp"] = undefined /*out*/;
-            resourceInputs["publicIp"] = undefined /*out*/;
+            resourceInputs["publicIP"] = undefined /*out*/;
             resourceInputs["publicIpId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["vmId"] = undefined /*out*/;
@@ -155,7 +155,7 @@ export interface PublicIpState {
     /**
      * The public IP.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIP?: pulumi.Input<string>;
     /**
      * The allocation ID of the public IP.
      */

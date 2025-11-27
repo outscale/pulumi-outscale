@@ -110,48 +110,48 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.
      */
-    public readonly flow!: pulumi.Output<string>;
+    declare public readonly flow: pulumi.Output<string>;
     /**
      * The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
      */
-    public readonly fromPortRange!: pulumi.Output<number | undefined>;
+    declare public readonly fromPortRange: pulumi.Output<number | undefined>;
     /**
      * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
      */
-    public readonly ipProtocol!: pulumi.Output<string | undefined>;
+    declare public readonly ipProtocol: pulumi.Output<string | undefined>;
     /**
      * The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
      */
-    public readonly ipRange!: pulumi.Output<string | undefined>;
+    declare public readonly ipRange: pulumi.Output<string | undefined>;
     /**
      * The ID of the Net for the security group.
      */
-    public /*out*/ readonly netId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
      */
-    public readonly rules!: pulumi.Output<outputs.SecurityGroupRuleRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.SecurityGroupRuleRule[] | undefined>;
     /**
      * The account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
      */
-    public readonly securityGroupAccountIdToLink!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupAccountIdToLink: pulumi.Output<string | undefined>;
     /**
      * The ID of the security group for which you want to create a rule.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The name of the security group.
      */
-    public /*out*/ readonly securityGroupName!: pulumi.Output<string>;
+    declare public /*out*/ readonly securityGroupName: pulumi.Output<string>;
     /**
      * The ID of a source or destination security group that you want to link to the security group of the rule.
      */
-    public readonly securityGroupNameToLink!: pulumi.Output<string | undefined>;
+    declare public readonly securityGroupNameToLink: pulumi.Output<string | undefined>;
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
      */
-    public readonly toPortRange!: pulumi.Output<number | undefined>;
+    declare public readonly toPortRange: pulumi.Output<number | undefined>;
 
     /**
      * Create a SecurityGroupRule resource with the given unique name, arguments, and options.
@@ -166,35 +166,35 @@ export class SecurityGroupRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupRuleState | undefined;
-            resourceInputs["flow"] = state ? state.flow : undefined;
-            resourceInputs["fromPortRange"] = state ? state.fromPortRange : undefined;
-            resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["securityGroupAccountIdToLink"] = state ? state.securityGroupAccountIdToLink : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
-            resourceInputs["securityGroupNameToLink"] = state ? state.securityGroupNameToLink : undefined;
-            resourceInputs["toPortRange"] = state ? state.toPortRange : undefined;
+            resourceInputs["flow"] = state?.flow;
+            resourceInputs["fromPortRange"] = state?.fromPortRange;
+            resourceInputs["ipProtocol"] = state?.ipProtocol;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["securityGroupAccountIdToLink"] = state?.securityGroupAccountIdToLink;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupName"] = state?.securityGroupName;
+            resourceInputs["securityGroupNameToLink"] = state?.securityGroupNameToLink;
+            resourceInputs["toPortRange"] = state?.toPortRange;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
-            if ((!args || args.flow === undefined) && !opts.urn) {
+            if (args?.flow === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flow'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            resourceInputs["flow"] = args ? args.flow : undefined;
-            resourceInputs["fromPortRange"] = args ? args.fromPortRange : undefined;
-            resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["securityGroupAccountIdToLink"] = args ? args.securityGroupAccountIdToLink : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["securityGroupNameToLink"] = args ? args.securityGroupNameToLink : undefined;
-            resourceInputs["toPortRange"] = args ? args.toPortRange : undefined;
+            resourceInputs["flow"] = args?.flow;
+            resourceInputs["fromPortRange"] = args?.fromPortRange;
+            resourceInputs["ipProtocol"] = args?.ipProtocol;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["securityGroupAccountIdToLink"] = args?.securityGroupAccountIdToLink;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["securityGroupNameToLink"] = args?.securityGroupNameToLink;
+            resourceInputs["toPortRange"] = args?.toPortRange;
             resourceInputs["netId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["securityGroupName"] = undefined /*out*/;

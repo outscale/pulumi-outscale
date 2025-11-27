@@ -94,82 +94,82 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
     /**
      * Information about access logs.
      */
-    public readonly accessLogs!: pulumi.Output<outputs.LoadBalancerPolicyAccessLog[]>;
+    declare public readonly accessLogs: pulumi.Output<outputs.LoadBalancerPolicyAccessLog[]>;
     /**
      * The stickiness policies defined for the load balancer.
      */
-    public /*out*/ readonly applicationStickyCookiePolicies!: pulumi.Output<outputs.LoadBalancerPolicyApplicationStickyCookiePolicy[]>;
+    declare public /*out*/ readonly applicationStickyCookiePolicies: pulumi.Output<outputs.LoadBalancerPolicyApplicationStickyCookiePolicy[]>;
     /**
      * One or more IDs of backend VMs for the load balancer.
      */
-    public readonly backendVmIds!: pulumi.Output<string[]>;
-    public readonly cookieExpirationPeriod!: pulumi.Output<number>;
+    declare public readonly backendVmIds: pulumi.Output<string[]>;
+    declare public readonly cookieExpirationPeriod: pulumi.Output<number>;
     /**
      * The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
-    public readonly cookieName!: pulumi.Output<string>;
+    declare public readonly cookieName: pulumi.Output<string>;
     /**
      * The DNS name of the load balancer.
      */
-    public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    declare public /*out*/ readonly dnsName: pulumi.Output<string>;
     /**
      * Information about the health check configuration.
      */
-    public /*out*/ readonly healthChecks!: pulumi.Output<outputs.LoadBalancerPolicyHealthCheck[]>;
+    declare public /*out*/ readonly healthChecks: pulumi.Output<outputs.LoadBalancerPolicyHealthCheck[]>;
     /**
      * The listeners for the load balancer.
      */
-    public /*out*/ readonly listeners!: pulumi.Output<outputs.LoadBalancerPolicyListener[]>;
+    declare public /*out*/ readonly listeners: pulumi.Output<outputs.LoadBalancerPolicyListener[]>;
     /**
      * The name of the load balancer for which you want to create a policy.
      */
-    public readonly loadBalancerName!: pulumi.Output<string>;
+    declare public readonly loadBalancerName: pulumi.Output<string>;
     /**
      * The policies defined for the load balancer.
      */
-    public /*out*/ readonly loadBalancerStickyCookiePolicies!: pulumi.Output<outputs.LoadBalancerPolicyLoadBalancerStickyCookiePolicy[]>;
+    declare public /*out*/ readonly loadBalancerStickyCookiePolicies: pulumi.Output<outputs.LoadBalancerPolicyLoadBalancerStickyCookiePolicy[]>;
     /**
      * The type of load balancer. Valid only for load balancers in a Net.<br />
      * If `loadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
      * If `loadBalancerType` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
      */
-    public readonly loadBalancerType!: pulumi.Output<string>;
+    declare public readonly loadBalancerType: pulumi.Output<string>;
     /**
      * The ID of the Net for the load balancer.
      */
-    public /*out*/ readonly netId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
     /**
      * The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
      */
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
     /**
      * The type of stickiness policy you want to create: `app` or `loadBalancer`.
      */
-    public readonly policyType!: pulumi.Output<string>;
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
-    public /*out*/ readonly securedCookies!: pulumi.Output<boolean>;
+    declare public readonly policyType: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public /*out*/ readonly securedCookies: pulumi.Output<boolean>;
     /**
      * One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
      */
-    public readonly securityGroups!: pulumi.Output<string[]>;
+    declare public readonly securityGroups: pulumi.Output<string[]>;
     /**
      * Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
      * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
      */
-    public /*out*/ readonly sourceSecurityGroups!: pulumi.Output<outputs.LoadBalancerPolicySourceSecurityGroup[]>;
+    declare public /*out*/ readonly sourceSecurityGroups: pulumi.Output<outputs.LoadBalancerPolicySourceSecurityGroup[]>;
     /**
      * The ID of the Subnet in which the load balancer was created.
      */
-    public readonly subnets!: pulumi.Output<string[]>;
+    declare public readonly subnets: pulumi.Output<string[]>;
     /**
      * The ID of the Subregion in which the load balancer was created.
      */
-    public readonly subregionNames!: pulumi.Output<string[]>;
+    declare public readonly subregionNames: pulumi.Output<string[]>;
     /**
      * One or more tags associated with the load balancer.
      */
-    public readonly tags!: pulumi.Output<outputs.LoadBalancerPolicyTag[]>;
+    declare public readonly tags: pulumi.Output<outputs.LoadBalancerPolicyTag[]>;
 
     /**
      * Create a LoadBalancerPolicy resource with the given unique name, arguments, and options.
@@ -184,51 +184,51 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerPolicyState | undefined;
-            resourceInputs["accessLogs"] = state ? state.accessLogs : undefined;
-            resourceInputs["applicationStickyCookiePolicies"] = state ? state.applicationStickyCookiePolicies : undefined;
-            resourceInputs["backendVmIds"] = state ? state.backendVmIds : undefined;
-            resourceInputs["cookieExpirationPeriod"] = state ? state.cookieExpirationPeriod : undefined;
-            resourceInputs["cookieName"] = state ? state.cookieName : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
-            resourceInputs["listeners"] = state ? state.listeners : undefined;
-            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            resourceInputs["loadBalancerStickyCookiePolicies"] = state ? state.loadBalancerStickyCookiePolicies : undefined;
-            resourceInputs["loadBalancerType"] = state ? state.loadBalancerType : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
-            resourceInputs["policyType"] = state ? state.policyType : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["securedCookies"] = state ? state.securedCookies : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["sourceSecurityGroups"] = state ? state.sourceSecurityGroups : undefined;
-            resourceInputs["subnets"] = state ? state.subnets : undefined;
-            resourceInputs["subregionNames"] = state ? state.subregionNames : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accessLogs"] = state?.accessLogs;
+            resourceInputs["applicationStickyCookiePolicies"] = state?.applicationStickyCookiePolicies;
+            resourceInputs["backendVmIds"] = state?.backendVmIds;
+            resourceInputs["cookieExpirationPeriod"] = state?.cookieExpirationPeriod;
+            resourceInputs["cookieName"] = state?.cookieName;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["healthChecks"] = state?.healthChecks;
+            resourceInputs["listeners"] = state?.listeners;
+            resourceInputs["loadBalancerName"] = state?.loadBalancerName;
+            resourceInputs["loadBalancerStickyCookiePolicies"] = state?.loadBalancerStickyCookiePolicies;
+            resourceInputs["loadBalancerType"] = state?.loadBalancerType;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["policyName"] = state?.policyName;
+            resourceInputs["policyType"] = state?.policyType;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["securedCookies"] = state?.securedCookies;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["sourceSecurityGroups"] = state?.sourceSecurityGroups;
+            resourceInputs["subnets"] = state?.subnets;
+            resourceInputs["subregionNames"] = state?.subregionNames;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as LoadBalancerPolicyArgs | undefined;
-            if ((!args || args.loadBalancerName === undefined) && !opts.urn) {
+            if (args?.loadBalancerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerName'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            if ((!args || args.policyType === undefined) && !opts.urn) {
+            if (args?.policyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            resourceInputs["accessLogs"] = args ? args.accessLogs : undefined;
-            resourceInputs["backendVmIds"] = args ? args.backendVmIds : undefined;
-            resourceInputs["cookieExpirationPeriod"] = args ? args.cookieExpirationPeriod : undefined;
-            resourceInputs["cookieName"] = args ? args.cookieName : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["loadBalancerType"] = args ? args.loadBalancerType : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["policyType"] = args ? args.policyType : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["subnets"] = args ? args.subnets : undefined;
-            resourceInputs["subregionNames"] = args ? args.subregionNames : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accessLogs"] = args?.accessLogs;
+            resourceInputs["backendVmIds"] = args?.backendVmIds;
+            resourceInputs["cookieExpirationPeriod"] = args?.cookieExpirationPeriod;
+            resourceInputs["cookieName"] = args?.cookieName;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["loadBalancerType"] = args?.loadBalancerType;
+            resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["policyType"] = args?.policyType;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["subnets"] = args?.subnets;
+            resourceInputs["subregionNames"] = args?.subregionNames;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["applicationStickyCookiePolicies"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["healthChecks"] = undefined /*out*/;

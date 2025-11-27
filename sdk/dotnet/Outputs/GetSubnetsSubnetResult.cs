@@ -30,7 +30,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string NetId;
         /// <summary>
-        /// The state of the Subnet (`pending` \| `available` \| `deleted`).
+        /// The state of the Subnet (`Pending` \| `Available` \| `Deleted`).
         /// </summary>
         public readonly string State;
         /// <summary>

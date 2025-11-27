@@ -30,7 +30,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// The state of the Net access point (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the Net access point (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         public readonly string State;
         /// <summary>

@@ -62,7 +62,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.VmPrimaryNicPrivateIp> PrivateIps;
         /// <summary>
-        /// The number of secondary private IPs, if you create a NIC when creating a VM. This parameter cannot be specified if you specified more than one private IP in the `private_ips` parameter.
+        /// The number of secondary private IPs, if you create a NIC when creating a VM. This parameter cannot be specified if you specified more than one private IP in the `PrivateIps` parameter.
         /// </summary>
         public readonly int? SecondaryPrivateIpCount;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.VmPrimaryNicSecurityGroup> SecurityGroups;
         /// <summary>
-        /// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
+        /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         public readonly string? State;
         /// <summary>

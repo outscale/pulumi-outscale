@@ -48,6 +48,53 @@ import (
 //
 // ```
 //
+// ### Create an API access rule based on IPs and Certificate Authority (CA)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "<PATH>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ca01, err := outscale.NewCa(ctx, "ca01", &outscale.CaArgs{
+//				CaPem:       invokeFile.Result,
+//				Description: pulumi.String("Terraform CA"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewApiAccessRule(ctx, "api_access_rule02", &outscale.ApiAccessRuleArgs{
+//				IpRanges: pulumi.StringArray{
+//					pulumi.String("192.0.2.0"),
+//					pulumi.String("192.0.2.0/16"),
+//				},
+//				CaIds: pulumi.StringArray{
+//					ca01.CaId,
+//				},
+//				Description: pulumi.String("API Access Rule with CA from Terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // An API access rule can be imported using its ID. For example:

@@ -188,8 +188,8 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         [Input("loadBalancerType")]
         public string? LoadBalancerType { get; set; }
@@ -306,8 +306,8 @@ namespace Pulumi.Outscale
 
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
@@ -404,8 +404,8 @@ namespace Pulumi.Outscale
         public readonly ImmutableArray<Outputs.GetLoadBalancerLoadBalancerStickyCookiePolicyResult> LoadBalancerStickyCookiePolicies;
         /// <summary>
         /// The type of load balancer. Valid only for load balancers in a Net.&lt;br /&gt;
-        /// If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
-        /// If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
+        /// If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.&lt;br /&gt;
+        /// If `LoadBalancerType` is `Internal`, the load balancer has a public DNS name that resolves to a private IP.
         /// </summary>
         public readonly string LoadBalancerType;
         /// <summary>

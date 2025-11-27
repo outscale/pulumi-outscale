@@ -45,6 +45,47 @@ import (
 //
 // ```
 //
+// ### Import keypairs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "<PATH>",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewKeypair(ctx, "keypair02", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-import-file"),
+//				PublicKey:   invokeFile.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewKeypair(ctx, "keypair03", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-import-text"),
+//				PublicKey:   pulumi.String("UFVCTElDIEtFWQ=="),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A keypair can be imported using its name. For example:

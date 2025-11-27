@@ -321,7 +321,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.LoadBalancerLoadBalancerStickyCookiePolicy>> LoadBalancerStickyCookiePolicies { get; private set; } = null!;
 
         /// <summary>
-        /// The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
+        /// The type of load balancer: `internet-facing` or `Internal`. Use this parameter only for load balancers in a Net.
         /// </summary>
         [Output("loadBalancerType")]
         public Output<string> LoadBalancerType { get; private set; } = null!;
@@ -455,7 +455,7 @@ namespace Pulumi.Outscale
         public Input<string> LoadBalancerName { get; set; } = null!;
 
         /// <summary>
-        /// The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
+        /// The type of load balancer: `internet-facing` or `Internal`. Use this parameter only for load balancers in a Net.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
@@ -625,7 +625,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
+        /// The type of load balancer: `internet-facing` or `Internal`. Use this parameter only for load balancers in a Net.
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }

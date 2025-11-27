@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Outputs
         public readonly ImmutableArray<string> AccountIds;
         /// <summary>
         /// A global permission for all accounts.&lt;br /&gt;
-        /// (Request) Set this parameter to true to make the resource public (if the parent parameter is `additions`) or to make the resource private (if the parent parameter is `removals`).&lt;br /&gt;
+        /// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).&lt;br /&gt;
         /// (Response) If true, the resource is public. If false, the resource is private.
         /// </summary>
         public readonly string? GlobalPermission;

@@ -48,175 +48,180 @@ export class Vm extends pulumi.CustomResource {
     /**
      * The action to perform on the next boot of the VM.
      */
-    public /*out*/ readonly actionsOnNextBoots!: pulumi.Output<outputs.VmActionsOnNextBoot[]>;
-    public /*out*/ readonly adminPassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly actionsOnNextBoots: pulumi.Output<outputs.VmActionsOnNextBoot[]>;
+    declare public /*out*/ readonly adminPassword: pulumi.Output<string>;
     /**
      * The architecture of the VM (`i386` \| `x8664`).
      */
-    public /*out*/ readonly architecture!: pulumi.Output<string>;
+    declare public /*out*/ readonly architecture: pulumi.Output<string>;
     /**
      * One or more block device mappings.
      */
-    public readonly blockDeviceMappings!: pulumi.Output<outputs.VmBlockDeviceMapping[] | undefined>;
+    declare public readonly blockDeviceMappings: pulumi.Output<outputs.VmBlockDeviceMapping[] | undefined>;
     /**
      * The block device mapping of the VM.
      */
-    public /*out*/ readonly blockDeviceMappingsCreateds!: pulumi.Output<outputs.VmBlockDeviceMappingsCreated[]>;
+    declare public /*out*/ readonly blockDeviceMappingsCreateds: pulumi.Output<outputs.VmBlockDeviceMappingsCreated[]>;
     /**
      * Information about the boot mode of the VM (`legacy` | `uefi`).
      */
-    public readonly bootMode!: pulumi.Output<string>;
-    public readonly bsuOptimized!: pulumi.Output<boolean>;
+    declare public readonly bootMode: pulumi.Output<string>;
+    declare public readonly bsuOptimized: pulumi.Output<boolean>;
     /**
      * A unique identifier which enables you to manage the idempotency.
      */
-    public /*out*/ readonly clientToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientToken: pulumi.Output<string>;
     /**
      * The date and time (UTC) at which the VM was created.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * If true, you cannot delete the VM unless you change this parameter back to false.
      */
-    public readonly deletionProtection!: pulumi.Output<boolean>;
+    declare public readonly deletionProtection: pulumi.Output<boolean>;
     /**
      * (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `adminPassword` attribute.
      */
-    public readonly getAdminPassword!: pulumi.Output<boolean | undefined>;
+    declare public readonly getAdminPassword: pulumi.Output<boolean | undefined>;
     /**
      * The hypervisor type of the VMs (`ovm` \| `xen`).
      */
-    public /*out*/ readonly hypervisor!: pulumi.Output<string>;
+    declare public /*out*/ readonly hypervisor: pulumi.Output<string>;
     /**
      * The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * (Net only) If true, the source/destination check is enabled. If false, it is disabled.
      */
-    public readonly isSourceDestChecked!: pulumi.Output<boolean>;
+    declare public readonly isSourceDestChecked: pulumi.Output<boolean>;
     /**
      * The name of the keypair.
      */
-    public readonly keypairName!: pulumi.Output<string>;
+    declare public readonly keypairName: pulumi.Output<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+     */
+    declare public readonly keypairNameWo: pulumi.Output<string | undefined>;
     /**
      * The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
      */
-    public /*out*/ readonly launchNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly launchNumber: pulumi.Output<number>;
     /**
      * (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
      */
-    public readonly nestedVirtualization!: pulumi.Output<boolean | undefined>;
+    declare public readonly nestedVirtualization: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Net for the NIC.
      */
-    public /*out*/ readonly netId!: pulumi.Output<string>;
+    declare public /*out*/ readonly netId: pulumi.Output<string>;
     /**
      * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
      */
-    public readonly nics!: pulumi.Output<outputs.VmNic[]>;
+    declare public readonly nics: pulumi.Output<outputs.VmNic[]>;
     /**
      * Indicates the operating system (OS) of the VM.
      */
-    public /*out*/ readonly osFamily!: pulumi.Output<string>;
+    declare public /*out*/ readonly osFamily: pulumi.Output<string>;
     /**
      * The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
      */
-    public readonly performance!: pulumi.Output<string>;
+    declare public readonly performance: pulumi.Output<string>;
     /**
      * The name of the Subregion where the VM is placed.
      */
-    public readonly placementSubregionName!: pulumi.Output<string>;
+    declare public readonly placementSubregionName: pulumi.Output<string>;
     /**
      * The tenancy of the VM (`default` | `dedicated`).
      */
-    public readonly placementTenancy!: pulumi.Output<string>;
+    declare public readonly placementTenancy: pulumi.Output<string>;
     /**
      * The primary network interface of the VM.
      */
-    public readonly primaryNics!: pulumi.Output<outputs.VmPrimaryNic[]>;
+    declare public readonly primaryNics: pulumi.Output<outputs.VmPrimaryNic[]>;
     /**
      * The name of the private DNS.
      */
-    public /*out*/ readonly privateDnsName!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateDnsName: pulumi.Output<string>;
     /**
      * The primary private IP of the VM.
      */
-    public /*out*/ readonly privateIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
      * One or more private IPs of the VM.
      */
-    public readonly privateIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly privateIps: pulumi.Output<string[] | undefined>;
     /**
      * The product codes associated with the OMI used to create the VM.
      */
-    public /*out*/ readonly productCodes!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly productCodes: pulumi.Output<string[]>;
     /**
      * The name of the public DNS.
      */
-    public /*out*/ readonly publicDnsName!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicDnsName: pulumi.Output<string>;
     /**
      * The public IP of the VM.
      */
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The reservation ID of the VM.
      */
-    public /*out*/ readonly reservationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly reservationId: pulumi.Output<string>;
     /**
      * The name of the root device for the VM (for example, `/dev/sda1`).
      */
-    public /*out*/ readonly rootDeviceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootDeviceName: pulumi.Output<string>;
     /**
      * The type of root device used by the VM (always `bsu`).
      */
-    public /*out*/ readonly rootDeviceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootDeviceType: pulumi.Output<string>;
     /**
      * One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
      */
-    public readonly secureBootAction!: pulumi.Output<string | undefined>;
+    declare public readonly secureBootAction: pulumi.Output<string | undefined>;
     /**
      * One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * One or more names of security groups for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
-    public readonly securityGroupNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupNames: pulumi.Output<string[] | undefined>;
     /**
      * One or more security groups associated with the VM.
      */
-    public /*out*/ readonly securityGroups!: pulumi.Output<outputs.VmSecurityGroup[]>;
+    declare public /*out*/ readonly securityGroups: pulumi.Output<outputs.VmSecurityGroup[]>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * The reason explaining the current state of the VM.
      */
-    public /*out*/ readonly stateReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
      * The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.VmTag[] | undefined>;
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.VmTag[] | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * The ID of the VM.
      */
-    public readonly vmId!: pulumi.Output<string>;
+    declare public readonly vmId: pulumi.Output<string>;
     /**
      * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
      */
-    public readonly vmInitiatedShutdownBehavior!: pulumi.Output<string>;
+    declare public readonly vmInitiatedShutdownBehavior: pulumi.Output<string>;
     /**
      * The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
      */
-    public readonly vmType!: pulumi.Output<string>;
+    declare public readonly vmType: pulumi.Output<string>;
 
     /**
      * Create a Vm resource with the given unique name, arguments, and options.
@@ -231,82 +236,84 @@ export class Vm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VmState | undefined;
-            resourceInputs["actionsOnNextBoots"] = state ? state.actionsOnNextBoots : undefined;
-            resourceInputs["adminPassword"] = state ? state.adminPassword : undefined;
-            resourceInputs["architecture"] = state ? state.architecture : undefined;
-            resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
-            resourceInputs["blockDeviceMappingsCreateds"] = state ? state.blockDeviceMappingsCreateds : undefined;
-            resourceInputs["bootMode"] = state ? state.bootMode : undefined;
-            resourceInputs["bsuOptimized"] = state ? state.bsuOptimized : undefined;
-            resourceInputs["clientToken"] = state ? state.clientToken : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
-            resourceInputs["getAdminPassword"] = state ? state.getAdminPassword : undefined;
-            resourceInputs["hypervisor"] = state ? state.hypervisor : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["isSourceDestChecked"] = state ? state.isSourceDestChecked : undefined;
-            resourceInputs["keypairName"] = state ? state.keypairName : undefined;
-            resourceInputs["launchNumber"] = state ? state.launchNumber : undefined;
-            resourceInputs["nestedVirtualization"] = state ? state.nestedVirtualization : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["nics"] = state ? state.nics : undefined;
-            resourceInputs["osFamily"] = state ? state.osFamily : undefined;
-            resourceInputs["performance"] = state ? state.performance : undefined;
-            resourceInputs["placementSubregionName"] = state ? state.placementSubregionName : undefined;
-            resourceInputs["placementTenancy"] = state ? state.placementTenancy : undefined;
-            resourceInputs["primaryNics"] = state ? state.primaryNics : undefined;
-            resourceInputs["privateDnsName"] = state ? state.privateDnsName : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
-            resourceInputs["productCodes"] = state ? state.productCodes : undefined;
-            resourceInputs["publicDnsName"] = state ? state.publicDnsName : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["reservationId"] = state ? state.reservationId : undefined;
-            resourceInputs["rootDeviceName"] = state ? state.rootDeviceName : undefined;
-            resourceInputs["rootDeviceType"] = state ? state.rootDeviceType : undefined;
-            resourceInputs["secureBootAction"] = state ? state.secureBootAction : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["securityGroupNames"] = state ? state.securityGroupNames : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateReason"] = state ? state.stateReason : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
-            resourceInputs["vmInitiatedShutdownBehavior"] = state ? state.vmInitiatedShutdownBehavior : undefined;
-            resourceInputs["vmType"] = state ? state.vmType : undefined;
+            resourceInputs["actionsOnNextBoots"] = state?.actionsOnNextBoots;
+            resourceInputs["adminPassword"] = state?.adminPassword;
+            resourceInputs["architecture"] = state?.architecture;
+            resourceInputs["blockDeviceMappings"] = state?.blockDeviceMappings;
+            resourceInputs["blockDeviceMappingsCreateds"] = state?.blockDeviceMappingsCreateds;
+            resourceInputs["bootMode"] = state?.bootMode;
+            resourceInputs["bsuOptimized"] = state?.bsuOptimized;
+            resourceInputs["clientToken"] = state?.clientToken;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["getAdminPassword"] = state?.getAdminPassword;
+            resourceInputs["hypervisor"] = state?.hypervisor;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["isSourceDestChecked"] = state?.isSourceDestChecked;
+            resourceInputs["keypairName"] = state?.keypairName;
+            resourceInputs["keypairNameWo"] = state?.keypairNameWo;
+            resourceInputs["launchNumber"] = state?.launchNumber;
+            resourceInputs["nestedVirtualization"] = state?.nestedVirtualization;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["nics"] = state?.nics;
+            resourceInputs["osFamily"] = state?.osFamily;
+            resourceInputs["performance"] = state?.performance;
+            resourceInputs["placementSubregionName"] = state?.placementSubregionName;
+            resourceInputs["placementTenancy"] = state?.placementTenancy;
+            resourceInputs["primaryNics"] = state?.primaryNics;
+            resourceInputs["privateDnsName"] = state?.privateDnsName;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["privateIps"] = state?.privateIps;
+            resourceInputs["productCodes"] = state?.productCodes;
+            resourceInputs["publicDnsName"] = state?.publicDnsName;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["reservationId"] = state?.reservationId;
+            resourceInputs["rootDeviceName"] = state?.rootDeviceName;
+            resourceInputs["rootDeviceType"] = state?.rootDeviceType;
+            resourceInputs["secureBootAction"] = state?.secureBootAction;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["securityGroupNames"] = state?.securityGroupNames;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateReason"] = state?.stateReason;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["vmId"] = state?.vmId;
+            resourceInputs["vmInitiatedShutdownBehavior"] = state?.vmInitiatedShutdownBehavior;
+            resourceInputs["vmType"] = state?.vmType;
         } else {
             const args = argsOrState as VmArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
-            resourceInputs["bootMode"] = args ? args.bootMode : undefined;
-            resourceInputs["bsuOptimized"] = args ? args.bsuOptimized : undefined;
-            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
-            resourceInputs["getAdminPassword"] = args ? args.getAdminPassword : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["isSourceDestChecked"] = args ? args.isSourceDestChecked : undefined;
-            resourceInputs["keypairName"] = args ? args.keypairName : undefined;
-            resourceInputs["nestedVirtualization"] = args ? args.nestedVirtualization : undefined;
-            resourceInputs["nics"] = args ? args.nics : undefined;
-            resourceInputs["performance"] = args ? args.performance : undefined;
-            resourceInputs["placementSubregionName"] = args ? args.placementSubregionName : undefined;
-            resourceInputs["placementTenancy"] = args ? args.placementTenancy : undefined;
-            resourceInputs["primaryNics"] = args ? args.primaryNics : undefined;
-            resourceInputs["privateIps"] = args ? args.privateIps : undefined;
-            resourceInputs["secureBootAction"] = args ? args.secureBootAction : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["securityGroupNames"] = args ? args.securityGroupNames : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
-            resourceInputs["vmInitiatedShutdownBehavior"] = args ? args.vmInitiatedShutdownBehavior : undefined;
-            resourceInputs["vmType"] = args ? args.vmType : undefined;
+            resourceInputs["blockDeviceMappings"] = args?.blockDeviceMappings;
+            resourceInputs["bootMode"] = args?.bootMode;
+            resourceInputs["bsuOptimized"] = args?.bsuOptimized;
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["getAdminPassword"] = args?.getAdminPassword;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["isSourceDestChecked"] = args?.isSourceDestChecked;
+            resourceInputs["keypairName"] = args?.keypairName;
+            resourceInputs["keypairNameWo"] = args?.keypairNameWo ? pulumi.secret(args.keypairNameWo) : undefined;
+            resourceInputs["nestedVirtualization"] = args?.nestedVirtualization;
+            resourceInputs["nics"] = args?.nics;
+            resourceInputs["performance"] = args?.performance;
+            resourceInputs["placementSubregionName"] = args?.placementSubregionName;
+            resourceInputs["placementTenancy"] = args?.placementTenancy;
+            resourceInputs["primaryNics"] = args?.primaryNics;
+            resourceInputs["privateIps"] = args?.privateIps;
+            resourceInputs["secureBootAction"] = args?.secureBootAction;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["securityGroupNames"] = args?.securityGroupNames;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["vmId"] = args?.vmId;
+            resourceInputs["vmInitiatedShutdownBehavior"] = args?.vmInitiatedShutdownBehavior;
+            resourceInputs["vmType"] = args?.vmType;
             resourceInputs["actionsOnNextBoots"] = undefined /*out*/;
             resourceInputs["adminPassword"] = undefined /*out*/;
             resourceInputs["architecture"] = undefined /*out*/;
@@ -330,6 +337,8 @@ export class Vm extends pulumi.CustomResource {
             resourceInputs["stateReason"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["keypairNameWo"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Vm.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -392,6 +401,11 @@ export interface VmState {
      * The name of the keypair.
      */
     keypairName?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+     */
+    keypairNameWo?: pulumi.Input<string>;
     /**
      * The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
      */
@@ -545,6 +559,11 @@ export interface VmArgs {
      * The name of the keypair.
      */
     keypairName?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+     */
+    keypairNameWo?: pulumi.Input<string>;
     /**
      * (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
      */

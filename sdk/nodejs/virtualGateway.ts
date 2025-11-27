@@ -68,24 +68,24 @@ export class VirtualGateway extends pulumi.CustomResource {
     /**
      * The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
      */
-    public readonly connectionType!: pulumi.Output<string>;
+    declare public readonly connectionType: pulumi.Output<string>;
     /**
      * The Net to which the virtual gateway is attached.
      */
-    public readonly netToVirtualGatewayLinks!: pulumi.Output<outputs.VirtualGatewayNetToVirtualGatewayLink[]>;
-    public readonly requestId!: pulumi.Output<string>;
+    declare public readonly netToVirtualGatewayLinks: pulumi.Output<outputs.VirtualGatewayNetToVirtualGatewayLink[]>;
+    declare public readonly requestId: pulumi.Output<string>;
     /**
      * The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.VirtualGatewayTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.VirtualGatewayTag[] | undefined>;
     /**
      * The ID of the virtual gateway.
      */
-    public readonly virtualGatewayId!: pulumi.Output<string>;
+    declare public readonly virtualGatewayId: pulumi.Output<string>;
 
     /**
      * Create a VirtualGateway resource with the given unique name, arguments, and options.
@@ -100,23 +100,23 @@ export class VirtualGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualGatewayState | undefined;
-            resourceInputs["connectionType"] = state ? state.connectionType : undefined;
-            resourceInputs["netToVirtualGatewayLinks"] = state ? state.netToVirtualGatewayLinks : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["virtualGatewayId"] = state ? state.virtualGatewayId : undefined;
+            resourceInputs["connectionType"] = state?.connectionType;
+            resourceInputs["netToVirtualGatewayLinks"] = state?.netToVirtualGatewayLinks;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
         } else {
             const args = argsOrState as VirtualGatewayArgs | undefined;
-            if ((!args || args.connectionType === undefined) && !opts.urn) {
+            if (args?.connectionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionType'");
             }
-            resourceInputs["connectionType"] = args ? args.connectionType : undefined;
-            resourceInputs["netToVirtualGatewayLinks"] = args ? args.netToVirtualGatewayLinks : undefined;
-            resourceInputs["requestId"] = args ? args.requestId : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["virtualGatewayId"] = args ? args.virtualGatewayId : undefined;
+            resourceInputs["connectionType"] = args?.connectionType;
+            resourceInputs["netToVirtualGatewayLinks"] = args?.netToVirtualGatewayLinks;
+            resourceInputs["requestId"] = args?.requestId;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualGateway.__pulumiType, name, resourceInputs, opts);

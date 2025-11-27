@@ -15,6 +15,38 @@ namespace Pulumi.Outscale
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
     /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serverCertificate01 = new Outscale.ServerCertificate("server_certificate_01", new()
+    ///     {
+    ///         Name = "terraform-server-certificate",
+    ///         Body = Std.Index.File.Invoke(new()
+    ///         {
+    ///             Input = "&lt;PATH&gt;",
+    ///         }).Result,
+    ///         Chain = Std.Index.File.Invoke(new()
+    ///         {
+    ///             Input = "&lt;PATH&gt;",
+    ///         }).Result,
+    ///         PrivateKey = Std.Index.File.Invoke(new()
+    ///         {
+    ///             Input = "&lt;PATH&gt;",
+    ///         }).Result,
+    ///         Path = "&lt;PATH&gt;",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A server certificate can be imported using its ID. For example:

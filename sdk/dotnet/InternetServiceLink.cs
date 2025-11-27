@@ -85,7 +85,7 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the attachment of the Internet service to the Net (always `available`).
+        /// The state of the attachment of the Internet service to the Net (always `Available`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The state of the attachment of the Internet service to the Net (always `available`).
+        /// The state of the attachment of the Internet service to the Net (always `Available`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

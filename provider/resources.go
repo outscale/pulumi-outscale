@@ -16,22 +16,24 @@ package outscale
 
 import (
 	"context"
-	_ "embed"
 	"fmt"
 	"path/filepath"
 	"strings"
 	"unicode"
 
-	"github.com/outscale/pulumi-outscale/provider/pkg/version"
-	"github.com/outscale/terraform-provider-outscale/outscale"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	_ "embed" // Required for go:embed directive
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/outscale/terraform-provider-outscale/outscale"
+
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/outscale/pulumi-outscale/provider/pkg/version"
 )
 
 //go:embed cmd/pulumi-resource-outscale/bridge-metadata.json
@@ -49,23 +51,14 @@ func init() {
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
-	outscalePkg = "outscale"
+	mainPkg = "outscale"
 	// modules:
-	outscaleMod = "index" // the outscale module
+	mainMod = "index" // the outscale module
 )
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-// boolRef returns a reference to the bool argument.
-func boolRef(b bool) *bool {
-	return &b
-}
 
 // outscaleMember manufactures a type token for the Scaleway package and the given module and type.
 func outscaleMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(outscalePkg + ":" + mod + ":" + mem)
+	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
 }
 
 // outscaleType manufactures a type token for the Scaleway package and the given module and type.
@@ -89,10 +82,6 @@ func outscaleResource(mod string, res string) tokens.Type {
 	return outscaleType(mod+"/"+fn, res)
 }
 
-func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLicense {
-	return &license
-}
-
 func endpointsSchema() *schema.Schema {
 	endpointsAttributes := make(map[string]*schema.Schema)
 
@@ -114,7 +103,7 @@ func endpointsSchema() *schema.Schema {
 	}
 }
 
-func providerConfigureClient(d *schema.ResourceData) (interface{}, error) {
+func providerConfigureClient(d *schema.ResourceData) (any, error) {
 	config := outscale.Config{
 		Endpoints:    make(map[string]string),
 		X509CertPath: d.Get("x509_cert_path").(string),
@@ -134,7 +123,7 @@ func providerConfigureClient(d *schema.ResourceData) (interface{}, error) {
 	endpointsSet := d.Get("endpoints").(*schema.Set)
 
 	for _, endpointsSetI := range endpointsSet.List() {
-		endpoints := endpointsSetI.(map[string]interface{})
+		endpoints := endpointsSetI.(map[string]any)
 		config.Endpoints["api"] = endpoints["api"].(string)
 	}
 
@@ -200,10 +189,17 @@ func Provider() tfbridge.ProviderInfo {
 	// For example a resource named `outscale_api_access_policy` will be mapped to ApiAccessPolicy
 	resourceMap := make(map[string]*tfbridge.ResourceInfo)
 
+	excludedResources := map[string]bool{
+		"outscale_tag": true,
+	}
+
 	// Map the sdkv2 resources to Pulumi resources.
 	for resourceName := range outscaleSchemaProvider.ResourcesMap {
+		if excludedResources[resourceName] {
+			continue
+		}
 		resourceMap[resourceName] = &tfbridge.ResourceInfo{
-			Tok: outscaleResource(outscaleMod, resourceNameToPulumiIdentifier(resourceName)),
+			Tok: outscaleResource(mainMod, resourceNameToPulumiIdentifier(resourceName)),
 		}
 	}
 
@@ -215,8 +211,18 @@ func Provider() tfbridge.ProviderInfo {
 			ProviderTypeName: "outscale",
 		}, &resp)
 		resourceMap[resp.TypeName] = &tfbridge.ResourceInfo{
-			Tok: outscaleResource(outscaleMod, resourceNameToPulumiIdentifier(resp.TypeName)),
+			Tok: outscaleResource(mainMod, resourceNameToPulumiIdentifier(resp.TypeName)),
 		}
+	}
+
+	// Override field mappings for C# naming conflicts
+	resourceMap["outscale_public_ip"] = &tfbridge.ResourceInfo{
+		Tok: outscaleResource(mainMod, resourceNameToPulumiIdentifier("outscale_public_ip")),
+		Fields: map[string]*tfbridge.SchemaInfo{
+			"public_ip": {
+				Name: "publicIP",
+			},
+		},
 	}
 
 	// Map the Terraform data sources to Pulumi data sources.
@@ -226,7 +232,7 @@ func Provider() tfbridge.ProviderInfo {
 	// Map the sdkv2 data sources to Pulumi data sources.
 	for datasourceName := range outscaleSchemaProvider.DataSourcesMap {
 		dsMap[datasourceName] = &tfbridge.DataSourceInfo{
-			Tok: outscaleDataSource(outscaleMod, "get"+resourceNameToPulumiIdentifier(datasourceName)),
+			Tok: outscaleDataSource(mainMod, "get"+resourceNameToPulumiIdentifier(datasourceName)),
 		}
 	}
 
@@ -241,12 +247,13 @@ func Provider() tfbridge.ProviderInfo {
 		}, &resp)
 
 		dsMap[resp.TypeName] = &tfbridge.DataSourceInfo{
-			Tok: outscaleDataSource(outscaleMod, "get"+resourceNameToPulumiIdentifier(resp.TypeName)),
+			Tok: outscaleDataSource(mainMod, "get"+resourceNameToPulumiIdentifier(resp.TypeName)),
 		}
 	}
 
 	prov := tfbridge.ProviderInfo{
-		P: pfbridge.MuxShimWithPF(context.Background(),
+		P: pfbridge.MuxShimWithPF(
+			context.Background(),
 			shimv2.NewProvider(outscaleSchemaProvider),
 			tfFrameworkProvider,
 		),
@@ -254,12 +261,12 @@ func Provider() tfbridge.ProviderInfo {
 		Name:         "outscale",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "Outscale",
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
+		Publisher: "Outscale",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -301,6 +308,9 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources:   resourceMap,
 		DataSources: dsMap,
+		IgnoreMappings: []string{
+			"outscale_tag",
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@outscale/pulumi-outscale",
 			// List any npm dependencies and their versions
@@ -323,25 +333,27 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/outscale/pulumi-%[1]s/sdk/", outscalePkg),
+				fmt.Sprintf("github.com/outscale/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
-				outscalePkg,
+				mainPkg,
 			),
+			GenerateExtraInputTypes:        true,
 			GenerateResourceContainerTypes: true,
 			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RootNamespace: "Pulumi",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
 			RespectSchemaVersion: true,
 		},
+		Java: &tfbridge.JavaInfo{
+			BasePackage: "com.outscale.pulumi",
+		},
 	}
 
-	// These are new API's that you may opt to use to automatically compute resource tokens,
-	// and apply auto aliasing for full backwards compatibility.
-	// For more information, please reference: https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
 	prov.SetAutonaming(255, "-")
 	return prov
 }

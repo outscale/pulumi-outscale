@@ -10,6 +10,21 @@ import * as utilities from "./utilities";
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ * import * as std from "@pulumi/std";
+ *
+ * const ca01 = new outscale.Ca("ca01", {
+ *     caPem: std.index.file({
+ *         input: "<PATH>",
+ *     }).result,
+ *     description: "Terraform certificate authority",
+ * });
+ * ```
+ *
  * ## Import
  *
  * A CA can be imported using its ID. For example:
@@ -51,20 +66,20 @@ export class Ca extends pulumi.CustomResource {
     /**
      * The fingerprint of the CA.
      */
-    public /*out*/ readonly caFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly caFingerprint: pulumi.Output<string>;
     /**
      * The ID of the CA.
      */
-    public /*out*/ readonly caId!: pulumi.Output<string>;
+    declare public /*out*/ readonly caId: pulumi.Output<string>;
     /**
      * The CA in PEM format.
      */
-    public readonly caPem!: pulumi.Output<string | undefined>;
+    declare public readonly caPem: pulumi.Output<string | undefined>;
     /**
      * The description of the CA.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
 
     /**
      * Create a Ca resource with the given unique name, arguments, and options.
@@ -79,15 +94,15 @@ export class Ca extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaState | undefined;
-            resourceInputs["caFingerprint"] = state ? state.caFingerprint : undefined;
-            resourceInputs["caId"] = state ? state.caId : undefined;
-            resourceInputs["caPem"] = state ? state.caPem : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
+            resourceInputs["caFingerprint"] = state?.caFingerprint;
+            resourceInputs["caId"] = state?.caId;
+            resourceInputs["caPem"] = state?.caPem;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["requestId"] = state?.requestId;
         } else {
             const args = argsOrState as CaArgs | undefined;
-            resourceInputs["caPem"] = args ? args.caPem : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["caPem"] = args?.caPem;
+            resourceInputs["description"] = args?.description;
             resourceInputs["caFingerprint"] = undefined /*out*/;
             resourceInputs["caId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

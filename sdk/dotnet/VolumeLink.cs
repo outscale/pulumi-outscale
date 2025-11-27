@@ -87,7 +87,7 @@ namespace Pulumi.Outscale
         public Output<bool> DeleteOnVmDeletion { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        /// The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `B` and `Z`, and the second `X` is a letter between `A` and `Z`).
         /// </summary>
         [Output("deviceName")]
         public Output<string> DeviceName { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
+        /// The state of the attachment of the volume (`Attaching` | `Detaching` | `Attached` | `Detached`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Outscale
     public sealed class VolumeLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        /// The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `B` and `Z`, and the second `X` is a letter between `A` and `Z`).
         /// </summary>
         [Input("deviceName", required: true)]
         public Input<string> DeviceName { get; set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Outscale
         public Input<bool>? DeleteOnVmDeletion { get; set; }
 
         /// <summary>
-        /// The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        /// The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `B` and `Z`, and the second `X` is a letter between `A` and `Z`).
         /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
+        /// The state of the attachment of the volume (`Attaching` | `Detaching` | `Attached` | `Detached`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

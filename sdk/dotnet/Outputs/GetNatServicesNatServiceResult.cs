@@ -26,7 +26,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNatServicesNatServicePublicIpResult> PublicIps;
         /// <summary>
-        /// The state of the NAT service (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the NAT service (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         public readonly string State;
         /// <summary>

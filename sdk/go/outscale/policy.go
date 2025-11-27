@@ -17,6 +17,42 @@ import (
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
 // For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#3ds-outscale-api-policy).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//	   pulumi.Run(func(ctx *pulumi.Context) error {
+//	       invokeFile, err := std.File(ctx, map[string]interface{}{
+//	           "input": "policy.json",
+//	       }, nil)
+//	       if err != nil {
+//	           return err
+//	       }
+//	       _, err = outscale.NewPolicy(ctx, "policy-1", &outscale.PolicyArgs{
+//	           PolicyName:  pulumi.String("terraform-policy-1"),
+//	           Description: pulumi.String("test-terraform"),
+//	           Document:    invokeFile.Result,
+//	           Path:        pulumi.String("/"),
+//	       })
+//	       if err != nil {
+//	           return err
+//	       }
+//	       return nil
+//	   })
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A policy can be imported using its ORN. For example:

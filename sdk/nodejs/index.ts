@@ -658,11 +658,6 @@ export type Subnet = import("./subnet").Subnet;
 export const Subnet: typeof import("./subnet").Subnet = null as any;
 utilities.lazyLoad(exports, ["Subnet"], () => require("./subnet"));
 
-export { TagArgs, TagState } from "./tag";
-export type Tag = import("./tag").Tag;
-export const Tag: typeof import("./tag").Tag = null as any;
-utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
-
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -815,8 +810,6 @@ const _module = {
                 return new SnapshotExportTask(name, <any>undefined, { urn })
             case "outscale:index/subnet:Subnet":
                 return new Subnet(name, <any>undefined, { urn })
-            case "outscale:index/tag:Tag":
-                return new Tag(name, <any>undefined, { urn })
             case "outscale:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "outscale:index/userGroup:UserGroup":
@@ -886,7 +879,6 @@ pulumi.runtime.registerResourceModule("outscale", "index/snapshot", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/snapshotAttributes", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/snapshotExportTask", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/subnet", _module)
-pulumi.runtime.registerResourceModule("outscale", "index/tag", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/user", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/userGroup", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/virtualGateway", _module)

@@ -52,6 +52,9 @@ type Vm struct {
 	IsSourceDestChecked pulumi.BoolOutput `pulumi:"isSourceDestChecked"`
 	// The name of the keypair.
 	KeypairName pulumi.StringOutput `pulumi:"keypairName"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+	KeypairNameWo pulumi.StringPtrOutput `pulumi:"keypairNameWo"`
 	// The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
 	LaunchNumber pulumi.IntOutput `pulumi:"launchNumber"`
 	// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
@@ -124,6 +127,13 @@ func NewVm(ctx *pulumi.Context,
 	if args.ImageId == nil {
 		return nil, errors.New("invalid value for required argument 'ImageId'")
 	}
+	if args.KeypairNameWo != nil {
+		args.KeypairNameWo = pulumi.ToSecret(args.KeypairNameWo).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"keypairNameWo",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vm
 	err := ctx.RegisterResource("outscale:index/vm:Vm", name, args, &resource, opts...)
@@ -175,6 +185,9 @@ type vmState struct {
 	IsSourceDestChecked *bool `pulumi:"isSourceDestChecked"`
 	// The name of the keypair.
 	KeypairName *string `pulumi:"keypairName"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+	KeypairNameWo *string `pulumi:"keypairNameWo"`
 	// The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
 	LaunchNumber *int `pulumi:"launchNumber"`
 	// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
@@ -266,6 +279,9 @@ type VmState struct {
 	IsSourceDestChecked pulumi.BoolPtrInput
 	// The name of the keypair.
 	KeypairName pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+	KeypairNameWo pulumi.StringPtrInput
 	// The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
 	LaunchNumber pulumi.IntPtrInput
 	// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
@@ -348,6 +364,9 @@ type vmArgs struct {
 	IsSourceDestChecked *bool `pulumi:"isSourceDestChecked"`
 	// The name of the keypair.
 	KeypairName *string `pulumi:"keypairName"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+	KeypairNameWo *string `pulumi:"keypairNameWo"`
 	// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
 	NestedVirtualization *bool `pulumi:"nestedVirtualization"`
 	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
@@ -400,6 +419,9 @@ type VmArgs struct {
 	IsSourceDestChecked pulumi.BoolPtrInput
 	// The name of the keypair.
 	KeypairName pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+	KeypairNameWo pulumi.StringPtrInput
 	// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
 	NestedVirtualization pulumi.BoolPtrInput
 	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
@@ -593,6 +615,12 @@ func (o VmOutput) IsSourceDestChecked() pulumi.BoolOutput {
 // The name of the keypair.
 func (o VmOutput) KeypairName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.KeypairName }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
+func (o VmOutput) KeypairNameWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm) pulumi.StringPtrOutput { return v.KeypairNameWo }).(pulumi.StringPtrOutput)
 }
 
 // The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).

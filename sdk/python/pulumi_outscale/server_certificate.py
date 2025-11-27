@@ -295,6 +295,21 @@ class ServerCertificate(pulumi.CustomResource):
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        server_certificate01 = outscale.ServerCertificate("server_certificate_01",
+            name="terraform-server-certificate",
+            body=std.index.file(input="<PATH>")["result"],
+            chain=std.index.file(input="<PATH>")["result"],
+            private_key=std.index.file(input="<PATH>")["result"],
+            path="<PATH>")
+        ```
+
         ## Import
 
         A server certificate can be imported using its ID. For example:
@@ -324,6 +339,21 @@ class ServerCertificate(pulumi.CustomResource):
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        server_certificate01 = outscale.ServerCertificate("server_certificate_01",
+            name="terraform-server-certificate",
+            body=std.index.file(input="<PATH>")["result"],
+            chain=std.index.file(input="<PATH>")["result"],
+            private_key=std.index.file(input="<PATH>")["result"],
+            path="<PATH>")
+        ```
 
         ## Import
 

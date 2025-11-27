@@ -15,8 +15,9 @@
 package main
 
 import (
-	outscale "github.com/outscale/pulumi-outscale/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
+
+	outscale "github.com/outscale/pulumi-outscale/provider"
 )
 
 func main() {

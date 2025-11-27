@@ -143,7 +143,7 @@ namespace Pulumi.Outscale
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
+        /// **When registering from a snapshot:** The architecture of the OMI (`I386` or `X8664`).
         /// </summary>
         [Output("architecture")]
         public Output<string> Architecture { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Outscale
         public Output<string> RootDeviceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of root device used by the OMI (always `bsu`).
+        /// The type of root device used by the OMI (always `Bsu`).
         /// </summary>
         [Output("rootDeviceType")]
         public Output<string> RootDeviceType { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.Outscale
         public Output<string?> SourceRegionName { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the OMI (`pending` \| `available` \| `failed`).
+        /// The state of the OMI (`Pending` \| `Available` \| `Failed`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -310,7 +310,7 @@ namespace Pulumi.Outscale
     public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
+        /// **When registering from a snapshot:** The architecture of the OMI (`I386` or `X8664`).
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.Outscale
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
+        /// **When registering from a snapshot:** The architecture of the OMI (`I386` or `X8664`).
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -506,7 +506,7 @@ namespace Pulumi.Outscale
         public Input<string>? RootDeviceName { get; set; }
 
         /// <summary>
-        /// The type of root device used by the OMI (always `bsu`).
+        /// The type of root device used by the OMI (always `Bsu`).
         /// </summary>
         [Input("rootDeviceType")]
         public Input<string>? RootDeviceType { get; set; }
@@ -524,7 +524,7 @@ namespace Pulumi.Outscale
         public Input<string>? SourceRegionName { get; set; }
 
         /// <summary>
-        /// The state of the OMI (`pending` \| `available` \| `failed`).
+        /// The state of the OMI (`Pending` \| `Available` \| `Failed`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

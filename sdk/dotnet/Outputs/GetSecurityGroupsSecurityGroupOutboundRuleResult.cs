@@ -18,7 +18,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly int FromPortRange;
         /// <summary>
-        /// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+        /// The IP protocol name (`Tcp`, `Udp`, `Icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         /// </summary>
         public readonly string IpProtocol;
         /// <summary>

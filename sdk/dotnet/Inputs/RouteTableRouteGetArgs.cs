@@ -61,7 +61,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string> NicId { get; set; } = null!;
 
         /// <summary>
-        /// The state of a route in the route table (always `active`).
+        /// The state of a route in the route table (always `Active`).
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;

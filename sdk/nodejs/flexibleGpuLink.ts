@@ -87,12 +87,12 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
     /**
      * (Required) The ID of one or more fGPUs you want to attach.
      */
-    public readonly flexibleGpuIds!: pulumi.Output<string[]>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly flexibleGpuIds: pulumi.Output<string[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the VM you want to attach the fGPU to.
      */
-    public readonly vmId!: pulumi.Output<string>;
+    declare public readonly vmId: pulumi.Output<string>;
 
     /**
      * Create a FlexibleGpuLink resource with the given unique name, arguments, and options.
@@ -107,19 +107,19 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlexibleGpuLinkState | undefined;
-            resourceInputs["flexibleGpuIds"] = state ? state.flexibleGpuIds : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["flexibleGpuIds"] = state?.flexibleGpuIds;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FlexibleGpuLinkArgs | undefined;
-            if ((!args || args.flexibleGpuIds === undefined) && !opts.urn) {
+            if (args?.flexibleGpuIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flexibleGpuIds'");
             }
-            if ((!args || args.vmId === undefined) && !opts.urn) {
+            if (args?.vmId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmId'");
             }
-            resourceInputs["flexibleGpuIds"] = args ? args.flexibleGpuIds : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["flexibleGpuIds"] = args?.flexibleGpuIds;
+            resourceInputs["vmId"] = args?.vmId;
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -18,7 +18,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string? NetId;
         /// <summary>
-        /// The state of the attachment (`attaching` \| `attached` \| `detaching` \| `detached`).
+        /// The state of the attachment (`Attaching` \| `Attached` \| `Detaching` \| `Detached`).
         /// </summary>
         public readonly string? State;
 

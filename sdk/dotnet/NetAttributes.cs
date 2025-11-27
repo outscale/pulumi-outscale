@@ -68,7 +68,7 @@ namespace Pulumi.Outscale
     public partial class NetAttributes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the DHCP options set (or `default` if you want to associate the default one).
+        /// The ID of the DHCP options set (or `Default` if you want to associate the default one).
         /// </summary>
         [Output("dhcpOptionsSetId")]
         public Output<string> DhcpOptionsSetId { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the Net (`pending` \| `available` \| `deleting`).
+        /// The state of the Net (`Pending` \| `Available` \| `Deleting`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Outscale
     public sealed class NetAttributesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the DHCP options set (or `default` if you want to associate the default one).
+        /// The ID of the DHCP options set (or `Default` if you want to associate the default one).
         /// </summary>
         [Input("dhcpOptionsSetId", required: true)]
         public Input<string> DhcpOptionsSetId { get; set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Outscale
     public sealed class NetAttributesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the DHCP options set (or `default` if you want to associate the default one).
+        /// The ID of the DHCP options set (or `Default` if you want to associate the default one).
         /// </summary>
         [Input("dhcpOptionsSetId")]
         public Input<string>? DhcpOptionsSetId { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The state of the Net (`pending` \| `available` \| `deleting`).
+        /// The state of the Net (`Pending` \| `Available` \| `Deleting`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

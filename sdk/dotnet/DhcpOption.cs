@@ -109,7 +109,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<string>> DomainNameServers { get; private set; } = null!;
 
         /// <summary>
-        /// The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        /// The IPs of the log servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, `LogServers`, or `NtpServers`.
         /// </summary>
         [Output("logServers")]
         public Output<ImmutableArray<string>> LogServers { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _logServers;
 
         /// <summary>
-        /// The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        /// The IPs of the log servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, `LogServers`, or `NtpServers`.
         /// </summary>
         public InputList<string> LogServers
         {
@@ -271,7 +271,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _logServers;
 
         /// <summary>
-        /// The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
+        /// The IPs of the log servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, `LogServers`, or `NtpServers`.
         /// </summary>
         public InputList<string> LogServers
         {

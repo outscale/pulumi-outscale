@@ -109,8 +109,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SnapshotExportTask{}
 	case "outscale:index/subnet:Subnet":
 		r = &Subnet{}
-	case "outscale:index/tag:Tag":
-		r = &Tag{}
 	case "outscale:index/user:User":
 		r = &User{}
 	case "outscale:index/userGroup:UserGroup":
@@ -380,11 +378,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"outscale",
 		"index/subnet",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"outscale",
-		"index/tag",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

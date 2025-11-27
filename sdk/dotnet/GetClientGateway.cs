@@ -203,7 +203,7 @@ namespace Pulumi.Outscale
         public readonly string PublicIp;
         public readonly string RequestId;
         /// <summary>
-        /// The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
+        /// The state of the client gateway (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
         /// </summary>
         public readonly string State;
         /// <summary>

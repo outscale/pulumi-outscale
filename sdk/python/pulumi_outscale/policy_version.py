@@ -208,6 +208,19 @@ class PolicyVersion(pulumi.CustomResource):
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Editing-Managed-Policies-Using-Policy-Versions.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#createpolicyversion).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        policy2_version_02 = outscale.PolicyVersion("Policy2-version-02",
+            policy_orn=policy_2["orn"],
+            document=std.index.file(input="policy.json")["result"],
+            set_as_default=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] document: The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
@@ -227,6 +240,19 @@ class PolicyVersion(pulumi.CustomResource):
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Editing-Managed-Policies-Using-Policy-Versions.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#createpolicyversion).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        policy2_version_02 = outscale.PolicyVersion("Policy2-version-02",
+            policy_orn=policy_2["orn"],
+            document=std.index.file(input="policy.json")["result"],
+            set_as_default=True)
+        ```
 
         :param str resource_name: The name of the resource.
         :param PolicyVersionArgs args: The arguments to use to populate this resource's properties.

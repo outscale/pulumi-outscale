@@ -81,32 +81,32 @@ export class ImageExportTask extends pulumi.CustomResource {
     /**
      * If the OMI export task fails, an error message appears.
      */
-    public /*out*/ readonly comment!: pulumi.Output<string>;
+    declare public /*out*/ readonly comment: pulumi.Output<string>;
     /**
      * The ID of the OMI to export.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * Information about the OOS export task to create.
      */
-    public readonly osuExports!: pulumi.Output<outputs.ImageExportTaskOsuExport[]>;
+    declare public readonly osuExports: pulumi.Output<outputs.ImageExportTaskOsuExport[]>;
     /**
      * The progress of the OMI export task, as a percentage.
      */
-    public /*out*/ readonly progress!: pulumi.Output<number>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public /*out*/ readonly progress: pulumi.Output<number>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the OMI export task (`pending/queued` \| `pending` \| `completed` \| `failed` \| `cancelled`).
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.ImageExportTaskTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.ImageExportTaskTag[] | undefined>;
     /**
      * The ID of the OMI export task.
      */
-    public /*out*/ readonly taskId!: pulumi.Output<string>;
+    declare public /*out*/ readonly taskId: pulumi.Output<string>;
 
     /**
      * Create a ImageExportTask resource with the given unique name, arguments, and options.
@@ -121,25 +121,25 @@ export class ImageExportTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageExportTaskState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["osuExports"] = state ? state.osuExports : undefined;
-            resourceInputs["progress"] = state ? state.progress : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taskId"] = state ? state.taskId : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["osuExports"] = state?.osuExports;
+            resourceInputs["progress"] = state?.progress;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taskId"] = state?.taskId;
         } else {
             const args = argsOrState as ImageExportTaskArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.osuExports === undefined) && !opts.urn) {
+            if (args?.osuExports === undefined && !opts.urn) {
                 throw new Error("Missing required property 'osuExports'");
             }
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["osuExports"] = args ? args.osuExports : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["osuExports"] = args?.osuExports;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["comment"] = undefined /*out*/;
             resourceInputs["progress"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

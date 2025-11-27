@@ -82,34 +82,34 @@ export class PublicIpLink extends pulumi.CustomResource {
     /**
      * If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
      */
-    public readonly allowRelink!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowRelink: pulumi.Output<boolean | undefined>;
     /**
      * (Net only) The ID representing the association of the public IP with the VM or the NIC.
      */
-    public /*out*/ readonly linkPublicIpId!: pulumi.Output<string>;
-    public /*out*/ readonly nicAccountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly linkPublicIpId: pulumi.Output<string>;
+    declare public /*out*/ readonly nicAccountId: pulumi.Output<string>;
     /**
      * (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vmId` parameter instead. You cannot specify both parameters at the same time.
      */
-    public readonly nicId!: pulumi.Output<string>;
+    declare public readonly nicId: pulumi.Output<string>;
     /**
      * (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
      */
-    public readonly privateIp!: pulumi.Output<string>;
+    declare public readonly privateIp: pulumi.Output<string>;
     /**
      * The public IP. This parameter is required unless you use the `publicIpId` parameter.
      */
-    public readonly publicIp!: pulumi.Output<string>;
+    declare public readonly publicIp: pulumi.Output<string>;
     /**
      * The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
      */
-    public readonly publicIpId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
-    public /*out*/ readonly tags!: pulumi.Output<outputs.PublicIpLinkTag[]>;
+    declare public readonly publicIpId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public /*out*/ readonly tags: pulumi.Output<outputs.PublicIpLinkTag[]>;
     /**
      * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
      */
-    public readonly vmId!: pulumi.Output<string>;
+    declare public readonly vmId: pulumi.Output<string>;
 
     /**
      * Create a PublicIpLink resource with the given unique name, arguments, and options.
@@ -124,24 +124,24 @@ export class PublicIpLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicIpLinkState | undefined;
-            resourceInputs["allowRelink"] = state ? state.allowRelink : undefined;
-            resourceInputs["linkPublicIpId"] = state ? state.linkPublicIpId : undefined;
-            resourceInputs["nicAccountId"] = state ? state.nicAccountId : undefined;
-            resourceInputs["nicId"] = state ? state.nicId : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["publicIpId"] = state ? state.publicIpId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["allowRelink"] = state?.allowRelink;
+            resourceInputs["linkPublicIpId"] = state?.linkPublicIpId;
+            resourceInputs["nicAccountId"] = state?.nicAccountId;
+            resourceInputs["nicId"] = state?.nicId;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["publicIpId"] = state?.publicIpId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as PublicIpLinkArgs | undefined;
-            resourceInputs["allowRelink"] = args ? args.allowRelink : undefined;
-            resourceInputs["nicId"] = args ? args.nicId : undefined;
-            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
-            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
-            resourceInputs["publicIpId"] = args ? args.publicIpId : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["allowRelink"] = args?.allowRelink;
+            resourceInputs["nicId"] = args?.nicId;
+            resourceInputs["privateIp"] = args?.privateIp;
+            resourceInputs["publicIp"] = args?.publicIp;
+            resourceInputs["publicIpId"] = args?.publicIpId;
+            resourceInputs["vmId"] = args?.vmId;
             resourceInputs["linkPublicIpId"] = undefined /*out*/;
             resourceInputs["nicAccountId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

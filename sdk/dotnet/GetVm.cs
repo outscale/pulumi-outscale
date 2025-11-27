@@ -170,7 +170,7 @@ namespace Pulumi.Outscale
     {
         public readonly ImmutableArray<Outputs.GetVmActionsOnNextBootResult> ActionsOnNextBoots;
         /// <summary>
-        /// The architecture of the VM (`i386` \| `x86_64`).
+        /// The architecture of the VM (`I386` \| `X8664`).
         /// </summary>
         public readonly string Architecture;
         /// <summary>
@@ -193,7 +193,7 @@ namespace Pulumi.Outscale
         public readonly bool DeletionProtection;
         public readonly ImmutableArray<Outputs.GetVmFilterResult> Filters;
         /// <summary>
-        /// The hypervisor type of the VMs (`ovm` \| `xen`).
+        /// The hypervisor type of the VMs (`Ovm` \| `Xen`).
         /// </summary>
         public readonly string Hypervisor;
         /// <summary>
@@ -233,7 +233,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string OsFamily;
         /// <summary>
-        /// The performance of the VM (`medium` \| `high` \|  `highest`).
+        /// The performance of the VM (`Medium` \| `High` \|  `Highest`).
         /// </summary>
         public readonly string Performance;
         public readonly string PlacementSubregionName;
@@ -273,7 +273,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string RootDeviceName;
         /// <summary>
-        /// The type of root device used by the VM (always `bsu`).
+        /// The type of root device used by the VM (always `Bsu`).
         /// </summary>
         public readonly string RootDeviceType;
         public readonly ImmutableArray<string> SecurityGroupIds;
@@ -283,7 +283,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVmSecurityGroupResult> SecurityGroups;
         /// <summary>
-        /// The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
+        /// The state of the VM (`Pending` \| `Running` \| `Stopping` \| `Stopped` \| `shutting-down` \| `Terminated` \| `Quarantine`).
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -307,7 +307,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string VmId;
         /// <summary>
-        /// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+        /// The VM behavior when you stop it. If set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is deleted.
         /// </summary>
         public readonly string VmInitiatedShutdownBehavior;
         /// <summary>

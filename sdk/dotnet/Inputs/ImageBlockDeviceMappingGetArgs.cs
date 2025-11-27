@@ -25,7 +25,7 @@ namespace Pulumi.Outscale.Inputs
         }
 
         /// <summary>
-        /// The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
+        /// The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `B` and `Z`, and the second `X` is a letter between `A` and `Z`).
         /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }

@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
+func GetTag(ctx *pulumi.Context, args *GetTagArgs, opts ...pulumi.InvokeOption) (*GetTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv LookupTagResult
+	var rv GetTagResult
 	err := ctx.Invoke("outscale:index/getTag:getTag", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -22,12 +22,12 @@ func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOp
 }
 
 // A collection of arguments for invoking getTag.
-type LookupTagArgs struct {
+type GetTagArgs struct {
 	Filters []GetTagFilter `pulumi:"filters"`
 }
 
 // A collection of values returned by getTag.
-type LookupTagResult struct {
+type GetTagResult struct {
 	Filters []GetTagFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string `pulumi:"id"`
@@ -37,64 +37,64 @@ type LookupTagResult struct {
 	Value        string `pulumi:"value"`
 }
 
-func LookupTagOutput(ctx *pulumi.Context, args LookupTagOutputArgs, opts ...pulumi.InvokeOption) LookupTagResultOutput {
+func GetTagOutput(ctx *pulumi.Context, args GetTagOutputArgs, opts ...pulumi.InvokeOption) GetTagResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTagResultOutput, error) {
-			args := v.(LookupTagArgs)
+		ApplyT(func(v interface{}) (GetTagResultOutput, error) {
+			args := v.(GetTagArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getTag:getTag", args, LookupTagResultOutput{}, options).(LookupTagResultOutput), nil
-		}).(LookupTagResultOutput)
+			return ctx.InvokeOutput("outscale:index/getTag:getTag", args, GetTagResultOutput{}, options).(GetTagResultOutput), nil
+		}).(GetTagResultOutput)
 }
 
 // A collection of arguments for invoking getTag.
-type LookupTagOutputArgs struct {
+type GetTagOutputArgs struct {
 	Filters GetTagFilterArrayInput `pulumi:"filters"`
 }
 
-func (LookupTagOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTagArgs)(nil)).Elem()
+func (GetTagOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getTag.
-type LookupTagResultOutput struct{ *pulumi.OutputState }
+type GetTagResultOutput struct{ *pulumi.OutputState }
 
-func (LookupTagResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupTagResult)(nil)).Elem()
+func (GetTagResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagResult)(nil)).Elem()
 }
 
-func (o LookupTagResultOutput) ToLookupTagResultOutput() LookupTagResultOutput {
+func (o GetTagResultOutput) ToGetTagResultOutput() GetTagResultOutput {
 	return o
 }
 
-func (o LookupTagResultOutput) ToLookupTagResultOutputWithContext(ctx context.Context) LookupTagResultOutput {
+func (o GetTagResultOutput) ToGetTagResultOutputWithContext(ctx context.Context) GetTagResultOutput {
 	return o
 }
 
-func (o LookupTagResultOutput) Filters() GetTagFilterArrayOutput {
-	return o.ApplyT(func(v LookupTagResult) []GetTagFilter { return v.Filters }).(GetTagFilterArrayOutput)
+func (o GetTagResultOutput) Filters() GetTagFilterArrayOutput {
+	return o.ApplyT(func(v GetTagResult) []GetTagFilter { return v.Filters }).(GetTagFilterArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o LookupTagResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetTagResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupTagResultOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagResult) string { return v.Key }).(pulumi.StringOutput)
+func (o GetTagResultOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagResult) string { return v.Key }).(pulumi.StringOutput)
 }
 
-func (o LookupTagResultOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagResult) string { return v.ResourceId }).(pulumi.StringOutput)
+func (o GetTagResultOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagResult) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-func (o LookupTagResultOutput) ResourceType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagResult) string { return v.ResourceType }).(pulumi.StringOutput)
+func (o GetTagResultOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-func (o LookupTagResultOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTagResult) string { return v.Value }).(pulumi.StringOutput)
+func (o GetTagResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupTagResultOutput{})
+	pulumi.RegisterOutputType(GetTagResultOutput{})
 }

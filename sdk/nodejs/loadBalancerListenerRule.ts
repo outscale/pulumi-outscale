@@ -118,16 +118,16 @@ export class LoadBalancerListenerRule extends pulumi.CustomResource {
     /**
      * Information about the load balancer.
      */
-    public readonly listener!: pulumi.Output<outputs.LoadBalancerListenerRuleListener>;
+    declare public readonly listener: pulumi.Output<outputs.LoadBalancerListenerRuleListener>;
     /**
      * Information about the listener rule.
      */
-    public readonly listenerRule!: pulumi.Output<outputs.LoadBalancerListenerRuleListenerRule>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly listenerRule: pulumi.Output<outputs.LoadBalancerListenerRuleListenerRule>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The IDs of the backend VMs.
      */
-    public readonly vmIds!: pulumi.Output<string[]>;
+    declare public readonly vmIds: pulumi.Output<string[]>;
 
     /**
      * Create a LoadBalancerListenerRule resource with the given unique name, arguments, and options.
@@ -142,24 +142,24 @@ export class LoadBalancerListenerRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerListenerRuleState | undefined;
-            resourceInputs["listener"] = state ? state.listener : undefined;
-            resourceInputs["listenerRule"] = state ? state.listenerRule : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["vmIds"] = state ? state.vmIds : undefined;
+            resourceInputs["listener"] = state?.listener;
+            resourceInputs["listenerRule"] = state?.listenerRule;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["vmIds"] = state?.vmIds;
         } else {
             const args = argsOrState as LoadBalancerListenerRuleArgs | undefined;
-            if ((!args || args.listener === undefined) && !opts.urn) {
+            if (args?.listener === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listener'");
             }
-            if ((!args || args.listenerRule === undefined) && !opts.urn) {
+            if (args?.listenerRule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerRule'");
             }
-            if ((!args || args.vmIds === undefined) && !opts.urn) {
+            if (args?.vmIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmIds'");
             }
-            resourceInputs["listener"] = args ? args.listener : undefined;
-            resourceInputs["listenerRule"] = args ? args.listenerRule : undefined;
-            resourceInputs["vmIds"] = args ? args.vmIds : undefined;
+            resourceInputs["listener"] = args?.listener;
+            resourceInputs["listenerRule"] = args?.listenerRule;
+            resourceInputs["vmIds"] = args?.vmIds;
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

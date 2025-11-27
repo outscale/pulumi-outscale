@@ -83,13 +83,13 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
     /**
      * The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
      */
-    public readonly maxAccessKeyExpirationSeconds!: pulumi.Output<number>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly maxAccessKeyExpirationSeconds: pulumi.Output<number>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
      * Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
      */
-    public readonly requireTrustedEnv!: pulumi.Output<boolean>;
+    declare public readonly requireTrustedEnv: pulumi.Output<boolean>;
 
     /**
      * Create a ApiAccessPolicy resource with the given unique name, arguments, and options.
@@ -104,19 +104,19 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiAccessPolicyState | undefined;
-            resourceInputs["maxAccessKeyExpirationSeconds"] = state ? state.maxAccessKeyExpirationSeconds : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["requireTrustedEnv"] = state ? state.requireTrustedEnv : undefined;
+            resourceInputs["maxAccessKeyExpirationSeconds"] = state?.maxAccessKeyExpirationSeconds;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["requireTrustedEnv"] = state?.requireTrustedEnv;
         } else {
             const args = argsOrState as ApiAccessPolicyArgs | undefined;
-            if ((!args || args.maxAccessKeyExpirationSeconds === undefined) && !opts.urn) {
+            if (args?.maxAccessKeyExpirationSeconds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxAccessKeyExpirationSeconds'");
             }
-            if ((!args || args.requireTrustedEnv === undefined) && !opts.urn) {
+            if (args?.requireTrustedEnv === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requireTrustedEnv'");
             }
-            resourceInputs["maxAccessKeyExpirationSeconds"] = args ? args.maxAccessKeyExpirationSeconds : undefined;
-            resourceInputs["requireTrustedEnv"] = args ? args.requireTrustedEnv : undefined;
+            resourceInputs["maxAccessKeyExpirationSeconds"] = args?.maxAccessKeyExpirationSeconds;
+            resourceInputs["requireTrustedEnv"] = args?.requireTrustedEnv;
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

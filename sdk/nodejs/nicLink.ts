@@ -84,26 +84,26 @@ export class NicLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === NicLink.__pulumiType;
     }
 
-    public /*out*/ readonly deleteOnVmDeletion!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly deleteOnVmDeletion: pulumi.Output<boolean>;
     /**
      * The index of the VM device for the NIC attachment (between `1` and `7`, both included).
      */
-    public readonly deviceNumber!: pulumi.Output<number>;
+    declare public readonly deviceNumber: pulumi.Output<number>;
     /**
      * The ID of the NIC attachment.
      */
-    public /*out*/ readonly linkNicId!: pulumi.Output<string>;
+    declare public /*out*/ readonly linkNicId: pulumi.Output<string>;
     /**
      * The ID of the NIC you want to attach.
      */
-    public readonly nicId!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
-    public /*out*/ readonly state!: pulumi.Output<string>;
-    public /*out*/ readonly vmAccountId!: pulumi.Output<string>;
+    declare public readonly nicId: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public /*out*/ readonly vmAccountId: pulumi.Output<string>;
     /**
      * The ID of the VM to which you want to attach the NIC.
      */
-    public readonly vmId!: pulumi.Output<string>;
+    declare public readonly vmId: pulumi.Output<string>;
 
     /**
      * Create a NicLink resource with the given unique name, arguments, and options.
@@ -118,28 +118,28 @@ export class NicLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NicLinkState | undefined;
-            resourceInputs["deleteOnVmDeletion"] = state ? state.deleteOnVmDeletion : undefined;
-            resourceInputs["deviceNumber"] = state ? state.deviceNumber : undefined;
-            resourceInputs["linkNicId"] = state ? state.linkNicId : undefined;
-            resourceInputs["nicId"] = state ? state.nicId : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["vmAccountId"] = state ? state.vmAccountId : undefined;
-            resourceInputs["vmId"] = state ? state.vmId : undefined;
+            resourceInputs["deleteOnVmDeletion"] = state?.deleteOnVmDeletion;
+            resourceInputs["deviceNumber"] = state?.deviceNumber;
+            resourceInputs["linkNicId"] = state?.linkNicId;
+            resourceInputs["nicId"] = state?.nicId;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["vmAccountId"] = state?.vmAccountId;
+            resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as NicLinkArgs | undefined;
-            if ((!args || args.deviceNumber === undefined) && !opts.urn) {
+            if (args?.deviceNumber === undefined && !opts.urn) {
                 throw new Error("Missing required property 'deviceNumber'");
             }
-            if ((!args || args.nicId === undefined) && !opts.urn) {
+            if (args?.nicId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nicId'");
             }
-            if ((!args || args.vmId === undefined) && !opts.urn) {
+            if (args?.vmId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vmId'");
             }
-            resourceInputs["deviceNumber"] = args ? args.deviceNumber : undefined;
-            resourceInputs["nicId"] = args ? args.nicId : undefined;
-            resourceInputs["vmId"] = args ? args.vmId : undefined;
+            resourceInputs["deviceNumber"] = args?.deviceNumber;
+            resourceInputs["nicId"] = args?.nicId;
+            resourceInputs["vmId"] = args?.vmId;
             resourceInputs["deleteOnVmDeletion"] = undefined /*out*/;
             resourceInputs["linkNicId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

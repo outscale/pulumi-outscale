@@ -61,6 +61,30 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Create a user group, and add a user and a policy to it
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const group_1 = new outscale.UserGroup("group-1", {
+ *     userGroupName: "Group-TF-test-1",
+ *     users: [
+ *         {
+ *             userName: "user-name-1",
+ *             path: "/terraform/",
+ *         },
+ *         {
+ *             userName: "user-name-2",
+ *         },
+ *     ],
+ *     policies: [{
+ *         policyOrn: policy_2.orn,
+ *         versionId: "V2",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * A user group can be imported using its group ID. For example:
@@ -102,29 +126,29 @@ export class UserGroup extends pulumi.CustomResource {
     /**
      * The date and time (UTC) of creation of the user group.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * The date and time (UTC) of the last modification of the user group.
      */
-    public /*out*/ readonly lastModificationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastModificationDate: pulumi.Output<string>;
     /**
      * The Outscale Resource Name (ORN) of the user group. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
      */
-    public /*out*/ readonly orn!: pulumi.Output<string>;
+    declare public /*out*/ readonly orn: pulumi.Output<string>;
     /**
      * The path to the group. If not specified, it is set to a slash (`/`).
      */
-    public readonly path!: pulumi.Output<string | undefined>;
-    public readonly policies!: pulumi.Output<outputs.UserGroupPolicy[] | undefined>;
+    declare public readonly path: pulumi.Output<string | undefined>;
+    declare public readonly policies: pulumi.Output<outputs.UserGroupPolicy[] | undefined>;
     /**
      * The ID of the user group.
      */
-    public /*out*/ readonly userGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userGroupId: pulumi.Output<string>;
     /**
      * The name of the group.
      */
-    public readonly userGroupName!: pulumi.Output<string>;
-    public readonly users!: pulumi.Output<outputs.UserGroupUser[] | undefined>;
+    declare public readonly userGroupName: pulumi.Output<string>;
+    declare public readonly users: pulumi.Output<outputs.UserGroupUser[] | undefined>;
 
     /**
      * Create a UserGroup resource with the given unique name, arguments, and options.
@@ -139,23 +163,23 @@ export class UserGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGroupState | undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["lastModificationDate"] = state ? state.lastModificationDate : undefined;
-            resourceInputs["orn"] = state ? state.orn : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["userGroupId"] = state ? state.userGroupId : undefined;
-            resourceInputs["userGroupName"] = state ? state.userGroupName : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["lastModificationDate"] = state?.lastModificationDate;
+            resourceInputs["orn"] = state?.orn;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["userGroupId"] = state?.userGroupId;
+            resourceInputs["userGroupName"] = state?.userGroupName;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as UserGroupArgs | undefined;
-            if ((!args || args.userGroupName === undefined) && !opts.urn) {
+            if (args?.userGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userGroupName'");
             }
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["userGroupName"] = args ? args.userGroupName : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["userGroupName"] = args?.userGroupName;
+            resourceInputs["users"] = args?.users;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["lastModificationDate"] = undefined /*out*/;
             resourceInputs["orn"] = undefined /*out*/;

@@ -25,7 +25,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string> DeviceName { get; set; } = null!;
 
         /// <summary>
-        /// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Updating` \| `Deleting` \| `Error`).
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;

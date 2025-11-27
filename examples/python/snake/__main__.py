@@ -15,7 +15,20 @@ PUBLIC_SSH_KEY_PATH = CONFIG.require("publicSshKeyPath")
 PRIVATE_KEY_PATH = CONFIG.require("privateKeyPath")
 
 VM_TYPE = CONFIG.get("vmType") or "tinav6.c4r8p2"
-LINUX_OMI = CONFIG.get("linuxOmi") or "ami-cd8d714e"
+
+# Get the latest Outscale image
+IMAGES = outscale.get_images(filters=[
+    outscale.GetImagesFilterArgs(
+        name="account_aliases",
+        values=["Outscale"],
+    ),
+    outscale.GetImagesFilterArgs(
+        name="image_names",
+        values=["Ubuntu*", "RockyLinux*"],
+    ),
+])
+
+LINUX_OMI = CONFIG.get("linuxOmi") or IMAGES.images[0].image_id
 PUBLIC_KEY = open(PUBLIC_KEY_PATH).read()
 PRIVATE_KEY = open(PRIVATE_KEY_PATH).read()
 PUBLIC_SSH_KEY = open(PUBLIC_SSH_KEY_PATH).read()

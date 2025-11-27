@@ -22,7 +22,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string NetId;
         /// <summary>
-        /// The state of the attachment of the internet service to the Net (always `available`).
+        /// The state of the attachment of the internet service to the Net (always `Available`).
         /// </summary>
         public readonly string State;
         /// <summary>

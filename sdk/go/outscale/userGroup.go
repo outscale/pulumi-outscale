@@ -113,6 +113,47 @@ import (
 //
 // ```
 //
+// ### Create a user group, and add a user and a policy to it
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := outscale.NewUserGroup(ctx, "group-1", &outscale.UserGroupArgs{
+//				UserGroupName: pulumi.String("Group-TF-test-1"),
+//				Users: outscale.UserGroupUserArray{
+//					&outscale.UserGroupUserArgs{
+//						UserName: pulumi.String("user-name-1"),
+//						Path:     pulumi.String("/terraform/"),
+//					},
+//					&outscale.UserGroupUserArgs{
+//						UserName: pulumi.String("user-name-2"),
+//					},
+//				},
+//				Policies: outscale.UserGroupPolicyArray{
+//					&outscale.UserGroupPolicyArgs{
+//						PolicyOrn: pulumi.Any(policy_2.Orn),
+//						VersionId: "V2",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A user group can be imported using its group ID. For example:

@@ -93,44 +93,44 @@ export class SecurityGroup extends pulumi.CustomResource {
     /**
      * The account ID that owns the source or destination security group.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
      * A description for the security group.<br />
      * This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The inbound rules associated with the security group.
      */
-    public /*out*/ readonly inboundRules!: pulumi.Output<outputs.SecurityGroupInboundRule[]>;
+    declare public /*out*/ readonly inboundRules: pulumi.Output<outputs.SecurityGroupInboundRule[]>;
     /**
      * The ID of the Net for the security group.
      */
-    public readonly netId!: pulumi.Output<string>;
+    declare public readonly netId: pulumi.Output<string>;
     /**
      * The outbound rules associated with the security group.
      */
-    public /*out*/ readonly outboundRules!: pulumi.Output<outputs.SecurityGroupOutboundRule[]>;
+    declare public /*out*/ readonly outboundRules: pulumi.Output<outputs.SecurityGroupOutboundRule[]>;
     /**
      * (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
      */
-    public readonly removeDefaultOutboundRule!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
+    declare public readonly removeDefaultOutboundRule: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the security group.
      */
-    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly securityGroupId: pulumi.Output<string>;
     /**
      * The name of the security group.<br />
      * This name must not start with `sg-`.<br />
      * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
-    public readonly securityGroupName!: pulumi.Output<string>;
-    public readonly tag!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly securityGroupName: pulumi.Output<string>;
+    declare public readonly tag: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    public readonly tags!: pulumi.Output<outputs.SecurityGroupTag[] | undefined>;
+    declare public readonly tags: pulumi.Output<outputs.SecurityGroupTag[] | undefined>;
 
     /**
      * Create a SecurityGroup resource with the given unique name, arguments, and options.
@@ -145,25 +145,25 @@ export class SecurityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["inboundRules"] = state ? state.inboundRules : undefined;
-            resourceInputs["netId"] = state ? state.netId : undefined;
-            resourceInputs["outboundRules"] = state ? state.outboundRules : undefined;
-            resourceInputs["removeDefaultOutboundRule"] = state ? state.removeDefaultOutboundRule : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["inboundRules"] = state?.inboundRules;
+            resourceInputs["netId"] = state?.netId;
+            resourceInputs["outboundRules"] = state?.outboundRules;
+            resourceInputs["removeDefaultOutboundRule"] = state?.removeDefaultOutboundRule;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupName"] = state?.securityGroupName;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["netId"] = args ? args.netId : undefined;
-            resourceInputs["removeDefaultOutboundRule"] = args ? args.removeDefaultOutboundRule : undefined;
-            resourceInputs["securityGroupName"] = args ? args.securityGroupName : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["netId"] = args?.netId;
+            resourceInputs["removeDefaultOutboundRule"] = args?.removeDefaultOutboundRule;
+            resourceInputs["securityGroupName"] = args?.securityGroupName;
+            resourceInputs["tag"] = args?.tag;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["inboundRules"] = undefined /*out*/;
             resourceInputs["outboundRules"] = undefined /*out*/;

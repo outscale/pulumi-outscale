@@ -78,7 +78,7 @@ namespace Pulumi.Outscale
         public Output<string> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `Io1` volume. The maximum number of IOPS allowed for `Io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         /// </summary>
         [Output("iops")]
         public Output<int> Iops { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        /// The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`SnapshotId` unspecified).
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Outscale
         public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Updating` \| `Deleting` \| `Error`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Outscale
         public Output<string> VolumeId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of volume you want to create (`io1` \| `gp2` \| `standard`). If not specified, a `standard` volume is created.&lt;br /&gt;
+        /// The type of volume you want to create (`Io1` \| `Gp2` \| `Standard`). If not specified, a `Standard` volume is created.&lt;br /&gt;
         /// For more information about volume types, see [About Volumes &gt; Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         /// </summary>
         [Output("volumeType")]
@@ -191,13 +191,13 @@ namespace Pulumi.Outscale
     public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `Io1` volume. The maximum number of IOPS allowed for `Io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         /// </summary>
         [Input("iops")]
         public Input<int>? Iops { get; set; }
 
         /// <summary>
-        /// The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        /// The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`SnapshotId` unspecified).
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.Outscale
         public Input<Inputs.VolumeTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The type of volume you want to create (`io1` \| `gp2` \| `standard`). If not specified, a `standard` volume is created.&lt;br /&gt;
+        /// The type of volume you want to create (`Io1` \| `Gp2` \| `Standard`). If not specified, a `Standard` volume is created.&lt;br /&gt;
         /// For more information about volume types, see [About Volumes &gt; Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         /// </summary>
         [Input("volumeType")]
@@ -257,7 +257,7 @@ namespace Pulumi.Outscale
         public Input<string>? CreationDate { get; set; }
 
         /// <summary>
-        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
+        /// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `Io1` volume. The maximum number of IOPS allowed for `Io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         /// </summary>
         [Input("iops")]
         public Input<int>? Iops { get; set; }
@@ -278,7 +278,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
+        /// The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`SnapshotId` unspecified).
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.Outscale
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Updating` \| `Deleting` \| `Error`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.Outscale
         public Input<string>? VolumeId { get; set; }
 
         /// <summary>
-        /// The type of volume you want to create (`io1` \| `gp2` \| `standard`). If not specified, a `standard` volume is created.&lt;br /&gt;
+        /// The type of volume you want to create (`Io1` \| `Gp2` \| `Standard`). If not specified, a `Standard` volume is created.&lt;br /&gt;
         /// For more information about volume types, see [About Volumes &gt; Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
         /// </summary>
         [Input("volumeType")]

@@ -106,18 +106,18 @@ export class LoadBalancerVms extends pulumi.CustomResource {
         return obj['__pulumiType'] === LoadBalancerVms.__pulumiType;
     }
 
-    public readonly backendIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly backendIps: pulumi.Output<string[] | undefined>;
     /**
      * One or more IDs of backend VMs.<br />
      * Specifying the same ID several times has no effect as each backend VM has equal weight.
      */
-    public readonly backendVmIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly backendVmIds: pulumi.Output<string[] | undefined>;
     /**
      * The name of the load balancer.
      */
-    public readonly loadBalancerName!: pulumi.Output<string>;
-    public /*out*/ readonly requestId!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.LoadBalancerVmsTimeouts | undefined>;
+    declare public readonly loadBalancerName: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.LoadBalancerVmsTimeouts | undefined>;
 
     /**
      * Create a LoadBalancerVms resource with the given unique name, arguments, and options.
@@ -132,20 +132,20 @@ export class LoadBalancerVms extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerVmsState | undefined;
-            resourceInputs["backendIps"] = state ? state.backendIps : undefined;
-            resourceInputs["backendVmIds"] = state ? state.backendVmIds : undefined;
-            resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
+            resourceInputs["backendIps"] = state?.backendIps;
+            resourceInputs["backendVmIds"] = state?.backendVmIds;
+            resourceInputs["loadBalancerName"] = state?.loadBalancerName;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as LoadBalancerVmsArgs | undefined;
-            if ((!args || args.loadBalancerName === undefined) && !opts.urn) {
+            if (args?.loadBalancerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerName'");
             }
-            resourceInputs["backendIps"] = args ? args.backendIps : undefined;
-            resourceInputs["backendVmIds"] = args ? args.backendVmIds : undefined;
-            resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["backendIps"] = args?.backendIps;
+            resourceInputs["backendVmIds"] = args?.backendVmIds;
+            resourceInputs["loadBalancerName"] = args?.loadBalancerName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

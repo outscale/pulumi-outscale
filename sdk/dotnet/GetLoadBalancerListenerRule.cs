@@ -181,7 +181,7 @@ namespace Pulumi.Outscale
     public sealed class GetLoadBalancerListenerRuleResult
     {
         /// <summary>
-        /// The type of action for the rule (always `forward`).
+        /// The type of action for the rule (always `Forward`).
         /// </summary>
         public readonly string Action;
         public readonly ImmutableArray<Outputs.GetLoadBalancerListenerRuleFilterResult> Filters;
