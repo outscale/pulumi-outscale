@@ -103,7 +103,7 @@ type Volume struct {
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The ID of the snapshot from which you want to create the volume.
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State pulumi.StringOutput `pulumi:"state"`
 	// The Subregion in which you want to create the volume.
 	SubregionName pulumi.StringOutput `pulumi:"subregionName"`
@@ -163,7 +163,7 @@ type volumeState struct {
 	Size *int `pulumi:"size"`
 	// The ID of the snapshot from which you want to create the volume.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State *string `pulumi:"state"`
 	// The Subregion in which you want to create the volume.
 	SubregionName *string `pulumi:"subregionName"`
@@ -191,7 +191,7 @@ type VolumeState struct {
 	Size pulumi.IntPtrInput
 	// The ID of the snapshot from which you want to create the volume.
 	SnapshotId pulumi.StringPtrInput
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State pulumi.StringPtrInput
 	// The Subregion in which you want to create the volume.
 	SubregionName pulumi.StringPtrInput
@@ -366,7 +366,7 @@ func (o VolumeOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 func (o VolumeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

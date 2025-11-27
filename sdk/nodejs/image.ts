@@ -133,6 +133,10 @@ export class Image extends pulumi.CustomResource {
      */
     declare public readonly blockDeviceMappings: pulumi.Output<outputs.ImageBlockDeviceMapping[]>;
     /**
+     * The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+     */
+    declare public readonly bootModes: pulumi.Output<string[]>;
+    /**
      * The date and time (UTC) at which the OMI was created.
      */
     declare public /*out*/ readonly creationDate: pulumi.Output<string>;
@@ -221,6 +225,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["architecture"] = state?.architecture;
             resourceInputs["blockDeviceMappings"] = state?.blockDeviceMappings;
+            resourceInputs["bootModes"] = state?.bootModes;
             resourceInputs["creationDate"] = state?.creationDate;
             resourceInputs["description"] = state?.description;
             resourceInputs["fileLocation"] = state?.fileLocation;
@@ -244,6 +249,7 @@ export class Image extends pulumi.CustomResource {
             const args = argsOrState as ImageArgs | undefined;
             resourceInputs["architecture"] = args?.architecture;
             resourceInputs["blockDeviceMappings"] = args?.blockDeviceMappings;
+            resourceInputs["bootModes"] = args?.bootModes;
             resourceInputs["description"] = args?.description;
             resourceInputs["fileLocation"] = args?.fileLocation;
             resourceInputs["imageName"] = args?.imageName;
@@ -291,6 +297,10 @@ export interface ImageState {
      * **(required) When registering from a snapshot:** One or more block device mappings.
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[]>;
+    /**
+     * The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+     */
+    bootModes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The date and time (UTC) at which the OMI was created.
      */
@@ -376,6 +386,10 @@ export interface ImageArgs {
      * **(required) When registering from a snapshot:** One or more block device mappings.
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[]>;
+    /**
+     * The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+     */
+    bootModes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A description for the new OMI.
      */

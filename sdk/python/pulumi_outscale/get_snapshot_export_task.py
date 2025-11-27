@@ -122,7 +122,7 @@ class GetSnapshotExportTaskResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).
+        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         """
         return pulumi.get(self, "state")
 

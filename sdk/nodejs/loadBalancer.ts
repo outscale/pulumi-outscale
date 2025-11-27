@@ -109,7 +109,7 @@ import * as utilities from "./utilities";
  * });
  * const route01 = new outscale.Route("route01", {
  *     gatewayId: internetService01.id,
- *     destinationIpRange: "10.0.0.0/0",
+ *     destinationIpRange: "0.0.0.0/0",
  *     routeTableId: routeTable01.routeTableId,
  * });
  * const routeTableLink01 = new outscale.RouteTableLink("route_table_link01", {

@@ -101,7 +101,7 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly snapshotId: pulumi.Output<string>;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -203,7 +203,7 @@ export interface VolumeState {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     state?: pulumi.Input<string>;
     /**

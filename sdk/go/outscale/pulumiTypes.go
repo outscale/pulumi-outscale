@@ -3398,7 +3398,7 @@ type LoadBalancerAttributesHealthCheck struct {
 	CheckInterval *int `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path *string `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port int `pulumi:"port"`
@@ -3426,7 +3426,7 @@ type LoadBalancerAttributesHealthCheckArgs struct {
 	CheckInterval pulumi.IntPtrInput `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port pulumi.IntInput `pulumi:"port"`
@@ -3525,7 +3525,7 @@ func (o LoadBalancerAttributesHealthCheckOutput) HealthyThreshold() pulumi.IntPt
 	return o.ApplyT(func(v LoadBalancerAttributesHealthCheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// If you use the HTTP or HTTPS protocols, the request URL path.
+// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 func (o LoadBalancerAttributesHealthCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerAttributesHealthCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -3594,7 +3594,7 @@ func (o LoadBalancerAttributesHealthCheckPtrOutput) HealthyThreshold() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
-// If you use the HTTP or HTTPS protocols, the request URL path.
+// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 func (o LoadBalancerAttributesHealthCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerAttributesHealthCheck) *string {
 		if v == nil {
@@ -4100,7 +4100,7 @@ type LoadBalancerHealthCheck struct {
 	CheckInterval *int `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path *string `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port *int `pulumi:"port"`
@@ -4128,7 +4128,7 @@ type LoadBalancerHealthCheckArgs struct {
 	CheckInterval pulumi.IntPtrInput `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -4201,7 +4201,7 @@ func (o LoadBalancerHealthCheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancerHealthCheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// If you use the HTTP or HTTPS protocols, the request URL path.
+// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 func (o LoadBalancerHealthCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerHealthCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -4257,7 +4257,8 @@ type LoadBalancerListener struct {
 	LoadBalancerProtocol string `pulumi:"loadBalancerProtocol"`
 	// The names of the policies. If there are no policies enabled, the list is empty.
 	PolicyNames []string `pulumi:"policyNames"`
-	// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+	// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+	// This parameter is required for `HTTPS` and `SSL` protocols.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
 }
 
@@ -4283,7 +4284,8 @@ type LoadBalancerListenerArgs struct {
 	LoadBalancerProtocol pulumi.StringInput `pulumi:"loadBalancerProtocol"`
 	// The names of the policies. If there are no policies enabled, the list is empty.
 	PolicyNames pulumi.StringArrayInput `pulumi:"policyNames"`
-	// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+	// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+	// This parameter is required for `HTTPS` and `SSL` protocols.
 	ServerCertificateId pulumi.StringPtrInput `pulumi:"serverCertificateId"`
 }
 
@@ -4363,7 +4365,8 @@ func (o LoadBalancerListenerOutput) PolicyNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerListener) []string { return v.PolicyNames }).(pulumi.StringArrayOutput)
 }
 
-// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+// This parameter is required for `HTTPS` and `SSL` protocols.
 func (o LoadBalancerListenerOutput) ServerCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerListener) *string { return v.ServerCertificateId }).(pulumi.StringPtrOutput)
 }
@@ -5127,7 +5130,7 @@ type LoadBalancerPolicyHealthCheck struct {
 	CheckInterval *int `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path *string `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port *int `pulumi:"port"`
@@ -5155,7 +5158,7 @@ type LoadBalancerPolicyHealthCheckArgs struct {
 	CheckInterval pulumi.IntPtrInput `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -5228,7 +5231,7 @@ func (o LoadBalancerPolicyHealthCheckOutput) HealthyThreshold() pulumi.IntPtrOut
 	return o.ApplyT(func(v LoadBalancerPolicyHealthCheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// If you use the HTTP or HTTPS protocols, the request URL path.
+// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 func (o LoadBalancerPolicyHealthCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPolicyHealthCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -13552,7 +13555,7 @@ func (o VirtualGatewayTagArrayOutput) Index(i pulumi.IntInput) VirtualGatewayTag
 }
 
 type VmActionsOnNextBoot struct {
-	// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+	// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBoot *string `pulumi:"secureBoot"`
 }
 
@@ -13568,7 +13571,7 @@ type VmActionsOnNextBootInput interface {
 }
 
 type VmActionsOnNextBootArgs struct {
-	// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+	// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBoot pulumi.StringPtrInput `pulumi:"secureBoot"`
 }
 
@@ -13623,7 +13626,7 @@ func (o VmActionsOnNextBootOutput) ToVmActionsOnNextBootOutputWithContext(ctx co
 	return o
 }
 
-// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 func (o VmActionsOnNextBootOutput) SecureBoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmActionsOnNextBoot) *string { return v.SecureBoot }).(pulumi.StringPtrOutput)
 }
@@ -16506,7 +16509,7 @@ type VolumeLinkedVolume struct {
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
 	// The name of the device.
 	DeviceName string `pulumi:"deviceName"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State string `pulumi:"state"`
 	// The ID of the VM.
 	VmId string `pulumi:"vmId"`
@@ -16530,7 +16533,7 @@ type VolumeLinkedVolumeArgs struct {
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
 	// The name of the device.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State pulumi.StringInput `pulumi:"state"`
 	// The ID of the VM.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -16599,7 +16602,7 @@ func (o VolumeLinkedVolumeOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeLinkedVolume) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
-// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 func (o VolumeLinkedVolumeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeLinkedVolume) string { return v.State }).(pulumi.StringOutput)
 }
@@ -19610,11 +19613,11 @@ func (o GetDhcpOptionsFilterArrayOutput) Index(i pulumi.IntInput) GetDhcpOptions
 }
 
 type GetEntitiesLinkedToPolicyPolicyEntity struct {
-	// TODO_ARRAY
+	// The accounts linked to the specified policy.
 	Accounts []GetEntitiesLinkedToPolicyPolicyEntityAccount `pulumi:"accounts"`
-	// TODO_ARRAY
+	// The groups linked to the specified policy.
 	Groups []GetEntitiesLinkedToPolicyPolicyEntityGroup `pulumi:"groups"`
-	// TODO_ARRAY
+	// The users linked to the specified policy.
 	Users []GetEntitiesLinkedToPolicyPolicyEntityUser `pulumi:"users"`
 }
 
@@ -19630,11 +19633,11 @@ type GetEntitiesLinkedToPolicyPolicyEntityInput interface {
 }
 
 type GetEntitiesLinkedToPolicyPolicyEntityArgs struct {
-	// TODO_ARRAY
+	// The accounts linked to the specified policy.
 	Accounts GetEntitiesLinkedToPolicyPolicyEntityAccountArrayInput `pulumi:"accounts"`
-	// TODO_ARRAY
+	// The groups linked to the specified policy.
 	Groups GetEntitiesLinkedToPolicyPolicyEntityGroupArrayInput `pulumi:"groups"`
-	// TODO_ARRAY
+	// The users linked to the specified policy.
 	Users GetEntitiesLinkedToPolicyPolicyEntityUserArrayInput `pulumi:"users"`
 }
 
@@ -19689,21 +19692,21 @@ func (o GetEntitiesLinkedToPolicyPolicyEntityOutput) ToGetEntitiesLinkedToPolicy
 	return o
 }
 
-// TODO_ARRAY
+// The accounts linked to the specified policy.
 func (o GetEntitiesLinkedToPolicyPolicyEntityOutput) Accounts() GetEntitiesLinkedToPolicyPolicyEntityAccountArrayOutput {
 	return o.ApplyT(func(v GetEntitiesLinkedToPolicyPolicyEntity) []GetEntitiesLinkedToPolicyPolicyEntityAccount {
 		return v.Accounts
 	}).(GetEntitiesLinkedToPolicyPolicyEntityAccountArrayOutput)
 }
 
-// TODO_ARRAY
+// The groups linked to the specified policy.
 func (o GetEntitiesLinkedToPolicyPolicyEntityOutput) Groups() GetEntitiesLinkedToPolicyPolicyEntityGroupArrayOutput {
 	return o.ApplyT(func(v GetEntitiesLinkedToPolicyPolicyEntity) []GetEntitiesLinkedToPolicyPolicyEntityGroup {
 		return v.Groups
 	}).(GetEntitiesLinkedToPolicyPolicyEntityGroupArrayOutput)
 }
 
-// TODO_ARRAY
+// The users linked to the specified policy.
 func (o GetEntitiesLinkedToPolicyPolicyEntityOutput) Users() GetEntitiesLinkedToPolicyPolicyEntityUserArrayOutput {
 	return o.ApplyT(func(v GetEntitiesLinkedToPolicyPolicyEntity) []GetEntitiesLinkedToPolicyPolicyEntityUser {
 		return v.Users
@@ -22262,6 +22265,8 @@ type GetImagesImage struct {
 	Architecture string `pulumi:"architecture"`
 	// One or more block device mappings.
 	BlockDeviceMappings []GetImagesImageBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes []string `pulumi:"bootModes"`
 	// The date and time (UTC) at which the OMI was created.
 	CreationDate string `pulumi:"creationDate"`
 	// The description of the OMI.
@@ -22282,6 +22287,8 @@ type GetImagesImage struct {
 	RootDeviceName string `pulumi:"rootDeviceName"`
 	// The type of root device used by the OMI (always `bsu`).
 	RootDeviceType string `pulumi:"rootDeviceType"`
+	// Whether secure boot is activated or not.
+	SecureBoot bool `pulumi:"secureBoot"`
 	// The state of the OMI (`pending` \| `available` \| `failed`).
 	State string `pulumi:"state"`
 	// Information about the change of state.
@@ -22310,6 +22317,8 @@ type GetImagesImageArgs struct {
 	Architecture pulumi.StringInput `pulumi:"architecture"`
 	// One or more block device mappings.
 	BlockDeviceMappings GetImagesImageBlockDeviceMappingArrayInput `pulumi:"blockDeviceMappings"`
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes pulumi.StringArrayInput `pulumi:"bootModes"`
 	// The date and time (UTC) at which the OMI was created.
 	CreationDate pulumi.StringInput `pulumi:"creationDate"`
 	// The description of the OMI.
@@ -22330,6 +22339,8 @@ type GetImagesImageArgs struct {
 	RootDeviceName pulumi.StringInput `pulumi:"rootDeviceName"`
 	// The type of root device used by the OMI (always `bsu`).
 	RootDeviceType pulumi.StringInput `pulumi:"rootDeviceType"`
+	// Whether secure boot is activated or not.
+	SecureBoot pulumi.BoolInput `pulumi:"secureBoot"`
 	// The state of the OMI (`pending` \| `available` \| `failed`).
 	State pulumi.StringInput `pulumi:"state"`
 	// Information about the change of state.
@@ -22409,6 +22420,11 @@ func (o GetImagesImageOutput) BlockDeviceMappings() GetImagesImageBlockDeviceMap
 	return o.ApplyT(func(v GetImagesImage) []GetImagesImageBlockDeviceMapping { return v.BlockDeviceMappings }).(GetImagesImageBlockDeviceMappingArrayOutput)
 }
 
+// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+func (o GetImagesImageOutput) BootModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImagesImage) []string { return v.BootModes }).(pulumi.StringArrayOutput)
+}
+
 // The date and time (UTC) at which the OMI was created.
 func (o GetImagesImageOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.CreationDate }).(pulumi.StringOutput)
@@ -22457,6 +22473,11 @@ func (o GetImagesImageOutput) RootDeviceName() pulumi.StringOutput {
 // The type of root device used by the OMI (always `bsu`).
 func (o GetImagesImageOutput) RootDeviceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.RootDeviceType }).(pulumi.StringOutput)
+}
+
+// Whether secure boot is activated or not.
+func (o GetImagesImageOutput) SecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesImage) bool { return v.SecureBoot }).(pulumi.BoolOutput)
 }
 
 // The state of the OMI (`pending` \| `available` \| `failed`).
@@ -24491,7 +24512,7 @@ type GetLoadBalancerHealthCheck struct {
 	CheckInterval int `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold int `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path string `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port int `pulumi:"port"`
@@ -24519,7 +24540,7 @@ type GetLoadBalancerHealthCheckArgs struct {
 	CheckInterval pulumi.IntInput `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path pulumi.StringInput `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port pulumi.IntInput `pulumi:"port"`
@@ -24592,7 +24613,7 @@ func (o GetLoadBalancerHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
-// If you use the HTTP or HTTPS protocols, the request URL path.
+// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 func (o GetLoadBalancerHealthCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerHealthCheck) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -26569,7 +26590,7 @@ type GetLoadBalancersLoadBalancerHealthCheck struct {
 	CheckInterval int `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold int `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path string `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port int `pulumi:"port"`
@@ -26597,7 +26618,7 @@ type GetLoadBalancersLoadBalancerHealthCheckArgs struct {
 	CheckInterval pulumi.IntInput `pulumi:"checkInterval"`
 	// The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
 	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
-	// If you use the HTTP or HTTPS protocols, the request URL path.
+	// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 	Path pulumi.StringInput `pulumi:"path"`
 	// The port number (between `1` and `65535`, both included).
 	Port pulumi.IntInput `pulumi:"port"`
@@ -26670,7 +26691,7 @@ func (o GetLoadBalancersLoadBalancerHealthCheckOutput) HealthyThreshold() pulumi
 	return o.ApplyT(func(v GetLoadBalancersLoadBalancerHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
-// If you use the HTTP or HTTPS protocols, the request URL path.
+// If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
 func (o GetLoadBalancersLoadBalancerHealthCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadBalancerHealthCheck) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -38496,7 +38517,7 @@ type GetSnapshotExportTasksSnapshotExportTask struct {
 	Progress int `pulumi:"progress"`
 	// The ID of the snapshot to be exported.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 	State string `pulumi:"state"`
 	// One or more tags associated with the snapshot export task.
 	Tags []GetSnapshotExportTasksSnapshotExportTaskTag `pulumi:"tags"`
@@ -38524,7 +38545,7 @@ type GetSnapshotExportTasksSnapshotExportTaskArgs struct {
 	Progress pulumi.IntInput `pulumi:"progress"`
 	// The ID of the snapshot to be exported.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 	State pulumi.StringInput `pulumi:"state"`
 	// One or more tags associated with the snapshot export task.
 	Tags GetSnapshotExportTasksSnapshotExportTaskTagArrayInput `pulumi:"tags"`
@@ -38605,7 +38626,7 @@ func (o GetSnapshotExportTasksSnapshotExportTaskOutput) SnapshotId() pulumi.Stri
 	return o.ApplyT(func(v GetSnapshotExportTasksSnapshotExportTask) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `failed`).
+// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
 func (o GetSnapshotExportTasksSnapshotExportTaskOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotExportTasksSnapshotExportTask) string { return v.State }).(pulumi.StringOutput)
 }
@@ -39296,7 +39317,7 @@ type GetSnapshotsSnapshot struct {
 	Progress int `pulumi:"progress"`
 	// The ID of the snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State string `pulumi:"state"`
 	// One or more tags associated with the snapshot.
 	Tags []GetSnapshotsSnapshotTag `pulumi:"tags"`
@@ -39332,7 +39353,7 @@ type GetSnapshotsSnapshotArgs struct {
 	Progress pulumi.IntInput `pulumi:"progress"`
 	// The ID of the snapshot.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State pulumi.StringInput `pulumi:"state"`
 	// One or more tags associated with the snapshot.
 	Tags GetSnapshotsSnapshotTagArrayInput `pulumi:"tags"`
@@ -39430,7 +39451,7 @@ func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 func (o GetSnapshotsSnapshotOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.State }).(pulumi.StringOutput)
 }
@@ -42421,6 +42442,7 @@ func (o GetVirtualGatewaysVirtualGatewayTagArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetVmActionsOnNextBoot struct {
+	// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBoot string `pulumi:"secureBoot"`
 }
 
@@ -42436,6 +42458,7 @@ type GetVmActionsOnNextBootInput interface {
 }
 
 type GetVmActionsOnNextBootArgs struct {
+	// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBoot pulumi.StringInput `pulumi:"secureBoot"`
 }
 
@@ -42490,6 +42513,7 @@ func (o GetVmActionsOnNextBootOutput) ToGetVmActionsOnNextBootOutputWithContext(
 	return o
 }
 
+// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 func (o GetVmActionsOnNextBootOutput) SecureBoot() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmActionsOnNextBoot) string { return v.SecureBoot }).(pulumi.StringOutput)
 }
@@ -45754,13 +45778,15 @@ func (o GetVmsFilterArrayOutput) Index(i pulumi.IntInput) GetVmsFilterOutput {
 }
 
 type GetVmsVm struct {
+	// The action to perform on the next boot of the VM.
 	ActionsOnNextBoots []GetVmsVmActionsOnNextBoot `pulumi:"actionsOnNextBoots"`
 	// The architecture of the VM (`i386` \| `x8664`).
 	Architecture string `pulumi:"architecture"`
 	// The block device mapping of the VM.
 	BlockDeviceMappingsCreateds []GetVmsVmBlockDeviceMappingsCreated `pulumi:"blockDeviceMappingsCreateds"`
-	BootMode                    string                               `pulumi:"bootMode"`
-	BsuOptimized                bool                                 `pulumi:"bsuOptimized"`
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
+	BootMode     string `pulumi:"bootMode"`
+	BsuOptimized bool   `pulumi:"bsuOptimized"`
 	// The idempotency token provided when launching the VM.
 	ClientToken string `pulumi:"clientToken"`
 	// The date and time (UTC) at which the VM was created.
@@ -45845,13 +45871,15 @@ type GetVmsVmInput interface {
 }
 
 type GetVmsVmArgs struct {
+	// The action to perform on the next boot of the VM.
 	ActionsOnNextBoots GetVmsVmActionsOnNextBootArrayInput `pulumi:"actionsOnNextBoots"`
 	// The architecture of the VM (`i386` \| `x8664`).
 	Architecture pulumi.StringInput `pulumi:"architecture"`
 	// The block device mapping of the VM.
 	BlockDeviceMappingsCreateds GetVmsVmBlockDeviceMappingsCreatedArrayInput `pulumi:"blockDeviceMappingsCreateds"`
-	BootMode                    pulumi.StringInput                           `pulumi:"bootMode"`
-	BsuOptimized                pulumi.BoolInput                             `pulumi:"bsuOptimized"`
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
+	BootMode     pulumi.StringInput `pulumi:"bootMode"`
+	BsuOptimized pulumi.BoolInput   `pulumi:"bsuOptimized"`
 	// The idempotency token provided when launching the VM.
 	ClientToken pulumi.StringInput `pulumi:"clientToken"`
 	// The date and time (UTC) at which the VM was created.
@@ -45975,6 +46003,7 @@ func (o GetVmsVmOutput) ToGetVmsVmOutputWithContext(ctx context.Context) GetVmsV
 	return o
 }
 
+// The action to perform on the next boot of the VM.
 func (o GetVmsVmOutput) ActionsOnNextBoots() GetVmsVmActionsOnNextBootArrayOutput {
 	return o.ApplyT(func(v GetVmsVm) []GetVmsVmActionsOnNextBoot { return v.ActionsOnNextBoots }).(GetVmsVmActionsOnNextBootArrayOutput)
 }
@@ -45989,6 +46018,7 @@ func (o GetVmsVmOutput) BlockDeviceMappingsCreateds() GetVmsVmBlockDeviceMapping
 	return o.ApplyT(func(v GetVmsVm) []GetVmsVmBlockDeviceMappingsCreated { return v.BlockDeviceMappingsCreateds }).(GetVmsVmBlockDeviceMappingsCreatedArrayOutput)
 }
 
+// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 func (o GetVmsVmOutput) BootMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVm) string { return v.BootMode }).(pulumi.StringOutput)
 }
@@ -46199,6 +46229,7 @@ func (o GetVmsVmArrayOutput) Index(i pulumi.IntInput) GetVmsVmOutput {
 }
 
 type GetVmsVmActionsOnNextBoot struct {
+	// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBoot string `pulumi:"secureBoot"`
 }
 
@@ -46214,6 +46245,7 @@ type GetVmsVmActionsOnNextBootInput interface {
 }
 
 type GetVmsVmActionsOnNextBootArgs struct {
+	// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBoot pulumi.StringInput `pulumi:"secureBoot"`
 }
 
@@ -46268,6 +46300,7 @@ func (o GetVmsVmActionsOnNextBootOutput) ToGetVmsVmActionsOnNextBootOutputWithCo
 	return o
 }
 
+// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 func (o GetVmsVmActionsOnNextBootOutput) SecureBoot() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmActionsOnNextBoot) string { return v.SecureBoot }).(pulumi.StringOutput)
 }
@@ -48606,7 +48639,7 @@ type GetVolumeLinkedVolume struct {
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
 	// The name of the device.
 	DeviceName string `pulumi:"deviceName"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State string `pulumi:"state"`
 	// The ID of the VM.
 	VmId string `pulumi:"vmId"`
@@ -48630,7 +48663,7 @@ type GetVolumeLinkedVolumeArgs struct {
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
 	// The name of the device.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State pulumi.StringInput `pulumi:"state"`
 	// The ID of the VM.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -48699,7 +48732,7 @@ func (o GetVolumeLinkedVolumeOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeLinkedVolume) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
-// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 func (o GetVolumeLinkedVolumeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeLinkedVolume) string { return v.State }).(pulumi.StringOutput)
 }
@@ -48951,7 +48984,7 @@ type GetVolumesVolume struct {
 	Size int `pulumi:"size"`
 	// The snapshot from which the volume was created.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State string `pulumi:"state"`
 	// The Subregion in which the volume was created.
 	SubregionName string `pulumi:"subregionName"`
@@ -48985,7 +49018,7 @@ type GetVolumesVolumeArgs struct {
 	Size pulumi.IntInput `pulumi:"size"`
 	// The snapshot from which the volume was created.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State pulumi.StringInput `pulumi:"state"`
 	// The Subregion in which the volume was created.
 	SubregionName pulumi.StringInput `pulumi:"subregionName"`
@@ -49073,7 +49106,7 @@ func (o GetVolumesVolumeOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 func (o GetVolumesVolumeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.State }).(pulumi.StringOutput)
 }
@@ -49123,7 +49156,7 @@ type GetVolumesVolumeLinkedVolume struct {
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
 	// The name of the device.
 	DeviceName string `pulumi:"deviceName"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State string `pulumi:"state"`
 	// The ID of the VM.
 	VmId string `pulumi:"vmId"`
@@ -49147,7 +49180,7 @@ type GetVolumesVolumeLinkedVolumeArgs struct {
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
 	// The name of the device.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State pulumi.StringInput `pulumi:"state"`
 	// The ID of the VM.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -49216,7 +49249,7 @@ func (o GetVolumesVolumeLinkedVolumeOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeLinkedVolume) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
-// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 func (o GetVolumesVolumeLinkedVolumeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeLinkedVolume) string { return v.State }).(pulumi.StringOutput)
 }

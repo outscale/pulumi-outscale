@@ -155,6 +155,12 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.ImageBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
         /// <summary>
+        /// The boot modes compatible with the OMI. Possible values: `Uefi` | `Legacy`.
+        /// </summary>
+        [Output("bootModes")]
+        public Output<ImmutableArray<string>> BootModes { get; private set; } = null!;
+
+        /// <summary>
         /// The date and time (UTC) at which the OMI was created.
         /// </summary>
         [Output("creationDate")]
@@ -327,6 +333,18 @@ namespace Pulumi.Outscale
             set => _blockDeviceMappings = value;
         }
 
+        [Input("bootModes")]
+        private InputList<string>? _bootModes;
+
+        /// <summary>
+        /// The boot modes compatible with the OMI. Possible values: `Uefi` | `Legacy`.
+        /// </summary>
+        public InputList<string> BootModes
+        {
+            get => _bootModes ?? (_bootModes = new InputList<string>());
+            set => _bootModes = value;
+        }
+
         /// <summary>
         /// A description for the new OMI.
         /// </summary>
@@ -424,6 +442,18 @@ namespace Pulumi.Outscale
         {
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.ImageBlockDeviceMappingGetArgs>());
             set => _blockDeviceMappings = value;
+        }
+
+        [Input("bootModes")]
+        private InputList<string>? _bootModes;
+
+        /// <summary>
+        /// The boot modes compatible with the OMI. Possible values: `Uefi` | `Legacy`.
+        /// </summary>
+        public InputList<string> BootModes
+        {
+            get => _bootModes ?? (_bootModes = new InputList<string>());
+            set => _bootModes = value;
         }
 
         /// <summary>

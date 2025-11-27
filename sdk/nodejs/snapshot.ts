@@ -132,7 +132,7 @@ export class Snapshot extends pulumi.CustomResource {
      */
     declare public readonly sourceSnapshotId: pulumi.Output<string>;
     /**
-     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -251,7 +251,7 @@ export interface SnapshotState {
      */
     sourceSnapshotId?: pulumi.Input<string>;
     /**
-     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
      */
     state?: pulumi.Input<string>;
     /**

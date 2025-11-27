@@ -13,6 +13,9 @@ namespace Pulumi.Outscale.Outputs
     [OutputType]
     public sealed class GetVmActionsOnNextBootResult
     {
+        /// <summary>
+        /// One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+        /// </summary>
         public readonly string SecureBoot;
 
         [OutputConstructor]

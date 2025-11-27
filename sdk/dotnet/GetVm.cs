@@ -168,6 +168,9 @@ namespace Pulumi.Outscale
     [OutputType]
     public sealed class GetVmResult
     {
+        /// <summary>
+        /// The action to perform on the next boot of the VM.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVmActionsOnNextBootResult> ActionsOnNextBoots;
         /// <summary>
         /// The architecture of the VM (`I386` \| `X8664`).
@@ -177,6 +180,9 @@ namespace Pulumi.Outscale
         /// The block device mapping of the VM.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVmBlockDeviceMappingsCreatedResult> BlockDeviceMappingsCreateds;
+        /// <summary>
+        /// The boot mode of the VM. Possible values: `Uefi` | `Legacy`.
+        /// </summary>
         public readonly string BootMode;
         public readonly bool BsuOptimized;
         /// <summary>

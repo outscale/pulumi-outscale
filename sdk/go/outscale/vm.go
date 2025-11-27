@@ -33,7 +33,7 @@ type Vm struct {
 	BlockDeviceMappings VmBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// The block device mapping of the VM.
 	BlockDeviceMappingsCreateds VmBlockDeviceMappingsCreatedArrayOutput `pulumi:"blockDeviceMappingsCreateds"`
-	// Information about the boot mode of the VM (`legacy` | `uefi`).
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 	BootMode     pulumi.StringOutput `pulumi:"bootMode"`
 	BsuOptimized pulumi.BoolOutput   `pulumi:"bsuOptimized"`
 	// A unique identifier which enables you to manage the idempotency.
@@ -166,7 +166,7 @@ type vmState struct {
 	BlockDeviceMappings []VmBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The block device mapping of the VM.
 	BlockDeviceMappingsCreateds []VmBlockDeviceMappingsCreated `pulumi:"blockDeviceMappingsCreateds"`
-	// Information about the boot mode of the VM (`legacy` | `uefi`).
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 	BootMode     *string `pulumi:"bootMode"`
 	BsuOptimized *bool   `pulumi:"bsuOptimized"`
 	// A unique identifier which enables you to manage the idempotency.
@@ -260,7 +260,7 @@ type VmState struct {
 	BlockDeviceMappings VmBlockDeviceMappingArrayInput
 	// The block device mapping of the VM.
 	BlockDeviceMappingsCreateds VmBlockDeviceMappingsCreatedArrayInput
-	// Information about the boot mode of the VM (`legacy` | `uefi`).
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 	BootMode     pulumi.StringPtrInput
 	BsuOptimized pulumi.BoolPtrInput
 	// A unique identifier which enables you to manage the idempotency.
@@ -351,7 +351,7 @@ func (VmState) ElementType() reflect.Type {
 type vmArgs struct {
 	// One or more block device mappings.
 	BlockDeviceMappings []VmBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// Information about the boot mode of the VM (`legacy` | `uefi`).
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 	BootMode     *string `pulumi:"bootMode"`
 	BsuOptimized *bool   `pulumi:"bsuOptimized"`
 	// If true, you cannot delete the VM unless you change this parameter back to false.
@@ -406,7 +406,7 @@ type vmArgs struct {
 type VmArgs struct {
 	// One or more block device mappings.
 	BlockDeviceMappings VmBlockDeviceMappingArrayInput
-	// Information about the boot mode of the VM (`legacy` | `uefi`).
+	// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 	BootMode     pulumi.StringPtrInput
 	BsuOptimized pulumi.BoolPtrInput
 	// If true, you cannot delete the VM unless you change this parameter back to false.
@@ -568,7 +568,7 @@ func (o VmOutput) BlockDeviceMappingsCreateds() VmBlockDeviceMappingsCreatedArra
 	return o.ApplyT(func(v *Vm) VmBlockDeviceMappingsCreatedArrayOutput { return v.BlockDeviceMappingsCreateds }).(VmBlockDeviceMappingsCreatedArrayOutput)
 }
 
-// Information about the boot mode of the VM (`legacy` | `uefi`).
+// The boot mode of the VM. Possible values: `uefi` | `legacy`.
 func (o VmOutput) BootMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.BootMode }).(pulumi.StringOutput)
 }

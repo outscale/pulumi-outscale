@@ -204,7 +204,7 @@ import (
 //			}
 //			route01, err := outscale.NewRoute(ctx, "route01", &outscale.RouteArgs{
 //				GatewayId:          internetService01.ID(),
-//				DestinationIpRange: pulumi.String("10.0.0.0/0"),
+//				DestinationIpRange: pulumi.String("0.0.0.0/0"),
 //				RouteTableId:       routeTable01.RouteTableId,
 //			})
 //			if err != nil {

@@ -166,6 +166,8 @@ type Image struct {
 	Architecture pulumi.StringOutput `pulumi:"architecture"`
 	// **(required) When registering from a snapshot:** One or more block device mappings.
 	BlockDeviceMappings ImageBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes pulumi.StringArrayOutput `pulumi:"bootModes"`
 	// The date and time (UTC) at which the OMI was created.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// A description for the new OMI.
@@ -243,6 +245,8 @@ type imageState struct {
 	Architecture *string `pulumi:"architecture"`
 	// **(required) When registering from a snapshot:** One or more block device mappings.
 	BlockDeviceMappings []ImageBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes []string `pulumi:"bootModes"`
 	// The date and time (UTC) at which the OMI was created.
 	CreationDate *string `pulumi:"creationDate"`
 	// A description for the new OMI.
@@ -291,6 +295,8 @@ type ImageState struct {
 	Architecture pulumi.StringPtrInput
 	// **(required) When registering from a snapshot:** One or more block device mappings.
 	BlockDeviceMappings ImageBlockDeviceMappingArrayInput
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes pulumi.StringArrayInput
 	// The date and time (UTC) at which the OMI was created.
 	CreationDate pulumi.StringPtrInput
 	// A description for the new OMI.
@@ -339,6 +345,8 @@ type imageArgs struct {
 	Architecture *string `pulumi:"architecture"`
 	// **(required) When registering from a snapshot:** One or more block device mappings.
 	BlockDeviceMappings []ImageBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes []string `pulumi:"bootModes"`
 	// A description for the new OMI.
 	Description *string `pulumi:"description"`
 	// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
@@ -366,6 +374,8 @@ type ImageArgs struct {
 	Architecture pulumi.StringPtrInput
 	// **(required) When registering from a snapshot:** One or more block device mappings.
 	BlockDeviceMappings ImageBlockDeviceMappingArrayInput
+	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+	BootModes pulumi.StringArrayInput
 	// A description for the new OMI.
 	Description pulumi.StringPtrInput
 	// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
@@ -492,6 +502,11 @@ func (o ImageOutput) Architecture() pulumi.StringOutput {
 // **(required) When registering from a snapshot:** One or more block device mappings.
 func (o ImageOutput) BlockDeviceMappings() ImageBlockDeviceMappingArrayOutput {
 	return o.ApplyT(func(v *Image) ImageBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(ImageBlockDeviceMappingArrayOutput)
+}
+
+// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
+func (o ImageOutput) BootModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.BootModes }).(pulumi.StringArrayOutput)
 }
 
 // The date and time (UTC) at which the OMI was created.

@@ -88,7 +88,7 @@ type LookupSnapshotResult struct {
 	RequestId string `pulumi:"requestId"`
 	// The ID of the snapshot.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State string `pulumi:"state"`
 	// One or more tags associated with the snapshot.
 	Tags []GetSnapshotTag `pulumi:"tags"`
@@ -186,7 +186,7 @@ func (o LookupSnapshotResultOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 func (o LookupSnapshotResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.State }).(pulumi.StringOutput)
 }

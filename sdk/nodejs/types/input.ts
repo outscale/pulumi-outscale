@@ -415,7 +415,7 @@ export interface GetLoadBalancerHealthCheck {
      */
     healthyThreshold?: number;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path?: string;
     /**
@@ -446,7 +446,7 @@ export interface GetLoadBalancerHealthCheckArgs {
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path?: pulumi.Input<string>;
     /**
@@ -1485,7 +1485,7 @@ export interface LoadBalancerAttributesHealthCheck {
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path?: pulumi.Input<string>;
     /**
@@ -1572,7 +1572,7 @@ export interface LoadBalancerHealthCheck {
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path?: pulumi.Input<string>;
     /**
@@ -1615,7 +1615,8 @@ export interface LoadBalancerListener {
      */
     policyNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
+     * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
+     * This parameter is required for `HTTPS` and `SSL` protocols.
      */
     serverCertificateId?: pulumi.Input<string>;
 }
@@ -1709,7 +1710,7 @@ export interface LoadBalancerPolicyHealthCheck {
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
-     * If you use the HTTP or HTTPS protocols, the request URL path.
+     * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
     path?: pulumi.Input<string>;
     /**
@@ -2702,7 +2703,7 @@ export interface VirtualGatewayTag {
 
 export interface VmActionsOnNextBoot {
     /**
-     * One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`). For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
+     * One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
      */
     secureBoot?: pulumi.Input<string>;
 }
@@ -3151,7 +3152,7 @@ export interface VolumeLinkedVolume {
      */
     deviceName: pulumi.Input<string>;
     /**
-     * The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+     * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
     state: pulumi.Input<string>;
     /**

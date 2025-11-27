@@ -93,7 +93,7 @@ export interface GetSnapshotResult {
      */
     readonly snapshotId: string;
     /**
-     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`)).
+     * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
      */
     readonly state: string;
     /**

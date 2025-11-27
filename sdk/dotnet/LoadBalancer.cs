@@ -197,7 +197,7 @@ namespace Pulumi.Outscale
     ///     var route01 = new Outscale.Route("route01", new()
     ///     {
     ///         GatewayId = internetService01.Id,
-    ///         DestinationIpRange = "10.0.0.0/0",
+    ///         DestinationIpRange = "0.0.0.0/0",
     ///         RouteTableId = routeTable01.RouteTableId,
     ///     });
     /// 

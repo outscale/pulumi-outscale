@@ -22,7 +22,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
-        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Updating` \| `Deleting` \| `Error`).
+        /// The state of the volume (`Creating` \| `Available` \| `in-use` \| `Deleting` \| `Error`).
         /// </summary>
         public readonly string State;
         /// <summary>

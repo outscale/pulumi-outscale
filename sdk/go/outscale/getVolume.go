@@ -83,7 +83,7 @@ type LookupVolumeResult struct {
 	Size int `pulumi:"size"`
 	// The snapshot from which the volume was created.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+	// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 	State string `pulumi:"state"`
 	// The Subregion in which the volume was created.
 	SubregionName string `pulumi:"subregionName"`
@@ -170,7 +170,7 @@ func (o LookupVolumeResultOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the volume (`creating` \| `available` \| `in-use` \| `updating` \| `deleting` \| `error`).
+// The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
 func (o LookupVolumeResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.State }).(pulumi.StringOutput)
 }

@@ -227,7 +227,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// The state of the snapshot (`in-queue` \| `Pending` \| `Completed` \| `Error` \| `Deleting`)).
+        /// The state of the snapshot (`in-queue` \| `Pending` \| `Completed` \| `Error` \| `Deleting`).
         /// </summary>
         public readonly string State;
         /// <summary>

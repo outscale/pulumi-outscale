@@ -30,6 +30,10 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageBlockDeviceMappingResult> BlockDeviceMappings;
         /// <summary>
+        /// The boot modes compatible with the OMI. Possible values: `Uefi` | `Legacy`.
+        /// </summary>
+        public readonly ImmutableArray<string> BootModes;
+        /// <summary>
         /// The date and time (UTC) at which the OMI was created.
         /// </summary>
         public readonly string CreationDate;
@@ -70,6 +74,10 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string RootDeviceType;
         /// <summary>
+        /// Whether secure boot is activated or not.
+        /// </summary>
+        public readonly bool SecureBoot;
+        /// <summary>
         /// The state of the OMI (`Pending` \| `Available` \| `Failed`).
         /// </summary>
         public readonly string State;
@@ -92,6 +100,8 @@ namespace Pulumi.Outscale.Outputs
 
             ImmutableArray<Outputs.GetImagesImageBlockDeviceMappingResult> blockDeviceMappings,
 
+            ImmutableArray<string> bootModes,
+
             string creationDate,
 
             string description,
@@ -112,6 +122,8 @@ namespace Pulumi.Outscale.Outputs
 
             string rootDeviceType,
 
+            bool secureBoot,
+
             string state,
 
             ImmutableArray<Outputs.GetImagesImageStateCommentResult> stateComments,
@@ -122,6 +134,7 @@ namespace Pulumi.Outscale.Outputs
             AccountId = accountId;
             Architecture = architecture;
             BlockDeviceMappings = blockDeviceMappings;
+            BootModes = bootModes;
             CreationDate = creationDate;
             Description = description;
             FileLocation = fileLocation;
@@ -132,6 +145,7 @@ namespace Pulumi.Outscale.Outputs
             ProductCodes = productCodes;
             RootDeviceName = rootDeviceName;
             RootDeviceType = rootDeviceType;
+            SecureBoot = secureBoot;
             State = state;
             StateComments = stateComments;
             Tags = tags;

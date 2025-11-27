@@ -51,7 +51,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.VmBlockDeviceMappingsCreated>> BlockDeviceMappingsCreateds { get; private set; } = null!;
 
         /// <summary>
-        /// Information about the boot mode of the VM (`Legacy` | `Uefi`).
+        /// The boot mode of the VM. Possible values: `Uefi` | `Legacy`.
         /// </summary>
         [Output("bootMode")]
         public Output<string> BootMode { get; private set; } = null!;
@@ -357,7 +357,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// Information about the boot mode of the VM (`Legacy` | `Uefi`).
+        /// The boot mode of the VM. Possible values: `Uefi` | `Legacy`.
         /// </summary>
         [Input("bootMode")]
         public Input<string>? BootMode { get; set; }
@@ -601,7 +601,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// Information about the boot mode of the VM (`Legacy` | `Uefi`).
+        /// The boot mode of the VM. Possible values: `Uefi` | `Legacy`.
         /// </summary>
         [Input("bootMode")]
         public Input<string>? BootMode { get; set; }

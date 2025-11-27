@@ -237,6 +237,10 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImageBlockDeviceMappingResult> BlockDeviceMappings;
         /// <summary>
+        /// The boot modes compatible with the OMI. Possible values: `Uefi` | `Legacy`.
+        /// </summary>
+        public readonly ImmutableArray<string> BootModes;
+        /// <summary>
         /// The date and time (UTC) at which the OMI was created.
         /// </summary>
         public readonly string CreationDate;
@@ -285,6 +289,10 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string RootDeviceType;
         /// <summary>
+        /// Whether secure boot is activated or not.
+        /// </summary>
+        public readonly bool SecureBoot;
+        /// <summary>
         /// The state of the OMI (`Pending` \| `Available` \| `Failed`).
         /// </summary>
         public readonly string State;
@@ -306,6 +314,8 @@ namespace Pulumi.Outscale
             string architecture,
 
             ImmutableArray<Outputs.GetImageBlockDeviceMappingResult> blockDeviceMappings,
+
+            ImmutableArray<string> bootModes,
 
             string creationDate,
 
@@ -337,6 +347,8 @@ namespace Pulumi.Outscale
 
             string rootDeviceType,
 
+            bool secureBoot,
+
             string state,
 
             ImmutableArray<Outputs.GetImageStateCommentResult> stateComments,
@@ -347,6 +359,7 @@ namespace Pulumi.Outscale
             AccountId = accountId;
             Architecture = architecture;
             BlockDeviceMappings = blockDeviceMappings;
+            BootModes = bootModes;
             CreationDate = creationDate;
             Description = description;
             FileLocation = fileLocation;
@@ -362,6 +375,7 @@ namespace Pulumi.Outscale
             RequestId = requestId;
             RootDeviceName = rootDeviceName;
             RootDeviceType = rootDeviceType;
+            SecureBoot = secureBoot;
             State = state;
             StateComments = stateComments;
             Tags = tags;

@@ -605,7 +605,7 @@ class LoadBalancer(pulumi.CustomResource):
             }])
         route01 = outscale.Route("route01",
             gateway_id=internet_service01.id,
-            destination_ip_range="10.0.0.0/0",
+            destination_ip_range="0.0.0.0/0",
             route_table_id=route_table01.route_table_id)
         route_table_link01 = outscale.RouteTableLink("route_table_link01",
             route_table_id=route_table01.route_table_id,
@@ -762,7 +762,7 @@ class LoadBalancer(pulumi.CustomResource):
             }])
         route01 = outscale.Route("route01",
             gateway_id=internet_service01.id,
-            destination_ip_range="10.0.0.0/0",
+            destination_ip_range="0.0.0.0/0",
             route_table_id=route_table01.route_table_id)
         route_table_link01 = outscale.RouteTableLink("route_table_link01",
             route_table_id=route_table01.route_table_id,
