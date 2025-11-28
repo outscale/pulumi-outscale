@@ -4,8 +4,10 @@ FROM jetpackio/devbox:latest
 WORKDIR /code
 COPY devbox.json devbox.json
 COPY devbox.lock devbox.lock
-RUN sudo chown -R "${DEVBOX_USER}:${DEVBOX_USER}" /code
 
+USER root
+RUN chown -R "${DEVBOX_USER}:${DEVBOX_USER}" /code
+USER "${DEVBOX_USER}"
 
 RUN devbox run -- echo "Installed Packages."
 
