@@ -44,9 +44,16 @@ publish:
 # Disables a pulumi-internal-only step for running create_docs_build during the release
 publishRegistry: false
 
+# checkUpstreamUpgrade determines whether we run the upstream upgrade job for bridged providers.
+# Set to false for providers that cannot be upgraded, e.g. because of archived upstream or a license conflict.
 checkUpstreamUpgrade: true
 
+# Delete existing files within the .github/workflows directory, except where the file begins with the name of the provider
+# (e.g. `aws-*`) which are considered provider-specific workflows.
 clean-github-workflows: false
+
+# Whether we automatically merge upstream provider upgrades.
+autoMergeProviderUpgrades: false
 
 # Enables ESC for CI secrets. Optional.
 esc:
