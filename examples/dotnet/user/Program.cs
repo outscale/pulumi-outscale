@@ -47,7 +47,7 @@ return await Deployment.RunAsync(() =>
 
     var server = new Pulumi.Outscale.Vm("webserver-www", new VmArgs
     {
-        VmType = "tinav5.c1r1p1",
+        VmType = "tinav7.c1r1p2",
         SecurityGroupIds = new[] {
             group.Id
         },

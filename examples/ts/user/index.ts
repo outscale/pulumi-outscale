@@ -60,7 +60,7 @@ const security_group_rule = new outscale.SecurityGroupRule("ts-demo", {
 
 const vm = new outscale.Vm("ts-demo", {
     imageId: imageId,
-    vmType: "tinav4.c4r8p2",
+    vmType: "tinav7.c1r1p2",
     keypairName: "ts-demo",
     subnetId: subnet.id,
     securityGroupIds: [security_group.id],
