@@ -23,9 +23,6 @@ on:
     - cron: 0 3 * * *
 
 env:
-  OUTSCALE_ACCESSKEYID: ${{ secrets.OUTSCALE_ACCESSKEYID }}
-  OUTSCALE_REGION: ${{ secrets.OUTSCALE_REGION }}
-  OUTSCALE_SECRETKEYID: ${{ secrets.OUTSCALE_SECRETKEYID }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget

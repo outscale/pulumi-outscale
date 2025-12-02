@@ -59,7 +59,10 @@ autoMergeProviderUpgrades: false
 esc:
     enabled: false
 
-env:
-    OUTSCALE_ACCESSKEYID: ${{ secrets.OUTSCALE_ACCESSKEYID }}
-    OUTSCALE_SECRETKEYID: ${{ secrets.OUTSCALE_SECRETKEYID }}
-    OUTSCALE_REGION: ${{ secrets.OUTSCALE_REGION }}
+actions:
+    preTest:
+        - name: Set OUTSCALE Credentials
+          run: |
+              echo "OUTSCALE_ACCESSKEYID=${{ secrets.OUTSCALE_ACCESSKEYID }}" >> $GITHUB_ENV
+              echo "OUTSCALE_REGION=${{ secrets.OUTSCALE_REGION }}" >> $GITHUB_ENV
+              echo "OUTSCALE_SECRETKEYID=${{ secrets.OUTSCALE_SECRETKEYID }}" >> $GITHUB_ENV
