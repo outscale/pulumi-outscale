@@ -44,9 +44,6 @@ env:
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
   OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-  OUTSCALE_ACCESSKEYID: ${{ secrets.OUTSCALE_ACCESSKEYID }}
-  OUTSCALE_REGION: ${{ secrets.OUTSCALE_REGION }}
-  OUTSCALE_SECRETKEYID: ${{ secrets.OUTSCALE_SECRETKEYID }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -80,11 +77,11 @@ jobs:
         name: Map environment to ESC outputs
         uses: ./.github/actions/esc-action
       - name: Setup Python
-        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
         with:
           python-version: 3.11.8
       - name: Setup DotNet
-        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
+        uses: actions/setup-dotnet@2016bd2012dba4e32de620c46fe006a3ac9f0602 # v5.0.1
         with:
           dotnet-version: 8.0.x
       - name: Setup Node

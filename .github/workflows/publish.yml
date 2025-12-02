@@ -31,9 +31,6 @@ env:
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
   OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-  OUTSCALE_ACCESSKEYID: ${{ secrets.OUTSCALE_ACCESSKEYID }}
-  OUTSCALE_REGION: ${{ secrets.OUTSCALE_REGION }}
-  OUTSCALE_SECRETKEYID: ${{ secrets.OUTSCALE_SECRETKEYID }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -100,7 +97,7 @@ jobs:
           echo 'EOF'
         } >> "$GITHUB_OUTPUT"
     - name: Create GH Release
-      uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090 # v2
+      uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
       if: inputs.isPrerelease == false
       with:
         tag_name: v${{ inputs.version }}
