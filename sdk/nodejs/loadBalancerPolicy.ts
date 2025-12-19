@@ -169,7 +169,7 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
     /**
      * One or more tags associated with the load balancer.
      */
-    declare public readonly tags: pulumi.Output<outputs.LoadBalancerPolicyTag[]>;
+    declare public /*out*/ readonly tags: pulumi.Output<outputs.LoadBalancerPolicyTag[]>;
 
     /**
      * Create a LoadBalancerPolicy resource with the given unique name, arguments, and options.
@@ -228,7 +228,6 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
             resourceInputs["securityGroups"] = args?.securityGroups;
             resourceInputs["subnets"] = args?.subnets;
             resourceInputs["subregionNames"] = args?.subregionNames;
-            resourceInputs["tags"] = args?.tags;
             resourceInputs["applicationStickyCookiePolicies"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["healthChecks"] = undefined /*out*/;
@@ -239,6 +238,7 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["securedCookies"] = undefined /*out*/;
             resourceInputs["sourceSecurityGroups"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LoadBalancerPolicy.__pulumiType, name, resourceInputs, opts);
@@ -377,8 +377,4 @@ export interface LoadBalancerPolicyArgs {
      * The ID of the Subregion in which the load balancer was created.
      */
     subregionNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * One or more tags associated with the load balancer.
-     */
-    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyTag>[]>;
 }

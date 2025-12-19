@@ -21,39 +21,37 @@ __all__ = ['SecurityGroupArgs', 'SecurityGroup']
 @pulumi.input_type
 class SecurityGroupArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[_builtins.str],
+                 security_group_name: pulumi.Input[_builtins.str],
                  net_id: Optional[pulumi.Input[_builtins.str]] = None,
                  remove_default_outbound_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['SecurityGroupTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
         :param pulumi.Input[_builtins.str] description: A description for the security group.<br />
                This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-        :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the security group.
-        :param pulumi.Input[_builtins.bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
         :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.<br />
                This name must not start with `sg-`.<br />
                This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the security group.
+        :param pulumi.Input[_builtins.bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "security_group_name", security_group_name)
         if net_id is not None:
             pulumi.set(__self__, "net_id", net_id)
         if remove_default_outbound_rule is not None:
             pulumi.set(__self__, "remove_default_outbound_rule", remove_default_outbound_rule)
-        if security_group_name is not None:
-            pulumi.set(__self__, "security_group_name", security_group_name)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[_builtins.str]:
         """
         A description for the security group.<br />
         This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
@@ -61,8 +59,22 @@ class SecurityGroupArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the security group.<br />
+        This name must not start with `sg-`.<br />
+        This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        """
+        return pulumi.get(self, "security_group_name")
+
+    @security_group_name.setter
+    def security_group_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "security_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
@@ -89,29 +101,6 @@ class SecurityGroupArgs:
         pulumi.set(self, "remove_default_outbound_rule", value)
 
     @_builtins.property
-    @pulumi.getter(name="securityGroupName")
-    def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the security group.<br />
-        This name must not start with `sg-`.<br />
-        This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-        """
-        return pulumi.get(self, "security_group_name")
-
-    @security_group_name.setter
-    def security_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "security_group_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "tag")
-
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "tag", value)
-
-    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]]:
         """
@@ -122,6 +111,15 @@ class SecurityGroupArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['SecurityGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['SecurityGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -136,8 +134,8 @@ class _SecurityGroupState:
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['SecurityGroupTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
         :param pulumi.Input[_builtins.str] account_id: The account ID that owns the source or destination security group.
@@ -171,10 +169,10 @@ class _SecurityGroupState:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_name is not None:
             pulumi.set(__self__, "security_group_name", security_group_name)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -286,15 +284,6 @@ class _SecurityGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "tag")
-
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "tag", value)
-
-    @_builtins.property
-    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
@@ -304,6 +293,15 @@ class _SecurityGroupState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['SecurityGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['SecurityGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.type_token("outscale:index/securityGroup:SecurityGroup")
@@ -316,8 +314,8 @@ class SecurityGroup(pulumi.CustomResource):
                  net_id: Optional[pulumi.Input[_builtins.str]] = None,
                  remove_default_outbound_rule: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupTagArgs', 'SecurityGroupTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SecurityGroupTimeoutsArgs', 'SecurityGroupTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a security group.
@@ -388,7 +386,7 @@ class SecurityGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[SecurityGroupArgs] = None,
+                 args: SecurityGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a security group.
@@ -463,8 +461,8 @@ class SecurityGroup(pulumi.CustomResource):
                  net_id: Optional[pulumi.Input[_builtins.str]] = None,
                  remove_default_outbound_rule: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupTagArgs', 'SecurityGroupTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SecurityGroupTimeoutsArgs', 'SecurityGroupTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -474,12 +472,16 @@ class SecurityGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityGroupArgs.__new__(SecurityGroupArgs)
 
+            if description is None and not opts.urn:
+                raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["net_id"] = net_id
             __props__.__dict__["remove_default_outbound_rule"] = remove_default_outbound_rule
+            if security_group_name is None and not opts.urn:
+                raise TypeError("Missing required property 'security_group_name'")
             __props__.__dict__["security_group_name"] = security_group_name
-            __props__.__dict__["tag"] = tag
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["account_id"] = None
             __props__.__dict__["inbound_rules"] = None
             __props__.__dict__["outbound_rules"] = None
@@ -504,8 +506,8 @@ class SecurityGroup(pulumi.CustomResource):
             request_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupTagArgs', 'SecurityGroupTagArgsDict']]]]] = None) -> 'SecurityGroup':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupTagArgs', 'SecurityGroupTagArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['SecurityGroupTimeoutsArgs', 'SecurityGroupTimeoutsArgsDict']]] = None) -> 'SecurityGroup':
         """
         Get an existing SecurityGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -539,8 +541,8 @@ class SecurityGroup(pulumi.CustomResource):
         __props__.__dict__["request_id"] = request_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_name"] = security_group_name
-        __props__.__dict__["tag"] = tag
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["timeouts"] = timeouts
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -553,7 +555,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         A description for the security group.<br />
         This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
@@ -586,7 +588,7 @@ class SecurityGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="removeDefaultOutboundRule")
-    def remove_default_outbound_rule(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def remove_default_outbound_rule(self) -> pulumi.Output[_builtins.bool]:
         """
         (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
         """
@@ -617,14 +619,14 @@ class SecurityGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        return pulumi.get(self, "tag")
-
-    @_builtins.property
-    @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.SecurityGroupTag']]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.SecurityGroupTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

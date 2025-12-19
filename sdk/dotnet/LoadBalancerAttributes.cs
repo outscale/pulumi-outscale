@@ -372,18 +372,6 @@ namespace Pulumi.Outscale
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
 
-        [Input("tags")]
-        private InputList<Inputs.LoadBalancerAttributesTagArgs>? _tags;
-
-        /// <summary>
-        /// One or more tags associated with the load balancer.
-        /// </summary>
-        public InputList<Inputs.LoadBalancerAttributesTagArgs> Tags
-        {
-            get => _tags ?? (_tags = new InputList<Inputs.LoadBalancerAttributesTagArgs>());
-            set => _tags = value;
-        }
-
         public LoadBalancerAttributesArgs()
         {
         }

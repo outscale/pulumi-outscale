@@ -82,8 +82,6 @@ type LookupLoadBalancerArgs struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The ID of the Subnet in which the load balancer was created.
 	Subnets []string `pulumi:"subnets"`
-	// One or more tags associated with the load balancer.
-	Tags []GetLoadBalancerTag `pulumi:"tags"`
 }
 
 // A collection of values returned by getLoadBalancer.
@@ -165,8 +163,6 @@ type LookupLoadBalancerOutputArgs struct {
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
 	// The ID of the Subnet in which the load balancer was created.
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
-	// One or more tags associated with the load balancer.
-	Tags GetLoadBalancerTagArrayInput `pulumi:"tags"`
 }
 
 func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {

@@ -541,28 +541,6 @@ export interface GetLoadBalancerListenerRulesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetLoadBalancerTag {
-    /**
-     * The key of the tag, with a minimum of 1 character.
-     */
-    key?: string;
-    /**
-     * The value of the tag, between 0 and 255 characters.
-     */
-    value?: string;
-}
-
-export interface GetLoadBalancerTagArgs {
-    /**
-     * The key of the tag, with a minimum of 1 character.
-     */
-    key?: pulumi.Input<string>;
-    /**
-     * The value of the tag, between 0 and 255 characters.
-     */
-    value?: pulumi.Input<string>;
-}
-
 export interface GetLoadBalancerTagsFilter {
     name: string;
     values: string[];
@@ -2216,19 +2194,169 @@ export interface NicTag {
     value?: pulumi.Input<string>;
 }
 
-export interface OutboundRuleRule {
-    fromPortRange?: pulumi.Input<number>;
-    ipProtocol?: pulumi.Input<string>;
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    securityGroupsMembers?: pulumi.Input<pulumi.Input<inputs.OutboundRuleRuleSecurityGroupsMember>[]>;
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    toPortRange?: pulumi.Input<number>;
+export interface OksClusterAdmissionFlags {
+    /**
+     * The list of admission plugins that are currently applied to the cluster.
+     */
+    appliedAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of Kubernetes admission plugins to disable.
+     */
+    disableAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of Kubernetes admission plugins that are disabled.
+     */
+    disableAdmissionPluginsActuals?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of Kubernetes admission plugins to enable.
+     */
+    enableAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of Kubernetes admission plugins that are enabled.
+     */
+    enableAdmissionPluginsActuals?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface OutboundRuleRuleSecurityGroupsMember {
-    accountId?: pulumi.Input<string>;
-    securityGroupId?: pulumi.Input<string>;
-    securityGroupName?: pulumi.Input<string>;
+export interface OksClusterAutoMaintenances {
+    /**
+     * The maintenance window configuration for minor Kubernetes upgrades.
+     */
+    minorUpgradeMaintenance?: pulumi.Input<inputs.OksClusterAutoMaintenancesMinorUpgradeMaintenance>;
+    /**
+     * The maintenance window configuration for minor Kubernetes upgrades.
+     */
+    minorUpgradeMaintenanceActual?: pulumi.Input<inputs.OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual>;
+    /**
+     * The maintenance window configuration for patch Kubernetes upgrades.
+     */
+    patchUpgradeMaintenance?: pulumi.Input<inputs.OksClusterAutoMaintenancesPatchUpgradeMaintenance>;
+    /**
+     * The maintenance window configuration for minor Kubernetes upgrades.
+     */
+    patchUpgradeMaintenanceActual?: pulumi.Input<inputs.OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual>;
+}
+
+export interface OksClusterAutoMaintenancesMinorUpgradeMaintenance {
+    /**
+     * The duration of the maintenance window, in hours. By default, `0`.
+     */
+    durationHours?: pulumi.Input<number>;
+    /**
+     * If true, a maintenance window is enabled. By default, true.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The starting time of the maintenance window, in hours. By default, `12`.
+     */
+    startHour?: pulumi.Input<number>;
+    /**
+     * The timezone for the maintenance window. By default, `UTC`.
+     */
+    tz?: pulumi.Input<string>;
+    /**
+     * The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+     */
+    weekDay?: pulumi.Input<string>;
+}
+
+export interface OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual {
+    durationHours?: pulumi.Input<number>;
+    enabled?: pulumi.Input<boolean>;
+    startHour?: pulumi.Input<number>;
+    tz?: pulumi.Input<string>;
+    weekDay?: pulumi.Input<string>;
+}
+
+export interface OksClusterAutoMaintenancesPatchUpgradeMaintenance {
+    /**
+     * The duration of the maintenance window, in hours. By default, `0`.
+     */
+    durationHours?: pulumi.Input<number>;
+    /**
+     * If true, a maintenance window is enabled. By default, true.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The starting time of the maintenance window, in hours. By default, `12`.
+     */
+    startHour?: pulumi.Input<number>;
+    /**
+     * The timezone for the maintenance window. By default, `UTC`.
+     */
+    tz?: pulumi.Input<string>;
+    /**
+     * The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+     */
+    weekDay?: pulumi.Input<string>;
+}
+
+export interface OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
+    durationHours?: pulumi.Input<number>;
+    enabled?: pulumi.Input<boolean>;
+    startHour?: pulumi.Input<number>;
+    tz?: pulumi.Input<string>;
+    weekDay?: pulumi.Input<string>;
+}
+
+export interface OksClusterStatuses {
+    /**
+     * Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+     */
+    availableUpgrade?: pulumi.Input<string>;
+    /**
+     * The timestamp when the cluster was created (date-time).
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * The timestamp when the cluster was deleted (if applicable) (date-time).
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * The status of the cluster.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The timestamp when the cluster was last updated (date-time).
+     */
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface OksClusterTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OksProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface ProviderEndpoint {
@@ -2403,46 +2531,88 @@ export interface SecurityGroupInboundRule {
     /**
      * The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
      */
-    fromPortRange?: pulumi.Input<number>;
+    fromPortRange: pulumi.Input<number>;
     /**
      * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol: pulumi.Input<string>;
     /**
      * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Information about one or more source or destination security groups.
      */
-    securityGroupsMembers?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    securityGroupsMembers: pulumi.Input<pulumi.Input<inputs.SecurityGroupInboundRuleSecurityGroupsMember>[]>;
+    /**
+     * One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+     */
+    serviceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number.
      */
-    toPortRange?: pulumi.Input<number>;
+    toPortRange: pulumi.Input<number>;
+}
+
+export interface SecurityGroupInboundRuleSecurityGroupsMember {
+    /**
+     * The account ID that owns the source or destination security group.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * The ID of the security group.
+     */
+    securityGroupId: pulumi.Input<string>;
+    /**
+     * The name of the security group.<br />
+     * This name must not start with `sg-`.<br />
+     * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+     */
+    securityGroupName: pulumi.Input<string>;
 }
 
 export interface SecurityGroupOutboundRule {
     /**
      * The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
      */
-    fromPortRange?: pulumi.Input<number>;
+    fromPortRange: pulumi.Input<number>;
     /**
      * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol: pulumi.Input<string>;
     /**
      * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Information about one or more source or destination security groups.
      */
-    securityGroupsMembers?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    securityGroupsMembers: pulumi.Input<pulumi.Input<inputs.SecurityGroupOutboundRuleSecurityGroupsMember>[]>;
+    /**
+     * One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+     */
+    serviceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number.
      */
-    toPortRange?: pulumi.Input<number>;
+    toPortRange: pulumi.Input<number>;
+}
+
+export interface SecurityGroupOutboundRuleSecurityGroupsMember {
+    /**
+     * The account ID that owns the source or destination security group.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * The ID of the security group.
+     */
+    securityGroupId: pulumi.Input<string>;
+    /**
+     * The name of the security group.<br />
+     * This name must not start with `sg-`.<br />
+     * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+     */
+    securityGroupName: pulumi.Input<string>;
 }
 
 export interface SecurityGroupRuleRule {
@@ -2487,15 +2657,53 @@ export interface SecurityGroupRuleRuleSecurityGroupsMember {
     securityGroupName?: pulumi.Input<string>;
 }
 
+export interface SecurityGroupRuleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface SecurityGroupTag {
     /**
      * The key of the tag, with a minimum of 1 character.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface SecurityGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface SnapshotAttributesPermissionsToCreateVolumeAdditions {

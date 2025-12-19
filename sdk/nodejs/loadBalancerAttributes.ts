@@ -219,7 +219,7 @@ export class LoadBalancerAttributes extends pulumi.CustomResource {
     /**
      * One or more tags associated with the load balancer.
      */
-    declare public readonly tags: pulumi.Output<outputs.LoadBalancerAttributesTag[]>;
+    declare public /*out*/ readonly tags: pulumi.Output<outputs.LoadBalancerAttributesTag[]>;
 
     /**
      * Create a LoadBalancerAttributes resource with the given unique name, arguments, and options.
@@ -263,7 +263,6 @@ export class LoadBalancerAttributes extends pulumi.CustomResource {
             resourceInputs["loadBalancerPort"] = args?.loadBalancerPort;
             resourceInputs["policyNames"] = args?.policyNames;
             resourceInputs["serverCertificateId"] = args?.serverCertificateId;
-            resourceInputs["tags"] = args?.tags;
             resourceInputs["applicationStickyCookiePolicies"] = undefined /*out*/;
             resourceInputs["backendVmIds"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
@@ -275,6 +274,7 @@ export class LoadBalancerAttributes extends pulumi.CustomResource {
             resourceInputs["sourceSecurityGroups"] = undefined /*out*/;
             resourceInputs["subnets"] = undefined /*out*/;
             resourceInputs["subregionNames"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LoadBalancerAttributes.__pulumiType, name, resourceInputs, opts);
@@ -387,8 +387,4 @@ export interface LoadBalancerAttributesArgs {
      * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `loadBalancerPort` parameter.
      */
     serverCertificateId?: pulumi.Input<string>;
-    /**
-     * One or more tags associated with the load balancer.
-     */
-    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAttributesTag>[]>;
 }

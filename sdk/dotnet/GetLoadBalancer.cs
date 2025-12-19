@@ -224,18 +224,6 @@ namespace Pulumi.Outscale
             set => _subnets = value;
         }
 
-        [Input("tags")]
-        private List<Inputs.GetLoadBalancerTagArgs>? _tags;
-
-        /// <summary>
-        /// One or more tags associated with the load balancer.
-        /// </summary>
-        public List<Inputs.GetLoadBalancerTagArgs> Tags
-        {
-            get => _tags ?? (_tags = new List<Inputs.GetLoadBalancerTagArgs>());
-            set => _tags = value;
-        }
-
         public GetLoadBalancerArgs()
         {
         }
@@ -340,18 +328,6 @@ namespace Pulumi.Outscale
         {
             get => _subnets ?? (_subnets = new InputList<string>());
             set => _subnets = value;
-        }
-
-        [Input("tags")]
-        private InputList<Inputs.GetLoadBalancerTagInputArgs>? _tags;
-
-        /// <summary>
-        /// One or more tags associated with the load balancer.
-        /// </summary>
-        public InputList<Inputs.GetLoadBalancerTagInputArgs> Tags
-        {
-            get => _tags ?? (_tags = new InputList<Inputs.GetLoadBalancerTagInputArgs>());
-            set => _tags = value;
         }
 
         public GetLoadBalancerInvokeArgs()

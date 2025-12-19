@@ -295,7 +295,6 @@ def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAcces
                       net_id: Optional[_builtins.str] = None,
                       security_groups: Optional[Sequence[_builtins.str]] = None,
                       subnets: Optional[Sequence[_builtins.str]] = None,
-                      tags: Optional[Sequence[Union['GetLoadBalancerTagArgs', 'GetLoadBalancerTagArgsDict']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
     Provides information about a load balancer.
@@ -328,7 +327,6 @@ def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAcces
     :param _builtins.str net_id: The ID of the Net for the load balancer.
     :param Sequence[_builtins.str] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
     :param Sequence[_builtins.str] subnets: The ID of the Subnet in which the load balancer was created.
-    :param Sequence[Union['GetLoadBalancerTagArgs', 'GetLoadBalancerTagArgsDict']] tags: One or more tags associated with the load balancer.
     """
     __args__ = dict()
     __args__['accessLogs'] = access_logs
@@ -341,7 +339,6 @@ def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAcces
     __args__['netId'] = net_id
     __args__['securityGroups'] = security_groups
     __args__['subnets'] = subnets
-    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('outscale:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult).value
 
@@ -377,7 +374,6 @@ def get_load_balancer_output(access_logs: Optional[pulumi.Input[Optional[Sequenc
                              net_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              security_groups: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                              subnets: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerTagArgs', 'GetLoadBalancerTagArgsDict']]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
     Provides information about a load balancer.
@@ -410,7 +406,6 @@ def get_load_balancer_output(access_logs: Optional[pulumi.Input[Optional[Sequenc
     :param _builtins.str net_id: The ID of the Net for the load balancer.
     :param Sequence[_builtins.str] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
     :param Sequence[_builtins.str] subnets: The ID of the Subnet in which the load balancer was created.
-    :param Sequence[Union['GetLoadBalancerTagArgs', 'GetLoadBalancerTagArgsDict']] tags: One or more tags associated with the load balancer.
     """
     __args__ = dict()
     __args__['accessLogs'] = access_logs
@@ -423,7 +418,6 @@ def get_load_balancer_output(access_logs: Optional[pulumi.Input[Optional[Sequenc
     __args__['netId'] = net_id
     __args__['securityGroups'] = security_groups
     __args__['subnets'] = subnets
-    __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('outscale:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult)
     return __ret__.apply(lambda __response__: GetLoadBalancerResult(

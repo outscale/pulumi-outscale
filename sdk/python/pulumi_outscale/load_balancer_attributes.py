@@ -26,8 +26,7 @@ class LoadBalancerAttributesArgs:
                  health_check: Optional[pulumi.Input['LoadBalancerAttributesHealthCheckArgs']] = None,
                  load_balancer_port: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]]] = None):
+                 server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancerAttributes resource.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer.
@@ -36,7 +35,6 @@ class LoadBalancerAttributesArgs:
         :param pulumi.Input[_builtins.int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policy_names: The name of the policy you want to enable for the listener.
         :param pulumi.Input[_builtins.str] server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]] tags: One or more tags associated with the load balancer.
         """
         pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if access_log is not None:
@@ -49,8 +47,6 @@ class LoadBalancerAttributesArgs:
             pulumi.set(__self__, "policy_names", policy_names)
         if server_certificate_id is not None:
             pulumi.set(__self__, "server_certificate_id", server_certificate_id)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
@@ -123,18 +119,6 @@ class LoadBalancerAttributesArgs:
     @server_certificate_id.setter
     def server_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "server_certificate_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]]]:
-        """
-        One or more tags associated with the load balancer.
-        """
-        return pulumi.get(self, "tags")
-
-    @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAttributesTagArgs']]]]):
-        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -447,7 +431,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                  load_balancer_port: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerAttributesTagArgs', 'LoadBalancerAttributesTagArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages load balancer attributes.
@@ -566,7 +549,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] load_balancer_port: The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policy_names: The name of the policy you want to enable for the listener.
         :param pulumi.Input[_builtins.str] server_certificate_id: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `load_balancer_port` parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerAttributesTagArgs', 'LoadBalancerAttributesTagArgsDict']]]] tags: One or more tags associated with the load balancer.
         """
         ...
     @overload
@@ -704,7 +686,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                  load_balancer_port: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerAttributesTagArgs', 'LoadBalancerAttributesTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -722,7 +703,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
             __props__.__dict__["load_balancer_port"] = load_balancer_port
             __props__.__dict__["policy_names"] = policy_names
             __props__.__dict__["server_certificate_id"] = server_certificate_id
-            __props__.__dict__["tags"] = tags
             __props__.__dict__["application_sticky_cookie_policies"] = None
             __props__.__dict__["backend_vm_ids"] = None
             __props__.__dict__["dns_name"] = None
@@ -734,6 +714,7 @@ class LoadBalancerAttributes(pulumi.CustomResource):
             __props__.__dict__["source_security_groups"] = None
             __props__.__dict__["subnets"] = None
             __props__.__dict__["subregion_names"] = None
+            __props__.__dict__["tags"] = None
         super(LoadBalancerAttributes, __self__).__init__(
             'outscale:index/loadBalancerAttributes:LoadBalancerAttributes',
             resource_name,

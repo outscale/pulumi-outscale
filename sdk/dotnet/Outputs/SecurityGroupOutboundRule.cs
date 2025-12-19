@@ -16,11 +16,11 @@ namespace Pulumi.Outscale.Outputs
         /// <summary>
         /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         /// </summary>
-        public readonly int? FromPortRange;
+        public readonly int FromPortRange;
         /// <summary>
         /// The IP protocol name (`Tcp`, `Udp`, `Icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         /// </summary>
-        public readonly string? IpProtocol;
+        public readonly string IpProtocol;
         /// <summary>
         /// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
         /// </summary>
@@ -28,28 +28,35 @@ namespace Pulumi.Outscale.Outputs
         /// <summary>
         /// Information about one or more source or destination security groups.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> SecurityGroupsMembers;
+        public readonly ImmutableArray<Outputs.SecurityGroupOutboundRuleSecurityGroupsMember> SecurityGroupsMembers;
+        /// <summary>
+        /// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+        /// </summary>
+        public readonly ImmutableArray<string> ServiceIds;
         /// <summary>
         /// The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         /// </summary>
-        public readonly int? ToPortRange;
+        public readonly int ToPortRange;
 
         [OutputConstructor]
         private SecurityGroupOutboundRule(
-            int? fromPortRange,
+            int fromPortRange,
 
-            string? ipProtocol,
+            string ipProtocol,
 
             ImmutableArray<string> ipRanges,
 
-            ImmutableArray<ImmutableDictionary<string, string>> securityGroupsMembers,
+            ImmutableArray<Outputs.SecurityGroupOutboundRuleSecurityGroupsMember> securityGroupsMembers,
 
-            int? toPortRange)
+            ImmutableArray<string> serviceIds,
+
+            int toPortRange)
         {
             FromPortRange = fromPortRange;
             IpProtocol = ipProtocol;
             IpRanges = ipRanges;
             SecurityGroupsMembers = securityGroupsMembers;
+            ServiceIds = serviceIds;
             ToPortRange = toPortRange;
         }
     }

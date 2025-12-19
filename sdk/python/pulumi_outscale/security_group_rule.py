@@ -29,6 +29,7 @@ class SecurityGroupRuleArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleArgs']]]] = None,
                  security_group_account_id_to_link: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name_to_link: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['SecurityGroupRuleTimeoutsArgs']] = None,
                  to_port_range: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
@@ -56,6 +57,8 @@ class SecurityGroupRuleArgs:
             pulumi.set(__self__, "security_group_account_id_to_link", security_group_account_id_to_link)
         if security_group_name_to_link is not None:
             pulumi.set(__self__, "security_group_name_to_link", security_group_name_to_link)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if to_port_range is not None:
             pulumi.set(__self__, "to_port_range", to_port_range)
 
@@ -156,6 +159,15 @@ class SecurityGroupRuleArgs:
         pulumi.set(self, "security_group_name_to_link", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['SecurityGroupRuleTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['SecurityGroupRuleTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -182,6 +194,7 @@ class _SecurityGroupRuleState:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name_to_link: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['SecurityGroupRuleTimeoutsArgs']] = None,
                  to_port_range: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SecurityGroupRule resources.
@@ -219,6 +232,8 @@ class _SecurityGroupRuleState:
             pulumi.set(__self__, "security_group_name", security_group_name)
         if security_group_name_to_link is not None:
             pulumi.set(__self__, "security_group_name_to_link", security_group_name_to_link)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if to_port_range is not None:
             pulumi.set(__self__, "to_port_range", to_port_range)
 
@@ -352,6 +367,15 @@ class _SecurityGroupRuleState:
         pulumi.set(self, "security_group_name_to_link", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['SecurityGroupRuleTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['SecurityGroupRuleTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="toPortRange")
     def to_port_range(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -378,6 +402,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  security_group_account_id_to_link: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name_to_link: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SecurityGroupRuleTimeoutsArgs', 'SecurityGroupRuleTimeoutsArgsDict']]] = None,
                  to_port_range: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
@@ -559,6 +584,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  security_group_account_id_to_link: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name_to_link: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SecurityGroupRuleTimeoutsArgs', 'SecurityGroupRuleTimeoutsArgsDict']]] = None,
                  to_port_range: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -581,6 +607,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_name_to_link"] = security_group_name_to_link
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["to_port_range"] = to_port_range
             __props__.__dict__["net_id"] = None
             __props__.__dict__["request_id"] = None
@@ -606,6 +633,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_name_to_link: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['SecurityGroupRuleTimeoutsArgs', 'SecurityGroupRuleTimeoutsArgsDict']]] = None,
             to_port_range: Optional[pulumi.Input[_builtins.int]] = None) -> 'SecurityGroupRule':
         """
         Get an existing SecurityGroupRule resource's state with the given name, id, and optional extra
@@ -641,6 +669,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_name"] = security_group_name
         __props__.__dict__["security_group_name_to_link"] = security_group_name_to_link
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["to_port_range"] = to_port_range
         return SecurityGroupRule(resource_name, opts=opts, __props__=__props__)
 
@@ -728,6 +757,11 @@ class SecurityGroupRule(pulumi.CustomResource):
         The ID of a source or destination security group that you want to link to the security group of the rule.
         """
         return pulumi.get(self, "security_group_name_to_link")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.SecurityGroupRuleTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="toPortRange")

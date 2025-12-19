@@ -9458,234 +9458,1832 @@ func (o NicTagArrayOutput) Index(i pulumi.IntInput) NicTagOutput {
 	}).(NicTagOutput)
 }
 
-type OutboundRuleRule struct {
-	FromPortRange         *int                                   `pulumi:"fromPortRange"`
-	IpProtocol            *string                                `pulumi:"ipProtocol"`
-	IpRanges              []string                               `pulumi:"ipRanges"`
-	SecurityGroupsMembers []OutboundRuleRuleSecurityGroupsMember `pulumi:"securityGroupsMembers"`
-	ServiceIds            []string                               `pulumi:"serviceIds"`
-	ToPortRange           *int                                   `pulumi:"toPortRange"`
+type OksClusterAdmissionFlags struct {
+	// The list of admission plugins that are currently applied to the cluster.
+	AppliedAdmissionPlugins []string `pulumi:"appliedAdmissionPlugins"`
+	// The list of Kubernetes admission plugins to disable.
+	DisableAdmissionPlugins []string `pulumi:"disableAdmissionPlugins"`
+	// The list of Kubernetes admission plugins that are disabled.
+	DisableAdmissionPluginsActuals []string `pulumi:"disableAdmissionPluginsActuals"`
+	// The list of Kubernetes admission plugins to enable.
+	EnableAdmissionPlugins []string `pulumi:"enableAdmissionPlugins"`
+	// The list of Kubernetes admission plugins that are enabled.
+	EnableAdmissionPluginsActuals []string `pulumi:"enableAdmissionPluginsActuals"`
 }
 
-// OutboundRuleRuleInput is an input type that accepts OutboundRuleRuleArgs and OutboundRuleRuleOutput values.
-// You can construct a concrete instance of `OutboundRuleRuleInput` via:
+// OksClusterAdmissionFlagsInput is an input type that accepts OksClusterAdmissionFlagsArgs and OksClusterAdmissionFlagsOutput values.
+// You can construct a concrete instance of `OksClusterAdmissionFlagsInput` via:
 //
-//	OutboundRuleRuleArgs{...}
-type OutboundRuleRuleInput interface {
+//	OksClusterAdmissionFlagsArgs{...}
+type OksClusterAdmissionFlagsInput interface {
 	pulumi.Input
 
-	ToOutboundRuleRuleOutput() OutboundRuleRuleOutput
-	ToOutboundRuleRuleOutputWithContext(context.Context) OutboundRuleRuleOutput
+	ToOksClusterAdmissionFlagsOutput() OksClusterAdmissionFlagsOutput
+	ToOksClusterAdmissionFlagsOutputWithContext(context.Context) OksClusterAdmissionFlagsOutput
 }
 
-type OutboundRuleRuleArgs struct {
-	FromPortRange         pulumi.IntPtrInput                             `pulumi:"fromPortRange"`
-	IpProtocol            pulumi.StringPtrInput                          `pulumi:"ipProtocol"`
-	IpRanges              pulumi.StringArrayInput                        `pulumi:"ipRanges"`
-	SecurityGroupsMembers OutboundRuleRuleSecurityGroupsMemberArrayInput `pulumi:"securityGroupsMembers"`
-	ServiceIds            pulumi.StringArrayInput                        `pulumi:"serviceIds"`
-	ToPortRange           pulumi.IntPtrInput                             `pulumi:"toPortRange"`
+type OksClusterAdmissionFlagsArgs struct {
+	// The list of admission plugins that are currently applied to the cluster.
+	AppliedAdmissionPlugins pulumi.StringArrayInput `pulumi:"appliedAdmissionPlugins"`
+	// The list of Kubernetes admission plugins to disable.
+	DisableAdmissionPlugins pulumi.StringArrayInput `pulumi:"disableAdmissionPlugins"`
+	// The list of Kubernetes admission plugins that are disabled.
+	DisableAdmissionPluginsActuals pulumi.StringArrayInput `pulumi:"disableAdmissionPluginsActuals"`
+	// The list of Kubernetes admission plugins to enable.
+	EnableAdmissionPlugins pulumi.StringArrayInput `pulumi:"enableAdmissionPlugins"`
+	// The list of Kubernetes admission plugins that are enabled.
+	EnableAdmissionPluginsActuals pulumi.StringArrayInput `pulumi:"enableAdmissionPluginsActuals"`
 }
 
-func (OutboundRuleRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutboundRuleRule)(nil)).Elem()
+func (OksClusterAdmissionFlagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAdmissionFlags)(nil)).Elem()
 }
 
-func (i OutboundRuleRuleArgs) ToOutboundRuleRuleOutput() OutboundRuleRuleOutput {
-	return i.ToOutboundRuleRuleOutputWithContext(context.Background())
+func (i OksClusterAdmissionFlagsArgs) ToOksClusterAdmissionFlagsOutput() OksClusterAdmissionFlagsOutput {
+	return i.ToOksClusterAdmissionFlagsOutputWithContext(context.Background())
 }
 
-func (i OutboundRuleRuleArgs) ToOutboundRuleRuleOutputWithContext(ctx context.Context) OutboundRuleRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutboundRuleRuleOutput)
+func (i OksClusterAdmissionFlagsArgs) ToOksClusterAdmissionFlagsOutputWithContext(ctx context.Context) OksClusterAdmissionFlagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAdmissionFlagsOutput)
 }
 
-// OutboundRuleRuleArrayInput is an input type that accepts OutboundRuleRuleArray and OutboundRuleRuleArrayOutput values.
-// You can construct a concrete instance of `OutboundRuleRuleArrayInput` via:
+func (i OksClusterAdmissionFlagsArgs) ToOksClusterAdmissionFlagsPtrOutput() OksClusterAdmissionFlagsPtrOutput {
+	return i.ToOksClusterAdmissionFlagsPtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterAdmissionFlagsArgs) ToOksClusterAdmissionFlagsPtrOutputWithContext(ctx context.Context) OksClusterAdmissionFlagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAdmissionFlagsOutput).ToOksClusterAdmissionFlagsPtrOutputWithContext(ctx)
+}
+
+// OksClusterAdmissionFlagsPtrInput is an input type that accepts OksClusterAdmissionFlagsArgs, OksClusterAdmissionFlagsPtr and OksClusterAdmissionFlagsPtrOutput values.
+// You can construct a concrete instance of `OksClusterAdmissionFlagsPtrInput` via:
 //
-//	OutboundRuleRuleArray{ OutboundRuleRuleArgs{...} }
-type OutboundRuleRuleArrayInput interface {
+//	        OksClusterAdmissionFlagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterAdmissionFlagsPtrInput interface {
 	pulumi.Input
 
-	ToOutboundRuleRuleArrayOutput() OutboundRuleRuleArrayOutput
-	ToOutboundRuleRuleArrayOutputWithContext(context.Context) OutboundRuleRuleArrayOutput
+	ToOksClusterAdmissionFlagsPtrOutput() OksClusterAdmissionFlagsPtrOutput
+	ToOksClusterAdmissionFlagsPtrOutputWithContext(context.Context) OksClusterAdmissionFlagsPtrOutput
 }
 
-type OutboundRuleRuleArray []OutboundRuleRuleInput
+type oksClusterAdmissionFlagsPtrType OksClusterAdmissionFlagsArgs
 
-func (OutboundRuleRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OutboundRuleRule)(nil)).Elem()
+func OksClusterAdmissionFlagsPtr(v *OksClusterAdmissionFlagsArgs) OksClusterAdmissionFlagsPtrInput {
+	return (*oksClusterAdmissionFlagsPtrType)(v)
 }
 
-func (i OutboundRuleRuleArray) ToOutboundRuleRuleArrayOutput() OutboundRuleRuleArrayOutput {
-	return i.ToOutboundRuleRuleArrayOutputWithContext(context.Background())
+func (*oksClusterAdmissionFlagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAdmissionFlags)(nil)).Elem()
 }
 
-func (i OutboundRuleRuleArray) ToOutboundRuleRuleArrayOutputWithContext(ctx context.Context) OutboundRuleRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutboundRuleRuleArrayOutput)
+func (i *oksClusterAdmissionFlagsPtrType) ToOksClusterAdmissionFlagsPtrOutput() OksClusterAdmissionFlagsPtrOutput {
+	return i.ToOksClusterAdmissionFlagsPtrOutputWithContext(context.Background())
 }
 
-type OutboundRuleRuleOutput struct{ *pulumi.OutputState }
-
-func (OutboundRuleRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutboundRuleRule)(nil)).Elem()
+func (i *oksClusterAdmissionFlagsPtrType) ToOksClusterAdmissionFlagsPtrOutputWithContext(ctx context.Context) OksClusterAdmissionFlagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAdmissionFlagsPtrOutput)
 }
 
-func (o OutboundRuleRuleOutput) ToOutboundRuleRuleOutput() OutboundRuleRuleOutput {
+type OksClusterAdmissionFlagsOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAdmissionFlagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAdmissionFlags)(nil)).Elem()
+}
+
+func (o OksClusterAdmissionFlagsOutput) ToOksClusterAdmissionFlagsOutput() OksClusterAdmissionFlagsOutput {
 	return o
 }
 
-func (o OutboundRuleRuleOutput) ToOutboundRuleRuleOutputWithContext(ctx context.Context) OutboundRuleRuleOutput {
+func (o OksClusterAdmissionFlagsOutput) ToOksClusterAdmissionFlagsOutputWithContext(ctx context.Context) OksClusterAdmissionFlagsOutput {
 	return o
 }
 
-func (o OutboundRuleRuleOutput) FromPortRange() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OutboundRuleRule) *int { return v.FromPortRange }).(pulumi.IntPtrOutput)
+func (o OksClusterAdmissionFlagsOutput) ToOksClusterAdmissionFlagsPtrOutput() OksClusterAdmissionFlagsPtrOutput {
+	return o.ToOksClusterAdmissionFlagsPtrOutputWithContext(context.Background())
 }
 
-func (o OutboundRuleRuleOutput) IpProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OutboundRuleRule) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+func (o OksClusterAdmissionFlagsOutput) ToOksClusterAdmissionFlagsPtrOutputWithContext(ctx context.Context) OksClusterAdmissionFlagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterAdmissionFlags) *OksClusterAdmissionFlags {
+		return &v
+	}).(OksClusterAdmissionFlagsPtrOutput)
 }
 
-func (o OutboundRuleRuleOutput) IpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OutboundRuleRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+// The list of admission plugins that are currently applied to the cluster.
+func (o OksClusterAdmissionFlagsOutput) AppliedAdmissionPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OksClusterAdmissionFlags) []string { return v.AppliedAdmissionPlugins }).(pulumi.StringArrayOutput)
 }
 
-func (o OutboundRuleRuleOutput) SecurityGroupsMembers() OutboundRuleRuleSecurityGroupsMemberArrayOutput {
-	return o.ApplyT(func(v OutboundRuleRule) []OutboundRuleRuleSecurityGroupsMember { return v.SecurityGroupsMembers }).(OutboundRuleRuleSecurityGroupsMemberArrayOutput)
+// The list of Kubernetes admission plugins to disable.
+func (o OksClusterAdmissionFlagsOutput) DisableAdmissionPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OksClusterAdmissionFlags) []string { return v.DisableAdmissionPlugins }).(pulumi.StringArrayOutput)
 }
 
-func (o OutboundRuleRuleOutput) ServiceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v OutboundRuleRule) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
+// The list of Kubernetes admission plugins that are disabled.
+func (o OksClusterAdmissionFlagsOutput) DisableAdmissionPluginsActuals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OksClusterAdmissionFlags) []string { return v.DisableAdmissionPluginsActuals }).(pulumi.StringArrayOutput)
 }
 
-func (o OutboundRuleRuleOutput) ToPortRange() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OutboundRuleRule) *int { return v.ToPortRange }).(pulumi.IntPtrOutput)
+// The list of Kubernetes admission plugins to enable.
+func (o OksClusterAdmissionFlagsOutput) EnableAdmissionPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OksClusterAdmissionFlags) []string { return v.EnableAdmissionPlugins }).(pulumi.StringArrayOutput)
 }
 
-type OutboundRuleRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (OutboundRuleRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OutboundRuleRule)(nil)).Elem()
+// The list of Kubernetes admission plugins that are enabled.
+func (o OksClusterAdmissionFlagsOutput) EnableAdmissionPluginsActuals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OksClusterAdmissionFlags) []string { return v.EnableAdmissionPluginsActuals }).(pulumi.StringArrayOutput)
 }
 
-func (o OutboundRuleRuleArrayOutput) ToOutboundRuleRuleArrayOutput() OutboundRuleRuleArrayOutput {
+type OksClusterAdmissionFlagsPtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAdmissionFlagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAdmissionFlags)(nil)).Elem()
+}
+
+func (o OksClusterAdmissionFlagsPtrOutput) ToOksClusterAdmissionFlagsPtrOutput() OksClusterAdmissionFlagsPtrOutput {
 	return o
 }
 
-func (o OutboundRuleRuleArrayOutput) ToOutboundRuleRuleArrayOutputWithContext(ctx context.Context) OutboundRuleRuleArrayOutput {
+func (o OksClusterAdmissionFlagsPtrOutput) ToOksClusterAdmissionFlagsPtrOutputWithContext(ctx context.Context) OksClusterAdmissionFlagsPtrOutput {
 	return o
 }
 
-func (o OutboundRuleRuleArrayOutput) Index(i pulumi.IntInput) OutboundRuleRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OutboundRuleRule {
-		return vs[0].([]OutboundRuleRule)[vs[1].(int)]
-	}).(OutboundRuleRuleOutput)
+func (o OksClusterAdmissionFlagsPtrOutput) Elem() OksClusterAdmissionFlagsOutput {
+	return o.ApplyT(func(v *OksClusterAdmissionFlags) OksClusterAdmissionFlags {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterAdmissionFlags
+		return ret
+	}).(OksClusterAdmissionFlagsOutput)
 }
 
-type OutboundRuleRuleSecurityGroupsMember struct {
-	AccountId         *string `pulumi:"accountId"`
-	SecurityGroupId   *string `pulumi:"securityGroupId"`
-	SecurityGroupName *string `pulumi:"securityGroupName"`
+// The list of admission plugins that are currently applied to the cluster.
+func (o OksClusterAdmissionFlagsPtrOutput) AppliedAdmissionPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OksClusterAdmissionFlags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AppliedAdmissionPlugins
+	}).(pulumi.StringArrayOutput)
 }
 
-// OutboundRuleRuleSecurityGroupsMemberInput is an input type that accepts OutboundRuleRuleSecurityGroupsMemberArgs and OutboundRuleRuleSecurityGroupsMemberOutput values.
-// You can construct a concrete instance of `OutboundRuleRuleSecurityGroupsMemberInput` via:
+// The list of Kubernetes admission plugins to disable.
+func (o OksClusterAdmissionFlagsPtrOutput) DisableAdmissionPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OksClusterAdmissionFlags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAdmissionPlugins
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of Kubernetes admission plugins that are disabled.
+func (o OksClusterAdmissionFlagsPtrOutput) DisableAdmissionPluginsActuals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OksClusterAdmissionFlags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAdmissionPluginsActuals
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of Kubernetes admission plugins to enable.
+func (o OksClusterAdmissionFlagsPtrOutput) EnableAdmissionPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OksClusterAdmissionFlags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAdmissionPlugins
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of Kubernetes admission plugins that are enabled.
+func (o OksClusterAdmissionFlagsPtrOutput) EnableAdmissionPluginsActuals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OksClusterAdmissionFlags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAdmissionPluginsActuals
+	}).(pulumi.StringArrayOutput)
+}
+
+type OksClusterAutoMaintenances struct {
+	// The maintenance window configuration for minor Kubernetes upgrades.
+	MinorUpgradeMaintenance *OksClusterAutoMaintenancesMinorUpgradeMaintenance `pulumi:"minorUpgradeMaintenance"`
+	// The maintenance window configuration for minor Kubernetes upgrades.
+	MinorUpgradeMaintenanceActual *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual `pulumi:"minorUpgradeMaintenanceActual"`
+	// The maintenance window configuration for patch Kubernetes upgrades.
+	PatchUpgradeMaintenance *OksClusterAutoMaintenancesPatchUpgradeMaintenance `pulumi:"patchUpgradeMaintenance"`
+	// The maintenance window configuration for minor Kubernetes upgrades.
+	PatchUpgradeMaintenanceActual *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual `pulumi:"patchUpgradeMaintenanceActual"`
+}
+
+// OksClusterAutoMaintenancesInput is an input type that accepts OksClusterAutoMaintenancesArgs and OksClusterAutoMaintenancesOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesInput` via:
 //
-//	OutboundRuleRuleSecurityGroupsMemberArgs{...}
-type OutboundRuleRuleSecurityGroupsMemberInput interface {
+//	OksClusterAutoMaintenancesArgs{...}
+type OksClusterAutoMaintenancesInput interface {
 	pulumi.Input
 
-	ToOutboundRuleRuleSecurityGroupsMemberOutput() OutboundRuleRuleSecurityGroupsMemberOutput
-	ToOutboundRuleRuleSecurityGroupsMemberOutputWithContext(context.Context) OutboundRuleRuleSecurityGroupsMemberOutput
+	ToOksClusterAutoMaintenancesOutput() OksClusterAutoMaintenancesOutput
+	ToOksClusterAutoMaintenancesOutputWithContext(context.Context) OksClusterAutoMaintenancesOutput
 }
 
-type OutboundRuleRuleSecurityGroupsMemberArgs struct {
-	AccountId         pulumi.StringPtrInput `pulumi:"accountId"`
-	SecurityGroupId   pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
+type OksClusterAutoMaintenancesArgs struct {
+	// The maintenance window configuration for minor Kubernetes upgrades.
+	MinorUpgradeMaintenance OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrInput `pulumi:"minorUpgradeMaintenance"`
+	// The maintenance window configuration for minor Kubernetes upgrades.
+	MinorUpgradeMaintenanceActual OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrInput `pulumi:"minorUpgradeMaintenanceActual"`
+	// The maintenance window configuration for patch Kubernetes upgrades.
+	PatchUpgradeMaintenance OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrInput `pulumi:"patchUpgradeMaintenance"`
+	// The maintenance window configuration for minor Kubernetes upgrades.
+	PatchUpgradeMaintenanceActual OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrInput `pulumi:"patchUpgradeMaintenanceActual"`
 }
 
-func (OutboundRuleRuleSecurityGroupsMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutboundRuleRuleSecurityGroupsMember)(nil)).Elem()
+func (OksClusterAutoMaintenancesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenances)(nil)).Elem()
 }
 
-func (i OutboundRuleRuleSecurityGroupsMemberArgs) ToOutboundRuleRuleSecurityGroupsMemberOutput() OutboundRuleRuleSecurityGroupsMemberOutput {
-	return i.ToOutboundRuleRuleSecurityGroupsMemberOutputWithContext(context.Background())
+func (i OksClusterAutoMaintenancesArgs) ToOksClusterAutoMaintenancesOutput() OksClusterAutoMaintenancesOutput {
+	return i.ToOksClusterAutoMaintenancesOutputWithContext(context.Background())
 }
 
-func (i OutboundRuleRuleSecurityGroupsMemberArgs) ToOutboundRuleRuleSecurityGroupsMemberOutputWithContext(ctx context.Context) OutboundRuleRuleSecurityGroupsMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutboundRuleRuleSecurityGroupsMemberOutput)
+func (i OksClusterAutoMaintenancesArgs) ToOksClusterAutoMaintenancesOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesOutput)
 }
 
-// OutboundRuleRuleSecurityGroupsMemberArrayInput is an input type that accepts OutboundRuleRuleSecurityGroupsMemberArray and OutboundRuleRuleSecurityGroupsMemberArrayOutput values.
-// You can construct a concrete instance of `OutboundRuleRuleSecurityGroupsMemberArrayInput` via:
+func (i OksClusterAutoMaintenancesArgs) ToOksClusterAutoMaintenancesPtrOutput() OksClusterAutoMaintenancesPtrOutput {
+	return i.ToOksClusterAutoMaintenancesPtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesArgs) ToOksClusterAutoMaintenancesPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesOutput).ToOksClusterAutoMaintenancesPtrOutputWithContext(ctx)
+}
+
+// OksClusterAutoMaintenancesPtrInput is an input type that accepts OksClusterAutoMaintenancesArgs, OksClusterAutoMaintenancesPtr and OksClusterAutoMaintenancesPtrOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesPtrInput` via:
 //
-//	OutboundRuleRuleSecurityGroupsMemberArray{ OutboundRuleRuleSecurityGroupsMemberArgs{...} }
-type OutboundRuleRuleSecurityGroupsMemberArrayInput interface {
+//	        OksClusterAutoMaintenancesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterAutoMaintenancesPtrInput interface {
 	pulumi.Input
 
-	ToOutboundRuleRuleSecurityGroupsMemberArrayOutput() OutboundRuleRuleSecurityGroupsMemberArrayOutput
-	ToOutboundRuleRuleSecurityGroupsMemberArrayOutputWithContext(context.Context) OutboundRuleRuleSecurityGroupsMemberArrayOutput
+	ToOksClusterAutoMaintenancesPtrOutput() OksClusterAutoMaintenancesPtrOutput
+	ToOksClusterAutoMaintenancesPtrOutputWithContext(context.Context) OksClusterAutoMaintenancesPtrOutput
 }
 
-type OutboundRuleRuleSecurityGroupsMemberArray []OutboundRuleRuleSecurityGroupsMemberInput
+type oksClusterAutoMaintenancesPtrType OksClusterAutoMaintenancesArgs
 
-func (OutboundRuleRuleSecurityGroupsMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OutboundRuleRuleSecurityGroupsMember)(nil)).Elem()
+func OksClusterAutoMaintenancesPtr(v *OksClusterAutoMaintenancesArgs) OksClusterAutoMaintenancesPtrInput {
+	return (*oksClusterAutoMaintenancesPtrType)(v)
 }
 
-func (i OutboundRuleRuleSecurityGroupsMemberArray) ToOutboundRuleRuleSecurityGroupsMemberArrayOutput() OutboundRuleRuleSecurityGroupsMemberArrayOutput {
-	return i.ToOutboundRuleRuleSecurityGroupsMemberArrayOutputWithContext(context.Background())
+func (*oksClusterAutoMaintenancesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenances)(nil)).Elem()
 }
 
-func (i OutboundRuleRuleSecurityGroupsMemberArray) ToOutboundRuleRuleSecurityGroupsMemberArrayOutputWithContext(ctx context.Context) OutboundRuleRuleSecurityGroupsMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OutboundRuleRuleSecurityGroupsMemberArrayOutput)
+func (i *oksClusterAutoMaintenancesPtrType) ToOksClusterAutoMaintenancesPtrOutput() OksClusterAutoMaintenancesPtrOutput {
+	return i.ToOksClusterAutoMaintenancesPtrOutputWithContext(context.Background())
 }
 
-type OutboundRuleRuleSecurityGroupsMemberOutput struct{ *pulumi.OutputState }
-
-func (OutboundRuleRuleSecurityGroupsMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OutboundRuleRuleSecurityGroupsMember)(nil)).Elem()
+func (i *oksClusterAutoMaintenancesPtrType) ToOksClusterAutoMaintenancesPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesPtrOutput)
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberOutput) ToOutboundRuleRuleSecurityGroupsMemberOutput() OutboundRuleRuleSecurityGroupsMemberOutput {
+type OksClusterAutoMaintenancesOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenances)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesOutput) ToOksClusterAutoMaintenancesOutput() OksClusterAutoMaintenancesOutput {
 	return o
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberOutput) ToOutboundRuleRuleSecurityGroupsMemberOutputWithContext(ctx context.Context) OutboundRuleRuleSecurityGroupsMemberOutput {
+func (o OksClusterAutoMaintenancesOutput) ToOksClusterAutoMaintenancesOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesOutput {
 	return o
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OutboundRuleRuleSecurityGroupsMember) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o OksClusterAutoMaintenancesOutput) ToOksClusterAutoMaintenancesPtrOutput() OksClusterAutoMaintenancesPtrOutput {
+	return o.ToOksClusterAutoMaintenancesPtrOutputWithContext(context.Background())
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberOutput) SecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OutboundRuleRuleSecurityGroupsMember) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+func (o OksClusterAutoMaintenancesOutput) ToOksClusterAutoMaintenancesPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterAutoMaintenances) *OksClusterAutoMaintenances {
+		return &v
+	}).(OksClusterAutoMaintenancesPtrOutput)
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberOutput) SecurityGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OutboundRuleRuleSecurityGroupsMember) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+// The maintenance window configuration for minor Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesOutput) MinorUpgradeMaintenance() OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenances) *OksClusterAutoMaintenancesMinorUpgradeMaintenance {
+		return v.MinorUpgradeMaintenance
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput)
 }
 
-type OutboundRuleRuleSecurityGroupsMemberArrayOutput struct{ *pulumi.OutputState }
-
-func (OutboundRuleRuleSecurityGroupsMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OutboundRuleRuleSecurityGroupsMember)(nil)).Elem()
+// The maintenance window configuration for minor Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesOutput) MinorUpgradeMaintenanceActual() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenances) *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual {
+		return v.MinorUpgradeMaintenanceActual
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput)
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberArrayOutput) ToOutboundRuleRuleSecurityGroupsMemberArrayOutput() OutboundRuleRuleSecurityGroupsMemberArrayOutput {
+// The maintenance window configuration for patch Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesOutput) PatchUpgradeMaintenance() OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenances) *OksClusterAutoMaintenancesPatchUpgradeMaintenance {
+		return v.PatchUpgradeMaintenance
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput)
+}
+
+// The maintenance window configuration for minor Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesOutput) PatchUpgradeMaintenanceActual() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenances) *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
+		return v.PatchUpgradeMaintenanceActual
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput)
+}
+
+type OksClusterAutoMaintenancesPtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenances)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesPtrOutput) ToOksClusterAutoMaintenancesPtrOutput() OksClusterAutoMaintenancesPtrOutput {
 	return o
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberArrayOutput) ToOutboundRuleRuleSecurityGroupsMemberArrayOutputWithContext(ctx context.Context) OutboundRuleRuleSecurityGroupsMemberArrayOutput {
+func (o OksClusterAutoMaintenancesPtrOutput) ToOksClusterAutoMaintenancesPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPtrOutput {
 	return o
 }
 
-func (o OutboundRuleRuleSecurityGroupsMemberArrayOutput) Index(i pulumi.IntInput) OutboundRuleRuleSecurityGroupsMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OutboundRuleRuleSecurityGroupsMember {
-		return vs[0].([]OutboundRuleRuleSecurityGroupsMember)[vs[1].(int)]
-	}).(OutboundRuleRuleSecurityGroupsMemberOutput)
+func (o OksClusterAutoMaintenancesPtrOutput) Elem() OksClusterAutoMaintenancesOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenances) OksClusterAutoMaintenances {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterAutoMaintenances
+		return ret
+	}).(OksClusterAutoMaintenancesOutput)
+}
+
+// The maintenance window configuration for minor Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesPtrOutput) MinorUpgradeMaintenance() OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenances) *OksClusterAutoMaintenancesMinorUpgradeMaintenance {
+		if v == nil {
+			return nil
+		}
+		return v.MinorUpgradeMaintenance
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput)
+}
+
+// The maintenance window configuration for minor Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesPtrOutput) MinorUpgradeMaintenanceActual() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenances) *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual {
+		if v == nil {
+			return nil
+		}
+		return v.MinorUpgradeMaintenanceActual
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput)
+}
+
+// The maintenance window configuration for patch Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesPtrOutput) PatchUpgradeMaintenance() OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenances) *OksClusterAutoMaintenancesPatchUpgradeMaintenance {
+		if v == nil {
+			return nil
+		}
+		return v.PatchUpgradeMaintenance
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput)
+}
+
+// The maintenance window configuration for minor Kubernetes upgrades.
+func (o OksClusterAutoMaintenancesPtrOutput) PatchUpgradeMaintenanceActual() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenances) *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
+		if v == nil {
+			return nil
+		}
+		return v.PatchUpgradeMaintenanceActual
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput)
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenance struct {
+	// The duration of the maintenance window, in hours. By default, `0`.
+	DurationHours *int `pulumi:"durationHours"`
+	// If true, a maintenance window is enabled. By default, true.
+	Enabled *bool `pulumi:"enabled"`
+	// The starting time of the maintenance window, in hours. By default, `12`.
+	StartHour *int `pulumi:"startHour"`
+	// The timezone for the maintenance window. By default, `UTC`.
+	Tz *string `pulumi:"tz"`
+	// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+	WeekDay *string `pulumi:"weekDay"`
+}
+
+// OksClusterAutoMaintenancesMinorUpgradeMaintenanceInput is an input type that accepts OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs and OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesMinorUpgradeMaintenanceInput` via:
+//
+//	OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs{...}
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceOutputWithContext(context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs struct {
+	// The duration of the maintenance window, in hours. By default, `0`.
+	DurationHours pulumi.IntPtrInput `pulumi:"durationHours"`
+	// If true, a maintenance window is enabled. By default, true.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The starting time of the maintenance window, in hours. By default, `12`.
+	StartHour pulumi.IntPtrInput `pulumi:"startHour"`
+	// The timezone for the maintenance window. By default, `UTC`.
+	Tz pulumi.StringPtrInput `pulumi:"tz"`
+	// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+	WeekDay pulumi.StringPtrInput `pulumi:"weekDay"`
+}
+
+func (OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenance)(nil)).Elem()
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput {
+	return i.ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput)
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return i.ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput).ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(ctx)
+}
+
+// OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrInput is an input type that accepts OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs, OksClusterAutoMaintenancesMinorUpgradeMaintenancePtr and OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrInput` via:
+//
+//	        OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput
+}
+
+type oksClusterAutoMaintenancesMinorUpgradeMaintenancePtrType OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs
+
+func OksClusterAutoMaintenancesMinorUpgradeMaintenancePtr(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs) OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrInput {
+	return (*oksClusterAutoMaintenancesMinorUpgradeMaintenancePtrType)(v)
+}
+
+func (*oksClusterAutoMaintenancesMinorUpgradeMaintenancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesMinorUpgradeMaintenance)(nil)).Elem()
+}
+
+func (i *oksClusterAutoMaintenancesMinorUpgradeMaintenancePtrType) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return i.ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i *oksClusterAutoMaintenancesMinorUpgradeMaintenancePtrType) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput)
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenance)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return o.ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterAutoMaintenancesMinorUpgradeMaintenance) *OksClusterAutoMaintenancesMinorUpgradeMaintenance {
+		return &v
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput)
+}
+
+// The duration of the maintenance window, in hours. By default, `0`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenance) *int { return v.DurationHours }).(pulumi.IntPtrOutput)
+}
+
+// If true, a maintenance window is enabled. By default, true.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenance) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The starting time of the maintenance window, in hours. By default, `12`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenance) *int { return v.StartHour }).(pulumi.IntPtrOutput)
+}
+
+// The timezone for the maintenance window. By default, `UTC`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenance) *string { return v.Tz }).(pulumi.StringPtrOutput)
+}
+
+// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenance) *string { return v.WeekDay }).(pulumi.StringPtrOutput)
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesMinorUpgradeMaintenance)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) Elem() OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenance) OksClusterAutoMaintenancesMinorUpgradeMaintenance {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterAutoMaintenancesMinorUpgradeMaintenance
+		return ret
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput)
+}
+
+// The duration of the maintenance window, in hours. By default, `0`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenance) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// If true, a maintenance window is enabled. By default, true.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The starting time of the maintenance window, in hours. By default, `12`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenance) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// The timezone for the maintenance window. By default, `UTC`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tz
+	}).(pulumi.StringPtrOutput)
+}
+
+// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WeekDay
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual struct {
+	DurationHours *int    `pulumi:"durationHours"`
+	Enabled       *bool   `pulumi:"enabled"`
+	StartHour     *int    `pulumi:"startHour"`
+	Tz            *string `pulumi:"tz"`
+	WeekDay       *string `pulumi:"weekDay"`
+}
+
+// OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualInput is an input type that accepts OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs and OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualInput` via:
+//
+//	OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs{...}
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutputWithContext(context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs struct {
+	DurationHours pulumi.IntPtrInput    `pulumi:"durationHours"`
+	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
+	StartHour     pulumi.IntPtrInput    `pulumi:"startHour"`
+	Tz            pulumi.StringPtrInput `pulumi:"tz"`
+	WeekDay       pulumi.StringPtrInput `pulumi:"weekDay"`
+}
+
+func (OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput {
+	return i.ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput)
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return i.ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput).ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(ctx)
+}
+
+// OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrInput is an input type that accepts OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs, OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtr and OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrInput` via:
+//
+//	        OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput
+	ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput
+}
+
+type oksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrType OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs
+
+func OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtr(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrInput {
+	return (*oksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrType)(v)
+}
+
+func (*oksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (i *oksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrType) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return i.ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(context.Background())
+}
+
+func (i *oksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrType) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput)
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return o.ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(context.Background())
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual {
+		return &v
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *int { return v.DurationHours }).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *int { return v.StartHour }).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *string { return v.Tz }).(pulumi.StringPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *string { return v.WeekDay }).(pulumi.StringPtrOutput)
+}
+
+type OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) ToOksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) Elem() OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual
+		return ret
+	}).(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationHours
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tz
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WeekDay
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenance struct {
+	// The duration of the maintenance window, in hours. By default, `0`.
+	DurationHours *int `pulumi:"durationHours"`
+	// If true, a maintenance window is enabled. By default, true.
+	Enabled *bool `pulumi:"enabled"`
+	// The starting time of the maintenance window, in hours. By default, `12`.
+	StartHour *int `pulumi:"startHour"`
+	// The timezone for the maintenance window. By default, `UTC`.
+	Tz *string `pulumi:"tz"`
+	// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+	WeekDay *string `pulumi:"weekDay"`
+}
+
+// OksClusterAutoMaintenancesPatchUpgradeMaintenanceInput is an input type that accepts OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs and OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesPatchUpgradeMaintenanceInput` via:
+//
+//	OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs{...}
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceOutputWithContext(context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs struct {
+	// The duration of the maintenance window, in hours. By default, `0`.
+	DurationHours pulumi.IntPtrInput `pulumi:"durationHours"`
+	// If true, a maintenance window is enabled. By default, true.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The starting time of the maintenance window, in hours. By default, `12`.
+	StartHour pulumi.IntPtrInput `pulumi:"startHour"`
+	// The timezone for the maintenance window. By default, `UTC`.
+	Tz pulumi.StringPtrInput `pulumi:"tz"`
+	// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+	WeekDay pulumi.StringPtrInput `pulumi:"weekDay"`
+}
+
+func (OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenance)(nil)).Elem()
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput {
+	return i.ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput)
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return i.ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput).ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(ctx)
+}
+
+// OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrInput is an input type that accepts OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs, OksClusterAutoMaintenancesPatchUpgradeMaintenancePtr and OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrInput` via:
+//
+//	        OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput
+}
+
+type oksClusterAutoMaintenancesPatchUpgradeMaintenancePtrType OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs
+
+func OksClusterAutoMaintenancesPatchUpgradeMaintenancePtr(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs) OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrInput {
+	return (*oksClusterAutoMaintenancesPatchUpgradeMaintenancePtrType)(v)
+}
+
+func (*oksClusterAutoMaintenancesPatchUpgradeMaintenancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesPatchUpgradeMaintenance)(nil)).Elem()
+}
+
+func (i *oksClusterAutoMaintenancesPatchUpgradeMaintenancePtrType) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return i.ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i *oksClusterAutoMaintenancesPatchUpgradeMaintenancePtrType) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput)
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenance)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return o.ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterAutoMaintenancesPatchUpgradeMaintenance) *OksClusterAutoMaintenancesPatchUpgradeMaintenance {
+		return &v
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput)
+}
+
+// The duration of the maintenance window, in hours. By default, `0`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenance) *int { return v.DurationHours }).(pulumi.IntPtrOutput)
+}
+
+// If true, a maintenance window is enabled. By default, true.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenance) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The starting time of the maintenance window, in hours. By default, `12`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenance) *int { return v.StartHour }).(pulumi.IntPtrOutput)
+}
+
+// The timezone for the maintenance window. By default, `UTC`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenance) *string { return v.Tz }).(pulumi.StringPtrOutput)
+}
+
+// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenance) *string { return v.WeekDay }).(pulumi.StringPtrOutput)
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesPatchUpgradeMaintenance)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) Elem() OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenance) OksClusterAutoMaintenancesPatchUpgradeMaintenance {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterAutoMaintenancesPatchUpgradeMaintenance
+		return ret
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput)
+}
+
+// The duration of the maintenance window, in hours. By default, `0`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenance) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// If true, a maintenance window is enabled. By default, true.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The starting time of the maintenance window, in hours. By default, `12`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenance) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// The timezone for the maintenance window. By default, `UTC`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tz
+	}).(pulumi.StringPtrOutput)
+}
+
+// The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WeekDay
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual struct {
+	DurationHours *int    `pulumi:"durationHours"`
+	Enabled       *bool   `pulumi:"enabled"`
+	StartHour     *int    `pulumi:"startHour"`
+	Tz            *string `pulumi:"tz"`
+	WeekDay       *string `pulumi:"weekDay"`
+}
+
+// OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualInput is an input type that accepts OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs and OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualInput` via:
+//
+//	OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs{...}
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutputWithContext(context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs struct {
+	DurationHours pulumi.IntPtrInput    `pulumi:"durationHours"`
+	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
+	StartHour     pulumi.IntPtrInput    `pulumi:"startHour"`
+	Tz            pulumi.StringPtrInput `pulumi:"tz"`
+	WeekDay       pulumi.StringPtrInput `pulumi:"weekDay"`
+}
+
+func (OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput {
+	return i.ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput)
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return i.ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput).ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(ctx)
+}
+
+// OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrInput is an input type that accepts OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs, OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtr and OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput values.
+// You can construct a concrete instance of `OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrInput` via:
+//
+//	        OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrInput interface {
+	pulumi.Input
+
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput
+	ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput
+}
+
+type oksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrType OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs
+
+func OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtr(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrInput {
+	return (*oksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrType)(v)
+}
+
+func (*oksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (i *oksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrType) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return i.ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(context.Background())
+}
+
+func (i *oksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrType) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput)
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return o.ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(context.Background())
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
+		return &v
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *int { return v.DurationHours }).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *int { return v.StartHour }).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *string { return v.Tz }).(pulumi.StringPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *string { return v.WeekDay }).(pulumi.StringPtrOutput)
+}
+
+type OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual)(nil)).Elem()
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) ToOksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutputWithContext(ctx context.Context) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput {
+	return o
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) Elem() OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual
+		return ret
+	}).(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) DurationHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationHours
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) Tz() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tz
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) WeekDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WeekDay
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksClusterStatuses struct {
+	// Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+	AvailableUpgrade *string `pulumi:"availableUpgrade"`
+	// The timestamp when the cluster was created (date-time).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The timestamp when the cluster was deleted (if applicable) (date-time).
+	DeletedAt *string `pulumi:"deletedAt"`
+	// The status of the cluster.
+	Status *string `pulumi:"status"`
+	// The timestamp when the cluster was last updated (date-time).
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// OksClusterStatusesInput is an input type that accepts OksClusterStatusesArgs and OksClusterStatusesOutput values.
+// You can construct a concrete instance of `OksClusterStatusesInput` via:
+//
+//	OksClusterStatusesArgs{...}
+type OksClusterStatusesInput interface {
+	pulumi.Input
+
+	ToOksClusterStatusesOutput() OksClusterStatusesOutput
+	ToOksClusterStatusesOutputWithContext(context.Context) OksClusterStatusesOutput
+}
+
+type OksClusterStatusesArgs struct {
+	// Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+	AvailableUpgrade pulumi.StringPtrInput `pulumi:"availableUpgrade"`
+	// The timestamp when the cluster was created (date-time).
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The timestamp when the cluster was deleted (if applicable) (date-time).
+	DeletedAt pulumi.StringPtrInput `pulumi:"deletedAt"`
+	// The status of the cluster.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The timestamp when the cluster was last updated (date-time).
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (OksClusterStatusesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterStatuses)(nil)).Elem()
+}
+
+func (i OksClusterStatusesArgs) ToOksClusterStatusesOutput() OksClusterStatusesOutput {
+	return i.ToOksClusterStatusesOutputWithContext(context.Background())
+}
+
+func (i OksClusterStatusesArgs) ToOksClusterStatusesOutputWithContext(ctx context.Context) OksClusterStatusesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterStatusesOutput)
+}
+
+func (i OksClusterStatusesArgs) ToOksClusterStatusesPtrOutput() OksClusterStatusesPtrOutput {
+	return i.ToOksClusterStatusesPtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterStatusesArgs) ToOksClusterStatusesPtrOutputWithContext(ctx context.Context) OksClusterStatusesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterStatusesOutput).ToOksClusterStatusesPtrOutputWithContext(ctx)
+}
+
+// OksClusterStatusesPtrInput is an input type that accepts OksClusterStatusesArgs, OksClusterStatusesPtr and OksClusterStatusesPtrOutput values.
+// You can construct a concrete instance of `OksClusterStatusesPtrInput` via:
+//
+//	        OksClusterStatusesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterStatusesPtrInput interface {
+	pulumi.Input
+
+	ToOksClusterStatusesPtrOutput() OksClusterStatusesPtrOutput
+	ToOksClusterStatusesPtrOutputWithContext(context.Context) OksClusterStatusesPtrOutput
+}
+
+type oksClusterStatusesPtrType OksClusterStatusesArgs
+
+func OksClusterStatusesPtr(v *OksClusterStatusesArgs) OksClusterStatusesPtrInput {
+	return (*oksClusterStatusesPtrType)(v)
+}
+
+func (*oksClusterStatusesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterStatuses)(nil)).Elem()
+}
+
+func (i *oksClusterStatusesPtrType) ToOksClusterStatusesPtrOutput() OksClusterStatusesPtrOutput {
+	return i.ToOksClusterStatusesPtrOutputWithContext(context.Background())
+}
+
+func (i *oksClusterStatusesPtrType) ToOksClusterStatusesPtrOutputWithContext(ctx context.Context) OksClusterStatusesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterStatusesPtrOutput)
+}
+
+type OksClusterStatusesOutput struct{ *pulumi.OutputState }
+
+func (OksClusterStatusesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterStatuses)(nil)).Elem()
+}
+
+func (o OksClusterStatusesOutput) ToOksClusterStatusesOutput() OksClusterStatusesOutput {
+	return o
+}
+
+func (o OksClusterStatusesOutput) ToOksClusterStatusesOutputWithContext(ctx context.Context) OksClusterStatusesOutput {
+	return o
+}
+
+func (o OksClusterStatusesOutput) ToOksClusterStatusesPtrOutput() OksClusterStatusesPtrOutput {
+	return o.ToOksClusterStatusesPtrOutputWithContext(context.Background())
+}
+
+func (o OksClusterStatusesOutput) ToOksClusterStatusesPtrOutputWithContext(ctx context.Context) OksClusterStatusesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterStatuses) *OksClusterStatuses {
+		return &v
+	}).(OksClusterStatusesPtrOutput)
+}
+
+// Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+func (o OksClusterStatusesOutput) AvailableUpgrade() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterStatuses) *string { return v.AvailableUpgrade }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the cluster was created (date-time).
+func (o OksClusterStatusesOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterStatuses) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the cluster was deleted (if applicable) (date-time).
+func (o OksClusterStatusesOutput) DeletedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterStatuses) *string { return v.DeletedAt }).(pulumi.StringPtrOutput)
+}
+
+// The status of the cluster.
+func (o OksClusterStatusesOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterStatuses) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the cluster was last updated (date-time).
+func (o OksClusterStatusesOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterStatuses) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type OksClusterStatusesPtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterStatusesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterStatuses)(nil)).Elem()
+}
+
+func (o OksClusterStatusesPtrOutput) ToOksClusterStatusesPtrOutput() OksClusterStatusesPtrOutput {
+	return o
+}
+
+func (o OksClusterStatusesPtrOutput) ToOksClusterStatusesPtrOutputWithContext(ctx context.Context) OksClusterStatusesPtrOutput {
+	return o
+}
+
+func (o OksClusterStatusesPtrOutput) Elem() OksClusterStatusesOutput {
+	return o.ApplyT(func(v *OksClusterStatuses) OksClusterStatuses {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterStatuses
+		return ret
+	}).(OksClusterStatusesOutput)
+}
+
+// Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+func (o OksClusterStatusesPtrOutput) AvailableUpgrade() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterStatuses) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableUpgrade
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the cluster was created (date-time).
+func (o OksClusterStatusesPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterStatuses) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the cluster was deleted (if applicable) (date-time).
+func (o OksClusterStatusesPtrOutput) DeletedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterStatuses) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status of the cluster.
+func (o OksClusterStatusesPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterStatuses) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the cluster was last updated (date-time).
+func (o OksClusterStatusesPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterStatuses) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksClusterTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OksClusterTimeoutsInput is an input type that accepts OksClusterTimeoutsArgs and OksClusterTimeoutsOutput values.
+// You can construct a concrete instance of `OksClusterTimeoutsInput` via:
+//
+//	OksClusterTimeoutsArgs{...}
+type OksClusterTimeoutsInput interface {
+	pulumi.Input
+
+	ToOksClusterTimeoutsOutput() OksClusterTimeoutsOutput
+	ToOksClusterTimeoutsOutputWithContext(context.Context) OksClusterTimeoutsOutput
+}
+
+type OksClusterTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OksClusterTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterTimeouts)(nil)).Elem()
+}
+
+func (i OksClusterTimeoutsArgs) ToOksClusterTimeoutsOutput() OksClusterTimeoutsOutput {
+	return i.ToOksClusterTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OksClusterTimeoutsArgs) ToOksClusterTimeoutsOutputWithContext(ctx context.Context) OksClusterTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterTimeoutsOutput)
+}
+
+func (i OksClusterTimeoutsArgs) ToOksClusterTimeoutsPtrOutput() OksClusterTimeoutsPtrOutput {
+	return i.ToOksClusterTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterTimeoutsArgs) ToOksClusterTimeoutsPtrOutputWithContext(ctx context.Context) OksClusterTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterTimeoutsOutput).ToOksClusterTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OksClusterTimeoutsPtrInput is an input type that accepts OksClusterTimeoutsArgs, OksClusterTimeoutsPtr and OksClusterTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OksClusterTimeoutsPtrInput` via:
+//
+//	        OksClusterTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOksClusterTimeoutsPtrOutput() OksClusterTimeoutsPtrOutput
+	ToOksClusterTimeoutsPtrOutputWithContext(context.Context) OksClusterTimeoutsPtrOutput
+}
+
+type oksClusterTimeoutsPtrType OksClusterTimeoutsArgs
+
+func OksClusterTimeoutsPtr(v *OksClusterTimeoutsArgs) OksClusterTimeoutsPtrInput {
+	return (*oksClusterTimeoutsPtrType)(v)
+}
+
+func (*oksClusterTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterTimeouts)(nil)).Elem()
+}
+
+func (i *oksClusterTimeoutsPtrType) ToOksClusterTimeoutsPtrOutput() OksClusterTimeoutsPtrOutput {
+	return i.ToOksClusterTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oksClusterTimeoutsPtrType) ToOksClusterTimeoutsPtrOutputWithContext(ctx context.Context) OksClusterTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterTimeoutsPtrOutput)
+}
+
+type OksClusterTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OksClusterTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterTimeouts)(nil)).Elem()
+}
+
+func (o OksClusterTimeoutsOutput) ToOksClusterTimeoutsOutput() OksClusterTimeoutsOutput {
+	return o
+}
+
+func (o OksClusterTimeoutsOutput) ToOksClusterTimeoutsOutputWithContext(ctx context.Context) OksClusterTimeoutsOutput {
+	return o
+}
+
+func (o OksClusterTimeoutsOutput) ToOksClusterTimeoutsPtrOutput() OksClusterTimeoutsPtrOutput {
+	return o.ToOksClusterTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OksClusterTimeoutsOutput) ToOksClusterTimeoutsPtrOutputWithContext(ctx context.Context) OksClusterTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterTimeouts) *OksClusterTimeouts {
+		return &v
+	}).(OksClusterTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksClusterTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OksClusterTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OksClusterTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksClusterTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OksClusterTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterTimeouts)(nil)).Elem()
+}
+
+func (o OksClusterTimeoutsPtrOutput) ToOksClusterTimeoutsPtrOutput() OksClusterTimeoutsPtrOutput {
+	return o
+}
+
+func (o OksClusterTimeoutsPtrOutput) ToOksClusterTimeoutsPtrOutputWithContext(ctx context.Context) OksClusterTimeoutsPtrOutput {
+	return o
+}
+
+func (o OksClusterTimeoutsPtrOutput) Elem() OksClusterTimeoutsOutput {
+	return o.ApplyT(func(v *OksClusterTimeouts) OksClusterTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterTimeouts
+		return ret
+	}).(OksClusterTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksClusterTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OksClusterTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OksClusterTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksClusterTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksProjectTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OksProjectTimeoutsInput is an input type that accepts OksProjectTimeoutsArgs and OksProjectTimeoutsOutput values.
+// You can construct a concrete instance of `OksProjectTimeoutsInput` via:
+//
+//	OksProjectTimeoutsArgs{...}
+type OksProjectTimeoutsInput interface {
+	pulumi.Input
+
+	ToOksProjectTimeoutsOutput() OksProjectTimeoutsOutput
+	ToOksProjectTimeoutsOutputWithContext(context.Context) OksProjectTimeoutsOutput
+}
+
+type OksProjectTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OksProjectTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksProjectTimeouts)(nil)).Elem()
+}
+
+func (i OksProjectTimeoutsArgs) ToOksProjectTimeoutsOutput() OksProjectTimeoutsOutput {
+	return i.ToOksProjectTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OksProjectTimeoutsArgs) ToOksProjectTimeoutsOutputWithContext(ctx context.Context) OksProjectTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksProjectTimeoutsOutput)
+}
+
+func (i OksProjectTimeoutsArgs) ToOksProjectTimeoutsPtrOutput() OksProjectTimeoutsPtrOutput {
+	return i.ToOksProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OksProjectTimeoutsArgs) ToOksProjectTimeoutsPtrOutputWithContext(ctx context.Context) OksProjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksProjectTimeoutsOutput).ToOksProjectTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OksProjectTimeoutsPtrInput is an input type that accepts OksProjectTimeoutsArgs, OksProjectTimeoutsPtr and OksProjectTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OksProjectTimeoutsPtrInput` via:
+//
+//	        OksProjectTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksProjectTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOksProjectTimeoutsPtrOutput() OksProjectTimeoutsPtrOutput
+	ToOksProjectTimeoutsPtrOutputWithContext(context.Context) OksProjectTimeoutsPtrOutput
+}
+
+type oksProjectTimeoutsPtrType OksProjectTimeoutsArgs
+
+func OksProjectTimeoutsPtr(v *OksProjectTimeoutsArgs) OksProjectTimeoutsPtrInput {
+	return (*oksProjectTimeoutsPtrType)(v)
+}
+
+func (*oksProjectTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksProjectTimeouts)(nil)).Elem()
+}
+
+func (i *oksProjectTimeoutsPtrType) ToOksProjectTimeoutsPtrOutput() OksProjectTimeoutsPtrOutput {
+	return i.ToOksProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oksProjectTimeoutsPtrType) ToOksProjectTimeoutsPtrOutputWithContext(ctx context.Context) OksProjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksProjectTimeoutsPtrOutput)
+}
+
+type OksProjectTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OksProjectTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksProjectTimeouts)(nil)).Elem()
+}
+
+func (o OksProjectTimeoutsOutput) ToOksProjectTimeoutsOutput() OksProjectTimeoutsOutput {
+	return o
+}
+
+func (o OksProjectTimeoutsOutput) ToOksProjectTimeoutsOutputWithContext(ctx context.Context) OksProjectTimeoutsOutput {
+	return o
+}
+
+func (o OksProjectTimeoutsOutput) ToOksProjectTimeoutsPtrOutput() OksProjectTimeoutsPtrOutput {
+	return o.ToOksProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OksProjectTimeoutsOutput) ToOksProjectTimeoutsPtrOutputWithContext(ctx context.Context) OksProjectTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksProjectTimeouts) *OksProjectTimeouts {
+		return &v
+	}).(OksProjectTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksProjectTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksProjectTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OksProjectTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksProjectTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OksProjectTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksProjectTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksProjectTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksProjectTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OksProjectTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OksProjectTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksProjectTimeouts)(nil)).Elem()
+}
+
+func (o OksProjectTimeoutsPtrOutput) ToOksProjectTimeoutsPtrOutput() OksProjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o OksProjectTimeoutsPtrOutput) ToOksProjectTimeoutsPtrOutputWithContext(ctx context.Context) OksProjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o OksProjectTimeoutsPtrOutput) Elem() OksProjectTimeoutsOutput {
+	return o.ApplyT(func(v *OksProjectTimeouts) OksProjectTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OksProjectTimeouts
+		return ret
+	}).(OksProjectTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksProjectTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksProjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OksProjectTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksProjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OksProjectTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksProjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksProjectTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksProjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type ProviderEndpoint struct {
@@ -11098,15 +12696,17 @@ func (o RouteTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 
 type SecurityGroupInboundRule struct {
 	// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
-	FromPortRange *int `pulumi:"fromPortRange"`
+	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-	IpProtocol *string `pulumi:"ipProtocol"`
+	IpProtocol string `pulumi:"ipProtocol"`
 	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRanges []string `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
-	SecurityGroupsMembers []map[string]string `pulumi:"securityGroupsMembers"`
+	SecurityGroupsMembers []SecurityGroupInboundRuleSecurityGroupsMember `pulumi:"securityGroupsMembers"`
+	// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+	ServiceIds []string `pulumi:"serviceIds"`
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number.
-	ToPortRange *int `pulumi:"toPortRange"`
+	ToPortRange int `pulumi:"toPortRange"`
 }
 
 // SecurityGroupInboundRuleInput is an input type that accepts SecurityGroupInboundRuleArgs and SecurityGroupInboundRuleOutput values.
@@ -11122,15 +12722,17 @@ type SecurityGroupInboundRuleInput interface {
 
 type SecurityGroupInboundRuleArgs struct {
 	// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
-	FromPortRange pulumi.IntPtrInput `pulumi:"fromPortRange"`
+	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
-	SecurityGroupsMembers pulumi.StringMapArrayInput `pulumi:"securityGroupsMembers"`
+	SecurityGroupsMembers SecurityGroupInboundRuleSecurityGroupsMemberArrayInput `pulumi:"securityGroupsMembers"`
+	// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number.
-	ToPortRange pulumi.IntPtrInput `pulumi:"toPortRange"`
+	ToPortRange pulumi.IntInput `pulumi:"toPortRange"`
 }
 
 func (SecurityGroupInboundRuleArgs) ElementType() reflect.Type {
@@ -11185,13 +12787,13 @@ func (o SecurityGroupInboundRuleOutput) ToSecurityGroupInboundRuleOutputWithCont
 }
 
 // The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
-func (o SecurityGroupInboundRuleOutput) FromPortRange() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupInboundRule) *int { return v.FromPortRange }).(pulumi.IntPtrOutput)
+func (o SecurityGroupInboundRuleOutput) FromPortRange() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRule) int { return v.FromPortRange }).(pulumi.IntOutput)
 }
 
 // The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-func (o SecurityGroupInboundRuleOutput) IpProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupInboundRule) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+func (o SecurityGroupInboundRuleOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
 // One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
@@ -11200,13 +12802,20 @@ func (o SecurityGroupInboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 }
 
 // Information about one or more source or destination security groups.
-func (o SecurityGroupInboundRuleOutput) SecurityGroupsMembers() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v SecurityGroupInboundRule) []map[string]string { return v.SecurityGroupsMembers }).(pulumi.StringMapArrayOutput)
+func (o SecurityGroupInboundRuleOutput) SecurityGroupsMembers() SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRule) []SecurityGroupInboundRuleSecurityGroupsMember {
+		return v.SecurityGroupsMembers
+	}).(SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput)
+}
+
+// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+func (o SecurityGroupInboundRuleOutput) ServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRule) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
 }
 
 // The end of the port range for the TCP and UDP protocols, or an ICMP code number.
-func (o SecurityGroupInboundRuleOutput) ToPortRange() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupInboundRule) *int { return v.ToPortRange }).(pulumi.IntPtrOutput)
+func (o SecurityGroupInboundRuleOutput) ToPortRange() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRule) int { return v.ToPortRange }).(pulumi.IntOutput)
 }
 
 type SecurityGroupInboundRuleArrayOutput struct{ *pulumi.OutputState }
@@ -11229,17 +12838,140 @@ func (o SecurityGroupInboundRuleArrayOutput) Index(i pulumi.IntInput) SecurityGr
 	}).(SecurityGroupInboundRuleOutput)
 }
 
+type SecurityGroupInboundRuleSecurityGroupsMember struct {
+	// The account ID that owns the source or destination security group.
+	AccountId string `pulumi:"accountId"`
+	// The ID of the security group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The name of the security group.<br />
+	// This name must not start with `sg-`.<br />
+	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	SecurityGroupName string `pulumi:"securityGroupName"`
+}
+
+// SecurityGroupInboundRuleSecurityGroupsMemberInput is an input type that accepts SecurityGroupInboundRuleSecurityGroupsMemberArgs and SecurityGroupInboundRuleSecurityGroupsMemberOutput values.
+// You can construct a concrete instance of `SecurityGroupInboundRuleSecurityGroupsMemberInput` via:
+//
+//	SecurityGroupInboundRuleSecurityGroupsMemberArgs{...}
+type SecurityGroupInboundRuleSecurityGroupsMemberInput interface {
+	pulumi.Input
+
+	ToSecurityGroupInboundRuleSecurityGroupsMemberOutput() SecurityGroupInboundRuleSecurityGroupsMemberOutput
+	ToSecurityGroupInboundRuleSecurityGroupsMemberOutputWithContext(context.Context) SecurityGroupInboundRuleSecurityGroupsMemberOutput
+}
+
+type SecurityGroupInboundRuleSecurityGroupsMemberArgs struct {
+	// The account ID that owns the source or destination security group.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The name of the security group.<br />
+	// This name must not start with `sg-`.<br />
+	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
+}
+
+func (SecurityGroupInboundRuleSecurityGroupsMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupInboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (i SecurityGroupInboundRuleSecurityGroupsMemberArgs) ToSecurityGroupInboundRuleSecurityGroupsMemberOutput() SecurityGroupInboundRuleSecurityGroupsMemberOutput {
+	return i.ToSecurityGroupInboundRuleSecurityGroupsMemberOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupInboundRuleSecurityGroupsMemberArgs) ToSecurityGroupInboundRuleSecurityGroupsMemberOutputWithContext(ctx context.Context) SecurityGroupInboundRuleSecurityGroupsMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupInboundRuleSecurityGroupsMemberOutput)
+}
+
+// SecurityGroupInboundRuleSecurityGroupsMemberArrayInput is an input type that accepts SecurityGroupInboundRuleSecurityGroupsMemberArray and SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput values.
+// You can construct a concrete instance of `SecurityGroupInboundRuleSecurityGroupsMemberArrayInput` via:
+//
+//	SecurityGroupInboundRuleSecurityGroupsMemberArray{ SecurityGroupInboundRuleSecurityGroupsMemberArgs{...} }
+type SecurityGroupInboundRuleSecurityGroupsMemberArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGroupInboundRuleSecurityGroupsMemberArrayOutput() SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput
+	ToSecurityGroupInboundRuleSecurityGroupsMemberArrayOutputWithContext(context.Context) SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput
+}
+
+type SecurityGroupInboundRuleSecurityGroupsMemberArray []SecurityGroupInboundRuleSecurityGroupsMemberInput
+
+func (SecurityGroupInboundRuleSecurityGroupsMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupInboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (i SecurityGroupInboundRuleSecurityGroupsMemberArray) ToSecurityGroupInboundRuleSecurityGroupsMemberArrayOutput() SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput {
+	return i.ToSecurityGroupInboundRuleSecurityGroupsMemberArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupInboundRuleSecurityGroupsMemberArray) ToSecurityGroupInboundRuleSecurityGroupsMemberArrayOutputWithContext(ctx context.Context) SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput)
+}
+
+type SecurityGroupInboundRuleSecurityGroupsMemberOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupInboundRuleSecurityGroupsMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupInboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (o SecurityGroupInboundRuleSecurityGroupsMemberOutput) ToSecurityGroupInboundRuleSecurityGroupsMemberOutput() SecurityGroupInboundRuleSecurityGroupsMemberOutput {
+	return o
+}
+
+func (o SecurityGroupInboundRuleSecurityGroupsMemberOutput) ToSecurityGroupInboundRuleSecurityGroupsMemberOutputWithContext(ctx context.Context) SecurityGroupInboundRuleSecurityGroupsMemberOutput {
+	return o
+}
+
+// The account ID that owns the source or destination security group.
+func (o SecurityGroupInboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The ID of the security group.
+func (o SecurityGroupInboundRuleSecurityGroupsMemberOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRuleSecurityGroupsMember) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the security group.<br />
+// This name must not start with `sg-`.<br />
+// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+func (o SecurityGroupInboundRuleSecurityGroupsMemberOutput) SecurityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupInboundRuleSecurityGroupsMember) string { return v.SecurityGroupName }).(pulumi.StringOutput)
+}
+
+type SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupInboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (o SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput) ToSecurityGroupInboundRuleSecurityGroupsMemberArrayOutput() SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput {
+	return o
+}
+
+func (o SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput) ToSecurityGroupInboundRuleSecurityGroupsMemberArrayOutputWithContext(ctx context.Context) SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput {
+	return o
+}
+
+func (o SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput) Index(i pulumi.IntInput) SecurityGroupInboundRuleSecurityGroupsMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupInboundRuleSecurityGroupsMember {
+		return vs[0].([]SecurityGroupInboundRuleSecurityGroupsMember)[vs[1].(int)]
+	}).(SecurityGroupInboundRuleSecurityGroupsMemberOutput)
+}
+
 type SecurityGroupOutboundRule struct {
 	// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
-	FromPortRange *int `pulumi:"fromPortRange"`
+	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-	IpProtocol *string `pulumi:"ipProtocol"`
+	IpProtocol string `pulumi:"ipProtocol"`
 	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRanges []string `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
-	SecurityGroupsMembers []map[string]string `pulumi:"securityGroupsMembers"`
+	SecurityGroupsMembers []SecurityGroupOutboundRuleSecurityGroupsMember `pulumi:"securityGroupsMembers"`
+	// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+	ServiceIds []string `pulumi:"serviceIds"`
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number.
-	ToPortRange *int `pulumi:"toPortRange"`
+	ToPortRange int `pulumi:"toPortRange"`
 }
 
 // SecurityGroupOutboundRuleInput is an input type that accepts SecurityGroupOutboundRuleArgs and SecurityGroupOutboundRuleOutput values.
@@ -11255,15 +12987,17 @@ type SecurityGroupOutboundRuleInput interface {
 
 type SecurityGroupOutboundRuleArgs struct {
 	// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
-	FromPortRange pulumi.IntPtrInput `pulumi:"fromPortRange"`
+	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
 	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
-	SecurityGroupsMembers pulumi.StringMapArrayInput `pulumi:"securityGroupsMembers"`
+	SecurityGroupsMembers SecurityGroupOutboundRuleSecurityGroupsMemberArrayInput `pulumi:"securityGroupsMembers"`
+	// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number.
-	ToPortRange pulumi.IntPtrInput `pulumi:"toPortRange"`
+	ToPortRange pulumi.IntInput `pulumi:"toPortRange"`
 }
 
 func (SecurityGroupOutboundRuleArgs) ElementType() reflect.Type {
@@ -11318,13 +13052,13 @@ func (o SecurityGroupOutboundRuleOutput) ToSecurityGroupOutboundRuleOutputWithCo
 }
 
 // The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
-func (o SecurityGroupOutboundRuleOutput) FromPortRange() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupOutboundRule) *int { return v.FromPortRange }).(pulumi.IntPtrOutput)
+func (o SecurityGroupOutboundRuleOutput) FromPortRange() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRule) int { return v.FromPortRange }).(pulumi.IntOutput)
 }
 
 // The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-func (o SecurityGroupOutboundRuleOutput) IpProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupOutboundRule) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
+func (o SecurityGroupOutboundRuleOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
 // One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
@@ -11333,13 +13067,20 @@ func (o SecurityGroupOutboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 }
 
 // Information about one or more source or destination security groups.
-func (o SecurityGroupOutboundRuleOutput) SecurityGroupsMembers() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v SecurityGroupOutboundRule) []map[string]string { return v.SecurityGroupsMembers }).(pulumi.StringMapArrayOutput)
+func (o SecurityGroupOutboundRuleOutput) SecurityGroupsMembers() SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRule) []SecurityGroupOutboundRuleSecurityGroupsMember {
+		return v.SecurityGroupsMembers
+	}).(SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput)
+}
+
+// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+func (o SecurityGroupOutboundRuleOutput) ServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRule) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
 }
 
 // The end of the port range for the TCP and UDP protocols, or an ICMP code number.
-func (o SecurityGroupOutboundRuleOutput) ToPortRange() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityGroupOutboundRule) *int { return v.ToPortRange }).(pulumi.IntPtrOutput)
+func (o SecurityGroupOutboundRuleOutput) ToPortRange() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRule) int { return v.ToPortRange }).(pulumi.IntOutput)
 }
 
 type SecurityGroupOutboundRuleArrayOutput struct{ *pulumi.OutputState }
@@ -11360,6 +13101,127 @@ func (o SecurityGroupOutboundRuleArrayOutput) Index(i pulumi.IntInput) SecurityG
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupOutboundRule {
 		return vs[0].([]SecurityGroupOutboundRule)[vs[1].(int)]
 	}).(SecurityGroupOutboundRuleOutput)
+}
+
+type SecurityGroupOutboundRuleSecurityGroupsMember struct {
+	// The account ID that owns the source or destination security group.
+	AccountId string `pulumi:"accountId"`
+	// The ID of the security group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The name of the security group.<br />
+	// This name must not start with `sg-`.<br />
+	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	SecurityGroupName string `pulumi:"securityGroupName"`
+}
+
+// SecurityGroupOutboundRuleSecurityGroupsMemberInput is an input type that accepts SecurityGroupOutboundRuleSecurityGroupsMemberArgs and SecurityGroupOutboundRuleSecurityGroupsMemberOutput values.
+// You can construct a concrete instance of `SecurityGroupOutboundRuleSecurityGroupsMemberInput` via:
+//
+//	SecurityGroupOutboundRuleSecurityGroupsMemberArgs{...}
+type SecurityGroupOutboundRuleSecurityGroupsMemberInput interface {
+	pulumi.Input
+
+	ToSecurityGroupOutboundRuleSecurityGroupsMemberOutput() SecurityGroupOutboundRuleSecurityGroupsMemberOutput
+	ToSecurityGroupOutboundRuleSecurityGroupsMemberOutputWithContext(context.Context) SecurityGroupOutboundRuleSecurityGroupsMemberOutput
+}
+
+type SecurityGroupOutboundRuleSecurityGroupsMemberArgs struct {
+	// The account ID that owns the source or destination security group.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The name of the security group.<br />
+	// This name must not start with `sg-`.<br />
+	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
+}
+
+func (SecurityGroupOutboundRuleSecurityGroupsMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupOutboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (i SecurityGroupOutboundRuleSecurityGroupsMemberArgs) ToSecurityGroupOutboundRuleSecurityGroupsMemberOutput() SecurityGroupOutboundRuleSecurityGroupsMemberOutput {
+	return i.ToSecurityGroupOutboundRuleSecurityGroupsMemberOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupOutboundRuleSecurityGroupsMemberArgs) ToSecurityGroupOutboundRuleSecurityGroupsMemberOutputWithContext(ctx context.Context) SecurityGroupOutboundRuleSecurityGroupsMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupOutboundRuleSecurityGroupsMemberOutput)
+}
+
+// SecurityGroupOutboundRuleSecurityGroupsMemberArrayInput is an input type that accepts SecurityGroupOutboundRuleSecurityGroupsMemberArray and SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput values.
+// You can construct a concrete instance of `SecurityGroupOutboundRuleSecurityGroupsMemberArrayInput` via:
+//
+//	SecurityGroupOutboundRuleSecurityGroupsMemberArray{ SecurityGroupOutboundRuleSecurityGroupsMemberArgs{...} }
+type SecurityGroupOutboundRuleSecurityGroupsMemberArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput() SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput
+	ToSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutputWithContext(context.Context) SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput
+}
+
+type SecurityGroupOutboundRuleSecurityGroupsMemberArray []SecurityGroupOutboundRuleSecurityGroupsMemberInput
+
+func (SecurityGroupOutboundRuleSecurityGroupsMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupOutboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (i SecurityGroupOutboundRuleSecurityGroupsMemberArray) ToSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput() SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput {
+	return i.ToSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupOutboundRuleSecurityGroupsMemberArray) ToSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutputWithContext(ctx context.Context) SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput)
+}
+
+type SecurityGroupOutboundRuleSecurityGroupsMemberOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupOutboundRuleSecurityGroupsMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupOutboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberOutput) ToSecurityGroupOutboundRuleSecurityGroupsMemberOutput() SecurityGroupOutboundRuleSecurityGroupsMemberOutput {
+	return o
+}
+
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberOutput) ToSecurityGroupOutboundRuleSecurityGroupsMemberOutputWithContext(ctx context.Context) SecurityGroupOutboundRuleSecurityGroupsMemberOutput {
+	return o
+}
+
+// The account ID that owns the source or destination security group.
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The ID of the security group.
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRuleSecurityGroupsMember) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The name of the security group.<br />
+// This name must not start with `sg-`.<br />
+// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberOutput) SecurityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupOutboundRuleSecurityGroupsMember) string { return v.SecurityGroupName }).(pulumi.StringOutput)
+}
+
+type SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupOutboundRuleSecurityGroupsMember)(nil)).Elem()
+}
+
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput) ToSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput() SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput {
+	return o
+}
+
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput) ToSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutputWithContext(ctx context.Context) SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput {
+	return o
+}
+
+func (o SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput) Index(i pulumi.IntInput) SecurityGroupOutboundRuleSecurityGroupsMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupOutboundRuleSecurityGroupsMember {
+		return vs[0].([]SecurityGroupOutboundRuleSecurityGroupsMember)[vs[1].(int)]
+	}).(SecurityGroupOutboundRuleSecurityGroupsMemberOutput)
 }
 
 type SecurityGroupRuleRule struct {
@@ -11621,9 +13483,203 @@ func (o SecurityGroupRuleRuleSecurityGroupsMemberArrayOutput) Index(i pulumi.Int
 	}).(SecurityGroupRuleRuleSecurityGroupsMemberOutput)
 }
 
+type SecurityGroupRuleTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// SecurityGroupRuleTimeoutsInput is an input type that accepts SecurityGroupRuleTimeoutsArgs and SecurityGroupRuleTimeoutsOutput values.
+// You can construct a concrete instance of `SecurityGroupRuleTimeoutsInput` via:
+//
+//	SecurityGroupRuleTimeoutsArgs{...}
+type SecurityGroupRuleTimeoutsInput interface {
+	pulumi.Input
+
+	ToSecurityGroupRuleTimeoutsOutput() SecurityGroupRuleTimeoutsOutput
+	ToSecurityGroupRuleTimeoutsOutputWithContext(context.Context) SecurityGroupRuleTimeoutsOutput
+}
+
+type SecurityGroupRuleTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (SecurityGroupRuleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupRuleTimeouts)(nil)).Elem()
+}
+
+func (i SecurityGroupRuleTimeoutsArgs) ToSecurityGroupRuleTimeoutsOutput() SecurityGroupRuleTimeoutsOutput {
+	return i.ToSecurityGroupRuleTimeoutsOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupRuleTimeoutsArgs) ToSecurityGroupRuleTimeoutsOutputWithContext(ctx context.Context) SecurityGroupRuleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleTimeoutsOutput)
+}
+
+func (i SecurityGroupRuleTimeoutsArgs) ToSecurityGroupRuleTimeoutsPtrOutput() SecurityGroupRuleTimeoutsPtrOutput {
+	return i.ToSecurityGroupRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupRuleTimeoutsArgs) ToSecurityGroupRuleTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleTimeoutsOutput).ToSecurityGroupRuleTimeoutsPtrOutputWithContext(ctx)
+}
+
+// SecurityGroupRuleTimeoutsPtrInput is an input type that accepts SecurityGroupRuleTimeoutsArgs, SecurityGroupRuleTimeoutsPtr and SecurityGroupRuleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `SecurityGroupRuleTimeoutsPtrInput` via:
+//
+//	        SecurityGroupRuleTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGroupRuleTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGroupRuleTimeoutsPtrOutput() SecurityGroupRuleTimeoutsPtrOutput
+	ToSecurityGroupRuleTimeoutsPtrOutputWithContext(context.Context) SecurityGroupRuleTimeoutsPtrOutput
+}
+
+type securityGroupRuleTimeoutsPtrType SecurityGroupRuleTimeoutsArgs
+
+func SecurityGroupRuleTimeoutsPtr(v *SecurityGroupRuleTimeoutsArgs) SecurityGroupRuleTimeoutsPtrInput {
+	return (*securityGroupRuleTimeoutsPtrType)(v)
+}
+
+func (*securityGroupRuleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroupRuleTimeouts)(nil)).Elem()
+}
+
+func (i *securityGroupRuleTimeoutsPtrType) ToSecurityGroupRuleTimeoutsPtrOutput() SecurityGroupRuleTimeoutsPtrOutput {
+	return i.ToSecurityGroupRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGroupRuleTimeoutsPtrType) ToSecurityGroupRuleTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleTimeoutsPtrOutput)
+}
+
+type SecurityGroupRuleTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupRuleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupRuleTimeouts)(nil)).Elem()
+}
+
+func (o SecurityGroupRuleTimeoutsOutput) ToSecurityGroupRuleTimeoutsOutput() SecurityGroupRuleTimeoutsOutput {
+	return o
+}
+
+func (o SecurityGroupRuleTimeoutsOutput) ToSecurityGroupRuleTimeoutsOutputWithContext(ctx context.Context) SecurityGroupRuleTimeoutsOutput {
+	return o
+}
+
+func (o SecurityGroupRuleTimeoutsOutput) ToSecurityGroupRuleTimeoutsPtrOutput() SecurityGroupRuleTimeoutsPtrOutput {
+	return o.ToSecurityGroupRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGroupRuleTimeoutsOutput) ToSecurityGroupRuleTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupRuleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGroupRuleTimeouts) *SecurityGroupRuleTimeouts {
+		return &v
+	}).(SecurityGroupRuleTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupRuleTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupRuleTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SecurityGroupRuleTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupRuleTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SecurityGroupRuleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupRuleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupRuleTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupRuleTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGroupRuleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupRuleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroupRuleTimeouts)(nil)).Elem()
+}
+
+func (o SecurityGroupRuleTimeoutsPtrOutput) ToSecurityGroupRuleTimeoutsPtrOutput() SecurityGroupRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o SecurityGroupRuleTimeoutsPtrOutput) ToSecurityGroupRuleTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o SecurityGroupRuleTimeoutsPtrOutput) Elem() SecurityGroupRuleTimeoutsOutput {
+	return o.ApplyT(func(v *SecurityGroupRuleTimeouts) SecurityGroupRuleTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGroupRuleTimeouts
+		return ret
+	}).(SecurityGroupRuleTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupRuleTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SecurityGroupRuleTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SecurityGroupRuleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupRuleTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityGroupTag struct {
 	// The key of the tag, with a minimum of 1 character.
-	Key *string `pulumi:"key"`
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -11641,7 +13697,7 @@ type SecurityGroupTagInput interface {
 
 type SecurityGroupTagArgs struct {
 	// The key of the tag, with a minimum of 1 character.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -11698,8 +13754,8 @@ func (o SecurityGroupTagOutput) ToSecurityGroupTagOutputWithContext(ctx context.
 }
 
 // The key of the tag, with a minimum of 1 character.
-func (o SecurityGroupTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o SecurityGroupTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -11725,6 +13781,200 @@ func (o SecurityGroupTagArrayOutput) Index(i pulumi.IntInput) SecurityGroupTagOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupTag {
 		return vs[0].([]SecurityGroupTag)[vs[1].(int)]
 	}).(SecurityGroupTagOutput)
+}
+
+type SecurityGroupTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// SecurityGroupTimeoutsInput is an input type that accepts SecurityGroupTimeoutsArgs and SecurityGroupTimeoutsOutput values.
+// You can construct a concrete instance of `SecurityGroupTimeoutsInput` via:
+//
+//	SecurityGroupTimeoutsArgs{...}
+type SecurityGroupTimeoutsInput interface {
+	pulumi.Input
+
+	ToSecurityGroupTimeoutsOutput() SecurityGroupTimeoutsOutput
+	ToSecurityGroupTimeoutsOutputWithContext(context.Context) SecurityGroupTimeoutsOutput
+}
+
+type SecurityGroupTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (SecurityGroupTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupTimeouts)(nil)).Elem()
+}
+
+func (i SecurityGroupTimeoutsArgs) ToSecurityGroupTimeoutsOutput() SecurityGroupTimeoutsOutput {
+	return i.ToSecurityGroupTimeoutsOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupTimeoutsArgs) ToSecurityGroupTimeoutsOutputWithContext(ctx context.Context) SecurityGroupTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupTimeoutsOutput)
+}
+
+func (i SecurityGroupTimeoutsArgs) ToSecurityGroupTimeoutsPtrOutput() SecurityGroupTimeoutsPtrOutput {
+	return i.ToSecurityGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupTimeoutsArgs) ToSecurityGroupTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupTimeoutsOutput).ToSecurityGroupTimeoutsPtrOutputWithContext(ctx)
+}
+
+// SecurityGroupTimeoutsPtrInput is an input type that accepts SecurityGroupTimeoutsArgs, SecurityGroupTimeoutsPtr and SecurityGroupTimeoutsPtrOutput values.
+// You can construct a concrete instance of `SecurityGroupTimeoutsPtrInput` via:
+//
+//	        SecurityGroupTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGroupTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGroupTimeoutsPtrOutput() SecurityGroupTimeoutsPtrOutput
+	ToSecurityGroupTimeoutsPtrOutputWithContext(context.Context) SecurityGroupTimeoutsPtrOutput
+}
+
+type securityGroupTimeoutsPtrType SecurityGroupTimeoutsArgs
+
+func SecurityGroupTimeoutsPtr(v *SecurityGroupTimeoutsArgs) SecurityGroupTimeoutsPtrInput {
+	return (*securityGroupTimeoutsPtrType)(v)
+}
+
+func (*securityGroupTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroupTimeouts)(nil)).Elem()
+}
+
+func (i *securityGroupTimeoutsPtrType) ToSecurityGroupTimeoutsPtrOutput() SecurityGroupTimeoutsPtrOutput {
+	return i.ToSecurityGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGroupTimeoutsPtrType) ToSecurityGroupTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupTimeoutsPtrOutput)
+}
+
+type SecurityGroupTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupTimeouts)(nil)).Elem()
+}
+
+func (o SecurityGroupTimeoutsOutput) ToSecurityGroupTimeoutsOutput() SecurityGroupTimeoutsOutput {
+	return o
+}
+
+func (o SecurityGroupTimeoutsOutput) ToSecurityGroupTimeoutsOutputWithContext(ctx context.Context) SecurityGroupTimeoutsOutput {
+	return o
+}
+
+func (o SecurityGroupTimeoutsOutput) ToSecurityGroupTimeoutsPtrOutput() SecurityGroupTimeoutsPtrOutput {
+	return o.ToSecurityGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGroupTimeoutsOutput) ToSecurityGroupTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGroupTimeouts) *SecurityGroupTimeouts {
+		return &v
+	}).(SecurityGroupTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SecurityGroupTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SecurityGroupTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGroupTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroupTimeouts)(nil)).Elem()
+}
+
+func (o SecurityGroupTimeoutsPtrOutput) ToSecurityGroupTimeoutsPtrOutput() SecurityGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o SecurityGroupTimeoutsPtrOutput) ToSecurityGroupTimeoutsPtrOutputWithContext(ctx context.Context) SecurityGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o SecurityGroupTimeoutsPtrOutput) Elem() SecurityGroupTimeoutsOutput {
+	return o.ApplyT(func(v *SecurityGroupTimeouts) SecurityGroupTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGroupTimeouts
+		return ret
+	}).(SecurityGroupTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SecurityGroupTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SecurityGroupTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SecurityGroupTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type SnapshotAttributesPermissionsToCreateVolumeAdditions struct {
@@ -26009,7 +28259,7 @@ type GetLoadBalancersLoadBalancer struct {
 	ApplicationStickyCookiePolicies []GetLoadBalancersLoadBalancerApplicationStickyCookiePolicy `pulumi:"applicationStickyCookiePolicies"`
 	BackendIps                      []string                                                    `pulumi:"backendIps"`
 	// One or more IDs of backend VMs for the load balancer.
-	BackendVmIds []GetLoadBalancersLoadBalancerBackendVmId `pulumi:"backendVmIds"`
+	BackendVmIds []string `pulumi:"backendVmIds"`
 	// The DNS name of the load balancer.
 	DnsName string `pulumi:"dnsName"`
 	// Information about the health check configuration.
@@ -26060,7 +28310,7 @@ type GetLoadBalancersLoadBalancerArgs struct {
 	ApplicationStickyCookiePolicies GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArrayInput `pulumi:"applicationStickyCookiePolicies"`
 	BackendIps                      pulumi.StringArrayInput                                             `pulumi:"backendIps"`
 	// One or more IDs of backend VMs for the load balancer.
-	BackendVmIds GetLoadBalancersLoadBalancerBackendVmIdArrayInput `pulumi:"backendVmIds"`
+	BackendVmIds pulumi.StringArrayInput `pulumi:"backendVmIds"`
 	// The DNS name of the load balancer.
 	DnsName pulumi.StringInput `pulumi:"dnsName"`
 	// Information about the health check configuration.
@@ -26161,8 +28411,8 @@ func (o GetLoadBalancersLoadBalancerOutput) BackendIps() pulumi.StringArrayOutpu
 }
 
 // One or more IDs of backend VMs for the load balancer.
-func (o GetLoadBalancersLoadBalancerOutput) BackendVmIds() GetLoadBalancersLoadBalancerBackendVmIdArrayOutput {
-	return o.ApplyT(func(v GetLoadBalancersLoadBalancer) []GetLoadBalancersLoadBalancerBackendVmId { return v.BackendVmIds }).(GetLoadBalancersLoadBalancerBackendVmIdArrayOutput)
+func (o GetLoadBalancersLoadBalancerOutput) BackendVmIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadBalancer) []string { return v.BackendVmIds }).(pulumi.StringArrayOutput)
 }
 
 // The DNS name of the load balancer.
@@ -26489,100 +28739,6 @@ func (o GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArrayOutput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersLoadBalancerApplicationStickyCookiePolicy {
 		return vs[0].([]GetLoadBalancersLoadBalancerApplicationStickyCookiePolicy)[vs[1].(int)]
 	}).(GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyOutput)
-}
-
-type GetLoadBalancersLoadBalancerBackendVmId struct {
-	VmId string `pulumi:"vmId"`
-}
-
-// GetLoadBalancersLoadBalancerBackendVmIdInput is an input type that accepts GetLoadBalancersLoadBalancerBackendVmIdArgs and GetLoadBalancersLoadBalancerBackendVmIdOutput values.
-// You can construct a concrete instance of `GetLoadBalancersLoadBalancerBackendVmIdInput` via:
-//
-//	GetLoadBalancersLoadBalancerBackendVmIdArgs{...}
-type GetLoadBalancersLoadBalancerBackendVmIdInput interface {
-	pulumi.Input
-
-	ToGetLoadBalancersLoadBalancerBackendVmIdOutput() GetLoadBalancersLoadBalancerBackendVmIdOutput
-	ToGetLoadBalancersLoadBalancerBackendVmIdOutputWithContext(context.Context) GetLoadBalancersLoadBalancerBackendVmIdOutput
-}
-
-type GetLoadBalancersLoadBalancerBackendVmIdArgs struct {
-	VmId pulumi.StringInput `pulumi:"vmId"`
-}
-
-func (GetLoadBalancersLoadBalancerBackendVmIdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancersLoadBalancerBackendVmId)(nil)).Elem()
-}
-
-func (i GetLoadBalancersLoadBalancerBackendVmIdArgs) ToGetLoadBalancersLoadBalancerBackendVmIdOutput() GetLoadBalancersLoadBalancerBackendVmIdOutput {
-	return i.ToGetLoadBalancersLoadBalancerBackendVmIdOutputWithContext(context.Background())
-}
-
-func (i GetLoadBalancersLoadBalancerBackendVmIdArgs) ToGetLoadBalancersLoadBalancerBackendVmIdOutputWithContext(ctx context.Context) GetLoadBalancersLoadBalancerBackendVmIdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersLoadBalancerBackendVmIdOutput)
-}
-
-// GetLoadBalancersLoadBalancerBackendVmIdArrayInput is an input type that accepts GetLoadBalancersLoadBalancerBackendVmIdArray and GetLoadBalancersLoadBalancerBackendVmIdArrayOutput values.
-// You can construct a concrete instance of `GetLoadBalancersLoadBalancerBackendVmIdArrayInput` via:
-//
-//	GetLoadBalancersLoadBalancerBackendVmIdArray{ GetLoadBalancersLoadBalancerBackendVmIdArgs{...} }
-type GetLoadBalancersLoadBalancerBackendVmIdArrayInput interface {
-	pulumi.Input
-
-	ToGetLoadBalancersLoadBalancerBackendVmIdArrayOutput() GetLoadBalancersLoadBalancerBackendVmIdArrayOutput
-	ToGetLoadBalancersLoadBalancerBackendVmIdArrayOutputWithContext(context.Context) GetLoadBalancersLoadBalancerBackendVmIdArrayOutput
-}
-
-type GetLoadBalancersLoadBalancerBackendVmIdArray []GetLoadBalancersLoadBalancerBackendVmIdInput
-
-func (GetLoadBalancersLoadBalancerBackendVmIdArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetLoadBalancersLoadBalancerBackendVmId)(nil)).Elem()
-}
-
-func (i GetLoadBalancersLoadBalancerBackendVmIdArray) ToGetLoadBalancersLoadBalancerBackendVmIdArrayOutput() GetLoadBalancersLoadBalancerBackendVmIdArrayOutput {
-	return i.ToGetLoadBalancersLoadBalancerBackendVmIdArrayOutputWithContext(context.Background())
-}
-
-func (i GetLoadBalancersLoadBalancerBackendVmIdArray) ToGetLoadBalancersLoadBalancerBackendVmIdArrayOutputWithContext(ctx context.Context) GetLoadBalancersLoadBalancerBackendVmIdArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersLoadBalancerBackendVmIdArrayOutput)
-}
-
-type GetLoadBalancersLoadBalancerBackendVmIdOutput struct{ *pulumi.OutputState }
-
-func (GetLoadBalancersLoadBalancerBackendVmIdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetLoadBalancersLoadBalancerBackendVmId)(nil)).Elem()
-}
-
-func (o GetLoadBalancersLoadBalancerBackendVmIdOutput) ToGetLoadBalancersLoadBalancerBackendVmIdOutput() GetLoadBalancersLoadBalancerBackendVmIdOutput {
-	return o
-}
-
-func (o GetLoadBalancersLoadBalancerBackendVmIdOutput) ToGetLoadBalancersLoadBalancerBackendVmIdOutputWithContext(ctx context.Context) GetLoadBalancersLoadBalancerBackendVmIdOutput {
-	return o
-}
-
-func (o GetLoadBalancersLoadBalancerBackendVmIdOutput) VmId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetLoadBalancersLoadBalancerBackendVmId) string { return v.VmId }).(pulumi.StringOutput)
-}
-
-type GetLoadBalancersLoadBalancerBackendVmIdArrayOutput struct{ *pulumi.OutputState }
-
-func (GetLoadBalancersLoadBalancerBackendVmIdArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetLoadBalancersLoadBalancerBackendVmId)(nil)).Elem()
-}
-
-func (o GetLoadBalancersLoadBalancerBackendVmIdArrayOutput) ToGetLoadBalancersLoadBalancerBackendVmIdArrayOutput() GetLoadBalancersLoadBalancerBackendVmIdArrayOutput {
-	return o
-}
-
-func (o GetLoadBalancersLoadBalancerBackendVmIdArrayOutput) ToGetLoadBalancersLoadBalancerBackendVmIdArrayOutputWithContext(ctx context.Context) GetLoadBalancersLoadBalancerBackendVmIdArrayOutput {
-	return o
-}
-
-func (o GetLoadBalancersLoadBalancerBackendVmIdArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersLoadBalancerBackendVmIdOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersLoadBalancerBackendVmId {
-		return vs[0].([]GetLoadBalancersLoadBalancerBackendVmId)[vs[1].(int)]
-	}).(GetLoadBalancersLoadBalancerBackendVmIdOutput)
 }
 
 type GetLoadBalancersLoadBalancerHealthCheck struct {
@@ -50619,10 +52775,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NicSecurityGroupArrayInput)(nil)).Elem(), NicSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NicTagInput)(nil)).Elem(), NicTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NicTagArrayInput)(nil)).Elem(), NicTagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutboundRuleRuleInput)(nil)).Elem(), OutboundRuleRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutboundRuleRuleArrayInput)(nil)).Elem(), OutboundRuleRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutboundRuleRuleSecurityGroupsMemberInput)(nil)).Elem(), OutboundRuleRuleSecurityGroupsMemberArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OutboundRuleRuleSecurityGroupsMemberArrayInput)(nil)).Elem(), OutboundRuleRuleSecurityGroupsMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAdmissionFlagsInput)(nil)).Elem(), OksClusterAdmissionFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAdmissionFlagsPtrInput)(nil)).Elem(), OksClusterAdmissionFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesInput)(nil)).Elem(), OksClusterAutoMaintenancesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPtrInput)(nil)).Elem(), OksClusterAutoMaintenancesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenanceInput)(nil)).Elem(), OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrInput)(nil)).Elem(), OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualInput)(nil)).Elem(), OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrInput)(nil)).Elem(), OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenanceInput)(nil)).Elem(), OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrInput)(nil)).Elem(), OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualInput)(nil)).Elem(), OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrInput)(nil)).Elem(), OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterStatusesInput)(nil)).Elem(), OksClusterStatusesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterStatusesPtrInput)(nil)).Elem(), OksClusterStatusesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterTimeoutsInput)(nil)).Elem(), OksClusterTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterTimeoutsPtrInput)(nil)).Elem(), OksClusterTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksProjectTimeoutsInput)(nil)).Elem(), OksProjectTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksProjectTimeoutsPtrInput)(nil)).Elem(), OksProjectTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTagInput)(nil)).Elem(), PublicIpLinkTagArgs{})
@@ -50645,14 +52815,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteTimeoutsPtrInput)(nil)).Elem(), RouteTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupInboundRuleInput)(nil)).Elem(), SecurityGroupInboundRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupInboundRuleArrayInput)(nil)).Elem(), SecurityGroupInboundRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupInboundRuleSecurityGroupsMemberInput)(nil)).Elem(), SecurityGroupInboundRuleSecurityGroupsMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupInboundRuleSecurityGroupsMemberArrayInput)(nil)).Elem(), SecurityGroupInboundRuleSecurityGroupsMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupOutboundRuleInput)(nil)).Elem(), SecurityGroupOutboundRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupOutboundRuleArrayInput)(nil)).Elem(), SecurityGroupOutboundRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupOutboundRuleSecurityGroupsMemberInput)(nil)).Elem(), SecurityGroupOutboundRuleSecurityGroupsMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupOutboundRuleSecurityGroupsMemberArrayInput)(nil)).Elem(), SecurityGroupOutboundRuleSecurityGroupsMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleRuleInput)(nil)).Elem(), SecurityGroupRuleRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleRuleArrayInput)(nil)).Elem(), SecurityGroupRuleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleRuleSecurityGroupsMemberInput)(nil)).Elem(), SecurityGroupRuleRuleSecurityGroupsMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleRuleSecurityGroupsMemberArrayInput)(nil)).Elem(), SecurityGroupRuleRuleSecurityGroupsMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleTimeoutsInput)(nil)).Elem(), SecurityGroupRuleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleTimeoutsPtrInput)(nil)).Elem(), SecurityGroupRuleTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupTagInput)(nil)).Elem(), SecurityGroupTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupTagArrayInput)(nil)).Elem(), SecurityGroupTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupTimeoutsInput)(nil)).Elem(), SecurityGroupTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupTimeoutsPtrInput)(nil)).Elem(), SecurityGroupTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeAdditionsInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemovalInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeRemovalArgs{})
@@ -50895,8 +53073,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerAccessLogArrayInput)(nil)).Elem(), GetLoadBalancersLoadBalancerAccessLogArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyInput)(nil)).Elem(), GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArrayInput)(nil)).Elem(), GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerBackendVmIdInput)(nil)).Elem(), GetLoadBalancersLoadBalancerBackendVmIdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerBackendVmIdArrayInput)(nil)).Elem(), GetLoadBalancersLoadBalancerBackendVmIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerHealthCheckInput)(nil)).Elem(), GetLoadBalancersLoadBalancerHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerHealthCheckArrayInput)(nil)).Elem(), GetLoadBalancersLoadBalancerHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancersLoadBalancerListenerInput)(nil)).Elem(), GetLoadBalancersLoadBalancerListenerArgs{})
@@ -51431,10 +53607,24 @@ func init() {
 	pulumi.RegisterOutputType(NicSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(NicTagOutput{})
 	pulumi.RegisterOutputType(NicTagArrayOutput{})
-	pulumi.RegisterOutputType(OutboundRuleRuleOutput{})
-	pulumi.RegisterOutputType(OutboundRuleRuleArrayOutput{})
-	pulumi.RegisterOutputType(OutboundRuleRuleSecurityGroupsMemberOutput{})
-	pulumi.RegisterOutputType(OutboundRuleRuleSecurityGroupsMemberArrayOutput{})
+	pulumi.RegisterOutputType(OksClusterAdmissionFlagsOutput{})
+	pulumi.RegisterOutputType(OksClusterAdmissionFlagsPtrOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPtrOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesMinorUpgradeMaintenanceOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesMinorUpgradeMaintenancePtrOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualPtrOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPatchUpgradeMaintenanceOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput{})
+	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput{})
+	pulumi.RegisterOutputType(OksClusterStatusesOutput{})
+	pulumi.RegisterOutputType(OksClusterStatusesPtrOutput{})
+	pulumi.RegisterOutputType(OksClusterTimeoutsOutput{})
+	pulumi.RegisterOutputType(OksClusterTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OksProjectTimeoutsOutput{})
+	pulumi.RegisterOutputType(OksProjectTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
 	pulumi.RegisterOutputType(PublicIpLinkTagOutput{})
@@ -51457,14 +53647,22 @@ func init() {
 	pulumi.RegisterOutputType(RouteTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGroupInboundRuleOutput{})
 	pulumi.RegisterOutputType(SecurityGroupInboundRuleArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupInboundRuleSecurityGroupsMemberOutput{})
+	pulumi.RegisterOutputType(SecurityGroupInboundRuleSecurityGroupsMemberArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGroupOutboundRuleOutput{})
 	pulumi.RegisterOutputType(SecurityGroupOutboundRuleArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupOutboundRuleSecurityGroupsMemberOutput{})
+	pulumi.RegisterOutputType(SecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleRuleOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleRuleArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleRuleSecurityGroupsMemberOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleRuleSecurityGroupsMemberArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupRuleTimeoutsOutput{})
+	pulumi.RegisterOutputType(SecurityGroupRuleTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGroupTagOutput{})
 	pulumi.RegisterOutputType(SecurityGroupTagArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupTimeoutsOutput{})
+	pulumi.RegisterOutputType(SecurityGroupTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeAdditionsOutput{})
 	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeRemovalOutput{})
@@ -51707,8 +53905,6 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerAccessLogArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArrayOutput{})
-	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerBackendVmIdOutput{})
-	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerBackendVmIdArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancersLoadBalancerListenerOutput{})

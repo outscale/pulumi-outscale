@@ -31,8 +31,7 @@ class LoadBalancerPolicyArgs:
                  load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]] = None):
+                 subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LoadBalancerPolicy resource.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer for which you want to create a policy.
@@ -47,7 +46,6 @@ class LoadBalancerPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: The ID of the Subnet in which the load balancer was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subregion_names: The ID of the Subregion in which the load balancer was created.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]] tags: One or more tags associated with the load balancer.
         """
         pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -68,8 +66,6 @@ class LoadBalancerPolicyArgs:
             pulumi.set(__self__, "subnets", subnets)
         if subregion_names is not None:
             pulumi.set(__self__, "subregion_names", subregion_names)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
@@ -201,18 +197,6 @@ class LoadBalancerPolicyArgs:
     @subregion_names.setter
     def subregion_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subregion_names", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]]:
-        """
-        One or more tags associated with the load balancer.
-        """
-        return pulumi.get(self, "tags")
-
-    @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]]):
-        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -582,7 +566,6 @@ class LoadBalancerPolicy(pulumi.CustomResource):
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages a load balancer policy.
@@ -650,7 +633,6 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: The ID of the Subnet in which the load balancer was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subregion_names: The ID of the Subregion in which the load balancer was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict']]]] tags: One or more tags associated with the load balancer.
         """
         ...
     @overload
@@ -736,7 +718,6 @@ class LoadBalancerPolicy(pulumi.CustomResource):
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -763,7 +744,6 @@ class LoadBalancerPolicy(pulumi.CustomResource):
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["subnets"] = subnets
             __props__.__dict__["subregion_names"] = subregion_names
-            __props__.__dict__["tags"] = tags
             __props__.__dict__["application_sticky_cookie_policies"] = None
             __props__.__dict__["dns_name"] = None
             __props__.__dict__["health_checks"] = None
@@ -774,6 +754,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
             __props__.__dict__["request_id"] = None
             __props__.__dict__["secured_cookies"] = None
             __props__.__dict__["source_security_groups"] = None
+            __props__.__dict__["tags"] = None
         super(LoadBalancerPolicy, __self__).__init__(
             'outscale:index/loadBalancerPolicy:LoadBalancerPolicy',
             resource_name,

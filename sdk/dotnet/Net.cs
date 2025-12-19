@@ -141,7 +141,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.NetTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The tenancy options for the VMs:&lt;br /&gt;
+        /// The tenancy options for the VMs:&lt;br /&gt;- `Default` if a VM created in a Net can be launched with any tenancy.&lt;br /&gt;- `Dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.&lt;br /&gt;- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         /// </summary>
         [Output("tenancy")]
         public Output<string> Tenancy { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The tenancy options for the VMs:&lt;br /&gt;
+        /// The tenancy options for the VMs:&lt;br /&gt;- `Default` if a VM created in a Net can be launched with any tenancy.&lt;br /&gt;- `Dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.&lt;br /&gt;- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         /// </summary>
         [Input("tenancy")]
         public Input<string>? Tenancy { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The tenancy options for the VMs:&lt;br /&gt;
+        /// The tenancy options for the VMs:&lt;br /&gt;- `Default` if a VM created in a Net can be launched with any tenancy.&lt;br /&gt;- `Dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.&lt;br /&gt;- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         /// </summary>
         [Input("tenancy")]
         public Input<string>? Tenancy { get; set; }

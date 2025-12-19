@@ -29,7 +29,7 @@ class NetArgs:
         The set of arguments for constructing a Net resource.
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[Sequence[pulumi.Input['NetTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
-        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />
+        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         """
         pulumi.set(__self__, "ip_range", ip_range)
         if tags is not None:
@@ -67,7 +67,7 @@ class NetArgs:
     @pulumi.getter
     def tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The tenancy options for the VMs:<br />
+        The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         """
         return pulumi.get(self, "tenancy")
 
@@ -103,7 +103,7 @@ class _NetState:
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
         :param pulumi.Input[_builtins.str] state: The state of the Net (`pending` \\| `available` \\| `deleting`).
         :param pulumi.Input[Sequence[pulumi.Input['NetTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
-        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />
+        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         """
         if dhcp_options_set_id is not None:
             pulumi.set(__self__, "dhcp_options_set_id", dhcp_options_set_id)
@@ -195,7 +195,7 @@ class _NetState:
     @pulumi.getter
     def tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The tenancy options for the VMs:<br />
+        The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         """
         return pulumi.get(self, "tenancy")
 
@@ -285,7 +285,7 @@ class Net(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetTagArgs', 'NetTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
-        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />
+        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         """
         ...
     @overload
@@ -418,7 +418,7 @@ class Net(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
         :param pulumi.Input[_builtins.str] state: The state of the Net (`pending` \\| `available` \\| `deleting`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetTagArgs', 'NetTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
-        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />
+        :param pulumi.Input[_builtins.str] tenancy: The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -483,7 +483,7 @@ class Net(pulumi.CustomResource):
     @pulumi.getter
     def tenancy(self) -> pulumi.Output[_builtins.str]:
         """
-        The tenancy options for the VMs:<br />
+        The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
         """
         return pulumi.get(self, "tenancy")
 

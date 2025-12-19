@@ -25,7 +25,7 @@ namespace Pulumi.Outscale.Outputs
         /// <summary>
         /// One or more IDs of backend VMs for the load balancer.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetLoadBalancersLoadBalancerBackendVmIdResult> BackendVmIds;
+        public readonly ImmutableArray<string> BackendVmIds;
         /// <summary>
         /// The DNS name of the load balancer.
         /// </summary>
@@ -91,7 +91,7 @@ namespace Pulumi.Outscale.Outputs
 
             ImmutableArray<string> backendIps,
 
-            ImmutableArray<Outputs.GetLoadBalancersLoadBalancerBackendVmIdResult> backendVmIds,
+            ImmutableArray<string> backendVmIds,
 
             string dnsName,
 

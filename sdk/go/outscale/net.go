@@ -145,7 +145,7 @@ type Net struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags NetTagArrayOutput `pulumi:"tags"`
-	// The tenancy options for the VMs:<br />
+	// The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
 	Tenancy  pulumi.StringOutput  `pulumi:"tenancy"`
 	Timeouts NetTimeoutsPtrOutput `pulumi:"timeouts"`
 }
@@ -194,7 +194,7 @@ type netState struct {
 	State *string `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []NetTag `pulumi:"tags"`
-	// The tenancy options for the VMs:<br />
+	// The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
 	Tenancy  *string      `pulumi:"tenancy"`
 	Timeouts *NetTimeouts `pulumi:"timeouts"`
 }
@@ -211,7 +211,7 @@ type NetState struct {
 	State pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags NetTagArrayInput
-	// The tenancy options for the VMs:<br />
+	// The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
 	Tenancy  pulumi.StringPtrInput
 	Timeouts NetTimeoutsPtrInput
 }
@@ -225,7 +225,7 @@ type netArgs struct {
 	IpRange string `pulumi:"ipRange"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []NetTag `pulumi:"tags"`
-	// The tenancy options for the VMs:<br />
+	// The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
 	Tenancy  *string      `pulumi:"tenancy"`
 	Timeouts *NetTimeouts `pulumi:"timeouts"`
 }
@@ -236,7 +236,7 @@ type NetArgs struct {
 	IpRange pulumi.StringInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags NetTagArrayInput
-	// The tenancy options for the VMs:<br />
+	// The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
 	Tenancy  pulumi.StringPtrInput
 	Timeouts NetTimeoutsPtrInput
 }
@@ -357,7 +357,7 @@ func (o NetOutput) Tags() NetTagArrayOutput {
 	return o.ApplyT(func(v *Net) NetTagArrayOutput { return v.Tags }).(NetTagArrayOutput)
 }
 
-// The tenancy options for the VMs:<br />
+// The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
 func (o NetOutput) Tenancy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Net) pulumi.StringOutput { return v.Tenancy }).(pulumi.StringOutput)
 }

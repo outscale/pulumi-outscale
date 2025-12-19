@@ -93,6 +93,7 @@ class _AccessKeyState:
                  creation_date: Optional[pulumi.Input[_builtins.str]] = None,
                  expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
                  last_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
+                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['AccessKeyTimeoutsArgs']] = None,
@@ -115,6 +116,8 @@ class _AccessKeyState:
             pulumi.set(__self__, "expiration_date", expiration_date)
         if last_modification_date is not None:
             pulumi.set(__self__, "last_modification_date", last_modification_date)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if state is not None:
@@ -171,6 +174,15 @@ class _AccessKeyState:
     @last_modification_date.setter
     def last_modification_date(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "last_modification_date", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
@@ -350,6 +362,7 @@ class AccessKey(pulumi.CustomResource):
             __props__.__dict__["access_key_id"] = None
             __props__.__dict__["creation_date"] = None
             __props__.__dict__["last_modification_date"] = None
+            __props__.__dict__["request_id"] = None
             __props__.__dict__["secret_key"] = None
         super(AccessKey, __self__).__init__(
             'outscale:index/accessKey:AccessKey',
@@ -365,6 +378,7 @@ class AccessKey(pulumi.CustomResource):
             creation_date: Optional[pulumi.Input[_builtins.str]] = None,
             expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
             last_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
+            request_id: Optional[pulumi.Input[_builtins.str]] = None,
             secret_key: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             timeouts: Optional[pulumi.Input[Union['AccessKeyTimeoutsArgs', 'AccessKeyTimeoutsArgsDict']]] = None,
@@ -392,6 +406,7 @@ class AccessKey(pulumi.CustomResource):
         __props__.__dict__["creation_date"] = creation_date
         __props__.__dict__["expiration_date"] = expiration_date
         __props__.__dict__["last_modification_date"] = last_modification_date
+        __props__.__dict__["request_id"] = request_id
         __props__.__dict__["secret_key"] = secret_key
         __props__.__dict__["state"] = state
         __props__.__dict__["timeouts"] = timeouts
@@ -416,7 +431,7 @@ class AccessKey(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="expirationDate")
-    def expiration_date(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def expiration_date(self) -> pulumi.Output[_builtins.str]:
         """
         The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
         """
@@ -429,6 +444,11 @@ class AccessKey(pulumi.CustomResource):
         The date and time (UTC) at which the access key was last modified.
         """
         return pulumi.get(self, "last_modification_date")
+
+    @_builtins.property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "request_id")
 
     @_builtins.property
     @pulumi.getter(name="secretKey")

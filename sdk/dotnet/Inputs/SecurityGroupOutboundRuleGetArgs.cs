@@ -15,16 +15,16 @@ namespace Pulumi.Outscale.Inputs
         /// <summary>
         /// The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         /// </summary>
-        [Input("fromPortRange")]
-        public Input<int>? FromPortRange { get; set; }
+        [Input("fromPortRange", required: true)]
+        public Input<int> FromPortRange { get; set; } = null!;
 
         /// <summary>
         /// The IP protocol name (`Tcp`, `Udp`, `Icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         /// </summary>
-        [Input("ipProtocol")]
-        public Input<string>? IpProtocol { get; set; }
+        [Input("ipProtocol", required: true)]
+        public Input<string> IpProtocol { get; set; } = null!;
 
-        [Input("ipRanges")]
+        [Input("ipRanges", required: true)]
         private InputList<string>? _ipRanges;
 
         /// <summary>
@@ -36,23 +36,35 @@ namespace Pulumi.Outscale.Inputs
             set => _ipRanges = value;
         }
 
-        [Input("securityGroupsMembers")]
-        private InputList<ImmutableDictionary<string, string>>? _securityGroupsMembers;
+        [Input("securityGroupsMembers", required: true)]
+        private InputList<Inputs.SecurityGroupOutboundRuleSecurityGroupsMemberGetArgs>? _securityGroupsMembers;
 
         /// <summary>
         /// Information about one or more source or destination security groups.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> SecurityGroupsMembers
+        public InputList<Inputs.SecurityGroupOutboundRuleSecurityGroupsMemberGetArgs> SecurityGroupsMembers
         {
-            get => _securityGroupsMembers ?? (_securityGroupsMembers = new InputList<ImmutableDictionary<string, string>>());
+            get => _securityGroupsMembers ?? (_securityGroupsMembers = new InputList<Inputs.SecurityGroupOutboundRuleSecurityGroupsMemberGetArgs>());
             set => _securityGroupsMembers = value;
+        }
+
+        [Input("serviceIds", required: true)]
+        private InputList<string>? _serviceIds;
+
+        /// <summary>
+        /// One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+        /// </summary>
+        public InputList<string> ServiceIds
+        {
+            get => _serviceIds ?? (_serviceIds = new InputList<string>());
+            set => _serviceIds = value;
         }
 
         /// <summary>
         /// The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         /// </summary>
-        [Input("toPortRange")]
-        public Input<int>? ToPortRange { get; set; }
+        [Input("toPortRange", required: true)]
+        public Input<int> ToPortRange { get; set; } = null!;
 
         public SecurityGroupOutboundRuleGetArgs()
         {
