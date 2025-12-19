@@ -1289,7 +1289,15 @@
                     "description": "The value of the tag, between 0 and 255 characters.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "key",
+                        "value"
+                    ]
+                }
+            }
         },
         "outscale:index/LoadBalancerVmsTimeouts:LoadBalancerVmsTimeouts": {
             "properties": {
@@ -1897,64 +1905,272 @@
                 }
             }
         },
-        "outscale:index/OutboundRuleRule:OutboundRuleRule": {
+        "outscale:index/OksClusterAdmissionFlags:OksClusterAdmissionFlags": {
             "properties": {
-                "fromPortRange": {
-                    "type": "integer",
-                    "willReplaceOnChanges": true
-                },
-                "ipProtocol": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
-                },
-                "ipRanges": {
+                "appliedAdmissionPlugins": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "willReplaceOnChanges": true
+                    "description": "The list of admission plugins that are currently applied to the cluster.\n"
                 },
-                "securityGroupsMembers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/outscale:index/OutboundRuleRuleSecurityGroupsMember:OutboundRuleRuleSecurityGroupsMember"
-                    }
-                },
-                "serviceIds": {
+                "disableAdmissionPlugins": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "willReplaceOnChanges": true
+                    "description": "The list of Kubernetes admission plugins to disable.\n"
                 },
-                "toPortRange": {
-                    "type": "integer",
-                    "willReplaceOnChanges": true
+                "disableAdmissionPluginsActuals": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of Kubernetes admission plugins that are disabled.\n"
+                },
+                "enableAdmissionPlugins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of Kubernetes admission plugins to enable.\n"
+                },
+                "enableAdmissionPluginsActuals": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of Kubernetes admission plugins that are enabled.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "ipProtocol",
-                        "securityGroupsMembers"
+                        "appliedAdmissionPlugins",
+                        "disableAdmissionPlugins",
+                        "disableAdmissionPluginsActuals",
+                        "enableAdmissionPlugins",
+                        "enableAdmissionPluginsActuals"
                     ]
                 }
             }
         },
-        "outscale:index/OutboundRuleRuleSecurityGroupsMember:OutboundRuleRuleSecurityGroupsMember": {
+        "outscale:index/OksClusterAutoMaintenances:OksClusterAutoMaintenances": {
             "properties": {
-                "accountId": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                "minorUpgradeMaintenance": {
+                    "$ref": "#/types/outscale:index/OksClusterAutoMaintenancesMinorUpgradeMaintenance:OksClusterAutoMaintenancesMinorUpgradeMaintenance",
+                    "description": "The maintenance window configuration for minor Kubernetes upgrades.\n"
                 },
-                "securityGroupId": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                "minorUpgradeMaintenanceActual": {
+                    "$ref": "#/types/outscale:index/OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual:OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual",
+                    "description": "The maintenance window configuration for minor Kubernetes upgrades.\n"
                 },
-                "securityGroupName": {
+                "patchUpgradeMaintenance": {
+                    "$ref": "#/types/outscale:index/OksClusterAutoMaintenancesPatchUpgradeMaintenance:OksClusterAutoMaintenancesPatchUpgradeMaintenance",
+                    "description": "The maintenance window configuration for patch Kubernetes upgrades.\n"
+                },
+                "patchUpgradeMaintenanceActual": {
+                    "$ref": "#/types/outscale:index/OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual:OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual",
+                    "description": "The maintenance window configuration for minor Kubernetes upgrades.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "minorUpgradeMaintenanceActual",
+                        "patchUpgradeMaintenanceActual"
+                    ]
+                }
+            }
+        },
+        "outscale:index/OksClusterAutoMaintenancesMinorUpgradeMaintenance:OksClusterAutoMaintenancesMinorUpgradeMaintenance": {
+            "properties": {
+                "durationHours": {
+                    "type": "integer",
+                    "description": "The duration of the maintenance window, in hours. By default, \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\"\u003e`0`\u003c/span\u003e.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "If true, a maintenance window is enabled. By default, true.\n"
+                },
+                "startHour": {
+                    "type": "integer",
+                    "description": "The starting time of the maintenance window, in hours. By default, \u003cspan pulumi-lang-nodejs=\"`12`\" pulumi-lang-dotnet=\"`12`\" pulumi-lang-go=\"`12`\" pulumi-lang-python=\"`12`\" pulumi-lang-yaml=\"`12`\" pulumi-lang-java=\"`12`\"\u003e`12`\u003c/span\u003e.\n"
+                },
+                "tz": {
                     "type": "string",
-                    "willReplaceOnChanges": true
+                    "description": "The timezone for the maintenance window. By default, `UTC`.\n"
+                },
+                "weekDay": {
+                    "type": "string",
+                    "description": "The weekday on which the maintenance window begins (`Mon` \\| `Tue` \\| `Wed` \\| `Thu` \\| `Fri` \\| `Sat` \\| `Sun`). By default, `Tue`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual:OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual": {
+            "properties": {
+                "durationHours": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "startHour": {
+                    "type": "integer"
+                },
+                "tz": {
+                    "type": "string"
+                },
+                "weekDay": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "durationHours",
+                        "enabled",
+                        "startHour",
+                        "tz",
+                        "weekDay"
+                    ]
+                }
+            }
+        },
+        "outscale:index/OksClusterAutoMaintenancesPatchUpgradeMaintenance:OksClusterAutoMaintenancesPatchUpgradeMaintenance": {
+            "properties": {
+                "durationHours": {
+                    "type": "integer",
+                    "description": "The duration of the maintenance window, in hours. By default, \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\"\u003e`0`\u003c/span\u003e.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "If true, a maintenance window is enabled. By default, true.\n"
+                },
+                "startHour": {
+                    "type": "integer",
+                    "description": "The starting time of the maintenance window, in hours. By default, \u003cspan pulumi-lang-nodejs=\"`12`\" pulumi-lang-dotnet=\"`12`\" pulumi-lang-go=\"`12`\" pulumi-lang-python=\"`12`\" pulumi-lang-yaml=\"`12`\" pulumi-lang-java=\"`12`\"\u003e`12`\u003c/span\u003e.\n"
+                },
+                "tz": {
+                    "type": "string",
+                    "description": "The timezone for the maintenance window. By default, `UTC`.\n"
+                },
+                "weekDay": {
+                    "type": "string",
+                    "description": "The weekday on which the maintenance window begins (`Mon` \\| `Tue` \\| `Wed` \\| `Thu` \\| `Fri` \\| `Sat` \\| `Sun`). By default, `Tue`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual:OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual": {
+            "properties": {
+                "durationHours": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "startHour": {
+                    "type": "integer"
+                },
+                "tz": {
+                    "type": "string"
+                },
+                "weekDay": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "durationHours",
+                        "enabled",
+                        "startHour",
+                        "tz",
+                        "weekDay"
+                    ]
+                }
+            }
+        },
+        "outscale:index/OksClusterStatuses:OksClusterStatuses": {
+            "properties": {
+                "availableUpgrade": {
+                    "type": "string",
+                    "description": "Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The timestamp when the cluster was created (date-time).\n"
+                },
+                "deletedAt": {
+                    "type": "string",
+                    "description": "The timestamp when the cluster was deleted (if applicable) (date-time).\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the cluster.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The timestamp when the cluster was last updated (date-time).\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "availableUpgrade",
+                        "createdAt",
+                        "deletedAt",
+                        "status",
+                        "updatedAt"
+                    ]
+                }
+            }
+        },
+        "outscale:index/OksClusterTimeouts:OksClusterTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/OksProjectTimeouts:OksProjectTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
                 }
             },
             "type": "object"
@@ -2221,12 +2437,16 @@
                 "securityGroupsMembers": {
                     "type": "array",
                     "items": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
+                        "$ref": "#/types/outscale:index/SecurityGroupInboundRuleSecurityGroupsMember:SecurityGroupInboundRuleSecurityGroupsMember"
                     },
                     "description": "Information about one or more source or destination security groups.\n"
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).\n"
                 },
                 "toPortRange": {
                     "type": "integer",
@@ -2234,16 +2454,36 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "fromPortRange",
-                        "ipProtocol",
-                        "ipRanges",
-                        "toPortRange"
-                    ]
+            "required": [
+                "fromPortRange",
+                "ipProtocol",
+                "ipRanges",
+                "securityGroupsMembers",
+                "serviceIds",
+                "toPortRange"
+            ]
+        },
+        "outscale:index/SecurityGroupInboundRuleSecurityGroupsMember:SecurityGroupInboundRuleSecurityGroupsMember": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account ID that owns the source or destination security group.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "The ID of the security group.\n"
+                },
+                "securityGroupName": {
+                    "type": "string",
+                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
                 }
-            }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "securityGroupId",
+                "securityGroupName"
+            ]
         },
         "outscale:index/SecurityGroupOutboundRule:SecurityGroupOutboundRule": {
             "properties": {
@@ -2265,12 +2505,16 @@
                 "securityGroupsMembers": {
                     "type": "array",
                     "items": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
+                        "$ref": "#/types/outscale:index/SecurityGroupOutboundRuleSecurityGroupsMember:SecurityGroupOutboundRuleSecurityGroupsMember"
                     },
                     "description": "Information about one or more source or destination security groups.\n"
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).\n"
                 },
                 "toPortRange": {
                     "type": "integer",
@@ -2278,36 +2522,53 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "fromPortRange",
-                        "ipProtocol",
-                        "ipRanges",
-                        "toPortRange"
-                    ]
+            "required": [
+                "fromPortRange",
+                "ipProtocol",
+                "ipRanges",
+                "securityGroupsMembers",
+                "serviceIds",
+                "toPortRange"
+            ]
+        },
+        "outscale:index/SecurityGroupOutboundRuleSecurityGroupsMember:SecurityGroupOutboundRuleSecurityGroupsMember": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account ID that owns the source or destination security group.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "The ID of the security group.\n"
+                },
+                "securityGroupName": {
+                    "type": "string",
+                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
                 }
-            }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "securityGroupId",
+                "securityGroupName"
+            ]
         },
         "outscale:index/SecurityGroupRuleRule:SecurityGroupRuleRule": {
             "properties": {
                 "fromPortRange": {
                     "type": "integer",
-                    "description": "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.\n"
                 },
                 "ipProtocol": {
                     "type": "string",
-                    "description": "The IP protocol name (\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The IP protocol name (\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).\n"
                 },
                 "ipRanges": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).\n",
-                    "willReplaceOnChanges": true
+                    "description": "One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).\n"
                 },
                 "securityGroupsMembers": {
                     "type": "array",
@@ -2321,21 +2582,19 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).\n",
-                    "willReplaceOnChanges": true
+                    "description": "One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).\n"
                 },
                 "toPortRange": {
                     "type": "integer",
-                    "description": "The end of the port range for the TCP and UDP protocols, or an ICMP code number.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The end of the port range for the TCP and UDP protocols, or an ICMP code number.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "ipProtocol",
-                        "securityGroupsMembers"
+                        "ipRanges",
+                        "serviceIds"
                     ]
                 }
             }
@@ -2344,18 +2603,45 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account ID that owns the source or destination security group.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The account ID that owns the source or destination security group.\n"
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of a source or destination security group that you want to link to the security group of the rule.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of a source or destination security group that you want to link to the security group of the rule.\n"
                 },
                 "securityGroupName": {
                     "type": "string",
-                    "description": "(Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.\n",
-                    "willReplaceOnChanges": true
+                    "description": "(Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accountId",
+                        "securityGroupId",
+                        "securityGroupName"
+                    ]
+                }
+            }
+        },
+        "outscale:index/SecurityGroupRuleTimeouts:SecurityGroupRuleTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
                 }
             },
             "type": "object"
@@ -2372,6 +2658,9 @@
                 }
             },
             "type": "object",
+            "required": [
+                "key"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -2380,6 +2669,27 @@
                     ]
                 }
             }
+        },
+        "outscale:index/SecurityGroupTimeouts:SecurityGroupTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "outscale:index/SnapshotAttributesPermissionsToCreateVolumeAdditions:SnapshotAttributesPermissionsToCreateVolumeAdditions": {
             "properties": {
@@ -2816,8 +3126,7 @@
                 },
                 "iops": {
                     "type": "integer",
-                    "description": "The number of I/O operations per second (IOPS). This parameter must be specified only if you create an \u003cspan pulumi-lang-nodejs=\"`io1`\" pulumi-lang-dotnet=\"`Io1`\" pulumi-lang-go=\"`io1`\" pulumi-lang-python=\"`io1`\" pulumi-lang-yaml=\"`io1`\" pulumi-lang-java=\"`io1`\"\u003e`io1`\u003c/span\u003e volume. The maximum number of IOPS allowed for \u003cspan pulumi-lang-nodejs=\"`io1`\" pulumi-lang-dotnet=\"`Io1`\" pulumi-lang-go=\"`io1`\" pulumi-lang-python=\"`io1`\" pulumi-lang-yaml=\"`io1`\" pulumi-lang-java=\"`io1`\"\u003e`io1`\u003c/span\u003e volumes is \u003cspan pulumi-lang-nodejs=\"`13000`\" pulumi-lang-dotnet=\"`13000`\" pulumi-lang-go=\"`13000`\" pulumi-lang-python=\"`13000`\" pulumi-lang-yaml=\"`13000`\" pulumi-lang-java=\"`13000`\"\u003e`13000`\u003c/span\u003e with a maximum performance ratio of 300 IOPS per gibibyte.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The number of I/O operations per second (IOPS). This parameter must be specified only if you create an \u003cspan pulumi-lang-nodejs=\"`io1`\" pulumi-lang-dotnet=\"`Io1`\" pulumi-lang-go=\"`io1`\" pulumi-lang-python=\"`io1`\" pulumi-lang-yaml=\"`io1`\" pulumi-lang-java=\"`io1`\"\u003e`io1`\u003c/span\u003e volume. The maximum number of IOPS allowed for \u003cspan pulumi-lang-nodejs=\"`io1`\" pulumi-lang-dotnet=\"`Io1`\" pulumi-lang-go=\"`io1`\" pulumi-lang-python=\"`io1`\" pulumi-lang-yaml=\"`io1`\" pulumi-lang-java=\"`io1`\"\u003e`io1`\u003c/span\u003e volumes is \u003cspan pulumi-lang-nodejs=\"`13000`\" pulumi-lang-dotnet=\"`13000`\" pulumi-lang-go=\"`13000`\" pulumi-lang-python=\"`13000`\" pulumi-lang-yaml=\"`13000`\" pulumi-lang-java=\"`13000`\"\u003e`13000`\u003c/span\u003e with a maximum performance ratio of 300 IOPS per gibibyte.\n"
                 },
                 "snapshotId": {
                     "type": "string",
@@ -2833,12 +3142,10 @@
                 },
                 "volumeSize": {
                     "type": "integer",
-                    "description": "The size of the volume, in gibibytes (GiB).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The size of the volume, in gibibytes (GiB).\n"
                 },
                 "volumeType": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -5838,7 +6145,7 @@
                 "backendVmIds": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/outscale:index/getLoadBalancersLoadBalancerBackendVmId:getLoadBalancersLoadBalancerBackendVmId"
+                        "type": "string"
                     },
                     "description": "One or more IDs of backend VMs for the load balancer.\n"
                 },
@@ -5996,22 +6303,6 @@
             "required": [
                 "cookieName",
                 "policyName"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
-        "outscale:index/getLoadBalancersLoadBalancerBackendVmId:getLoadBalancersLoadBalancerBackendVmId": {
-            "properties": {
-                "vmId": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "vmId"
             ],
             "language": {
                 "nodejs": {
@@ -12369,6 +12660,9 @@
                     "type": "string",
                     "description": "The date and time (UTC) at which the access key was last modified.\n"
                 },
+                "requestId": {
+                    "type": "string"
+                },
                 "secretKey": {
                     "type": "string",
                     "description": "The secret key that enables you to send requests.\n"
@@ -12388,7 +12682,9 @@
             "required": [
                 "accessKeyId",
                 "creationDate",
+                "expirationDate",
                 "lastModificationDate",
+                "requestId",
                 "secretKey",
                 "state"
             ],
@@ -12427,6 +12723,9 @@
                     "lastModificationDate": {
                         "type": "string",
                         "description": "The date and time (UTC) at which the access key was last modified.\n"
+                    },
+                    "requestId": {
+                        "type": "string"
                     },
                     "secretKey": {
                         "type": "string",
@@ -14393,13 +14692,6 @@
                     "type": "string",
                     "description": "The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers \u003e OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the \u003cspan pulumi-lang-nodejs=\"`loadBalancerPort`\" pulumi-lang-dotnet=\"`LoadBalancerPort`\" pulumi-lang-go=\"`loadBalancerPort`\" pulumi-lang-python=\"`load_balancer_port`\" pulumi-lang-yaml=\"`loadBalancerPort`\" pulumi-lang-java=\"`loadBalancerPort`\"\u003e`load_balancer_port`\u003c/span\u003e parameter.\n",
                     "willReplaceOnChanges": true
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/outscale:index/LoadBalancerAttributesTag:LoadBalancerAttributesTag"
-                    },
-                    "description": "One or more tags associated with the load balancer.\n"
                 }
             },
             "requiredInputs": [
@@ -14809,13 +15101,6 @@
                     },
                     "description": "The ID of the Subregion in which the load balancer was created.\n",
                     "willReplaceOnChanges": true
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/outscale:index/LoadBalancerPolicyTag:LoadBalancerPolicyTag"
-                    },
-                    "description": "One or more tags associated with the load balancer.\n"
                 }
             },
             "requiredInputs": [
@@ -15289,7 +15574,7 @@
                 },
                 "tenancy": {
                     "type": "string",
-                    "description": "The tenancy options for the VMs:\u003cbr /\u003e\n"
+                    "description": "The tenancy options for the VMs:\u003cbr /\u003e- \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e if a VM created in a Net can be launched with any tenancy.\u003cbr /\u003e- \u003cspan pulumi-lang-nodejs=\"`dedicated`\" pulumi-lang-dotnet=\"`Dedicated`\" pulumi-lang-go=\"`dedicated`\" pulumi-lang-python=\"`dedicated`\" pulumi-lang-yaml=\"`dedicated`\" pulumi-lang-java=\"`dedicated`\"\u003e`dedicated`\u003c/span\u003e if it can be launched with dedicated tenancy VMs running on single-tenant hardware.\u003cbr /\u003e- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/outscale:index/NetTimeouts:NetTimeouts"
@@ -15317,7 +15602,7 @@
                 },
                 "tenancy": {
                     "type": "string",
-                    "description": "The tenancy options for the VMs:\u003cbr /\u003e\n"
+                    "description": "The tenancy options for the VMs:\u003cbr /\u003e- \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e if a VM created in a Net can be launched with any tenancy.\u003cbr /\u003e- \u003cspan pulumi-lang-nodejs=\"`dedicated`\" pulumi-lang-dotnet=\"`Dedicated`\" pulumi-lang-go=\"`dedicated`\" pulumi-lang-python=\"`dedicated`\" pulumi-lang-yaml=\"`dedicated`\" pulumi-lang-java=\"`dedicated`\"\u003e`dedicated`\u003c/span\u003e if it can be launched with dedicated tenancy VMs running on single-tenant hardware.\u003cbr /\u003e- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/outscale:index/NetTimeouts:NetTimeouts"
@@ -15357,7 +15642,7 @@
                     },
                     "tenancy": {
                         "type": "string",
-                        "description": "The tenancy options for the VMs:\u003cbr /\u003e\n"
+                        "description": "The tenancy options for the VMs:\u003cbr /\u003e- \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\"\u003e`default`\u003c/span\u003e if a VM created in a Net can be launched with any tenancy.\u003cbr /\u003e- \u003cspan pulumi-lang-nodejs=\"`dedicated`\" pulumi-lang-dotnet=\"`Dedicated`\" pulumi-lang-go=\"`dedicated`\" pulumi-lang-python=\"`dedicated`\" pulumi-lang-yaml=\"`dedicated`\" pulumi-lang-java=\"`dedicated`\"\u003e`dedicated`\u003c/span\u003e if it can be launched with dedicated tenancy VMs running on single-tenant hardware.\u003cbr /\u003e- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/outscale:index/NetTimeouts:NetTimeouts"
@@ -16013,6 +16298,7 @@
                 "privateIps",
                 "requestId",
                 "requesterManaged",
+                "securityGroupIds",
                 "securityGroups",
                 "state",
                 "subnetId",
@@ -16356,150 +16642,496 @@
                 "type": "object"
             }
         },
-        "outscale:index/outboundRule:OutboundRule": {
+        "outscale:index/oksCluster:OksCluster": {
+            "description": "Manages a cluster.\n\nFor more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OKS.html#_clusters).  \nFor more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#oks-api-clusters).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as outscale from \"@outscale/pulumi-outscale\";\n\nconst project01 = new outscale.OksProject(\"project01\", {\n    name: \"project01\",\n    cidr: \"10.50.0.0/18\",\n    region: \"eu-west-2\",\n});\nconst cluster01 = new outscale.OksCluster(\"cluster01\", {\n    projectId: project01.id,\n    adminWhitelists: [\"0.0.0.0/0\"],\n    cidrPods: \"10.91.0.0/16\",\n    cidrService: \"10.92.0.0/16\",\n    version: \"1.32\",\n    name: \"cluster01\",\n    controlPlanes: \"cp.mono.master\",\n    tags: {\n        tagkey: \"tagvalue\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_outscale as outscale\n\nproject01 = outscale.OksProject(\"project01\",\n    name=\"project01\",\n    cidr=\"10.50.0.0/18\",\n    region=\"eu-west-2\")\ncluster01 = outscale.OksCluster(\"cluster01\",\n    project_id=project01.id,\n    admin_whitelists=[\"0.0.0.0/0\"],\n    cidr_pods=\"10.91.0.0/16\",\n    cidr_service=\"10.92.0.0/16\",\n    version=\"1.32\",\n    name=\"cluster01\",\n    control_planes=\"cp.mono.master\",\n    tags={\n        \"tagkey\": \"tagvalue\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Outscale = Pulumi.Outscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project01 = new Outscale.OksProject(\"project01\", new()\n    {\n        Name = \"project01\",\n        Cidr = \"10.50.0.0/18\",\n        Region = \"eu-west-2\",\n    });\n\n    var cluster01 = new Outscale.OksCluster(\"cluster01\", new()\n    {\n        ProjectId = project01.Id,\n        AdminWhitelists = new[]\n        {\n            \"0.0.0.0/0\",\n        },\n        CidrPods = \"10.91.0.0/16\",\n        CidrService = \"10.92.0.0/16\",\n        Version = \"1.32\",\n        Name = \"cluster01\",\n        ControlPlanes = \"cp.mono.master\",\n        Tags = \n        {\n            { \"tagkey\", \"tagvalue\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/outscale/pulumi-outscale/sdk/go/outscale\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject01, err := outscale.NewOksProject(ctx, \"project01\", \u0026outscale.OksProjectArgs{\n\t\t\tName:   pulumi.String(\"project01\"),\n\t\t\tCidr:   pulumi.String(\"10.50.0.0/18\"),\n\t\t\tRegion: pulumi.String(\"eu-west-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = outscale.NewOksCluster(ctx, \"cluster01\", \u0026outscale.OksClusterArgs{\n\t\t\tProjectId: project01.ID(),\n\t\t\tAdminWhitelists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"0.0.0.0/0\"),\n\t\t\t},\n\t\t\tCidrPods:      pulumi.String(\"10.91.0.0/16\"),\n\t\t\tCidrService:   pulumi.String(\"10.92.0.0/16\"),\n\t\t\tVersion:       pulumi.String(\"1.32\"),\n\t\t\tName:          pulumi.String(\"cluster01\"),\n\t\t\tControlPlanes: pulumi.String(\"cp.mono.master\"),\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"tagkey\": pulumi.String(\"tagvalue\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.outscale.pulumi.outscale.OksProject;\nimport com.outscale.pulumi.outscale.OksProjectArgs;\nimport com.outscale.pulumi.outscale.OksCluster;\nimport com.outscale.pulumi.outscale.OksClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var project01 = new OksProject(\"project01\", OksProjectArgs.builder()\n            .name(\"project01\")\n            .cidr(\"10.50.0.0/18\")\n            .region(\"eu-west-2\")\n            .build());\n\n        var cluster01 = new OksCluster(\"cluster01\", OksClusterArgs.builder()\n            .projectId(project01.id())\n            .adminWhitelists(\"0.0.0.0/0\")\n            .cidrPods(\"10.91.0.0/16\")\n            .cidrService(\"10.92.0.0/16\")\n            .version(\"1.32\")\n            .name(\"cluster01\")\n            .controlPlanes(\"cp.mono.master\")\n            .tags(Map.of(\"tagkey\", \"tagvalue\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project01:\n    type: outscale:OksProject\n    properties:\n      name: project01\n      cidr: 10.50.0.0/18\n      region: eu-west-2\n  cluster01:\n    type: outscale:OksCluster\n    properties:\n      projectId: ${project01.id}\n      adminWhitelists:\n        - 0.0.0.0/0\n      cidrPods: 10.91.0.0/16\n      cidrService: 10.92.0.0/16\n      version: '1.32'\n      name: cluster01\n      controlPlanes: cp.mono.master\n      tags:\n        tagkey: tagvalue\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn OKS cluster can be imported using its ID. For example:\n\nconsole\n\n```sh\n$ pulumi import outscale:index/oksCluster:OksCluster cluster id\n```\n\n",
             "properties": {
-                "flow": {
-                    "type": "string"
+                "adminLbu": {
+                    "type": "boolean",
+                    "description": "If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.\n"
                 },
-                "fromPortRange": {
-                    "type": "integer"
+                "adminWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.\n"
                 },
-                "ipProtocol": {
-                    "type": "string"
+                "admissionFlags": {
+                    "$ref": "#/types/outscale:index/OksClusterAdmissionFlags:OksClusterAdmissionFlags",
+                    "description": "The configuration for Kubernetes admission controllers.\n"
                 },
-                "ipRange": {
-                    "type": "string"
+                "autoMaintenances": {
+                    "$ref": "#/types/outscale:index/OksClusterAutoMaintenances:OksClusterAutoMaintenances",
+                    "description": "The configurations for automated maintenance windows.\n"
                 },
-                "netId": {
-                    "type": "string"
+                "cidrPods": {
+                    "type": "string",
+                    "description": "The CIDR block for Kubernetes pods' network.\n"
+                },
+                "cidrService": {
+                    "type": "string",
+                    "description": "The CIDR block for the Kubernetes services' network.\n"
+                },
+                "clusterDns": {
+                    "type": "string",
+                    "description": "The IP for the cluster's DNS service.\n"
+                },
+                "cni": {
+                    "type": "string",
+                    "description": "The Container Network Interface (CNI) used in the cluster.\n"
+                },
+                "controlPlanes": {
+                    "type": "string",
+                    "description": "The size of control plane deployment for the cluster. For more information, see [About OKS \u003e Control Planes](https://docs.outscale.com/en/userguide/About-OKS.html#_control_planes). By default, `cp.3.masters.small`.\n"
+                },
+                "cpMultiAz": {
+                    "type": "boolean",
+                    "description": "If true, multi-Subregion deployment is enabled for the control plane. If false, it is disabled. By default, false.\n"
+                },
+                "cpSubregions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of Subregions where control plane components are deployed.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the cluster.\n"
+                },
+                "disableApiTermination": {
+                    "type": "boolean",
+                    "description": "If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.\n"
+                },
+                "kubeconfig": {
+                    "type": "string",
+                    "description": "A file containing access configuration to the cluster.\n",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project in which you want to create a cluster.\n"
+                },
+                "quirks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of special configurations or behaviors for the cluster.\n"
+                },
+                "requestId": {
+                    "type": "string",
+                    "description": "The ID of the API request.\n"
+                },
+                "statuses": {
+                    "$ref": "#/types/outscale:index/OksClusterStatuses:OksClusterStatuses",
+                    "description": "The status information of the cluster.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key/value combinations of the tags associated with the cluster's metadata.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/OksClusterTimeouts:OksClusterTimeouts"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The Kubernetes version to be deployed for the cluster. For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).\n"
+                }
+            },
+            "required": [
+                "adminLbu",
+                "adminWhitelists",
+                "admissionFlags",
+                "autoMaintenances",
+                "cidrPods",
+                "cidrService",
+                "clusterDns",
+                "cni",
+                "controlPlanes",
+                "cpMultiAz",
+                "cpSubregions",
+                "description",
+                "disableApiTermination",
+                "kubeconfig",
+                "name",
+                "projectId",
+                "requestId",
+                "statuses",
+                "tags",
+                "version"
+            ],
+            "inputProperties": {
+                "adminLbu": {
+                    "type": "boolean",
+                    "description": "If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.\n"
+                },
+                "adminWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.\n"
+                },
+                "admissionFlags": {
+                    "$ref": "#/types/outscale:index/OksClusterAdmissionFlags:OksClusterAdmissionFlags",
+                    "description": "The configuration for Kubernetes admission controllers.\n"
+                },
+                "autoMaintenances": {
+                    "$ref": "#/types/outscale:index/OksClusterAutoMaintenances:OksClusterAutoMaintenances",
+                    "description": "The configurations for automated maintenance windows.\n"
+                },
+                "cidrPods": {
+                    "type": "string",
+                    "description": "The CIDR block for Kubernetes pods' network.\n"
+                },
+                "cidrService": {
+                    "type": "string",
+                    "description": "The CIDR block for the Kubernetes services' network.\n"
+                },
+                "clusterDns": {
+                    "type": "string",
+                    "description": "The IP for the cluster's DNS service.\n"
+                },
+                "controlPlanes": {
+                    "type": "string",
+                    "description": "The size of control plane deployment for the cluster. For more information, see [About OKS \u003e Control Planes](https://docs.outscale.com/en/userguide/About-OKS.html#_control_planes). By default, `cp.3.masters.small`.\n"
+                },
+                "cpMultiAz": {
+                    "type": "boolean",
+                    "description": "If true, multi-Subregion deployment is enabled for the control plane. If false, it is disabled. By default, false.\n"
+                },
+                "cpSubregions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of Subregions where control plane components are deployed.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the cluster.\n"
+                },
+                "disableApiTermination": {
+                    "type": "boolean",
+                    "description": "If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project in which you want to create a cluster.\n"
+                },
+                "quirks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of special configurations or behaviors for the cluster.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key/value combinations of the tags associated with the cluster's metadata.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/OksClusterTimeouts:OksClusterTimeouts"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The Kubernetes version to be deployed for the cluster. For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).\n"
+                }
+            },
+            "requiredInputs": [
+                "adminWhitelists",
+                "cidrPods",
+                "cidrService",
+                "projectId",
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OksCluster resources.\n",
+                "properties": {
+                    "adminLbu": {
+                        "type": "boolean",
+                        "description": "If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.\n"
+                    },
+                    "adminWhitelists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.\n"
+                    },
+                    "admissionFlags": {
+                        "$ref": "#/types/outscale:index/OksClusterAdmissionFlags:OksClusterAdmissionFlags",
+                        "description": "The configuration for Kubernetes admission controllers.\n"
+                    },
+                    "autoMaintenances": {
+                        "$ref": "#/types/outscale:index/OksClusterAutoMaintenances:OksClusterAutoMaintenances",
+                        "description": "The configurations for automated maintenance windows.\n"
+                    },
+                    "cidrPods": {
+                        "type": "string",
+                        "description": "The CIDR block for Kubernetes pods' network.\n"
+                    },
+                    "cidrService": {
+                        "type": "string",
+                        "description": "The CIDR block for the Kubernetes services' network.\n"
+                    },
+                    "clusterDns": {
+                        "type": "string",
+                        "description": "The IP for the cluster's DNS service.\n"
+                    },
+                    "cni": {
+                        "type": "string",
+                        "description": "The Container Network Interface (CNI) used in the cluster.\n"
+                    },
+                    "controlPlanes": {
+                        "type": "string",
+                        "description": "The size of control plane deployment for the cluster. For more information, see [About OKS \u003e Control Planes](https://docs.outscale.com/en/userguide/About-OKS.html#_control_planes). By default, `cp.3.masters.small`.\n"
+                    },
+                    "cpMultiAz": {
+                        "type": "boolean",
+                        "description": "If true, multi-Subregion deployment is enabled for the control plane. If false, it is disabled. By default, false.\n"
+                    },
+                    "cpSubregions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of Subregions where control plane components are deployed.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the cluster.\n"
+                    },
+                    "disableApiTermination": {
+                        "type": "boolean",
+                        "description": "If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.\n"
+                    },
+                    "kubeconfig": {
+                        "type": "string",
+                        "description": "A file containing access configuration to the cluster.\n",
+                        "secret": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The ID of the project in which you want to create a cluster.\n"
+                    },
+                    "quirks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of special configurations or behaviors for the cluster.\n"
+                    },
+                    "requestId": {
+                        "type": "string",
+                        "description": "The ID of the API request.\n"
+                    },
+                    "statuses": {
+                        "$ref": "#/types/outscale:index/OksClusterStatuses:OksClusterStatuses",
+                        "description": "The status information of the cluster.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The key/value combinations of the tags associated with the cluster's metadata.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/OksClusterTimeouts:OksClusterTimeouts"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "The Kubernetes version to be deployed for the cluster. For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "outscale:index/oksProject:OksProject": {
+            "description": "Manages a project.\n\nFor more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OKS.html#_projects).  \nFor more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#oks-api-projects).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as outscale from \"@outscale/pulumi-outscale\";\n\nconst project01 = new outscale.OksProject(\"project01\", {\n    name: \"project01\",\n    cidr: \"10.50.0.0/18\",\n    region: \"eu-west-2\",\n    tags: {\n        tagkey: \"tagvalue\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_outscale as outscale\n\nproject01 = outscale.OksProject(\"project01\",\n    name=\"project01\",\n    cidr=\"10.50.0.0/18\",\n    region=\"eu-west-2\",\n    tags={\n        \"tagkey\": \"tagvalue\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Outscale = Pulumi.Outscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project01 = new Outscale.OksProject(\"project01\", new()\n    {\n        Name = \"project01\",\n        Cidr = \"10.50.0.0/18\",\n        Region = \"eu-west-2\",\n        Tags = \n        {\n            { \"tagkey\", \"tagvalue\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/outscale/pulumi-outscale/sdk/go/outscale\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := outscale.NewOksProject(ctx, \"project01\", \u0026outscale.OksProjectArgs{\n\t\t\tName:   pulumi.String(\"project01\"),\n\t\t\tCidr:   pulumi.String(\"10.50.0.0/18\"),\n\t\t\tRegion: pulumi.String(\"eu-west-2\"),\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"tagkey\": pulumi.String(\"tagvalue\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.outscale.pulumi.outscale.OksProject;\nimport com.outscale.pulumi.outscale.OksProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var project01 = new OksProject(\"project01\", OksProjectArgs.builder()\n            .name(\"project01\")\n            .cidr(\"10.50.0.0/18\")\n            .region(\"eu-west-2\")\n            .tags(Map.of(\"tagkey\", \"tagvalue\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project01:\n    type: outscale:OksProject\n    properties:\n      name: project01\n      cidr: 10.50.0.0/18\n      region: eu-west-2\n      tags:\n        tagkey: tagvalue\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn OKS project can be imported using its ID. For example:\n\nconsole\n\n```sh\n$ pulumi import outscale:index/oksProject:OksProject project id\n```\n\n",
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "The CIDR block to associate with the Net of the project.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The timestamp when the project was created (date-time).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the project.\n"
+                },
+                "disableApiTermination": {
+                    "type": "boolean",
+                    "description": "If true, project deletion through the API is disabled. If false, it is enabled. By default, false.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name for the project, between 1 and 40 characters. This name must start with a letter and contain only lowercase letters, numbers, or hyphens.\n"
+                },
+                "quirks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of special configurations or behaviors for the project.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The Region on which the project is deployed.\n"
                 },
                 "requestId": {
                     "type": "string"
                 },
-                "rules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/outscale:index/OutboundRuleRule:OutboundRuleRule"
-                    }
+                "status": {
+                    "type": "string",
+                    "description": "The status of the project.\n"
                 },
-                "securityGroupAccountIdToLink": {
-                    "type": "string"
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key/value combinations of the tags associated with the resource.\n"
                 },
-                "securityGroupId": {
-                    "type": "string"
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/OksProjectTimeouts:OksProjectTimeouts"
                 },
-                "securityGroupName": {
-                    "type": "string"
-                },
-                "securityGroupNameToLink": {
-                    "type": "string"
-                },
-                "toPortRange": {
-                    "type": "integer"
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The timestamp when the project was last updated (date-time).\n"
                 }
             },
             "required": [
-                "flow",
-                "netId",
+                "cidr",
+                "createdAt",
+                "description",
+                "disableApiTermination",
+                "name",
+                "region",
                 "requestId",
-                "securityGroupId",
-                "securityGroupName"
+                "status",
+                "tags",
+                "updatedAt"
             ],
             "inputProperties": {
-                "flow": {
+                "cidr": {
                     "type": "string",
-                    "willReplaceOnChanges": true
+                    "description": "The CIDR block to associate with the Net of the project.\n"
                 },
-                "fromPortRange": {
-                    "type": "integer",
-                    "willReplaceOnChanges": true
-                },
-                "ipProtocol": {
+                "description": {
                     "type": "string",
-                    "willReplaceOnChanges": true
+                    "description": "A description for the project.\n"
                 },
-                "ipRange": {
+                "disableApiTermination": {
+                    "type": "boolean",
+                    "description": "If true, project deletion through the API is disabled. If false, it is enabled. By default, false.\n"
+                },
+                "name": {
                     "type": "string",
-                    "willReplaceOnChanges": true
+                    "description": "A unique name for the project, between 1 and 40 characters. This name must start with a letter and contain only lowercase letters, numbers, or hyphens.\n"
                 },
-                "rules": {
+                "quirks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/outscale:index/OutboundRuleRule:OutboundRuleRule"
+                        "type": "string"
                     },
-                    "willReplaceOnChanges": true
+                    "description": "A list of special configurations or behaviors for the project.\n"
                 },
-                "securityGroupAccountIdToLink": {
+                "region": {
                     "type": "string",
-                    "willReplaceOnChanges": true
+                    "description": "The Region on which the project is deployed.\n"
                 },
-                "securityGroupId": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key/value combinations of the tags associated with the resource.\n"
                 },
-                "securityGroupNameToLink": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
-                },
-                "toPortRange": {
-                    "type": "integer",
-                    "willReplaceOnChanges": true
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/OksProjectTimeouts:OksProjectTimeouts"
                 }
             },
             "requiredInputs": [
-                "flow",
-                "securityGroupId"
+                "cidr",
+                "region"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering OutboundRule resources.\n",
+                "description": "Input properties used for looking up and filtering OksProject resources.\n",
                 "properties": {
-                    "flow": {
+                    "cidr": {
                         "type": "string",
-                        "willReplaceOnChanges": true
+                        "description": "The CIDR block to associate with the Net of the project.\n"
                     },
-                    "fromPortRange": {
-                        "type": "integer",
-                        "willReplaceOnChanges": true
-                    },
-                    "ipProtocol": {
+                    "createdAt": {
                         "type": "string",
-                        "willReplaceOnChanges": true
+                        "description": "The timestamp when the project was created (date-time).\n"
                     },
-                    "ipRange": {
+                    "description": {
                         "type": "string",
-                        "willReplaceOnChanges": true
+                        "description": "A description for the project.\n"
                     },
-                    "netId": {
-                        "type": "string"
+                    "disableApiTermination": {
+                        "type": "boolean",
+                        "description": "If true, project deletion through the API is disabled. If false, it is enabled. By default, false.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A unique name for the project, between 1 and 40 characters. This name must start with a letter and contain only lowercase letters, numbers, or hyphens.\n"
+                    },
+                    "quirks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of special configurations or behaviors for the project.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The Region on which the project is deployed.\n"
                     },
                     "requestId": {
                         "type": "string"
                     },
-                    "rules": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/outscale:index/OutboundRuleRule:OutboundRuleRule"
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the project.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
                         },
-                        "willReplaceOnChanges": true
+                        "description": "The key/value combinations of the tags associated with the resource.\n"
                     },
-                    "securityGroupAccountIdToLink": {
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/OksProjectTimeouts:OksProjectTimeouts"
+                    },
+                    "updatedAt": {
                         "type": "string",
-                        "willReplaceOnChanges": true
-                    },
-                    "securityGroupId": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
-                    },
-                    "securityGroupName": {
-                        "type": "string"
-                    },
-                    "securityGroupNameToLink": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
-                    },
-                    "toPortRange": {
-                        "type": "integer",
-                        "willReplaceOnChanges": true
+                        "description": "The timestamp when the project was last updated (date-time).\n"
                     }
                 },
                 "type": "object"
@@ -17428,25 +18060,24 @@
                     "type": "string",
                     "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
                 },
-                "tag": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    }
-                },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/outscale:index/SecurityGroupTag:SecurityGroupTag"
                     },
                     "description": "A tag to add to this resource. You can specify this argument several times.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/SecurityGroupTimeouts:SecurityGroupTimeouts"
                 }
             },
             "required": [
                 "accountId",
+                "description",
                 "inboundRules",
                 "netId",
                 "outboundRules",
+                "removeDefaultOutboundRule",
                 "requestId",
                 "securityGroupId",
                 "securityGroupName"
@@ -17454,30 +18085,19 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "A description for the security group.\u003cbr /\u003e\nThis description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "A description for the security group.\u003cbr /\u003e\nThis description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
                 },
                 "netId": {
                     "type": "string",
-                    "description": "The ID of the Net for the security group.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Net for the security group.\n"
                 },
                 "removeDefaultOutboundRule": {
                     "type": "boolean",
-                    "description": "(Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.\n",
-                    "willReplaceOnChanges": true
+                    "description": "(Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.\n"
                 },
                 "securityGroupName": {
                     "type": "string",
-                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n",
-                    "willReplaceOnChanges": true
-                },
-                "tag": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "willReplaceOnChanges": true
+                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -17485,8 +18105,15 @@
                         "$ref": "#/types/outscale:index/SecurityGroupTag:SecurityGroupTag"
                     },
                     "description": "A tag to add to this resource. You can specify this argument several times.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/SecurityGroupTimeouts:SecurityGroupTimeouts"
                 }
             },
+            "requiredInputs": [
+                "description",
+                "securityGroupName"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering SecurityGroup resources.\n",
                 "properties": {
@@ -17496,8 +18123,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "A description for the security group.\u003cbr /\u003e\nThis description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "A description for the security group.\u003cbr /\u003e\nThis description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
                     },
                     "inboundRules": {
                         "type": "array",
@@ -17508,8 +18134,7 @@
                     },
                     "netId": {
                         "type": "string",
-                        "description": "The ID of the Net for the security group.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Net for the security group.\n"
                     },
                     "outboundRules": {
                         "type": "array",
@@ -17520,8 +18145,7 @@
                     },
                     "removeDefaultOutboundRule": {
                         "type": "boolean",
-                        "description": "(Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.\n",
-                        "willReplaceOnChanges": true
+                        "description": "(Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.\n"
                     },
                     "requestId": {
                         "type": "string"
@@ -17532,15 +18156,7 @@
                     },
                     "securityGroupName": {
                         "type": "string",
-                        "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "tag": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "willReplaceOnChanges": true
+                        "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -17548,6 +18164,9 @@
                             "$ref": "#/types/outscale:index/SecurityGroupTag:SecurityGroupTag"
                         },
                         "description": "A tag to add to this resource. You can specify this argument several times.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/SecurityGroupTimeouts:SecurityGroupTimeouts"
                     }
                 },
                 "type": "object"
@@ -17602,6 +18221,9 @@
                     "type": "string",
                     "description": "The ID of a source or destination security group that you want to link to the security group of the rule.\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/SecurityGroupRuleTimeouts:SecurityGroupRuleTimeouts"
+                },
                 "toPortRange": {
                     "type": "integer",
                     "description": "The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
@@ -17617,51 +18239,45 @@
             "inputProperties": {
                 "flow": {
                     "type": "string",
-                    "description": "The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.\n"
                 },
                 "fromPortRange": {
                     "type": "integer",
-                    "description": "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                 },
                 "ipProtocol": {
                     "type": "string",
-                    "description": "The IP protocol name (\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The IP protocol name (\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                 },
                 "ipRange": {
                     "type": "string",
-                    "description": "The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/outscale:index/SecurityGroupRuleRule:SecurityGroupRuleRule"
                     },
-                    "description": "Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: \u003cspan pulumi-lang-nodejs=\"`fromPortRange`\" pulumi-lang-dotnet=\"`FromPortRange`\" pulumi-lang-go=\"`fromPortRange`\" pulumi-lang-python=\"`from_port_range`\" pulumi-lang-yaml=\"`fromPortRange`\" pulumi-lang-java=\"`fromPortRange`\"\u003e`from_port_range`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipProtocol`\" pulumi-lang-dotnet=\"`IpProtocol`\" pulumi-lang-go=\"`ipProtocol`\" pulumi-lang-python=\"`ip_protocol`\" pulumi-lang-yaml=\"`ipProtocol`\" pulumi-lang-java=\"`ipProtocol`\"\u003e`ip_protocol`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipRange`\" pulumi-lang-dotnet=\"`IpRange`\" pulumi-lang-go=\"`ipRange`\" pulumi-lang-python=\"`ip_range`\" pulumi-lang-yaml=\"`ipRange`\" pulumi-lang-java=\"`ipRange`\"\u003e`ip_range`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`toPortRange`\" pulumi-lang-dotnet=\"`ToPortRange`\" pulumi-lang-go=\"`toPortRange`\" pulumi-lang-python=\"`to_port_range`\" pulumi-lang-yaml=\"`toPortRange`\" pulumi-lang-java=\"`toPortRange`\"\u003e`to_port_range`\u003c/span\u003e.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: \u003cspan pulumi-lang-nodejs=\"`fromPortRange`\" pulumi-lang-dotnet=\"`FromPortRange`\" pulumi-lang-go=\"`fromPortRange`\" pulumi-lang-python=\"`from_port_range`\" pulumi-lang-yaml=\"`fromPortRange`\" pulumi-lang-java=\"`fromPortRange`\"\u003e`from_port_range`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipProtocol`\" pulumi-lang-dotnet=\"`IpProtocol`\" pulumi-lang-go=\"`ipProtocol`\" pulumi-lang-python=\"`ip_protocol`\" pulumi-lang-yaml=\"`ipProtocol`\" pulumi-lang-java=\"`ipProtocol`\"\u003e`ip_protocol`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipRange`\" pulumi-lang-dotnet=\"`IpRange`\" pulumi-lang-go=\"`ipRange`\" pulumi-lang-python=\"`ip_range`\" pulumi-lang-yaml=\"`ipRange`\" pulumi-lang-java=\"`ipRange`\"\u003e`ip_range`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`toPortRange`\" pulumi-lang-dotnet=\"`ToPortRange`\" pulumi-lang-go=\"`toPortRange`\" pulumi-lang-python=\"`to_port_range`\" pulumi-lang-yaml=\"`toPortRange`\" pulumi-lang-java=\"`toPortRange`\"\u003e`to_port_range`\u003c/span\u003e.\n"
                 },
                 "securityGroupAccountIdToLink": {
                     "type": "string",
-                    "description": "The account ID that owns the source or destination security group specified in the \u003cspan pulumi-lang-nodejs=\"`securityGroupNameToLink`\" pulumi-lang-dotnet=\"`SecurityGroupNameToLink`\" pulumi-lang-go=\"`securityGroupNameToLink`\" pulumi-lang-python=\"`security_group_name_to_link`\" pulumi-lang-yaml=\"`securityGroupNameToLink`\" pulumi-lang-java=\"`securityGroupNameToLink`\"\u003e`security_group_name_to_link`\u003c/span\u003e parameter.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The account ID that owns the source or destination security group specified in the \u003cspan pulumi-lang-nodejs=\"`securityGroupNameToLink`\" pulumi-lang-dotnet=\"`SecurityGroupNameToLink`\" pulumi-lang-go=\"`securityGroupNameToLink`\" pulumi-lang-python=\"`security_group_name_to_link`\" pulumi-lang-yaml=\"`securityGroupNameToLink`\" pulumi-lang-java=\"`securityGroupNameToLink`\"\u003e`security_group_name_to_link`\u003c/span\u003e parameter.\n"
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of the security group for which you want to create a rule.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the security group for which you want to create a rule.\n"
                 },
                 "securityGroupNameToLink": {
                     "type": "string",
-                    "description": "The ID of a source or destination security group that you want to link to the security group of the rule.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of a source or destination security group that you want to link to the security group of the rule.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/SecurityGroupRuleTimeouts:SecurityGroupRuleTimeouts"
                 },
                 "toPortRange": {
                     "type": "integer",
-                    "description": "The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                 }
             },
             "requiredInputs": [
@@ -17673,23 +18289,19 @@
                 "properties": {
                     "flow": {
                         "type": "string",
-                        "description": "The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.\n"
                     },
                     "fromPortRange": {
                         "type": "integer",
-                        "description": "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                     },
                     "ipProtocol": {
                         "type": "string",
-                        "description": "The IP protocol name (\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The IP protocol name (\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\"\u003e`tcp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\"\u003e`udp`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`icmp`\" pulumi-lang-dotnet=\"`Icmp`\" pulumi-lang-go=\"`icmp`\" pulumi-lang-python=\"`icmp`\" pulumi-lang-yaml=\"`icmp`\" pulumi-lang-java=\"`icmp`\"\u003e`icmp`\u003c/span\u003e, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                     },
                     "ipRange": {
                         "type": "string",
-                        "description": "The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                     },
                     "netId": {
                         "type": "string",
@@ -17703,18 +18315,15 @@
                         "items": {
                             "$ref": "#/types/outscale:index/SecurityGroupRuleRule:SecurityGroupRuleRule"
                         },
-                        "description": "Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: \u003cspan pulumi-lang-nodejs=\"`fromPortRange`\" pulumi-lang-dotnet=\"`FromPortRange`\" pulumi-lang-go=\"`fromPortRange`\" pulumi-lang-python=\"`from_port_range`\" pulumi-lang-yaml=\"`fromPortRange`\" pulumi-lang-java=\"`fromPortRange`\"\u003e`from_port_range`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipProtocol`\" pulumi-lang-dotnet=\"`IpProtocol`\" pulumi-lang-go=\"`ipProtocol`\" pulumi-lang-python=\"`ip_protocol`\" pulumi-lang-yaml=\"`ipProtocol`\" pulumi-lang-java=\"`ipProtocol`\"\u003e`ip_protocol`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipRange`\" pulumi-lang-dotnet=\"`IpRange`\" pulumi-lang-go=\"`ipRange`\" pulumi-lang-python=\"`ip_range`\" pulumi-lang-yaml=\"`ipRange`\" pulumi-lang-java=\"`ipRange`\"\u003e`ip_range`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`toPortRange`\" pulumi-lang-dotnet=\"`ToPortRange`\" pulumi-lang-go=\"`toPortRange`\" pulumi-lang-python=\"`to_port_range`\" pulumi-lang-yaml=\"`toPortRange`\" pulumi-lang-java=\"`toPortRange`\"\u003e`to_port_range`\u003c/span\u003e.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: \u003cspan pulumi-lang-nodejs=\"`fromPortRange`\" pulumi-lang-dotnet=\"`FromPortRange`\" pulumi-lang-go=\"`fromPortRange`\" pulumi-lang-python=\"`from_port_range`\" pulumi-lang-yaml=\"`fromPortRange`\" pulumi-lang-java=\"`fromPortRange`\"\u003e`from_port_range`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipProtocol`\" pulumi-lang-dotnet=\"`IpProtocol`\" pulumi-lang-go=\"`ipProtocol`\" pulumi-lang-python=\"`ip_protocol`\" pulumi-lang-yaml=\"`ipProtocol`\" pulumi-lang-java=\"`ipProtocol`\"\u003e`ip_protocol`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipRange`\" pulumi-lang-dotnet=\"`IpRange`\" pulumi-lang-go=\"`ipRange`\" pulumi-lang-python=\"`ip_range`\" pulumi-lang-yaml=\"`ipRange`\" pulumi-lang-java=\"`ipRange`\"\u003e`ip_range`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`toPortRange`\" pulumi-lang-dotnet=\"`ToPortRange`\" pulumi-lang-go=\"`toPortRange`\" pulumi-lang-python=\"`to_port_range`\" pulumi-lang-yaml=\"`toPortRange`\" pulumi-lang-java=\"`toPortRange`\"\u003e`to_port_range`\u003c/span\u003e.\n"
                     },
                     "securityGroupAccountIdToLink": {
                         "type": "string",
-                        "description": "The account ID that owns the source or destination security group specified in the \u003cspan pulumi-lang-nodejs=\"`securityGroupNameToLink`\" pulumi-lang-dotnet=\"`SecurityGroupNameToLink`\" pulumi-lang-go=\"`securityGroupNameToLink`\" pulumi-lang-python=\"`security_group_name_to_link`\" pulumi-lang-yaml=\"`securityGroupNameToLink`\" pulumi-lang-java=\"`securityGroupNameToLink`\"\u003e`security_group_name_to_link`\u003c/span\u003e parameter.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The account ID that owns the source or destination security group specified in the \u003cspan pulumi-lang-nodejs=\"`securityGroupNameToLink`\" pulumi-lang-dotnet=\"`SecurityGroupNameToLink`\" pulumi-lang-go=\"`securityGroupNameToLink`\" pulumi-lang-python=\"`security_group_name_to_link`\" pulumi-lang-yaml=\"`securityGroupNameToLink`\" pulumi-lang-java=\"`securityGroupNameToLink`\"\u003e`security_group_name_to_link`\u003c/span\u003e parameter.\n"
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The ID of the security group for which you want to create a rule.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the security group for which you want to create a rule.\n"
                     },
                     "securityGroupName": {
                         "type": "string",
@@ -17722,13 +18331,14 @@
                     },
                     "securityGroupNameToLink": {
                         "type": "string",
-                        "description": "The ID of a source or destination security group that you want to link to the security group of the rule.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of a source or destination security group that you want to link to the security group of the rule.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/SecurityGroupRuleTimeouts:SecurityGroupRuleTimeouts"
                     },
                     "toPortRange": {
                         "type": "integer",
-                        "description": "The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the \u003cspan pulumi-lang-nodejs=\"`rules`\" pulumi-lang-dotnet=\"`Rules`\" pulumi-lang-go=\"`rules`\" pulumi-lang-python=\"`rules`\" pulumi-lang-yaml=\"`rules`\" pulumi-lang-java=\"`rules`\"\u003e`rules`\u003c/span\u003e parameter and its subparameters.\n"
                     }
                 },
                 "type": "object"
@@ -21788,13 +22398,6 @@
                             "type": "string"
                         },
                         "description": "The ID of the Subnet in which the load balancer was created.\n"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/outscale:index/getLoadBalancerTag:getLoadBalancerTag"
-                        },
-                        "description": "One or more tags associated with the load balancer.\n"
                     }
                 },
                 "type": "object"
@@ -23106,6 +23709,117 @@
                     "nics",
                     "requestId",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "outscale:index/getOksKubeconfig:getOksKubeconfig": {
+            "description": "Provides information about a kubeconfig file.\n\nFor more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Accessing-a-Cluster.html).  \nFor more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getkubeconfigwithpubkeynacl).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as outscale from \"@outscale/pulumi-outscale\";\n\nconst config = outscale.getOksKubeconfig({\n    clusterId: \"00000000-0000-4000-8000-000000000000\",\n});\n```\n```python\nimport pulumi\nimport pulumi_outscale as outscale\n\nconfig = outscale.get_oks_kubeconfig(cluster_id=\"00000000-0000-4000-8000-000000000000\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Outscale = Pulumi.Outscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var config = Outscale.GetOksKubeconfig.Invoke(new()\n    {\n        ClusterId = \"00000000-0000-4000-8000-000000000000\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/outscale/pulumi-outscale/sdk/go/outscale\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := outscale.GetOksKubeconfig(ctx, \u0026outscale.GetOksKubeconfigArgs{\n\t\t\tClusterId: \"00000000-0000-4000-8000-000000000000\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.outscale.OutscaleFunctions;\nimport com.pulumi.outscale.inputs.GetOksKubeconfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = OutscaleFunctions.getOksKubeconfig(GetOksKubeconfigArgs.builder()\n            .clusterId(\"00000000-0000-4000-8000-000000000000\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  config:\n    fn::invoke:\n      function: outscale:getOksKubeconfig\n      arguments:\n        clusterId: 00000000-0000-4000-8000-000000000000\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOksKubeconfig.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the cluster.\n"
+                    },
+                    "group": {
+                        "type": "string",
+                        "description": "The group of the kubeconfig file.\n"
+                    },
+                    "ttl": {
+                        "type": "string",
+                        "description": "The time to live (TTL) of the kubeconfig file.\n* `x-encrypt-nacl` - (Optional) The header to encrypt the kubeconfig file.\n"
+                    },
+                    "user": {
+                        "type": "string",
+                        "description": "The user of the kubeconfig file.\n"
+                    },
+                    "xEncryptNacl": {
+                        "type": "string",
+                        "secret": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOksKubeconfig.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "group": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kubeconfig": {
+                        "description": "A file containing access configuration to the cluster.\n",
+                        "secret": true,
+                        "type": "string"
+                    },
+                    "requestId": {
+                        "type": "string"
+                    },
+                    "ttl": {
+                        "type": "string"
+                    },
+                    "user": {
+                        "type": "string"
+                    },
+                    "xEncryptNacl": {
+                        "secret": true,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "clusterId",
+                    "id",
+                    "kubeconfig",
+                    "requestId"
+                ],
+                "type": "object"
+            }
+        },
+        "outscale:index/getOksQuotas:getOksQuotas": {
+            "outputs": {
+                "description": "A collection of values returned by getOksQuotas.\n",
+                "properties": {
+                    "clustersPerProject": {
+                        "type": "integer"
+                    },
+                    "cpSubregions": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kubeVersions": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "projects": {
+                        "type": "integer"
+                    },
+                    "requestId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "clustersPerProject",
+                    "cpSubregions",
+                    "id",
+                    "kubeVersions",
+                    "projects",
+                    "requestId"
                 ],
                 "type": "object"
             }
