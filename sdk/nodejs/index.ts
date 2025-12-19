@@ -260,6 +260,16 @@ export const getNics: typeof import("./getNics").getNics = null as any;
 export const getNicsOutput: typeof import("./getNics").getNicsOutput = null as any;
 utilities.lazyLoad(exports, ["getNics","getNicsOutput"], () => require("./getNics"));
 
+export { GetOksKubeconfigArgs, GetOksKubeconfigResult, GetOksKubeconfigOutputArgs } from "./getOksKubeconfig";
+export const getOksKubeconfig: typeof import("./getOksKubeconfig").getOksKubeconfig = null as any;
+export const getOksKubeconfigOutput: typeof import("./getOksKubeconfig").getOksKubeconfigOutput = null as any;
+utilities.lazyLoad(exports, ["getOksKubeconfig","getOksKubeconfigOutput"], () => require("./getOksKubeconfig"));
+
+export { GetOksQuotasResult } from "./getOksQuotas";
+export const getOksQuotas: typeof import("./getOksQuotas").getOksQuotas = null as any;
+export const getOksQuotasOutput: typeof import("./getOksQuotas").getOksQuotasOutput = null as any;
+utilities.lazyLoad(exports, ["getOksQuotas","getOksQuotasOutput"], () => require("./getOksQuotas"));
+
 export { GetPoliciesArgs, GetPoliciesResult, GetPoliciesOutputArgs } from "./getPolicies";
 export const getPolicies: typeof import("./getPolicies").getPolicies = null as any;
 export const getPoliciesOutput: typeof import("./getPolicies").getPoliciesOutput = null as any;
@@ -580,10 +590,15 @@ export type NicPrivateIp = import("./nicPrivateIp").NicPrivateIp;
 export const NicPrivateIp: typeof import("./nicPrivateIp").NicPrivateIp = null as any;
 utilities.lazyLoad(exports, ["NicPrivateIp"], () => require("./nicPrivateIp"));
 
-export { OutboundRuleArgs, OutboundRuleState } from "./outboundRule";
-export type OutboundRule = import("./outboundRule").OutboundRule;
-export const OutboundRule: typeof import("./outboundRule").OutboundRule = null as any;
-utilities.lazyLoad(exports, ["OutboundRule"], () => require("./outboundRule"));
+export { OksClusterArgs, OksClusterState } from "./oksCluster";
+export type OksCluster = import("./oksCluster").OksCluster;
+export const OksCluster: typeof import("./oksCluster").OksCluster = null as any;
+utilities.lazyLoad(exports, ["OksCluster"], () => require("./oksCluster"));
+
+export { OksProjectArgs, OksProjectState } from "./oksProject";
+export type OksProject = import("./oksProject").OksProject;
+export const OksProject: typeof import("./oksProject").OksProject = null as any;
+utilities.lazyLoad(exports, ["OksProject"], () => require("./oksProject"));
 
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
@@ -780,8 +795,10 @@ const _module = {
                 return new NicLink(name, <any>undefined, { urn })
             case "outscale:index/nicPrivateIp:NicPrivateIp":
                 return new NicPrivateIp(name, <any>undefined, { urn })
-            case "outscale:index/outboundRule:OutboundRule":
-                return new OutboundRule(name, <any>undefined, { urn })
+            case "outscale:index/oksCluster:OksCluster":
+                return new OksCluster(name, <any>undefined, { urn })
+            case "outscale:index/oksProject:OksProject":
+                return new OksProject(name, <any>undefined, { urn })
             case "outscale:index/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "outscale:index/policyVersion:PolicyVersion":
@@ -864,7 +881,8 @@ pulumi.runtime.registerResourceModule("outscale", "index/netPeeringAcceptation",
 pulumi.runtime.registerResourceModule("outscale", "index/nic", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/nicLink", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/nicPrivateIp", _module)
-pulumi.runtime.registerResourceModule("outscale", "index/outboundRule", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oksCluster", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oksProject", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/policy", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/policyVersion", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/publicIp", _module)

@@ -319,8 +319,6 @@ type loadBalancerPolicyArgs struct {
 	Subnets []string `pulumi:"subnets"`
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames []string `pulumi:"subregionNames"`
-	// One or more tags associated with the load balancer.
-	Tags []LoadBalancerPolicyTag `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a LoadBalancerPolicy resource.
@@ -348,8 +346,6 @@ type LoadBalancerPolicyArgs struct {
 	Subnets pulumi.StringArrayInput
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames pulumi.StringArrayInput
-	// One or more tags associated with the load balancer.
-	Tags LoadBalancerPolicyTagArrayInput
 }
 
 func (LoadBalancerPolicyArgs) ElementType() reflect.Type {

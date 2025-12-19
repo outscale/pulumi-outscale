@@ -157,7 +157,7 @@ export class Nic extends pulumi.CustomResource {
     /**
      * One or more IDs of security groups for the NIC.
      */
-    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * One or more IDs of security groups for the NIC.
      */

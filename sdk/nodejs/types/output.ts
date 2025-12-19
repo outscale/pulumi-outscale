@@ -1139,7 +1139,7 @@ export interface GetLoadBalancersLoadBalancer {
     /**
      * One or more IDs of backend VMs for the load balancer.
      */
-    backendVmIds: outputs.GetLoadBalancersLoadBalancerBackendVmId[];
+    backendVmIds: string[];
     /**
      * The DNS name of the load balancer.
      */
@@ -1226,10 +1226,6 @@ export interface GetLoadBalancersLoadBalancerApplicationStickyCookiePolicy {
      * The name of the stickiness policy.
      */
     policyName: string;
-}
-
-export interface GetLoadBalancersLoadBalancerBackendVmId {
-    vmId: string;
 }
 
 export interface GetLoadBalancersLoadBalancerHealthCheck {
@@ -5153,11 +5149,11 @@ export interface LoadBalancerTag {
     /**
      * The key of the tag, with a minimum of 1 character.
      */
-    key?: string;
+    key: string;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: string;
+    value: string;
 }
 
 export interface LoadBalancerVmsTimeouts {
@@ -5567,19 +5563,169 @@ export interface NicTag {
     value: string;
 }
 
-export interface OutboundRuleRule {
-    fromPortRange?: number;
-    ipProtocol: string;
-    ipRanges?: string[];
-    securityGroupsMembers: outputs.OutboundRuleRuleSecurityGroupsMember[];
-    serviceIds?: string[];
-    toPortRange?: number;
+export interface OksClusterAdmissionFlags {
+    /**
+     * The list of admission plugins that are currently applied to the cluster.
+     */
+    appliedAdmissionPlugins: string[];
+    /**
+     * The list of Kubernetes admission plugins to disable.
+     */
+    disableAdmissionPlugins: string[];
+    /**
+     * The list of Kubernetes admission plugins that are disabled.
+     */
+    disableAdmissionPluginsActuals: string[];
+    /**
+     * The list of Kubernetes admission plugins to enable.
+     */
+    enableAdmissionPlugins: string[];
+    /**
+     * The list of Kubernetes admission plugins that are enabled.
+     */
+    enableAdmissionPluginsActuals: string[];
 }
 
-export interface OutboundRuleRuleSecurityGroupsMember {
-    accountId?: string;
-    securityGroupId?: string;
-    securityGroupName?: string;
+export interface OksClusterAutoMaintenances {
+    /**
+     * The maintenance window configuration for minor Kubernetes upgrades.
+     */
+    minorUpgradeMaintenance?: outputs.OksClusterAutoMaintenancesMinorUpgradeMaintenance;
+    /**
+     * The maintenance window configuration for minor Kubernetes upgrades.
+     */
+    minorUpgradeMaintenanceActual: outputs.OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual;
+    /**
+     * The maintenance window configuration for patch Kubernetes upgrades.
+     */
+    patchUpgradeMaintenance?: outputs.OksClusterAutoMaintenancesPatchUpgradeMaintenance;
+    /**
+     * The maintenance window configuration for minor Kubernetes upgrades.
+     */
+    patchUpgradeMaintenanceActual: outputs.OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual;
+}
+
+export interface OksClusterAutoMaintenancesMinorUpgradeMaintenance {
+    /**
+     * The duration of the maintenance window, in hours. By default, `0`.
+     */
+    durationHours?: number;
+    /**
+     * If true, a maintenance window is enabled. By default, true.
+     */
+    enabled?: boolean;
+    /**
+     * The starting time of the maintenance window, in hours. By default, `12`.
+     */
+    startHour?: number;
+    /**
+     * The timezone for the maintenance window. By default, `UTC`.
+     */
+    tz?: string;
+    /**
+     * The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+     */
+    weekDay?: string;
+}
+
+export interface OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual {
+    durationHours: number;
+    enabled: boolean;
+    startHour: number;
+    tz: string;
+    weekDay: string;
+}
+
+export interface OksClusterAutoMaintenancesPatchUpgradeMaintenance {
+    /**
+     * The duration of the maintenance window, in hours. By default, `0`.
+     */
+    durationHours?: number;
+    /**
+     * If true, a maintenance window is enabled. By default, true.
+     */
+    enabled?: boolean;
+    /**
+     * The starting time of the maintenance window, in hours. By default, `12`.
+     */
+    startHour?: number;
+    /**
+     * The timezone for the maintenance window. By default, `UTC`.
+     */
+    tz?: string;
+    /**
+     * The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
+     */
+    weekDay?: string;
+}
+
+export interface OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
+    durationHours: number;
+    enabled: boolean;
+    startHour: number;
+    tz: string;
+    weekDay: string;
+}
+
+export interface OksClusterStatuses {
+    /**
+     * Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+     */
+    availableUpgrade: string;
+    /**
+     * The timestamp when the cluster was created (date-time).
+     */
+    createdAt: string;
+    /**
+     * The timestamp when the cluster was deleted (if applicable) (date-time).
+     */
+    deletedAt: string;
+    /**
+     * The status of the cluster.
+     */
+    status: string;
+    /**
+     * The timestamp when the cluster was last updated (date-time).
+     */
+    updatedAt: string;
+}
+
+export interface OksClusterTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface OksProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface PublicIpLinkTag {
@@ -5759,11 +5905,32 @@ export interface SecurityGroupInboundRule {
     /**
      * Information about one or more source or destination security groups.
      */
-    securityGroupsMembers?: {[key: string]: string}[];
+    securityGroupsMembers: outputs.SecurityGroupInboundRuleSecurityGroupsMember[];
+    /**
+     * One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+     */
+    serviceIds: string[];
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number.
      */
     toPortRange: number;
+}
+
+export interface SecurityGroupInboundRuleSecurityGroupsMember {
+    /**
+     * The account ID that owns the source or destination security group.
+     */
+    accountId: string;
+    /**
+     * The ID of the security group.
+     */
+    securityGroupId: string;
+    /**
+     * The name of the security group.<br />
+     * This name must not start with `sg-`.<br />
+     * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+     */
+    securityGroupName: string;
 }
 
 export interface SecurityGroupOutboundRule {
@@ -5782,11 +5949,32 @@ export interface SecurityGroupOutboundRule {
     /**
      * Information about one or more source or destination security groups.
      */
-    securityGroupsMembers?: {[key: string]: string}[];
+    securityGroupsMembers: outputs.SecurityGroupOutboundRuleSecurityGroupsMember[];
+    /**
+     * One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+     */
+    serviceIds: string[];
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number.
      */
     toPortRange: number;
+}
+
+export interface SecurityGroupOutboundRuleSecurityGroupsMember {
+    /**
+     * The account ID that owns the source or destination security group.
+     */
+    accountId: string;
+    /**
+     * The ID of the security group.
+     */
+    securityGroupId: string;
+    /**
+     * The name of the security group.<br />
+     * This name must not start with `sg-`.<br />
+     * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+     */
+    securityGroupName: string;
 }
 
 export interface SecurityGroupRuleRule {
@@ -5797,19 +5985,19 @@ export interface SecurityGroupRuleRule {
     /**
      * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
      */
-    ipProtocol: string;
+    ipProtocol?: string;
     /**
      * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
      */
-    ipRanges?: string[];
+    ipRanges: string[];
     /**
      * Information about one or more source or destination security groups.
      */
-    securityGroupsMembers: outputs.SecurityGroupRuleRuleSecurityGroupsMember[];
+    securityGroupsMembers?: outputs.SecurityGroupRuleRuleSecurityGroupsMember[];
     /**
      * One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
      */
-    serviceIds?: string[];
+    serviceIds: string[];
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number.
      */
@@ -5820,15 +6008,34 @@ export interface SecurityGroupRuleRuleSecurityGroupsMember {
     /**
      * The account ID that owns the source or destination security group.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * The ID of a source or destination security group that you want to link to the security group of the rule.
      */
-    securityGroupId?: string;
+    securityGroupId: string;
     /**
      * (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
      */
-    securityGroupName?: string;
+    securityGroupName: string;
+}
+
+export interface SecurityGroupRuleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface SecurityGroupTag {
@@ -5840,6 +6047,25 @@ export interface SecurityGroupTag {
      * The value of the tag, between 0 and 255 characters.
      */
     value: string;
+}
+
+export interface SecurityGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface SnapshotAttributesPermissionsToCreateVolumeAdditions {

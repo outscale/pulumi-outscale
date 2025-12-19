@@ -79,8 +79,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NicLink{}
 	case "outscale:index/nicPrivateIp:NicPrivateIp":
 		r = &NicPrivateIp{}
-	case "outscale:index/outboundRule:OutboundRule":
-		r = &OutboundRule{}
+	case "outscale:index/oksCluster:OksCluster":
+		r = &OksCluster{}
+	case "outscale:index/oksProject:OksProject":
+		r = &OksProject{}
 	case "outscale:index/policy:Policy":
 		r = &Policy{}
 	case "outscale:index/policyVersion:PolicyVersion":
@@ -307,7 +309,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"outscale",
-		"index/outboundRule",
+		"index/oksCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oksProject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

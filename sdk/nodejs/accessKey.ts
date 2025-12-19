@@ -85,11 +85,12 @@ export class AccessKey extends pulumi.CustomResource {
     /**
      * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
      */
-    declare public readonly expirationDate: pulumi.Output<string | undefined>;
+    declare public readonly expirationDate: pulumi.Output<string>;
     /**
      * The date and time (UTC) at which the access key was last modified.
      */
     declare public /*out*/ readonly lastModificationDate: pulumi.Output<string>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The secret key that enables you to send requests.
      */
@@ -121,6 +122,7 @@ export class AccessKey extends pulumi.CustomResource {
             resourceInputs["creationDate"] = state?.creationDate;
             resourceInputs["expirationDate"] = state?.expirationDate;
             resourceInputs["lastModificationDate"] = state?.lastModificationDate;
+            resourceInputs["requestId"] = state?.requestId;
             resourceInputs["secretKey"] = state?.secretKey;
             resourceInputs["state"] = state?.state;
             resourceInputs["timeouts"] = state?.timeouts;
@@ -134,6 +136,7 @@ export class AccessKey extends pulumi.CustomResource {
             resourceInputs["accessKeyId"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["lastModificationDate"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["secretKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -161,6 +164,7 @@ export interface AccessKeyState {
      * The date and time (UTC) at which the access key was last modified.
      */
     lastModificationDate?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The secret key that enables you to send requests.
      */

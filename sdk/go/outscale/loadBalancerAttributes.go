@@ -377,8 +377,6 @@ type loadBalancerAttributesArgs struct {
 	PolicyNames []string `pulumi:"policyNames"`
 	// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `loadBalancerPort` parameter.
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
-	// One or more tags associated with the load balancer.
-	Tags []LoadBalancerAttributesTag `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a LoadBalancerAttributes resource.
@@ -395,8 +393,6 @@ type LoadBalancerAttributesArgs struct {
 	PolicyNames pulumi.StringArrayInput
 	// The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `loadBalancerPort` parameter.
 	ServerCertificateId pulumi.StringPtrInput
-	// One or more tags associated with the load balancer.
-	Tags LoadBalancerAttributesTagArrayInput
 }
 
 func (LoadBalancerAttributesArgs) ElementType() reflect.Type {

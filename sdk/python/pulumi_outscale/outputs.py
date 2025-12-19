@@ -86,8 +86,15 @@ __all__ = [
     'NicPrivateIpLinkPublicIp',
     'NicSecurityGroup',
     'NicTag',
-    'OutboundRuleRule',
-    'OutboundRuleRuleSecurityGroupsMember',
+    'OksClusterAdmissionFlags',
+    'OksClusterAutoMaintenances',
+    'OksClusterAutoMaintenancesMinorUpgradeMaintenance',
+    'OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual',
+    'OksClusterAutoMaintenancesPatchUpgradeMaintenance',
+    'OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual',
+    'OksClusterStatuses',
+    'OksClusterTimeouts',
+    'OksProjectTimeouts',
     'PublicIpLinkTag',
     'PublicIpTag',
     'RouteTableLinkRouteTable',
@@ -98,10 +105,14 @@ __all__ = [
     'RouteTableTimeouts',
     'RouteTimeouts',
     'SecurityGroupInboundRule',
+    'SecurityGroupInboundRuleSecurityGroupsMember',
     'SecurityGroupOutboundRule',
+    'SecurityGroupOutboundRuleSecurityGroupsMember',
     'SecurityGroupRuleRule',
     'SecurityGroupRuleRuleSecurityGroupsMember',
+    'SecurityGroupRuleTimeouts',
     'SecurityGroupTag',
+    'SecurityGroupTimeouts',
     'SnapshotAttributesPermissionsToCreateVolumeAdditions',
     'SnapshotAttributesPermissionsToCreateVolumeRemoval',
     'SnapshotExportTaskOsuExport',
@@ -223,7 +234,6 @@ __all__ = [
     'GetLoadBalancersLoadBalancerResult',
     'GetLoadBalancersLoadBalancerAccessLogResult',
     'GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyResult',
-    'GetLoadBalancersLoadBalancerBackendVmIdResult',
     'GetLoadBalancersLoadBalancerHealthCheckResult',
     'GetLoadBalancersLoadBalancerListenerResult',
     'GetLoadBalancersLoadBalancerLoadBalancerStickyCookiePolicyResult',
@@ -4378,133 +4388,681 @@ class NicTag(dict):
 
 
 @pulumi.output_type
-class OutboundRuleRule(dict):
+class OksClusterAdmissionFlags(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "fromPortRange":
-            suggest = "from_port_range"
-        elif key == "ipProtocol":
-            suggest = "ip_protocol"
-        elif key == "ipRanges":
-            suggest = "ip_ranges"
-        elif key == "securityGroupsMembers":
-            suggest = "security_groups_members"
-        elif key == "serviceIds":
-            suggest = "service_ids"
-        elif key == "toPortRange":
-            suggest = "to_port_range"
+        if key == "appliedAdmissionPlugins":
+            suggest = "applied_admission_plugins"
+        elif key == "disableAdmissionPlugins":
+            suggest = "disable_admission_plugins"
+        elif key == "disableAdmissionPluginsActuals":
+            suggest = "disable_admission_plugins_actuals"
+        elif key == "enableAdmissionPlugins":
+            suggest = "enable_admission_plugins"
+        elif key == "enableAdmissionPluginsActuals":
+            suggest = "enable_admission_plugins_actuals"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OutboundRuleRule. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterAdmissionFlags. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        OutboundRuleRule.__key_warning(key)
+        OksClusterAdmissionFlags.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        OutboundRuleRule.__key_warning(key)
+        OksClusterAdmissionFlags.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 from_port_range: Optional[_builtins.int] = None,
-                 ip_protocol: Optional[_builtins.str] = None,
-                 ip_ranges: Optional[Sequence[_builtins.str]] = None,
-                 security_groups_members: Optional[Sequence['outputs.OutboundRuleRuleSecurityGroupsMember']] = None,
-                 service_ids: Optional[Sequence[_builtins.str]] = None,
-                 to_port_range: Optional[_builtins.int] = None):
-        if from_port_range is not None:
-            pulumi.set(__self__, "from_port_range", from_port_range)
-        if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
-        if ip_ranges is not None:
-            pulumi.set(__self__, "ip_ranges", ip_ranges)
-        if security_groups_members is not None:
-            pulumi.set(__self__, "security_groups_members", security_groups_members)
-        if service_ids is not None:
-            pulumi.set(__self__, "service_ids", service_ids)
-        if to_port_range is not None:
-            pulumi.set(__self__, "to_port_range", to_port_range)
+                 applied_admission_plugins: Optional[Sequence[_builtins.str]] = None,
+                 disable_admission_plugins: Optional[Sequence[_builtins.str]] = None,
+                 disable_admission_plugins_actuals: Optional[Sequence[_builtins.str]] = None,
+                 enable_admission_plugins: Optional[Sequence[_builtins.str]] = None,
+                 enable_admission_plugins_actuals: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] applied_admission_plugins: The list of admission plugins that are currently applied to the cluster.
+        :param Sequence[_builtins.str] disable_admission_plugins: The list of Kubernetes admission plugins to disable.
+        :param Sequence[_builtins.str] disable_admission_plugins_actuals: The list of Kubernetes admission plugins that are disabled.
+        :param Sequence[_builtins.str] enable_admission_plugins: The list of Kubernetes admission plugins to enable.
+        :param Sequence[_builtins.str] enable_admission_plugins_actuals: The list of Kubernetes admission plugins that are enabled.
+        """
+        if applied_admission_plugins is not None:
+            pulumi.set(__self__, "applied_admission_plugins", applied_admission_plugins)
+        if disable_admission_plugins is not None:
+            pulumi.set(__self__, "disable_admission_plugins", disable_admission_plugins)
+        if disable_admission_plugins_actuals is not None:
+            pulumi.set(__self__, "disable_admission_plugins_actuals", disable_admission_plugins_actuals)
+        if enable_admission_plugins is not None:
+            pulumi.set(__self__, "enable_admission_plugins", enable_admission_plugins)
+        if enable_admission_plugins_actuals is not None:
+            pulumi.set(__self__, "enable_admission_plugins_actuals", enable_admission_plugins_actuals)
 
     @_builtins.property
-    @pulumi.getter(name="fromPortRange")
-    def from_port_range(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "from_port_range")
+    @pulumi.getter(name="appliedAdmissionPlugins")
+    def applied_admission_plugins(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of admission plugins that are currently applied to the cluster.
+        """
+        return pulumi.get(self, "applied_admission_plugins")
 
     @_builtins.property
-    @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "ip_protocol")
+    @pulumi.getter(name="disableAdmissionPlugins")
+    def disable_admission_plugins(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of Kubernetes admission plugins to disable.
+        """
+        return pulumi.get(self, "disable_admission_plugins")
 
     @_builtins.property
-    @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
-        return pulumi.get(self, "ip_ranges")
+    @pulumi.getter(name="disableAdmissionPluginsActuals")
+    def disable_admission_plugins_actuals(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of Kubernetes admission plugins that are disabled.
+        """
+        return pulumi.get(self, "disable_admission_plugins_actuals")
 
     @_builtins.property
-    @pulumi.getter(name="securityGroupsMembers")
-    def security_groups_members(self) -> Optional[Sequence['outputs.OutboundRuleRuleSecurityGroupsMember']]:
-        return pulumi.get(self, "security_groups_members")
+    @pulumi.getter(name="enableAdmissionPlugins")
+    def enable_admission_plugins(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of Kubernetes admission plugins to enable.
+        """
+        return pulumi.get(self, "enable_admission_plugins")
 
     @_builtins.property
-    @pulumi.getter(name="serviceIds")
-    def service_ids(self) -> Optional[Sequence[_builtins.str]]:
-        return pulumi.get(self, "service_ids")
-
-    @_builtins.property
-    @pulumi.getter(name="toPortRange")
-    def to_port_range(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "to_port_range")
+    @pulumi.getter(name="enableAdmissionPluginsActuals")
+    def enable_admission_plugins_actuals(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of Kubernetes admission plugins that are enabled.
+        """
+        return pulumi.get(self, "enable_admission_plugins_actuals")
 
 
 @pulumi.output_type
-class OutboundRuleRuleSecurityGroupsMember(dict):
+class OksClusterAutoMaintenances(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "accountId":
-            suggest = "account_id"
-        elif key == "securityGroupId":
-            suggest = "security_group_id"
-        elif key == "securityGroupName":
-            suggest = "security_group_name"
+        if key == "minorUpgradeMaintenance":
+            suggest = "minor_upgrade_maintenance"
+        elif key == "minorUpgradeMaintenanceActual":
+            suggest = "minor_upgrade_maintenance_actual"
+        elif key == "patchUpgradeMaintenance":
+            suggest = "patch_upgrade_maintenance"
+        elif key == "patchUpgradeMaintenanceActual":
+            suggest = "patch_upgrade_maintenance_actual"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OutboundRuleRuleSecurityGroupsMember. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterAutoMaintenances. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        OutboundRuleRuleSecurityGroupsMember.__key_warning(key)
+        OksClusterAutoMaintenances.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        OutboundRuleRuleSecurityGroupsMember.__key_warning(key)
+        OksClusterAutoMaintenances.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 account_id: Optional[_builtins.str] = None,
-                 security_group_id: Optional[_builtins.str] = None,
-                 security_group_name: Optional[_builtins.str] = None):
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
-        if security_group_name is not None:
-            pulumi.set(__self__, "security_group_name", security_group_name)
+                 minor_upgrade_maintenance: Optional['outputs.OksClusterAutoMaintenancesMinorUpgradeMaintenance'] = None,
+                 minor_upgrade_maintenance_actual: Optional['outputs.OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual'] = None,
+                 patch_upgrade_maintenance: Optional['outputs.OksClusterAutoMaintenancesPatchUpgradeMaintenance'] = None,
+                 patch_upgrade_maintenance_actual: Optional['outputs.OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual'] = None):
+        """
+        :param 'OksClusterAutoMaintenancesMinorUpgradeMaintenanceArgs' minor_upgrade_maintenance: The maintenance window configuration for minor Kubernetes upgrades.
+        :param 'OksClusterAutoMaintenancesMinorUpgradeMaintenanceActualArgs' minor_upgrade_maintenance_actual: The maintenance window configuration for minor Kubernetes upgrades.
+        :param 'OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs' patch_upgrade_maintenance: The maintenance window configuration for patch Kubernetes upgrades.
+        :param 'OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs' patch_upgrade_maintenance_actual: The maintenance window configuration for minor Kubernetes upgrades.
+        """
+        if minor_upgrade_maintenance is not None:
+            pulumi.set(__self__, "minor_upgrade_maintenance", minor_upgrade_maintenance)
+        if minor_upgrade_maintenance_actual is not None:
+            pulumi.set(__self__, "minor_upgrade_maintenance_actual", minor_upgrade_maintenance_actual)
+        if patch_upgrade_maintenance is not None:
+            pulumi.set(__self__, "patch_upgrade_maintenance", patch_upgrade_maintenance)
+        if patch_upgrade_maintenance_actual is not None:
+            pulumi.set(__self__, "patch_upgrade_maintenance_actual", patch_upgrade_maintenance_actual)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "account_id")
+    @pulumi.getter(name="minorUpgradeMaintenance")
+    def minor_upgrade_maintenance(self) -> Optional['outputs.OksClusterAutoMaintenancesMinorUpgradeMaintenance']:
+        """
+        The maintenance window configuration for minor Kubernetes upgrades.
+        """
+        return pulumi.get(self, "minor_upgrade_maintenance")
 
     @_builtins.property
-    @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "security_group_id")
+    @pulumi.getter(name="minorUpgradeMaintenanceActual")
+    def minor_upgrade_maintenance_actual(self) -> Optional['outputs.OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual']:
+        """
+        The maintenance window configuration for minor Kubernetes upgrades.
+        """
+        return pulumi.get(self, "minor_upgrade_maintenance_actual")
 
     @_builtins.property
-    @pulumi.getter(name="securityGroupName")
-    def security_group_name(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "security_group_name")
+    @pulumi.getter(name="patchUpgradeMaintenance")
+    def patch_upgrade_maintenance(self) -> Optional['outputs.OksClusterAutoMaintenancesPatchUpgradeMaintenance']:
+        """
+        The maintenance window configuration for patch Kubernetes upgrades.
+        """
+        return pulumi.get(self, "patch_upgrade_maintenance")
+
+    @_builtins.property
+    @pulumi.getter(name="patchUpgradeMaintenanceActual")
+    def patch_upgrade_maintenance_actual(self) -> Optional['outputs.OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual']:
+        """
+        The maintenance window configuration for minor Kubernetes upgrades.
+        """
+        return pulumi.get(self, "patch_upgrade_maintenance_actual")
+
+
+@pulumi.output_type
+class OksClusterAutoMaintenancesMinorUpgradeMaintenance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationHours":
+            suggest = "duration_hours"
+        elif key == "startHour":
+            suggest = "start_hour"
+        elif key == "weekDay":
+            suggest = "week_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterAutoMaintenancesMinorUpgradeMaintenance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OksClusterAutoMaintenancesMinorUpgradeMaintenance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OksClusterAutoMaintenancesMinorUpgradeMaintenance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration_hours: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 start_hour: Optional[_builtins.int] = None,
+                 tz: Optional[_builtins.str] = None,
+                 week_day: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int duration_hours: The duration of the maintenance window, in hours. By default, `0`.
+        :param _builtins.bool enabled: If true, a maintenance window is enabled. By default, true.
+        :param _builtins.int start_hour: The starting time of the maintenance window, in hours. By default, `12`.
+        :param _builtins.str tz: The timezone for the maintenance window. By default, `UTC`.
+        :param _builtins.str week_day: The weekday on which the maintenance window begins (`Mon` \\| `Tue` \\| `Wed` \\| `Thu` \\| `Fri` \\| `Sat` \\| `Sun`). By default, `Tue`.
+        """
+        if duration_hours is not None:
+            pulumi.set(__self__, "duration_hours", duration_hours)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if start_hour is not None:
+            pulumi.set(__self__, "start_hour", start_hour)
+        if tz is not None:
+            pulumi.set(__self__, "tz", tz)
+        if week_day is not None:
+            pulumi.set(__self__, "week_day", week_day)
+
+    @_builtins.property
+    @pulumi.getter(name="durationHours")
+    def duration_hours(self) -> Optional[_builtins.int]:
+        """
+        The duration of the maintenance window, in hours. By default, `0`.
+        """
+        return pulumi.get(self, "duration_hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        If true, a maintenance window is enabled. By default, true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> Optional[_builtins.int]:
+        """
+        The starting time of the maintenance window, in hours. By default, `12`.
+        """
+        return pulumi.get(self, "start_hour")
+
+    @_builtins.property
+    @pulumi.getter
+    def tz(self) -> Optional[_builtins.str]:
+        """
+        The timezone for the maintenance window. By default, `UTC`.
+        """
+        return pulumi.get(self, "tz")
+
+    @_builtins.property
+    @pulumi.getter(name="weekDay")
+    def week_day(self) -> Optional[_builtins.str]:
+        """
+        The weekday on which the maintenance window begins (`Mon` \\| `Tue` \\| `Wed` \\| `Thu` \\| `Fri` \\| `Sat` \\| `Sun`). By default, `Tue`.
+        """
+        return pulumi.get(self, "week_day")
+
+
+@pulumi.output_type
+class OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationHours":
+            suggest = "duration_hours"
+        elif key == "startHour":
+            suggest = "start_hour"
+        elif key == "weekDay":
+            suggest = "week_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration_hours: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 start_hour: Optional[_builtins.int] = None,
+                 tz: Optional[_builtins.str] = None,
+                 week_day: Optional[_builtins.str] = None):
+        if duration_hours is not None:
+            pulumi.set(__self__, "duration_hours", duration_hours)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if start_hour is not None:
+            pulumi.set(__self__, "start_hour", start_hour)
+        if tz is not None:
+            pulumi.set(__self__, "tz", tz)
+        if week_day is not None:
+            pulumi.set(__self__, "week_day", week_day)
+
+    @_builtins.property
+    @pulumi.getter(name="durationHours")
+    def duration_hours(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "duration_hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "start_hour")
+
+    @_builtins.property
+    @pulumi.getter
+    def tz(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "tz")
+
+    @_builtins.property
+    @pulumi.getter(name="weekDay")
+    def week_day(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "week_day")
+
+
+@pulumi.output_type
+class OksClusterAutoMaintenancesPatchUpgradeMaintenance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationHours":
+            suggest = "duration_hours"
+        elif key == "startHour":
+            suggest = "start_hour"
+        elif key == "weekDay":
+            suggest = "week_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterAutoMaintenancesPatchUpgradeMaintenance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OksClusterAutoMaintenancesPatchUpgradeMaintenance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OksClusterAutoMaintenancesPatchUpgradeMaintenance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration_hours: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 start_hour: Optional[_builtins.int] = None,
+                 tz: Optional[_builtins.str] = None,
+                 week_day: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int duration_hours: The duration of the maintenance window, in hours. By default, `0`.
+        :param _builtins.bool enabled: If true, a maintenance window is enabled. By default, true.
+        :param _builtins.int start_hour: The starting time of the maintenance window, in hours. By default, `12`.
+        :param _builtins.str tz: The timezone for the maintenance window. By default, `UTC`.
+        :param _builtins.str week_day: The weekday on which the maintenance window begins (`Mon` \\| `Tue` \\| `Wed` \\| `Thu` \\| `Fri` \\| `Sat` \\| `Sun`). By default, `Tue`.
+        """
+        if duration_hours is not None:
+            pulumi.set(__self__, "duration_hours", duration_hours)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if start_hour is not None:
+            pulumi.set(__self__, "start_hour", start_hour)
+        if tz is not None:
+            pulumi.set(__self__, "tz", tz)
+        if week_day is not None:
+            pulumi.set(__self__, "week_day", week_day)
+
+    @_builtins.property
+    @pulumi.getter(name="durationHours")
+    def duration_hours(self) -> Optional[_builtins.int]:
+        """
+        The duration of the maintenance window, in hours. By default, `0`.
+        """
+        return pulumi.get(self, "duration_hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        If true, a maintenance window is enabled. By default, true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> Optional[_builtins.int]:
+        """
+        The starting time of the maintenance window, in hours. By default, `12`.
+        """
+        return pulumi.get(self, "start_hour")
+
+    @_builtins.property
+    @pulumi.getter
+    def tz(self) -> Optional[_builtins.str]:
+        """
+        The timezone for the maintenance window. By default, `UTC`.
+        """
+        return pulumi.get(self, "tz")
+
+    @_builtins.property
+    @pulumi.getter(name="weekDay")
+    def week_day(self) -> Optional[_builtins.str]:
+        """
+        The weekday on which the maintenance window begins (`Mon` \\| `Tue` \\| `Wed` \\| `Thu` \\| `Fri` \\| `Sat` \\| `Sun`). By default, `Tue`.
+        """
+        return pulumi.get(self, "week_day")
+
+
+@pulumi.output_type
+class OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationHours":
+            suggest = "duration_hours"
+        elif key == "startHour":
+            suggest = "start_hour"
+        elif key == "weekDay":
+            suggest = "week_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration_hours: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 start_hour: Optional[_builtins.int] = None,
+                 tz: Optional[_builtins.str] = None,
+                 week_day: Optional[_builtins.str] = None):
+        if duration_hours is not None:
+            pulumi.set(__self__, "duration_hours", duration_hours)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if start_hour is not None:
+            pulumi.set(__self__, "start_hour", start_hour)
+        if tz is not None:
+            pulumi.set(__self__, "tz", tz)
+        if week_day is not None:
+            pulumi.set(__self__, "week_day", week_day)
+
+    @_builtins.property
+    @pulumi.getter(name="durationHours")
+    def duration_hours(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "duration_hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "start_hour")
+
+    @_builtins.property
+    @pulumi.getter
+    def tz(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "tz")
+
+    @_builtins.property
+    @pulumi.getter(name="weekDay")
+    def week_day(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "week_day")
+
+
+@pulumi.output_type
+class OksClusterStatuses(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availableUpgrade":
+            suggest = "available_upgrade"
+        elif key == "createdAt":
+            suggest = "created_at"
+        elif key == "deletedAt":
+            suggest = "deleted_at"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterStatuses. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OksClusterStatuses.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OksClusterStatuses.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 available_upgrade: Optional[_builtins.str] = None,
+                 created_at: Optional[_builtins.str] = None,
+                 deleted_at: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 updated_at: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str available_upgrade: Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+        :param _builtins.str created_at: The timestamp when the cluster was created (date-time).
+        :param _builtins.str deleted_at: The timestamp when the cluster was deleted (if applicable) (date-time).
+        :param _builtins.str status: The status of the cluster.
+        :param _builtins.str updated_at: The timestamp when the cluster was last updated (date-time).
+        """
+        if available_upgrade is not None:
+            pulumi.set(__self__, "available_upgrade", available_upgrade)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="availableUpgrade")
+    def available_upgrade(self) -> Optional[_builtins.str]:
+        """
+        Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
+        """
+        return pulumi.get(self, "available_upgrade")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        The timestamp when the cluster was created (date-time).
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[_builtins.str]:
+        """
+        The timestamp when the cluster was deleted (if applicable) (date-time).
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the cluster.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[_builtins.str]:
+        """
+        The timestamp when the cluster was last updated (date-time).
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class OksClusterTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OksProjectTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -5050,6 +5608,8 @@ class SecurityGroupInboundRule(dict):
             suggest = "ip_ranges"
         elif key == "securityGroupsMembers":
             suggest = "security_groups_members"
+        elif key == "serviceIds":
+            suggest = "service_ids"
         elif key == "toPortRange":
             suggest = "to_port_range"
 
@@ -5065,32 +5625,30 @@ class SecurityGroupInboundRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 from_port_range: Optional[_builtins.int] = None,
-                 ip_protocol: Optional[_builtins.str] = None,
-                 ip_ranges: Optional[Sequence[_builtins.str]] = None,
-                 security_groups_members: Optional[Sequence[Mapping[str, _builtins.str]]] = None,
-                 to_port_range: Optional[_builtins.int] = None):
+                 from_port_range: _builtins.int,
+                 ip_protocol: _builtins.str,
+                 ip_ranges: Sequence[_builtins.str],
+                 security_groups_members: Sequence['outputs.SecurityGroupInboundRuleSecurityGroupsMember'],
+                 service_ids: Sequence[_builtins.str],
+                 to_port_range: _builtins.int):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
-        :param Sequence[Mapping[str, _builtins.str]] security_groups_members: Information about one or more source or destination security groups.
+        :param Sequence['SecurityGroupInboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
+        :param Sequence[_builtins.str] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
-        if from_port_range is not None:
-            pulumi.set(__self__, "from_port_range", from_port_range)
-        if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
-        if ip_ranges is not None:
-            pulumi.set(__self__, "ip_ranges", ip_ranges)
-        if security_groups_members is not None:
-            pulumi.set(__self__, "security_groups_members", security_groups_members)
-        if to_port_range is not None:
-            pulumi.set(__self__, "to_port_range", to_port_range)
+        pulumi.set(__self__, "from_port_range", from_port_range)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "security_groups_members", security_groups_members)
+        pulumi.set(__self__, "service_ids", service_ids)
+        pulumi.set(__self__, "to_port_range", to_port_range)
 
     @_builtins.property
     @pulumi.getter(name="fromPortRange")
-    def from_port_range(self) -> Optional[_builtins.int]:
+    def from_port_range(self) -> _builtins.int:
         """
         The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         """
@@ -5098,7 +5656,7 @@ class SecurityGroupInboundRule(dict):
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[_builtins.str]:
+    def ip_protocol(self) -> _builtins.str:
         """
         The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         """
@@ -5106,7 +5664,7 @@ class SecurityGroupInboundRule(dict):
 
     @_builtins.property
     @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+    def ip_ranges(self) -> Sequence[_builtins.str]:
         """
         One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
         """
@@ -5114,19 +5672,92 @@ class SecurityGroupInboundRule(dict):
 
     @_builtins.property
     @pulumi.getter(name="securityGroupsMembers")
-    def security_groups_members(self) -> Optional[Sequence[Mapping[str, _builtins.str]]]:
+    def security_groups_members(self) -> Sequence['outputs.SecurityGroupInboundRuleSecurityGroupsMember']:
         """
         Information about one or more source or destination security groups.
         """
         return pulumi.get(self, "security_groups_members")
 
     @_builtins.property
+    @pulumi.getter(name="serviceIds")
+    def service_ids(self) -> Sequence[_builtins.str]:
+        """
+        One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+        """
+        return pulumi.get(self, "service_ids")
+
+    @_builtins.property
     @pulumi.getter(name="toPortRange")
-    def to_port_range(self) -> Optional[_builtins.int]:
+    def to_port_range(self) -> _builtins.int:
         """
         The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
         return pulumi.get(self, "to_port_range")
+
+
+@pulumi.output_type
+class SecurityGroupInboundRuleSecurityGroupsMember(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountId":
+            suggest = "account_id"
+        elif key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "securityGroupName":
+            suggest = "security_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGroupInboundRuleSecurityGroupsMember. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGroupInboundRuleSecurityGroupsMember.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGroupInboundRuleSecurityGroupsMember.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_id: _builtins.str,
+                 security_group_id: _builtins.str,
+                 security_group_name: _builtins.str):
+        """
+        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str security_group_id: The ID of the security group.
+        :param _builtins.str security_group_name: The name of the security group.<br />
+               This name must not start with `sg-`.<br />
+               This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_name", security_group_name)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The account ID that owns the source or destination security group.
+        """
+        return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> _builtins.str:
+        """
+        The name of the security group.<br />
+        This name must not start with `sg-`.<br />
+        This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        """
+        return pulumi.get(self, "security_group_name")
 
 
 @pulumi.output_type
@@ -5142,6 +5773,8 @@ class SecurityGroupOutboundRule(dict):
             suggest = "ip_ranges"
         elif key == "securityGroupsMembers":
             suggest = "security_groups_members"
+        elif key == "serviceIds":
+            suggest = "service_ids"
         elif key == "toPortRange":
             suggest = "to_port_range"
 
@@ -5157,32 +5790,30 @@ class SecurityGroupOutboundRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 from_port_range: Optional[_builtins.int] = None,
-                 ip_protocol: Optional[_builtins.str] = None,
-                 ip_ranges: Optional[Sequence[_builtins.str]] = None,
-                 security_groups_members: Optional[Sequence[Mapping[str, _builtins.str]]] = None,
-                 to_port_range: Optional[_builtins.int] = None):
+                 from_port_range: _builtins.int,
+                 ip_protocol: _builtins.str,
+                 ip_ranges: Sequence[_builtins.str],
+                 security_groups_members: Sequence['outputs.SecurityGroupOutboundRuleSecurityGroupsMember'],
+                 service_ids: Sequence[_builtins.str],
+                 to_port_range: _builtins.int):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
-        :param Sequence[Mapping[str, _builtins.str]] security_groups_members: Information about one or more source or destination security groups.
+        :param Sequence['SecurityGroupOutboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
+        :param Sequence[_builtins.str] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
-        if from_port_range is not None:
-            pulumi.set(__self__, "from_port_range", from_port_range)
-        if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
-        if ip_ranges is not None:
-            pulumi.set(__self__, "ip_ranges", ip_ranges)
-        if security_groups_members is not None:
-            pulumi.set(__self__, "security_groups_members", security_groups_members)
-        if to_port_range is not None:
-            pulumi.set(__self__, "to_port_range", to_port_range)
+        pulumi.set(__self__, "from_port_range", from_port_range)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "security_groups_members", security_groups_members)
+        pulumi.set(__self__, "service_ids", service_ids)
+        pulumi.set(__self__, "to_port_range", to_port_range)
 
     @_builtins.property
     @pulumi.getter(name="fromPortRange")
-    def from_port_range(self) -> Optional[_builtins.int]:
+    def from_port_range(self) -> _builtins.int:
         """
         The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         """
@@ -5190,7 +5821,7 @@ class SecurityGroupOutboundRule(dict):
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[_builtins.str]:
+    def ip_protocol(self) -> _builtins.str:
         """
         The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
         """
@@ -5198,7 +5829,7 @@ class SecurityGroupOutboundRule(dict):
 
     @_builtins.property
     @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+    def ip_ranges(self) -> Sequence[_builtins.str]:
         """
         One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
         """
@@ -5206,19 +5837,92 @@ class SecurityGroupOutboundRule(dict):
 
     @_builtins.property
     @pulumi.getter(name="securityGroupsMembers")
-    def security_groups_members(self) -> Optional[Sequence[Mapping[str, _builtins.str]]]:
+    def security_groups_members(self) -> Sequence['outputs.SecurityGroupOutboundRuleSecurityGroupsMember']:
         """
         Information about one or more source or destination security groups.
         """
         return pulumi.get(self, "security_groups_members")
 
     @_builtins.property
+    @pulumi.getter(name="serviceIds")
+    def service_ids(self) -> Sequence[_builtins.str]:
+        """
+        One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
+        """
+        return pulumi.get(self, "service_ids")
+
+    @_builtins.property
     @pulumi.getter(name="toPortRange")
-    def to_port_range(self) -> Optional[_builtins.int]:
+    def to_port_range(self) -> _builtins.int:
         """
         The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
         return pulumi.get(self, "to_port_range")
+
+
+@pulumi.output_type
+class SecurityGroupOutboundRuleSecurityGroupsMember(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountId":
+            suggest = "account_id"
+        elif key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "securityGroupName":
+            suggest = "security_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGroupOutboundRuleSecurityGroupsMember. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGroupOutboundRuleSecurityGroupsMember.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGroupOutboundRuleSecurityGroupsMember.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_id: _builtins.str,
+                 security_group_id: _builtins.str,
+                 security_group_name: _builtins.str):
+        """
+        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str security_group_id: The ID of the security group.
+        :param _builtins.str security_group_name: The name of the security group.<br />
+               This name must not start with `sg-`.<br />
+               This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_name", security_group_name)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> _builtins.str:
+        """
+        The account ID that owns the source or destination security group.
+        """
+        return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupName")
+    def security_group_name(self) -> _builtins.str:
+        """
+        The name of the security group.<br />
+        This name must not start with `sg-`.<br />
+        This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        """
+        return pulumi.get(self, "security_group_name")
 
 
 @pulumi.output_type
@@ -5392,22 +6096,76 @@ class SecurityGroupRuleRuleSecurityGroupsMember(dict):
 
 
 @pulumi.output_type
+class SecurityGroupRuleTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class SecurityGroupTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str key: The key of the tag, with a minimum of 1 character.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
         The key of the tag, with a minimum of 1 character.
         """
@@ -5420,6 +6178,61 @@ class SecurityGroupTag(dict):
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SecurityGroupTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -11313,7 +12126,7 @@ class GetLoadBalancersLoadBalancerResult(dict):
                  access_logs: Sequence['outputs.GetLoadBalancersLoadBalancerAccessLogResult'],
                  application_sticky_cookie_policies: Sequence['outputs.GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyResult'],
                  backend_ips: Sequence[_builtins.str],
-                 backend_vm_ids: Sequence['outputs.GetLoadBalancersLoadBalancerBackendVmIdResult'],
+                 backend_vm_ids: Sequence[_builtins.str],
                  dns_name: _builtins.str,
                  health_checks: Sequence['outputs.GetLoadBalancersLoadBalancerHealthCheckResult'],
                  listeners: Sequence['outputs.GetLoadBalancersLoadBalancerListenerResult'],
@@ -11331,7 +12144,7 @@ class GetLoadBalancersLoadBalancerResult(dict):
         """
         :param Sequence['GetLoadBalancersLoadBalancerAccessLogArgs'] access_logs: Information about access logs.
         :param Sequence['GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArgs'] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
-        :param Sequence['GetLoadBalancersLoadBalancerBackendVmIdArgs'] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
+        :param Sequence[_builtins.str] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
         :param _builtins.str dns_name: The DNS name of the load balancer.
         :param Sequence['GetLoadBalancersLoadBalancerHealthCheckArgs'] health_checks: Information about the health check configuration.
         :param Sequence['GetLoadBalancersLoadBalancerListenerArgs'] listeners: The listeners for the load balancer.
@@ -11391,7 +12204,7 @@ class GetLoadBalancersLoadBalancerResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="backendVmIds")
-    def backend_vm_ids(self) -> Sequence['outputs.GetLoadBalancersLoadBalancerBackendVmIdResult']:
+    def backend_vm_ids(self) -> Sequence[_builtins.str]:
         """
         One or more IDs of backend VMs for the load balancer.
         """
@@ -11588,18 +12401,6 @@ class GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyResult(dict):
         The name of the stickiness policy.
         """
         return pulumi.get(self, "policy_name")
-
-
-@pulumi.output_type
-class GetLoadBalancersLoadBalancerBackendVmIdResult(dict):
-    def __init__(__self__, *,
-                 vm_id: _builtins.str):
-        pulumi.set(__self__, "vm_id", vm_id)
-
-    @_builtins.property
-    @pulumi.getter(name="vmId")
-    def vm_id(self) -> _builtins.str:
-        return pulumi.get(self, "vm_id")
 
 
 @pulumi.output_type

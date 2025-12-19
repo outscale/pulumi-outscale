@@ -40,7 +40,6 @@ export function getLoadBalancer(args?: GetLoadBalancerArgs, opts?: pulumi.Invoke
         "netId": args.netId,
         "securityGroups": args.securityGroups,
         "subnets": args.subnets,
-        "tags": args.tags,
     }, opts);
 }
 
@@ -90,10 +89,6 @@ export interface GetLoadBalancerArgs {
      * The ID of the Subnet in which the load balancer was created.
      */
     subnets?: string[];
-    /**
-     * One or more tags associated with the load balancer.
-     */
-    tags?: inputs.GetLoadBalancerTag[];
 }
 
 /**
@@ -213,7 +208,6 @@ export function getLoadBalancerOutput(args?: GetLoadBalancerOutputArgs, opts?: p
         "netId": args.netId,
         "securityGroups": args.securityGroups,
         "subnets": args.subnets,
-        "tags": args.tags,
     }, opts);
 }
 
@@ -263,8 +257,4 @@ export interface GetLoadBalancerOutputArgs {
      * The ID of the Subnet in which the load balancer was created.
      */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * One or more tags associated with the load balancer.
-     */
-    tags?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerTagArgs>[]>;
 }

@@ -179,6 +179,9 @@ namespace Pulumi.Outscale
         [Output("securityGroupNameToLink")]
         public Output<string?> SecurityGroupNameToLink { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.SecurityGroupRuleTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
@@ -285,6 +288,9 @@ namespace Pulumi.Outscale
         [Input("securityGroupNameToLink")]
         public Input<string>? SecurityGroupNameToLink { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.SecurityGroupRuleTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
@@ -367,6 +373,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("securityGroupNameToLink")]
         public Input<string>? SecurityGroupNameToLink { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.SecurityGroupRuleTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.

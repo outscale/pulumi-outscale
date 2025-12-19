@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/outscale/pulumi-outscale/sdk/go/outscale/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -119,7 +120,7 @@ type SecurityGroup struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A description for the security group.<br />
 	// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The inbound rules associated with the security group.
 	InboundRules SecurityGroupInboundRuleArrayOutput `pulumi:"inboundRules"`
 	// The ID of the Net for the security group.
@@ -127,26 +128,32 @@ type SecurityGroup struct {
 	// The outbound rules associated with the security group.
 	OutboundRules SecurityGroupOutboundRuleArrayOutput `pulumi:"outboundRules"`
 	// (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
-	RemoveDefaultOutboundRule pulumi.BoolPtrOutput `pulumi:"removeDefaultOutboundRule"`
-	RequestId                 pulumi.StringOutput  `pulumi:"requestId"`
+	RemoveDefaultOutboundRule pulumi.BoolOutput   `pulumi:"removeDefaultOutboundRule"`
+	RequestId                 pulumi.StringOutput `pulumi:"requestId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The name of the security group.<br />
 	// This name must not start with `sg-`.<br />
 	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	SecurityGroupName pulumi.StringOutput    `pulumi:"securityGroupName"`
-	Tag               pulumi.StringMapOutput `pulumi:"tag"`
+	SecurityGroupName pulumi.StringOutput `pulumi:"securityGroupName"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags SecurityGroupTagArrayOutput `pulumi:"tags"`
+	Tags     SecurityGroupTagArrayOutput    `pulumi:"tags"`
+	Timeouts SecurityGroupTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewSecurityGroup registers a new resource with the given unique name, arguments, and options.
 func NewSecurityGroup(ctx *pulumi.Context,
 	name string, args *SecurityGroupArgs, opts ...pulumi.ResourceOption) (*SecurityGroup, error) {
 	if args == nil {
-		args = &SecurityGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.SecurityGroupName == nil {
+		return nil, errors.New("invalid value for required argument 'SecurityGroupName'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityGroup
 	err := ctx.RegisterResource("outscale:index/securityGroup:SecurityGroup", name, args, &resource, opts...)
@@ -189,10 +196,10 @@ type securityGroupState struct {
 	// The name of the security group.<br />
 	// This name must not start with `sg-`.<br />
 	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	SecurityGroupName *string           `pulumi:"securityGroupName"`
-	Tag               map[string]string `pulumi:"tag"`
+	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []SecurityGroupTag `pulumi:"tags"`
+	Tags     []SecurityGroupTag     `pulumi:"tags"`
+	Timeouts *SecurityGroupTimeouts `pulumi:"timeouts"`
 }
 
 type SecurityGroupState struct {
@@ -216,9 +223,9 @@ type SecurityGroupState struct {
 	// This name must not start with `sg-`.<br />
 	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
 	SecurityGroupName pulumi.StringPtrInput
-	Tag               pulumi.StringMapInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags SecurityGroupTagArrayInput
+	Tags     SecurityGroupTagArrayInput
+	Timeouts SecurityGroupTimeoutsPtrInput
 }
 
 func (SecurityGroupState) ElementType() reflect.Type {
@@ -228,7 +235,7 @@ func (SecurityGroupState) ElementType() reflect.Type {
 type securityGroupArgs struct {
 	// A description for the security group.<br />
 	// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The ID of the Net for the security group.
 	NetId *string `pulumi:"netId"`
 	// (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
@@ -236,17 +243,17 @@ type securityGroupArgs struct {
 	// The name of the security group.<br />
 	// This name must not start with `sg-`.<br />
 	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	SecurityGroupName *string           `pulumi:"securityGroupName"`
-	Tag               map[string]string `pulumi:"tag"`
+	SecurityGroupName string `pulumi:"securityGroupName"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []SecurityGroupTag `pulumi:"tags"`
+	Tags     []SecurityGroupTag     `pulumi:"tags"`
+	Timeouts *SecurityGroupTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a SecurityGroup resource.
 type SecurityGroupArgs struct {
 	// A description for the security group.<br />
 	// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	Description pulumi.StringPtrInput
+	Description pulumi.StringInput
 	// The ID of the Net for the security group.
 	NetId pulumi.StringPtrInput
 	// (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
@@ -254,10 +261,10 @@ type SecurityGroupArgs struct {
 	// The name of the security group.<br />
 	// This name must not start with `sg-`.<br />
 	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	SecurityGroupName pulumi.StringPtrInput
-	Tag               pulumi.StringMapInput
+	SecurityGroupName pulumi.StringInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags SecurityGroupTagArrayInput
+	Tags     SecurityGroupTagArrayInput
+	Timeouts SecurityGroupTimeoutsPtrInput
 }
 
 func (SecurityGroupArgs) ElementType() reflect.Type {
@@ -354,8 +361,8 @@ func (o SecurityGroupOutput) AccountId() pulumi.StringOutput {
 
 // A description for the security group.<br />
 // This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o SecurityGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The inbound rules associated with the security group.
@@ -374,8 +381,8 @@ func (o SecurityGroupOutput) OutboundRules() SecurityGroupOutboundRuleArrayOutpu
 }
 
 // (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
-func (o SecurityGroupOutput) RemoveDefaultOutboundRule() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecurityGroup) pulumi.BoolPtrOutput { return v.RemoveDefaultOutboundRule }).(pulumi.BoolPtrOutput)
+func (o SecurityGroupOutput) RemoveDefaultOutboundRule() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.BoolOutput { return v.RemoveDefaultOutboundRule }).(pulumi.BoolOutput)
 }
 
 func (o SecurityGroupOutput) RequestId() pulumi.StringOutput {
@@ -394,13 +401,13 @@ func (o SecurityGroupOutput) SecurityGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.SecurityGroupName }).(pulumi.StringOutput)
 }
 
-func (o SecurityGroupOutput) Tag() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SecurityGroup) pulumi.StringMapOutput { return v.Tag }).(pulumi.StringMapOutput)
-}
-
 // A tag to add to this resource. You can specify this argument several times.
 func (o SecurityGroupOutput) Tags() SecurityGroupTagArrayOutput {
 	return o.ApplyT(func(v *SecurityGroup) SecurityGroupTagArrayOutput { return v.Tags }).(SecurityGroupTagArrayOutput)
+}
+
+func (o SecurityGroupOutput) Timeouts() SecurityGroupTimeoutsPtrOutput {
+	return o.ApplyT(func(v *SecurityGroup) SecurityGroupTimeoutsPtrOutput { return v.Timeouts }).(SecurityGroupTimeoutsPtrOutput)
 }
 
 type SecurityGroupArrayOutput struct{ *pulumi.OutputState }

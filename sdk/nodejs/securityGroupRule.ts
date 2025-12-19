@@ -148,6 +148,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      * The ID of a source or destination security group that you want to link to the security group of the rule.
      */
     declare public readonly securityGroupNameToLink: pulumi.Output<string | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.SecurityGroupRuleTimeouts | undefined>;
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
      */
@@ -177,6 +178,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["securityGroupName"] = state?.securityGroupName;
             resourceInputs["securityGroupNameToLink"] = state?.securityGroupNameToLink;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["toPortRange"] = state?.toPortRange;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
@@ -194,6 +196,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["securityGroupAccountIdToLink"] = args?.securityGroupAccountIdToLink;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["securityGroupNameToLink"] = args?.securityGroupNameToLink;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["toPortRange"] = args?.toPortRange;
             resourceInputs["netId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -249,6 +252,7 @@ export interface SecurityGroupRuleState {
      * The ID of a source or destination security group that you want to link to the security group of the rule.
      */
     securityGroupNameToLink?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.SecurityGroupRuleTimeouts>;
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
      */
@@ -291,6 +295,7 @@ export interface SecurityGroupRuleArgs {
      * The ID of a source or destination security group that you want to link to the security group of the rule.
      */
     securityGroupNameToLink?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.SecurityGroupRuleTimeouts>;
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
      */

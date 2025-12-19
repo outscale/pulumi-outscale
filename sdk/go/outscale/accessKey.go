@@ -87,9 +87,10 @@ type AccessKey struct {
 	// The date and time (UTC) at which the access key was created.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
-	ExpirationDate pulumi.StringPtrOutput `pulumi:"expirationDate"`
+	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
 	// The date and time (UTC) at which the access key was last modified.
 	LastModificationDate pulumi.StringOutput `pulumi:"lastModificationDate"`
+	RequestId            pulumi.StringOutput `pulumi:"requestId"`
 	// The secret key that enables you to send requests.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
@@ -137,6 +138,7 @@ type accessKeyState struct {
 	ExpirationDate *string `pulumi:"expirationDate"`
 	// The date and time (UTC) at which the access key was last modified.
 	LastModificationDate *string `pulumi:"lastModificationDate"`
+	RequestId            *string `pulumi:"requestId"`
 	// The secret key that enables you to send requests.
 	SecretKey *string `pulumi:"secretKey"`
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
@@ -155,6 +157,7 @@ type AccessKeyState struct {
 	ExpirationDate pulumi.StringPtrInput
 	// The date and time (UTC) at which the access key was last modified.
 	LastModificationDate pulumi.StringPtrInput
+	RequestId            pulumi.StringPtrInput
 	// The secret key that enables you to send requests.
 	SecretKey pulumi.StringPtrInput
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
@@ -287,13 +290,17 @@ func (o AccessKeyOutput) CreationDate() pulumi.StringOutput {
 }
 
 // The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
-func (o AccessKeyOutput) ExpirationDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.ExpirationDate }).(pulumi.StringPtrOutput)
+func (o AccessKeyOutput) ExpirationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.ExpirationDate }).(pulumi.StringOutput)
 }
 
 // The date and time (UTC) at which the access key was last modified.
 func (o AccessKeyOutput) LastModificationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.LastModificationDate }).(pulumi.StringOutput)
+}
+
+func (o AccessKeyOutput) RequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
 }
 
 // The secret key that enables you to send requests.

@@ -57,6 +57,8 @@ from .get_net_peerings import *
 from .get_nets import *
 from .get_nic import *
 from .get_nics import *
+from .get_oks_kubeconfig import *
+from .get_oks_quotas import *
 from .get_policies import *
 from .get_policies_linked_to_user import *
 from .get_policies_linked_to_user_group import *
@@ -121,7 +123,8 @@ from .net_peering_acceptation import *
 from .nic import *
 from .nic_link import *
 from .nic_private_ip import *
-from .outbound_rule import *
+from .oks_cluster import *
+from .oks_project import *
 from .policy import *
 from .policy_version import *
 from .provider import *
@@ -394,10 +397,18 @@ _utilities.register(
  },
  {
   "pkg": "outscale",
-  "mod": "index/outboundRule",
+  "mod": "index/oksCluster",
   "fqn": "pulumi_outscale",
   "classes": {
-   "outscale:index/outboundRule:OutboundRule": "OutboundRule"
+   "outscale:index/oksCluster:OksCluster": "OksCluster"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oksProject",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oksProject:OksProject": "OksProject"
   }
  },
  {

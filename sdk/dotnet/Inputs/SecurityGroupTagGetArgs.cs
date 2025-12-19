@@ -15,8 +15,8 @@ namespace Pulumi.Outscale.Inputs
         /// <summary>
         /// The key of the tag, with a minimum of 1 character.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// The value of the tag, between 0 and 255 characters.

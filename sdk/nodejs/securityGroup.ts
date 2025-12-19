@@ -98,7 +98,7 @@ export class SecurityGroup extends pulumi.CustomResource {
      * A description for the security group.<br />
      * This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The inbound rules associated with the security group.
      */
@@ -114,7 +114,7 @@ export class SecurityGroup extends pulumi.CustomResource {
     /**
      * (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
      */
-    declare public readonly removeDefaultOutboundRule: pulumi.Output<boolean | undefined>;
+    declare public readonly removeDefaultOutboundRule: pulumi.Output<boolean>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the security group.
@@ -126,11 +126,11 @@ export class SecurityGroup extends pulumi.CustomResource {
      * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
     declare public readonly securityGroupName: pulumi.Output<string>;
-    declare public readonly tag: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.SecurityGroupTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.SecurityGroupTimeouts | undefined>;
 
     /**
      * Create a SecurityGroup resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export class SecurityGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: SecurityGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: SecurityGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityGroupArgs | SecurityGroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -154,16 +154,22 @@ export class SecurityGroup extends pulumi.CustomResource {
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["securityGroupName"] = state?.securityGroupName;
-            resourceInputs["tag"] = state?.tag;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
+            if (args?.description === undefined && !opts.urn) {
+                throw new Error("Missing required property 'description'");
+            }
+            if (args?.securityGroupName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'securityGroupName'");
+            }
             resourceInputs["description"] = args?.description;
             resourceInputs["netId"] = args?.netId;
             resourceInputs["removeDefaultOutboundRule"] = args?.removeDefaultOutboundRule;
             resourceInputs["securityGroupName"] = args?.securityGroupName;
-            resourceInputs["tag"] = args?.tag;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["inboundRules"] = undefined /*out*/;
             resourceInputs["outboundRules"] = undefined /*out*/;
@@ -215,11 +221,11 @@ export interface SecurityGroupState {
      * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
     securityGroupName?: pulumi.Input<string>;
-    tag?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[]>;
+    timeouts?: pulumi.Input<inputs.SecurityGroupTimeouts>;
 }
 
 /**
@@ -230,7 +236,7 @@ export interface SecurityGroupArgs {
      * A description for the security group.<br />
      * This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
-    description?: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The ID of the Net for the security group.
      */
@@ -244,10 +250,10 @@ export interface SecurityGroupArgs {
      * This name must not start with `sg-`.<br />
      * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
-    securityGroupName?: pulumi.Input<string>;
-    tag?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    securityGroupName: pulumi.Input<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[]>;
+    timeouts?: pulumi.Input<inputs.SecurityGroupTimeouts>;
 }

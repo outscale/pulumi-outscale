@@ -119,7 +119,7 @@ export class Net extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<outputs.NetTag[] | undefined>;
     /**
-     * The tenancy options for the VMs:<br />
+     * The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
      */
     declare public readonly tenancy: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.NetTimeouts | undefined>;
@@ -190,7 +190,7 @@ export interface NetState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[]>;
     /**
-     * The tenancy options for the VMs:<br />
+     * The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
      */
     tenancy?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.NetTimeouts>;
@@ -209,7 +209,7 @@ export interface NetArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[]>;
     /**
-     * The tenancy options for the VMs:<br />
+     * The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
      */
     tenancy?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.NetTimeouts>;

@@ -102,7 +102,7 @@ namespace Pulumi.Outscale
         /// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The inbound rules associated with the security group.
@@ -126,7 +126,7 @@ namespace Pulumi.Outscale
         /// (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
         /// </summary>
         [Output("removeDefaultOutboundRule")]
-        public Output<bool?> RemoveDefaultOutboundRule { get; private set; } = null!;
+        public Output<bool> RemoveDefaultOutboundRule { get; private set; } = null!;
 
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
@@ -145,14 +145,14 @@ namespace Pulumi.Outscale
         [Output("securityGroupName")]
         public Output<string> SecurityGroupName { get; private set; } = null!;
 
-        [Output("tag")]
-        public Output<ImmutableDictionary<string, string>?> Tag { get; private set; } = null!;
-
         /// <summary>
         /// A tag to add to this resource. You can specify this argument several times.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.SecurityGroupTag>> Tags { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.SecurityGroupTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.Outscale
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SecurityGroup(string name, SecurityGroupArgs? args = null, CustomResourceOptions? options = null)
+        public SecurityGroup(string name, SecurityGroupArgs args, CustomResourceOptions? options = null)
             : base("outscale:index/securityGroup:SecurityGroup", name, args ?? new SecurityGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -204,8 +204,8 @@ namespace Pulumi.Outscale
         /// A description for the security group.&lt;br /&gt;
         /// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.
         /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("description", required: true)]
+        public Input<string> Description { get; set; } = null!;
 
         /// <summary>
         /// The ID of the Net for the security group.
@@ -224,16 +224,8 @@ namespace Pulumi.Outscale
         /// This name must not start with `sg-`.&lt;br /&gt;
         /// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.
         /// </summary>
-        [Input("securityGroupName")]
-        public Input<string>? SecurityGroupName { get; set; }
-
-        [Input("tag")]
-        private InputMap<string>? _tag;
-        public InputMap<string> Tag
-        {
-            get => _tag ?? (_tag = new InputMap<string>());
-            set => _tag = value;
-        }
+        [Input("securityGroupName", required: true)]
+        public Input<string> SecurityGroupName { get; set; } = null!;
 
         [Input("tags")]
         private InputList<Inputs.SecurityGroupTagArgs>? _tags;
@@ -246,6 +238,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.SecurityGroupTagArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.SecurityGroupTimeoutsArgs>? Timeouts { get; set; }
 
         public SecurityGroupArgs()
         {
@@ -321,14 +316,6 @@ namespace Pulumi.Outscale
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }
 
-        [Input("tag")]
-        private InputMap<string>? _tag;
-        public InputMap<string> Tag
-        {
-            get => _tag ?? (_tag = new InputMap<string>());
-            set => _tag = value;
-        }
-
         [Input("tags")]
         private InputList<Inputs.SecurityGroupTagGetArgs>? _tags;
 
@@ -340,6 +327,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.SecurityGroupTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.SecurityGroupTimeoutsGetArgs>? Timeouts { get; set; }
 
         public SecurityGroupState()
         {

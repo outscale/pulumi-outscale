@@ -86,13 +86,16 @@ namespace Pulumi.Outscale
         /// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
         /// </summary>
         [Output("expirationDate")]
-        public Output<string?> ExpirationDate { get; private set; } = null!;
+        public Output<string> ExpirationDate { get; private set; } = null!;
 
         /// <summary>
         /// The date and time (UTC) at which the access key was last modified.
         /// </summary>
         [Output("lastModificationDate")]
         public Output<string> LastModificationDate { get; private set; } = null!;
+
+        [Output("requestId")]
+        public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
         /// The secret key that enables you to send requests.
@@ -213,6 +216,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("lastModificationDate")]
         public Input<string>? LastModificationDate { get; set; }
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// The secret key that enables you to send requests.

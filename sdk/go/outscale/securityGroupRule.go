@@ -158,7 +158,8 @@ type SecurityGroupRule struct {
 	// The name of the security group.
 	SecurityGroupName pulumi.StringOutput `pulumi:"securityGroupName"`
 	// The ID of a source or destination security group that you want to link to the security group of the rule.
-	SecurityGroupNameToLink pulumi.StringPtrOutput `pulumi:"securityGroupNameToLink"`
+	SecurityGroupNameToLink pulumi.StringPtrOutput             `pulumi:"securityGroupNameToLink"`
+	Timeouts                SecurityGroupRuleTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	ToPortRange pulumi.IntPtrOutput `pulumi:"toPortRange"`
 }
@@ -219,7 +220,8 @@ type securityGroupRuleState struct {
 	// The name of the security group.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// The ID of a source or destination security group that you want to link to the security group of the rule.
-	SecurityGroupNameToLink *string `pulumi:"securityGroupNameToLink"`
+	SecurityGroupNameToLink *string                    `pulumi:"securityGroupNameToLink"`
+	Timeouts                *SecurityGroupRuleTimeouts `pulumi:"timeouts"`
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	ToPortRange *int `pulumi:"toPortRange"`
 }
@@ -246,6 +248,7 @@ type SecurityGroupRuleState struct {
 	SecurityGroupName pulumi.StringPtrInput
 	// The ID of a source or destination security group that you want to link to the security group of the rule.
 	SecurityGroupNameToLink pulumi.StringPtrInput
+	Timeouts                SecurityGroupRuleTimeoutsPtrInput
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	ToPortRange pulumi.IntPtrInput
 }
@@ -270,7 +273,8 @@ type securityGroupRuleArgs struct {
 	// The ID of the security group for which you want to create a rule.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The ID of a source or destination security group that you want to link to the security group of the rule.
-	SecurityGroupNameToLink *string `pulumi:"securityGroupNameToLink"`
+	SecurityGroupNameToLink *string                    `pulumi:"securityGroupNameToLink"`
+	Timeouts                *SecurityGroupRuleTimeouts `pulumi:"timeouts"`
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	ToPortRange *int `pulumi:"toPortRange"`
 }
@@ -293,6 +297,7 @@ type SecurityGroupRuleArgs struct {
 	SecurityGroupId pulumi.StringInput
 	// The ID of a source or destination security group that you want to link to the security group of the rule.
 	SecurityGroupNameToLink pulumi.StringPtrInput
+	Timeouts                SecurityGroupRuleTimeoutsPtrInput
 	// The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	ToPortRange pulumi.IntPtrInput
 }
@@ -436,6 +441,10 @@ func (o SecurityGroupRuleOutput) SecurityGroupName() pulumi.StringOutput {
 // The ID of a source or destination security group that you want to link to the security group of the rule.
 func (o SecurityGroupRuleOutput) SecurityGroupNameToLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.SecurityGroupNameToLink }).(pulumi.StringPtrOutput)
+}
+
+func (o SecurityGroupRuleOutput) Timeouts() SecurityGroupRuleTimeoutsPtrOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) SecurityGroupRuleTimeoutsPtrOutput { return v.Timeouts }).(SecurityGroupRuleTimeoutsPtrOutput)
 }
 
 // The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.

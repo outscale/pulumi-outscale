@@ -833,7 +833,7 @@ class Nic(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         One or more IDs of security groups for the NIC.
         """

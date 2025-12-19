@@ -369,18 +369,6 @@ namespace Pulumi.Outscale
             set => _subregionNames = value;
         }
 
-        [Input("tags")]
-        private InputList<Inputs.LoadBalancerPolicyTagArgs>? _tags;
-
-        /// <summary>
-        /// One or more tags associated with the load balancer.
-        /// </summary>
-        public InputList<Inputs.LoadBalancerPolicyTagArgs> Tags
-        {
-            get => _tags ?? (_tags = new InputList<Inputs.LoadBalancerPolicyTagArgs>());
-            set => _tags = value;
-        }
-
         public LoadBalancerPolicyArgs()
         {
         }
