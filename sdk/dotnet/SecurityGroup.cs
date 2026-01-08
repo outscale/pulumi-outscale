@@ -224,8 +224,8 @@ namespace Pulumi.Outscale
         /// This name must not start with `sg-`.&lt;br /&gt;
         /// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.
         /// </summary>
-        [Input("securityGroupName", required: true)]
-        public Input<string> SecurityGroupName { get; set; } = null!;
+        [Input("securityGroupName")]
+        public Input<string>? SecurityGroupName { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.SecurityGroupTagArgs>? _tags;
