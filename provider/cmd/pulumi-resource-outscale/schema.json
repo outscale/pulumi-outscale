@@ -18111,8 +18111,7 @@
                 }
             },
             "requiredInputs": [
-                "description",
-                "securityGroupName"
+                "description"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering SecurityGroup resources.\n",
