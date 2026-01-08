@@ -151,9 +151,6 @@ func NewSecurityGroup(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
-	if args.SecurityGroupName == nil {
-		return nil, errors.New("invalid value for required argument 'SecurityGroupName'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityGroup
 	err := ctx.RegisterResource("outscale:index/securityGroup:SecurityGroup", name, args, &resource, opts...)
@@ -243,7 +240,7 @@ type securityGroupArgs struct {
 	// The name of the security group.<br />
 	// This name must not start with `sg-`.<br />
 	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	SecurityGroupName string `pulumi:"securityGroupName"`
+	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     []SecurityGroupTag     `pulumi:"tags"`
 	Timeouts *SecurityGroupTimeouts `pulumi:"timeouts"`
@@ -261,7 +258,7 @@ type SecurityGroupArgs struct {
 	// The name of the security group.<br />
 	// This name must not start with `sg-`.<br />
 	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
-	SecurityGroupName pulumi.StringInput
+	SecurityGroupName pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     SecurityGroupTagArrayInput
 	Timeouts SecurityGroupTimeoutsPtrInput

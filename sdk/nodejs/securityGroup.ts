@@ -161,9 +161,6 @@ export class SecurityGroup extends pulumi.CustomResource {
             if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if (args?.securityGroupName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'securityGroupName'");
-            }
             resourceInputs["description"] = args?.description;
             resourceInputs["netId"] = args?.netId;
             resourceInputs["removeDefaultOutboundRule"] = args?.removeDefaultOutboundRule;
@@ -250,7 +247,7 @@ export interface SecurityGroupArgs {
      * This name must not start with `sg-`.<br />
      * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
-    securityGroupName: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
