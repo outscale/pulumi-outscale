@@ -148,6 +148,65 @@
             },
             "type": "object"
         },
+        "outscale:index/ApiAccessPolicyTimeouts:ApiAccessPolicyTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/ApiAccessRuleTimeouts:ApiAccessRuleTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/CaTimeouts:CaTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "outscale:index/ClientGatewayTag:ClientGatewayTag": {
             "properties": {
                 "key": {
@@ -2175,6 +2234,40 @@
             },
             "type": "object"
         },
+        "outscale:index/PolicyTimeouts:PolicyTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/PolicyVersionTimeouts:PolicyVersionTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                }
+            },
+            "type": "object"
+        },
         "outscale:index/ProviderEndpoint:ProviderEndpoint": {
             "properties": {
                 "api": {
@@ -2475,7 +2568,7 @@
                 },
                 "securityGroupName": {
                     "type": "string",
-                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
+                    "description": "A name for the security group.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\u003cbr /\u003e\nIf not specified, the security group name is randomly generated.\n"
                 }
             },
             "type": "object",
@@ -2543,7 +2636,7 @@
                 },
                 "securityGroupName": {
                     "type": "string",
-                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
+                    "description": "A name for the security group.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\u003cbr /\u003e\nIf not specified, the security group name is randomly generated.\n"
                 }
             },
             "type": "object",
@@ -2932,6 +3025,27 @@
                 }
             }
         },
+        "outscale:index/UserGroupTimeouts:UserGroupTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "outscale:index/UserGroupUser:UserGroupUser": {
             "properties": {
                 "creationDate": {
@@ -3009,6 +3123,27 @@
                     ]
                 }
             }
+        },
+        "outscale:index/UserTimeouts:UserTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "outscale:index/VirtualGatewayLinkNetToVirtualGatewayLink:VirtualGatewayLinkNetToVirtualGatewayLink": {
             "properties": {
@@ -12759,6 +12894,9 @@
                 "requireTrustedEnv": {
                     "type": "boolean",
                     "description": "If true, a trusted session is activated, provided that you specify the \u003cspan pulumi-lang-nodejs=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-dotnet=\"`MaxAccessKeyExpirationSeconds`\" pulumi-lang-go=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-python=\"`max_access_key_expiration_seconds`\" pulumi-lang-yaml=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-java=\"`maxAccessKeyExpirationSeconds`\"\u003e`max_access_key_expiration_seconds`\u003c/span\u003e parameter with a value greater than \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\"\u003e`0`\u003c/span\u003e.\u003cbr /\u003e\nEnabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication \u003e Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/ApiAccessPolicyTimeouts:ApiAccessPolicyTimeouts"
                 }
             },
             "required": [
@@ -12774,6 +12912,9 @@
                 "requireTrustedEnv": {
                     "type": "boolean",
                     "description": "If true, a trusted session is activated, provided that you specify the \u003cspan pulumi-lang-nodejs=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-dotnet=\"`MaxAccessKeyExpirationSeconds`\" pulumi-lang-go=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-python=\"`max_access_key_expiration_seconds`\" pulumi-lang-yaml=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-java=\"`maxAccessKeyExpirationSeconds`\"\u003e`max_access_key_expiration_seconds`\u003c/span\u003e parameter with a value greater than \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\"\u003e`0`\u003c/span\u003e.\u003cbr /\u003e\nEnabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication \u003e Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/ApiAccessPolicyTimeouts:ApiAccessPolicyTimeouts"
                 }
             },
             "requiredInputs": [
@@ -12793,6 +12934,9 @@
                     "requireTrustedEnv": {
                         "type": "boolean",
                         "description": "If true, a trusted session is activated, provided that you specify the \u003cspan pulumi-lang-nodejs=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-dotnet=\"`MaxAccessKeyExpirationSeconds`\" pulumi-lang-go=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-python=\"`max_access_key_expiration_seconds`\" pulumi-lang-yaml=\"`maxAccessKeyExpirationSeconds`\" pulumi-lang-java=\"`maxAccessKeyExpirationSeconds`\"\u003e`max_access_key_expiration_seconds`\u003c/span\u003e parameter with a value greater than \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\"\u003e`0`\u003c/span\u003e.\u003cbr /\u003e\nEnabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication \u003e Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/ApiAccessPolicyTimeouts:ApiAccessPolicyTimeouts"
                     }
                 },
                 "type": "object"
@@ -12832,10 +12976,17 @@
                 },
                 "requestId": {
                     "type": "string"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/ApiAccessRuleTimeouts:ApiAccessRuleTimeouts"
                 }
             },
             "required": [
                 "apiAccessRuleId",
+                "caIds",
+                "cns",
+                "description",
+                "ipRanges",
                 "requestId"
             ],
             "inputProperties": {
@@ -12863,6 +13014,9 @@
                         "type": "string"
                     },
                     "description": "One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/ApiAccessRuleTimeouts:ApiAccessRuleTimeouts"
                 }
             },
             "stateInputs": {
@@ -12899,6 +13053,9 @@
                     },
                     "requestId": {
                         "type": "string"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/ApiAccessRuleTimeouts:ApiAccessRuleTimeouts"
                     }
                 },
                 "type": "object"
@@ -12925,24 +13082,34 @@
                 },
                 "requestId": {
                     "type": "string"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/CaTimeouts:CaTimeouts"
                 }
             },
             "required": [
                 "caFingerprint",
                 "caId",
+                "caPem",
+                "description",
                 "requestId"
             ],
             "inputProperties": {
                 "caPem": {
                     "type": "string",
-                    "description": "The CA in PEM format.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The CA in PEM format.\n"
                 },
                 "description": {
                     "type": "string",
                     "description": "The description of the CA.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/CaTimeouts:CaTimeouts"
                 }
             },
+            "requiredInputs": [
+                "caPem"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Ca resources.\n",
                 "properties": {
@@ -12956,8 +13123,7 @@
                     },
                     "caPem": {
                         "type": "string",
-                        "description": "The CA in PEM format.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The CA in PEM format.\n"
                     },
                     "description": {
                         "type": "string",
@@ -12965,6 +13131,9 @@
                     },
                     "requestId": {
                         "type": "string"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/CaTimeouts:CaTimeouts"
                     }
                 },
                 "type": "object"
@@ -17183,6 +17352,9 @@
                 "resourcesCount": {
                     "type": "integer",
                     "description": "The number of resources attached to the policy.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/PolicyTimeouts:PolicyTimeouts"
                 }
             },
             "required": [
@@ -17200,13 +17372,11 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "A description for the policy.\n",
-                    "willReplaceOnChanges": true
+                    "description": "A description for the policy.\n"
                 },
                 "document": {
                     "type": "string",
-                    "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n"
                 },
                 "path": {
                     "type": "string",
@@ -17214,8 +17384,10 @@
                 },
                 "policyName": {
                     "type": "string",
-                    "description": "The name of the policy.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the policy.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/PolicyTimeouts:PolicyTimeouts"
                 }
             },
             "requiredInputs": [
@@ -17231,13 +17403,11 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "A description for the policy.\n",
-                        "willReplaceOnChanges": true
+                        "description": "A description for the policy.\n"
                     },
                     "document": {
                         "type": "string",
-                        "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n",
-                        "willReplaceOnChanges": true
+                        "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n"
                     },
                     "isLinkable": {
                         "type": "boolean",
@@ -17265,12 +17435,14 @@
                     },
                     "policyName": {
                         "type": "string",
-                        "description": "The name of the policy.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the policy.\n"
                     },
                     "resourcesCount": {
                         "type": "integer",
                         "description": "The number of resources attached to the policy.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/PolicyTimeouts:PolicyTimeouts"
                     }
                 },
                 "type": "object"
@@ -17303,6 +17475,9 @@
                     "type": "boolean",
                     "description": "If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the \u003cspan pulumi-lang-nodejs=\"`defaultVersionId`\" pulumi-lang-dotnet=\"`DefaultVersionId`\" pulumi-lang-go=\"`defaultVersionId`\" pulumi-lang-python=\"`default_version_id`\" pulumi-lang-yaml=\"`defaultVersionId`\" pulumi-lang-java=\"`defaultVersionId`\"\u003e`default_version_id`\u003c/span\u003e is specified in the \u003cspan pulumi-lang-nodejs=\"`outscale.User`\" pulumi-lang-dotnet=\"`outscale.User`\" pulumi-lang-go=\"`User`\" pulumi-lang-python=\"`User`\" pulumi-lang-yaml=\"`outscale.User`\" pulumi-lang-java=\"`outscale.User`\"\u003e`outscale.User`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`outscale.UserGroup`\" pulumi-lang-dotnet=\"`outscale.UserGroup`\" pulumi-lang-go=\"`UserGroup`\" pulumi-lang-python=\"`UserGroup`\" pulumi-lang-yaml=\"`outscale.UserGroup`\" pulumi-lang-java=\"`outscale.UserGroup`\"\u003e`outscale.UserGroup`\u003c/span\u003e resources.\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/PolicyVersionTimeouts:PolicyVersionTimeouts"
+                },
                 "versionId": {
                     "type": "string",
                     "description": "The ID of the version.\n"
@@ -17314,23 +17489,23 @@
                 "defaultVersion",
                 "document",
                 "policyOrn",
-                "setAsDefault",
                 "versionId"
             ],
             "inputProperties": {
                 "document": {
                     "type": "string",
-                    "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n"
                 },
                 "policyOrn": {
                     "type": "string",
-                    "description": "The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).\n"
                 },
                 "setAsDefault": {
                     "type": "boolean",
                     "description": "If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the \u003cspan pulumi-lang-nodejs=\"`defaultVersionId`\" pulumi-lang-dotnet=\"`DefaultVersionId`\" pulumi-lang-go=\"`defaultVersionId`\" pulumi-lang-python=\"`default_version_id`\" pulumi-lang-yaml=\"`defaultVersionId`\" pulumi-lang-java=\"`defaultVersionId`\"\u003e`default_version_id`\u003c/span\u003e is specified in the \u003cspan pulumi-lang-nodejs=\"`outscale.User`\" pulumi-lang-dotnet=\"`outscale.User`\" pulumi-lang-go=\"`User`\" pulumi-lang-python=\"`User`\" pulumi-lang-yaml=\"`outscale.User`\" pulumi-lang-java=\"`outscale.User`\"\u003e`outscale.User`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`outscale.UserGroup`\" pulumi-lang-dotnet=\"`outscale.UserGroup`\" pulumi-lang-go=\"`UserGroup`\" pulumi-lang-python=\"`UserGroup`\" pulumi-lang-yaml=\"`outscale.UserGroup`\" pulumi-lang-java=\"`outscale.UserGroup`\"\u003e`outscale.UserGroup`\u003c/span\u003e resources.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/PolicyVersionTimeouts:PolicyVersionTimeouts"
                 }
             },
             "requiredInputs": [
@@ -17354,17 +17529,18 @@
                     },
                     "document": {
                         "type": "string",
-                        "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n",
-                        "willReplaceOnChanges": true
+                        "description": "The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).\n"
                     },
                     "policyOrn": {
                         "type": "string",
-                        "description": "The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).\n",
-                        "willReplaceOnChanges": true
+                        "description": "The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).\n"
                     },
                     "setAsDefault": {
                         "type": "boolean",
                         "description": "If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the \u003cspan pulumi-lang-nodejs=\"`defaultVersionId`\" pulumi-lang-dotnet=\"`DefaultVersionId`\" pulumi-lang-go=\"`defaultVersionId`\" pulumi-lang-python=\"`default_version_id`\" pulumi-lang-yaml=\"`defaultVersionId`\" pulumi-lang-java=\"`defaultVersionId`\"\u003e`default_version_id`\u003c/span\u003e is specified in the \u003cspan pulumi-lang-nodejs=\"`outscale.User`\" pulumi-lang-dotnet=\"`outscale.User`\" pulumi-lang-go=\"`User`\" pulumi-lang-python=\"`User`\" pulumi-lang-yaml=\"`outscale.User`\" pulumi-lang-java=\"`outscale.User`\"\u003e`outscale.User`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`outscale.UserGroup`\" pulumi-lang-dotnet=\"`outscale.UserGroup`\" pulumi-lang-go=\"`UserGroup`\" pulumi-lang-python=\"`UserGroup`\" pulumi-lang-yaml=\"`outscale.UserGroup`\" pulumi-lang-java=\"`outscale.UserGroup`\"\u003e`outscale.UserGroup`\u003c/span\u003e resources.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/PolicyVersionTimeouts:PolicyVersionTimeouts"
                     },
                     "versionId": {
                         "type": "string",
@@ -18058,7 +18234,7 @@
                 },
                 "securityGroupName": {
                     "type": "string",
-                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
+                    "description": "A name for the security group.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\u003cbr /\u003e\nIf not specified, the security group name is randomly generated.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -18097,7 +18273,7 @@
                 },
                 "securityGroupName": {
                     "type": "string",
-                    "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
+                    "description": "A name for the security group.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\u003cbr /\u003e\nIf not specified, the security group name is randomly generated.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -18155,7 +18331,7 @@
                     },
                     "securityGroupName": {
                         "type": "string",
-                        "description": "The name of the security group.\u003cbr /\u003e\nThis name must not start with `sg-`.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\n"
+                        "description": "A name for the security group.\u003cbr /\u003e\nThis name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=\u0026;{}!$*`.\u003cbr /\u003e\nIf not specified, the security group name is randomly generated.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -19042,6 +19218,9 @@
                         "$ref": "#/types/outscale:index/UserPolicy:UserPolicy"
                     }
                 },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/UserTimeouts:UserTimeouts"
+                },
                 "userEmail": {
                     "type": "string",
                     "description": "The email address of the EIM user.\n"
@@ -19058,6 +19237,7 @@
             "required": [
                 "creationDate",
                 "lastModificationDate",
+                "path",
                 "userEmail",
                 "userId",
                 "userName"
@@ -19072,6 +19252,9 @@
                     "items": {
                         "$ref": "#/types/outscale:index/UserPolicy:UserPolicy"
                     }
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/UserTimeouts:UserTimeouts"
                 },
                 "userEmail": {
                     "type": "string",
@@ -19105,6 +19288,9 @@
                         "items": {
                             "$ref": "#/types/outscale:index/UserPolicy:UserPolicy"
                         }
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/UserTimeouts:UserTimeouts"
                     },
                     "userEmail": {
                         "type": "string",
@@ -19147,6 +19333,9 @@
                         "$ref": "#/types/outscale:index/UserGroupPolicy:UserGroupPolicy"
                     }
                 },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/UserGroupTimeouts:UserGroupTimeouts"
+                },
                 "userGroupId": {
                     "type": "string",
                     "description": "The ID of the user group.\n"
@@ -19166,6 +19355,7 @@
                 "creationDate",
                 "lastModificationDate",
                 "orn",
+                "path",
                 "userGroupId",
                 "userGroupName"
             ],
@@ -19179,6 +19369,9 @@
                     "items": {
                         "$ref": "#/types/outscale:index/UserGroupPolicy:UserGroupPolicy"
                     }
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/UserGroupTimeouts:UserGroupTimeouts"
                 },
                 "userGroupName": {
                     "type": "string",
@@ -19218,6 +19411,9 @@
                         "items": {
                             "$ref": "#/types/outscale:index/UserGroupPolicy:UserGroupPolicy"
                         }
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/UserGroupTimeouts:UserGroupTimeouts"
                     },
                     "userGroupId": {
                         "type": "string",
