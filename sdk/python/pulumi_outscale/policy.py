@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PolicyArgs', 'Policy']
 
@@ -22,7 +24,8 @@ class PolicyArgs:
                  document: pulumi.Input[_builtins.str],
                  policy_name: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['PolicyTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[_builtins.str] document: The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
@@ -36,6 +39,8 @@ class PolicyArgs:
             pulumi.set(__self__, "description", description)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
@@ -85,6 +90,15 @@ class PolicyArgs:
     def path(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "path", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['PolicyTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['PolicyTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _PolicyState:
@@ -99,7 +113,8 @@ class _PolicyState:
                  policy_default_version_id: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 resources_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeouts: Optional[pulumi.Input['PolicyTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the policy was created.
@@ -136,6 +151,8 @@ class _PolicyState:
             pulumi.set(__self__, "policy_name", policy_name)
         if resources_count is not None:
             pulumi.set(__self__, "resources_count", resources_count)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
@@ -269,6 +286,15 @@ class _PolicyState:
     def resources_count(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "resources_count", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['PolicyTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['PolicyTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("outscale:index/policy:Policy")
 class Policy(pulumi.CustomResource):
@@ -280,6 +306,7 @@ class Policy(pulumi.CustomResource):
                  document: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['PolicyTimeoutsArgs', 'PolicyTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a policy.
@@ -369,6 +396,7 @@ class Policy(pulumi.CustomResource):
                  document: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['PolicyTimeoutsArgs', 'PolicyTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,6 +414,7 @@ class Policy(pulumi.CustomResource):
             if policy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_name'")
             __props__.__dict__["policy_name"] = policy_name
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["creation_date"] = None
             __props__.__dict__["is_linkable"] = None
             __props__.__dict__["last_modification_date"] = None
@@ -413,7 +442,8 @@ class Policy(pulumi.CustomResource):
             policy_default_version_id: Optional[pulumi.Input[_builtins.str]] = None,
             policy_id: Optional[pulumi.Input[_builtins.str]] = None,
             policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resources_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'Policy':
+            resources_count: Optional[pulumi.Input[_builtins.int]] = None,
+            timeouts: Optional[pulumi.Input[Union['PolicyTimeoutsArgs', 'PolicyTimeoutsArgsDict']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -448,6 +478,7 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["policy_name"] = policy_name
         __props__.__dict__["resources_count"] = resources_count
+        __props__.__dict__["timeouts"] = timeouts
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -537,4 +568,9 @@ class Policy(pulumi.CustomResource):
         The number of resources attached to the policy.
         """
         return pulumi.get(self, "resources_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.PolicyTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

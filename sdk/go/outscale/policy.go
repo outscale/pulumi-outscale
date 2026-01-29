@@ -84,7 +84,8 @@ type Policy struct {
 	// The name of the policy.
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
 	// The number of resources attached to the policy.
-	ResourcesCount pulumi.IntOutput `pulumi:"resourcesCount"`
+	ResourcesCount pulumi.IntOutput        `pulumi:"resourcesCount"`
+	Timeouts       PolicyTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -144,7 +145,8 @@ type policyState struct {
 	// The name of the policy.
 	PolicyName *string `pulumi:"policyName"`
 	// The number of resources attached to the policy.
-	ResourcesCount *int `pulumi:"resourcesCount"`
+	ResourcesCount *int            `pulumi:"resourcesCount"`
+	Timeouts       *PolicyTimeouts `pulumi:"timeouts"`
 }
 
 type PolicyState struct {
@@ -170,6 +172,7 @@ type PolicyState struct {
 	PolicyName pulumi.StringPtrInput
 	// The number of resources attached to the policy.
 	ResourcesCount pulumi.IntPtrInput
+	Timeouts       PolicyTimeoutsPtrInput
 }
 
 func (PolicyState) ElementType() reflect.Type {
@@ -184,7 +187,8 @@ type policyArgs struct {
 	// The path of the policy.
 	Path *string `pulumi:"path"`
 	// The name of the policy.
-	PolicyName string `pulumi:"policyName"`
+	PolicyName string          `pulumi:"policyName"`
+	Timeouts   *PolicyTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Policy resource.
@@ -197,6 +201,7 @@ type PolicyArgs struct {
 	Path pulumi.StringPtrInput
 	// The name of the policy.
 	PolicyName pulumi.StringInput
+	Timeouts   PolicyTimeoutsPtrInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {
@@ -339,6 +344,10 @@ func (o PolicyOutput) PolicyName() pulumi.StringOutput {
 // The number of resources attached to the policy.
 func (o PolicyOutput) ResourcesCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Policy) pulumi.IntOutput { return v.ResourcesCount }).(pulumi.IntOutput)
+}
+
+func (o PolicyOutput) Timeouts() PolicyTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Policy) PolicyTimeoutsPtrOutput { return v.Timeouts }).(PolicyTimeoutsPtrOutput)
 }
 
 type PolicyArrayOutput struct{ *pulumi.OutputState }

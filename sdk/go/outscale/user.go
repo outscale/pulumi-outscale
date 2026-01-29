@@ -94,8 +94,9 @@ type User struct {
 	// The date and time (UTC) of the last modification of the EIM user.
 	LastModificationDate pulumi.StringOutput `pulumi:"lastModificationDate"`
 	// The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
-	Path     pulumi.StringPtrOutput `pulumi:"path"`
-	Policies UserPolicyArrayOutput  `pulumi:"policies"`
+	Path     pulumi.StringOutput   `pulumi:"path"`
+	Policies UserPolicyArrayOutput `pulumi:"policies"`
+	Timeouts UserTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The email address of the EIM user.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 	// The ID of the EIM user.
@@ -142,8 +143,9 @@ type userState struct {
 	// The date and time (UTC) of the last modification of the EIM user.
 	LastModificationDate *string `pulumi:"lastModificationDate"`
 	// The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
-	Path     *string      `pulumi:"path"`
-	Policies []UserPolicy `pulumi:"policies"`
+	Path     *string       `pulumi:"path"`
+	Policies []UserPolicy  `pulumi:"policies"`
+	Timeouts *UserTimeouts `pulumi:"timeouts"`
 	// The email address of the EIM user.
 	UserEmail *string `pulumi:"userEmail"`
 	// The ID of the EIM user.
@@ -160,6 +162,7 @@ type UserState struct {
 	// The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
 	Path     pulumi.StringPtrInput
 	Policies UserPolicyArrayInput
+	Timeouts UserTimeoutsPtrInput
 	// The email address of the EIM user.
 	UserEmail pulumi.StringPtrInput
 	// The ID of the EIM user.
@@ -174,8 +177,9 @@ func (UserState) ElementType() reflect.Type {
 
 type userArgs struct {
 	// The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
-	Path     *string      `pulumi:"path"`
-	Policies []UserPolicy `pulumi:"policies"`
+	Path     *string       `pulumi:"path"`
+	Policies []UserPolicy  `pulumi:"policies"`
+	Timeouts *UserTimeouts `pulumi:"timeouts"`
 	// The email address of the EIM user.
 	UserEmail *string `pulumi:"userEmail"`
 	// The name of the EIM user. This user name must contain between 1 and 64 alphanumeric characters and/or pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), dashes (`-`), or underscores (`_`).
@@ -187,6 +191,7 @@ type UserArgs struct {
 	// The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
 	Path     pulumi.StringPtrInput
 	Policies UserPolicyArrayInput
+	Timeouts UserTimeoutsPtrInput
 	// The email address of the EIM user.
 	UserEmail pulumi.StringPtrInput
 	// The name of the EIM user. This user name must contain between 1 and 64 alphanumeric characters and/or pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), dashes (`-`), or underscores (`_`).
@@ -291,12 +296,16 @@ func (o UserOutput) LastModificationDate() pulumi.StringOutput {
 }
 
 // The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
-func (o UserOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+func (o UserOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
 func (o UserOutput) Policies() UserPolicyArrayOutput {
 	return o.ApplyT(func(v *User) UserPolicyArrayOutput { return v.Policies }).(UserPolicyArrayOutput)
+}
+
+func (o UserOutput) Timeouts() UserTimeoutsPtrOutput {
+	return o.ApplyT(func(v *User) UserTimeoutsPtrOutput { return v.Timeouts }).(UserTimeoutsPtrOutput)
 }
 
 // The email address of the EIM user.

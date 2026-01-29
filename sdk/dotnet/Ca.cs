@@ -65,16 +65,19 @@ namespace Pulumi.Outscale
         /// The CA in PEM format.
         /// </summary>
         [Output("caPem")]
-        public Output<string?> CaPem { get; private set; } = null!;
+        public Output<string> CaPem { get; private set; } = null!;
 
         /// <summary>
         /// The description of the CA.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.CaTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -84,7 +87,7 @@ namespace Pulumi.Outscale
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Ca(string name, CaArgs? args = null, CustomResourceOptions? options = null)
+        public Ca(string name, CaArgs args, CustomResourceOptions? options = null)
             : base("outscale:index/ca:Ca", name, args ?? new CaArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -125,14 +128,17 @@ namespace Pulumi.Outscale
         /// <summary>
         /// The CA in PEM format.
         /// </summary>
-        [Input("caPem")]
-        public Input<string>? CaPem { get; set; }
+        [Input("caPem", required: true)]
+        public Input<string> CaPem { get; set; } = null!;
 
         /// <summary>
         /// The description of the CA.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.CaTimeoutsArgs>? Timeouts { get; set; }
 
         public CaArgs()
         {
@@ -168,6 +174,9 @@ namespace Pulumi.Outscale
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.CaTimeoutsGetArgs>? Timeouts { get; set; }
 
         public CaState()
         {

@@ -24,6 +24,7 @@ class UserGroupArgs:
                  user_group_name: pulumi.Input[_builtins.str],
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['UserGroupTimeoutsArgs']] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]] = None):
         """
         The set of arguments for constructing a UserGroup resource.
@@ -35,6 +36,8 @@ class UserGroupArgs:
             pulumi.set(__self__, "path", path)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if users is not None:
             pulumi.set(__self__, "users", users)
 
@@ -73,6 +76,15 @@ class UserGroupArgs:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['UserGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['UserGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]]:
         return pulumi.get(self, "users")
 
@@ -89,6 +101,7 @@ class _UserGroupState:
                  orn: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['UserGroupTimeoutsArgs']] = None,
                  user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]] = None):
@@ -111,6 +124,8 @@ class _UserGroupState:
             pulumi.set(__self__, "path", path)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if user_group_id is not None:
             pulumi.set(__self__, "user_group_id", user_group_id)
         if user_group_name is not None:
@@ -176,6 +191,15 @@ class _UserGroupState:
         pulumi.set(self, "policies", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['UserGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['UserGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="userGroupId")
     def user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -217,6 +241,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict']]] = None,
                  user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict']]]]] = None,
                  __props__=None):
@@ -414,6 +439,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict']]] = None,
                  user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict']]]]] = None,
                  __props__=None):
@@ -427,6 +453,7 @@ class UserGroup(pulumi.CustomResource):
 
             __props__.__dict__["path"] = path
             __props__.__dict__["policies"] = policies
+            __props__.__dict__["timeouts"] = timeouts
             if user_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_group_name'")
             __props__.__dict__["user_group_name"] = user_group_name
@@ -450,6 +477,7 @@ class UserGroup(pulumi.CustomResource):
             orn: Optional[pulumi.Input[_builtins.str]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict']]] = None,
             user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict']]]]] = None) -> 'UserGroup':
@@ -476,6 +504,7 @@ class UserGroup(pulumi.CustomResource):
         __props__.__dict__["orn"] = orn
         __props__.__dict__["path"] = path
         __props__.__dict__["policies"] = policies
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["user_group_id"] = user_group_id
         __props__.__dict__["user_group_name"] = user_group_name
         __props__.__dict__["users"] = users
@@ -507,7 +536,7 @@ class UserGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def path(self) -> pulumi.Output[_builtins.str]:
         """
         The path to the group. If not specified, it is set to a slash (`/`).
         """
@@ -517,6 +546,11 @@ class UserGroup(pulumi.CustomResource):
     @pulumi.getter
     def policies(self) -> pulumi.Output[Optional[Sequence['outputs.UserGroupPolicy']]]:
         return pulumi.get(self, "policies")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.UserGroupTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="userGroupId")

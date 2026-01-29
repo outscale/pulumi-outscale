@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PolicyVersionArgs', 'PolicyVersion']
 
@@ -21,7 +23,8 @@ class PolicyVersionArgs:
     def __init__(__self__, *,
                  document: pulumi.Input[_builtins.str],
                  policy_orn: pulumi.Input[_builtins.str],
-                 set_as_default: Optional[pulumi.Input[_builtins.bool]] = None):
+                 set_as_default: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['PolicyVersionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a PolicyVersion resource.
         :param pulumi.Input[_builtins.str] document: The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
@@ -32,6 +35,8 @@ class PolicyVersionArgs:
         pulumi.set(__self__, "policy_orn", policy_orn)
         if set_as_default is not None:
             pulumi.set(__self__, "set_as_default", set_as_default)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
@@ -69,6 +74,15 @@ class PolicyVersionArgs:
     def set_as_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "set_as_default", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['PolicyVersionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['PolicyVersionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _PolicyVersionState:
@@ -79,6 +93,7 @@ class _PolicyVersionState:
                  document: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_orn: Optional[pulumi.Input[_builtins.str]] = None,
                  set_as_default: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['PolicyVersionTimeoutsArgs']] = None,
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyVersion resources.
@@ -102,6 +117,8 @@ class _PolicyVersionState:
             pulumi.set(__self__, "policy_orn", policy_orn)
         if set_as_default is not None:
             pulumi.set(__self__, "set_as_default", set_as_default)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if version_id is not None:
             pulumi.set(__self__, "version_id", version_id)
 
@@ -178,6 +195,15 @@ class _PolicyVersionState:
         pulumi.set(self, "set_as_default", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['PolicyVersionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['PolicyVersionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -199,6 +225,7 @@ class PolicyVersion(pulumi.CustomResource):
                  document: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_orn: Optional[pulumi.Input[_builtins.str]] = None,
                  set_as_default: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['PolicyVersionTimeoutsArgs', 'PolicyVersionTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a policy version.
@@ -272,6 +299,7 @@ class PolicyVersion(pulumi.CustomResource):
                  document: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_orn: Optional[pulumi.Input[_builtins.str]] = None,
                  set_as_default: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['PolicyVersionTimeoutsArgs', 'PolicyVersionTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -288,6 +316,7 @@ class PolicyVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'policy_orn'")
             __props__.__dict__["policy_orn"] = policy_orn
             __props__.__dict__["set_as_default"] = set_as_default
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["body"] = None
             __props__.__dict__["creation_date"] = None
             __props__.__dict__["default_version"] = None
@@ -308,6 +337,7 @@ class PolicyVersion(pulumi.CustomResource):
             document: Optional[pulumi.Input[_builtins.str]] = None,
             policy_orn: Optional[pulumi.Input[_builtins.str]] = None,
             set_as_default: Optional[pulumi.Input[_builtins.bool]] = None,
+            timeouts: Optional[pulumi.Input[Union['PolicyVersionTimeoutsArgs', 'PolicyVersionTimeoutsArgsDict']]] = None,
             version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyVersion':
         """
         Get an existing PolicyVersion resource's state with the given name, id, and optional extra
@@ -334,6 +364,7 @@ class PolicyVersion(pulumi.CustomResource):
         __props__.__dict__["document"] = document
         __props__.__dict__["policy_orn"] = policy_orn
         __props__.__dict__["set_as_default"] = set_as_default
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["version_id"] = version_id
         return PolicyVersion(resource_name, opts=opts, __props__=__props__)
 
@@ -379,11 +410,16 @@ class PolicyVersion(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="setAsDefault")
-    def set_as_default(self) -> pulumi.Output[_builtins.bool]:
+    def set_as_default(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `default_version_id` is specified in the `User` or `UserGroup` resources.
         """
         return pulumi.get(self, "set_as_default")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.PolicyVersionTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="versionId")

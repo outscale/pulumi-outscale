@@ -13,34 +13,38 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['CaArgs', 'Ca']
 
 @pulumi.input_type
 class CaArgs:
     def __init__(__self__, *,
-                 ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_pem: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['CaTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Ca resource.
         :param pulumi.Input[_builtins.str] ca_pem: The CA in PEM format.
         :param pulumi.Input[_builtins.str] description: The description of the CA.
         """
-        if ca_pem is not None:
-            pulumi.set(__self__, "ca_pem", ca_pem)
+        pulumi.set(__self__, "ca_pem", ca_pem)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="caPem")
-    def ca_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_pem(self) -> pulumi.Input[_builtins.str]:
         """
         The CA in PEM format.
         """
         return pulumi.get(self, "ca_pem")
 
     @ca_pem.setter
-    def ca_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_pem(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "ca_pem", value)
 
     @_builtins.property
@@ -55,6 +59,15 @@ class CaArgs:
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['CaTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['CaTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _CaState:
@@ -63,7 +76,8 @@ class _CaState:
                  ca_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['CaTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Ca resources.
         :param pulumi.Input[_builtins.str] ca_fingerprint: The fingerprint of the CA.
@@ -81,6 +95,8 @@ class _CaState:
             pulumi.set(__self__, "description", description)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="caFingerprint")
@@ -139,6 +155,15 @@ class _CaState:
     def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['CaTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['CaTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("outscale:index/ca:Ca")
 class Ca(pulumi.CustomResource):
@@ -148,6 +173,7 @@ class Ca(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['CaTimeoutsArgs', 'CaTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Certificate Authority (CA).
@@ -184,7 +210,7 @@ class Ca(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[CaArgs] = None,
+                 args: CaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Certificate Authority (CA).
@@ -229,6 +255,7 @@ class Ca(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['CaTimeoutsArgs', 'CaTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -238,8 +265,11 @@ class Ca(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CaArgs.__new__(CaArgs)
 
+            if ca_pem is None and not opts.urn:
+                raise TypeError("Missing required property 'ca_pem'")
             __props__.__dict__["ca_pem"] = ca_pem
             __props__.__dict__["description"] = description
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["ca_fingerprint"] = None
             __props__.__dict__["ca_id"] = None
             __props__.__dict__["request_id"] = None
@@ -257,7 +287,8 @@ class Ca(pulumi.CustomResource):
             ca_id: Optional[pulumi.Input[_builtins.str]] = None,
             ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ca':
+            request_id: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['CaTimeoutsArgs', 'CaTimeoutsArgsDict']]] = None) -> 'Ca':
         """
         Get an existing Ca resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -279,6 +310,7 @@ class Ca(pulumi.CustomResource):
         __props__.__dict__["ca_pem"] = ca_pem
         __props__.__dict__["description"] = description
         __props__.__dict__["request_id"] = request_id
+        __props__.__dict__["timeouts"] = timeouts
         return Ca(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -299,7 +331,7 @@ class Ca(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="caPem")
-    def ca_pem(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def ca_pem(self) -> pulumi.Output[_builtins.str]:
         """
         The CA in PEM format.
         """
@@ -307,7 +339,7 @@ class Ca(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         The description of the CA.
         """
@@ -317,4 +349,9 @@ class Ca(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "request_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.CaTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

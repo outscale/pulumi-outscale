@@ -111,7 +111,8 @@ type ApiAccessPolicy struct {
 	RequestId                     pulumi.StringOutput `pulumi:"requestId"`
 	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
 	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
-	RequireTrustedEnv pulumi.BoolOutput `pulumi:"requireTrustedEnv"`
+	RequireTrustedEnv pulumi.BoolOutput                `pulumi:"requireTrustedEnv"`
+	Timeouts          ApiAccessPolicyTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewApiAccessPolicy registers a new resource with the given unique name, arguments, and options.
@@ -155,7 +156,8 @@ type apiAccessPolicyState struct {
 	RequestId                     *string `pulumi:"requestId"`
 	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
 	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
-	RequireTrustedEnv *bool `pulumi:"requireTrustedEnv"`
+	RequireTrustedEnv *bool                    `pulumi:"requireTrustedEnv"`
+	Timeouts          *ApiAccessPolicyTimeouts `pulumi:"timeouts"`
 }
 
 type ApiAccessPolicyState struct {
@@ -165,6 +167,7 @@ type ApiAccessPolicyState struct {
 	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
 	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
 	RequireTrustedEnv pulumi.BoolPtrInput
+	Timeouts          ApiAccessPolicyTimeoutsPtrInput
 }
 
 func (ApiAccessPolicyState) ElementType() reflect.Type {
@@ -176,7 +179,8 @@ type apiAccessPolicyArgs struct {
 	MaxAccessKeyExpirationSeconds int `pulumi:"maxAccessKeyExpirationSeconds"`
 	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
 	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
-	RequireTrustedEnv bool `pulumi:"requireTrustedEnv"`
+	RequireTrustedEnv bool                     `pulumi:"requireTrustedEnv"`
+	Timeouts          *ApiAccessPolicyTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ApiAccessPolicy resource.
@@ -186,6 +190,7 @@ type ApiAccessPolicyArgs struct {
 	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
 	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
 	RequireTrustedEnv pulumi.BoolInput
+	Timeouts          ApiAccessPolicyTimeoutsPtrInput
 }
 
 func (ApiAccessPolicyArgs) ElementType() reflect.Type {
@@ -288,6 +293,10 @@ func (o ApiAccessPolicyOutput) RequestId() pulumi.StringOutput {
 // Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
 func (o ApiAccessPolicyOutput) RequireTrustedEnv() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApiAccessPolicy) pulumi.BoolOutput { return v.RequireTrustedEnv }).(pulumi.BoolOutput)
+}
+
+func (o ApiAccessPolicyOutput) Timeouts() ApiAccessPolicyTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ApiAccessPolicy) ApiAccessPolicyTimeoutsPtrOutput { return v.Timeouts }).(ApiAccessPolicyTimeoutsPtrOutput)
 }
 
 type ApiAccessPolicyArrayOutput struct{ *pulumi.OutputState }

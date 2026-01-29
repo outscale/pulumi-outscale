@@ -119,9 +119,9 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly securityGroupId: pulumi.Output<string>;
     /**
-     * The name of the security group.<br />
-     * This name must not start with `sg-`.<br />
-     * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+     * A name for the security group.<br />
+     * This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+     * If not specified, the security group name is randomly generated.
      */
     declare public readonly securityGroupName: pulumi.Output<string>;
     /**
@@ -211,9 +211,9 @@ export interface SecurityGroupState {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * The name of the security group.<br />
-     * This name must not start with `sg-`.<br />
-     * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+     * A name for the security group.<br />
+     * This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+     * If not specified, the security group name is randomly generated.
      */
     securityGroupName?: pulumi.Input<string>;
     /**
@@ -241,9 +241,9 @@ export interface SecurityGroupArgs {
      */
     removeDefaultOutboundRule?: pulumi.Input<boolean>;
     /**
-     * The name of the security group.<br />
-     * This name must not start with `sg-`.<br />
-     * This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+     * A name for the security group.<br />
+     * This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+     * If not specified, the security group name is randomly generated.
      */
     securityGroupName?: pulumi.Input<string>;
     /**

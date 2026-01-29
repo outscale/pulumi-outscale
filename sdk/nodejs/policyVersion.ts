@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -79,7 +81,8 @@ export class PolicyVersion extends pulumi.CustomResource {
     /**
      * If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
      */
-    declare public readonly setAsDefault: pulumi.Output<boolean>;
+    declare public readonly setAsDefault: pulumi.Output<boolean | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.PolicyVersionTimeouts | undefined>;
     /**
      * The ID of the version.
      */
@@ -104,6 +107,7 @@ export class PolicyVersion extends pulumi.CustomResource {
             resourceInputs["document"] = state?.document;
             resourceInputs["policyOrn"] = state?.policyOrn;
             resourceInputs["setAsDefault"] = state?.setAsDefault;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as PolicyVersionArgs | undefined;
@@ -116,6 +120,7 @@ export class PolicyVersion extends pulumi.CustomResource {
             resourceInputs["document"] = args?.document;
             resourceInputs["policyOrn"] = args?.policyOrn;
             resourceInputs["setAsDefault"] = args?.setAsDefault;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["body"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["defaultVersion"] = undefined /*out*/;
@@ -154,6 +159,7 @@ export interface PolicyVersionState {
      * If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
      */
     setAsDefault?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.PolicyVersionTimeouts>;
     /**
      * The ID of the version.
      */
@@ -176,4 +182,5 @@ export interface PolicyVersionArgs {
      * If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
      */
     setAsDefault?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.PolicyVersionTimeouts>;
 }

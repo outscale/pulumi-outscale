@@ -136,9 +136,9 @@ namespace Pulumi.Outscale
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the security group.&lt;br /&gt;
-        /// This name must not start with `sg-`.&lt;br /&gt;
-        /// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.
+        /// A name for the security group.&lt;br /&gt;
+        /// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.&lt;br /&gt;
+        /// If not specified, the security group name is randomly generated.
         /// </summary>
         [Output("securityGroupName")]
         public Output<string> SecurityGroupName { get; private set; } = null!;
@@ -218,9 +218,9 @@ namespace Pulumi.Outscale
         public Input<bool>? RemoveDefaultOutboundRule { get; set; }
 
         /// <summary>
-        /// The name of the security group.&lt;br /&gt;
-        /// This name must not start with `sg-`.&lt;br /&gt;
-        /// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.
+        /// A name for the security group.&lt;br /&gt;
+        /// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.&lt;br /&gt;
+        /// If not specified, the security group name is randomly generated.
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }
@@ -307,9 +307,9 @@ namespace Pulumi.Outscale
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The name of the security group.&lt;br /&gt;
-        /// This name must not start with `sg-`.&lt;br /&gt;
-        /// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.
+        /// A name for the security group.&lt;br /&gt;
+        /// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&amp;;{}!$*`.&lt;br /&gt;
+        /// If not specified, the security group name is randomly generated.
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }

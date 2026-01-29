@@ -67,7 +67,8 @@ type PolicyVersion struct {
 	// The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
 	PolicyOrn pulumi.StringOutput `pulumi:"policyOrn"`
 	// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `User` or `UserGroup` resources.
-	SetAsDefault pulumi.BoolOutput `pulumi:"setAsDefault"`
+	SetAsDefault pulumi.BoolPtrOutput           `pulumi:"setAsDefault"`
+	Timeouts     PolicyVersionTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the version.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
@@ -119,7 +120,8 @@ type policyVersionState struct {
 	// The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
 	PolicyOrn *string `pulumi:"policyOrn"`
 	// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `User` or `UserGroup` resources.
-	SetAsDefault *bool `pulumi:"setAsDefault"`
+	SetAsDefault *bool                  `pulumi:"setAsDefault"`
+	Timeouts     *PolicyVersionTimeouts `pulumi:"timeouts"`
 	// The ID of the version.
 	VersionId *string `pulumi:"versionId"`
 }
@@ -137,6 +139,7 @@ type PolicyVersionState struct {
 	PolicyOrn pulumi.StringPtrInput
 	// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `User` or `UserGroup` resources.
 	SetAsDefault pulumi.BoolPtrInput
+	Timeouts     PolicyVersionTimeoutsPtrInput
 	// The ID of the version.
 	VersionId pulumi.StringPtrInput
 }
@@ -151,7 +154,8 @@ type policyVersionArgs struct {
 	// The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
 	PolicyOrn string `pulumi:"policyOrn"`
 	// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `User` or `UserGroup` resources.
-	SetAsDefault *bool `pulumi:"setAsDefault"`
+	SetAsDefault *bool                  `pulumi:"setAsDefault"`
+	Timeouts     *PolicyVersionTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a PolicyVersion resource.
@@ -162,6 +166,7 @@ type PolicyVersionArgs struct {
 	PolicyOrn pulumi.StringInput
 	// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `User` or `UserGroup` resources.
 	SetAsDefault pulumi.BoolPtrInput
+	Timeouts     PolicyVersionTimeoutsPtrInput
 }
 
 func (PolicyVersionArgs) ElementType() reflect.Type {
@@ -277,8 +282,12 @@ func (o PolicyVersionOutput) PolicyOrn() pulumi.StringOutput {
 }
 
 // If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `User` or `UserGroup` resources.
-func (o PolicyVersionOutput) SetAsDefault() pulumi.BoolOutput {
-	return o.ApplyT(func(v *PolicyVersion) pulumi.BoolOutput { return v.SetAsDefault }).(pulumi.BoolOutput)
+func (o PolicyVersionOutput) SetAsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyVersion) pulumi.BoolPtrOutput { return v.SetAsDefault }).(pulumi.BoolPtrOutput)
+}
+
+func (o PolicyVersionOutput) Timeouts() PolicyVersionTimeoutsPtrOutput {
+	return o.ApplyT(func(v *PolicyVersion) PolicyVersionTimeoutsPtrOutput { return v.Timeouts }).(PolicyVersionTimeoutsPtrOutput)
 }
 
 // The ID of the version.
