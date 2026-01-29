@@ -325,8 +325,6 @@ class Subnet(pulumi.CustomResource):
 
         A subnet can be imported using its ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678
         ```
@@ -377,8 +375,6 @@ class Subnet(pulumi.CustomResource):
         ## Import
 
         A subnet can be imported using its ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678

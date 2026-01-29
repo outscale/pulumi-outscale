@@ -272,8 +272,6 @@ class AccessKey(pulumi.CustomResource):
 
         An access key can be imported using its ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/accessKey:AccessKey ImportedAccessKey ABCDEFGHIJ0123456789
         ```
@@ -320,8 +318,6 @@ class AccessKey(pulumi.CustomResource):
         ## Import
 
         An access key can be imported using its ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/accessKey:AccessKey ImportedAccessKey ABCDEFGHIJ0123456789

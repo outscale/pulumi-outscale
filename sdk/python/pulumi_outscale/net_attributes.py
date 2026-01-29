@@ -238,8 +238,6 @@ class NetAttributes(pulumi.CustomResource):
 
         A Net attribute can be imported using the Net ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/netAttributes:NetAttributes ImportedNet vpc-12345678
         ```
@@ -286,8 +284,6 @@ class NetAttributes(pulumi.CustomResource):
         ## Import
 
         A Net attribute can be imported using the Net ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/netAttributes:NetAttributes ImportedNet vpc-12345678

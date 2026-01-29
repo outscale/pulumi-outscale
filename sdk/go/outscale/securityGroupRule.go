@@ -130,8 +130,6 @@ import (
 //
 // For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
 // ```

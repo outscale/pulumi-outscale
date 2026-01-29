@@ -104,8 +104,6 @@ namespace Pulumi.Outscale
     /// 
     /// A NAT service can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/natService:NatService ImportedNatService nat-87654321
     /// ```

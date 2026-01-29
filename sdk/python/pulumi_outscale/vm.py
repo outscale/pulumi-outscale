@@ -1219,8 +1219,6 @@ class Vm(pulumi.CustomResource):
 
         A VM can be imported using its ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678
         ```
@@ -1263,8 +1261,6 @@ class Vm(pulumi.CustomResource):
         ## Import
 
         A VM can be imported using its ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678

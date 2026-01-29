@@ -293,8 +293,6 @@ class DhcpOption(pulumi.CustomResource):
 
         DHCP options can be imported using the DHCP option ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/dhcpOption:DhcpOption ImportedDhcpSet dopt-87654321
         ```
@@ -355,8 +353,6 @@ class DhcpOption(pulumi.CustomResource):
         ## Import
 
         DHCP options can be imported using the DHCP option ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/dhcpOption:DhcpOption ImportedDhcpSet dopt-87654321

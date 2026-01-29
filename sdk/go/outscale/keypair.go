@@ -90,8 +90,6 @@ import (
 //
 // A keypair can be imported using its name. For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id
 // ```

@@ -75,8 +75,6 @@ namespace Pulumi.Outscale
     /// 
     /// A Net access point can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/netAccessPoint:NetAccessPoint ImportedNetAccessPoint vpce-87654321
     /// ```

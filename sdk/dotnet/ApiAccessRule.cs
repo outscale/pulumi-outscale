@@ -81,8 +81,6 @@ namespace Pulumi.Outscale
     /// 
     /// An API access rule can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
     /// ```

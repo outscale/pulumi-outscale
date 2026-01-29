@@ -52,8 +52,6 @@ import * as utilities from "./utilities";
  *
  * A snapshot can be imported using its ID. For example:
  *
- * console
- *
  * ```sh
  * $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
  * ```

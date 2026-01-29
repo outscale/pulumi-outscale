@@ -34,8 +34,6 @@ namespace Pulumi.Outscale
     /// 
     /// An internet service can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/internetService:InternetService ImportedInternetService igw-12345678
     /// ```

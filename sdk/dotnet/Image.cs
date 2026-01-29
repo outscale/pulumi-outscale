@@ -121,8 +121,6 @@ namespace Pulumi.Outscale
     /// 
     /// An image can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
     /// ```

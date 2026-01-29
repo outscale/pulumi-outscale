@@ -43,8 +43,6 @@ namespace Pulumi.Outscale
     /// 
     /// An OKS project can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/oksProject:OksProject project id
     /// ```

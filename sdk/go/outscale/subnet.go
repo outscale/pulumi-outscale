@@ -76,8 +76,6 @@ import (
 //
 // A subnet can be imported using its ID. For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678
 // ```

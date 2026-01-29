@@ -54,8 +54,6 @@ import * as utilities from "./utilities";
  *
  * An API access rule can be imported using its ID. For example:
  *
- * console
- *
  * ```sh
  * $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
  * ```

@@ -380,8 +380,6 @@ class OksProject(pulumi.CustomResource):
 
         An OKS project can be imported using its ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/oksProject:OksProject project id
         ```
@@ -426,8 +424,6 @@ class OksProject(pulumi.CustomResource):
         ## Import
 
         An OKS project can be imported using its ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/oksProject:OksProject project id
