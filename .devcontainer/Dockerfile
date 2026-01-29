@@ -1,14 +1,12 @@
-FROM jetpackio/devbox:latest
+FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
-# Installing your devbox project
+# Install mise
+RUN curl https://mise.run | sh
+ENV PATH="/root/.local/bin:${PATH}"
+
+# Setup mise
 WORKDIR /code
-COPY devbox.json devbox.json
-COPY devbox.lock devbox.lock
+RUN mise install
 
-USER root
-RUN chown -R "${DEVBOX_USER}:${DEVBOX_USER}" /code
-USER "${DEVBOX_USER}"
-
-RUN devbox run -- echo "Installed Packages."
-
-RUN devbox shellenv --init-hook >> ~/.profile
+# Activate mise in shell
+RUN echo 'eval "$(mise activate bash)"' >> ~/.bashrc

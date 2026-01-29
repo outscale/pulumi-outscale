@@ -1,64 +1,50 @@
 # REQUIRED: provider is the name of the provider without the pulumi-prefix e.g. "aws".
 provider: outscale
-
 # The name of the GitHub organization or username the repository lives in. Defaults to 'pulumi'
 organization: outscale
-
 # The external template only includes workflows relevant for non-Pulumi managed providers.
 template: external-bridged-provider
-
 # The name of the GitHub organisation or username where the upstream terraform provider lives.
 upstreamProviderOrg: outscale
 upstream-provider-repo: terraform-provider-outscale
-
 # major version of the current provider - used in make files
 # This should always be set by all providers as this is key to go module paths.
 major-version: 1
-
 # Enable using the terraform converter for example generation.
 pulumiConvert: 1
-
 # Set a GitHub username here for automatic upgrade PRs to be assigned to.
 # pr-assign: pulumi-bot
-
 lint: true
-
 # providerDefaultBranch is used to customise the default branch for the repo
 providerDefaultBranch: main
-
 # Explicit list of languages to support for SDKs. Java is currently excluded because it doesn't yet work well for non-internal providers.
 languages:
     - dotnet
     - go
     - nodejs
     - python
-
 # Disable Java publishing and pushing the provider binary to the CDN as these only work internally within Pulumi.
 publish:
     sdk: "all,!java"
     cdn: false
-
 # Enables automatic generation of basic docs pages for the registry.
 # registryDocs: true
 
 # Disables a pulumi-internal-only step for running create_docs_build during the release
 publishRegistry: false
-
 # checkUpstreamUpgrade determines whether we run the upstream upgrade job for bridged providers.
 # Set to false for providers that cannot be upgraded, e.g. because of archived upstream or a license conflict.
 checkUpstreamUpgrade: true
-
 # Delete existing files within the .github/workflows directory, except where the file begins with the name of the provider
 # (e.g. `aws-*`) which are considered provider-specific workflows.
 clean-github-workflows: false
-
 # Whether we automatically merge upstream provider upgrades.
 autoMergeProviderUpgrades: false
-
 # Enables ESC for CI secrets. Optional.
 esc:
     enabled: false
-
+github-app:
+    enabled: false
 actions:
     preTest:
         - name: Set OUTSCALE Credentials
@@ -66,3 +52,7 @@ actions:
               echo "OUTSCALE_ACCESSKEYID=${{ secrets.OUTSCALE_ACCESSKEYID }}" >> $GITHUB_ENV
               echo "OUTSCALE_REGION=${{ secrets.OUTSCALE_REGION }}" >> $GITHUB_ENV
               echo "OUTSCALE_SECRETKEYID=${{ secrets.OUTSCALE_SECRETKEYID }}" >> $GITHUB_ENV
+license:
+    ignore:
+        # License are in a LICENSES folder
+        - github.com/outscale/goutils/sdk/ptr
