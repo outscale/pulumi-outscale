@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.17.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1
-	github.com/outscale/terraform-provider-outscale v1.3.1
+	github.com/outscale/terraform-provider-outscale v1.3.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.119.0
 	github.com/pulumi/pulumi/sdk/v3 v3.213.0
 	github.com/stretchr/testify v1.11.1
@@ -40,7 +40,7 @@ require (
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aws/aws-sdk-go v1.55.8 // indirect
-	github.com/aws/smithy-go/aws-http-auth v1.0.0 // indirect
+	github.com/aws/smithy-go/aws-http-auth v1.1.1 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect
@@ -143,8 +143,9 @@ require (
 	github.com/opentofu/registry-address v0.0.0-20230922120653-901b9ae4061a // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
+	github.com/outscale/goutils/sdk v0.0.0-20251230125904-cf90f7c6a4a4 // indirect
 	github.com/outscale/osc-sdk-go/v2 v2.31.0 // indirect
-	github.com/outscale/osc-sdk-go/v3 v3.0.0-alpha.5.0.20251112125254-1fb3f9ca574c // indirect
+	github.com/outscale/osc-sdk-go/v3 v3.0.0-beta.2 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
 	github.com/pgavlin/fx/v2 v2.0.10 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
