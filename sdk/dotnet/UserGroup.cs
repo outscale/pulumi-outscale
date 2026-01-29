@@ -163,10 +163,13 @@ namespace Pulumi.Outscale
         /// The path to the group. If not specified, it is set to a slash (`/`).
         /// </summary>
         [Output("path")]
-        public Output<string?> Path { get; private set; } = null!;
+        public Output<string> Path { get; private set; } = null!;
 
         [Output("policies")]
         public Output<ImmutableArray<Outputs.UserGroupPolicy>> Policies { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.UserGroupTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the user group.
@@ -243,6 +246,9 @@ namespace Pulumi.Outscale
             set => _policies = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.UserGroupTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The name of the group.
         /// </summary>
@@ -296,6 +302,9 @@ namespace Pulumi.Outscale
             get => _policies ?? (_policies = new InputList<Inputs.UserGroupPolicyGetArgs>());
             set => _policies = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.UserGroupTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the user group.

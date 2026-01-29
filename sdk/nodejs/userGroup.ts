@@ -136,8 +136,9 @@ export class UserGroup extends pulumi.CustomResource {
     /**
      * The path to the group. If not specified, it is set to a slash (`/`).
      */
-    declare public readonly path: pulumi.Output<string | undefined>;
+    declare public readonly path: pulumi.Output<string>;
     declare public readonly policies: pulumi.Output<outputs.UserGroupPolicy[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.UserGroupTimeouts | undefined>;
     /**
      * The ID of the user group.
      */
@@ -166,6 +167,7 @@ export class UserGroup extends pulumi.CustomResource {
             resourceInputs["orn"] = state?.orn;
             resourceInputs["path"] = state?.path;
             resourceInputs["policies"] = state?.policies;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["userGroupId"] = state?.userGroupId;
             resourceInputs["userGroupName"] = state?.userGroupName;
             resourceInputs["users"] = state?.users;
@@ -176,6 +178,7 @@ export class UserGroup extends pulumi.CustomResource {
             }
             resourceInputs["path"] = args?.path;
             resourceInputs["policies"] = args?.policies;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["userGroupName"] = args?.userGroupName;
             resourceInputs["users"] = args?.users;
             resourceInputs["creationDate"] = undefined /*out*/;
@@ -209,6 +212,7 @@ export interface UserGroupState {
      */
     path?: pulumi.Input<string>;
     policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[]>;
+    timeouts?: pulumi.Input<inputs.UserGroupTimeouts>;
     /**
      * The ID of the user group.
      */
@@ -229,6 +233,7 @@ export interface UserGroupArgs {
      */
     path?: pulumi.Input<string>;
     policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[]>;
+    timeouts?: pulumi.Input<inputs.UserGroupTimeouts>;
     /**
      * The name of the group.
      */

@@ -130,9 +130,9 @@ type SecurityGroup struct {
 	RequestId                 pulumi.StringOutput `pulumi:"requestId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// The name of the security group.<br />
-	// This name must not start with `sg-`.<br />
-	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	// A name for the security group.<br />
+	// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+	// If not specified, the security group name is randomly generated.
 	SecurityGroupName pulumi.StringOutput `pulumi:"securityGroupName"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     SecurityGroupTagArrayOutput    `pulumi:"tags"`
@@ -188,9 +188,9 @@ type securityGroupState struct {
 	RequestId                 *string `pulumi:"requestId"`
 	// The ID of the security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The name of the security group.<br />
-	// This name must not start with `sg-`.<br />
-	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	// A name for the security group.<br />
+	// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+	// If not specified, the security group name is randomly generated.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     []SecurityGroupTag     `pulumi:"tags"`
@@ -214,9 +214,9 @@ type SecurityGroupState struct {
 	RequestId                 pulumi.StringPtrInput
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringPtrInput
-	// The name of the security group.<br />
-	// This name must not start with `sg-`.<br />
-	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	// A name for the security group.<br />
+	// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+	// If not specified, the security group name is randomly generated.
 	SecurityGroupName pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     SecurityGroupTagArrayInput
@@ -235,9 +235,9 @@ type securityGroupArgs struct {
 	NetId *string `pulumi:"netId"`
 	// (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
 	RemoveDefaultOutboundRule *bool `pulumi:"removeDefaultOutboundRule"`
-	// The name of the security group.<br />
-	// This name must not start with `sg-`.<br />
-	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	// A name for the security group.<br />
+	// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+	// If not specified, the security group name is randomly generated.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     []SecurityGroupTag     `pulumi:"tags"`
@@ -253,9 +253,9 @@ type SecurityGroupArgs struct {
 	NetId pulumi.StringPtrInput
 	// (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
 	RemoveDefaultOutboundRule pulumi.BoolPtrInput
-	// The name of the security group.<br />
-	// This name must not start with `sg-`.<br />
-	// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+	// A name for the security group.<br />
+	// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+	// If not specified, the security group name is randomly generated.
 	SecurityGroupName pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     SecurityGroupTagArrayInput
@@ -389,9 +389,9 @@ func (o SecurityGroupOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The name of the security group.<br />
-// This name must not start with `sg-`.<br />
-// This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+// A name for the security group.<br />
+// This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+// If not specified, the security group name is randomly generated.
 func (o SecurityGroupOutput) SecurityGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.SecurityGroupName }).(pulumi.StringOutput)
 }

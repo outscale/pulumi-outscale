@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -107,6 +109,7 @@ export class Policy extends pulumi.CustomResource {
      * The number of resources attached to the policy.
      */
     declare public /*out*/ readonly resourcesCount: pulumi.Output<number>;
+    declare public readonly timeouts: pulumi.Output<outputs.PolicyTimeouts | undefined>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -132,6 +135,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["policyId"] = state?.policyId;
             resourceInputs["policyName"] = state?.policyName;
             resourceInputs["resourcesCount"] = state?.resourcesCount;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
             if (args?.document === undefined && !opts.urn) {
@@ -144,6 +148,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["document"] = args?.document;
             resourceInputs["path"] = args?.path;
             resourceInputs["policyName"] = args?.policyName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["isLinkable"] = undefined /*out*/;
             resourceInputs["lastModificationDate"] = undefined /*out*/;
@@ -205,6 +210,7 @@ export interface PolicyState {
      * The number of resources attached to the policy.
      */
     resourcesCount?: pulumi.Input<number>;
+    timeouts?: pulumi.Input<inputs.PolicyTimeouts>;
 }
 
 /**
@@ -227,4 +233,5 @@ export interface PolicyArgs {
      * The name of the policy.
      */
     policyName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.PolicyTimeouts>;
 }

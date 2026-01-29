@@ -117,6 +117,9 @@ namespace Pulumi.Outscale
         [Output("resourcesCount")]
         public Output<int> ResourcesCount { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.PolicyTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Policy resource with the given unique name, arguments, and options.
@@ -186,6 +189,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("policyName", required: true)]
         public Input<string> PolicyName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.PolicyTimeoutsArgs>? Timeouts { get; set; }
 
         public PolicyArgs()
         {
@@ -260,6 +266,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("resourcesCount")]
         public Input<int>? ResourcesCount { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.PolicyTimeoutsGetArgs>? Timeouts { get; set; }
 
         public PolicyState()
         {

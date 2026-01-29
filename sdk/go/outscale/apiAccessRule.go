@@ -112,10 +112,11 @@ type ApiAccessRule struct {
 	// One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
 	Cns pulumi.StringArrayOutput `pulumi:"cns"`
 	// A description for the API access rule.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
-	IpRanges  pulumi.StringArrayOutput `pulumi:"ipRanges"`
-	RequestId pulumi.StringOutput      `pulumi:"requestId"`
+	IpRanges  pulumi.StringArrayOutput       `pulumi:"ipRanges"`
+	RequestId pulumi.StringOutput            `pulumi:"requestId"`
+	Timeouts  ApiAccessRuleTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewApiAccessRule registers a new resource with the given unique name, arguments, and options.
@@ -157,8 +158,9 @@ type apiAccessRuleState struct {
 	// A description for the API access rule.
 	Description *string `pulumi:"description"`
 	// One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
-	IpRanges  []string `pulumi:"ipRanges"`
-	RequestId *string  `pulumi:"requestId"`
+	IpRanges  []string               `pulumi:"ipRanges"`
+	RequestId *string                `pulumi:"requestId"`
+	Timeouts  *ApiAccessRuleTimeouts `pulumi:"timeouts"`
 }
 
 type ApiAccessRuleState struct {
@@ -173,6 +175,7 @@ type ApiAccessRuleState struct {
 	// One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
 	IpRanges  pulumi.StringArrayInput
 	RequestId pulumi.StringPtrInput
+	Timeouts  ApiAccessRuleTimeoutsPtrInput
 }
 
 func (ApiAccessRuleState) ElementType() reflect.Type {
@@ -187,7 +190,8 @@ type apiAccessRuleArgs struct {
 	// A description for the API access rule.
 	Description *string `pulumi:"description"`
 	// One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
-	IpRanges []string `pulumi:"ipRanges"`
+	IpRanges []string               `pulumi:"ipRanges"`
+	Timeouts *ApiAccessRuleTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ApiAccessRule resource.
@@ -200,6 +204,7 @@ type ApiAccessRuleArgs struct {
 	Description pulumi.StringPtrInput
 	// One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
 	IpRanges pulumi.StringArrayInput
+	Timeouts ApiAccessRuleTimeoutsPtrInput
 }
 
 func (ApiAccessRuleArgs) ElementType() reflect.Type {
@@ -305,8 +310,8 @@ func (o ApiAccessRuleOutput) Cns() pulumi.StringArrayOutput {
 }
 
 // A description for the API access rule.
-func (o ApiAccessRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiAccessRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ApiAccessRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiAccessRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
@@ -316,6 +321,10 @@ func (o ApiAccessRuleOutput) IpRanges() pulumi.StringArrayOutput {
 
 func (o ApiAccessRuleOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiAccessRule) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
+}
+
+func (o ApiAccessRuleOutput) Timeouts() ApiAccessRuleTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ApiAccessRule) ApiAccessRuleTimeoutsPtrOutput { return v.Timeouts }).(ApiAccessRuleTimeoutsPtrOutput)
 }
 
 type ApiAccessRuleArrayOutput struct{ *pulumi.OutputState }

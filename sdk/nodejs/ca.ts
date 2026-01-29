@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -72,12 +74,13 @@ export class Ca extends pulumi.CustomResource {
     /**
      * The CA in PEM format.
      */
-    declare public readonly caPem: pulumi.Output<string | undefined>;
+    declare public readonly caPem: pulumi.Output<string>;
     /**
      * The description of the CA.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.CaTimeouts | undefined>;
 
     /**
      * Create a Ca resource with the given unique name, arguments, and options.
@@ -86,7 +89,7 @@ export class Ca extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: CaArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: CaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CaArgs | CaState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -97,10 +100,15 @@ export class Ca extends pulumi.CustomResource {
             resourceInputs["caPem"] = state?.caPem;
             resourceInputs["description"] = state?.description;
             resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as CaArgs | undefined;
+            if (args?.caPem === undefined && !opts.urn) {
+                throw new Error("Missing required property 'caPem'");
+            }
             resourceInputs["caPem"] = args?.caPem;
             resourceInputs["description"] = args?.description;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["caFingerprint"] = undefined /*out*/;
             resourceInputs["caId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -131,6 +139,7 @@ export interface CaState {
      */
     description?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.CaTimeouts>;
 }
 
 /**
@@ -140,9 +149,10 @@ export interface CaArgs {
     /**
      * The CA in PEM format.
      */
-    caPem?: pulumi.Input<string>;
+    caPem: pulumi.Input<string>;
     /**
      * The description of the CA.
      */
     description?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.CaTimeouts>;
 }

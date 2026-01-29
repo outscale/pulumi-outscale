@@ -33,9 +33,9 @@ class SecurityGroupArgs:
                This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the security group.
         :param pulumi.Input[_builtins.bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.<br />
-               This name must not start with `sg-`.<br />
-               This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        :param pulumi.Input[_builtins.str] security_group_name: A name for the security group.<br />
+               This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+               If not specified, the security group name is randomly generated.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         pulumi.set(__self__, "description", description)
@@ -91,9 +91,9 @@ class SecurityGroupArgs:
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the security group.<br />
-        This name must not start with `sg-`.<br />
-        This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        A name for the security group.<br />
+        This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+        If not specified, the security group name is randomly generated.
         """
         return pulumi.get(self, "security_group_name")
 
@@ -147,9 +147,9 @@ class _SecurityGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupOutboundRuleArgs']]] outbound_rules: The outbound rules associated with the security group.
         :param pulumi.Input[_builtins.bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.<br />
-               This name must not start with `sg-`.<br />
-               This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        :param pulumi.Input[_builtins.str] security_group_name: A name for the security group.<br />
+               This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+               If not specified, the security group name is randomly generated.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if account_id is not None:
@@ -273,9 +273,9 @@ class _SecurityGroupState:
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the security group.<br />
-        This name must not start with `sg-`.<br />
-        This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        A name for the security group.<br />
+        This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+        If not specified, the security group name is randomly generated.
         """
         return pulumi.get(self, "security_group_name")
 
@@ -376,9 +376,9 @@ class SecurityGroup(pulumi.CustomResource):
                This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the security group.
         :param pulumi.Input[_builtins.bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.<br />
-               This name must not start with `sg-`.<br />
-               This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        :param pulumi.Input[_builtins.str] security_group_name: A name for the security group.<br />
+               This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+               If not specified, the security group name is randomly generated.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupTagArgs', 'SecurityGroupTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
@@ -518,9 +518,9 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupOutboundRuleArgs', 'SecurityGroupOutboundRuleArgsDict']]]] outbound_rules: The outbound rules associated with the security group.
         :param pulumi.Input[_builtins.bool] remove_default_outbound_rule: (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.<br />
-               This name must not start with `sg-`.<br />
-               This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        :param pulumi.Input[_builtins.str] security_group_name: A name for the security group.<br />
+               This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+               If not specified, the security group name is randomly generated.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupTagArgs', 'SecurityGroupTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -606,9 +606,9 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the security group.<br />
-        This name must not start with `sg-`.<br />
-        This name must be unique and contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
+        A name for the security group.<br />
+        This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
+        If not specified, the security group name is randomly generated.
         """
         return pulumi.get(self, "security_group_name")
 

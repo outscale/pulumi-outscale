@@ -78,7 +78,10 @@ namespace Pulumi.Outscale
         /// If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `DefaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
         /// </summary>
         [Output("setAsDefault")]
-        public Output<bool> SetAsDefault { get; private set; } = null!;
+        public Output<bool?> SetAsDefault { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.PolicyVersionTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the version.
@@ -150,6 +153,9 @@ namespace Pulumi.Outscale
         [Input("setAsDefault")]
         public Input<bool>? SetAsDefault { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.PolicyVersionTimeoutsArgs>? Timeouts { get; set; }
+
         public PolicyVersionArgs()
         {
         }
@@ -193,6 +199,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("setAsDefault")]
         public Input<bool>? SetAsDefault { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.PolicyVersionTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the version.

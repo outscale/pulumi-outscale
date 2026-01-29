@@ -89,8 +89,9 @@ export class User extends pulumi.CustomResource {
     /**
      * The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
      */
-    declare public readonly path: pulumi.Output<string | undefined>;
+    declare public readonly path: pulumi.Output<string>;
     declare public readonly policies: pulumi.Output<outputs.UserPolicy[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.UserTimeouts | undefined>;
     /**
      * The email address of the EIM user.
      */
@@ -121,6 +122,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["lastModificationDate"] = state?.lastModificationDate;
             resourceInputs["path"] = state?.path;
             resourceInputs["policies"] = state?.policies;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["userEmail"] = state?.userEmail;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["userName"] = state?.userName;
@@ -131,6 +133,7 @@ export class User extends pulumi.CustomResource {
             }
             resourceInputs["path"] = args?.path;
             resourceInputs["policies"] = args?.policies;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["userEmail"] = args?.userEmail;
             resourceInputs["userName"] = args?.userName;
             resourceInputs["creationDate"] = undefined /*out*/;
@@ -159,6 +162,7 @@ export interface UserState {
      */
     path?: pulumi.Input<string>;
     policies?: pulumi.Input<pulumi.Input<inputs.UserPolicy>[]>;
+    timeouts?: pulumi.Input<inputs.UserTimeouts>;
     /**
      * The email address of the EIM user.
      */
@@ -182,6 +186,7 @@ export interface UserArgs {
      */
     path?: pulumi.Input<string>;
     policies?: pulumi.Input<pulumi.Input<inputs.UserPolicy>[]>;
+    timeouts?: pulumi.Input<inputs.UserTimeouts>;
     /**
      * The email address of the EIM user.
      */

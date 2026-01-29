@@ -90,10 +90,13 @@ namespace Pulumi.Outscale
         /// The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
         /// </summary>
         [Output("path")]
-        public Output<string?> Path { get; private set; } = null!;
+        public Output<string> Path { get; private set; } = null!;
 
         [Output("policies")]
         public Output<ImmutableArray<Outputs.UserPolicy>> Policies { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.UserTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// The email address of the EIM user.
@@ -173,6 +176,9 @@ namespace Pulumi.Outscale
             set => _policies = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.UserTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The email address of the EIM user.
         /// </summary>
@@ -218,6 +224,9 @@ namespace Pulumi.Outscale
             get => _policies ?? (_policies = new InputList<Inputs.UserPolicyGetArgs>());
             set => _policies = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.UserTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The email address of the EIM user.

@@ -97,6 +97,9 @@ namespace Pulumi.Outscale
         [Output("requireTrustedEnv")]
         public Output<bool> RequireTrustedEnv { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.ApiAccessPolicyTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ApiAccessPolicy resource with the given unique name, arguments, and options.
@@ -156,6 +159,9 @@ namespace Pulumi.Outscale
         [Input("requireTrustedEnv", required: true)]
         public Input<bool> RequireTrustedEnv { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.ApiAccessPolicyTimeoutsArgs>? Timeouts { get; set; }
+
         public ApiAccessPolicyArgs()
         {
         }
@@ -179,6 +185,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("requireTrustedEnv")]
         public Input<bool>? RequireTrustedEnv { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ApiAccessPolicyTimeoutsGetArgs>? Timeouts { get; set; }
 
         public ApiAccessPolicyState()
         {

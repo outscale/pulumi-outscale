@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/outscale/pulumi-outscale/sdk/go/outscale/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -65,19 +66,23 @@ type Ca struct {
 	// The ID of the CA.
 	CaId pulumi.StringOutput `pulumi:"caId"`
 	// The CA in PEM format.
-	CaPem pulumi.StringPtrOutput `pulumi:"caPem"`
+	CaPem pulumi.StringOutput `pulumi:"caPem"`
 	// The description of the CA.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	RequestId   pulumi.StringOutput    `pulumi:"requestId"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	RequestId   pulumi.StringOutput `pulumi:"requestId"`
+	Timeouts    CaTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewCa registers a new resource with the given unique name, arguments, and options.
 func NewCa(ctx *pulumi.Context,
 	name string, args *CaArgs, opts ...pulumi.ResourceOption) (*Ca, error) {
 	if args == nil {
-		args = &CaArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CaPem == nil {
+		return nil, errors.New("invalid value for required argument 'CaPem'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ca
 	err := ctx.RegisterResource("outscale:index/ca:Ca", name, args, &resource, opts...)
@@ -108,8 +113,9 @@ type caState struct {
 	// The CA in PEM format.
 	CaPem *string `pulumi:"caPem"`
 	// The description of the CA.
-	Description *string `pulumi:"description"`
-	RequestId   *string `pulumi:"requestId"`
+	Description *string     `pulumi:"description"`
+	RequestId   *string     `pulumi:"requestId"`
+	Timeouts    *CaTimeouts `pulumi:"timeouts"`
 }
 
 type CaState struct {
@@ -122,6 +128,7 @@ type CaState struct {
 	// The description of the CA.
 	Description pulumi.StringPtrInput
 	RequestId   pulumi.StringPtrInput
+	Timeouts    CaTimeoutsPtrInput
 }
 
 func (CaState) ElementType() reflect.Type {
@@ -130,17 +137,19 @@ func (CaState) ElementType() reflect.Type {
 
 type caArgs struct {
 	// The CA in PEM format.
-	CaPem *string `pulumi:"caPem"`
+	CaPem string `pulumi:"caPem"`
 	// The description of the CA.
-	Description *string `pulumi:"description"`
+	Description *string     `pulumi:"description"`
+	Timeouts    *CaTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a Ca resource.
 type CaArgs struct {
 	// The CA in PEM format.
-	CaPem pulumi.StringPtrInput
+	CaPem pulumi.StringInput
 	// The description of the CA.
 	Description pulumi.StringPtrInput
+	Timeouts    CaTimeoutsPtrInput
 }
 
 func (CaArgs) ElementType() reflect.Type {
@@ -241,17 +250,21 @@ func (o CaOutput) CaId() pulumi.StringOutput {
 }
 
 // The CA in PEM format.
-func (o CaOutput) CaPem() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ca) pulumi.StringPtrOutput { return v.CaPem }).(pulumi.StringPtrOutput)
+func (o CaOutput) CaPem() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ca) pulumi.StringOutput { return v.CaPem }).(pulumi.StringOutput)
 }
 
 // The description of the CA.
-func (o CaOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ca) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o CaOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ca) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o CaOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ca) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
+}
+
+func (o CaOutput) Timeouts() CaTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Ca) CaTimeoutsPtrOutput { return v.Timeouts }).(CaTimeoutsPtrOutput)
 }
 
 type CaArrayOutput struct{ *pulumi.OutputState }

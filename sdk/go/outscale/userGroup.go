@@ -171,8 +171,9 @@ type UserGroup struct {
 	// The Outscale Resource Name (ORN) of the user group. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
 	Orn pulumi.StringOutput `pulumi:"orn"`
 	// The path to the group. If not specified, it is set to a slash (`/`).
-	Path     pulumi.StringPtrOutput     `pulumi:"path"`
+	Path     pulumi.StringOutput        `pulumi:"path"`
 	Policies UserGroupPolicyArrayOutput `pulumi:"policies"`
+	Timeouts UserGroupTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the user group.
 	UserGroupId pulumi.StringOutput `pulumi:"userGroupId"`
 	// The name of the group.
@@ -220,8 +221,9 @@ type userGroupState struct {
 	// The Outscale Resource Name (ORN) of the user group. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
 	Orn *string `pulumi:"orn"`
 	// The path to the group. If not specified, it is set to a slash (`/`).
-	Path     *string           `pulumi:"path"`
-	Policies []UserGroupPolicy `pulumi:"policies"`
+	Path     *string            `pulumi:"path"`
+	Policies []UserGroupPolicy  `pulumi:"policies"`
+	Timeouts *UserGroupTimeouts `pulumi:"timeouts"`
 	// The ID of the user group.
 	UserGroupId *string `pulumi:"userGroupId"`
 	// The name of the group.
@@ -239,6 +241,7 @@ type UserGroupState struct {
 	// The path to the group. If not specified, it is set to a slash (`/`).
 	Path     pulumi.StringPtrInput
 	Policies UserGroupPolicyArrayInput
+	Timeouts UserGroupTimeoutsPtrInput
 	// The ID of the user group.
 	UserGroupId pulumi.StringPtrInput
 	// The name of the group.
@@ -252,8 +255,9 @@ func (UserGroupState) ElementType() reflect.Type {
 
 type userGroupArgs struct {
 	// The path to the group. If not specified, it is set to a slash (`/`).
-	Path     *string           `pulumi:"path"`
-	Policies []UserGroupPolicy `pulumi:"policies"`
+	Path     *string            `pulumi:"path"`
+	Policies []UserGroupPolicy  `pulumi:"policies"`
+	Timeouts *UserGroupTimeouts `pulumi:"timeouts"`
 	// The name of the group.
 	UserGroupName string          `pulumi:"userGroupName"`
 	Users         []UserGroupUser `pulumi:"users"`
@@ -264,6 +268,7 @@ type UserGroupArgs struct {
 	// The path to the group. If not specified, it is set to a slash (`/`).
 	Path     pulumi.StringPtrInput
 	Policies UserGroupPolicyArrayInput
+	Timeouts UserGroupTimeoutsPtrInput
 	// The name of the group.
 	UserGroupName pulumi.StringInput
 	Users         UserGroupUserArrayInput
@@ -372,12 +377,16 @@ func (o UserGroupOutput) Orn() pulumi.StringOutput {
 }
 
 // The path to the group. If not specified, it is set to a slash (`/`).
-func (o UserGroupOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserGroup) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+func (o UserGroupOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserGroup) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
 }
 
 func (o UserGroupOutput) Policies() UserGroupPolicyArrayOutput {
 	return o.ApplyT(func(v *UserGroup) UserGroupPolicyArrayOutput { return v.Policies }).(UserGroupPolicyArrayOutput)
+}
+
+func (o UserGroupOutput) Timeouts() UserGroupTimeoutsPtrOutput {
+	return o.ApplyT(func(v *UserGroup) UserGroupTimeoutsPtrOutput { return v.Timeouts }).(UserGroupTimeoutsPtrOutput)
 }
 
 // The ID of the user group.

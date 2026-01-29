@@ -110,7 +110,7 @@ namespace Pulumi.Outscale
         /// A description for the API access rule.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
@@ -120,6 +120,9 @@ namespace Pulumi.Outscale
 
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.ApiAccessRuleTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -209,6 +212,9 @@ namespace Pulumi.Outscale
             set => _ipRanges = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.ApiAccessRuleTimeoutsArgs>? Timeouts { get; set; }
+
         public ApiAccessRuleArgs()
         {
         }
@@ -267,6 +273,9 @@ namespace Pulumi.Outscale
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ApiAccessRuleTimeoutsGetArgs>? Timeouts { get; set; }
 
         public ApiAccessRuleState()
         {

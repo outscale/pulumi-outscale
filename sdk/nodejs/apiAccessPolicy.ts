@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -90,6 +92,7 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
      * Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
      */
     declare public readonly requireTrustedEnv: pulumi.Output<boolean>;
+    declare public readonly timeouts: pulumi.Output<outputs.ApiAccessPolicyTimeouts | undefined>;
 
     /**
      * Create a ApiAccessPolicy resource with the given unique name, arguments, and options.
@@ -107,6 +110,7 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
             resourceInputs["maxAccessKeyExpirationSeconds"] = state?.maxAccessKeyExpirationSeconds;
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["requireTrustedEnv"] = state?.requireTrustedEnv;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as ApiAccessPolicyArgs | undefined;
             if (args?.maxAccessKeyExpirationSeconds === undefined && !opts.urn) {
@@ -117,6 +121,7 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
             }
             resourceInputs["maxAccessKeyExpirationSeconds"] = args?.maxAccessKeyExpirationSeconds;
             resourceInputs["requireTrustedEnv"] = args?.requireTrustedEnv;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -138,6 +143,7 @@ export interface ApiAccessPolicyState {
      * Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
      */
     requireTrustedEnv?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.ApiAccessPolicyTimeouts>;
 }
 
 /**
@@ -153,4 +159,5 @@ export interface ApiAccessPolicyArgs {
      * Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
      */
     requireTrustedEnv: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.ApiAccessPolicyTimeouts>;
 }

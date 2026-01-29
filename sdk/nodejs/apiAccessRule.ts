@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -93,20 +95,21 @@ export class ApiAccessRule extends pulumi.CustomResource {
     /**
      * One or more IDs of Client Certificate Authorities (CAs).
      */
-    declare public readonly caIds: pulumi.Output<string[] | undefined>;
+    declare public readonly caIds: pulumi.Output<string[]>;
     /**
      * One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
      */
-    declare public readonly cns: pulumi.Output<string[] | undefined>;
+    declare public readonly cns: pulumi.Output<string[]>;
     /**
      * A description for the API access rule.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
      */
-    declare public readonly ipRanges: pulumi.Output<string[] | undefined>;
+    declare public readonly ipRanges: pulumi.Output<string[]>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.ApiAccessRuleTimeouts | undefined>;
 
     /**
      * Create a ApiAccessRule resource with the given unique name, arguments, and options.
@@ -127,12 +130,14 @@ export class ApiAccessRule extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["ipRanges"] = state?.ipRanges;
             resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as ApiAccessRuleArgs | undefined;
             resourceInputs["caIds"] = args?.caIds;
             resourceInputs["cns"] = args?.cns;
             resourceInputs["description"] = args?.description;
             resourceInputs["ipRanges"] = args?.ipRanges;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["apiAccessRuleId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
         }
@@ -166,6 +171,7 @@ export interface ApiAccessRuleState {
      */
     ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
     requestId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ApiAccessRuleTimeouts>;
 }
 
 /**
@@ -188,4 +194,5 @@ export interface ApiAccessRuleArgs {
      * One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
      */
     ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.ApiAccessRuleTimeouts>;
 }
