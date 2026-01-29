@@ -56,8 +56,6 @@ import * as utilities from "./utilities";
  *
  * A security group can be imported using its ID. For example:
  *
- * console
- *
  * ```sh
  * $ pulumi import outscale:index/securityGroup:SecurityGroup ImportedSecurityGroup sg-87654321
  * ```

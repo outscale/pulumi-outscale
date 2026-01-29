@@ -305,8 +305,6 @@ class Policy(pulumi.CustomResource):
 
         A policy can be imported using its ORN. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/policy:Policy policy1 orn
         ```
@@ -347,8 +345,6 @@ class Policy(pulumi.CustomResource):
         ## Import
 
         A policy can be imported using its ORN. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/policy:Policy policy1 orn

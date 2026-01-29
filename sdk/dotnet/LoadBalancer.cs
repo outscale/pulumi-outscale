@@ -257,8 +257,6 @@ namespace Pulumi.Outscale
     /// 
     /// A load balancer can be imported using its name. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/loadBalancer:LoadBalancer ImportedLbu Name-of-the-Lbu
     /// ```

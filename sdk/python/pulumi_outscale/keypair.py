@@ -276,8 +276,6 @@ class Keypair(pulumi.CustomResource):
 
         A keypair can be imported using its name. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id
         ```
@@ -329,8 +327,6 @@ class Keypair(pulumi.CustomResource):
         ## Import
 
         A keypair can be imported using its name. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id

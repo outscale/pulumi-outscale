@@ -82,8 +82,6 @@ import (
 //
 // A virtual gateway link can be imported using its virtual gateway ID. For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/virtualGatewayLink:VirtualGatewayLink ImportedVirtualGatewayLink vgw-12345678
 // ```

@@ -299,8 +299,6 @@ class UserGroup(pulumi.CustomResource):
 
         A user group can be imported using its group ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/userGroup:UserGroup group1 user_group_id
         ```
@@ -394,8 +392,6 @@ class UserGroup(pulumi.CustomResource):
         ## Import
 
         A user group can be imported using its group ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/userGroup:UserGroup group1 user_group_id

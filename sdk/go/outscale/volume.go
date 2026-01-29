@@ -84,8 +84,6 @@ import (
 //
 // A volume can be imported using its ID. For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/volume:Volume ImportedVolume vol-12345678
 // ```

@@ -25,8 +25,6 @@ import * as utilities from "./utilities";
  *
  * A public IP can be imported using its ID. For example:
  *
- * console
- *
  * ```sh
  * $ pulumi import outscale:index/publicIp:PublicIp ImportedPublicIp eipalloc-12345678
  * ```

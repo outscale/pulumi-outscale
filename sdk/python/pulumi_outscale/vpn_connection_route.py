@@ -156,8 +156,6 @@ class VpnConnectionRoute(pulumi.CustomResource):
 
         A VPN connection route can be imported using the VPN connection ID and the route destination IP range. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/vpnConnectionRoute:VpnConnectionRoute ImportedRoute vpn-12345678_10.0.0.0/0
         ```
@@ -213,8 +211,6 @@ class VpnConnectionRoute(pulumi.CustomResource):
         ## Import
 
         A VPN connection route can be imported using the VPN connection ID and the route destination IP range. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/vpnConnectionRoute:VpnConnectionRoute ImportedRoute vpn-12345678_10.0.0.0/0

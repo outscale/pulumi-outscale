@@ -44,8 +44,6 @@ namespace Pulumi.Outscale
     /// 
     /// A policy can be imported using its ORN. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/policy:Policy policy1 orn
     /// ```

@@ -254,8 +254,6 @@ class VirtualGateway(pulumi.CustomResource):
 
         A virtual gateway can be imported using its ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/virtualGateway:VirtualGateway ImportedVirtualGateway vgw-12345678
         ```
@@ -297,8 +295,6 @@ class VirtualGateway(pulumi.CustomResource):
         ## Import
 
         A virtual gateway can be imported using its ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/virtualGateway:VirtualGateway ImportedVirtualGateway vgw-12345678

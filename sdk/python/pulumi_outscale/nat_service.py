@@ -268,8 +268,6 @@ class NatService(pulumi.CustomResource):
 
         A NAT service can be imported using its ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/natService:NatService ImportedNatService nat-87654321
         ```
@@ -336,8 +334,6 @@ class NatService(pulumi.CustomResource):
         ## Import
 
         A NAT service can be imported using its ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/natService:NatService ImportedNatService nat-87654321

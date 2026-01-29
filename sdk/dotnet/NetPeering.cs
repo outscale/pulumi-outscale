@@ -63,8 +63,6 @@ namespace Pulumi.Outscale
     /// 
     /// A Net peering can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/netPeering:NetPeering ImportedNetPeering pcx-12345678
     /// ```

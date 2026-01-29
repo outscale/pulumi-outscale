@@ -31,8 +31,6 @@ import * as utilities from "./utilities";
  *
  * A virtual gateway can be imported using its ID. For example:
  *
- * console
- *
  * ```sh
  * $ pulumi import outscale:index/virtualGateway:VirtualGateway ImportedVirtualGateway vgw-12345678
  * ```

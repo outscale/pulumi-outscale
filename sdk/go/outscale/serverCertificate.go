@@ -69,8 +69,6 @@ import (
 //
 // A server certificate can be imported using its ID. For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
 // ```

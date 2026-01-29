@@ -468,8 +468,6 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
         ```
@@ -554,8 +552,6 @@ class SecurityGroupRule(pulumi.CustomResource):
         A security group rule can be imported using the following format: `SecurityGroupId_Flow_IpProtocol_FromPortRange_ToPortRange_IpRange`.
 
         For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16

@@ -45,8 +45,6 @@ import * as utilities from "./utilities";
  *
  * A public IP link can be imported using the public IP or the public IP link ID. For example:
  *
- * console
- *
  * ```sh
  * $ pulumi import outscale:index/publicIpLink:PublicIpLink ImportedPublicIpLink eipassoc-12345678
  * ```

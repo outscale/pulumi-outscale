@@ -366,8 +366,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         A security group can be imported using its ID. For example:
 
-        console
-
         ```sh
         $ pulumi import outscale:index/securityGroup:SecurityGroup ImportedSecurityGroup sg-87654321
         ```
@@ -436,8 +434,6 @@ class SecurityGroup(pulumi.CustomResource):
         ## Import
 
         A security group can be imported using its ID. For example:
-
-        console
 
         ```sh
         $ pulumi import outscale:index/securityGroup:SecurityGroup ImportedSecurityGroup sg-87654321

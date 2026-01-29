@@ -75,8 +75,6 @@ import (
 //
 // A route table can be imported using its ID. For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/routeTable:RouteTable ImportedRouteTable rtb-12345678
 // ```

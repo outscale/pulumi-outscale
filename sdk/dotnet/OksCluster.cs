@@ -57,8 +57,6 @@ namespace Pulumi.Outscale
     /// 
     /// An OKS cluster can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/oksCluster:OksCluster cluster id
     /// ```

@@ -111,8 +111,6 @@ namespace Pulumi.Outscale
     /// 
     /// A NIC can be imported using its ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/nic:Nic ImportedNic eni-12345678
     /// ```

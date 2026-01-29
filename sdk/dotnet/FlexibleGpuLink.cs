@@ -74,8 +74,6 @@ namespace Pulumi.Outscale
     /// 
     /// A flexible GPU link can be imported using the flexible GPU ID. For example:
     /// 
-    /// console
-    /// 
     /// ```sh
     /// $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
     /// ```

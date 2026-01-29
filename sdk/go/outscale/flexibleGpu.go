@@ -54,8 +54,6 @@ import (
 //
 // A flexible GPU can be imported using its ID. For example:
 //
-// console
-//
 // ```sh
 // $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
 // ```
