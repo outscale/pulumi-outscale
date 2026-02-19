@@ -48,6 +48,7 @@ import * as utilities from "./utilities";
  *         key: "Name",
  *         value: "terraform-snapshot-export-task",
  *     }],
+ *     waitForCompletion: false,
  * });
  * ```
  */
@@ -108,6 +109,10 @@ export class SnapshotExportTask extends pulumi.CustomResource {
      * The ID of the snapshot export task.
      */
     declare public /*out*/ readonly taskId: pulumi.Output<string>;
+    /**
+     * By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+     */
+    declare public readonly waitForCompletion: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a SnapshotExportTask resource with the given unique name, arguments, and options.
@@ -130,6 +135,7 @@ export class SnapshotExportTask extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["taskId"] = state?.taskId;
+            resourceInputs["waitForCompletion"] = state?.waitForCompletion;
         } else {
             const args = argsOrState as SnapshotExportTaskArgs | undefined;
             if (args?.osuExports === undefined && !opts.urn) {
@@ -141,6 +147,7 @@ export class SnapshotExportTask extends pulumi.CustomResource {
             resourceInputs["osuExports"] = args?.osuExports;
             resourceInputs["snapshotId"] = args?.snapshotId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["waitForCompletion"] = args?.waitForCompletion;
             resourceInputs["comment"] = undefined /*out*/;
             resourceInputs["progress"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -185,6 +192,10 @@ export interface SnapshotExportTaskState {
      * The ID of the snapshot export task.
      */
     taskId?: pulumi.Input<string>;
+    /**
+     * By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+     */
+    waitForCompletion?: pulumi.Input<boolean>;
 }
 
 /**
@@ -203,4 +214,8 @@ export interface SnapshotExportTaskArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskTag>[]>;
+    /**
+     * By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+     */
+    waitForCompletion?: pulumi.Input<boolean>;
 }

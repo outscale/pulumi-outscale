@@ -74,6 +74,7 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-snapshot-export-task",
     ///             },
     ///         },
+    ///         WaitForCompletion = false,
     ///     });
     /// 
     /// });
@@ -126,6 +127,12 @@ namespace Pulumi.Outscale
         /// </summary>
         [Output("taskId")]
         public Output<string> TaskId { get; private set; } = null!;
+
+        /// <summary>
+        /// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+        /// </summary>
+        [Output("waitForCompletion")]
+        public Output<bool?> WaitForCompletion { get; private set; } = null!;
 
 
         /// <summary>
@@ -203,6 +210,12 @@ namespace Pulumi.Outscale
             set => _tags = value;
         }
 
+        /// <summary>
+        /// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+        /// </summary>
+        [Input("waitForCompletion")]
+        public Input<bool>? WaitForCompletion { get; set; }
+
         public ImageExportTaskArgs()
         {
         }
@@ -267,6 +280,12 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("taskId")]
         public Input<string>? TaskId { get; set; }
+
+        /// <summary>
+        /// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+        /// </summary>
+        [Input("waitForCompletion")]
+        public Input<bool>? WaitForCompletion { get; set; }
 
         public ImageExportTaskState()
         {

@@ -201,6 +201,8 @@ type Image struct {
 	StateComments ImageStateCommentArrayOutput `pulumi:"stateComments"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags ImageTagArrayOutput `pulumi:"tags"`
+	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+	TpmMandatory pulumi.BoolOutput `pulumi:"tpmMandatory"`
 	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
 }
@@ -280,6 +282,8 @@ type imageState struct {
 	StateComments []ImageStateComment `pulumi:"stateComments"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []ImageTag `pulumi:"tags"`
+	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+	TpmMandatory *bool `pulumi:"tpmMandatory"`
 	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
 	VmId *string `pulumi:"vmId"`
 }
@@ -330,6 +334,8 @@ type ImageState struct {
 	StateComments ImageStateCommentArrayInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags ImageTagArrayInput
+	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+	TpmMandatory pulumi.BoolPtrInput
 	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
 	VmId pulumi.StringPtrInput
 }
@@ -362,6 +368,8 @@ type imageArgs struct {
 	SourceRegionName *string `pulumi:"sourceRegionName"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []ImageTag `pulumi:"tags"`
+	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+	TpmMandatory *bool `pulumi:"tpmMandatory"`
 	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
 	VmId *string `pulumi:"vmId"`
 }
@@ -391,6 +399,8 @@ type ImageArgs struct {
 	SourceRegionName pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags ImageTagArrayInput
+	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+	TpmMandatory pulumi.BoolPtrInput
 	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
 	VmId pulumi.StringPtrInput
 }
@@ -594,6 +604,11 @@ func (o ImageOutput) StateComments() ImageStateCommentArrayOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o ImageOutput) Tags() ImageTagArrayOutput {
 	return o.ApplyT(func(v *Image) ImageTagArrayOutput { return v.Tags }).(ImageTagArrayOutput)
+}
+
+// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+func (o ImageOutput) TpmMandatory() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.TpmMandatory }).(pulumi.BoolOutput)
 }
 
 // **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.

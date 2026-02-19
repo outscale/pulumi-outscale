@@ -81,6 +81,7 @@ import (
 //						Value: pulumi.String("terraform-snapshot-export-task"),
 //					},
 //				},
+//				WaitForCompletion: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -108,6 +109,8 @@ type ImageExportTask struct {
 	Tags ImageExportTaskTagArrayOutput `pulumi:"tags"`
 	// The ID of the OMI export task.
 	TaskId pulumi.StringOutput `pulumi:"taskId"`
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion pulumi.BoolPtrOutput `pulumi:"waitForCompletion"`
 }
 
 // NewImageExportTask registers a new resource with the given unique name, arguments, and options.
@@ -161,6 +164,8 @@ type imageExportTaskState struct {
 	Tags []ImageExportTaskTag `pulumi:"tags"`
 	// The ID of the OMI export task.
 	TaskId *string `pulumi:"taskId"`
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion *bool `pulumi:"waitForCompletion"`
 }
 
 type ImageExportTaskState struct {
@@ -179,6 +184,8 @@ type ImageExportTaskState struct {
 	Tags ImageExportTaskTagArrayInput
 	// The ID of the OMI export task.
 	TaskId pulumi.StringPtrInput
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion pulumi.BoolPtrInput
 }
 
 func (ImageExportTaskState) ElementType() reflect.Type {
@@ -192,6 +199,8 @@ type imageExportTaskArgs struct {
 	OsuExports []ImageExportTaskOsuExport `pulumi:"osuExports"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []ImageExportTaskTag `pulumi:"tags"`
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion *bool `pulumi:"waitForCompletion"`
 }
 
 // The set of arguments for constructing a ImageExportTask resource.
@@ -202,6 +211,8 @@ type ImageExportTaskArgs struct {
 	OsuExports ImageExportTaskOsuExportArrayInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags ImageExportTaskTagArrayInput
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion pulumi.BoolPtrInput
 }
 
 func (ImageExportTaskArgs) ElementType() reflect.Type {
@@ -328,6 +339,11 @@ func (o ImageExportTaskOutput) Tags() ImageExportTaskTagArrayOutput {
 // The ID of the OMI export task.
 func (o ImageExportTaskOutput) TaskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageExportTask) pulumi.StringOutput { return v.TaskId }).(pulumi.StringOutput)
+}
+
+// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+func (o ImageExportTaskOutput) WaitForCompletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageExportTask) pulumi.BoolPtrOutput { return v.WaitForCompletion }).(pulumi.BoolPtrOutput)
 }
 
 type ImageExportTaskArrayOutput struct{ *pulumi.OutputState }

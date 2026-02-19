@@ -304,6 +304,10 @@ namespace Pulumi.Outscale
         /// One or more tags associated with the OMI.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImageTagResult> Tags;
+        /// <summary>
+        /// If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+        /// </summary>
+        public readonly bool TpmMandatory;
 
         [OutputConstructor]
         private GetImageResult(
@@ -353,7 +357,9 @@ namespace Pulumi.Outscale
 
             ImmutableArray<Outputs.GetImageStateCommentResult> stateComments,
 
-            ImmutableArray<Outputs.GetImageTagResult> tags)
+            ImmutableArray<Outputs.GetImageTagResult> tags,
+
+            bool tpmMandatory)
         {
             AccountAlias = accountAlias;
             AccountId = accountId;
@@ -379,6 +385,7 @@ namespace Pulumi.Outscale
             State = state;
             StateComments = stateComments;
             Tags = tags;
+            TpmMandatory = tpmMandatory;
         }
     }
 }

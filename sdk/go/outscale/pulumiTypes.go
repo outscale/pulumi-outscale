@@ -25846,6 +25846,8 @@ type GetImagesImage struct {
 	StateComments []GetImagesImageStateComment `pulumi:"stateComments"`
 	// One or more tags associated with the OMI.
 	Tags []GetImagesImageTag `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+	TpmMandatory bool `pulumi:"tpmMandatory"`
 }
 
 // GetImagesImageInput is an input type that accepts GetImagesImageArgs and GetImagesImageOutput values.
@@ -25898,6 +25900,8 @@ type GetImagesImageArgs struct {
 	StateComments GetImagesImageStateCommentArrayInput `pulumi:"stateComments"`
 	// One or more tags associated with the OMI.
 	Tags GetImagesImageTagArrayInput `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+	TpmMandatory pulumi.BoolInput `pulumi:"tpmMandatory"`
 }
 
 func (GetImagesImageArgs) ElementType() reflect.Type {
@@ -26044,6 +26048,11 @@ func (o GetImagesImageOutput) StateComments() GetImagesImageStateCommentArrayOut
 // One or more tags associated with the OMI.
 func (o GetImagesImageOutput) Tags() GetImagesImageTagArrayOutput {
 	return o.ApplyT(func(v GetImagesImage) []GetImagesImageTag { return v.Tags }).(GetImagesImageTagArrayOutput)
+}
+
+// If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+func (o GetImagesImageOutput) TpmMandatory() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesImage) bool { return v.TpmMandatory }).(pulumi.BoolOutput)
 }
 
 type GetImagesImageArrayOutput struct{ *pulumi.OutputState }
@@ -49306,6 +49315,8 @@ type GetVmsVm struct {
 	SubnetId string `pulumi:"subnetId"`
 	// One or more tags associated with the VM.
 	Tags []GetVmsVmTag `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled bool `pulumi:"tpmEnabled"`
 	// The Base64-encoded MIME user data.
 	UserData string `pulumi:"userData"`
 	// The ID of the VM.
@@ -49399,6 +49410,8 @@ type GetVmsVmArgs struct {
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 	// One or more tags associated with the VM.
 	Tags GetVmsVmTagArrayInput `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled pulumi.BoolInput `pulumi:"tpmEnabled"`
 	// The Base64-encoded MIME user data.
 	UserData pulumi.StringInput `pulumi:"userData"`
 	// The ID of the VM.
@@ -49643,6 +49656,11 @@ func (o GetVmsVmOutput) SubnetId() pulumi.StringOutput {
 // One or more tags associated with the VM.
 func (o GetVmsVmOutput) Tags() GetVmsVmTagArrayOutput {
 	return o.ApplyT(func(v GetVmsVm) []GetVmsVmTag { return v.Tags }).(GetVmsVmTagArrayOutput)
+}
+
+// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+func (o GetVmsVmOutput) TpmEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVmsVm) bool { return v.TpmEnabled }).(pulumi.BoolOutput)
 }
 
 // The Base64-encoded MIME user data.

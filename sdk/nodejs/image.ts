@@ -202,6 +202,10 @@ export class Image extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<outputs.ImageTag[] | undefined>;
     /**
+     * By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+     */
+    declare public readonly tpmMandatory: pulumi.Output<boolean>;
+    /**
      * **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
      */
     declare public readonly vmId: pulumi.Output<string>;
@@ -242,6 +246,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["stateComments"] = state?.stateComments;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tpmMandatory"] = state?.tpmMandatory;
             resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as ImageArgs | undefined;
@@ -256,6 +261,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["sourceImageId"] = args?.sourceImageId;
             resourceInputs["sourceRegionName"] = args?.sourceRegionName;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tpmMandatory"] = args?.tpmMandatory;
             resourceInputs["vmId"] = args?.vmId;
             resourceInputs["accountAlias"] = undefined /*out*/;
             resourceInputs["accountId"] = undefined /*out*/;
@@ -367,6 +373,10 @@ export interface ImageState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[]>;
     /**
+     * By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+     */
+    tpmMandatory?: pulumi.Input<boolean>;
+    /**
      * **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
      */
     vmId?: pulumi.Input<string>;
@@ -421,6 +431,10 @@ export interface ImageArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[]>;
+    /**
+     * By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+     */
+    tpmMandatory?: pulumi.Input<boolean>;
     /**
      * **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
      */

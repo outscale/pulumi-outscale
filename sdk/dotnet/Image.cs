@@ -262,6 +262,12 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.ImageTag>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+        /// </summary>
+        [Output("tpmMandatory")]
+        public Output<bool> TpmMandatory { get; private set; } = null!;
+
+        /// <summary>
         /// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
         /// </summary>
         [Output("vmId")]
@@ -397,6 +403,12 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.ImageTagArgs>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+        /// </summary>
+        [Input("tpmMandatory")]
+        public Input<bool>? TpmMandatory { get; set; }
 
         /// <summary>
         /// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
@@ -580,6 +592,12 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.ImageTagGetArgs>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+        /// </summary>
+        [Input("tpmMandatory")]
+        public Input<bool>? TpmMandatory { get; set; }
 
         /// <summary>
         /// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.

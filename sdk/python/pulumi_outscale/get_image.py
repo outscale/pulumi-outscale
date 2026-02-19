@@ -28,7 +28,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, account_alias=None, account_id=None, architecture=None, block_device_mappings=None, boot_modes=None, creation_date=None, description=None, file_location=None, filters=None, id=None, image_id=None, image_name=None, image_type=None, is_public=None, permissions=None, permissions_to_launches=None, product_codes=None, request_id=None, root_device_name=None, root_device_type=None, secure_boot=None, state=None, state_comments=None, tags=None):
+    def __init__(__self__, account_alias=None, account_id=None, architecture=None, block_device_mappings=None, boot_modes=None, creation_date=None, description=None, file_location=None, filters=None, id=None, image_id=None, image_name=None, image_type=None, is_public=None, permissions=None, permissions_to_launches=None, product_codes=None, request_id=None, root_device_name=None, root_device_type=None, secure_boot=None, state=None, state_comments=None, tags=None, tpm_mandatory=None):
         if account_alias and not isinstance(account_alias, str):
             raise TypeError("Expected argument 'account_alias' to be a str")
         pulumi.set(__self__, "account_alias", account_alias)
@@ -101,6 +101,9 @@ class GetImageResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if tpm_mandatory and not isinstance(tpm_mandatory, bool):
+            raise TypeError("Expected argument 'tpm_mandatory' to be a bool")
+        pulumi.set(__self__, "tpm_mandatory", tpm_mandatory)
 
     @_builtins.property
     @pulumi.getter(name="accountAlias")
@@ -282,6 +285,14 @@ class GetImageResult:
         """
         return pulumi.get(self, "tags")
 
+    @_builtins.property
+    @pulumi.getter(name="tpmMandatory")
+    def tpm_mandatory(self) -> _builtins.bool:
+        """
+        If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+        """
+        return pulumi.get(self, "tpm_mandatory")
+
 
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
@@ -312,7 +323,8 @@ class AwaitableGetImageResult(GetImageResult):
             secure_boot=self.secure_boot,
             state=self.state,
             state_comments=self.state_comments,
-            tags=self.tags)
+            tags=self.tags,
+            tpm_mandatory=self.tpm_mandatory)
 
 
 def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']]] = None,
@@ -375,7 +387,8 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
         secure_boot=pulumi.get(__ret__, 'secure_boot'),
         state=pulumi.get(__ret__, 'state'),
         state_comments=pulumi.get(__ret__, 'state_comments'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        tpm_mandatory=pulumi.get(__ret__, 'tpm_mandatory'))
 def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']]]]] = None,
                      filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']]]]] = None,
                      image_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -435,4 +448,5 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
         secure_boot=pulumi.get(__response__, 'secure_boot'),
         state=pulumi.get(__response__, 'state'),
         state_comments=pulumi.get(__response__, 'state_comments'),
-        tags=pulumi.get(__response__, 'tags')))
+        tags=pulumi.get(__response__, 'tags'),
+        tpm_mandatory=pulumi.get(__response__, 'tpm_mandatory')))
