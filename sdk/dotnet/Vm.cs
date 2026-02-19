@@ -271,6 +271,12 @@ namespace Pulumi.Outscale
         [Output("tags")]
         public Output<ImmutableArray<Outputs.VmTag>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.&lt;br /&gt;The default behavior for `TpmEnabled` varies depending on the source OMI of the VM.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `TpmEnabled` to false will cause the creation request to fail.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is false, only setting `TpmEnabled` to true will create and attach a vTPM to the VM.
+        /// </summary>
+        [Output("tpmEnabled")]
+        public Output<bool> TpmEnabled { get; private set; } = null!;
+
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
@@ -523,6 +529,12 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.VmTagArgs>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.&lt;br /&gt;The default behavior for `TpmEnabled` varies depending on the source OMI of the VM.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `TpmEnabled` to false will cause the creation request to fail.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is false, only setting `TpmEnabled` to true will create and attach a vTPM to the VM.
+        /// </summary>
+        [Input("tpmEnabled")]
+        public Input<bool>? TpmEnabled { get; set; }
 
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -878,6 +890,12 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.VmTagGetArgs>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.&lt;br /&gt;The default behavior for `TpmEnabled` varies depending on the source OMI of the VM.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `TpmEnabled` to false will cause the creation request to fail.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is false, only setting `TpmEnabled` to true will create and attach a vTPM to the VM.
+        /// </summary>
+        [Input("tpmEnabled")]
+        public Input<bool>? TpmEnabled { get; set; }
 
         [Input("userData")]
         public Input<string>? UserData { get; set; }

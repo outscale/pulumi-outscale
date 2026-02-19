@@ -43,6 +43,7 @@ class VmArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]] = None,
+                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
@@ -71,6 +72,7 @@ class VmArgs:
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -118,6 +120,8 @@ class VmArgs:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tpm_enabled is not None:
+            pulumi.set(__self__, "tpm_enabled", tpm_enabled)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if vm_id is not None:
@@ -390,6 +394,18 @@ class VmArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tpmEnabled")
+    def tpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        """
+        return pulumi.get(self, "tpm_enabled")
+
+    @tpm_enabled.setter
+    def tpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "tpm_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "user_data")
@@ -481,6 +497,7 @@ class _VmState:
                  state_reason: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]] = None,
+                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
@@ -528,6 +545,7 @@ class _VmState:
         :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -618,6 +636,8 @@ class _VmState:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tpm_enabled is not None:
+            pulumi.set(__self__, "tpm_enabled", tpm_enabled)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if vm_id is not None:
@@ -1136,6 +1156,18 @@ class _VmState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tpmEnabled")
+    def tpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        """
+        return pulumi.get(self, "tpm_enabled")
+
+    @tpm_enabled.setter
+    def tpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "tpm_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "user_data")
@@ -1209,6 +1241,7 @@ class Vm(pulumi.CustomResource):
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
+                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1247,6 +1280,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -1303,6 +1337,7 @@ class Vm(pulumi.CustomResource):
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
+                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1340,6 +1375,7 @@ class Vm(pulumi.CustomResource):
             __props__.__dict__["state"] = state
             __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tpm_enabled"] = tpm_enabled
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["vm_id"] = vm_id
             __props__.__dict__["vm_initiated_shutdown_behavior"] = vm_initiated_shutdown_behavior
@@ -1420,6 +1456,7 @@ class Vm(pulumi.CustomResource):
             state_reason: Optional[pulumi.Input[_builtins.str]] = None,
             subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
+            tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             user_data: Optional[pulumi.Input[_builtins.str]] = None,
             vm_id: Optional[pulumi.Input[_builtins.str]] = None,
             vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1472,6 +1509,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -1523,6 +1561,7 @@ class Vm(pulumi.CustomResource):
         __props__.__dict__["state_reason"] = state_reason
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tpm_enabled"] = tpm_enabled
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["vm_id"] = vm_id
         __props__.__dict__["vm_initiated_shutdown_behavior"] = vm_initiated_shutdown_behavior
@@ -1864,6 +1903,14 @@ class Vm(pulumi.CustomResource):
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tpmEnabled")
+    def tpm_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        """
+        return pulumi.get(self, "tpm_enabled")
 
     @_builtins.property
     @pulumi.getter(name="userData")

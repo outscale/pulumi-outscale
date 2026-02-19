@@ -105,8 +105,10 @@ type Vm struct {
 	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags     VmTagArrayOutput       `pulumi:"tags"`
-	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	Tags VmTagArrayOutput `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled pulumi.BoolOutput      `pulumi:"tpmEnabled"`
+	UserData   pulumi.StringPtrOutput `pulumi:"userData"`
 	// The ID of the VM.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -238,8 +240,10 @@ type vmState struct {
 	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
 	SubnetId *string `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags     []VmTag `pulumi:"tags"`
-	UserData *string `pulumi:"userData"`
+	Tags []VmTag `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled *bool   `pulumi:"tpmEnabled"`
+	UserData   *string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId *string `pulumi:"vmId"`
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -332,8 +336,10 @@ type VmState struct {
 	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
 	SubnetId pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags     VmTagArrayInput
-	UserData pulumi.StringPtrInput
+	Tags VmTagArrayInput
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled pulumi.BoolPtrInput
+	UserData   pulumi.StringPtrInput
 	// The ID of the VM.
 	VmId pulumi.StringPtrInput
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -390,8 +396,10 @@ type vmArgs struct {
 	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
 	SubnetId *string `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags     []VmTag `pulumi:"tags"`
-	UserData *string `pulumi:"userData"`
+	Tags []VmTag `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled *bool   `pulumi:"tpmEnabled"`
+	UserData   *string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId *string `pulumi:"vmId"`
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -445,8 +453,10 @@ type VmArgs struct {
 	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
 	SubnetId pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags     VmTagArrayInput
-	UserData pulumi.StringPtrInput
+	Tags VmTagArrayInput
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled pulumi.BoolPtrInput
+	UserData   pulumi.StringPtrInput
 	// The ID of the VM.
 	VmId pulumi.StringPtrInput
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -753,6 +763,11 @@ func (o VmOutput) SubnetId() pulumi.StringOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o VmOutput) Tags() VmTagArrayOutput {
 	return o.ApplyT(func(v *Vm) VmTagArrayOutput { return v.Tags }).(VmTagArrayOutput)
+}
+
+// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+func (o VmOutput) TpmEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Vm) pulumi.BoolOutput { return v.TpmEnabled }).(pulumi.BoolOutput)
 }
 
 func (o VmOutput) UserData() pulumi.StringPtrOutput {

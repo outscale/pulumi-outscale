@@ -207,6 +207,10 @@ export class Vm extends pulumi.CustomResource {
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.VmTag[] | undefined>;
+    /**
+     * If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+     */
+    declare public readonly tpmEnabled: pulumi.Output<boolean>;
     declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * The ID of the VM.
@@ -277,6 +281,7 @@ export class Vm extends pulumi.CustomResource {
             resourceInputs["stateReason"] = state?.stateReason;
             resourceInputs["subnetId"] = state?.subnetId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tpmEnabled"] = state?.tpmEnabled;
             resourceInputs["userData"] = state?.userData;
             resourceInputs["vmId"] = state?.vmId;
             resourceInputs["vmInitiatedShutdownBehavior"] = state?.vmInitiatedShutdownBehavior;
@@ -308,6 +313,7 @@ export class Vm extends pulumi.CustomResource {
             resourceInputs["state"] = args?.state;
             resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tpmEnabled"] = args?.tpmEnabled;
             resourceInputs["userData"] = args?.userData;
             resourceInputs["vmId"] = args?.vmId;
             resourceInputs["vmInitiatedShutdownBehavior"] = args?.vmInitiatedShutdownBehavior;
@@ -509,6 +515,10 @@ export interface VmState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.VmTag>[]>;
+    /**
+     * If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+     */
+    tpmEnabled?: pulumi.Input<boolean>;
     userData?: pulumi.Input<string>;
     /**
      * The ID of the VM.
@@ -614,6 +624,10 @@ export interface VmArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.VmTag>[]>;
+    /**
+     * If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+     */
+    tpmEnabled?: pulumi.Input<boolean>;
     userData?: pulumi.Input<string>;
     /**
      * The ID of the VM.

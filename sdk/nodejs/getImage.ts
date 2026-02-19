@@ -144,6 +144,10 @@ export interface GetImageResult {
      * One or more tags associated with the OMI.
      */
     readonly tags: outputs.GetImageTag[];
+    /**
+     * If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+     */
+    readonly tpmMandatory: boolean;
 }
 /**
  * Provides information about an image.

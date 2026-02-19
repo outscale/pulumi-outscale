@@ -11176,7 +11176,8 @@ class GetImagesImageResult(dict):
                  secure_boot: _builtins.bool,
                  state: _builtins.str,
                  state_comments: Sequence['outputs.GetImagesImageStateCommentResult'],
-                 tags: Sequence['outputs.GetImagesImageTagResult']):
+                 tags: Sequence['outputs.GetImagesImageTagResult'],
+                 tpm_mandatory: _builtins.bool):
         """
         :param _builtins.str account_alias: The account alias of the owner of the OMI.
         :param _builtins.str account_id: The account ID of the owner of the OMI.
@@ -11197,6 +11198,7 @@ class GetImagesImageResult(dict):
         :param _builtins.str state: The state of the OMI (`pending` \\| `available` \\| `failed`).
         :param Sequence['GetImagesImageStateCommentArgs'] state_comments: Information about the change of state.
         :param Sequence['GetImagesImageTagArgs'] tags: One or more tags associated with the OMI.
+        :param _builtins.bool tpm_mandatory: If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
         """
         pulumi.set(__self__, "account_alias", account_alias)
         pulumi.set(__self__, "account_id", account_id)
@@ -11217,6 +11219,7 @@ class GetImagesImageResult(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_comments", state_comments)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tpm_mandatory", tpm_mandatory)
 
     @_builtins.property
     @pulumi.getter(name="accountAlias")
@@ -11369,6 +11372,14 @@ class GetImagesImageResult(dict):
         One or more tags associated with the OMI.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tpmMandatory")
+    def tpm_mandatory(self) -> _builtins.bool:
+        """
+        If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+        """
+        return pulumi.get(self, "tpm_mandatory")
 
 
 @pulumi.output_type
@@ -19814,6 +19825,7 @@ class GetVmsVmResult(dict):
                  state_reason: _builtins.str,
                  subnet_id: _builtins.str,
                  tags: Sequence['outputs.GetVmsVmTagResult'],
+                 tpm_enabled: _builtins.bool,
                  user_data: _builtins.str,
                  vm_id: _builtins.str,
                  vm_initiated_shutdown_behavior: _builtins.str,
@@ -19852,6 +19864,7 @@ class GetVmsVmResult(dict):
         :param _builtins.str state_reason: The reason explaining the current state of the VM.
         :param _builtins.str subnet_id: The ID of the Subnet for the VM.
         :param Sequence['GetVmsVmTagArgs'] tags: One or more tags associated with the VM.
+        :param _builtins.bool tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param _builtins.str user_data: The Base64-encoded MIME user data.
         :param _builtins.str vm_id: The ID of the VM.
         :param _builtins.str vm_initiated_shutdown_behavior: The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
@@ -19895,6 +19908,7 @@ class GetVmsVmResult(dict):
         pulumi.set(__self__, "state_reason", state_reason)
         pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tpm_enabled", tpm_enabled)
         pulumi.set(__self__, "user_data", user_data)
         pulumi.set(__self__, "vm_id", vm_id)
         pulumi.set(__self__, "vm_initiated_shutdown_behavior", vm_initiated_shutdown_behavior)
@@ -20188,6 +20202,14 @@ class GetVmsVmResult(dict):
         One or more tags associated with the VM.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tpmEnabled")
+    def tpm_enabled(self) -> _builtins.bool:
+        """
+        If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        """
+        return pulumi.get(self, "tpm_enabled")
 
     @_builtins.property
     @pulumi.getter(name="userData")

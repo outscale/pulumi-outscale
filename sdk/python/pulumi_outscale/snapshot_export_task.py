@@ -23,17 +23,21 @@ class SnapshotExportTaskArgs:
     def __init__(__self__, *,
                  osu_exports: pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportArgs']]],
                  snapshot_id: pulumi.Input[_builtins.str],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]]] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SnapshotExportTask resource.
         :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to export.
         :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] wait_for_completion: By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
         pulumi.set(__self__, "osu_exports", osu_exports)
         pulumi.set(__self__, "snapshot_id", snapshot_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if wait_for_completion is not None:
+            pulumi.set(__self__, "wait_for_completion", wait_for_completion)
 
     @_builtins.property
     @pulumi.getter(name="osuExports")
@@ -71,6 +75,18 @@ class SnapshotExportTaskArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitForCompletion")
+    def wait_for_completion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+        """
+        return pulumi.get(self, "wait_for_completion")
+
+    @wait_for_completion.setter
+    def wait_for_completion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "wait_for_completion", value)
+
 
 @pulumi.input_type
 class _SnapshotExportTaskState:
@@ -82,7 +98,8 @@ class _SnapshotExportTaskState:
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]]] = None,
-                 task_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 task_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SnapshotExportTask resources.
         :param pulumi.Input[_builtins.str] comment: If the snapshot export task fails, an error message appears.
@@ -92,6 +109,7 @@ class _SnapshotExportTaskState:
         :param pulumi.Input[_builtins.str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input['SnapshotExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] task_id: The ID of the snapshot export task.
+        :param pulumi.Input[_builtins.bool] wait_for_completion: By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -109,6 +127,8 @@ class _SnapshotExportTaskState:
             pulumi.set(__self__, "tags", tags)
         if task_id is not None:
             pulumi.set(__self__, "task_id", task_id)
+        if wait_for_completion is not None:
+            pulumi.set(__self__, "wait_for_completion", wait_for_completion)
 
     @_builtins.property
     @pulumi.getter
@@ -203,6 +223,18 @@ class _SnapshotExportTaskState:
     def task_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "task_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitForCompletion")
+    def wait_for_completion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+        """
+        return pulumi.get(self, "wait_for_completion")
+
+    @wait_for_completion.setter
+    def wait_for_completion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "wait_for_completion", value)
+
 
 @pulumi.type_token("outscale:index/snapshotExportTask:SnapshotExportTask")
 class SnapshotExportTask(pulumi.CustomResource):
@@ -213,6 +245,7 @@ class SnapshotExportTask(pulumi.CustomResource):
                  osu_exports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskOsuExportArgs', 'SnapshotExportTaskOsuExportArgsDict']]]]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskTagArgs', 'SnapshotExportTaskTagArgsDict']]]]] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a snapshot export task.
@@ -254,7 +287,8 @@ class SnapshotExportTask(pulumi.CustomResource):
             tags=[{
                 "key": "Name",
                 "value": "terraform-snapshot-export-task",
-            }])
+            }],
+            wait_for_completion=False)
         ```
 
         :param str resource_name: The name of the resource.
@@ -262,6 +296,7 @@ class SnapshotExportTask(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskOsuExportArgs', 'SnapshotExportTaskOsuExportArgsDict']]]] osu_exports: Information about the OOS export task to create.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot to export.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskTagArgs', 'SnapshotExportTaskTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] wait_for_completion: By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
         ...
     @overload
@@ -309,7 +344,8 @@ class SnapshotExportTask(pulumi.CustomResource):
             tags=[{
                 "key": "Name",
                 "value": "terraform-snapshot-export-task",
-            }])
+            }],
+            wait_for_completion=False)
         ```
 
         :param str resource_name: The name of the resource.
@@ -330,6 +366,7 @@ class SnapshotExportTask(pulumi.CustomResource):
                  osu_exports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskOsuExportArgs', 'SnapshotExportTaskOsuExportArgsDict']]]]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskTagArgs', 'SnapshotExportTaskTagArgsDict']]]]] = None,
+                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,6 +383,7 @@ class SnapshotExportTask(pulumi.CustomResource):
                 raise TypeError("Missing required property 'snapshot_id'")
             __props__.__dict__["snapshot_id"] = snapshot_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["wait_for_completion"] = wait_for_completion
             __props__.__dict__["comment"] = None
             __props__.__dict__["progress"] = None
             __props__.__dict__["request_id"] = None
@@ -368,7 +406,8 @@ class SnapshotExportTask(pulumi.CustomResource):
             snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskTagArgs', 'SnapshotExportTaskTagArgsDict']]]]] = None,
-            task_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SnapshotExportTask':
+            task_id: Optional[pulumi.Input[_builtins.str]] = None,
+            wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None) -> 'SnapshotExportTask':
         """
         Get an existing SnapshotExportTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -383,6 +422,7 @@ class SnapshotExportTask(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotExportTaskTagArgs', 'SnapshotExportTaskTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] task_id: The ID of the snapshot export task.
+        :param pulumi.Input[_builtins.bool] wait_for_completion: By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -396,6 +436,7 @@ class SnapshotExportTask(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["tags"] = tags
         __props__.__dict__["task_id"] = task_id
+        __props__.__dict__["wait_for_completion"] = wait_for_completion
         return SnapshotExportTask(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -458,4 +499,12 @@ class SnapshotExportTask(pulumi.CustomResource):
         The ID of the snapshot export task.
         """
         return pulumi.get(self, "task_id")
+
+    @_builtins.property
+    @pulumi.getter(name="waitForCompletion")
+    def wait_for_completion(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+        """
+        return pulumi.get(self, "wait_for_completion")
 

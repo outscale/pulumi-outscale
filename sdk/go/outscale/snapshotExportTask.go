@@ -89,6 +89,7 @@ import (
 //						Value: pulumi.String("terraform-snapshot-export-task"),
 //					},
 //				},
+//				WaitForCompletion: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -116,6 +117,8 @@ type SnapshotExportTask struct {
 	Tags SnapshotExportTaskTagArrayOutput `pulumi:"tags"`
 	// The ID of the snapshot export task.
 	TaskId pulumi.StringOutput `pulumi:"taskId"`
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion pulumi.BoolPtrOutput `pulumi:"waitForCompletion"`
 }
 
 // NewSnapshotExportTask registers a new resource with the given unique name, arguments, and options.
@@ -169,6 +172,8 @@ type snapshotExportTaskState struct {
 	Tags []SnapshotExportTaskTag `pulumi:"tags"`
 	// The ID of the snapshot export task.
 	TaskId *string `pulumi:"taskId"`
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion *bool `pulumi:"waitForCompletion"`
 }
 
 type SnapshotExportTaskState struct {
@@ -187,6 +192,8 @@ type SnapshotExportTaskState struct {
 	Tags SnapshotExportTaskTagArrayInput
 	// The ID of the snapshot export task.
 	TaskId pulumi.StringPtrInput
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion pulumi.BoolPtrInput
 }
 
 func (SnapshotExportTaskState) ElementType() reflect.Type {
@@ -200,6 +207,8 @@ type snapshotExportTaskArgs struct {
 	SnapshotId string `pulumi:"snapshotId"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []SnapshotExportTaskTag `pulumi:"tags"`
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion *bool `pulumi:"waitForCompletion"`
 }
 
 // The set of arguments for constructing a SnapshotExportTask resource.
@@ -210,6 +219,8 @@ type SnapshotExportTaskArgs struct {
 	SnapshotId pulumi.StringInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags SnapshotExportTaskTagArrayInput
+	// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+	WaitForCompletion pulumi.BoolPtrInput
 }
 
 func (SnapshotExportTaskArgs) ElementType() reflect.Type {
@@ -336,6 +347,11 @@ func (o SnapshotExportTaskOutput) Tags() SnapshotExportTaskTagArrayOutput {
 // The ID of the snapshot export task.
 func (o SnapshotExportTaskOutput) TaskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotExportTask) pulumi.StringOutput { return v.TaskId }).(pulumi.StringOutput)
+}
+
+// By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
+func (o SnapshotExportTaskOutput) WaitForCompletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SnapshotExportTask) pulumi.BoolPtrOutput { return v.WaitForCompletion }).(pulumi.BoolPtrOutput)
 }
 
 type SnapshotExportTaskArrayOutput struct{ *pulumi.OutputState }

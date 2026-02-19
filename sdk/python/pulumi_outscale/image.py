@@ -32,6 +32,7 @@ class ImageArgs:
                  source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]] = None,
+                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
@@ -47,6 +48,7 @@ class ImageArgs:
         :param pulumi.Input[_builtins.str] source_image_id: **(required) When copying an OMI:** The ID of the OMI you want to copy.
         :param pulumi.Input[_builtins.str] source_region_name: **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
         :param pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
         """
         if architecture is not None:
@@ -71,6 +73,8 @@ class ImageArgs:
             pulumi.set(__self__, "source_region_name", source_region_name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tpm_mandatory is not None:
+            pulumi.set(__self__, "tpm_mandatory", tpm_mandatory)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
 
@@ -208,6 +212,18 @@ class ImageArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tpmMandatory")
+    def tpm_mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+        """
+        return pulumi.get(self, "tpm_mandatory")
+
+    @tpm_mandatory.setter
+    def tpm_mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "tpm_mandatory", value)
+
+    @_builtins.property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -246,6 +262,7 @@ class _ImageState:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  state_comments: Optional[pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]] = None,
+                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
@@ -271,6 +288,7 @@ class _ImageState:
         :param pulumi.Input[_builtins.str] state: The state of the OMI (`pending` \\| `available` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]] state_comments: Information about the change of state.
         :param pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
         """
         if account_alias is not None:
@@ -319,6 +337,8 @@ class _ImageState:
             pulumi.set(__self__, "state_comments", state_comments)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tpm_mandatory is not None:
+            pulumi.set(__self__, "tpm_mandatory", tpm_mandatory)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
 
@@ -594,6 +614,18 @@ class _ImageState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tpmMandatory")
+    def tpm_mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+        """
+        return pulumi.get(self, "tpm_mandatory")
+
+    @tpm_mandatory.setter
+    def tpm_mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "tpm_mandatory", value)
+
+    @_builtins.property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -623,6 +655,7 @@ class Image(pulumi.CustomResource):
                  source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]]] = None,
+                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -715,6 +748,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_image_id: **(required) When copying an OMI:** The ID of the OMI you want to copy.
         :param pulumi.Input[_builtins.str] source_region_name: **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
         """
         ...
@@ -825,6 +859,7 @@ class Image(pulumi.CustomResource):
                  source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]]] = None,
+                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -846,6 +881,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["source_image_id"] = source_image_id
             __props__.__dict__["source_region_name"] = source_region_name
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tpm_mandatory"] = tpm_mandatory
             __props__.__dict__["vm_id"] = vm_id
             __props__.__dict__["account_alias"] = None
             __props__.__dict__["account_id"] = None
@@ -892,6 +928,7 @@ class Image(pulumi.CustomResource):
             state: Optional[pulumi.Input[_builtins.str]] = None,
             state_comments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]]] = None,
+            tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
             vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
@@ -922,6 +959,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The state of the OMI (`pending` \\| `available` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict']]]] state_comments: Information about the change of state.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -951,6 +989,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["state_comments"] = state_comments
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tpm_mandatory"] = tpm_mandatory
         __props__.__dict__["vm_id"] = vm_id
         return Image(resource_name, opts=opts, __props__=__props__)
 
@@ -1132,6 +1171,14 @@ class Image(pulumi.CustomResource):
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tpmMandatory")
+    def tpm_mandatory(self) -> pulumi.Output[_builtins.bool]:
+        """
+        By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
+        """
+        return pulumi.get(self, "tpm_mandatory")
 
     @_builtins.property
     @pulumi.getter(name="vmId")

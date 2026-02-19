@@ -115,6 +115,8 @@ type LookupImageResult struct {
 	StateComments []GetImageStateComment `pulumi:"stateComments"`
 	// One or more tags associated with the OMI.
 	Tags []GetImageTag `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+	TpmMandatory bool `pulumi:"tpmMandatory"`
 }
 
 func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...pulumi.InvokeOption) LookupImageResultOutput {
@@ -270,6 +272,11 @@ func (o LookupImageResultOutput) StateComments() GetImageStateCommentArrayOutput
 // One or more tags associated with the OMI.
 func (o LookupImageResultOutput) Tags() GetImageTagArrayOutput {
 	return o.ApplyT(func(v LookupImageResult) []GetImageTag { return v.Tags }).(GetImageTagArrayOutput)
+}
+
+// If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+func (o LookupImageResultOutput) TpmMandatory() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageResult) bool { return v.TpmMandatory }).(pulumi.BoolOutput)
 }
 
 func init() {

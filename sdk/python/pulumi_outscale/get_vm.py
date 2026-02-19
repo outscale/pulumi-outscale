@@ -28,7 +28,7 @@ class GetVmResult:
     """
     A collection of values returned by getVm.
     """
-    def __init__(__self__, actions_on_next_boots=None, architecture=None, block_device_mappings_createds=None, boot_mode=None, bsu_optimized=None, client_token=None, creation_date=None, deletion_protection=None, filters=None, hypervisor=None, id=None, image_id=None, is_source_dest_checked=None, keypair_name=None, launch_number=None, nested_virtualization=None, net_id=None, nics=None, os_family=None, performance=None, placement_subregion_name=None, placement_tenancy=None, primary_nics=None, private_dns_name=None, private_ip=None, private_ips=None, product_codes=None, public_dns_name=None, public_ip=None, request_id=None, reservation_id=None, root_device_name=None, root_device_type=None, security_group_ids=None, security_group_names=None, security_groups=None, state=None, state_reason=None, subnet_id=None, tags=None, user_data=None, vm_id=None, vm_initiated_shutdown_behavior=None, vm_type=None):
+    def __init__(__self__, actions_on_next_boots=None, architecture=None, block_device_mappings_createds=None, boot_mode=None, bsu_optimized=None, client_token=None, creation_date=None, deletion_protection=None, filters=None, hypervisor=None, id=None, image_id=None, is_source_dest_checked=None, keypair_name=None, launch_number=None, nested_virtualization=None, net_id=None, nics=None, os_family=None, performance=None, placement_subregion_name=None, placement_tenancy=None, primary_nics=None, private_dns_name=None, private_ip=None, private_ips=None, product_codes=None, public_dns_name=None, public_ip=None, request_id=None, reservation_id=None, root_device_name=None, root_device_type=None, security_group_ids=None, security_group_names=None, security_groups=None, state=None, state_reason=None, subnet_id=None, tags=None, tpm_enabled=None, user_data=None, vm_id=None, vm_initiated_shutdown_behavior=None, vm_type=None):
         if actions_on_next_boots and not isinstance(actions_on_next_boots, list):
             raise TypeError("Expected argument 'actions_on_next_boots' to be a list")
         pulumi.set(__self__, "actions_on_next_boots", actions_on_next_boots)
@@ -149,6 +149,9 @@ class GetVmResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if tpm_enabled and not isinstance(tpm_enabled, bool):
+            raise TypeError("Expected argument 'tpm_enabled' to be a bool")
+        pulumi.set(__self__, "tpm_enabled", tpm_enabled)
         if user_data and not isinstance(user_data, str):
             raise TypeError("Expected argument 'user_data' to be a str")
         pulumi.set(__self__, "user_data", user_data)
@@ -459,6 +462,14 @@ class GetVmResult:
         return pulumi.get(self, "tags")
 
     @_builtins.property
+    @pulumi.getter(name="tpmEnabled")
+    def tpm_enabled(self) -> _builtins.bool:
+        """
+        If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        """
+        return pulumi.get(self, "tpm_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> _builtins.str:
         """
@@ -537,6 +548,7 @@ class AwaitableGetVmResult(GetVmResult):
             state_reason=self.state_reason,
             subnet_id=self.subnet_id,
             tags=self.tags,
+            tpm_enabled=self.tpm_enabled,
             user_data=self.user_data,
             vm_id=self.vm_id,
             vm_initiated_shutdown_behavior=self.vm_initiated_shutdown_behavior,
@@ -612,6 +624,7 @@ def get_vm(filters: Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsD
         state_reason=pulumi.get(__ret__, 'state_reason'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         tags=pulumi.get(__ret__, 'tags'),
+        tpm_enabled=pulumi.get(__ret__, 'tpm_enabled'),
         user_data=pulumi.get(__ret__, 'user_data'),
         vm_id=pulumi.get(__ret__, 'vm_id'),
         vm_initiated_shutdown_behavior=pulumi.get(__ret__, 'vm_initiated_shutdown_behavior'),
@@ -684,6 +697,7 @@ def get_vm_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmF
         state_reason=pulumi.get(__response__, 'state_reason'),
         subnet_id=pulumi.get(__response__, 'subnet_id'),
         tags=pulumi.get(__response__, 'tags'),
+        tpm_enabled=pulumi.get(__response__, 'tpm_enabled'),
         user_data=pulumi.get(__response__, 'user_data'),
         vm_id=pulumi.get(__response__, 'vm_id'),
         vm_initiated_shutdown_behavior=pulumi.get(__response__, 'vm_initiated_shutdown_behavior'),

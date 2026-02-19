@@ -305,6 +305,10 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVmTagResult> Tags;
         /// <summary>
+        /// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.&lt;br /&gt;The default behavior for `TpmEnabled` varies depending on the source OMI of the VM.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `TpmEnabled` to false will cause the creation request to fail.&lt;br /&gt;If the `TpmMandatory` attribute of the source OMI is false, only setting `TpmEnabled` to true will create and attach a vTPM to the VM.
+        /// </summary>
+        public readonly bool TpmEnabled;
+        /// <summary>
         /// The Base64-encoded MIME user data.
         /// </summary>
         public readonly string UserData;
@@ -403,6 +407,8 @@ namespace Pulumi.Outscale
 
             ImmutableArray<Outputs.GetVmTagResult> tags,
 
+            bool tpmEnabled,
+
             string userData,
 
             string vmId,
@@ -451,6 +457,7 @@ namespace Pulumi.Outscale
             StateReason = stateReason;
             SubnetId = subnetId;
             Tags = tags;
+            TpmEnabled = tpmEnabled;
             UserData = userData;
             VmId = vmId;
             VmInitiatedShutdownBehavior = vmInitiatedShutdownBehavior;

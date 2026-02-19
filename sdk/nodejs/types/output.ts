@@ -787,6 +787,10 @@ export interface GetImagesImage {
      * One or more tags associated with the OMI.
      */
     tags: outputs.GetImagesImageTag[];
+    /**
+     * If true, a virtual Trusted Platform Module (vTPM) is mandatory for VMs created from this OMI. If false, a vTPM is not mandatory.
+     */
+    tpmMandatory: boolean;
 }
 
 export interface GetImagesImageBlockDeviceMapping {
@@ -3910,6 +3914,10 @@ export interface GetVmsVm {
      * One or more tags associated with the VM.
      */
     tags: outputs.GetVmsVmTag[];
+    /**
+     * If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+     */
+    tpmEnabled: boolean;
     /**
      * The Base64-encoded MIME user data.
      */

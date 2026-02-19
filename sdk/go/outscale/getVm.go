@@ -138,6 +138,8 @@ type LookupVmResult struct {
 	SubnetId string `pulumi:"subnetId"`
 	// One or more tags associated with the VM.
 	Tags []GetVmTag `pulumi:"tags"`
+	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+	TpmEnabled bool `pulumi:"tpmEnabled"`
 	// The Base64-encoded MIME user data.
 	UserData string `pulumi:"userData"`
 	// The ID of the VM.
@@ -372,6 +374,11 @@ func (o LookupVmResultOutput) SubnetId() pulumi.StringOutput {
 // One or more tags associated with the VM.
 func (o LookupVmResultOutput) Tags() GetVmTagArrayOutput {
 	return o.ApplyT(func(v LookupVmResult) []GetVmTag { return v.Tags }).(GetVmTagArrayOutput)
+}
+
+// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
+func (o LookupVmResultOutput) TpmEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVmResult) bool { return v.TpmEnabled }).(pulumi.BoolOutput)
 }
 
 // The Base64-encoded MIME user data.
