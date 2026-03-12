@@ -119,12 +119,23 @@ func providerConfigureClient(d *schema.ResourceData) (any, error) {
 	}
 	if region, ok := d.GetOk("region"); ok {
 		config.Region = region.(string)
+		config.APIRegion = region.(string)
 	}
 	endpointsSet := d.Get("endpoints").(*schema.Set)
 
 	for _, endpointsSetI := range endpointsSet.List() {
 		endpoints := endpointsSetI.(map[string]any)
 		config.Endpoints["api"] = endpoints["api"].(string)
+		config.APIEndpoint = endpoints["api"].(string)
+	}
+	if x509CertPath, ok := d.GetOk("x509_cert_path"); ok {
+		config.APIX509Cert = x509CertPath.(string)
+	}
+	if x509KeyPath, ok := d.GetOk("x509_key_path"); ok {
+		config.APIX509Key = x509KeyPath.(string)
+	}
+	if insecure, ok := d.GetOk("insecure"); ok {
+		config.APIInsecure = insecure.(bool)
 	}
 
 	return config.Client()
