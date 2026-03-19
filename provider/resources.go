@@ -226,12 +226,14 @@ func Provider() tfbridge.ProviderInfo {
 		}
 	}
 
-	// Override field mappings for C# naming conflicts
+	// C#: The property name "public_ip" conflicts with the type name "PublicIp"
+	// We must explicitly set Name to ensure the Pulumi property name is "publicIp" (not "publicIP")
 	resourceMap["outscale_public_ip"] = &tfbridge.ResourceInfo{
 		Tok: outscaleResource(mainMod, resourceNameToPulumiIdentifier("outscale_public_ip")),
 		Fields: map[string]*tfbridge.SchemaInfo{
 			"public_ip": {
-				Name: "publicIP",
+				Name:       "publicIp",
+				CSharpName: "PublicIP",
 			},
 		},
 	}
