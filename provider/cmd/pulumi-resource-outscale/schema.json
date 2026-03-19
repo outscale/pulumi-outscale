@@ -17608,9 +17608,14 @@
                     "type": "string",
                     "description": "The private IP associated with the public IP.\n"
                 },
-                "publicIP": {
+                "publicIp": {
                     "type": "string",
-                    "description": "The public IP.\n"
+                    "description": "The public IP.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "PublicIP"
+                        }
+                    }
                 },
                 "publicIpId": {
                     "type": "string",
@@ -17636,7 +17641,7 @@
                 "nicAccountId",
                 "nicId",
                 "privateIp",
-                "publicIP",
+                "publicIp",
                 "publicIpId",
                 "requestId",
                 "vmId"
@@ -17669,9 +17674,14 @@
                         "type": "string",
                         "description": "The private IP associated with the public IP.\n"
                     },
-                    "publicIP": {
+                    "publicIp": {
                         "type": "string",
-                        "description": "The public IP.\n"
+                        "description": "The public IP.\n",
+                        "language": {
+                            "csharp": {
+                                "name": "PublicIP"
+                            }
+                        }
                     },
                     "publicIpId": {
                         "type": "string",
