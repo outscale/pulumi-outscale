@@ -68,7 +68,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// The public IP.
         /// </summary>
-        [Output("publicIP")]
+        [Output("publicIp")]
         public Output<string> PublicIP { get; private set; } = null!;
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// The public IP.
         /// </summary>
-        [Input("publicIP")]
+        [Input("publicIp")]
         public Input<string>? PublicIP { get; set; }
 
         /// <summary>

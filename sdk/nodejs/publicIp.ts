@@ -76,7 +76,7 @@ export class PublicIp extends pulumi.CustomResource {
     /**
      * The public IP.
      */
-    declare public /*out*/ readonly publicIP: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
     /**
      * The allocation ID of the public IP.
      */
@@ -108,7 +108,7 @@ export class PublicIp extends pulumi.CustomResource {
             resourceInputs["nicAccountId"] = state?.nicAccountId;
             resourceInputs["nicId"] = state?.nicId;
             resourceInputs["privateIp"] = state?.privateIp;
-            resourceInputs["publicIP"] = state?.publicIP;
+            resourceInputs["publicIp"] = state?.publicIp;
             resourceInputs["publicIpId"] = state?.publicIpId;
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["tags"] = state?.tags;
@@ -120,7 +120,7 @@ export class PublicIp extends pulumi.CustomResource {
             resourceInputs["nicAccountId"] = undefined /*out*/;
             resourceInputs["nicId"] = undefined /*out*/;
             resourceInputs["privateIp"] = undefined /*out*/;
-            resourceInputs["publicIP"] = undefined /*out*/;
+            resourceInputs["publicIp"] = undefined /*out*/;
             resourceInputs["publicIpId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["vmId"] = undefined /*out*/;
@@ -153,7 +153,7 @@ export interface PublicIpState {
     /**
      * The public IP.
      */
-    publicIP?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string>;
     /**
      * The allocation ID of the public IP.
      */
