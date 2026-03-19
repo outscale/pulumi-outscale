@@ -1,0 +1,3 @@
+name: public_ip
+description: A minimal Pulumi program to test PublicIp resource with ApplyT
+runtime: go
