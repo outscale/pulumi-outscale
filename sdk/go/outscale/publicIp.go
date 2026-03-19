@@ -59,7 +59,7 @@ type PublicIp struct {
 	// The private IP associated with the public IP.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
 	// The public IP.
-	PublicIP pulumi.StringOutput `pulumi:"publicIP"`
+	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringOutput `pulumi:"publicIpId"`
 	RequestId  pulumi.StringOutput `pulumi:"requestId"`
@@ -108,7 +108,7 @@ type publicIpState struct {
 	// The private IP associated with the public IP.
 	PrivateIp *string `pulumi:"privateIp"`
 	// The public IP.
-	PublicIP *string `pulumi:"publicIP"`
+	PublicIp *string `pulumi:"publicIp"`
 	// The allocation ID of the public IP.
 	PublicIpId *string `pulumi:"publicIpId"`
 	RequestId  *string `pulumi:"requestId"`
@@ -128,7 +128,7 @@ type PublicIpState struct {
 	// The private IP associated with the public IP.
 	PrivateIp pulumi.StringPtrInput
 	// The public IP.
-	PublicIP pulumi.StringPtrInput
+	PublicIp pulumi.StringPtrInput
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
@@ -261,8 +261,8 @@ func (o PublicIpOutput) PrivateIp() pulumi.StringOutput {
 }
 
 // The public IP.
-func (o PublicIpOutput) PublicIP() pulumi.StringOutput {
-	return o.ApplyT(func(v *PublicIp) pulumi.StringOutput { return v.PublicIP }).(pulumi.StringOutput)
+func (o PublicIpOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicIp) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
 // The allocation ID of the public IP.
