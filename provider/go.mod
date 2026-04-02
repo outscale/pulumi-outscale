@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.17.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1
-	github.com/outscale/terraform-provider-outscale v1.4.0
+	github.com/outscale/terraform-provider-outscale v1.5.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.119.0
 	github.com/pulumi/pulumi/sdk/v3 v3.213.0
 )
@@ -142,9 +142,9 @@ require (
 	github.com/opentofu/registry-address v0.0.0-20230922120653-901b9ae4061a // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
-	github.com/outscale/goutils/sdk v0.0.0-20251230125904-cf90f7c6a4a4 // indirect
-	github.com/outscale/osc-sdk-go/v2 v2.32.0 // indirect
-	github.com/outscale/osc-sdk-go/v3 v3.0.0-beta.2 // indirect
+	github.com/outscale/goutils/sdk v0.0.0-20260127143749-d95db5597c97 // indirect
+	github.com/outscale/osc-sdk-go/v2 v2.33.0 // indirect
+	github.com/outscale/osc-sdk-go/v3 v3.0.0-beta.3 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
 	github.com/pgavlin/fx/v2 v2.0.10 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
@@ -172,7 +172,7 @@ require (
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/skeema/knownhosts v1.3.1 // indirect
 	github.com/spf13/afero v1.14.0 // indirect
-	github.com/spf13/cast v1.9.2 // indirect
+	github.com/spf13/cast v1.10.0 // indirect
 	github.com/spf13/cobra v1.10.1 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.6.0 // indirect
@@ -206,7 +206,7 @@ require (
 	golang.org/x/exp v0.0.0-20250718183923-645b1fa84792 // indirect
 	golang.org/x/mod v0.31.0 // indirect
 	golang.org/x/net v0.48.0 // indirect
-	golang.org/x/oauth2 v0.34.0 // indirect
+	golang.org/x/oauth2 v0.36.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/sys v0.39.0 // indirect
 	golang.org/x/term v0.38.0 // indirect
