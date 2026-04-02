@@ -1244,6 +1244,10 @@ export interface GetLoadBalancersLoadBalancer {
      * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
      */
     sourceSecurityGroups: outputs.GetLoadBalancersLoadBalancerSourceSecurityGroup[];
+    /**
+     * The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+     */
+    state: string;
     subnetIds: string[];
     /**
      * The ID of the Subregion in which the load balancer was created.
@@ -5574,7 +5578,7 @@ export interface NicPrivateIp {
      */
     privateDnsName: string;
     /**
-     * The private IP of the NIC.
+     * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIp: string;
 }
@@ -6619,7 +6623,7 @@ export interface VmNicPrivateIp {
      */
     privateDnsName: string;
     /**
-     * The private IP of the NIC.
+     * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIp: string;
 }
@@ -6769,7 +6773,7 @@ export interface VmPrimaryNicPrivateIp {
      */
     privateDnsName: string;
     /**
-     * The private IP of the NIC.
+     * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIp: string;
 }

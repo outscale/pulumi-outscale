@@ -122,6 +122,8 @@ type LookupLoadBalancerResult struct {
 	// Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
 	// To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 	SourceSecurityGroups []GetLoadBalancerSourceSecurityGroup `pulumi:"sourceSecurityGroups"`
+	// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+	State string `pulumi:"state"`
 	// The ID of the Subnet in which the load balancer was created.
 	Subnets []string `pulumi:"subnets"`
 	// The ID of the Subregion in which the load balancer was created.
@@ -276,6 +278,11 @@ func (o LookupLoadBalancerResultOutput) SecurityGroups() pulumi.StringArrayOutpu
 // To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 func (o LookupLoadBalancerResultOutput) SourceSecurityGroups() GetLoadBalancerSourceSecurityGroupArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerSourceSecurityGroup { return v.SourceSecurityGroups }).(GetLoadBalancerSourceSecurityGroupArrayOutput)
+}
+
+// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+func (o LookupLoadBalancerResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // The ID of the Subnet in which the load balancer was created.

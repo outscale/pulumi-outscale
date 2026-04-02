@@ -32,9 +32,7 @@ class NicArgs:
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the NIC.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]] private_ips: The primary private IP for the NIC.<br />
-               This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.<br />
-               If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security groups for the NIC.
         :param pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
@@ -90,9 +88,7 @@ class NicArgs:
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]]:
         """
-        The primary private IP for the NIC.<br />
-        This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.<br />
-        If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         """
         return pulumi.get(self, "private_ips")
 
@@ -159,9 +155,7 @@ class _NicState:
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]] private_ips: The primary private IP for the NIC.<br />
-               This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.<br />
-               If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security groups for the NIC.
         :param pulumi.Input[Sequence[pulumi.Input['NicSecurityGroupArgs']]] security_groups: One or more IDs of security groups for the NIC.
         :param pulumi.Input[_builtins.str] state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
@@ -332,9 +326,7 @@ class _NicState:
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]]:
         """
-        The primary private IP for the NIC.<br />
-        This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.<br />
-        If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         """
         return pulumi.get(self, "private_ips")
 
@@ -495,11 +487,11 @@ class Nic(pulumi.CustomResource):
             private_ips=[
                 {
                     "is_primary": True,
-                    "private_ip": "10.0.0.1",
+                    "private_ip": "10.0.0.4",
                 },
                 {
                     "is_primary": False,
-                    "private_ip": "10.0.0.2",
+                    "private_ip": "10.0.0.5",
                 },
             ])
         ```
@@ -516,9 +508,7 @@ class Nic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]] private_ips: The primary private IP for the NIC.<br />
-               This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.<br />
-               If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security groups for the NIC.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the NIC.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
@@ -578,11 +568,11 @@ class Nic(pulumi.CustomResource):
             private_ips=[
                 {
                     "is_primary": True,
-                    "private_ip": "10.0.0.1",
+                    "private_ip": "10.0.0.4",
                 },
                 {
                     "is_primary": False,
-                    "private_ip": "10.0.0.2",
+                    "private_ip": "10.0.0.5",
                 },
             ])
         ```
@@ -692,9 +682,7 @@ class Nic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]] private_ips: The primary private IP for the NIC.<br />
-               This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.<br />
-               If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security groups for the NIC.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NicSecurityGroupArgs', 'NicSecurityGroupArgsDict']]]] security_groups: One or more IDs of security groups for the NIC.
         :param pulumi.Input[_builtins.str] state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
@@ -811,9 +799,7 @@ class Nic(pulumi.CustomResource):
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Sequence['outputs.NicPrivateIp']]:
         """
-        The primary private IP for the NIC.<br />
-        This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute.<br />
-        If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         """
         return pulumi.get(self, "private_ips")
 

@@ -73,6 +73,10 @@ namespace Pulumi.Outscale.Outputs
         /// To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersLoadBalancerSourceSecurityGroupResult> SourceSecurityGroups;
+        /// <summary>
+        /// The state of the load balancer (`Provisioning` \| `Starting` \| `Reloading` \| `Active` \| `Reconfiguring` \| `Deleting` \| `Deleted`).
+        /// </summary>
+        public readonly string State;
         public readonly ImmutableArray<string> SubnetIds;
         /// <summary>
         /// The ID of the Subregion in which the load balancer was created.
@@ -115,6 +119,8 @@ namespace Pulumi.Outscale.Outputs
 
             ImmutableArray<Outputs.GetLoadBalancersLoadBalancerSourceSecurityGroupResult> sourceSecurityGroups,
 
+            string state,
+
             ImmutableArray<string> subnetIds,
 
             ImmutableArray<string> subregionNames,
@@ -136,6 +142,7 @@ namespace Pulumi.Outscale.Outputs
             SecuredCookies = securedCookies;
             SecurityGroups = securityGroups;
             SourceSecurityGroups = sourceSecurityGroups;
+            State = state;
             SubnetIds = subnetIds;
             SubregionNames = subregionNames;
             Tags = tags;

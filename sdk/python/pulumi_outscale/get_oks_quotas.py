@@ -49,11 +49,17 @@ class GetOksQuotasResult:
     @_builtins.property
     @pulumi.getter(name="clustersPerProject")
     def clusters_per_project(self) -> _builtins.int:
+        """
+        The maximum allowed number of clusters per project.
+        """
         return pulumi.get(self, "clusters_per_project")
 
     @_builtins.property
     @pulumi.getter(name="cpSubregions")
     def cp_subregions(self) -> Sequence[_builtins.str]:
+        """
+        The list of available Subregions.
+        """
         return pulumi.get(self, "cp_subregions")
 
     @_builtins.property
@@ -64,11 +70,17 @@ class GetOksQuotasResult:
     @_builtins.property
     @pulumi.getter(name="kubeVersions")
     def kube_versions(self) -> Sequence[_builtins.str]:
+        """
+        The list of available Kubernetes versions.
+        """
         return pulumi.get(self, "kube_versions")
 
     @_builtins.property
     @pulumi.getter
     def projects(self) -> _builtins.int:
+        """
+        The maximum allowed number of projects.
+        """
         return pulumi.get(self, "projects")
 
     @_builtins.property
@@ -93,7 +105,19 @@ class AwaitableGetOksQuotasResult(GetOksQuotasResult):
 
 def get_oks_quotas(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOksQuotasResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about OKS quotas.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    oks_quotas = outscale.get_oks_quotas()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -108,7 +132,19 @@ def get_oks_quotas(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetO
         request_id=pulumi.get(__ret__, 'request_id'))
 def get_oks_quotas_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOksQuotasResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides information about OKS quotas.
+
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).\\
+    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    oks_quotas = outscale.get_oks_quotas()
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

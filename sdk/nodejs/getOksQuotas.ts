@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides information about OKS quotas.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const oksQuotas = outscale.getOksQuotas({});
+ * ```
+ */
 export function getOksQuotas(opts?: pulumi.InvokeOptions): Promise<GetOksQuotasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("outscale:index/getOksQuotas:getOksQuotas", {
@@ -14,13 +29,40 @@ export function getOksQuotas(opts?: pulumi.InvokeOptions): Promise<GetOksQuotasR
  * A collection of values returned by getOksQuotas.
  */
 export interface GetOksQuotasResult {
+    /**
+     * The maximum allowed number of clusters per project.
+     */
     readonly clustersPerProject: number;
+    /**
+     * The list of available Subregions.
+     */
     readonly cpSubregions: string[];
     readonly id: string;
+    /**
+     * The list of available Kubernetes versions.
+     */
     readonly kubeVersions: string[];
+    /**
+     * The maximum allowed number of projects.
+     */
     readonly projects: number;
     readonly requestId: string;
 }
+/**
+ * Provides information about OKS quotas.
+ *
+ * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).\
+ * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const oksQuotas = outscale.getOksQuotas({});
+ * ```
+ */
 export function getOksQuotasOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOksQuotasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("outscale:index/getOksQuotas:getOksQuotas", {

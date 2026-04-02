@@ -5707,7 +5707,7 @@ if not MYPY:
         """
         private_ip: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
 elif False:
     NicPrivateIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -5723,7 +5723,7 @@ class NicPrivateIpArgs:
         :param pulumi.Input[_builtins.bool] is_primary: If true, the IP is the primary private IP of the NIC.
         :param pulumi.Input[Sequence[pulumi.Input['NicPrivateIpLinkPublicIpArgs']]] link_public_ips: Information about the public IP association.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
-        :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
+        :param pulumi.Input[_builtins.str] private_ip: A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
@@ -5774,7 +5774,7 @@ class NicPrivateIpArgs:
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ip")
 
@@ -10904,7 +10904,7 @@ if not MYPY:
         """
         private_ip: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
 elif False:
     VmNicPrivateIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -10920,7 +10920,7 @@ class VmNicPrivateIpArgs:
         :param pulumi.Input[_builtins.bool] is_primary: If true, the IP is the primary private IP of the NIC.
         :param pulumi.Input[Sequence[pulumi.Input['VmNicPrivateIpLinkPublicIpArgs']]] link_public_ips: Information about the public IP associated with the NIC.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
-        :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
+        :param pulumi.Input[_builtins.str] private_ip: A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
@@ -10971,7 +10971,7 @@ class VmNicPrivateIpArgs:
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ip")
 
@@ -11635,7 +11635,7 @@ if not MYPY:
         """
         private_ip: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
 elif False:
     VmPrimaryNicPrivateIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -11651,7 +11651,7 @@ class VmPrimaryNicPrivateIpArgs:
         :param pulumi.Input[_builtins.bool] is_primary: If true, the IP is the primary private IP of the NIC.
         :param pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicPrivateIpLinkPublicIpArgs']]] link_public_ips: Information about the public IP associated with the NIC.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
-        :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
+        :param pulumi.Input[_builtins.str] private_ip: A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
@@ -11702,7 +11702,7 @@ class VmPrimaryNicPrivateIpArgs:
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ip")
 

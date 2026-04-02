@@ -92,7 +92,7 @@ export class NicPrivateIp extends pulumi.CustomResource {
     declare public readonly nicId: pulumi.Output<string>;
     declare public /*out*/ readonly primaryPrivateIp: pulumi.Output<string>;
     /**
-     * The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+     * The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     declare public readonly privateIps: pulumi.Output<string[] | undefined>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
@@ -151,7 +151,7 @@ export interface NicPrivateIpState {
     nicId?: pulumi.Input<string>;
     primaryPrivateIp?: pulumi.Input<string>;
     /**
-     * The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+     * The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     requestId?: pulumi.Input<string>;
@@ -174,7 +174,7 @@ export interface NicPrivateIpArgs {
      */
     nicId: pulumi.Input<string>;
     /**
-     * The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+     * The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -4330,7 +4330,7 @@ class NicPrivateIp(dict):
         :param _builtins.bool is_primary: If true, the IP is the primary private IP of the NIC.
         :param Sequence['NicPrivateIpLinkPublicIpArgs'] link_public_ips: Information about the public IP association.
         :param _builtins.str private_dns_name: The name of the private DNS.
-        :param _builtins.str private_ip: The private IP of the NIC.
+        :param _builtins.str private_ip: A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
@@ -4369,7 +4369,7 @@ class NicPrivateIp(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[_builtins.str]:
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ip")
 
@@ -8239,7 +8239,7 @@ class VmNicPrivateIp(dict):
         :param _builtins.bool is_primary: If true, the IP is the primary private IP of the NIC.
         :param Sequence['VmNicPrivateIpLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
         :param _builtins.str private_dns_name: The name of the private DNS.
-        :param _builtins.str private_ip: The private IP of the NIC.
+        :param _builtins.str private_ip: A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
@@ -8278,7 +8278,7 @@ class VmNicPrivateIp(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[_builtins.str]:
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ip")
 
@@ -8826,7 +8826,7 @@ class VmPrimaryNicPrivateIp(dict):
         :param _builtins.bool is_primary: If true, the IP is the primary private IP of the NIC.
         :param Sequence['VmPrimaryNicPrivateIpLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
         :param _builtins.str private_dns_name: The name of the private DNS.
-        :param _builtins.str private_ip: The private IP of the NIC.
+        :param _builtins.str private_ip: A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         if is_primary is not None:
             pulumi.set(__self__, "is_primary", is_primary)
@@ -8865,7 +8865,7 @@ class VmPrimaryNicPrivateIp(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[_builtins.str]:
         """
-        The private IP of the NIC.
+        A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ip")
 
@@ -12505,6 +12505,7 @@ class GetLoadBalancersLoadBalancerResult(dict):
                  secured_cookies: _builtins.bool,
                  security_groups: Sequence[_builtins.str],
                  source_security_groups: Sequence['outputs.GetLoadBalancersLoadBalancerSourceSecurityGroupResult'],
+                 state: _builtins.str,
                  subnet_ids: Sequence[_builtins.str],
                  subregion_names: Sequence[_builtins.str],
                  tags: Sequence['outputs.GetLoadBalancersLoadBalancerTagResult']):
@@ -12526,6 +12527,7 @@ class GetLoadBalancersLoadBalancerResult(dict):
         :param Sequence[_builtins.str] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
         :param Sequence['GetLoadBalancersLoadBalancerSourceSecurityGroupArgs'] source_security_groups: Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
                To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+        :param _builtins.str state: The state of the load balancer (`provisioning` \\| `starting` \\| `reloading` \\| `active` \\| `reconfiguring` \\| `deleting` \\| `deleted`).
         :param Sequence[_builtins.str] subregion_names: The ID of the Subregion in which the load balancer was created.
         :param Sequence['GetLoadBalancersLoadBalancerTagArgs'] tags: One or more tags associated with the load balancer.
         """
@@ -12544,6 +12546,7 @@ class GetLoadBalancersLoadBalancerResult(dict):
         pulumi.set(__self__, "secured_cookies", secured_cookies)
         pulumi.set(__self__, "security_groups", security_groups)
         pulumi.set(__self__, "source_security_groups", source_security_groups)
+        pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
         pulumi.set(__self__, "subregion_names", subregion_names)
         pulumi.set(__self__, "tags", tags)
@@ -12667,6 +12670,14 @@ class GetLoadBalancersLoadBalancerResult(dict):
         To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
         """
         return pulumi.get(self, "source_security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The state of the load balancer (`provisioning` \\| `starting` \\| `reloading` \\| `active` \\| `reconfiguring` \\| `deleting` \\| `deleted`).
+        """
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter(name="subnetIds")

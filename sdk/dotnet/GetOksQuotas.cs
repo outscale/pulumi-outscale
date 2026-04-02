@@ -11,12 +11,75 @@ namespace Pulumi.Outscale
 {
     public static class GetOksQuotas
     {
+        /// <summary>
+        /// Provides information about OKS quotas.
+        /// 
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).  
+        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Outscale = Pulumi.Outscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oksQuotas = Outscale.GetOksQuotas.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetOksQuotasResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOksQuotasResult>("outscale:index/getOksQuotas:getOksQuotas", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Provides information about OKS quotas.
+        /// 
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).  
+        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Outscale = Pulumi.Outscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oksQuotas = Outscale.GetOksQuotas.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetOksQuotasResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOksQuotasResult>("outscale:index/getOksQuotas:getOksQuotas", InvokeArgs.Empty, options.WithDefaults());
 
+        /// <summary>
+        /// Provides information about OKS quotas.
+        /// 
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).  
+        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Outscale = Pulumi.Outscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oksQuotas = Outscale.GetOksQuotas.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetOksQuotasResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOksQuotasResult>("outscale:index/getOksQuotas:getOksQuotas", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -25,10 +88,22 @@ namespace Pulumi.Outscale
     [OutputType]
     public sealed class GetOksQuotasResult
     {
+        /// <summary>
+        /// The maximum allowed number of clusters per project.
+        /// </summary>
         public readonly int ClustersPerProject;
+        /// <summary>
+        /// The list of available Subregions.
+        /// </summary>
         public readonly ImmutableArray<string> CpSubregions;
         public readonly string Id;
+        /// <summary>
+        /// The list of available Kubernetes versions.
+        /// </summary>
         public readonly ImmutableArray<string> KubeVersions;
+        /// <summary>
+        /// The maximum allowed number of projects.
+        /// </summary>
         public readonly int Projects;
         public readonly string RequestId;
 

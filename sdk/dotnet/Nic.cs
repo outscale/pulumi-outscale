@@ -94,12 +94,12 @@ namespace Pulumi.Outscale
     ///             new Outscale.Inputs.NicPrivateIpArgs
     ///             {
     ///                 IsPrimary = true,
-    ///                 PrivateIp = "10.0.0.1",
+    ///                 PrivateIp = "10.0.0.4",
     ///             },
     ///             new Outscale.Inputs.NicPrivateIpArgs
     ///             {
     ///                 IsPrimary = false,
-    ///                 PrivateIp = "10.0.0.2",
+    ///                 PrivateIp = "10.0.0.5",
     ///             },
     ///         },
     ///     });
@@ -179,9 +179,7 @@ namespace Pulumi.Outscale
         public Output<string> PrivateIp { get; private set; } = null!;
 
         /// <summary>
-        /// The primary private IP for the NIC.&lt;br /&gt;
-        /// This IP must be within the IP range of the Subnet that you specify with the `SubnetId` attribute.&lt;br /&gt;
-        /// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        /// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<Outputs.NicPrivateIp>> PrivateIps { get; private set; } = null!;
@@ -290,9 +288,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.NicPrivateIpArgs>? _privateIps;
 
         /// <summary>
-        /// The primary private IP for the NIC.&lt;br /&gt;
-        /// This IP must be within the IP range of the Subnet that you specify with the `SubnetId` attribute.&lt;br /&gt;
-        /// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        /// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         /// </summary>
         public InputList<Inputs.NicPrivateIpArgs> PrivateIps
         {
@@ -414,9 +410,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.NicPrivateIpGetArgs>? _privateIps;
 
         /// <summary>
-        /// The primary private IP for the NIC.&lt;br /&gt;
-        /// This IP must be within the IP range of the Subnet that you specify with the `SubnetId` attribute.&lt;br /&gt;
-        /// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+        /// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         /// </summary>
         public InputList<Inputs.NicPrivateIpGetArgs> PrivateIps
         {

@@ -147,7 +147,7 @@ export class Vm extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
-     * One or more private IPs of the VM.
+     * One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     declare public readonly privateIps: pulumi.Output<string[] | undefined>;
     /**
@@ -182,7 +182,7 @@ export class Vm extends pulumi.CustomResource {
     /**
      * One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
-    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * One or more names of security groups for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
@@ -455,7 +455,7 @@ export interface VmState {
      */
     privateIp?: pulumi.Input<string>;
     /**
-     * One or more private IPs of the VM.
+     * One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -597,7 +597,7 @@ export interface VmArgs {
      */
     primaryNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNic>[]>;
     /**
-     * One or more private IPs of the VM.
+     * One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

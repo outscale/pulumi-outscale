@@ -27,7 +27,7 @@ class NicPrivateIpInitArgs:
         The set of arguments for constructing a NicPrivateIp resource.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         pulumi.set(__self__, "nic_id", nic_id)
@@ -66,7 +66,7 @@ class NicPrivateIpInitArgs:
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
@@ -100,7 +100,7 @@ class _NicPrivateIpState:
         Input properties used for looking up and filtering NicPrivateIp resources.
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         if allow_relink is not None:
@@ -153,7 +153,7 @@ class _NicPrivateIpState:
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
@@ -245,7 +245,7 @@ class NicPrivateIp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         ...
@@ -362,7 +362,7 @@ class NicPrivateIp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.int] secondary_private_ip_count: The number of secondary private IPs to assign to the NIC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -402,7 +402,7 @@ class NicPrivateIp(pulumi.CustomResource):
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+        The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
