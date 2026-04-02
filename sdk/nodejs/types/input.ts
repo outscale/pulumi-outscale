@@ -2197,7 +2197,7 @@ export interface NicPrivateIp {
      */
     privateDnsName?: pulumi.Input<string>;
     /**
-     * The private IP of the NIC.
+     * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIp?: pulumi.Input<string>;
 }
@@ -3249,7 +3249,7 @@ export interface VmNicPrivateIp {
      */
     privateDnsName?: pulumi.Input<string>;
     /**
-     * The private IP of the NIC.
+     * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIp?: pulumi.Input<string>;
 }
@@ -3399,7 +3399,7 @@ export interface VmPrimaryNicPrivateIp {
      */
     privateDnsName?: pulumi.Input<string>;
     /**
-     * The private IP of the NIC.
+     * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
     privateIp?: pulumi.Input<string>;
 }

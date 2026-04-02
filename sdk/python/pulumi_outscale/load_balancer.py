@@ -203,6 +203,7 @@ class _LoadBalancerState:
                  secured_cookies: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  source_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerSourceSecurityGroupArgs']]]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]]] = None):
@@ -224,6 +225,7 @@ class _LoadBalancerState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: (Net only) One or more IDs of security groups you want to assign to the load balancer. If not specified, the default security group of the Net is assigned to the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerSourceSecurityGroupArgs']]] source_security_groups: Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
                To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+        :param pulumi.Input[_builtins.str] state: The state of the load balancer (`provisioning` \\| `starting` \\| `reloading` \\| `active` \\| `reconfiguring` \\| `deleting` \\| `deleted`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subregion_names: (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
@@ -260,6 +262,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "security_groups", security_groups)
         if source_security_groups is not None:
             pulumi.set(__self__, "source_security_groups", source_security_groups)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if subnets is not None:
             pulumi.set(__self__, "subnets", subnets)
         if subregion_names is not None:
@@ -456,6 +460,18 @@ class _LoadBalancerState:
     @source_security_groups.setter
     def source_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerSourceSecurityGroupArgs']]]]):
         pulumi.set(self, "source_security_groups", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The state of the load balancer (`provisioning` \\| `starting` \\| `reloading` \\| `active` \\| `reconfiguring` \\| `deleting` \\| `deleted`).
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
@@ -859,6 +875,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["net_id"] = None
             __props__.__dict__["request_id"] = None
             __props__.__dict__["source_security_groups"] = None
+            __props__.__dict__["state"] = None
         super(LoadBalancer, __self__).__init__(
             'outscale:index/loadBalancer:LoadBalancer',
             resource_name,
@@ -885,6 +902,7 @@ class LoadBalancer(pulumi.CustomResource):
             secured_cookies: Optional[pulumi.Input[_builtins.bool]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             source_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerSourceSecurityGroupArgs', 'LoadBalancerSourceSecurityGroupArgsDict']]]]] = None,
+            state: Optional[pulumi.Input[_builtins.str]] = None,
             subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerTagArgs', 'LoadBalancerTagArgsDict']]]]] = None) -> 'LoadBalancer':
@@ -911,6 +929,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: (Net only) One or more IDs of security groups you want to assign to the load balancer. If not specified, the default security group of the Net is assigned to the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerSourceSecurityGroupArgs', 'LoadBalancerSourceSecurityGroupArgsDict']]]] source_security_groups: Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
                To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
+        :param pulumi.Input[_builtins.str] state: The state of the load balancer (`provisioning` \\| `starting` \\| `reloading` \\| `active` \\| `reconfiguring` \\| `deleting` \\| `deleted`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subregion_names: (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerTagArgs', 'LoadBalancerTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
@@ -935,6 +954,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["secured_cookies"] = secured_cookies
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["source_security_groups"] = source_security_groups
+        __props__.__dict__["state"] = state
         __props__.__dict__["subnets"] = subnets
         __props__.__dict__["subregion_names"] = subregion_names
         __props__.__dict__["tags"] = tags
@@ -1065,6 +1085,14 @@ class LoadBalancer(pulumi.CustomResource):
         To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
         """
         return pulumi.get(self, "source_security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        The state of the load balancer (`provisioning` \\| `starting` \\| `reloading` \\| `active` \\| `reconfiguring` \\| `deleting` \\| `deleted`).
+        """
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter

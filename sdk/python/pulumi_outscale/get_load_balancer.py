@@ -28,7 +28,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, access_logs=None, application_sticky_cookie_policies=None, backend_ips=None, backend_vm_ids=None, dns_name=None, filters=None, health_checks=None, id=None, listeners=None, load_balancer_name=None, load_balancer_sticky_cookie_policies=None, load_balancer_type=None, net_id=None, public_ip=None, request_id=None, secured_cookies=None, security_groups=None, source_security_groups=None, subnets=None, subregion_names=None, tags=None):
+    def __init__(__self__, access_logs=None, application_sticky_cookie_policies=None, backend_ips=None, backend_vm_ids=None, dns_name=None, filters=None, health_checks=None, id=None, listeners=None, load_balancer_name=None, load_balancer_sticky_cookie_policies=None, load_balancer_type=None, net_id=None, public_ip=None, request_id=None, secured_cookies=None, security_groups=None, source_security_groups=None, state=None, subnets=None, subregion_names=None, tags=None):
         if access_logs and not isinstance(access_logs, list):
             raise TypeError("Expected argument 'access_logs' to be a list")
         pulumi.set(__self__, "access_logs", access_logs)
@@ -83,6 +83,9 @@ class GetLoadBalancerResult:
         if source_security_groups and not isinstance(source_security_groups, list):
             raise TypeError("Expected argument 'source_security_groups' to be a list")
         pulumi.set(__self__, "source_security_groups", source_security_groups)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
         if subnets and not isinstance(subnets, list):
             raise TypeError("Expected argument 'subnets' to be a list")
         pulumi.set(__self__, "subnets", subnets)
@@ -233,6 +236,14 @@ class GetLoadBalancerResult:
 
     @_builtins.property
     @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The state of the load balancer (`provisioning` \\| `starting` \\| `reloading` \\| `active` \\| `reconfiguring` \\| `deleting` \\| `deleted`).
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
     def subnets(self) -> Sequence[_builtins.str]:
         """
         The ID of the Subnet in which the load balancer was created.
@@ -280,6 +291,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             secured_cookies=self.secured_cookies,
             security_groups=self.security_groups,
             source_security_groups=self.source_security_groups,
+            state=self.state,
             subnets=self.subnets,
             subregion_names=self.subregion_names,
             tags=self.tags)
@@ -361,6 +373,7 @@ def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAcces
         secured_cookies=pulumi.get(__ret__, 'secured_cookies'),
         security_groups=pulumi.get(__ret__, 'security_groups'),
         source_security_groups=pulumi.get(__ret__, 'source_security_groups'),
+        state=pulumi.get(__ret__, 'state'),
         subnets=pulumi.get(__ret__, 'subnets'),
         subregion_names=pulumi.get(__ret__, 'subregion_names'),
         tags=pulumi.get(__ret__, 'tags'))
@@ -439,6 +452,7 @@ def get_load_balancer_output(access_logs: Optional[pulumi.Input[Optional[Sequenc
         secured_cookies=pulumi.get(__response__, 'secured_cookies'),
         security_groups=pulumi.get(__response__, 'security_groups'),
         source_security_groups=pulumi.get(__response__, 'source_security_groups'),
+        state=pulumi.get(__response__, 'state'),
         subnets=pulumi.get(__response__, 'subnets'),
         subregion_names=pulumi.get(__response__, 'subregion_names'),
         tags=pulumi.get(__response__, 'tags')))

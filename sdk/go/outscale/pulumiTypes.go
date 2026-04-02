@@ -9559,7 +9559,7 @@ type NicPrivateIpType struct {
 	LinkPublicIps []NicPrivateIpLinkPublicIp `pulumi:"linkPublicIps"`
 	// The name of the private DNS.
 	PrivateDnsName *string `pulumi:"privateDnsName"`
-	// The private IP of the NIC.
+	// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIp *string `pulumi:"privateIp"`
 }
 
@@ -9581,7 +9581,7 @@ type NicPrivateIpTypeArgs struct {
 	LinkPublicIps NicPrivateIpLinkPublicIpArrayInput `pulumi:"linkPublicIps"`
 	// The name of the private DNS.
 	PrivateDnsName pulumi.StringPtrInput `pulumi:"privateDnsName"`
-	// The private IP of the NIC.
+	// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 }
 
@@ -9651,7 +9651,7 @@ func (o NicPrivateIpTypeOutput) PrivateDnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicPrivateIpType) *string { return v.PrivateDnsName }).(pulumi.StringPtrOutput)
 }
 
-// The private IP of the NIC.
+// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 func (o NicPrivateIpTypeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicPrivateIpType) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -18486,7 +18486,7 @@ type VmNicPrivateIp struct {
 	LinkPublicIps []VmNicPrivateIpLinkPublicIp `pulumi:"linkPublicIps"`
 	// The name of the private DNS.
 	PrivateDnsName *string `pulumi:"privateDnsName"`
-	// The private IP of the NIC.
+	// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIp *string `pulumi:"privateIp"`
 }
 
@@ -18508,7 +18508,7 @@ type VmNicPrivateIpArgs struct {
 	LinkPublicIps VmNicPrivateIpLinkPublicIpArrayInput `pulumi:"linkPublicIps"`
 	// The name of the private DNS.
 	PrivateDnsName pulumi.StringPtrInput `pulumi:"privateDnsName"`
-	// The private IP of the NIC.
+	// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 }
 
@@ -18578,7 +18578,7 @@ func (o VmNicPrivateIpOutput) PrivateDnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNicPrivateIp) *string { return v.PrivateDnsName }).(pulumi.StringPtrOutput)
 }
 
-// The private IP of the NIC.
+// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 func (o VmNicPrivateIpOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNicPrivateIp) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -19311,7 +19311,7 @@ type VmPrimaryNicPrivateIp struct {
 	LinkPublicIps []VmPrimaryNicPrivateIpLinkPublicIp `pulumi:"linkPublicIps"`
 	// The name of the private DNS.
 	PrivateDnsName *string `pulumi:"privateDnsName"`
-	// The private IP of the NIC.
+	// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIp *string `pulumi:"privateIp"`
 }
 
@@ -19333,7 +19333,7 @@ type VmPrimaryNicPrivateIpArgs struct {
 	LinkPublicIps VmPrimaryNicPrivateIpLinkPublicIpArrayInput `pulumi:"linkPublicIps"`
 	// The name of the private DNS.
 	PrivateDnsName pulumi.StringPtrInput `pulumi:"privateDnsName"`
-	// The private IP of the NIC.
+	// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 }
 
@@ -19403,7 +19403,7 @@ func (o VmPrimaryNicPrivateIpOutput) PrivateDnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNicPrivateIp) *string { return v.PrivateDnsName }).(pulumi.StringPtrOutput)
 }
 
-// The private IP of the NIC.
+// A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 func (o VmPrimaryNicPrivateIpOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNicPrivateIp) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -29595,7 +29595,9 @@ type GetLoadBalancersLoadBalancer struct {
 	// Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
 	// To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 	SourceSecurityGroups []GetLoadBalancersLoadBalancerSourceSecurityGroup `pulumi:"sourceSecurityGroups"`
-	SubnetIds            []string                                          `pulumi:"subnetIds"`
+	// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+	State     string   `pulumi:"state"`
+	SubnetIds []string `pulumi:"subnetIds"`
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames []string `pulumi:"subregionNames"`
 	// One or more tags associated with the load balancer.
@@ -29646,7 +29648,9 @@ type GetLoadBalancersLoadBalancerArgs struct {
 	// Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
 	// To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 	SourceSecurityGroups GetLoadBalancersLoadBalancerSourceSecurityGroupArrayInput `pulumi:"sourceSecurityGroups"`
-	SubnetIds            pulumi.StringArrayInput                                   `pulumi:"subnetIds"`
+	// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+	State     pulumi.StringInput      `pulumi:"state"`
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames pulumi.StringArrayInput `pulumi:"subregionNames"`
 	// One or more tags associated with the load balancer.
@@ -29785,6 +29789,11 @@ func (o GetLoadBalancersLoadBalancerOutput) SourceSecurityGroups() GetLoadBalanc
 	return o.ApplyT(func(v GetLoadBalancersLoadBalancer) []GetLoadBalancersLoadBalancerSourceSecurityGroup {
 		return v.SourceSecurityGroups
 	}).(GetLoadBalancersLoadBalancerSourceSecurityGroupArrayOutput)
+}
+
+// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+func (o GetLoadBalancersLoadBalancerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancersLoadBalancer) string { return v.State }).(pulumi.StringOutput)
 }
 
 func (o GetLoadBalancersLoadBalancerOutput) SubnetIds() pulumi.StringArrayOutput {

@@ -58,11 +58,11 @@ import * as utilities from "./utilities";
  *     privateIps: [
  *         {
  *             isPrimary: true,
- *             privateIp: "10.0.0.1",
+ *             privateIp: "10.0.0.4",
  *         },
  *         {
  *             isPrimary: false,
- *             privateIp: "10.0.0.2",
+ *             privateIp: "10.0.0.5",
  *         },
  *     ],
  * });
@@ -145,9 +145,7 @@ export class Nic extends pulumi.CustomResource {
      */
     declare public readonly privateIp: pulumi.Output<string>;
     /**
-     * The primary private IP for the NIC.<br />
-     * This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-     * If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+     * Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
      */
     declare public readonly privateIps: pulumi.Output<outputs.NicPrivateIp[]>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
@@ -284,9 +282,7 @@ export interface NicState {
      */
     privateIp?: pulumi.Input<string>;
     /**
-     * The primary private IP for the NIC.<br />
-     * This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-     * If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+     * Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
      */
     privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[]>;
     requestId?: pulumi.Input<string>;
@@ -330,9 +326,7 @@ export interface NicArgs {
      */
     privateIp?: pulumi.Input<string>;
     /**
-     * The primary private IP for the NIC.<br />
-     * This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-     * If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+     * Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
      */
     privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[]>;
     /**

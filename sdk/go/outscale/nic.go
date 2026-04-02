@@ -113,11 +113,11 @@ import (
 //				PrivateIps: outscale.NicPrivateIpTypeArray{
 //					&outscale.NicPrivateIpTypeArgs{
 //						IsPrimary: pulumi.Bool(true),
-//						PrivateIp: pulumi.String("10.0.0.1"),
+//						PrivateIp: pulumi.String("10.0.0.4"),
 //					},
 //					&outscale.NicPrivateIpTypeArgs{
 //						IsPrimary: pulumi.Bool(false),
-//						PrivateIp: pulumi.String("10.0.0.2"),
+//						PrivateIp: pulumi.String("10.0.0.5"),
 //					},
 //				},
 //			})
@@ -160,9 +160,7 @@ type Nic struct {
 	PrivateDnsName pulumi.StringOutput `pulumi:"privateDnsName"`
 	// The private IP of the NIC.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
-	// The primary private IP for the NIC.<br />
-	// This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-	// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+	// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
 	PrivateIps       NicPrivateIpTypeArrayOutput `pulumi:"privateIps"`
 	RequestId        pulumi.StringOutput         `pulumi:"requestId"`
 	RequesterManaged pulumi.BoolOutput           `pulumi:"requesterManaged"`
@@ -233,9 +231,7 @@ type nicState struct {
 	PrivateDnsName *string `pulumi:"privateDnsName"`
 	// The private IP of the NIC.
 	PrivateIp *string `pulumi:"privateIp"`
-	// The primary private IP for the NIC.<br />
-	// This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-	// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+	// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
 	PrivateIps       []NicPrivateIpType `pulumi:"privateIps"`
 	RequestId        *string            `pulumi:"requestId"`
 	RequesterManaged *bool              `pulumi:"requesterManaged"`
@@ -274,9 +270,7 @@ type NicState struct {
 	PrivateDnsName pulumi.StringPtrInput
 	// The private IP of the NIC.
 	PrivateIp pulumi.StringPtrInput
-	// The primary private IP for the NIC.<br />
-	// This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-	// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+	// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
 	PrivateIps       NicPrivateIpTypeArrayInput
 	RequestId        pulumi.StringPtrInput
 	RequesterManaged pulumi.BoolPtrInput
@@ -303,9 +297,7 @@ type nicArgs struct {
 	Description *string `pulumi:"description"`
 	// The private IP of the NIC.
 	PrivateIp *string `pulumi:"privateIp"`
-	// The primary private IP for the NIC.<br />
-	// This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-	// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+	// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
 	PrivateIps []NicPrivateIpType `pulumi:"privateIps"`
 	// One or more IDs of security groups for the NIC.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -321,9 +313,7 @@ type NicArgs struct {
 	Description pulumi.StringPtrInput
 	// The private IP of the NIC.
 	PrivateIp pulumi.StringPtrInput
-	// The primary private IP for the NIC.<br />
-	// This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-	// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+	// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
 	PrivateIps NicPrivateIpTypeArrayInput
 	// One or more IDs of security groups for the NIC.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -470,9 +460,7 @@ func (o NicOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nic) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// The primary private IP for the NIC.<br />
-// This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute.<br />
-// If you do not specify this attribute, a random private IP is selected within the IP range of the Subnet.
+// Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
 func (o NicOutput) PrivateIps() NicPrivateIpTypeArrayOutput {
 	return o.ApplyT(func(v *Nic) NicPrivateIpTypeArrayOutput { return v.PrivateIps }).(NicPrivateIpTypeArrayOutput)
 }

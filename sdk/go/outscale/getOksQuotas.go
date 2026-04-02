@@ -11,6 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides information about OKS quotas.
+//
+// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Getting-Information-About-the-Quotas-of-a-Profile.html).\
+// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getquotas).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := outscale.GetOksQuotas(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOksQuotas(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetOksQuotasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOksQuotasResult
@@ -23,12 +51,16 @@ func GetOksQuotas(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetOksQuot
 
 // A collection of values returned by getOksQuotas.
 type GetOksQuotasResult struct {
-	ClustersPerProject int      `pulumi:"clustersPerProject"`
-	CpSubregions       []string `pulumi:"cpSubregions"`
-	Id                 string   `pulumi:"id"`
-	KubeVersions       []string `pulumi:"kubeVersions"`
-	Projects           int      `pulumi:"projects"`
-	RequestId          string   `pulumi:"requestId"`
+	// The maximum allowed number of clusters per project.
+	ClustersPerProject int `pulumi:"clustersPerProject"`
+	// The list of available Subregions.
+	CpSubregions []string `pulumi:"cpSubregions"`
+	Id           string   `pulumi:"id"`
+	// The list of available Kubernetes versions.
+	KubeVersions []string `pulumi:"kubeVersions"`
+	// The maximum allowed number of projects.
+	Projects  int    `pulumi:"projects"`
+	RequestId string `pulumi:"requestId"`
 }
 
 func GetOksQuotasOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetOksQuotasResultOutput {
@@ -53,10 +85,12 @@ func (o GetOksQuotasResultOutput) ToGetOksQuotasResultOutputWithContext(ctx cont
 	return o
 }
 
+// The maximum allowed number of clusters per project.
 func (o GetOksQuotasResultOutput) ClustersPerProject() pulumi.IntOutput {
 	return o.ApplyT(func(v GetOksQuotasResult) int { return v.ClustersPerProject }).(pulumi.IntOutput)
 }
 
+// The list of available Subregions.
 func (o GetOksQuotasResultOutput) CpSubregions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOksQuotasResult) []string { return v.CpSubregions }).(pulumi.StringArrayOutput)
 }
@@ -65,10 +99,12 @@ func (o GetOksQuotasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOksQuotasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The list of available Kubernetes versions.
 func (o GetOksQuotasResultOutput) KubeVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOksQuotasResult) []string { return v.KubeVersions }).(pulumi.StringArrayOutput)
 }
 
+// The maximum allowed number of projects.
 func (o GetOksQuotasResultOutput) Projects() pulumi.IntOutput {
 	return o.ApplyT(func(v GetOksQuotasResult) int { return v.Projects }).(pulumi.IntOutput)
 }

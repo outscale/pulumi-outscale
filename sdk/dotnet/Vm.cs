@@ -179,7 +179,7 @@ namespace Pulumi.Outscale
         public Output<string> PrivateIp { get; private set; } = null!;
 
         /// <summary>
-        /// One or more private IPs of the VM.
+        /// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `SubnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
@@ -468,7 +468,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// One or more private IPs of the VM.
+        /// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `SubnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         /// </summary>
         public InputList<string> PrivateIps
         {
@@ -766,7 +766,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _privateIps;
 
         /// <summary>
-        /// One or more private IPs of the VM.
+        /// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `SubnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         /// </summary>
         public InputList<string> PrivateIps
         {

@@ -299,6 +299,8 @@ type LoadBalancer struct {
 	// Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
 	// To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 	SourceSecurityGroups LoadBalancerSourceSecurityGroupArrayOutput `pulumi:"sourceSecurityGroups"`
+	// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+	State pulumi.StringOutput `pulumi:"state"`
 	// (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
 	Subnets pulumi.StringArrayOutput `pulumi:"subnets"`
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
@@ -375,6 +377,8 @@ type loadBalancerState struct {
 	// Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
 	// To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 	SourceSecurityGroups []LoadBalancerSourceSecurityGroup `pulumi:"sourceSecurityGroups"`
+	// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+	State *string `pulumi:"state"`
 	// (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
 	Subnets []string `pulumi:"subnets"`
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
@@ -416,6 +420,8 @@ type LoadBalancerState struct {
 	// Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
 	// To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 	SourceSecurityGroups LoadBalancerSourceSecurityGroupArrayInput
+	// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+	State pulumi.StringPtrInput
 	// (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
 	Subnets pulumi.StringArrayInput
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
@@ -644,6 +650,11 @@ func (o LoadBalancerOutput) SecurityGroups() pulumi.StringArrayOutput {
 // To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 func (o LoadBalancerOutput) SourceSecurityGroups() LoadBalancerSourceSecurityGroupArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerSourceSecurityGroupArrayOutput { return v.SourceSecurityGroups }).(LoadBalancerSourceSecurityGroupArrayOutput)
+}
+
+// The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+func (o LoadBalancerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.

@@ -246,6 +246,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly sourceSecurityGroups: pulumi.Output<outputs.LoadBalancerSourceSecurityGroup[]>;
     /**
+     * The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+     */
+    declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
      * (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
      */
     declare public readonly subnets: pulumi.Output<string[]>;
@@ -287,6 +291,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["securedCookies"] = state?.securedCookies;
             resourceInputs["securityGroups"] = state?.securityGroups;
             resourceInputs["sourceSecurityGroups"] = state?.sourceSecurityGroups;
+            resourceInputs["state"] = state?.state;
             resourceInputs["subnets"] = state?.subnets;
             resourceInputs["subregionNames"] = state?.subregionNames;
             resourceInputs["tags"] = state?.tags;
@@ -317,6 +322,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["netId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["sourceSecurityGroups"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
@@ -389,6 +395,10 @@ export interface LoadBalancerState {
      * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
      */
     sourceSecurityGroups?: pulumi.Input<pulumi.Input<inputs.LoadBalancerSourceSecurityGroup>[]>;
+    /**
+     * The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+     */
+    state?: pulumi.Input<string>;
     /**
      * (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
      */

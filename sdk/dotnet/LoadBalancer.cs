@@ -359,6 +359,12 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.LoadBalancerSourceSecurityGroup>> SourceSecurityGroups { get; private set; } = null!;
 
         /// <summary>
+        /// The state of the load balancer (`Provisioning` \| `Starting` \| `Reloading` \| `Active` \| `Reconfiguring` \| `Deleting` \| `Deleted`).
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
         /// (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
         /// </summary>
         [Output("subnets")]
@@ -673,6 +679,12 @@ namespace Pulumi.Outscale
             get => _sourceSecurityGroups ?? (_sourceSecurityGroups = new InputList<Inputs.LoadBalancerSourceSecurityGroupGetArgs>());
             set => _sourceSecurityGroups = value;
         }
+
+        /// <summary>
+        /// The state of the load balancer (`Provisioning` \| `Starting` \| `Reloading` \| `Active` \| `Reconfiguring` \| `Deleting` \| `Deleted`).
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         [Input("subnets")]
         private InputList<string>? _subnets;

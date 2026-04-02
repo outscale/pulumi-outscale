@@ -407,6 +407,10 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancerSourceSecurityGroupResult> SourceSecurityGroups;
         /// <summary>
+        /// The state of the load balancer (`Provisioning` \| `Starting` \| `Reloading` \| `Active` \| `Reconfiguring` \| `Deleting` \| `Deleted`).
+        /// </summary>
+        public readonly string State;
+        /// <summary>
         /// The ID of the Subnet in which the load balancer was created.
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
@@ -457,6 +461,8 @@ namespace Pulumi.Outscale
 
             ImmutableArray<Outputs.GetLoadBalancerSourceSecurityGroupResult> sourceSecurityGroups,
 
+            string state,
+
             ImmutableArray<string> subnets,
 
             ImmutableArray<string> subregionNames,
@@ -481,6 +487,7 @@ namespace Pulumi.Outscale
             SecuredCookies = securedCookies;
             SecurityGroups = securityGroups;
             SourceSecurityGroups = sourceSecurityGroups;
+            State = state;
             Subnets = subnets;
             SubregionNames = subregionNames;
             Tags = tags;

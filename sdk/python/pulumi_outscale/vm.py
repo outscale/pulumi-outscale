@@ -65,7 +65,7 @@ class VmArgs:
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
         :param pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]] primary_nics: The primary network interface of the VM.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
@@ -313,7 +313,7 @@ class VmArgs:
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        One or more private IPs of the VM.
+        One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
@@ -530,7 +530,7 @@ class _VmState:
         :param pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]] primary_nics: The primary network interface of the VM.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the VM.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] product_codes: The product codes associated with the OMI used to create the VM.
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the VM.
@@ -970,7 +970,7 @@ class _VmState:
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        One or more private IPs of the VM.
+        One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
@@ -1273,7 +1273,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
@@ -1494,7 +1494,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the VM.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] product_codes: The product codes associated with the OMI used to create the VM.
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the VM.
@@ -1783,7 +1783,7 @@ class Vm(pulumi.CustomResource):
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        One or more private IPs of the VM.
+        One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
@@ -1850,7 +1850,7 @@ class Vm(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         """

@@ -125,7 +125,7 @@ type NicPrivateIp struct {
 	// The ID of the NIC.
 	NicId            pulumi.StringOutput `pulumi:"nicId"`
 	PrimaryPrivateIp pulumi.StringOutput `pulumi:"primaryPrivateIp"`
-	// The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+	// The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
 	RequestId  pulumi.StringOutput      `pulumi:"requestId"`
 	// The number of secondary private IPs to assign to the NIC.
@@ -170,7 +170,7 @@ type nicPrivateIpState struct {
 	// The ID of the NIC.
 	NicId            *string `pulumi:"nicId"`
 	PrimaryPrivateIp *string `pulumi:"primaryPrivateIp"`
-	// The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+	// The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps []string `pulumi:"privateIps"`
 	RequestId  *string  `pulumi:"requestId"`
 	// The number of secondary private IPs to assign to the NIC.
@@ -183,7 +183,7 @@ type NicPrivateIpState struct {
 	// The ID of the NIC.
 	NicId            pulumi.StringPtrInput
 	PrimaryPrivateIp pulumi.StringPtrInput
-	// The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+	// The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps pulumi.StringArrayInput
 	RequestId  pulumi.StringPtrInput
 	// The number of secondary private IPs to assign to the NIC.
@@ -199,7 +199,7 @@ type nicPrivateIpArgs struct {
 	AllowRelink *bool `pulumi:"allowRelink"`
 	// The ID of the NIC.
 	NicId string `pulumi:"nicId"`
-	// The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+	// The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps []string `pulumi:"privateIps"`
 	// The number of secondary private IPs to assign to the NIC.
 	SecondaryPrivateIpCount *int `pulumi:"secondaryPrivateIpCount"`
@@ -211,7 +211,7 @@ type NicPrivateIpArgs struct {
 	AllowRelink pulumi.BoolPtrInput
 	// The ID of the NIC.
 	NicId pulumi.StringInput
-	// The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+	// The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps pulumi.StringArrayInput
 	// The number of secondary private IPs to assign to the NIC.
 	SecondaryPrivateIpCount pulumi.IntPtrInput
@@ -318,7 +318,7 @@ func (o NicPrivateIpOutput) PrimaryPrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NicPrivateIp) pulumi.StringOutput { return v.PrimaryPrivateIp }).(pulumi.StringOutput)
 }
 
-// The secondary private IP or IPs you want to assign to the NIC within the IP range of the Subnet.
+// The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 func (o NicPrivateIpOutput) PrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NicPrivateIp) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }

@@ -162,6 +162,10 @@ export interface GetLoadBalancerResult {
      */
     readonly sourceSecurityGroups: outputs.GetLoadBalancerSourceSecurityGroup[];
     /**
+     * The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
+     */
+    readonly state: string;
+    /**
      * The ID of the Subnet in which the load balancer was created.
      */
     readonly subnets: string[];

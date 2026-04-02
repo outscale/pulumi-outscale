@@ -75,7 +75,7 @@ type Vm struct {
 	PrivateDnsName pulumi.StringOutput `pulumi:"privateDnsName"`
 	// The primary private IP of the VM.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
-	// One or more private IPs of the VM.
+	// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
 	// The product codes associated with the OMI used to create the VM.
 	ProductCodes pulumi.StringArrayOutput `pulumi:"productCodes"`
@@ -210,7 +210,7 @@ type vmState struct {
 	PrivateDnsName *string `pulumi:"privateDnsName"`
 	// The primary private IP of the VM.
 	PrivateIp *string `pulumi:"privateIp"`
-	// One or more private IPs of the VM.
+	// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps []string `pulumi:"privateIps"`
 	// The product codes associated with the OMI used to create the VM.
 	ProductCodes []string `pulumi:"productCodes"`
@@ -306,7 +306,7 @@ type VmState struct {
 	PrivateDnsName pulumi.StringPtrInput
 	// The primary private IP of the VM.
 	PrivateIp pulumi.StringPtrInput
-	// One or more private IPs of the VM.
+	// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps pulumi.StringArrayInput
 	// The product codes associated with the OMI used to create the VM.
 	ProductCodes pulumi.StringArrayInput
@@ -383,7 +383,7 @@ type vmArgs struct {
 	PlacementTenancy *string `pulumi:"placementTenancy"`
 	// The primary network interface of the VM.
 	PrimaryNics []VmPrimaryNic `pulumi:"primaryNics"`
-	// One or more private IPs of the VM.
+	// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps []string `pulumi:"privateIps"`
 	// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBootAction *string `pulumi:"secureBootAction"`
@@ -440,7 +440,7 @@ type VmArgs struct {
 	PlacementTenancy pulumi.StringPtrInput
 	// The primary network interface of the VM.
 	PrimaryNics VmPrimaryNicArrayInput
-	// One or more private IPs of the VM.
+	// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps pulumi.StringArrayInput
 	// One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
 	SecureBootAction pulumi.StringPtrInput
@@ -686,7 +686,7 @@ func (o VmOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// One or more private IPs of the VM.
+// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 func (o VmOutput) PrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
