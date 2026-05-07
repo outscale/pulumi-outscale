@@ -50,7 +50,7 @@ namespace Pulumi.Outscale
         public Output<string> LinkPublicIpId { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID of the owner of the NIC.
+        /// The OUTSCALE account ID of the owner of the NIC.
         /// </summary>
         [Output("nicAccountId")]
         public Output<string> NicAccountId { get; private set; } = null!;
@@ -87,6 +87,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.PublicIpTag>> Tags { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.PublicIpTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VM the public IP is associated with (if any).
@@ -152,6 +155,9 @@ namespace Pulumi.Outscale
             set => _tags = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.PublicIpTimeoutsArgs>? Timeouts { get; set; }
+
         public PublicIpArgs()
         {
         }
@@ -167,7 +173,7 @@ namespace Pulumi.Outscale
         public Input<string>? LinkPublicIpId { get; set; }
 
         /// <summary>
-        /// The account ID of the owner of the NIC.
+        /// The OUTSCALE account ID of the owner of the NIC.
         /// </summary>
         [Input("nicAccountId")]
         public Input<string>? NicAccountId { get; set; }
@@ -210,6 +216,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.PublicIpTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.PublicIpTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the VM the public IP is associated with (if any).

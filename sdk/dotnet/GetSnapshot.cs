@@ -127,7 +127,7 @@ namespace Pulumi.Outscale
     public sealed class GetSnapshotArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.Outscale
     public sealed class GetSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string AccountAlias;
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

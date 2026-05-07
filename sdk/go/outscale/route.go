@@ -62,7 +62,7 @@ import (
 //
 // ```
 //
-// ### Create a route to an Internet service
+// ### Create a route to an internet service
 //
 // ```go
 // package main
@@ -128,7 +128,7 @@ type Route struct {
 	// The state of a route in the route table (always `active`).
 	State    pulumi.StringOutput    `pulumi:"state"`
 	Timeouts RouteTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringOutput `pulumi:"vmAccountId"`
 	// The ID of a NAT VM in your Net (attached to exactly one NIC).
 	VmId pulumi.StringOutput `pulumi:"vmId"`
@@ -196,7 +196,7 @@ type routeState struct {
 	// The state of a route in the route table (always `active`).
 	State    *string        `pulumi:"state"`
 	Timeouts *RouteTimeouts `pulumi:"timeouts"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId *string `pulumi:"vmAccountId"`
 	// The ID of a NAT VM in your Net (attached to exactly one NIC).
 	VmId *string `pulumi:"vmId"`
@@ -229,7 +229,7 @@ type RouteState struct {
 	// The state of a route in the route table (always `active`).
 	State    pulumi.StringPtrInput
 	Timeouts RouteTimeoutsPtrInput
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringPtrInput
 	// The ID of a NAT VM in your Net (attached to exactly one NIC).
 	VmId pulumi.StringPtrInput
@@ -436,7 +436,7 @@ func (o RouteOutput) Timeouts() RouteTimeoutsPtrOutput {
 	return o.ApplyT(func(v *Route) RouteTimeoutsPtrOutput { return v.Timeouts }).(RouteTimeoutsPtrOutput)
 }
 
-// The account ID of the owner of the VM.
+// The OUTSCALE account ID of the owner of the VM.
 func (o RouteOutput) VmAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.VmAccountId }).(pulumi.StringOutput)
 }

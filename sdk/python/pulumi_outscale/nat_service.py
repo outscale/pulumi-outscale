@@ -23,7 +23,8 @@ class NatServiceArgs:
     def __init__(__self__, *,
                  public_ip_id: pulumi.Input[_builtins.str],
                  subnet_id: pulumi.Input[_builtins.str],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['NatServiceTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a NatService resource.
         :param pulumi.Input[_builtins.str] public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
@@ -35,6 +36,8 @@ class NatServiceArgs:
         pulumi.set(__self__, "subnet_id", subnet_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="publicIpId")
@@ -73,6 +76,15 @@ class NatServiceArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['NatServiceTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['NatServiceTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _NatServiceState:
@@ -84,7 +96,8 @@ class _NatServiceState:
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['NatServiceTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering NatService resources.
         :param pulumi.Input[_builtins.str] nat_service_id: The ID of the NAT service.
@@ -112,6 +125,8 @@ class _NatServiceState:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="natServiceId")
@@ -207,6 +222,15 @@ class _NatServiceState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NatServiceTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['NatServiceTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['NatServiceTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("outscale:index/natService:NatService")
 class NatService(pulumi.CustomResource):
@@ -217,6 +241,7 @@ class NatService(pulumi.CustomResource):
                  public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatServiceTagArgs', 'NatServiceTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['NatServiceTimeoutsArgs', 'NatServiceTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a NAT service.
@@ -361,6 +386,7 @@ class NatService(pulumi.CustomResource):
                  public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatServiceTagArgs', 'NatServiceTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['NatServiceTimeoutsArgs', 'NatServiceTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -377,6 +403,7 @@ class NatService(pulumi.CustomResource):
                 raise TypeError("Missing required property 'subnet_id'")
             __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["nat_service_id"] = None
             __props__.__dict__["net_id"] = None
             __props__.__dict__["public_ips"] = None
@@ -399,7 +426,8 @@ class NatService(pulumi.CustomResource):
             request_id: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatServiceTagArgs', 'NatServiceTagArgsDict']]]]] = None) -> 'NatService':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatServiceTagArgs', 'NatServiceTagArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['NatServiceTimeoutsArgs', 'NatServiceTimeoutsArgsDict']]] = None) -> 'NatService':
         """
         Get an existing NatService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -428,6 +456,7 @@ class NatService(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["timeouts"] = timeouts
         return NatService(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -491,4 +520,9 @@ class NatService(pulumi.CustomResource):
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.NatServiceTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

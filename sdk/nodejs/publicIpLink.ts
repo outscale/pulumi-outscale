@@ -106,6 +106,7 @@ export class PublicIpLink extends pulumi.CustomResource {
     declare public readonly publicIpId: pulumi.Output<string>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
     declare public /*out*/ readonly tags: pulumi.Output<outputs.PublicIpLinkTag[]>;
+    declare public readonly timeouts: pulumi.Output<outputs.PublicIpLinkTimeouts | undefined>;
     /**
      * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
      */
@@ -133,6 +134,7 @@ export class PublicIpLink extends pulumi.CustomResource {
             resourceInputs["publicIpId"] = state?.publicIpId;
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as PublicIpLinkArgs | undefined;
@@ -141,6 +143,7 @@ export class PublicIpLink extends pulumi.CustomResource {
             resourceInputs["privateIp"] = args?.privateIp;
             resourceInputs["publicIp"] = args?.publicIp;
             resourceInputs["publicIpId"] = args?.publicIpId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vmId"] = args?.vmId;
             resourceInputs["linkPublicIpId"] = undefined /*out*/;
             resourceInputs["nicAccountId"] = undefined /*out*/;
@@ -183,6 +186,7 @@ export interface PublicIpLinkState {
     publicIpId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<inputs.PublicIpLinkTag>[]>;
+    timeouts?: pulumi.Input<inputs.PublicIpLinkTimeouts>;
     /**
      * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
      */
@@ -213,6 +217,7 @@ export interface PublicIpLinkArgs {
      * The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
      */
     publicIpId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.PublicIpLinkTimeouts>;
     /**
      * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
      */

@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class GetLoadBalancerSourceSecurityGroupResult
     {
         /// <summary>
-        /// The account ID of the owner of the security group.
+        /// The OUTSCALE account ID of the owner of the security group.
         /// </summary>
         public readonly string SecurityGroupAccountId;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class NetPeeringAcceptationAccepterNet
     {
         /// <summary>
-        /// The account ID of the owner of the source Net.
+        /// The OUTSCALE account ID of the owner of the source Net.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

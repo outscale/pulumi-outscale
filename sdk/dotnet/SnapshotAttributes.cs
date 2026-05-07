@@ -87,14 +87,11 @@ namespace Pulumi.Outscale
     ///     var snapshotAttributes02 = new Outscale.SnapshotAttributes("snapshot_attributes02", new()
     ///     {
     ///         SnapshotId = snapshot01.SnapshotId,
-    ///         PermissionsToCreateVolumeRemovals = new[]
+    ///         PermissionsToCreateVolumeRemovals = new Outscale.Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs
     ///         {
-    ///             new Outscale.Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalArgs
+    ///             AccountIds = new[]
     ///             {
-    ///                 AccountIds = new[]
-    ///                 {
-    ///                     "012345678910",
-    ///                 },
+    ///                 "012345678910",
     ///             },
     ///         },
     ///     });
@@ -106,7 +103,7 @@ namespace Pulumi.Outscale
     public partial class SnapshotAttributes : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -121,7 +118,7 @@ namespace Pulumi.Outscale
         /// Information about the users from whom you want to remove permissions for the resource.
         /// </summary>
         [Output("permissionsToCreateVolumeRemovals")]
-        public Output<ImmutableArray<Outputs.SnapshotAttributesPermissionsToCreateVolumeRemoval>> PermissionsToCreateVolumeRemovals { get; private set; } = null!;
+        public Output<Outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals?> PermissionsToCreateVolumeRemovals { get; private set; } = null!;
 
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
@@ -131,6 +128,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Output("snapshotId")]
         public Output<string> SnapshotId { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.SnapshotAttributesTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -184,23 +184,20 @@ namespace Pulumi.Outscale
         [Input("permissionsToCreateVolumeAdditions")]
         public Input<Inputs.SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs>? PermissionsToCreateVolumeAdditions { get; set; }
 
-        [Input("permissionsToCreateVolumeRemovals")]
-        private InputList<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalArgs>? _permissionsToCreateVolumeRemovals;
-
         /// <summary>
         /// Information about the users from whom you want to remove permissions for the resource.
         /// </summary>
-        public InputList<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalArgs> PermissionsToCreateVolumeRemovals
-        {
-            get => _permissionsToCreateVolumeRemovals ?? (_permissionsToCreateVolumeRemovals = new InputList<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalArgs>());
-            set => _permissionsToCreateVolumeRemovals = value;
-        }
+        [Input("permissionsToCreateVolumeRemovals")]
+        public Input<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs>? PermissionsToCreateVolumeRemovals { get; set; }
 
         /// <summary>
         /// The ID of the snapshot.
         /// </summary>
         [Input("snapshotId", required: true)]
         public Input<string> SnapshotId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.SnapshotAttributesTimeoutsArgs>? Timeouts { get; set; }
 
         public SnapshotAttributesArgs()
         {
@@ -211,7 +208,7 @@ namespace Pulumi.Outscale
     public sealed class SnapshotAttributesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -222,17 +219,11 @@ namespace Pulumi.Outscale
         [Input("permissionsToCreateVolumeAdditions")]
         public Input<Inputs.SnapshotAttributesPermissionsToCreateVolumeAdditionsGetArgs>? PermissionsToCreateVolumeAdditions { get; set; }
 
-        [Input("permissionsToCreateVolumeRemovals")]
-        private InputList<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalGetArgs>? _permissionsToCreateVolumeRemovals;
-
         /// <summary>
         /// Information about the users from whom you want to remove permissions for the resource.
         /// </summary>
-        public InputList<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalGetArgs> PermissionsToCreateVolumeRemovals
-        {
-            get => _permissionsToCreateVolumeRemovals ?? (_permissionsToCreateVolumeRemovals = new InputList<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalGetArgs>());
-            set => _permissionsToCreateVolumeRemovals = value;
-        }
+        [Input("permissionsToCreateVolumeRemovals")]
+        public Input<Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalsGetArgs>? PermissionsToCreateVolumeRemovals { get; set; }
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -242,6 +233,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.SnapshotAttributesTimeoutsGetArgs>? Timeouts { get; set; }
 
         public SnapshotAttributesState()
         {

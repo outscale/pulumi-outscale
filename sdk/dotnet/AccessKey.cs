@@ -90,7 +90,7 @@ namespace Pulumi.Outscale
         public Output<string> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        /// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         /// </summary>
         [Output("expirationDate")]
         public Output<string> ExpirationDate { get; private set; } = null!;
@@ -116,11 +116,14 @@ namespace Pulumi.Outscale
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        [Output("tag")]
+        public Output<string?> Tag { get; private set; } = null!;
+
         [Output("timeouts")]
         public Output<Outputs.AccessKeyTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        /// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         /// </summary>
         [Output("userName")]
         public Output<string?> UserName { get; private set; } = null!;
@@ -172,7 +175,7 @@ namespace Pulumi.Outscale
     public sealed class AccessKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        /// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
@@ -183,11 +186,14 @@ namespace Pulumi.Outscale
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
         [Input("timeouts")]
         public Input<Inputs.AccessKeyTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        /// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
@@ -213,7 +219,7 @@ namespace Pulumi.Outscale
         public Input<string>? CreationDate { get; set; }
 
         /// <summary>
-        /// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        /// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
@@ -239,11 +245,14 @@ namespace Pulumi.Outscale
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
         [Input("timeouts")]
         public Input<Inputs.AccessKeyTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        /// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Outscale.Inputs
         private InputList<string>? _accountIds;
 
         /// <summary>
-        /// The account ID of one or more users to whom you want to give permissions.
+        /// The OUTSCALE account ID of one or more users to whom you want to give permissions.
         /// </summary>
         public InputList<string> AccountIds
         {

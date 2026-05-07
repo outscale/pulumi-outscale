@@ -462,7 +462,7 @@ export class Vm extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
-     * The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+     * The ID of the Subnet in which you want to create the VM.
      */
     declare public readonly subnetId: pulumi.Output<string>;
     /**
@@ -776,7 +776,7 @@ export interface VmState {
      */
     stateReason?: pulumi.Input<string>;
     /**
-     * The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+     * The ID of the Subnet in which you want to create the VM.
      */
     subnetId?: pulumi.Input<string>;
     /**
@@ -888,7 +888,7 @@ export interface VmArgs {
      */
     state?: pulumi.Input<string>;
     /**
-     * The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+     * The ID of the Subnet in which you want to create the VM.
      */
     subnetId?: pulumi.Input<string>;
     /**

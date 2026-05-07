@@ -54,7 +54,7 @@ type PublicIp struct {
 
 	// (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
 	LinkPublicIpId pulumi.StringOutput `pulumi:"linkPublicIpId"`
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	NicAccountId pulumi.StringOutput `pulumi:"nicAccountId"`
 	// The ID of the NIC the public IP is associated with (if any).
 	NicId pulumi.StringOutput `pulumi:"nicId"`
@@ -66,7 +66,8 @@ type PublicIp struct {
 	PublicIpId pulumi.StringOutput `pulumi:"publicIpId"`
 	RequestId  pulumi.StringOutput `pulumi:"requestId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags PublicIpTagArrayOutput `pulumi:"tags"`
+	Tags     PublicIpTagArrayOutput    `pulumi:"tags"`
+	Timeouts PublicIpTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the VM the public IP is associated with (if any).
 	VmId pulumi.StringOutput `pulumi:"vmId"`
 }
@@ -103,7 +104,7 @@ func GetPublicIp(ctx *pulumi.Context,
 type publicIpState struct {
 	// (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
 	LinkPublicIpId *string `pulumi:"linkPublicIpId"`
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	NicAccountId *string `pulumi:"nicAccountId"`
 	// The ID of the NIC the public IP is associated with (if any).
 	NicId *string `pulumi:"nicId"`
@@ -115,7 +116,8 @@ type publicIpState struct {
 	PublicIpId *string `pulumi:"publicIpId"`
 	RequestId  *string `pulumi:"requestId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []PublicIpTag `pulumi:"tags"`
+	Tags     []PublicIpTag     `pulumi:"tags"`
+	Timeouts *PublicIpTimeouts `pulumi:"timeouts"`
 	// The ID of the VM the public IP is associated with (if any).
 	VmId *string `pulumi:"vmId"`
 }
@@ -123,7 +125,7 @@ type publicIpState struct {
 type PublicIpState struct {
 	// (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
 	LinkPublicIpId pulumi.StringPtrInput
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	NicAccountId pulumi.StringPtrInput
 	// The ID of the NIC the public IP is associated with (if any).
 	NicId pulumi.StringPtrInput
@@ -135,7 +137,8 @@ type PublicIpState struct {
 	PublicIpId pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags PublicIpTagArrayInput
+	Tags     PublicIpTagArrayInput
+	Timeouts PublicIpTimeoutsPtrInput
 	// The ID of the VM the public IP is associated with (if any).
 	VmId pulumi.StringPtrInput
 }
@@ -146,13 +149,15 @@ func (PublicIpState) ElementType() reflect.Type {
 
 type publicIpArgs struct {
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []PublicIpTag `pulumi:"tags"`
+	Tags     []PublicIpTag     `pulumi:"tags"`
+	Timeouts *PublicIpTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a PublicIp resource.
 type PublicIpArgs struct {
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags PublicIpTagArrayInput
+	Tags     PublicIpTagArrayInput
+	Timeouts PublicIpTimeoutsPtrInput
 }
 
 func (PublicIpArgs) ElementType() reflect.Type {
@@ -247,7 +252,7 @@ func (o PublicIpOutput) LinkPublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIp) pulumi.StringOutput { return v.LinkPublicIpId }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o PublicIpOutput) NicAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIp) pulumi.StringOutput { return v.NicAccountId }).(pulumi.StringOutput)
 }
@@ -279,6 +284,10 @@ func (o PublicIpOutput) RequestId() pulumi.StringOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o PublicIpOutput) Tags() PublicIpTagArrayOutput {
 	return o.ApplyT(func(v *PublicIp) PublicIpTagArrayOutput { return v.Tags }).(PublicIpTagArrayOutput)
+}
+
+func (o PublicIpOutput) Timeouts() PublicIpTimeoutsPtrOutput {
+	return o.ApplyT(func(v *PublicIp) PublicIpTimeoutsPtrOutput { return v.Timeouts }).(PublicIpTimeoutsPtrOutput)
 }
 
 // The ID of the VM the public IP is associated with (if any).

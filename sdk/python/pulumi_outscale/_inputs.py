@@ -25,8 +25,14 @@ __all__ = [
     'CaTimeoutsArgsDict',
     'ClientGatewayTagArgs',
     'ClientGatewayTagArgsDict',
+    'ClientGatewayTimeoutsArgs',
+    'ClientGatewayTimeoutsArgsDict',
     'DhcpOptionTagArgs',
     'DhcpOptionTagArgsDict',
+    'DhcpOptionTimeoutsArgs',
+    'DhcpOptionTimeoutsArgsDict',
+    'FlexibleGpuLinkTimeoutsArgs',
+    'FlexibleGpuLinkTimeoutsArgsDict',
     'FlexibleGpuTimeoutsArgs',
     'FlexibleGpuTimeoutsArgsDict',
     'ImageBlockDeviceMappingArgs',
@@ -117,6 +123,8 @@ __all__ = [
     'NatServicePublicIpArgsDict',
     'NatServiceTagArgs',
     'NatServiceTagArgsDict',
+    'NatServiceTimeoutsArgs',
+    'NatServiceTimeoutsArgsDict',
     'NetAccessPointTagArgs',
     'NetAccessPointTagArgsDict',
     'NetAccessPointTimeoutsArgs',
@@ -187,8 +195,12 @@ __all__ = [
     'ProviderEndpointArgsDict',
     'PublicIpLinkTagArgs',
     'PublicIpLinkTagArgsDict',
+    'PublicIpLinkTimeoutsArgs',
+    'PublicIpLinkTimeoutsArgsDict',
     'PublicIpTagArgs',
     'PublicIpTagArgsDict',
+    'PublicIpTimeoutsArgs',
+    'PublicIpTimeoutsArgsDict',
     'RouteTableLinkRouteTableArgs',
     'RouteTableLinkRouteTableArgsDict',
     'RouteTableLinkTimeoutsArgs',
@@ -221,10 +233,14 @@ __all__ = [
     'SecurityGroupTagArgsDict',
     'SecurityGroupTimeoutsArgs',
     'SecurityGroupTimeoutsArgsDict',
+    'ServerCertificateTimeoutsArgs',
+    'ServerCertificateTimeoutsArgsDict',
     'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs',
     'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict',
-    'SnapshotAttributesPermissionsToCreateVolumeRemovalArgs',
-    'SnapshotAttributesPermissionsToCreateVolumeRemovalArgsDict',
+    'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs',
+    'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict',
+    'SnapshotAttributesTimeoutsArgs',
+    'SnapshotAttributesTimeoutsArgsDict',
     'SnapshotExportTaskOsuExportArgs',
     'SnapshotExportTaskOsuExportArgsDict',
     'SnapshotExportTaskOsuExportOsuApiKeyArgs',
@@ -235,6 +251,8 @@ __all__ = [
     'SnapshotPermissionsToCreateVolumeArgsDict',
     'SnapshotTagArgs',
     'SnapshotTagArgsDict',
+    'SnapshotTimeoutsArgs',
+    'SnapshotTimeoutsArgsDict',
     'SubnetTagArgs',
     'SubnetTagArgsDict',
     'SubnetTimeoutsArgs',
@@ -307,8 +325,12 @@ __all__ = [
     'VolumeTimeoutsArgsDict',
     'VpnConnectionRouteArgs',
     'VpnConnectionRouteArgsDict',
+    'VpnConnectionRouteTimeoutsArgs',
+    'VpnConnectionRouteTimeoutsArgsDict',
     'VpnConnectionTagArgs',
     'VpnConnectionTagArgsDict',
+    'VpnConnectionTimeoutsArgs',
+    'VpnConnectionTimeoutsArgsDict',
     'VpnConnectionVgwTelemetryArgs',
     'VpnConnectionVgwTelemetryArgsDict',
     'GetAccessKeyFilterArgs',
@@ -827,9 +849,9 @@ class CaTimeoutsArgs:
 
 if not MYPY:
     class ClientGatewayTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
+        key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -841,27 +863,26 @@ elif False:
 @pulumi.input_type
 class ClientGatewayTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
@@ -878,10 +899,102 @@ class ClientGatewayTagArgs:
 
 
 if not MYPY:
-    class DhcpOptionTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
+    class ClientGatewayTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    ClientGatewayTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientGatewayTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class DhcpOptionTagArgsDict(TypedDict):
+        key: pulumi.Input[_builtins.str]
+        """
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -893,27 +1006,26 @@ elif False:
 @pulumi.input_type
 class DhcpOptionTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
@@ -927,6 +1039,190 @@ class DhcpOptionTagArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DhcpOptionTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    DhcpOptionTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DhcpOptionTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
+    class FlexibleGpuLinkTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    FlexibleGpuLinkTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FlexibleGpuLinkTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:
@@ -1378,7 +1674,7 @@ if not MYPY:
     class ImageExportTaskTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1393,7 +1689,7 @@ class ImageExportTaskTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -1405,7 +1701,7 @@ class ImageExportTaskTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1430,7 +1726,7 @@ if not MYPY:
     class ImageLaunchPermissionPermissionAdditionsArgsDict(TypedDict):
         account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        The account ID of one or more users to whom you want to give permissions.
+        The OUTSCALE account ID of one or more users to whom you want to give permissions.
         """
         global_permission: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1445,7 +1741,7 @@ class ImageLaunchPermissionPermissionAdditionsArgs:
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  global_permission: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The account ID of one or more users to whom you want to give permissions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The OUTSCALE account ID of one or more users to whom you want to give permissions.
         :param pulumi.Input[_builtins.str] global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -1457,7 +1753,7 @@ class ImageLaunchPermissionPermissionAdditionsArgs:
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The account ID of one or more users to whom you want to give permissions.
+        The OUTSCALE account ID of one or more users to whom you want to give permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1482,7 +1778,7 @@ if not MYPY:
     class ImageLaunchPermissionPermissionRemovalsArgsDict(TypedDict):
         account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        The account ID of one or more users from whom you want to remove permissions.
+        The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         """
         global_permission: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1497,7 +1793,7 @@ class ImageLaunchPermissionPermissionRemovalsArgs:
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  global_permission: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         :param pulumi.Input[_builtins.str] global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -1509,7 +1805,7 @@ class ImageLaunchPermissionPermissionRemovalsArgs:
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The account ID of one or more users from whom you want to remove permissions.
+        The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1534,7 +1830,7 @@ if not MYPY:
     class ImageLaunchPermissionPermissionsToLaunchArgsDict(TypedDict):
         account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         global_permission: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1551,7 +1847,7 @@ class ImageLaunchPermissionPermissionsToLaunchArgs:
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  global_permission: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: One or more account IDs that the permission is associated with.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
         :param pulumi.Input[_builtins.str] global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `additions`) or to make the resource private (if the parent parameter is `removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -1565,7 +1861,7 @@ class ImageLaunchPermissionPermissionsToLaunchArgs:
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1592,7 +1888,7 @@ if not MYPY:
     class ImagePermissionsToLaunchArgsDict(TypedDict):
         account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         global_permission: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -1609,7 +1905,7 @@ class ImagePermissionsToLaunchArgs:
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  global_permission: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: One or more account IDs that the permission is associated with.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
         :param pulumi.Input[_builtins.bool] global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -1623,7 +1919,7 @@ class ImagePermissionsToLaunchArgs:
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1702,7 +1998,7 @@ if not MYPY:
     class ImageTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1717,7 +2013,7 @@ class ImageTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -1729,7 +2025,7 @@ class ImageTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1754,7 +2050,7 @@ if not MYPY:
     class InternetServiceLinkTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: pulumi.Input[_builtins.str]
         """
@@ -1769,7 +2065,7 @@ class InternetServiceLinkTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -1779,7 +2075,7 @@ class InternetServiceLinkTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1896,7 +2192,7 @@ if not MYPY:
     class InternetServiceTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1911,7 +2207,7 @@ class InternetServiceTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -1922,7 +2218,7 @@ class InternetServiceTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -2039,7 +2335,7 @@ if not MYPY:
     class KeypairTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2054,7 +2350,7 @@ class KeypairTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -2065,7 +2361,7 @@ class KeypairTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -2274,7 +2570,7 @@ if not MYPY:
     class LoadBalancerApplicationStickyCookiePolicyArgsDict(TypedDict):
         cookie_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         policy_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2289,7 +2585,7 @@ class LoadBalancerApplicationStickyCookiePolicyArgs:
                  cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness.
+        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] policy_name: The name of the stickiness policy.
         """
         if cookie_name is not None:
@@ -2301,7 +2597,7 @@ class LoadBalancerApplicationStickyCookiePolicyArgs:
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -2418,7 +2714,7 @@ if not MYPY:
     class LoadBalancerAttributesApplicationStickyCookiePolicyArgsDict(TypedDict):
         cookie_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         policy_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2433,7 +2729,7 @@ class LoadBalancerAttributesApplicationStickyCookiePolicyArgs:
                  cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness.
+        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] policy_name: The name of the stickiness policy.
         """
         if cookie_name is not None:
@@ -2445,7 +2741,7 @@ class LoadBalancerAttributesApplicationStickyCookiePolicyArgs:
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -2784,7 +3080,7 @@ if not MYPY:
     class LoadBalancerAttributesSourceSecurityGroupArgsDict(TypedDict):
         security_group_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         security_group_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2799,7 +3095,7 @@ class LoadBalancerAttributesSourceSecurityGroupArgs:
                  security_group_account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] security_group_account_id: The account ID of the owner of the security group.
+        :param pulumi.Input[_builtins.str] security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.
         """
         if security_group_account_id is not None:
@@ -2811,7 +3107,7 @@ class LoadBalancerAttributesSourceSecurityGroupArgs:
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -2836,7 +3132,7 @@ if not MYPY:
     class LoadBalancerAttributesTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2851,7 +3147,7 @@ class LoadBalancerAttributesTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 128 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -2863,7 +3159,7 @@ class LoadBalancerAttributesTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3495,7 +3791,7 @@ if not MYPY:
     class LoadBalancerPolicyApplicationStickyCookiePolicyArgsDict(TypedDict):
         cookie_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         policy_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -3510,7 +3806,7 @@ class LoadBalancerPolicyApplicationStickyCookiePolicyArgs:
                  cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         :param pulumi.Input[_builtins.str] policy_name: The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
         """
         if cookie_name is not None:
@@ -3522,7 +3818,7 @@ class LoadBalancerPolicyApplicationStickyCookiePolicyArgs:
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -3863,7 +4159,7 @@ if not MYPY:
     class LoadBalancerPolicySourceSecurityGroupArgsDict(TypedDict):
         security_group_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         security_group_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -3878,7 +4174,7 @@ class LoadBalancerPolicySourceSecurityGroupArgs:
                  security_group_account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] security_group_account_id: The account ID of the owner of the security group.
+        :param pulumi.Input[_builtins.str] security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.
         """
         if security_group_account_id is not None:
@@ -3890,7 +4186,7 @@ class LoadBalancerPolicySourceSecurityGroupArgs:
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -3915,7 +4211,7 @@ if not MYPY:
     class LoadBalancerPolicyTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -3930,7 +4226,7 @@ class LoadBalancerPolicyTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 128 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -3942,7 +4238,7 @@ class LoadBalancerPolicyTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3967,7 +4263,7 @@ if not MYPY:
     class LoadBalancerSourceSecurityGroupArgsDict(TypedDict):
         security_group_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         security_group_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -3982,7 +4278,7 @@ class LoadBalancerSourceSecurityGroupArgs:
                  security_group_account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] security_group_account_id: The account ID of the owner of the security group.
+        :param pulumi.Input[_builtins.str] security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param pulumi.Input[_builtins.str] security_group_name: The name of the security group.
         """
         if security_group_account_id is not None:
@@ -3994,7 +4290,7 @@ class LoadBalancerSourceSecurityGroupArgs:
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -4019,7 +4315,7 @@ if not MYPY:
     class LoadBalancerTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4034,7 +4330,7 @@ class LoadBalancerTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 128 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -4046,7 +4342,7 @@ class LoadBalancerTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -4253,11 +4549,11 @@ class MainRouteTableLinkTimeoutsArgs:
 
 if not MYPY:
     class NatServicePublicIpArgsDict(TypedDict):
-        public_ip: NotRequired[pulumi.Input[_builtins.str]]
+        public_ip: pulumi.Input[_builtins.str]
         """
         The public IP associated with the NAT service.
         """
-        public_ip_id: NotRequired[pulumi.Input[_builtins.str]]
+        public_ip_id: pulumi.Input[_builtins.str]
         """
         The allocation ID of the public IP to associate with the NAT service.<br />
         If the public IP is already associated with another resource, you must first disassociate it.
@@ -4268,33 +4564,31 @@ elif False:
 @pulumi.input_type
 class NatServicePublicIpArgs:
     def __init__(__self__, *,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 public_ip: pulumi.Input[_builtins.str],
+                 public_ip_id: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] public_ip: The public IP associated with the NAT service.
         :param pulumi.Input[_builtins.str] public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
                If the public IP is already associated with another resource, you must first disassociate it.
         """
-        if public_ip is not None:
-            pulumi.set(__self__, "public_ip", public_ip)
-        if public_ip_id is not None:
-            pulumi.set(__self__, "public_ip_id", public_ip_id)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "public_ip_id", public_ip_id)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[_builtins.str]:
         """
         The public IP associated with the NAT service.
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpId")
-    def public_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_id(self) -> pulumi.Input[_builtins.str]:
         """
         The allocation ID of the public IP to associate with the NAT service.<br />
         If the public IP is already associated with another resource, you must first disassociate it.
@@ -4302,15 +4596,15 @@ class NatServicePublicIpArgs:
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
-    def public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "public_ip_id", value)
 
 
 if not MYPY:
     class NatServiceTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
+        key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4322,27 +4616,26 @@ elif False:
 @pulumi.input_type
 class NatServiceTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
@@ -4359,10 +4652,102 @@ class NatServiceTagArgs:
 
 
 if not MYPY:
+    class NatServiceTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    NatServiceTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NatServiceTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class NetAccessPointTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4377,7 +4762,7 @@ class NetAccessPointTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -4388,7 +4773,7 @@ class NetAccessPointTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -4505,7 +4890,7 @@ if not MYPY:
     class NetAttributesTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: pulumi.Input[_builtins.str]
         """
@@ -4520,7 +4905,7 @@ class NetAttributesTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -4530,7 +4915,7 @@ class NetAttributesTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -4647,7 +5032,7 @@ if not MYPY:
     class NetPeeringAcceptationAccepterNetArgsDict(TypedDict):
         account_id: pulumi.Input[_builtins.str]
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         ip_range: pulumi.Input[_builtins.str]
         """
@@ -4667,7 +5052,7 @@ class NetPeeringAcceptationAccepterNetArgs:
                  ip_range: pulumi.Input[_builtins.str],
                  net_id: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the source Net.
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[_builtins.str] net_id: The ID of the source Net.
         """
@@ -4679,7 +5064,7 @@ class NetPeeringAcceptationAccepterNetArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -4716,7 +5101,7 @@ if not MYPY:
     class NetPeeringAcceptationSourceNetArgsDict(TypedDict):
         account_id: pulumi.Input[_builtins.str]
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         ip_range: pulumi.Input[_builtins.str]
         """
@@ -4736,7 +5121,7 @@ class NetPeeringAcceptationSourceNetArgs:
                  ip_range: pulumi.Input[_builtins.str],
                  net_id: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the source Net.
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[_builtins.str] net_id: The ID of the source Net.
         """
@@ -4748,7 +5133,7 @@ class NetPeeringAcceptationSourceNetArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -4835,7 +5220,7 @@ if not MYPY:
     class NetPeeringAcceptationTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: pulumi.Input[_builtins.str]
         """
@@ -4850,7 +5235,7 @@ class NetPeeringAcceptationTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -4860,7 +5245,7 @@ class NetPeeringAcceptationTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -4977,7 +5362,7 @@ if not MYPY:
     class NetPeeringAccepterNetArgsDict(TypedDict):
         account_id: pulumi.Input[_builtins.str]
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         ip_range: pulumi.Input[_builtins.str]
         """
@@ -4997,7 +5382,7 @@ class NetPeeringAccepterNetArgs:
                  ip_range: pulumi.Input[_builtins.str],
                  net_id: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the source Net.
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[_builtins.str] net_id: The ID of the source Net.
         """
@@ -5009,7 +5394,7 @@ class NetPeeringAccepterNetArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -5046,7 +5431,7 @@ if not MYPY:
     class NetPeeringSourceNetArgsDict(TypedDict):
         account_id: pulumi.Input[_builtins.str]
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         ip_range: pulumi.Input[_builtins.str]
         """
@@ -5066,7 +5451,7 @@ class NetPeeringSourceNetArgs:
                  ip_range: pulumi.Input[_builtins.str],
                  net_id: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the source Net.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the source Net.
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[_builtins.str] net_id: The ID of the source Net.
         """
@@ -5078,7 +5463,7 @@ class NetPeeringSourceNetArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -5165,7 +5550,7 @@ if not MYPY:
     class NetPeeringTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5180,7 +5565,7 @@ class NetPeeringTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -5191,7 +5576,7 @@ class NetPeeringTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -5308,7 +5693,7 @@ if not MYPY:
     class NetTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5323,7 +5708,7 @@ class NetTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -5334,7 +5719,7 @@ class NetTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -5467,7 +5852,7 @@ if not MYPY:
         """
         vm_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         vm_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5490,7 +5875,7 @@ class NicLinkNicArgs:
         :param pulumi.Input[_builtins.int] device_number: The device index for the NIC attachment (between `1` and `7`, both included).
         :param pulumi.Input[_builtins.str] link_nic_id: The ID of the NIC to attach.
         :param pulumi.Input[_builtins.str] state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
-        :param pulumi.Input[_builtins.str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[_builtins.str] vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         """
         if delete_on_vm_deletion is not None:
@@ -5558,7 +5943,7 @@ class NicLinkNicArgs:
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -5595,7 +5980,7 @@ if not MYPY:
         """
         public_ip_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         public_ip_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5616,7 +6001,7 @@ class NicLinkPublicIpArgs:
         :param pulumi.Input[_builtins.str] link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP associated with the NIC.
-        :param pulumi.Input[_builtins.str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[_builtins.str] public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param pulumi.Input[_builtins.str] public_ip_id: The allocation ID of the public IP.
         """
         if link_public_ip_id is not None:
@@ -5670,7 +6055,7 @@ class NicLinkPublicIpArgs:
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -5799,7 +6184,7 @@ if not MYPY:
         """
         public_ip_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         public_ip_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5820,7 +6205,7 @@ class NicPrivateIpLinkPublicIpArgs:
         :param pulumi.Input[_builtins.str] link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP associated with the NIC.
-        :param pulumi.Input[_builtins.str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[_builtins.str] public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param pulumi.Input[_builtins.str] public_ip_id: The allocation ID of the public IP.
         """
         if link_public_ip_id is not None:
@@ -5874,7 +6259,7 @@ class NicPrivateIpLinkPublicIpArgs:
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -5951,7 +6336,7 @@ if not MYPY:
     class NicTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5966,7 +6351,7 @@ class NicTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -5978,7 +6363,7 @@ class NicTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -7051,45 +7436,115 @@ class ProviderEndpointArgs:
 
 if not MYPY:
     class PublicIpLinkTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        value: NotRequired[pulumi.Input[_builtins.str]]
+        key: pulumi.Input[_builtins.str]
+        value: pulumi.Input[_builtins.str]
 elif False:
     PublicIpLinkTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PublicIpLinkTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[_builtins.str]:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[_builtins.str]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
 
 
 if not MYPY:
-    class PublicIpTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
+    class PublicIpLinkTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    PublicIpLinkTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PublicIpLinkTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class PublicIpTagArgsDict(TypedDict):
+        key: pulumi.Input[_builtins.str]
+        """
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7101,27 +7556,26 @@ elif False:
 @pulumi.input_type
 class PublicIpTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
@@ -7135,6 +7589,98 @@ class PublicIpTagArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class PublicIpTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    PublicIpTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PublicIpTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:
@@ -7376,7 +7922,7 @@ if not MYPY:
         """
         vm_account_id: pulumi.Input[_builtins.str]
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         vm_id: pulumi.Input[_builtins.str]
         """
@@ -7409,7 +7955,7 @@ class RouteTableRouteArgs:
         :param pulumi.Input[_builtins.str] net_peering_id: The ID of the Net peering.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
         :param pulumi.Input[_builtins.str] state: The state of a route in the route table (always `active`).
-        :param pulumi.Input[_builtins.str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[_builtins.str] vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of a VM specified in a route in the table.
         """
         pulumi.set(__self__, "creation_method", creation_method)
@@ -7536,7 +8082,7 @@ class RouteTableRouteArgs:
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -7592,7 +8138,7 @@ if not MYPY:
     class RouteTableTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7607,7 +8153,7 @@ class RouteTableTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -7618,7 +8164,7 @@ class RouteTableTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -7835,7 +8381,7 @@ if not MYPY:
         """
         ip_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         security_groups_members: pulumi.Input[Sequence[pulumi.Input['SecurityGroupInboundRuleSecurityGroupsMemberArgsDict']]]
         """
@@ -7864,7 +8410,7 @@ class SecurityGroupInboundRuleArgs:
         """
         :param pulumi.Input[_builtins.int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupInboundRuleSecurityGroupsMemberArgs']]] security_groups_members: Information about one or more source or destination security groups.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param pulumi.Input[_builtins.int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
@@ -7904,7 +8450,7 @@ class SecurityGroupInboundRuleArgs:
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -7953,7 +8499,7 @@ if not MYPY:
     class SecurityGroupInboundRuleSecurityGroupsMemberArgsDict(TypedDict):
         account_id: pulumi.Input[_builtins.str]
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         security_group_id: pulumi.Input[_builtins.str]
         """
@@ -7975,7 +8521,7 @@ class SecurityGroupInboundRuleSecurityGroupsMemberArgs:
                  security_group_id: pulumi.Input[_builtins.str],
                  security_group_name: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID that owns the source or destination security group.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
         :param pulumi.Input[_builtins.str] security_group_name: A name for the security group.<br />
                This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
@@ -7989,7 +8535,7 @@ class SecurityGroupInboundRuleSecurityGroupsMemberArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -8036,7 +8582,7 @@ if not MYPY:
         """
         ip_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         security_groups_members: pulumi.Input[Sequence[pulumi.Input['SecurityGroupOutboundRuleSecurityGroupsMemberArgsDict']]]
         """
@@ -8065,7 +8611,7 @@ class SecurityGroupOutboundRuleArgs:
         """
         :param pulumi.Input[_builtins.int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupOutboundRuleSecurityGroupsMemberArgs']]] security_groups_members: Information about one or more source or destination security groups.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param pulumi.Input[_builtins.int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
@@ -8105,7 +8651,7 @@ class SecurityGroupOutboundRuleArgs:
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -8154,7 +8700,7 @@ if not MYPY:
     class SecurityGroupOutboundRuleSecurityGroupsMemberArgsDict(TypedDict):
         account_id: pulumi.Input[_builtins.str]
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         security_group_id: pulumi.Input[_builtins.str]
         """
@@ -8176,7 +8722,7 @@ class SecurityGroupOutboundRuleSecurityGroupsMemberArgs:
                  security_group_id: pulumi.Input[_builtins.str],
                  security_group_name: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID that owns the source or destination security group.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
         :param pulumi.Input[_builtins.str] security_group_name: A name for the security group.<br />
                This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
@@ -8190,7 +8736,7 @@ class SecurityGroupOutboundRuleSecurityGroupsMemberArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -8237,7 +8783,7 @@ if not MYPY:
         """
         ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         security_groups_members: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleSecurityGroupsMemberArgsDict']]]]
         """
@@ -8266,7 +8812,7 @@ class SecurityGroupRuleRuleArgs:
         """
         :param pulumi.Input[_builtins.int] from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupRuleRuleSecurityGroupsMemberArgs']]] security_groups_members: Information about one or more source or destination security groups.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param pulumi.Input[_builtins.int] to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
@@ -8312,7 +8858,7 @@ class SecurityGroupRuleRuleArgs:
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -8361,7 +8907,7 @@ if not MYPY:
     class SecurityGroupRuleRuleSecurityGroupsMemberArgsDict(TypedDict):
         account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         security_group_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -8369,7 +8915,7 @@ if not MYPY:
         """
         security_group_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+        The name of a source or destination security group that you want to link to the security group of the rule.
         """
 elif False:
     SecurityGroupRuleRuleSecurityGroupsMemberArgsDict: TypeAlias = Mapping[str, Any]
@@ -8381,9 +8927,9 @@ class SecurityGroupRuleRuleSecurityGroupsMemberArgs:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID that owns the source or destination security group.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of a source or destination security group that you want to link to the security group of the rule.
-        :param pulumi.Input[_builtins.str] security_group_name: (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+        :param pulumi.Input[_builtins.str] security_group_name: The name of a source or destination security group that you want to link to the security group of the rule.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -8396,7 +8942,7 @@ class SecurityGroupRuleRuleSecurityGroupsMemberArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -8420,7 +8966,7 @@ class SecurityGroupRuleRuleSecurityGroupsMemberArgs:
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+        The name of a source or destination security group that you want to link to the security group of the rule.
         """
         return pulumi.get(self, "security_group_name")
 
@@ -8525,7 +9071,7 @@ if not MYPY:
     class SecurityGroupTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -8540,7 +9086,7 @@ class SecurityGroupTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -8551,7 +9097,7 @@ class SecurityGroupTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -8665,10 +9211,102 @@ class SecurityGroupTimeoutsArgs:
 
 
 if not MYPY:
+    class ServerCertificateTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    ServerCertificateTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServerCertificateTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict(TypedDict):
         account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        The account ID of one or more users to whom you want to give permissions.
+        The OUTSCALE account ID of one or more users to whom you want to give permissions.
         """
         global_permission: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -8683,7 +9321,7 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs:
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  global_permission: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The account ID of one or more users to whom you want to give permissions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The OUTSCALE account ID of one or more users to whom you want to give permissions.
         :param pulumi.Input[_builtins.bool] global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -8695,7 +9333,7 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs:
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The account ID of one or more users to whom you want to give permissions.
+        The OUTSCALE account ID of one or more users to whom you want to give permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -8717,25 +9355,25 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs:
 
 
 if not MYPY:
-    class SnapshotAttributesPermissionsToCreateVolumeRemovalArgsDict(TypedDict):
+    class SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict(TypedDict):
         account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        The account ID of one or more users from whom you want to remove permissions.
+        The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         """
         global_permission: NotRequired[pulumi.Input[_builtins.bool]]
         """
         If true, the resource is public. If false, the resource is private.
         """
 elif False:
-    SnapshotAttributesPermissionsToCreateVolumeRemovalArgsDict: TypeAlias = Mapping[str, Any]
+    SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class SnapshotAttributesPermissionsToCreateVolumeRemovalArgs:
+class SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs:
     def __init__(__self__, *,
                  account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  global_permission: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         :param pulumi.Input[_builtins.bool] global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -8747,7 +9385,7 @@ class SnapshotAttributesPermissionsToCreateVolumeRemovalArgs:
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The account ID of one or more users from whom you want to remove permissions.
+        The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -8766,6 +9404,78 @@ class SnapshotAttributesPermissionsToCreateVolumeRemovalArgs:
     @global_permission.setter
     def global_permission(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "global_permission", value)
+
+
+if not MYPY:
+    class SnapshotAttributesTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    SnapshotAttributesTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SnapshotAttributesTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
 
 
 if not MYPY:
@@ -8912,7 +9622,7 @@ if not MYPY:
     class SnapshotExportTaskTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -8927,7 +9637,7 @@ class SnapshotExportTaskTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -8939,7 +9649,7 @@ class SnapshotExportTaskTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -8962,11 +9672,11 @@ class SnapshotExportTaskTagArgs:
 
 if not MYPY:
     class SnapshotPermissionsToCreateVolumeArgsDict(TypedDict):
-        account_id: NotRequired[pulumi.Input[_builtins.str]]
+        account_id: pulumi.Input[_builtins.str]
         """
-        The account ID of the owner of the snapshot.
+        The OUTSCALE account ID of the owner of the snapshot.
         """
-        global_permission: NotRequired[pulumi.Input[_builtins.bool]]
+        global_permission: pulumi.Input[_builtins.bool]
         """
         A global permission for all accounts.<br />
         (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -8978,34 +9688,32 @@ elif False:
 @pulumi.input_type
 class SnapshotPermissionsToCreateVolumeArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_permission: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[_builtins.str],
+                 global_permission: pulumi.Input[_builtins.bool]):
         """
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the snapshot.
         :param pulumi.Input[_builtins.bool] global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if global_permission is not None:
-            pulumi.set(__self__, "global_permission", global_permission)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "global_permission", global_permission)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account ID of the owner of the snapshot.
+        The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="globalPermission")
-    def global_permission(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def global_permission(self) -> pulumi.Input[_builtins.bool]:
         """
         A global permission for all accounts.<br />
         (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -9014,15 +9722,15 @@ class SnapshotPermissionsToCreateVolumeArgs:
         return pulumi.get(self, "global_permission")
 
     @global_permission.setter
-    def global_permission(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def global_permission(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "global_permission", value)
 
 
 if not MYPY:
     class SnapshotTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
+        key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -9034,27 +9742,26 @@ elif False:
 @pulumi.input_type
 class SnapshotTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
@@ -9071,10 +9778,102 @@ class SnapshotTagArgs:
 
 
 if not MYPY:
+    class SnapshotTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    SnapshotTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SnapshotTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+if not MYPY:
     class SubnetTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -9089,7 +9888,7 @@ class SubnetTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -9100,7 +9899,7 @@ class SubnetTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -9822,7 +10621,7 @@ if not MYPY:
     class VirtualGatewayTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -9837,7 +10636,7 @@ class VirtualGatewayTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -9849,7 +10648,7 @@ class VirtualGatewayTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -10325,7 +11124,7 @@ if not MYPY:
     class VmBlockDeviceMappingsCreatedBsusTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -10340,7 +11139,7 @@ class VmBlockDeviceMappingsCreatedBsusTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -10352,7 +11151,7 @@ class VmBlockDeviceMappingsCreatedBsusTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -10381,7 +11180,7 @@ if not MYPY:
         """
         account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         delete_on_vm_deletion: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -10468,7 +11267,7 @@ class VmNicArgs:
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the NIC.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the NIC.
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
         :param pulumi.Input[_builtins.str] description: The description of the NIC, if you are creating a NIC when creating the VM.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
@@ -10535,7 +11334,7 @@ class VmNicArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -10828,7 +11627,7 @@ if not MYPY:
         """
         public_ip_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
 elif False:
     VmNicLinkPublicIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -10842,7 +11641,7 @@ class VmNicLinkPublicIpArgs:
         """
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the VM.
-        :param pulumi.Input[_builtins.str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[_builtins.str] public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -10879,7 +11678,7 @@ class VmNicLinkPublicIpArgs:
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -10992,7 +11791,7 @@ if not MYPY:
         """
         public_ip_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
 elif False:
     VmNicPrivateIpLinkPublicIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -11006,7 +11805,7 @@ class VmNicPrivateIpLinkPublicIpArgs:
         """
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the VM.
-        :param pulumi.Input[_builtins.str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[_builtins.str] public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -11043,7 +11842,7 @@ class VmNicPrivateIpLinkPublicIpArgs:
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -11112,7 +11911,7 @@ if not MYPY:
         """
         account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         delete_on_vm_deletion: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -11199,7 +11998,7 @@ class VmPrimaryNicArgs:
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] device_number: The index of the VM device for the NIC attachment (must be `0`). This parameter is required if you create a NIC when creating the VM.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the NIC.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the NIC.
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
         :param pulumi.Input[_builtins.str] description: The description of the NIC, if you are creating a NIC when creating the VM.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
@@ -11266,7 +12065,7 @@ class VmPrimaryNicArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -11559,7 +12358,7 @@ if not MYPY:
         """
         public_ip_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
 elif False:
     VmPrimaryNicLinkPublicIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -11573,7 +12372,7 @@ class VmPrimaryNicLinkPublicIpArgs:
         """
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the VM.
-        :param pulumi.Input[_builtins.str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[_builtins.str] public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -11610,7 +12409,7 @@ class VmPrimaryNicLinkPublicIpArgs:
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -11723,7 +12522,7 @@ if not MYPY:
         """
         public_ip_account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
 elif False:
     VmPrimaryNicPrivateIpLinkPublicIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -11737,7 +12536,7 @@ class VmPrimaryNicPrivateIpLinkPublicIpArgs:
         """
         :param pulumi.Input[_builtins.str] public_dns_name: The name of the public DNS.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the VM.
-        :param pulumi.Input[_builtins.str] public_ip_account_id: The account ID of the owner of the public IP.
+        :param pulumi.Input[_builtins.str] public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -11774,7 +12573,7 @@ class VmPrimaryNicPrivateIpLinkPublicIpArgs:
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -11891,7 +12690,7 @@ if not MYPY:
     class VmTagArgsDict(TypedDict):
         key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -11906,7 +12705,7 @@ class VmTagArgs:
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -11918,7 +12717,7 @@ class VmTagArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -12142,7 +12941,7 @@ if not MYPY:
     class VolumeTagArgsDict(TypedDict):
         key: pulumi.Input[_builtins.str]
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -12157,7 +12956,7 @@ class VolumeTagArgs:
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -12168,7 +12967,7 @@ class VolumeTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -12354,10 +13153,82 @@ class VpnConnectionRouteArgs:
 
 
 if not MYPY:
-    class VpnConnectionTagArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
+    class VpnConnectionRouteTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The key of the tag, with a minimum of 1 character.
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+elif False:
+    VpnConnectionRouteTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VpnConnectionRouteTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+
+if not MYPY:
+    class VpnConnectionTagArgsDict(TypedDict):
+        key: pulumi.Input[_builtins.str]
+        """
+        The key of the tag, between 1 and 255 characters.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -12369,27 +13240,26 @@ elif False:
 @pulumi.input_type
 class VpnConnectionTagArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: The key of the tag, with a minimum of 1 character.
+        :param pulumi.Input[_builtins.str] key: The key of the tag, between 1 and 255 characters.
         :param pulumi.Input[_builtins.str] value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
@@ -12403,6 +13273,98 @@ class VpnConnectionTagArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class VpnConnectionTimeoutsArgsDict(TypedDict):
+        create: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        delete: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        read: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        update: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+elif False:
+    VpnConnectionTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VpnConnectionTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 if not MYPY:

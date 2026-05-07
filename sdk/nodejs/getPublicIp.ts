@@ -68,7 +68,7 @@ export interface GetPublicIpResult {
      */
     readonly linkPublicIpId: string;
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     readonly nicAccountId: string;
     /**

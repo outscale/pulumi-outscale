@@ -121,13 +121,16 @@ namespace Pulumi.Outscale
         /// By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
         /// </summary>
         [Output("staticRoutesOnly")]
-        public Output<bool?> StaticRoutesOnly { get; private set; } = null!;
+        public Output<bool> StaticRoutesOnly { get; private set; } = null!;
 
         /// <summary>
         /// A tag to add to this resource. You can specify this argument several times.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.VpnConnectionTag>> Tags { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.VpnConnectionTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// Information about the current state of one or more of the VPN tunnels.
@@ -223,6 +226,9 @@ namespace Pulumi.Outscale
             set => _tags = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.VpnConnectionTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The ID of the virtual gateway.
         /// </summary>
@@ -293,6 +299,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.VpnConnectionTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.VpnConnectionTimeoutsGetArgs>? Timeouts { get; set; }
 
         [Input("vgwTelemetries")]
         private InputList<Inputs.VpnConnectionVgwTelemetryGetArgs>? _vgwTelemetries;

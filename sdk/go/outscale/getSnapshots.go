@@ -67,7 +67,7 @@ func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSnapshots.
 type GetSnapshotsArgs struct {
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountIds []string `pulumi:"accountIds"`
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters                   []GetSnapshotsFilter `pulumi:"filters"`
@@ -78,7 +78,7 @@ type GetSnapshotsArgs struct {
 
 // A collection of values returned by getSnapshots.
 type GetSnapshotsResult struct {
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountIds []string             `pulumi:"accountIds"`
 	Filters    []GetSnapshotsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
@@ -102,7 +102,7 @@ func GetSnapshotsOutput(ctx *pulumi.Context, args GetSnapshotsOutputArgs, opts .
 
 // A collection of arguments for invoking getSnapshots.
 type GetSnapshotsOutputArgs struct {
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters                   GetSnapshotsFilterArrayInput `pulumi:"filters"`
@@ -130,7 +130,7 @@ func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutputWithContext(ctx cont
 	return o
 }
 
-// The account ID of the owner of the snapshot.
+// The OUTSCALE account ID of the owner of the snapshot.
 func (o GetSnapshotsResultOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }

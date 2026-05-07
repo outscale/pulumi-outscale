@@ -129,6 +129,9 @@ namespace Pulumi.Outscale
         [Output("tags")]
         public Output<ImmutableArray<Outputs.DhcpOptionTag>> Tags { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.DhcpOptionTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DhcpOption resource with the given unique name, arguments, and options.
@@ -229,6 +232,9 @@ namespace Pulumi.Outscale
             set => _tags = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.DhcpOptionTimeoutsArgs>? Timeouts { get; set; }
+
         public DhcpOptionArgs()
         {
         }
@@ -305,6 +311,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.DhcpOptionTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.DhcpOptionTimeoutsGetArgs>? Timeouts { get; set; }
 
         public DhcpOptionState()
         {

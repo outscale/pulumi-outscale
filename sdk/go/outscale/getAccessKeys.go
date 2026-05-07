@@ -108,7 +108,7 @@ type GetAccessKeysArgs struct {
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters []GetAccessKeysFilter `pulumi:"filters"`
 	States  []string              `pulumi:"states"`
-	// The name of the EIM user. By default, the user who sends the request (which can be the root account).
+	// The name of the EIM user. By default, the user who sends the request (which can be the root user).
 	UserName *string `pulumi:"userName"`
 }
 
@@ -140,7 +140,7 @@ type GetAccessKeysOutputArgs struct {
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters GetAccessKeysFilterArrayInput `pulumi:"filters"`
 	States  pulumi.StringArrayInput       `pulumi:"states"`
-	// The name of the EIM user. By default, the user who sends the request (which can be the root account).
+	// The name of the EIM user. By default, the user who sends the request (which can be the root user).
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 

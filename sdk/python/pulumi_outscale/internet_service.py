@@ -160,7 +160,7 @@ class InternetService(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[Union['InternetServiceTimeoutsArgs', 'InternetServiceTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Manages an Internet service.
+        Manages an internet service.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -195,7 +195,7 @@ class InternetService(pulumi.CustomResource):
                  args: Optional[InternetServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an Internet service.
+        Manages an internet service.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).

@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class LoadBalancerPolicyApplicationStickyCookiePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        /// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         /// </summary>
         [Input("cookieName")]
         public Input<string>? CookieName { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class SecurityGroupRuleRuleSecurityGroupsMember
     {
         /// <summary>
-        /// The account ID that owns the source or destination security group.
+        /// The OUTSCALE account ID that owns the source or destination security group.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string? SecurityGroupId;
         /// <summary>
-        /// (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+        /// The name of a source or destination security group that you want to link to the security group of the rule.
         /// </summary>
         public readonly string? SecurityGroupName;
 

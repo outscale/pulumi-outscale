@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -87,6 +89,7 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
      */
     declare public readonly destinationIpRange: pulumi.Output<string>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.VpnConnectionRouteTimeouts | undefined>;
     /**
      * The ID of the target VPN connection of the static route.
      */
@@ -107,6 +110,7 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
             const state = argsOrState as VpnConnectionRouteState | undefined;
             resourceInputs["destinationIpRange"] = state?.destinationIpRange;
             resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vpnConnectionId"] = state?.vpnConnectionId;
         } else {
             const args = argsOrState as VpnConnectionRouteArgs | undefined;
@@ -117,6 +121,7 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpnConnectionId'");
             }
             resourceInputs["destinationIpRange"] = args?.destinationIpRange;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vpnConnectionId"] = args?.vpnConnectionId;
             resourceInputs["requestId"] = undefined /*out*/;
         }
@@ -134,6 +139,7 @@ export interface VpnConnectionRouteState {
      */
     destinationIpRange?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionRouteTimeouts>;
     /**
      * The ID of the target VPN connection of the static route.
      */
@@ -148,6 +154,7 @@ export interface VpnConnectionRouteArgs {
      * The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
      */
     destinationIpRange: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionRouteTimeouts>;
     /**
      * The ID of the target VPN connection of the static route.
      */

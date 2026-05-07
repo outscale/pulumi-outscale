@@ -13,10 +13,10 @@ namespace Pulumi.Outscale.Inputs
     public sealed class SnapshotTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key of the tag, with a minimum of 1 character.
+        /// The key of the tag, between 1 and 255 characters.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// The value of the tag, between 0 and 255 characters.

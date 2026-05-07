@@ -21,7 +21,10 @@ __all__ = [
     'ApiAccessRuleTimeouts',
     'CaTimeouts',
     'ClientGatewayTag',
+    'ClientGatewayTimeouts',
     'DhcpOptionTag',
+    'DhcpOptionTimeouts',
+    'FlexibleGpuLinkTimeouts',
     'FlexibleGpuTimeouts',
     'ImageBlockDeviceMapping',
     'ImageBlockDeviceMappingBsus',
@@ -67,6 +70,7 @@ __all__ = [
     'MainRouteTableLinkTimeouts',
     'NatServicePublicIp',
     'NatServiceTag',
+    'NatServiceTimeouts',
     'NetAccessPointTag',
     'NetAccessPointTimeouts',
     'NetAttributesTag',
@@ -101,7 +105,9 @@ __all__ = [
     'PolicyTimeouts',
     'PolicyVersionTimeouts',
     'PublicIpLinkTag',
+    'PublicIpLinkTimeouts',
     'PublicIpTag',
+    'PublicIpTimeouts',
     'RouteTableLinkRouteTable',
     'RouteTableLinkTimeouts',
     'RouteTableRoute',
@@ -118,13 +124,16 @@ __all__ = [
     'SecurityGroupRuleTimeouts',
     'SecurityGroupTag',
     'SecurityGroupTimeouts',
+    'ServerCertificateTimeouts',
     'SnapshotAttributesPermissionsToCreateVolumeAdditions',
-    'SnapshotAttributesPermissionsToCreateVolumeRemoval',
+    'SnapshotAttributesPermissionsToCreateVolumeRemovals',
+    'SnapshotAttributesTimeouts',
     'SnapshotExportTaskOsuExport',
     'SnapshotExportTaskOsuExportOsuApiKey',
     'SnapshotExportTaskTag',
     'SnapshotPermissionsToCreateVolume',
     'SnapshotTag',
+    'SnapshotTimeouts',
     'SubnetTag',
     'SubnetTimeouts',
     'UserGroupPolicy',
@@ -161,7 +170,9 @@ __all__ = [
     'VolumeTag',
     'VolumeTimeouts',
     'VpnConnectionRoute',
+    'VpnConnectionRouteTimeouts',
     'VpnConnectionTag',
+    'VpnConnectionTimeouts',
     'VpnConnectionVgwTelemetry',
     'GetAccessKeyFilterResult',
     'GetAccessKeysAccessKeyResult',
@@ -651,22 +662,21 @@ class CaTimeouts(dict):
 @pulumi.output_type
 class ClientGatewayTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -680,24 +690,78 @@ class ClientGatewayTag(dict):
 
 
 @pulumi.output_type
+class ClientGatewayTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class DhcpOptionTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -708,6 +772,116 @@ class DhcpOptionTag(dict):
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DhcpOptionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class FlexibleGpuLinkTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -1067,7 +1241,7 @@ class ImageExportTaskTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -1079,7 +1253,7 @@ class ImageExportTaskTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1117,7 +1291,7 @@ class ImageLaunchPermissionPermissionAdditions(dict):
                  account_ids: Optional[Sequence[_builtins.str]] = None,
                  global_permission: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] account_ids: The account ID of one or more users to whom you want to give permissions.
+        :param Sequence[_builtins.str] account_ids: The OUTSCALE account ID of one or more users to whom you want to give permissions.
         :param _builtins.str global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -1129,7 +1303,7 @@ class ImageLaunchPermissionPermissionAdditions(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The account ID of one or more users to whom you want to give permissions.
+        The OUTSCALE account ID of one or more users to whom you want to give permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1167,7 +1341,7 @@ class ImageLaunchPermissionPermissionRemovals(dict):
                  account_ids: Optional[Sequence[_builtins.str]] = None,
                  global_permission: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param Sequence[_builtins.str] account_ids: The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         :param _builtins.str global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -1179,7 +1353,7 @@ class ImageLaunchPermissionPermissionRemovals(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The account ID of one or more users from whom you want to remove permissions.
+        The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1217,7 +1391,7 @@ class ImageLaunchPermissionPermissionsToLaunch(dict):
                  account_ids: Optional[Sequence[_builtins.str]] = None,
                  global_permission: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] account_ids: One or more account IDs that the permission is associated with.
+        :param Sequence[_builtins.str] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
         :param _builtins.str global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `additions`) or to make the resource private (if the parent parameter is `removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -1231,7 +1405,7 @@ class ImageLaunchPermissionPermissionsToLaunch(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1271,7 +1445,7 @@ class ImagePermissionsToLaunch(dict):
                  account_ids: Optional[Sequence[_builtins.str]] = None,
                  global_permission: Optional[_builtins.bool] = None):
         """
-        :param Sequence[_builtins.str] account_ids: One or more account IDs that the permission is associated with.
+        :param Sequence[_builtins.str] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
         :param _builtins.bool global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -1285,7 +1459,7 @@ class ImagePermissionsToLaunch(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         return pulumi.get(self, "account_ids")
 
@@ -1356,7 +1530,7 @@ class ImageTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -1368,7 +1542,7 @@ class ImageTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1387,7 +1561,7 @@ class InternetServiceLinkTag(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -1397,7 +1571,7 @@ class InternetServiceLinkTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1471,7 +1645,7 @@ class InternetServiceTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -1482,7 +1656,7 @@ class InternetServiceTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1556,7 +1730,7 @@ class KeypairTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -1567,7 +1741,7 @@ class KeypairTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -1738,7 +1912,7 @@ class LoadBalancerApplicationStickyCookiePolicy(dict):
                  cookie_name: Optional[_builtins.str] = None,
                  policy_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cookie_name: The name of the application cookie used for stickiness.
+        :param _builtins.str cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters.
         :param _builtins.str policy_name: The name of the stickiness policy.
         """
         if cookie_name is not None:
@@ -1750,7 +1924,7 @@ class LoadBalancerApplicationStickyCookiePolicy(dict):
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[_builtins.str]:
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -1866,7 +2040,7 @@ class LoadBalancerAttributesApplicationStickyCookiePolicy(dict):
                  cookie_name: Optional[_builtins.str] = None,
                  policy_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cookie_name: The name of the application cookie used for stickiness.
+        :param _builtins.str cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters.
         :param _builtins.str policy_name: The name of the stickiness policy.
         """
         if cookie_name is not None:
@@ -1878,7 +2052,7 @@ class LoadBalancerAttributesApplicationStickyCookiePolicy(dict):
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[_builtins.str]:
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -2168,7 +2342,7 @@ class LoadBalancerAttributesSourceSecurityGroup(dict):
                  security_group_account_id: Optional[_builtins.str] = None,
                  security_group_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str security_group_account_id: The account ID of the owner of the security group.
+        :param _builtins.str security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
         if security_group_account_id is not None:
@@ -2180,7 +2354,7 @@ class LoadBalancerAttributesSourceSecurityGroup(dict):
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -2199,7 +2373,7 @@ class LoadBalancerAttributesTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 128 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -2211,7 +2385,7 @@ class LoadBalancerAttributesTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -2741,7 +2915,7 @@ class LoadBalancerPolicyApplicationStickyCookiePolicy(dict):
                  cookie_name: Optional[_builtins.str] = None,
                  policy_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cookie_name: The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        :param _builtins.str cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         :param _builtins.str policy_name: The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
         """
         if cookie_name is not None:
@@ -2753,7 +2927,7 @@ class LoadBalancerPolicyApplicationStickyCookiePolicy(dict):
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[_builtins.str]:
         """
-        The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -3045,7 +3219,7 @@ class LoadBalancerPolicySourceSecurityGroup(dict):
                  security_group_account_id: Optional[_builtins.str] = None,
                  security_group_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str security_group_account_id: The account ID of the owner of the security group.
+        :param _builtins.str security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
         if security_group_account_id is not None:
@@ -3057,7 +3231,7 @@ class LoadBalancerPolicySourceSecurityGroup(dict):
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -3076,7 +3250,7 @@ class LoadBalancerPolicyTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 128 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -3088,7 +3262,7 @@ class LoadBalancerPolicyTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3126,7 +3300,7 @@ class LoadBalancerSourceSecurityGroup(dict):
                  security_group_account_id: Optional[_builtins.str] = None,
                  security_group_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str security_group_account_id: The account ID of the owner of the security group.
+        :param _builtins.str security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
         if security_group_account_id is not None:
@@ -3138,7 +3312,7 @@ class LoadBalancerSourceSecurityGroup(dict):
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -3157,7 +3331,7 @@ class LoadBalancerTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 128 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -3169,7 +3343,7 @@ class LoadBalancerTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3314,21 +3488,19 @@ class NatServicePublicIp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 public_ip: Optional[_builtins.str] = None,
-                 public_ip_id: Optional[_builtins.str] = None):
+                 public_ip: _builtins.str,
+                 public_ip_id: _builtins.str):
         """
         :param _builtins.str public_ip: The public IP associated with the NAT service.
         :param _builtins.str public_ip_id: The allocation ID of the public IP to associate with the NAT service.<br />
                If the public IP is already associated with another resource, you must first disassociate it.
         """
-        if public_ip is not None:
-            pulumi.set(__self__, "public_ip", public_ip)
-        if public_ip_id is not None:
-            pulumi.set(__self__, "public_ip_id", public_ip_id)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "public_ip_id", public_ip_id)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[_builtins.str]:
+    def public_ip(self) -> _builtins.str:
         """
         The public IP associated with the NAT service.
         """
@@ -3336,7 +3508,7 @@ class NatServicePublicIp(dict):
 
     @_builtins.property
     @pulumi.getter(name="publicIpId")
-    def public_ip_id(self) -> Optional[_builtins.str]:
+    def public_ip_id(self) -> _builtins.str:
         """
         The allocation ID of the public IP to associate with the NAT service.<br />
         If the public IP is already associated with another resource, you must first disassociate it.
@@ -3347,22 +3519,21 @@ class NatServicePublicIp(dict):
 @pulumi.output_type
 class NatServiceTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3376,12 +3547,67 @@ class NatServiceTag(dict):
 
 
 @pulumi.output_type
+class NatServiceTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class NetAccessPointTag(dict):
     def __init__(__self__, *,
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -3392,7 +3618,7 @@ class NetAccessPointTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3466,7 +3692,7 @@ class NetAttributesTag(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -3476,7 +3702,7 @@ class NetAttributesTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3572,7 +3798,7 @@ class NetPeeringAcceptationAccepterNet(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -3584,7 +3810,7 @@ class NetPeeringAcceptationAccepterNet(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -3633,7 +3859,7 @@ class NetPeeringAcceptationSourceNet(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -3645,7 +3871,7 @@ class NetPeeringAcceptationSourceNet(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -3701,7 +3927,7 @@ class NetPeeringAcceptationTag(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -3711,7 +3937,7 @@ class NetPeeringAcceptationTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -3807,7 +4033,7 @@ class NetPeeringAccepterNet(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -3819,7 +4045,7 @@ class NetPeeringAccepterNet(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -3868,7 +4094,7 @@ class NetPeeringSourceNet(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -3880,7 +4106,7 @@ class NetPeeringSourceNet(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -3936,7 +4162,7 @@ class NetPeeringTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -3947,7 +4173,7 @@ class NetPeeringTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -4021,7 +4247,7 @@ class NetTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -4032,7 +4258,7 @@ class NetTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -4139,7 +4365,7 @@ class NicLinkNic(dict):
         :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
-        :param _builtins.str vm_account_id: The account ID of the owner of the VM.
+        :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param _builtins.str vm_id: The ID of the VM.
         """
         if delete_on_vm_deletion is not None:
@@ -4191,7 +4417,7 @@ class NicLinkNic(dict):
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -4241,7 +4467,7 @@ class NicLinkPublicIp(dict):
         :param _builtins.str link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP associated with the NIC.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param _builtins.str public_ip_id: The allocation ID of the public IP.
         """
         if link_public_ip_id is not None:
@@ -4283,7 +4509,7 @@ class NicLinkPublicIp(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -4411,7 +4637,7 @@ class NicPrivateIpLinkPublicIp(dict):
         :param _builtins.str link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP associated with the NIC.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param _builtins.str public_ip_id: The allocation ID of the public IP.
         """
         if link_public_ip_id is not None:
@@ -4453,7 +4679,7 @@ class NicPrivateIpLinkPublicIp(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -4522,7 +4748,7 @@ class NicTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -4534,7 +4760,7 @@ class NicTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -5314,43 +5540,83 @@ class PolicyVersionTimeouts(dict):
 @pulumi.output_type
 class PublicIpLinkTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+                 key: _builtins.str,
+                 value: _builtins.str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
+    def value(self) -> _builtins.str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class PublicIpLinkTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
 class PublicIpTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -5361,6 +5627,61 @@ class PublicIpTag(dict):
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class PublicIpTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -5562,7 +5883,7 @@ class RouteTableRoute(dict):
         :param _builtins.str net_peering_id: The ID of the Net peering.
         :param _builtins.str nic_id: The ID of the NIC.
         :param _builtins.str state: The state of a route in the route table (always `active`).
-        :param _builtins.str vm_account_id: The account ID of the owner of the VM.
+        :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param _builtins.str vm_id: The ID of a VM specified in a route in the table.
         """
         pulumi.set(__self__, "creation_method", creation_method)
@@ -5653,7 +5974,7 @@ class RouteTableRoute(dict):
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -5707,7 +6028,7 @@ class RouteTableTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -5718,7 +6039,7 @@ class RouteTableTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -5880,7 +6201,7 @@ class SecurityGroupInboundRule(dict):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param Sequence['SecurityGroupInboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
         :param Sequence[_builtins.str] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
@@ -5912,7 +6233,7 @@ class SecurityGroupInboundRule(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[_builtins.str]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -5969,7 +6290,7 @@ class SecurityGroupInboundRuleSecurityGroupsMember(dict):
                  security_group_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str security_group_id: The ID of the security group.
         :param _builtins.str security_group_name: A name for the security group.<br />
                This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
@@ -5983,7 +6304,7 @@ class SecurityGroupInboundRuleSecurityGroupsMember(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -6045,7 +6366,7 @@ class SecurityGroupOutboundRule(dict):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param Sequence['SecurityGroupOutboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
         :param Sequence[_builtins.str] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
@@ -6077,7 +6398,7 @@ class SecurityGroupOutboundRule(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[_builtins.str]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -6134,7 +6455,7 @@ class SecurityGroupOutboundRuleSecurityGroupsMember(dict):
                  security_group_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str security_group_id: The ID of the security group.
         :param _builtins.str security_group_name: A name for the security group.<br />
                This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
@@ -6148,7 +6469,7 @@ class SecurityGroupOutboundRuleSecurityGroupsMember(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -6210,7 +6531,7 @@ class SecurityGroupRuleRule(dict):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param Sequence['SecurityGroupRuleRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
         :param Sequence[_builtins.str] service_ids: One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
@@ -6248,7 +6569,7 @@ class SecurityGroupRuleRule(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -6305,9 +6626,9 @@ class SecurityGroupRuleRuleSecurityGroupsMember(dict):
                  security_group_id: Optional[_builtins.str] = None,
                  security_group_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str security_group_id: The ID of a source or destination security group that you want to link to the security group of the rule.
-        :param _builtins.str security_group_name: (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+        :param _builtins.str security_group_name: The name of a source or destination security group that you want to link to the security group of the rule.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -6320,7 +6641,7 @@ class SecurityGroupRuleRuleSecurityGroupsMember(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -6336,7 +6657,7 @@ class SecurityGroupRuleRuleSecurityGroupsMember(dict):
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> Optional[_builtins.str]:
         """
-        (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+        The name of a source or destination security group that you want to link to the security group of the rule.
         """
         return pulumi.get(self, "security_group_name")
 
@@ -6402,7 +6723,7 @@ class SecurityGroupTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -6413,7 +6734,7 @@ class SecurityGroupTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -6428,6 +6749,61 @@ class SecurityGroupTag(dict):
 
 @pulumi.output_type
 class SecurityGroupTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class ServerCertificateTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
                  delete: Optional[_builtins.str] = None,
@@ -6506,7 +6882,7 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditions(dict):
                  account_ids: Optional[Sequence[_builtins.str]] = None,
                  global_permission: Optional[_builtins.bool] = None):
         """
-        :param Sequence[_builtins.str] account_ids: The account ID of one or more users to whom you want to give permissions.
+        :param Sequence[_builtins.str] account_ids: The OUTSCALE account ID of one or more users to whom you want to give permissions.
         :param _builtins.bool global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -6518,7 +6894,7 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditions(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The account ID of one or more users to whom you want to give permissions.
+        The OUTSCALE account ID of one or more users to whom you want to give permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -6532,7 +6908,7 @@ class SnapshotAttributesPermissionsToCreateVolumeAdditions(dict):
 
 
 @pulumi.output_type
-class SnapshotAttributesPermissionsToCreateVolumeRemoval(dict):
+class SnapshotAttributesPermissionsToCreateVolumeRemovals(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6542,21 +6918,21 @@ class SnapshotAttributesPermissionsToCreateVolumeRemoval(dict):
             suggest = "global_permission"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SnapshotAttributesPermissionsToCreateVolumeRemoval. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SnapshotAttributesPermissionsToCreateVolumeRemovals. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SnapshotAttributesPermissionsToCreateVolumeRemoval.__key_warning(key)
+        SnapshotAttributesPermissionsToCreateVolumeRemovals.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SnapshotAttributesPermissionsToCreateVolumeRemoval.__key_warning(key)
+        SnapshotAttributesPermissionsToCreateVolumeRemovals.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  account_ids: Optional[Sequence[_builtins.str]] = None,
                  global_permission: Optional[_builtins.bool] = None):
         """
-        :param Sequence[_builtins.str] account_ids: The account ID of one or more users from whom you want to remove permissions.
+        :param Sequence[_builtins.str] account_ids: The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         :param _builtins.bool global_permission: If true, the resource is public. If false, the resource is private.
         """
         if account_ids is not None:
@@ -6568,7 +6944,7 @@ class SnapshotAttributesPermissionsToCreateVolumeRemoval(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The account ID of one or more users from whom you want to remove permissions.
+        The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         """
         return pulumi.get(self, "account_ids")
 
@@ -6579,6 +6955,49 @@ class SnapshotAttributesPermissionsToCreateVolumeRemoval(dict):
         If true, the resource is public. If false, the resource is private.
         """
         return pulumi.get(self, "global_permission")
+
+
+@pulumi.output_type
+class SnapshotAttributesTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -6711,7 +7130,7 @@ class SnapshotExportTaskTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -6723,7 +7142,7 @@ class SnapshotExportTaskTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -6758,30 +7177,28 @@ class SnapshotPermissionsToCreateVolume(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 account_id: Optional[_builtins.str] = None,
-                 global_permission: Optional[_builtins.bool] = None):
+                 account_id: _builtins.str,
+                 global_permission: _builtins.bool):
         """
-        :param _builtins.str account_id: The account ID of the owner of the snapshot.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the snapshot.
         :param _builtins.bool global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if global_permission is not None:
-            pulumi.set(__self__, "global_permission", global_permission)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "global_permission", global_permission)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the snapshot.
+        The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="globalPermission")
-    def global_permission(self) -> Optional[_builtins.bool]:
+    def global_permission(self) -> _builtins.bool:
         """
         A global permission for all accounts.<br />
         (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -6793,22 +7210,21 @@ class SnapshotPermissionsToCreateVolume(dict):
 @pulumi.output_type
 class SnapshotTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -6822,12 +7238,67 @@ class SnapshotTag(dict):
 
 
 @pulumi.output_type
+class SnapshotTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class SubnetTag(dict):
     def __init__(__self__, *,
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -6838,7 +7309,7 @@ class SubnetTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -7385,7 +7856,7 @@ class VirtualGatewayTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -7397,7 +7868,7 @@ class VirtualGatewayTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -7785,7 +8256,7 @@ class VmBlockDeviceMappingsCreatedBsusTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -7797,7 +8268,7 @@ class VmBlockDeviceMappingsCreatedBsusTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -7877,7 +8348,7 @@ class VmNic(dict):
                  subnet_id: Optional[_builtins.str] = None):
         """
         :param _builtins.int device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
-        :param _builtins.str account_id: The account ID of the owner of the NIC.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
         :param _builtins.str description: The description of the NIC, if you are creating a NIC when creating the VM.
         :param _builtins.bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
@@ -7940,7 +8411,7 @@ class VmNic(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -8171,7 +8642,7 @@ class VmNicLinkPublicIp(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -8200,7 +8671,7 @@ class VmNicLinkPublicIp(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -8313,7 +8784,7 @@ class VmNicPrivateIpLinkPublicIp(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -8342,7 +8813,7 @@ class VmNicPrivateIpLinkPublicIp(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -8464,7 +8935,7 @@ class VmPrimaryNic(dict):
                  subnet_id: Optional[_builtins.str] = None):
         """
         :param _builtins.int device_number: The index of the VM device for the NIC attachment (must be `0`). This parameter is required if you create a NIC when creating the VM.
-        :param _builtins.str account_id: The account ID of the owner of the NIC.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
         :param _builtins.str description: The description of the NIC, if you are creating a NIC when creating the VM.
         :param _builtins.bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
@@ -8527,7 +8998,7 @@ class VmPrimaryNic(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -8758,7 +9229,7 @@ class VmPrimaryNicLinkPublicIp(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -8787,7 +9258,7 @@ class VmPrimaryNicLinkPublicIp(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -8900,7 +9371,7 @@ class VmPrimaryNicPrivateIpLinkPublicIp(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         if public_dns_name is not None:
             pulumi.set(__self__, "public_dns_name", public_dns_name)
@@ -8929,7 +9400,7 @@ class VmPrimaryNicPrivateIpLinkPublicIp(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> Optional[_builtins.str]:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -9040,7 +9511,7 @@ class VmTag(dict):
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         if key is not None:
@@ -9052,7 +9523,7 @@ class VmTag(dict):
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -9211,7 +9682,7 @@ class VolumeTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -9222,7 +9693,7 @@ class VolumeTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -9353,24 +9824,66 @@ class VpnConnectionRoute(dict):
 
 
 @pulumi.output_type
+class VpnConnectionRouteTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class VpnConnectionTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -9381,6 +9894,61 @@ class VpnConnectionTag(dict):
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VpnConnectionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -9948,7 +10516,7 @@ class GetClientGatewayTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -9958,7 +10526,7 @@ class GetClientGatewayTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -10051,7 +10619,7 @@ class GetClientGatewaysClientGatewayTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -10061,7 +10629,7 @@ class GetClientGatewaysClientGatewayTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -10118,7 +10686,7 @@ class GetDhcpOptionTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -10128,7 +10696,7 @@ class GetDhcpOptionTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -10231,7 +10799,7 @@ class GetDhcpOptionsDhcpOptionTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -10241,7 +10809,7 @@ class GetDhcpOptionsDhcpOptionTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -10820,7 +11388,7 @@ class GetImageExportTaskTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -10830,7 +11398,7 @@ class GetImageExportTaskTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11003,7 +11571,7 @@ class GetImageExportTasksImageExportTaskTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -11013,7 +11581,7 @@ class GetImageExportTasksImageExportTaskTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11051,7 +11619,7 @@ class GetImagePermissionsToLaunchResult(dict):
                  account_id: _builtins.str,
                  global_permission: _builtins.bool):
         """
-        :param _builtins.str account_id: The account ID of the owner of the OMI.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the OMI.
         :param _builtins.bool global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -11063,7 +11631,7 @@ class GetImagePermissionsToLaunchResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the OMI.
+        The OUTSCALE account ID of the owner of the OMI.
         """
         return pulumi.get(self, "account_id")
 
@@ -11113,7 +11681,7 @@ class GetImageTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -11123,7 +11691,7 @@ class GetImageTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11180,7 +11748,7 @@ class GetImagesImageResult(dict):
                  tpm_mandatory: _builtins.bool):
         """
         :param _builtins.str account_alias: The account alias of the owner of the OMI.
-        :param _builtins.str account_id: The account ID of the owner of the OMI.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the OMI.
         :param _builtins.str architecture: The architecture of the OMI.
         :param Sequence['GetImagesImageBlockDeviceMappingArgs'] block_device_mappings: One or more block device mappings.
         :param Sequence[_builtins.str] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
@@ -11233,7 +11801,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the OMI.
+        The OUTSCALE account ID of the owner of the OMI.
         """
         return pulumi.get(self, "account_id")
 
@@ -11496,7 +12064,7 @@ class GetImagesImagePermissionsToLaunchResult(dict):
                  account_id: _builtins.str,
                  global_permission: _builtins.bool):
         """
-        :param _builtins.str account_id: The account ID of the owner of the OMI.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the OMI.
         :param _builtins.bool global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -11508,7 +12076,7 @@ class GetImagesImagePermissionsToLaunchResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the OMI.
+        The OUTSCALE account ID of the owner of the OMI.
         """
         return pulumi.get(self, "account_id")
 
@@ -11558,7 +12126,7 @@ class GetImagesImageTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -11568,7 +12136,7 @@ class GetImagesImageTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11606,7 +12174,7 @@ class GetInternetServiceTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -11616,7 +12184,7 @@ class GetInternetServiceTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11705,7 +12273,7 @@ class GetInternetServicesInternetServiceTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -11715,7 +12283,7 @@ class GetInternetServicesInternetServiceTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11753,7 +12321,7 @@ class GetKeypairTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -11763,7 +12331,7 @@ class GetKeypairTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11863,7 +12431,7 @@ class GetKeypairsKeypairTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -11873,7 +12441,7 @@ class GetKeypairsKeypairTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -11943,7 +12511,7 @@ class GetLoadBalancerApplicationStickyCookiePolicyResult(dict):
                  cookie_name: _builtins.str,
                  policy_name: _builtins.str):
         """
-        :param _builtins.str cookie_name: The name of the application cookie used for stickiness.
+        :param _builtins.str cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters.
         :param _builtins.str policy_name: The name of the stickiness policy.
         """
         pulumi.set(__self__, "cookie_name", cookie_name)
@@ -11953,7 +12521,7 @@ class GetLoadBalancerApplicationStickyCookiePolicyResult(dict):
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> _builtins.str:
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -12299,7 +12867,7 @@ class GetLoadBalancerSourceSecurityGroupResult(dict):
                  security_group_account_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str security_group_account_id: The account ID of the owner of the security group.
+        :param _builtins.str security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
         pulumi.set(__self__, "security_group_account_id", security_group_account_id)
@@ -12309,7 +12877,7 @@ class GetLoadBalancerSourceSecurityGroupResult(dict):
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -12328,7 +12896,7 @@ class GetLoadBalancerTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 128 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -12338,7 +12906,7 @@ class GetLoadBalancerTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -12758,7 +13326,7 @@ class GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyResult(dict):
                  cookie_name: _builtins.str,
                  policy_name: _builtins.str):
         """
-        :param _builtins.str cookie_name: The name of the application cookie used for stickiness.
+        :param _builtins.str cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters.
         :param _builtins.str policy_name: The name of the stickiness policy.
         """
         pulumi.set(__self__, "cookie_name", cookie_name)
@@ -12768,7 +13336,7 @@ class GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyResult(dict):
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> _builtins.str:
         """
-        The name of the application cookie used for stickiness.
+        The name of the application cookie used for stickiness, between 1 and 255 characters.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -12962,7 +13530,7 @@ class GetLoadBalancersLoadBalancerSourceSecurityGroupResult(dict):
                  security_group_account_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str security_group_account_id: The account ID of the owner of the security group.
+        :param _builtins.str security_group_account_id: The OUTSCALE account ID of the owner of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
         pulumi.set(__self__, "security_group_account_id", security_group_account_id)
@@ -12972,7 +13540,7 @@ class GetLoadBalancersLoadBalancerSourceSecurityGroupResult(dict):
     @pulumi.getter(name="securityGroupAccountId")
     def security_group_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the security group.
+        The OUTSCALE account ID of the owner of the security group.
         """
         return pulumi.get(self, "security_group_account_id")
 
@@ -12991,7 +13559,7 @@ class GetLoadBalancersLoadBalancerTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 128 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13001,7 +13569,7 @@ class GetLoadBalancersLoadBalancerTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 128 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13068,7 +13636,7 @@ class GetNatServiceTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13078,7 +13646,7 @@ class GetNatServiceTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13218,7 +13786,7 @@ class GetNatServicesNatServiceTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13228,7 +13796,7 @@ class GetNatServicesNatServiceTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13325,7 +13893,7 @@ class GetNetAccessPointTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13335,7 +13903,7 @@ class GetNetAccessPointTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13446,7 +14014,7 @@ class GetNetAccessPointsNetAccessPointTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13456,7 +14024,7 @@ class GetNetAccessPointsNetAccessPointTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13475,7 +14043,7 @@ class GetNetAttributesTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13485,7 +14053,7 @@ class GetNetAttributesTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13524,7 +14092,7 @@ class GetNetPeeringAccepterNetResult(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -13536,7 +14104,7 @@ class GetNetPeeringAccepterNetResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -13589,7 +14157,7 @@ class GetNetPeeringSourceNetResult(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -13601,7 +14169,7 @@ class GetNetPeeringSourceNetResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -13657,7 +14225,7 @@ class GetNetPeeringTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13667,7 +14235,7 @@ class GetNetPeeringTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13774,7 +14342,7 @@ class GetNetPeeringsNetPeeringAccepterNetResult(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -13786,7 +14354,7 @@ class GetNetPeeringsNetPeeringAccepterNetResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -13814,7 +14382,7 @@ class GetNetPeeringsNetPeeringSourceNetResult(dict):
                  ip_range: _builtins.str,
                  net_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the source Net.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the source Net.
         :param _builtins.str ip_range: The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param _builtins.str net_id: The ID of the source Net.
         """
@@ -13826,7 +14394,7 @@ class GetNetPeeringsNetPeeringSourceNetResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the source Net.
+        The OUTSCALE account ID of the owner of the source Net.
         """
         return pulumi.get(self, "account_id")
 
@@ -13882,7 +14450,7 @@ class GetNetPeeringsNetPeeringTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13892,7 +14460,7 @@ class GetNetPeeringsNetPeeringTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -13911,7 +14479,7 @@ class GetNetTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -13921,7 +14489,7 @@ class GetNetTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -14032,7 +14600,7 @@ class GetNetsNetTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -14042,7 +14610,7 @@ class GetNetsNetTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -14088,7 +14656,7 @@ class GetNicLinkNicResult(dict):
         :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
-        :param _builtins.str vm_account_id: The account ID of the owner of the VM.
+        :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param _builtins.str vm_id: The ID of the VM.
         """
         pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
@@ -14134,7 +14702,7 @@ class GetNicLinkNicResult(dict):
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -14159,7 +14727,7 @@ class GetNicLinkPublicIpResult(dict):
         :param _builtins.str link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP associated with the NIC.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param _builtins.str public_ip_id: The allocation ID of the public IP.
         """
         pulumi.set(__self__, "link_public_ip_id", link_public_ip_id)
@@ -14196,7 +14764,7 @@ class GetNicLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -14272,7 +14840,7 @@ class GetNicPrivateIpLinkPublicIpResult(dict):
         :param _builtins.str link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP associated with the NIC.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param _builtins.str public_ip_id: The allocation ID of the public IP.
         """
         pulumi.set(__self__, "link_public_ip_id", link_public_ip_id)
@@ -14309,7 +14877,7 @@ class GetNicPrivateIpLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -14357,7 +14925,7 @@ class GetNicTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -14367,7 +14935,7 @@ class GetNicTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -14418,7 +14986,7 @@ class GetNicsNicResult(dict):
                  subregion_name: _builtins.str,
                  tags: Sequence['outputs.GetNicsNicTagResult']):
         """
-        :param _builtins.str account_id: The account ID of the owner of the NIC.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.str description: The description of the NIC.
         :param _builtins.bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param Sequence['GetNicsNicLinkNicArgs'] link_nics: Information about the NIC attachment.
@@ -14454,7 +15022,7 @@ class GetNicsNicResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -14585,7 +15153,7 @@ class GetNicsNicLinkNicResult(dict):
         :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
-        :param _builtins.str vm_account_id: The account ID of the owner of the VM.
+        :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param _builtins.str vm_id: The ID of the VM.
         """
         pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
@@ -14631,7 +15199,7 @@ class GetNicsNicLinkNicResult(dict):
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -14656,7 +15224,7 @@ class GetNicsNicLinkPublicIpResult(dict):
         :param _builtins.str link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP associated with the NIC.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param _builtins.str public_ip_id: The allocation ID of the public IP.
         """
         pulumi.set(__self__, "link_public_ip_id", link_public_ip_id)
@@ -14693,7 +15261,7 @@ class GetNicsNicLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -14769,7 +15337,7 @@ class GetNicsNicPrivateIpLinkPublicIpResult(dict):
         :param _builtins.str link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP associated with the NIC.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         :param _builtins.str public_ip_id: The allocation ID of the public IP.
         """
         pulumi.set(__self__, "link_public_ip_id", link_public_ip_id)
@@ -14806,7 +15374,7 @@ class GetNicsNicPrivateIpLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -14854,7 +15422,7 @@ class GetNicsNicTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -14864,7 +15432,7 @@ class GetNicsNicTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -15332,7 +15900,7 @@ class GetPublicIpTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -15342,7 +15910,7 @@ class GetPublicIpTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -15387,7 +15955,7 @@ class GetPublicIpsPublicIpResult(dict):
                  vm_id: _builtins.str):
         """
         :param _builtins.str link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
-        :param _builtins.str nic_account_id: The account ID of the owner of the NIC.
+        :param _builtins.str nic_account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.str nic_id: The ID of the NIC the public IP is associated with (if any).
         :param _builtins.str private_ip: The private IP associated with the public IP.
         :param _builtins.str public_ip: The public IP.
@@ -15416,7 +15984,7 @@ class GetPublicIpsPublicIpResult(dict):
     @pulumi.getter(name="nicAccountId")
     def nic_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "nic_account_id")
 
@@ -15475,7 +16043,7 @@ class GetPublicIpsPublicIpTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -15485,7 +16053,7 @@ class GetPublicIpsPublicIpTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -15560,7 +16128,7 @@ class GetQuotasQuotaResult(dict):
                  short_description: _builtins.str,
                  used_value: _builtins.int):
         """
-        :param _builtins.str account_id: The account ID of the owner of the quotas.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the quotas.
         :param _builtins.str description: The description of the quota.
         :param _builtins.int max_value: The maximum value of the quota for the account (if there is no limit, `0`).
         :param _builtins.str name: The unique name of the quota.
@@ -15582,7 +16150,7 @@ class GetQuotasQuotaResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the quotas.
+        The OUTSCALE account ID of the owner of the quotas.
         """
         return pulumi.get(self, "account_id")
 
@@ -15773,7 +16341,7 @@ class GetRouteTableRouteResult(dict):
         :param _builtins.str net_peering_id: The ID of the Net peering.
         :param _builtins.str nic_id: The ID of the NIC.
         :param _builtins.str state: The state of a route in the route table (always `active`).
-        :param _builtins.str vm_account_id: The account ID of the owner of the VM.
+        :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param _builtins.str vm_id: The ID of a VM specified in a route in the table.
         """
         pulumi.set(__self__, "creation_method", creation_method)
@@ -15864,7 +16432,7 @@ class GetRouteTableRouteResult(dict):
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -15901,7 +16469,7 @@ class GetRouteTableTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -15911,7 +16479,7 @@ class GetRouteTableTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -16098,7 +16666,7 @@ class GetRouteTablesRouteTableRouteResult(dict):
         :param _builtins.str net_peering_id: The ID of the Net peering.
         :param _builtins.str nic_id: The ID of the NIC.
         :param _builtins.str state: The state of a route in the route table (always `active`).
-        :param _builtins.str vm_account_id: The account ID of the owner of the VM.
+        :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param _builtins.str vm_id: The ID of a VM specified in a route in the table.
         """
         pulumi.set(__self__, "creation_method", creation_method)
@@ -16189,7 +16757,7 @@ class GetRouteTablesRouteTableRouteResult(dict):
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -16226,7 +16794,7 @@ class GetRouteTablesRouteTableTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -16236,7 +16804,7 @@ class GetRouteTablesRouteTableTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -16280,7 +16848,7 @@ class GetSecurityGroupInboundRuleResult(dict):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param Sequence['GetSecurityGroupInboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
@@ -16311,7 +16879,7 @@ class GetSecurityGroupInboundRuleResult(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[_builtins.str]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -16344,7 +16912,7 @@ class GetSecurityGroupInboundRuleSecurityGroupsMemberResult(dict):
                  security_group_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str security_group_id: The ID of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
@@ -16356,7 +16924,7 @@ class GetSecurityGroupInboundRuleSecurityGroupsMemberResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -16389,7 +16957,7 @@ class GetSecurityGroupOutboundRuleResult(dict):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param Sequence['GetSecurityGroupOutboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
@@ -16420,7 +16988,7 @@ class GetSecurityGroupOutboundRuleResult(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[_builtins.str]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -16453,7 +17021,7 @@ class GetSecurityGroupOutboundRuleSecurityGroupsMemberResult(dict):
                  security_group_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str security_group_id: The ID of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
@@ -16465,7 +17033,7 @@ class GetSecurityGroupOutboundRuleSecurityGroupsMemberResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -16492,7 +17060,7 @@ class GetSecurityGroupTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -16502,7 +17070,7 @@ class GetSecurityGroupTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -16546,7 +17114,7 @@ class GetSecurityGroupsSecurityGroupResult(dict):
                  security_group_name: _builtins.str,
                  tags: Sequence['outputs.GetSecurityGroupsSecurityGroupTagResult']):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str description: The description of the security group.
         :param Sequence['GetSecurityGroupsSecurityGroupInboundRuleArgs'] inbound_rules: The inbound rules associated with the security group.
         :param _builtins.str net_id: The ID of the Net for the security group.
@@ -16568,7 +17136,7 @@ class GetSecurityGroupsSecurityGroupResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -16641,7 +17209,7 @@ class GetSecurityGroupsSecurityGroupInboundRuleResult(dict):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param Sequence['GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
@@ -16672,7 +17240,7 @@ class GetSecurityGroupsSecurityGroupInboundRuleResult(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[_builtins.str]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -16705,7 +17273,7 @@ class GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMemberResult(dict):
                  security_group_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str security_group_id: The ID of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
@@ -16717,7 +17285,7 @@ class GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMemberResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -16750,7 +17318,7 @@ class GetSecurityGroupsSecurityGroupOutboundRuleResult(dict):
         """
         :param _builtins.int from_port_range: The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
         :param _builtins.str ip_protocol: The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
-        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        :param Sequence[_builtins.str] ip_ranges: One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         :param Sequence['GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberArgs'] security_groups_members: Information about one or more source or destination security groups.
         :param _builtins.int to_port_range: The end of the port range for the TCP and UDP protocols, or an ICMP code number.
         """
@@ -16781,7 +17349,7 @@ class GetSecurityGroupsSecurityGroupOutboundRuleResult(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[_builtins.str]:
         """
-        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -16814,7 +17382,7 @@ class GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberResult(dict)
                  security_group_id: _builtins.str,
                  security_group_name: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID that owns the source or destination security group.
+        :param _builtins.str account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param _builtins.str security_group_id: The ID of the security group.
         :param _builtins.str security_group_name: The name of the security group.
         """
@@ -16826,7 +17394,7 @@ class GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberResult(dict)
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -16853,7 +17421,7 @@ class GetSecurityGroupsSecurityGroupTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -16863,7 +17431,7 @@ class GetSecurityGroupsSecurityGroupTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -16936,12 +17504,12 @@ class GetServerCertificatesServerCertificateResult(dict):
                  path: _builtins.str,
                  upload_date: _builtins.str):
         """
-        :param _builtins.str expiration_date: The date on which the server certificate expires.
+        :param _builtins.str expiration_date: The date and time (UTC) on which the server certificate expires.
         :param _builtins.str id: The ID of the server certificate.
         :param _builtins.str name: The name of the server certificate.
         :param _builtins.str orn: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
         :param _builtins.str path: The path to the server certificate.
-        :param _builtins.str upload_date: The date on which the server certificate has been uploaded.
+        :param _builtins.str upload_date: The date and time (UTC) on which the server certificate has been uploaded.
         """
         pulumi.set(__self__, "expiration_date", expiration_date)
         pulumi.set(__self__, "id", id)
@@ -16954,7 +17522,7 @@ class GetServerCertificatesServerCertificateResult(dict):
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> _builtins.str:
         """
-        The date on which the server certificate expires.
+        The date and time (UTC) on which the server certificate expires.
         """
         return pulumi.get(self, "expiration_date")
 
@@ -16994,7 +17562,7 @@ class GetServerCertificatesServerCertificateResult(dict):
     @pulumi.getter(name="uploadDate")
     def upload_date(self) -> _builtins.str:
         """
-        The date on which the server certificate has been uploaded.
+        The date and time (UTC) on which the server certificate has been uploaded.
         """
         return pulumi.get(self, "upload_date")
 
@@ -17064,7 +17632,7 @@ class GetSnapshotExportTaskTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -17074,7 +17642,7 @@ class GetSnapshotExportTaskTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -17236,7 +17804,7 @@ class GetSnapshotExportTasksSnapshotExportTaskTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -17246,7 +17814,7 @@ class GetSnapshotExportTasksSnapshotExportTaskTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -17284,7 +17852,7 @@ class GetSnapshotPermissionsToCreateVolumeResult(dict):
                  account_ids: Sequence[_builtins.str],
                  global_permission: _builtins.bool):
         """
-        :param Sequence[_builtins.str] account_ids: One or more account IDs that the permission is associated with.
+        :param Sequence[_builtins.str] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
         :param _builtins.bool global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -17296,7 +17864,7 @@ class GetSnapshotPermissionsToCreateVolumeResult(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Sequence[_builtins.str]:
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         return pulumi.get(self, "account_ids")
 
@@ -17317,7 +17885,7 @@ class GetSnapshotTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -17327,7 +17895,7 @@ class GetSnapshotTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -17375,7 +17943,7 @@ class GetSnapshotsSnapshotResult(dict):
                  volume_size: _builtins.int):
         """
         :param _builtins.str account_alias: The account alias of the owner of the snapshot.
-        :param _builtins.str account_id: The account ID of the owner of the snapshot.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the snapshot.
         :param _builtins.str creation_date: The date and time (UTC) at which the snapshot was created.
         :param _builtins.str description: The description of the snapshot.
         :param Sequence['GetSnapshotsSnapshotPermissionsToCreateVolumeArgs'] permissions_to_create_volumes: Permissions for the resource.
@@ -17410,7 +17978,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the snapshot.
+        The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
@@ -17493,7 +18061,7 @@ class GetSnapshotsSnapshotPermissionsToCreateVolumeResult(dict):
                  account_ids: Sequence[_builtins.str],
                  global_permission: _builtins.bool):
         """
-        :param Sequence[_builtins.str] account_ids: One or more account IDs that the permission is associated with.
+        :param Sequence[_builtins.str] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
         :param _builtins.bool global_permission: A global permission for all accounts.<br />
                (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
                (Response) If true, the resource is public. If false, the resource is private.
@@ -17505,7 +18073,7 @@ class GetSnapshotsSnapshotPermissionsToCreateVolumeResult(dict):
     @pulumi.getter(name="accountIds")
     def account_ids(self) -> Sequence[_builtins.str]:
         """
-        One or more account IDs that the permission is associated with.
+        One or more OUTSCALE account IDs that the permission is associated with.
         """
         return pulumi.get(self, "account_ids")
 
@@ -17526,7 +18094,7 @@ class GetSnapshotsSnapshotTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -17536,7 +18104,7 @@ class GetSnapshotsSnapshotTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -17574,7 +18142,7 @@ class GetSubnetTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -17584,7 +18152,7 @@ class GetSubnetTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -17717,7 +18285,7 @@ class GetSubnetsSubnetTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -17727,7 +18295,7 @@ class GetSubnetsSubnetTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -18282,7 +18850,7 @@ class GetVirtualGatewayTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -18292,7 +18860,7 @@ class GetVirtualGatewayTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -18421,7 +18989,7 @@ class GetVirtualGatewaysVirtualGatewayTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -18431,7 +18999,7 @@ class GetVirtualGatewaysVirtualGatewayTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -18560,7 +19128,7 @@ class GetVmBlockDeviceMappingsCreatedBsusTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -18570,7 +19138,7 @@ class GetVmBlockDeviceMappingsCreatedBsusTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -18624,7 +19192,7 @@ class GetVmNicResult(dict):
                  state: _builtins.str,
                  subnet_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the NIC.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
         :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
@@ -18664,7 +19232,7 @@ class GetVmNicResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -18859,7 +19427,7 @@ class GetVmNicLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -18885,7 +19453,7 @@ class GetVmNicLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -18950,7 +19518,7 @@ class GetVmNicPrivateIpLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -18976,7 +19544,7 @@ class GetVmNicPrivateIpLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -19031,7 +19599,7 @@ class GetVmPrimaryNicResult(dict):
                  state: _builtins.str,
                  subnet_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the NIC.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
         :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
@@ -19070,7 +19638,7 @@ class GetVmPrimaryNicResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -19260,7 +19828,7 @@ class GetVmPrimaryNicLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -19286,7 +19854,7 @@ class GetVmPrimaryNicLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -19351,7 +19919,7 @@ class GetVmPrimaryNicPrivateIpLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -19377,7 +19945,7 @@ class GetVmPrimaryNicPrivateIpLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -19650,7 +20218,7 @@ class GetVmTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -19660,7 +20228,7 @@ class GetVmTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -20371,7 +20939,7 @@ class GetVmsVmBlockDeviceMappingsCreatedBsusTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -20381,7 +20949,7 @@ class GetVmsVmBlockDeviceMappingsCreatedBsusTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -20416,7 +20984,7 @@ class GetVmsVmNicResult(dict):
                  state: _builtins.str,
                  subnet_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the NIC.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
         :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
@@ -20456,7 +21024,7 @@ class GetVmsVmNicResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -20651,7 +21219,7 @@ class GetVmsVmNicLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -20677,7 +21245,7 @@ class GetVmsVmNicLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -20742,7 +21310,7 @@ class GetVmsVmNicPrivateIpLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -20768,7 +21336,7 @@ class GetVmsVmNicPrivateIpLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -20823,7 +21391,7 @@ class GetVmsVmPrimaryNicResult(dict):
                  state: _builtins.str,
                  subnet_id: _builtins.str):
         """
-        :param _builtins.str account_id: The account ID of the owner of the NIC.
+        :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
         :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
@@ -20862,7 +21430,7 @@ class GetVmsVmPrimaryNicResult(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -21052,7 +21620,7 @@ class GetVmsVmPrimaryNicLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -21078,7 +21646,7 @@ class GetVmsVmPrimaryNicLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -21143,7 +21711,7 @@ class GetVmsVmPrimaryNicPrivateIpLinkPublicIpResult(dict):
         """
         :param _builtins.str public_dns_name: The name of the public DNS.
         :param _builtins.str public_ip: The public IP of the VM.
-        :param _builtins.str public_ip_account_id: The account ID of the owner of the public IP.
+        :param _builtins.str public_ip_account_id: The OUTSCALE account ID of the owner of the public IP.
         """
         pulumi.set(__self__, "public_dns_name", public_dns_name)
         pulumi.set(__self__, "public_ip", public_ip)
@@ -21169,7 +21737,7 @@ class GetVmsVmPrimaryNicPrivateIpLinkPublicIpResult(dict):
     @pulumi.getter(name="publicIpAccountId")
     def public_ip_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the public IP.
+        The OUTSCALE account ID of the owner of the public IP.
         """
         return pulumi.get(self, "public_ip_account_id")
 
@@ -21238,7 +21806,7 @@ class GetVmsVmTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -21248,7 +21816,7 @@ class GetVmsVmTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -21348,7 +21916,7 @@ class GetVolumeTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -21358,7 +21926,7 @@ class GetVolumeTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -21575,7 +22143,7 @@ class GetVolumesVolumeTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -21585,7 +22153,7 @@ class GetVolumesVolumeTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -21663,7 +22231,7 @@ class GetVpnConnectionTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -21673,7 +22241,7 @@ class GetVpnConnectionTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 
@@ -21931,7 +22499,7 @@ class GetVpnConnectionsVpnConnectionTagResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The key of the tag, with a minimum of 1 character.
+        :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
         pulumi.set(__self__, "key", key)
@@ -21941,7 +22509,7 @@ class GetVpnConnectionsVpnConnectionTagResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The key of the tag, with a minimum of 1 character.
+        The key of the tag, between 1 and 255 characters.
         """
         return pulumi.get(self, "key")
 

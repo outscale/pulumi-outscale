@@ -79,24 +79,81 @@ export interface CaTimeouts {
 
 export interface ClientGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
 }
 
+export interface ClientGatewayTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface DhcpOptionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface DhcpOptionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface FlexibleGpuLinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface FlexibleGpuTimeouts {
@@ -1277,7 +1334,7 @@ export interface ImageExportTaskOsuExportOsuApiKey {
 
 export interface ImageExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -1288,7 +1345,7 @@ export interface ImageExportTaskTag {
 
 export interface ImageLaunchPermissionPermissionAdditions {
     /**
-     * The account ID of one or more users to whom you want to give permissions.
+     * The OUTSCALE account ID of one or more users to whom you want to give permissions.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1299,7 +1356,7 @@ export interface ImageLaunchPermissionPermissionAdditions {
 
 export interface ImageLaunchPermissionPermissionRemovals {
     /**
-     * The account ID of one or more users from whom you want to remove permissions.
+     * The OUTSCALE account ID of one or more users from whom you want to remove permissions.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1310,7 +1367,7 @@ export interface ImageLaunchPermissionPermissionRemovals {
 
 export interface ImageLaunchPermissionPermissionsToLaunch {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1323,7 +1380,7 @@ export interface ImageLaunchPermissionPermissionsToLaunch {
 
 export interface ImagePermissionsToLaunch {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1347,7 +1404,7 @@ export interface ImageStateComment {
 
 export interface ImageTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -1358,7 +1415,7 @@ export interface ImageTag {
 
 export interface InternetServiceLinkTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -1388,7 +1445,7 @@ export interface InternetServiceLinkTimeouts {
 
 export interface InternetServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -1418,7 +1475,7 @@ export interface InternetServiceTimeouts {
 
 export interface KeypairTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -1467,7 +1524,7 @@ export interface LoadBalancerAccessLog {
 
 export interface LoadBalancerApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
     cookieName?: pulumi.Input<string>;
     /**
@@ -1497,7 +1554,7 @@ export interface LoadBalancerAttributesAccessLog {
 
 export interface LoadBalancerAttributesApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
     cookieName?: pulumi.Input<string>;
     /**
@@ -1573,7 +1630,7 @@ export interface LoadBalancerAttributesLoadBalancerStickyCookiePolicy {
 
 export interface LoadBalancerAttributesSourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId?: pulumi.Input<string>;
     /**
@@ -1584,7 +1641,7 @@ export interface LoadBalancerAttributesSourceSecurityGroup {
 
 export interface LoadBalancerAttributesTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -1722,7 +1779,7 @@ export interface LoadBalancerPolicyAccessLog {
 
 export interface LoadBalancerPolicyApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
     cookieName?: pulumi.Input<string>;
     /**
@@ -1798,7 +1855,7 @@ export interface LoadBalancerPolicyLoadBalancerStickyCookiePolicy {
 
 export interface LoadBalancerPolicySourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId?: pulumi.Input<string>;
     /**
@@ -1809,7 +1866,7 @@ export interface LoadBalancerPolicySourceSecurityGroup {
 
 export interface LoadBalancerPolicyTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -1820,7 +1877,7 @@ export interface LoadBalancerPolicyTag {
 
 export interface LoadBalancerSourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId?: pulumi.Input<string>;
     /**
@@ -1831,7 +1888,7 @@ export interface LoadBalancerSourceSecurityGroup {
 
 export interface LoadBalancerTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -1882,28 +1939,47 @@ export interface NatServicePublicIp {
     /**
      * The public IP associated with the NAT service.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp: pulumi.Input<string>;
     /**
      * The allocation ID of the public IP to associate with the NAT service.<br />
      * If the public IP is already associated with another resource, you must first disassociate it.
      */
-    publicIpId?: pulumi.Input<string>;
+    publicIpId: pulumi.Input<string>;
 }
 
 export interface NatServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
 }
 
+export interface NatServiceTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface NetAccessPointTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -1933,7 +2009,7 @@ export interface NetAccessPointTimeouts {
 
 export interface NetAttributesTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -1963,7 +2039,7 @@ export interface NetAttributesTimeouts {
 
 export interface NetPeeringAcceptationAccepterNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -1978,7 +2054,7 @@ export interface NetPeeringAcceptationAccepterNet {
 
 export interface NetPeeringAcceptationSourceNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -2004,7 +2080,7 @@ export interface NetPeeringAcceptationState {
 
 export interface NetPeeringAcceptationTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -2034,7 +2110,7 @@ export interface NetPeeringAcceptationTimeouts {
 
 export interface NetPeeringAccepterNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -2049,7 +2125,7 @@ export interface NetPeeringAccepterNet {
 
 export interface NetPeeringSourceNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -2075,7 +2151,7 @@ export interface NetPeeringState {
 
 export interface NetPeeringTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -2105,7 +2181,7 @@ export interface NetPeeringTimeouts {
 
 export interface NetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -2151,7 +2227,7 @@ export interface NicLinkNic {
      */
     state?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId?: pulumi.Input<string>;
     /**
@@ -2174,7 +2250,7 @@ export interface NicLinkPublicIp {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId?: pulumi.Input<string>;
     /**
@@ -2216,7 +2292,7 @@ export interface NicPrivateIpLinkPublicIp {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId?: pulumi.Input<string>;
     /**
@@ -2238,7 +2314,7 @@ export interface NicSecurityGroup {
 
 export interface NicTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -2450,19 +2526,53 @@ export interface ProviderEndpoint {
 }
 
 export interface PublicIpLinkTag {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface PublicIpLinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
 }
 
 export interface PublicIpTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface PublicIpTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface RouteTableLinkRouteTable {
@@ -2545,7 +2655,7 @@ export interface RouteTableRoute {
      */
     state: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId: pulumi.Input<string>;
     /**
@@ -2563,7 +2673,7 @@ export interface RouteTableRoutePropagatingVirtualGateway {
 
 export interface RouteTableTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -2620,7 +2730,7 @@ export interface SecurityGroupInboundRule {
      */
     ipProtocol: pulumi.Input<string>;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2639,7 +2749,7 @@ export interface SecurityGroupInboundRule {
 
 export interface SecurityGroupInboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -2664,7 +2774,7 @@ export interface SecurityGroupOutboundRule {
      */
     ipProtocol: pulumi.Input<string>;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2683,7 +2793,7 @@ export interface SecurityGroupOutboundRule {
 
 export interface SecurityGroupOutboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -2708,7 +2818,7 @@ export interface SecurityGroupRuleRule {
      */
     ipProtocol?: pulumi.Input<string>;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2727,7 +2837,7 @@ export interface SecurityGroupRuleRule {
 
 export interface SecurityGroupRuleRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -2735,7 +2845,7 @@ export interface SecurityGroupRuleRuleSecurityGroupsMember {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+     * The name of a source or destination security group that you want to link to the security group of the rule.
      */
     securityGroupName?: pulumi.Input<string>;
 }
@@ -2761,7 +2871,7 @@ export interface SecurityGroupRuleTimeouts {
 
 export interface SecurityGroupTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -2789,9 +2899,28 @@ export interface SecurityGroupTimeouts {
     update?: pulumi.Input<string>;
 }
 
+export interface ServerCertificateTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface SnapshotAttributesPermissionsToCreateVolumeAdditions {
     /**
-     * The account ID of one or more users to whom you want to give permissions.
+     * The OUTSCALE account ID of one or more users to whom you want to give permissions.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2800,15 +2929,30 @@ export interface SnapshotAttributesPermissionsToCreateVolumeAdditions {
     globalPermission?: pulumi.Input<boolean>;
 }
 
-export interface SnapshotAttributesPermissionsToCreateVolumeRemoval {
+export interface SnapshotAttributesPermissionsToCreateVolumeRemovals {
     /**
-     * The account ID of one or more users from whom you want to remove permissions.
+     * The OUTSCALE account ID of one or more users from whom you want to remove permissions.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If true, the resource is public. If false, the resource is private.
      */
     globalPermission?: pulumi.Input<boolean>;
+}
+
+export interface SnapshotAttributesTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
 }
 
 export interface SnapshotExportTaskOsuExport {
@@ -2843,7 +2987,7 @@ export interface SnapshotExportTaskOsuExportOsuApiKey {
 
 export interface SnapshotExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -2854,31 +2998,50 @@ export interface SnapshotExportTaskTag {
 
 export interface SnapshotPermissionsToCreateVolume {
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * A global permission for all accounts.<br />
      * (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
      * (Response) If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: pulumi.Input<boolean>;
+    globalPermission: pulumi.Input<boolean>;
 }
 
 export interface SnapshotTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
 }
 
+export interface SnapshotTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface SubnetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -3021,7 +3184,7 @@ export interface VirtualGatewayNetToVirtualGatewayLink {
 
 export interface VirtualGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -3121,7 +3284,7 @@ export interface VmBlockDeviceMappingsCreatedBsus {
 
 export interface VmBlockDeviceMappingsCreatedBsusTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -3132,7 +3295,7 @@ export interface VmBlockDeviceMappingsCreatedBsusTag {
 
 export interface VmNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -3230,7 +3393,7 @@ export interface VmNicLinkPublicIp {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId?: pulumi.Input<string>;
 }
@@ -3264,7 +3427,7 @@ export interface VmNicPrivateIpLinkPublicIp {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId?: pulumi.Input<string>;
 }
@@ -3282,7 +3445,7 @@ export interface VmNicSecurityGroup {
 
 export interface VmPrimaryNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -3380,7 +3543,7 @@ export interface VmPrimaryNicLinkPublicIp {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId?: pulumi.Input<string>;
 }
@@ -3414,7 +3577,7 @@ export interface VmPrimaryNicPrivateIpLinkPublicIp {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId?: pulumi.Input<string>;
 }
@@ -3443,7 +3606,7 @@ export interface VmSecurityGroup {
 
 export interface VmTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key?: pulumi.Input<string>;
     /**
@@ -3496,7 +3659,7 @@ export interface VolumeLinkedVolume {
 
 export interface VolumeTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: pulumi.Input<string>;
     /**
@@ -3539,15 +3702,49 @@ export interface VpnConnectionRoute {
     state?: pulumi.Input<string>;
 }
 
+export interface VpnConnectionRouteTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface VpnConnectionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface VpnConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface VpnConnectionVgwTelemetry {

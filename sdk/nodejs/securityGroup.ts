@@ -91,7 +91,7 @@ export class SecurityGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
@@ -183,7 +183,7 @@ export class SecurityGroup extends pulumi.CustomResource {
  */
 export interface SecurityGroupState {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId?: pulumi.Input<string>;
     /**

@@ -67,7 +67,7 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds []string `pulumi:"accountIds"`
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters     []GetImagesFilter `pulumi:"filters"`
@@ -77,7 +77,7 @@ type GetImagesArgs struct {
 
 // A collection of values returned by getImages.
 type GetImagesResult struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds []string          `pulumi:"accountIds"`
 	Filters    []GetImagesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
@@ -100,7 +100,7 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters     GetImagesFilterArrayInput `pulumi:"filters"`
@@ -127,7 +127,7 @@ func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// One or more account IDs that the permission is associated with.
+// One or more OUTSCALE account IDs that the permission is associated with.
 func (o GetImagesResultOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }

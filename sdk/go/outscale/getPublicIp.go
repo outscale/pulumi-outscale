@@ -75,7 +75,7 @@ type LookupPublicIpResult struct {
 	Id string `pulumi:"id"`
 	// (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
 	LinkPublicIpId string `pulumi:"linkPublicIpId"`
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	NicAccountId string `pulumi:"nicAccountId"`
 	// The ID of the NIC the public IP is associated with (if any).
 	NicId string `pulumi:"nicId"`
@@ -144,7 +144,7 @@ func (o LookupPublicIpResultOutput) LinkPublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicIpResult) string { return v.LinkPublicIpId }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o LookupPublicIpResultOutput) NicAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicIpResult) string { return v.NicAccountId }).(pulumi.StringOutput)
 }

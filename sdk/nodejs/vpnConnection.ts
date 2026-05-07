@@ -108,11 +108,12 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
      */
-    declare public readonly staticRoutesOnly: pulumi.Output<boolean | undefined>;
+    declare public readonly staticRoutesOnly: pulumi.Output<boolean>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.VpnConnectionTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.VpnConnectionTimeouts | undefined>;
     /**
      * Information about the current state of one or more of the VPN tunnels.
      */
@@ -147,6 +148,7 @@ export class VpnConnection extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["staticRoutesOnly"] = state?.staticRoutesOnly;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vgwTelemetries"] = state?.vgwTelemetries;
             resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
             resourceInputs["vpnConnectionId"] = state?.vpnConnectionId;
@@ -165,6 +167,7 @@ export class VpnConnection extends pulumi.CustomResource {
             resourceInputs["connectionType"] = args?.connectionType;
             resourceInputs["staticRoutesOnly"] = args?.staticRoutesOnly;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
             resourceInputs["clientGatewayConfiguration"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -211,6 +214,7 @@ export interface VpnConnectionState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.VpnConnectionTag>[]>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionTimeouts>;
     /**
      * Information about the current state of one or more of the VPN tunnels.
      */
@@ -245,6 +249,7 @@ export interface VpnConnectionArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.VpnConnectionTag>[]>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionTimeouts>;
     /**
      * The ID of the virtual gateway.
      */

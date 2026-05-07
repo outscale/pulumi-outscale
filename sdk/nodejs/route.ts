@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Create a route to an Internet service
+ * ### Create a route to an internet service
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -129,7 +129,7 @@ export class Route extends pulumi.CustomResource {
     declare public /*out*/ readonly state: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.RouteTimeouts | undefined>;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     declare public /*out*/ readonly vmAccountId: pulumi.Output<string>;
     /**
@@ -247,7 +247,7 @@ export interface RouteState {
     state?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.RouteTimeouts>;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId?: pulumi.Input<string>;
     /**

@@ -88,7 +88,7 @@ class GetPublicIpResult:
     @pulumi.getter(name="nicAccountId")
     def nic_account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "nic_account_id")
 

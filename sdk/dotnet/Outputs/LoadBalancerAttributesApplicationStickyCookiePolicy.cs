@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class LoadBalancerAttributesApplicationStickyCookiePolicy
     {
         /// <summary>
-        /// The name of the application cookie used for stickiness.
+        /// The name of the application cookie used for stickiness, between 1 and 255 characters.
         /// </summary>
         public readonly string? CookieName;
         /// <summary>

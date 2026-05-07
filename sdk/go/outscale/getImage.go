@@ -73,7 +73,7 @@ type LookupImageArgs struct {
 type LookupImageResult struct {
 	// The account alias of the owner of the OMI.
 	AccountAlias string `pulumi:"accountAlias"`
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId string `pulumi:"accountId"`
 	// The architecture of the OMI.
 	Architecture string `pulumi:"architecture"`
@@ -163,7 +163,7 @@ func (o LookupImageResultOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.AccountAlias }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the OMI.
+// The OUTSCALE account ID of the owner of the OMI.
 func (o LookupImageResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

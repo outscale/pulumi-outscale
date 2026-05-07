@@ -73,7 +73,8 @@ namespace Pulumi.Outscale
     public partial class NetPeering : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Net you want to connect with.
+        /// The ID of the Net you want to connect with.&lt;br /&gt;
+        /// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         /// </summary>
         [Output("accepterNetId")]
         public Output<string> AccepterNetId { get; private set; } = null!;
@@ -85,7 +86,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.NetPeeringAccepterNet>> AccepterNets { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. &lt;br /&gt;&lt;br/ &gt;
+        /// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.&lt;br /&gt;
         /// This parameter is required if the Net you want to connect with does not belong to you.
         /// </summary>
         [Output("accepterOwnerId")]
@@ -183,13 +184,14 @@ namespace Pulumi.Outscale
     public sealed class NetPeeringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Net you want to connect with.
+        /// The ID of the Net you want to connect with.&lt;br /&gt;
+        /// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         /// </summary>
         [Input("accepterNetId", required: true)]
         public Input<string> AccepterNetId { get; set; } = null!;
 
         /// <summary>
-        /// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. &lt;br /&gt;&lt;br/ &gt;
+        /// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.&lt;br /&gt;
         /// This parameter is required if the Net you want to connect with does not belong to you.
         /// </summary>
         [Input("accepterOwnerId")]
@@ -228,7 +230,8 @@ namespace Pulumi.Outscale
     public sealed class NetPeeringState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Net you want to connect with.
+        /// The ID of the Net you want to connect with.&lt;br /&gt;
+        /// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         /// </summary>
         [Input("accepterNetId")]
         public Input<string>? AccepterNetId { get; set; }
@@ -246,7 +249,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. &lt;br /&gt;&lt;br/ &gt;
+        /// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.&lt;br /&gt;
         /// This parameter is required if the Net you want to connect with does not belong to you.
         /// </summary>
         [Input("accepterOwnerId")]

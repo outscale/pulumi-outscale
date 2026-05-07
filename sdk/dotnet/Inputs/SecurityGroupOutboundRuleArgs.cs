@@ -28,7 +28,7 @@ namespace Pulumi.Outscale.Inputs
         private InputList<string>? _ipRanges;
 
         /// <summary>
-        /// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+        /// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
         /// </summary>
         public InputList<string> IpRanges
         {

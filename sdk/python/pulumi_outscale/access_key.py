@@ -23,18 +23,21 @@ class AccessKeyArgs:
     def __init__(__self__, *,
                  expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tag: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['AccessKeyTimeoutsArgs']] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessKey resource.
-        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         :param pulumi.Input[_builtins.str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
-        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         """
         if expiration_date is not None:
             pulumi.set(__self__, "expiration_date", expiration_date)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
         if user_name is not None:
@@ -44,7 +47,7 @@ class AccessKeyArgs:
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         """
         return pulumi.get(self, "expiration_date")
 
@@ -66,6 +69,15 @@ class AccessKeyArgs:
 
     @_builtins.property
     @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tag", value)
+
+    @_builtins.property
+    @pulumi.getter
     def timeouts(self) -> Optional[pulumi.Input['AccessKeyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
@@ -77,7 +89,7 @@ class AccessKeyArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         """
         return pulumi.get(self, "user_name")
 
@@ -96,17 +108,18 @@ class _AccessKeyState:
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tag: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['AccessKeyTimeoutsArgs']] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessKey resources.
         :param pulumi.Input[_builtins.str] access_key_id: The ID of the access key.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the access key was created.
-        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         :param pulumi.Input[_builtins.str] last_modification_date: The date and time (UTC) at which the access key was last modified.
         :param pulumi.Input[_builtins.str] secret_key: The secret key that enables you to send requests.
         :param pulumi.Input[_builtins.str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
-        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
@@ -122,6 +135,8 @@ class _AccessKeyState:
             pulumi.set(__self__, "secret_key", secret_key)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
         if user_name is not None:
@@ -155,7 +170,7 @@ class _AccessKeyState:
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         """
         return pulumi.get(self, "expiration_date")
 
@@ -210,6 +225,15 @@ class _AccessKeyState:
 
     @_builtins.property
     @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tag", value)
+
+    @_builtins.property
+    @pulumi.getter
     def timeouts(self) -> Optional[pulumi.Input['AccessKeyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
@@ -221,7 +245,7 @@ class _AccessKeyState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         """
         return pulumi.get(self, "user_name")
 
@@ -238,6 +262,7 @@ class AccessKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tag: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input[Union['AccessKeyTimeoutsArgs', 'AccessKeyTimeoutsArgsDict']]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -287,9 +312,9 @@ class AccessKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         :param pulumi.Input[_builtins.str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
-        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         """
         ...
     @overload
@@ -358,6 +383,7 @@ class AccessKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tag: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input[Union['AccessKeyTimeoutsArgs', 'AccessKeyTimeoutsArgsDict']]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -371,6 +397,7 @@ class AccessKey(pulumi.CustomResource):
 
             __props__.__dict__["expiration_date"] = expiration_date
             __props__.__dict__["state"] = state
+            __props__.__dict__["tag"] = tag
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["user_name"] = user_name
             __props__.__dict__["access_key_id"] = None
@@ -395,6 +422,7 @@ class AccessKey(pulumi.CustomResource):
             request_id: Optional[pulumi.Input[_builtins.str]] = None,
             secret_key: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            tag: Optional[pulumi.Input[_builtins.str]] = None,
             timeouts: Optional[pulumi.Input[Union['AccessKeyTimeoutsArgs', 'AccessKeyTimeoutsArgsDict']]] = None,
             user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessKey':
         """
@@ -406,11 +434,11 @@ class AccessKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key_id: The ID of the access key.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the access key was created.
-        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        :param pulumi.Input[_builtins.str] expiration_date: The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         :param pulumi.Input[_builtins.str] last_modification_date: The date and time (UTC) at which the access key was last modified.
         :param pulumi.Input[_builtins.str] secret_key: The secret key that enables you to send requests.
         :param pulumi.Input[_builtins.str] state: The state for the access key (`ACTIVE` | `INACTIVE`).
-        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        :param pulumi.Input[_builtins.str] user_name: The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -423,6 +451,7 @@ class AccessKey(pulumi.CustomResource):
         __props__.__dict__["request_id"] = request_id
         __props__.__dict__["secret_key"] = secret_key
         __props__.__dict__["state"] = state
+        __props__.__dict__["tag"] = tag
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["user_name"] = user_name
         return AccessKey(resource_name, opts=opts, __props__=__props__)
@@ -447,7 +476,7 @@ class AccessKey(pulumi.CustomResource):
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> pulumi.Output[_builtins.str]:
         """
-        The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+        The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
         """
         return pulumi.get(self, "expiration_date")
 
@@ -482,6 +511,11 @@ class AccessKey(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def tag(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "tag")
+
+    @_builtins.property
+    @pulumi.getter
     def timeouts(self) -> pulumi.Output[Optional['outputs.AccessKeyTimeouts']]:
         return pulumi.get(self, "timeouts")
 
@@ -489,7 +523,7 @@ class AccessKey(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+        The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
         """
         return pulumi.get(self, "user_name")
 

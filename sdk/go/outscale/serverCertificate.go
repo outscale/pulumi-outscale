@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/outscale/pulumi-outscale/sdk/go/outscale/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -78,11 +79,10 @@ type ServerCertificate struct {
 	pulumi.CustomResourceState
 
 	// The PEM-encoded X509 certificate.
-	Body pulumi.StringPtrOutput `pulumi:"body"`
+	Body pulumi.StringOutput `pulumi:"body"`
 	// The PEM-encoded intermediate certification authorities.
-	Chain  pulumi.StringPtrOutput `pulumi:"chain"`
-	DryRun pulumi.StringPtrOutput `pulumi:"dryRun"`
-	// The date on which the server certificate expires.
+	Chain pulumi.StringPtrOutput `pulumi:"chain"`
+	// The date and time (UTC) on which the server certificate expires.
 	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
 	// A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -91,9 +91,10 @@ type ServerCertificate struct {
 	// The path to the server certificate, set to a slash (`/`) if not specified.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// The PEM-encoded private key matching the certificate.
-	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	RequestId  pulumi.StringOutput    `pulumi:"requestId"`
-	// The date on which the server certificate has been uploaded.
+	PrivateKey pulumi.StringOutput                `pulumi:"privateKey"`
+	RequestId  pulumi.StringOutput                `pulumi:"requestId"`
+	Timeouts   ServerCertificateTimeoutsPtrOutput `pulumi:"timeouts"`
+	// The date and time (UTC) on which the server certificate has been uploaded.
 	UploadDate pulumi.StringOutput `pulumi:"uploadDate"`
 }
 
@@ -101,9 +102,15 @@ type ServerCertificate struct {
 func NewServerCertificate(ctx *pulumi.Context,
 	name string, args *ServerCertificateArgs, opts ...pulumi.ResourceOption) (*ServerCertificate, error) {
 	if args == nil {
-		args = &ServerCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Body == nil {
+		return nil, errors.New("invalid value for required argument 'Body'")
+	}
+	if args.PrivateKey == nil {
+		return nil, errors.New("invalid value for required argument 'PrivateKey'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerCertificate
 	err := ctx.RegisterResource("outscale:index/serverCertificate:ServerCertificate", name, args, &resource, opts...)
@@ -130,9 +137,8 @@ type serverCertificateState struct {
 	// The PEM-encoded X509 certificate.
 	Body *string `pulumi:"body"`
 	// The PEM-encoded intermediate certification authorities.
-	Chain  *string `pulumi:"chain"`
-	DryRun *string `pulumi:"dryRun"`
-	// The date on which the server certificate expires.
+	Chain *string `pulumi:"chain"`
+	// The date and time (UTC) on which the server certificate expires.
 	ExpirationDate *string `pulumi:"expirationDate"`
 	// A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
 	Name *string `pulumi:"name"`
@@ -141,9 +147,10 @@ type serverCertificateState struct {
 	// The path to the server certificate, set to a slash (`/`) if not specified.
 	Path *string `pulumi:"path"`
 	// The PEM-encoded private key matching the certificate.
-	PrivateKey *string `pulumi:"privateKey"`
-	RequestId  *string `pulumi:"requestId"`
-	// The date on which the server certificate has been uploaded.
+	PrivateKey *string                    `pulumi:"privateKey"`
+	RequestId  *string                    `pulumi:"requestId"`
+	Timeouts   *ServerCertificateTimeouts `pulumi:"timeouts"`
+	// The date and time (UTC) on which the server certificate has been uploaded.
 	UploadDate *string `pulumi:"uploadDate"`
 }
 
@@ -151,9 +158,8 @@ type ServerCertificateState struct {
 	// The PEM-encoded X509 certificate.
 	Body pulumi.StringPtrInput
 	// The PEM-encoded intermediate certification authorities.
-	Chain  pulumi.StringPtrInput
-	DryRun pulumi.StringPtrInput
-	// The date on which the server certificate expires.
+	Chain pulumi.StringPtrInput
+	// The date and time (UTC) on which the server certificate expires.
 	ExpirationDate pulumi.StringPtrInput
 	// A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
 	Name pulumi.StringPtrInput
@@ -164,7 +170,8 @@ type ServerCertificateState struct {
 	// The PEM-encoded private key matching the certificate.
 	PrivateKey pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
-	// The date on which the server certificate has been uploaded.
+	Timeouts   ServerCertificateTimeoutsPtrInput
+	// The date and time (UTC) on which the server certificate has been uploaded.
 	UploadDate pulumi.StringPtrInput
 }
 
@@ -174,31 +181,31 @@ func (ServerCertificateState) ElementType() reflect.Type {
 
 type serverCertificateArgs struct {
 	// The PEM-encoded X509 certificate.
-	Body *string `pulumi:"body"`
+	Body string `pulumi:"body"`
 	// The PEM-encoded intermediate certification authorities.
-	Chain  *string `pulumi:"chain"`
-	DryRun *string `pulumi:"dryRun"`
+	Chain *string `pulumi:"chain"`
 	// A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
 	Name *string `pulumi:"name"`
 	// The path to the server certificate, set to a slash (`/`) if not specified.
 	Path *string `pulumi:"path"`
 	// The PEM-encoded private key matching the certificate.
-	PrivateKey *string `pulumi:"privateKey"`
+	PrivateKey string                     `pulumi:"privateKey"`
+	Timeouts   *ServerCertificateTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ServerCertificate resource.
 type ServerCertificateArgs struct {
 	// The PEM-encoded X509 certificate.
-	Body pulumi.StringPtrInput
+	Body pulumi.StringInput
 	// The PEM-encoded intermediate certification authorities.
-	Chain  pulumi.StringPtrInput
-	DryRun pulumi.StringPtrInput
+	Chain pulumi.StringPtrInput
 	// A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
 	Name pulumi.StringPtrInput
 	// The path to the server certificate, set to a slash (`/`) if not specified.
 	Path pulumi.StringPtrInput
 	// The PEM-encoded private key matching the certificate.
-	PrivateKey pulumi.StringPtrInput
+	PrivateKey pulumi.StringInput
+	Timeouts   ServerCertificateTimeoutsPtrInput
 }
 
 func (ServerCertificateArgs) ElementType() reflect.Type {
@@ -289,8 +296,8 @@ func (o ServerCertificateOutput) ToServerCertificateOutputWithContext(ctx contex
 }
 
 // The PEM-encoded X509 certificate.
-func (o ServerCertificateOutput) Body() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.Body }).(pulumi.StringPtrOutput)
+func (o ServerCertificateOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
 }
 
 // The PEM-encoded intermediate certification authorities.
@@ -298,11 +305,7 @@ func (o ServerCertificateOutput) Chain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.Chain }).(pulumi.StringPtrOutput)
 }
 
-func (o ServerCertificateOutput) DryRun() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.DryRun }).(pulumi.StringPtrOutput)
-}
-
-// The date on which the server certificate expires.
+// The date and time (UTC) on which the server certificate expires.
 func (o ServerCertificateOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerCertificate) pulumi.StringOutput { return v.ExpirationDate }).(pulumi.StringOutput)
 }
@@ -323,15 +326,19 @@ func (o ServerCertificateOutput) Path() pulumi.StringOutput {
 }
 
 // The PEM-encoded private key matching the certificate.
-func (o ServerCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerCertificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
+func (o ServerCertificateOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
 func (o ServerCertificateOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerCertificate) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
 }
 
-// The date on which the server certificate has been uploaded.
+func (o ServerCertificateOutput) Timeouts() ServerCertificateTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ServerCertificate) ServerCertificateTimeoutsPtrOutput { return v.Timeouts }).(ServerCertificateTimeoutsPtrOutput)
+}
+
+// The date and time (UTC) on which the server certificate has been uploaded.
 func (o ServerCertificateOutput) UploadDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerCertificate) pulumi.StringOutput { return v.UploadDate }).(pulumi.StringOutput)
 }

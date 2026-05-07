@@ -70,7 +70,7 @@ type LookupSecurityGroupArgs struct {
 
 // A collection of values returned by getSecurityGroup.
 type LookupSecurityGroupResult struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The description of the security group.
 	Description string                   `pulumi:"description"`
@@ -130,7 +130,7 @@ func (o LookupSecurityGroupResultOutput) ToLookupSecurityGroupResultOutputWithCo
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o LookupSecurityGroupResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

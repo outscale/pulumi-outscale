@@ -58,7 +58,7 @@ class GetServerCertificateResult:
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> _builtins.str:
         """
-        The date on which the server certificate expires.
+        The date and time (UTC) on which the server certificate expires.
         """
         return pulumi.get(self, "expiration_date")
 
@@ -108,7 +108,7 @@ class GetServerCertificateResult:
     @pulumi.getter(name="uploadDate")
     def upload_date(self) -> _builtins.str:
         """
-        The date on which the server certificate has been uploaded.
+        The date and time (UTC) on which the server certificate has been uploaded.
         """
         return pulumi.get(self, "upload_date")
 

@@ -51,7 +51,7 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds?: string[];
     /**
@@ -67,7 +67,7 @@ export interface GetImagesArgs {
  */
 export interface GetImagesResult {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     readonly accountIds?: string[];
     readonly filters?: outputs.GetImagesFilter[];
@@ -128,7 +128,7 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

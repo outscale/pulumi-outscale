@@ -29,9 +29,10 @@ class NetPeeringArgs:
                  timeouts: Optional[pulumi.Input['NetPeeringTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a NetPeering resource.
-        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.
+        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
+               If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         :param pulumi.Input[_builtins.str] source_net_id: The ID of the Net you send the peering request from.
-        :param pulumi.Input[_builtins.str] accepter_owner_id: The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+        :param pulumi.Input[_builtins.str] accepter_owner_id: The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
                This parameter is required if the Net you want to connect with does not belong to you.
         :param pulumi.Input[Sequence[pulumi.Input['NetPeeringTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
@@ -50,7 +51,8 @@ class NetPeeringArgs:
     @pulumi.getter(name="accepterNetId")
     def accepter_net_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the Net you want to connect with.
+        The ID of the Net you want to connect with.<br />
+        If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         """
         return pulumi.get(self, "accepter_net_id")
 
@@ -74,7 +76,7 @@ class NetPeeringArgs:
     @pulumi.getter(name="accepterOwnerId")
     def accepter_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+        The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
         This parameter is required if the Net you want to connect with does not belong to you.
         """
         return pulumi.get(self, "accepter_owner_id")
@@ -131,9 +133,10 @@ class _NetPeeringState:
                  timeouts: Optional[pulumi.Input['NetPeeringTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering NetPeering resources.
-        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.
+        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
+               If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         :param pulumi.Input[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]] accepter_nets: Information about the accepter Net.
-        :param pulumi.Input[_builtins.str] accepter_owner_id: The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+        :param pulumi.Input[_builtins.str] accepter_owner_id: The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
                This parameter is required if the Net you want to connect with does not belong to you.
         :param pulumi.Input[_builtins.str] expiration_date: The date and time (UTC) at which the Net peerings expire.
         :param pulumi.Input[_builtins.str] net_peering_id: The ID of the Net peering.
@@ -171,7 +174,8 @@ class _NetPeeringState:
     @pulumi.getter(name="accepterNetId")
     def accepter_net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Net you want to connect with.
+        The ID of the Net you want to connect with.<br />
+        If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         """
         return pulumi.get(self, "accepter_net_id")
 
@@ -195,7 +199,7 @@ class _NetPeeringState:
     @pulumi.getter(name="accepterOwnerId")
     def accepter_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+        The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
         This parameter is required if the Net you want to connect with does not belong to you.
         """
         return pulumi.get(self, "accepter_owner_id")
@@ -358,8 +362,9 @@ class NetPeering(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.
-        :param pulumi.Input[_builtins.str] accepter_owner_id: The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
+               If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
+        :param pulumi.Input[_builtins.str] accepter_owner_id: The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
                This parameter is required if the Net you want to connect with does not belong to you.
         :param pulumi.Input[_builtins.str] source_net_id: The ID of the Net you send the peering request from.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
@@ -484,9 +489,10 @@ class NetPeering(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.
+        :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
+               If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringAccepterNetArgs', 'NetPeeringAccepterNetArgsDict']]]] accepter_nets: Information about the accepter Net.
-        :param pulumi.Input[_builtins.str] accepter_owner_id: The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+        :param pulumi.Input[_builtins.str] accepter_owner_id: The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
                This parameter is required if the Net you want to connect with does not belong to you.
         :param pulumi.Input[_builtins.str] expiration_date: The date and time (UTC) at which the Net peerings expire.
         :param pulumi.Input[_builtins.str] net_peering_id: The ID of the Net peering.
@@ -517,7 +523,8 @@ class NetPeering(pulumi.CustomResource):
     @pulumi.getter(name="accepterNetId")
     def accepter_net_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Net you want to connect with.
+        The ID of the Net you want to connect with.<br />
+        If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         """
         return pulumi.get(self, "accepter_net_id")
 
@@ -533,7 +540,7 @@ class NetPeering(pulumi.CustomResource):
     @pulumi.getter(name="accepterOwnerId")
     def accepter_owner_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+        The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
         This parameter is required if the Net you want to connect with does not belong to you.
         """
         return pulumi.get(self, "accepter_owner_id")

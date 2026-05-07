@@ -27,6 +27,7 @@ class SnapshotArgs:
                  source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['SnapshotTimeoutsArgs']] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
@@ -50,6 +51,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "source_snapshot_id", source_snapshot_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
 
@@ -126,6 +129,15 @@ class SnapshotArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['SnapshotTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['SnapshotTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -155,12 +167,13 @@ class _SnapshotState:
                  source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['SnapshotTimeoutsArgs']] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
         :param pulumi.Input[_builtins.str] account_alias: The account alias of the owner of the snapshot.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the snapshot.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the snapshot was created.
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
         :param pulumi.Input[_builtins.str] file_location: **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
@@ -203,6 +216,8 @@ class _SnapshotState:
             pulumi.set(__self__, "state", state)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
         if volume_size is not None:
@@ -224,7 +239,7 @@ class _SnapshotState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the snapshot.
+        The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
@@ -374,6 +389,15 @@ class _SnapshotState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['SnapshotTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['SnapshotTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -410,6 +434,7 @@ class Snapshot(pulumi.CustomResource):
                  source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -549,6 +574,7 @@ class Snapshot(pulumi.CustomResource):
                  source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -565,6 +591,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["source_region_name"] = source_region_name
             __props__.__dict__["source_snapshot_id"] = source_snapshot_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["volume_id"] = volume_id
             __props__.__dict__["account_alias"] = None
             __props__.__dict__["account_id"] = None
@@ -599,6 +626,7 @@ class Snapshot(pulumi.CustomResource):
             source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
             volume_id: Optional[pulumi.Input[_builtins.str]] = None,
             volume_size: Optional[pulumi.Input[_builtins.int]] = None) -> 'Snapshot':
         """
@@ -609,7 +637,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_alias: The account alias of the owner of the snapshot.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the snapshot.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the snapshot.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the snapshot was created.
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
         :param pulumi.Input[_builtins.str] file_location: **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
@@ -642,6 +670,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["source_snapshot_id"] = source_snapshot_id
         __props__.__dict__["state"] = state
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["volume_id"] = volume_id
         __props__.__dict__["volume_size"] = volume_size
         return Snapshot(resource_name, opts=opts, __props__=__props__)
@@ -658,7 +687,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The account ID of the owner of the snapshot.
+        The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
@@ -680,7 +709,7 @@ class Snapshot(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="fileLocation")
-    def file_location(self) -> pulumi.Output[_builtins.str]:
+    def file_location(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
@@ -717,7 +746,7 @@ class Snapshot(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="snapshotSize")
-    def snapshot_size(self) -> pulumi.Output[_builtins.int]:
+    def snapshot_size(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         """
@@ -725,7 +754,7 @@ class Snapshot(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionName")
-    def source_region_name(self) -> pulumi.Output[_builtins.str]:
+    def source_region_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         """
@@ -733,7 +762,7 @@ class Snapshot(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotId")
-    def source_snapshot_id(self) -> pulumi.Output[_builtins.str]:
+    def source_snapshot_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **(when copying a snapshot)** The ID of the snapshot you want to copy.
         """
@@ -754,6 +783,11 @@ class Snapshot(pulumi.CustomResource):
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.SnapshotTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="volumeId")

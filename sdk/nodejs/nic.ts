@@ -107,7 +107,7 @@ export class Nic extends pulumi.CustomResource {
     }
 
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
@@ -244,7 +244,7 @@ export class Nic extends pulumi.CustomResource {
  */
 export interface NicState {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId?: pulumi.Input<string>;
     /**

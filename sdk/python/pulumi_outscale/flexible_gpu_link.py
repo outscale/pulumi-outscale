@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['FlexibleGpuLinkArgs', 'FlexibleGpuLink']
 
@@ -20,7 +22,8 @@ __all__ = ['FlexibleGpuLinkArgs', 'FlexibleGpuLink']
 class FlexibleGpuLinkArgs:
     def __init__(__self__, *,
                  flexible_gpu_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 vm_id: pulumi.Input[_builtins.str]):
+                 vm_id: pulumi.Input[_builtins.str],
+                 timeouts: Optional[pulumi.Input['FlexibleGpuLinkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FlexibleGpuLink resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flexible_gpu_ids: (Required) The ID of one or more fGPUs you want to attach.
@@ -28,6 +31,8 @@ class FlexibleGpuLinkArgs:
         """
         pulumi.set(__self__, "flexible_gpu_ids", flexible_gpu_ids)
         pulumi.set(__self__, "vm_id", vm_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="flexibleGpuIds")
@@ -53,12 +58,22 @@ class FlexibleGpuLinkArgs:
     def vm_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "vm_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['FlexibleGpuLinkTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['FlexibleGpuLinkTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _FlexibleGpuLinkState:
     def __init__(__self__, *,
                  flexible_gpu_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['FlexibleGpuLinkTimeoutsArgs']] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlexibleGpuLink resources.
@@ -69,6 +84,8 @@ class _FlexibleGpuLinkState:
             pulumi.set(__self__, "flexible_gpu_ids", flexible_gpu_ids)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
 
@@ -94,6 +111,15 @@ class _FlexibleGpuLinkState:
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['FlexibleGpuLinkTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['FlexibleGpuLinkTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -113,6 +139,7 @@ class FlexibleGpuLink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  flexible_gpu_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FlexibleGpuLinkTimeoutsArgs', 'FlexibleGpuLinkTimeoutsArgsDict']]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -156,13 +183,15 @@ class FlexibleGpuLink(pulumi.CustomResource):
 
         ## Import
 
-        A flexible GPU link can be imported using the flexible GPU ID. For example:
+        A flexible GPU link can be imported using the ID of the related VM. For example:
 
         ```sh
 
-        $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+        $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu <vm_id>
 
         ```
+
+        This will import all the flexible GPUs that are linked to that VM.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -216,13 +245,15 @@ class FlexibleGpuLink(pulumi.CustomResource):
 
         ## Import
 
-        A flexible GPU link can be imported using the flexible GPU ID. For example:
+        A flexible GPU link can be imported using the ID of the related VM. For example:
 
         ```sh
 
-        $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+        $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu <vm_id>
 
         ```
+
+        This will import all the flexible GPUs that are linked to that VM.
 
         :param str resource_name: The name of the resource.
         :param FlexibleGpuLinkArgs args: The arguments to use to populate this resource's properties.
@@ -240,6 +271,7 @@ class FlexibleGpuLink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  flexible_gpu_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['FlexibleGpuLinkTimeoutsArgs', 'FlexibleGpuLinkTimeoutsArgsDict']]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -253,6 +285,7 @@ class FlexibleGpuLink(pulumi.CustomResource):
             if flexible_gpu_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'flexible_gpu_ids'")
             __props__.__dict__["flexible_gpu_ids"] = flexible_gpu_ids
+            __props__.__dict__["timeouts"] = timeouts
             if vm_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vm_id'")
             __props__.__dict__["vm_id"] = vm_id
@@ -269,6 +302,7 @@ class FlexibleGpuLink(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             flexible_gpu_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             request_id: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['FlexibleGpuLinkTimeoutsArgs', 'FlexibleGpuLinkTimeoutsArgsDict']]] = None,
             vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'FlexibleGpuLink':
         """
         Get an existing FlexibleGpuLink resource's state with the given name, id, and optional extra
@@ -286,6 +320,7 @@ class FlexibleGpuLink(pulumi.CustomResource):
 
         __props__.__dict__["flexible_gpu_ids"] = flexible_gpu_ids
         __props__.__dict__["request_id"] = request_id
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vm_id"] = vm_id
         return FlexibleGpuLink(resource_name, opts=opts, __props__=__props__)
 
@@ -301,6 +336,11 @@ class FlexibleGpuLink(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "request_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.FlexibleGpuLinkTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="vmId")

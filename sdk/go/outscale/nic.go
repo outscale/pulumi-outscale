@@ -142,7 +142,7 @@ import (
 type Nic struct {
 	pulumi.CustomResourceState
 
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A description for the NIC.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -213,7 +213,7 @@ func GetNic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Nic resources.
 type nicState struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId *string `pulumi:"accountId"`
 	// A description for the NIC.
 	Description *string `pulumi:"description"`
@@ -252,7 +252,7 @@ type nicState struct {
 }
 
 type NicState struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringPtrInput
 	// A description for the NIC.
 	Description pulumi.StringPtrInput
@@ -412,7 +412,7 @@ func (o NicOutput) ToNicOutputWithContext(ctx context.Context) NicOutput {
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o NicOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nic) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

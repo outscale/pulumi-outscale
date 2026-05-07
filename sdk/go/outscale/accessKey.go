@@ -93,7 +93,7 @@ type AccessKey struct {
 	AccessKeyId pulumi.StringOutput `pulumi:"accessKeyId"`
 	// The date and time (UTC) at which the access key was created.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
-	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
 	ExpirationDate pulumi.StringOutput `pulumi:"expirationDate"`
 	// The date and time (UTC) at which the access key was last modified.
 	LastModificationDate pulumi.StringOutput `pulumi:"lastModificationDate"`
@@ -102,8 +102,9 @@ type AccessKey struct {
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
 	State    pulumi.StringOutput        `pulumi:"state"`
+	Tag      pulumi.StringPtrOutput     `pulumi:"tag"`
 	Timeouts AccessKeyTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
 	UserName pulumi.StringPtrOutput `pulumi:"userName"`
 }
 
@@ -141,7 +142,7 @@ type accessKeyState struct {
 	AccessKeyId *string `pulumi:"accessKeyId"`
 	// The date and time (UTC) at which the access key was created.
 	CreationDate *string `pulumi:"creationDate"`
-	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
 	ExpirationDate *string `pulumi:"expirationDate"`
 	// The date and time (UTC) at which the access key was last modified.
 	LastModificationDate *string `pulumi:"lastModificationDate"`
@@ -150,8 +151,9 @@ type accessKeyState struct {
 	SecretKey *string `pulumi:"secretKey"`
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
 	State    *string            `pulumi:"state"`
+	Tag      *string            `pulumi:"tag"`
 	Timeouts *AccessKeyTimeouts `pulumi:"timeouts"`
-	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
 	UserName *string `pulumi:"userName"`
 }
 
@@ -160,7 +162,7 @@ type AccessKeyState struct {
 	AccessKeyId pulumi.StringPtrInput
 	// The date and time (UTC) at which the access key was created.
 	CreationDate pulumi.StringPtrInput
-	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
 	ExpirationDate pulumi.StringPtrInput
 	// The date and time (UTC) at which the access key was last modified.
 	LastModificationDate pulumi.StringPtrInput
@@ -169,8 +171,9 @@ type AccessKeyState struct {
 	SecretKey pulumi.StringPtrInput
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
 	State    pulumi.StringPtrInput
+	Tag      pulumi.StringPtrInput
 	Timeouts AccessKeyTimeoutsPtrInput
-	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
 	UserName pulumi.StringPtrInput
 }
 
@@ -179,23 +182,25 @@ func (AccessKeyState) ElementType() reflect.Type {
 }
 
 type accessKeyArgs struct {
-	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
 	ExpirationDate *string `pulumi:"expirationDate"`
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
 	State    *string            `pulumi:"state"`
+	Tag      *string            `pulumi:"tag"`
 	Timeouts *AccessKeyTimeouts `pulumi:"timeouts"`
-	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
 	UserName *string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a AccessKey resource.
 type AccessKeyArgs struct {
-	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
 	ExpirationDate pulumi.StringPtrInput
 	// The state for the access key (`ACTIVE` | `INACTIVE`).
 	State    pulumi.StringPtrInput
+	Tag      pulumi.StringPtrInput
 	Timeouts AccessKeyTimeoutsPtrInput
-	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+	// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
 	UserName pulumi.StringPtrInput
 }
 
@@ -296,7 +301,7 @@ func (o AccessKeyOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
-// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
 func (o AccessKeyOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.ExpirationDate }).(pulumi.StringOutput)
 }
@@ -320,11 +325,15 @@ func (o AccessKeyOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+func (o AccessKeyOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessKeyOutput) Timeouts() AccessKeyTimeoutsPtrOutput {
 	return o.ApplyT(func(v *AccessKey) AccessKeyTimeoutsPtrOutput { return v.Timeouts }).(AccessKeyTimeoutsPtrOutput)
 }
 
-// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+// The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
 func (o AccessKeyOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.UserName }).(pulumi.StringPtrOutput)
 }

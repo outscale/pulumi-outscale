@@ -22,7 +22,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string PublicIp;
         /// <summary>
-        /// The account ID of the owner of the public IP.
+        /// The OUTSCALE account ID of the owner of the public IP.
         /// </summary>
         public readonly string PublicIpAccountId;
 

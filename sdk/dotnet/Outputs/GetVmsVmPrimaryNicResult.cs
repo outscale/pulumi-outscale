@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class GetVmsVmPrimaryNicResult
     {
         /// <summary>
-        /// The account ID of the owner of the NIC.
+        /// The OUTSCALE account ID of the owner of the NIC.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

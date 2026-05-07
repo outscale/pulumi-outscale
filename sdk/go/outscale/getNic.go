@@ -66,7 +66,7 @@ type LookupNicArgs struct {
 
 // A collection of values returned by getNic.
 type LookupNicResult struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId string `pulumi:"accountId"`
 	// The description of the NIC.
 	Description string         `pulumi:"description"`
@@ -141,7 +141,7 @@ func (o LookupNicResultOutput) ToLookupNicResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o LookupNicResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNicResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

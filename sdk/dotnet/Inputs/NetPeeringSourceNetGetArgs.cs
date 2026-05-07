@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class NetPeeringSourceNetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID of the owner of the source Net.
+        /// The OUTSCALE account ID of the owner of the source Net.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;

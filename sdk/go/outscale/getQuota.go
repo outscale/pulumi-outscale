@@ -13,7 +13,7 @@ import (
 
 // Provides information about a quota.
 //
-// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\
+// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\
 // For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
 //
 // ## Example Usage
@@ -84,7 +84,7 @@ type GetQuotaArgs struct {
 
 // A collection of values returned by getQuota.
 type GetQuotaResult struct {
-	// The account ID of the owner of the quotas.
+	// The OUTSCALE account ID of the owner of the quotas.
 	AccountId string `pulumi:"accountId"`
 	// The description of the quota.
 	Description string           `pulumi:"description"`
@@ -139,7 +139,7 @@ func (o GetQuotaResultOutput) ToGetQuotaResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The account ID of the owner of the quotas.
+// The OUTSCALE account ID of the owner of the quotas.
 func (o GetQuotaResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotaResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

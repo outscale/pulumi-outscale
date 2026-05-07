@@ -90,7 +90,7 @@ export class AccessKey extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
-     * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+     * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
      */
     declare public readonly expirationDate: pulumi.Output<string>;
     /**
@@ -106,9 +106,10 @@ export class AccessKey extends pulumi.CustomResource {
      * The state for the access key (`ACTIVE` | `INACTIVE`).
      */
     declare public readonly state: pulumi.Output<string>;
+    declare public readonly tag: pulumi.Output<string | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.AccessKeyTimeouts | undefined>;
     /**
-     * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+     * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
      */
     declare public readonly userName: pulumi.Output<string | undefined>;
 
@@ -132,12 +133,14 @@ export class AccessKey extends pulumi.CustomResource {
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["secretKey"] = state?.secretKey;
             resourceInputs["state"] = state?.state;
+            resourceInputs["tag"] = state?.tag;
             resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as AccessKeyArgs | undefined;
             resourceInputs["expirationDate"] = args?.expirationDate;
             resourceInputs["state"] = args?.state;
+            resourceInputs["tag"] = args?.tag;
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["userName"] = args?.userName;
             resourceInputs["accessKeyId"] = undefined /*out*/;
@@ -164,7 +167,7 @@ export interface AccessKeyState {
      */
     creationDate?: pulumi.Input<string>;
     /**
-     * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+     * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
      */
     expirationDate?: pulumi.Input<string>;
     /**
@@ -180,9 +183,10 @@ export interface AccessKeyState {
      * The state for the access key (`ACTIVE` | `INACTIVE`).
      */
     state?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.AccessKeyTimeouts>;
     /**
-     * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+     * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
      */
     userName?: pulumi.Input<string>;
 }
@@ -192,16 +196,17 @@ export interface AccessKeyState {
  */
 export interface AccessKeyArgs {
     /**
-     * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`). To remove an existing expiration date, use the method without specifying this parameter.
+     * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
      */
     expirationDate?: pulumi.Input<string>;
     /**
      * The state for the access key (`ACTIVE` | `INACTIVE`).
      */
     state?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.AccessKeyTimeouts>;
     /**
-     * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root account).
+     * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
      */
     userName?: pulumi.Input<string>;
 }

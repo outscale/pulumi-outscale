@@ -65,7 +65,7 @@ export interface GetImageResult {
      */
     readonly accountAlias: string;
     /**
-     * The account ID of the owner of the OMI.
+     * The OUTSCALE account ID of the owner of the OMI.
      */
     readonly accountId: string;
     /**

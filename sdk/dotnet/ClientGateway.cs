@@ -97,6 +97,9 @@ namespace Pulumi.Outscale
         [Output("tags")]
         public Output<ImmutableArray<Outputs.ClientGatewayTag>> Tags { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.ClientGatewayTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ClientGateway resource with the given unique name, arguments, and options.
@@ -175,6 +178,9 @@ namespace Pulumi.Outscale
             set => _tags = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.ClientGatewayTimeoutsArgs>? Timeouts { get; set; }
+
         public ClientGatewayArgs()
         {
         }
@@ -229,6 +235,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.ClientGatewayTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.ClientGatewayTimeoutsGetArgs>? Timeouts { get; set; }
 
         public ClientGatewayState()
         {

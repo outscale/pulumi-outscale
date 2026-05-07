@@ -116,7 +116,7 @@ import (
 type SecurityGroup struct {
 	pulumi.CustomResourceState
 
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A description for the security group.<br />
 	// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
@@ -174,7 +174,7 @@ func GetSecurityGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecurityGroup resources.
 type securityGroupState struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId *string `pulumi:"accountId"`
 	// A description for the security group.<br />
 	// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
@@ -200,7 +200,7 @@ type securityGroupState struct {
 }
 
 type SecurityGroupState struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringPtrInput
 	// A description for the security group.<br />
 	// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
@@ -351,7 +351,7 @@ func (o SecurityGroupOutput) ToSecurityGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o SecurityGroupOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -84,7 +84,7 @@ class GetSnapshotResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the snapshot.
+        The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
@@ -224,7 +224,7 @@ def get_snapshot(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: The account ID of the owner of the snapshot.
+    :param _builtins.str account_id: The OUTSCALE account ID of the owner of the snapshot.
     :param Sequence[Union['GetSnapshotFilterArgs', 'GetSnapshotFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str snapshot_id: The ID of the snapshot.
     """
@@ -273,7 +273,7 @@ def get_snapshot_output(account_id: Optional[pulumi.Input[Optional[_builtins.str
     ```
 
 
-    :param _builtins.str account_id: The account ID of the owner of the snapshot.
+    :param _builtins.str account_id: The OUTSCALE account ID of the owner of the snapshot.
     :param Sequence[Union['GetSnapshotFilterArgs', 'GetSnapshotFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str snapshot_id: The ID of the snapshot.
     """

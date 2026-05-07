@@ -90,11 +90,12 @@ import (
 type NetPeering struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Net you want to connect with.
+	// The ID of the Net you want to connect with.<br />
+	// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
 	AccepterNetId pulumi.StringOutput `pulumi:"accepterNetId"`
 	// Information about the accepter Net.
 	AccepterNets NetPeeringAccepterNetArrayOutput `pulumi:"accepterNets"`
-	// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+	// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
 	// This parameter is required if the Net you want to connect with does not belong to you.
 	AccepterOwnerId pulumi.StringOutput `pulumi:"accepterOwnerId"`
 	// The date and time (UTC) at which the Net peerings expire.
@@ -150,11 +151,12 @@ func GetNetPeering(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetPeering resources.
 type netPeeringState struct {
-	// The ID of the Net you want to connect with.
+	// The ID of the Net you want to connect with.<br />
+	// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
 	AccepterNetId *string `pulumi:"accepterNetId"`
 	// Information about the accepter Net.
 	AccepterNets []NetPeeringAccepterNet `pulumi:"accepterNets"`
-	// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+	// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
 	// This parameter is required if the Net you want to connect with does not belong to you.
 	AccepterOwnerId *string `pulumi:"accepterOwnerId"`
 	// The date and time (UTC) at which the Net peerings expire.
@@ -175,11 +177,12 @@ type netPeeringState struct {
 }
 
 type NetPeeringState struct {
-	// The ID of the Net you want to connect with.
+	// The ID of the Net you want to connect with.<br />
+	// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
 	AccepterNetId pulumi.StringPtrInput
 	// Information about the accepter Net.
 	AccepterNets NetPeeringAccepterNetArrayInput
-	// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+	// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
 	// This parameter is required if the Net you want to connect with does not belong to you.
 	AccepterOwnerId pulumi.StringPtrInput
 	// The date and time (UTC) at which the Net peerings expire.
@@ -204,9 +207,10 @@ func (NetPeeringState) ElementType() reflect.Type {
 }
 
 type netPeeringArgs struct {
-	// The ID of the Net you want to connect with.
+	// The ID of the Net you want to connect with.<br />
+	// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
 	AccepterNetId string `pulumi:"accepterNetId"`
-	// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+	// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
 	// This parameter is required if the Net you want to connect with does not belong to you.
 	AccepterOwnerId    *string `pulumi:"accepterOwnerId"`
 	SourceNetAccountId *string `pulumi:"sourceNetAccountId"`
@@ -219,9 +223,10 @@ type netPeeringArgs struct {
 
 // The set of arguments for constructing a NetPeering resource.
 type NetPeeringArgs struct {
-	// The ID of the Net you want to connect with.
+	// The ID of the Net you want to connect with.<br />
+	// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
 	AccepterNetId pulumi.StringInput
-	// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+	// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
 	// This parameter is required if the Net you want to connect with does not belong to you.
 	AccepterOwnerId    pulumi.StringPtrInput
 	SourceNetAccountId pulumi.StringPtrInput
@@ -319,7 +324,8 @@ func (o NetPeeringOutput) ToNetPeeringOutputWithContext(ctx context.Context) Net
 	return o
 }
 
-// The ID of the Net you want to connect with.
+// The ID of the Net you want to connect with.<br />
+// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
 func (o NetPeeringOutput) AccepterNetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetPeering) pulumi.StringOutput { return v.AccepterNetId }).(pulumi.StringOutput)
 }
@@ -329,7 +335,7 @@ func (o NetPeeringOutput) AccepterNets() NetPeeringAccepterNetArrayOutput {
 	return o.ApplyT(func(v *NetPeering) NetPeeringAccepterNetArrayOutput { return v.AccepterNets }).(NetPeeringAccepterNetArrayOutput)
 }
 
-// The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+// The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
 // This parameter is required if the Net you want to connect with does not belong to you.
 func (o NetPeeringOutput) AccepterOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetPeering) pulumi.StringOutput { return v.AccepterOwnerId }).(pulumi.StringOutput)

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Manages an Internet service link.
+ * Manages an internet service link.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const internetService01 = new outscale.InternetService("internet_service01", {});
  * ```
  *
- * ### Link an Internet service to a Net
+ * ### Link an internet service to a Net
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -84,11 +84,11 @@ export class InternetServiceLink extends pulumi.CustomResource {
     declare public readonly netId: pulumi.Output<string>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
-     * The state of the attachment of the Internet service to the Net (always `available`).
+     * The state of the attachment of the internet service to the Net (always `available`).
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * One or more tags associated with the Internet service.
+     * One or more tags associated with the internet service.
      */
     declare public /*out*/ readonly tags: pulumi.Output<outputs.InternetServiceLinkTag[]>;
     declare public readonly timeouts: pulumi.Output<outputs.InternetServiceLinkTimeouts | undefined>;
@@ -146,11 +146,11 @@ export interface InternetServiceLinkState {
     netId?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**
-     * The state of the attachment of the Internet service to the Net (always `available`).
+     * The state of the attachment of the internet service to the Net (always `available`).
      */
     state?: pulumi.Input<string>;
     /**
-     * One or more tags associated with the Internet service.
+     * One or more tags associated with the internet service.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceLinkTag>[]>;
     timeouts?: pulumi.Input<inputs.InternetServiceLinkTimeouts>;

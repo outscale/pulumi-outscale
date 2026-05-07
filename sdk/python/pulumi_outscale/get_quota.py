@@ -67,7 +67,7 @@ class GetQuotaResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the quotas.
+        The OUTSCALE account ID of the owner of the quotas.
         """
         return pulumi.get(self, "account_id")
 
@@ -167,7 +167,7 @@ def get_quota(filters: Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFi
     """
     Provides information about a quota.
 
-    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\\
     For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
 
     ## Example Usage
@@ -221,7 +221,7 @@ def get_quota_output(filters: Optional[pulumi.Input[Sequence[Union['GetQuotaFilt
     """
     Provides information about a quota.
 
-    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-Account.html).\\
+    For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\\
     For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
 
     ## Example Usage

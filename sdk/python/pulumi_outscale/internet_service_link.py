@@ -81,8 +81,8 @@ class _InternetServiceLinkState:
         Input properties used for looking up and filtering InternetServiceLink resources.
         :param pulumi.Input[_builtins.str] internet_service_id: The ID of the internet service you want to attach.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the internet service.
-        :param pulumi.Input[_builtins.str] state: The state of the attachment of the Internet service to the Net (always `available`).
-        :param pulumi.Input[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]] tags: One or more tags associated with the Internet service.
+        :param pulumi.Input[_builtins.str] state: The state of the attachment of the internet service to the Net (always `available`).
+        :param pulumi.Input[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]] tags: One or more tags associated with the internet service.
         """
         if internet_service_id is not None:
             pulumi.set(__self__, "internet_service_id", internet_service_id)
@@ -134,7 +134,7 @@ class _InternetServiceLinkState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the attachment of the Internet service to the Net (always `available`).
+        The state of the attachment of the internet service to the Net (always `available`).
         """
         return pulumi.get(self, "state")
 
@@ -146,7 +146,7 @@ class _InternetServiceLinkState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]]]:
         """
-        One or more tags associated with the Internet service.
+        One or more tags associated with the internet service.
         """
         return pulumi.get(self, "tags")
 
@@ -175,7 +175,7 @@ class InternetServiceLink(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Manages an Internet service link.
+        Manages an internet service link.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -192,7 +192,7 @@ class InternetServiceLink(pulumi.CustomResource):
         internet_service01 = outscale.InternetService("internet_service01")
         ```
 
-        ### Link an Internet service to a Net
+        ### Link an internet service to a Net
 
         ```python
         import pulumi
@@ -225,7 +225,7 @@ class InternetServiceLink(pulumi.CustomResource):
                  args: InternetServiceLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an Internet service link.
+        Manages an internet service link.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -242,7 +242,7 @@ class InternetServiceLink(pulumi.CustomResource):
         internet_service01 = outscale.InternetService("internet_service01")
         ```
 
-        ### Link an Internet service to a Net
+        ### Link an internet service to a Net
 
         ```python
         import pulumi
@@ -325,8 +325,8 @@ class InternetServiceLink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] internet_service_id: The ID of the internet service you want to attach.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the internet service.
-        :param pulumi.Input[_builtins.str] state: The state of the attachment of the Internet service to the Net (always `available`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InternetServiceLinkTagArgs', 'InternetServiceLinkTagArgsDict']]]] tags: One or more tags associated with the Internet service.
+        :param pulumi.Input[_builtins.str] state: The state of the attachment of the internet service to the Net (always `available`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InternetServiceLinkTagArgs', 'InternetServiceLinkTagArgsDict']]]] tags: One or more tags associated with the internet service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -365,7 +365,7 @@ class InternetServiceLink(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The state of the attachment of the Internet service to the Net (always `available`).
+        The state of the attachment of the internet service to the Net (always `available`).
         """
         return pulumi.get(self, "state")
 
@@ -373,7 +373,7 @@ class InternetServiceLink(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence['outputs.InternetServiceLinkTag']]:
         """
-        One or more tags associated with the Internet service.
+        One or more tags associated with the internet service.
         """
         return pulumi.get(self, "tags")
 

@@ -39,7 +39,7 @@ class LoadBalancerPolicyArgs:
         :param pulumi.Input[_builtins.str] policy_type: The type of stickiness policy you want to create: `app` or `load_balancer`.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]] access_logs: Information about access logs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         :param pulumi.Input[_builtins.str] load_balancer_type: The type of load balancer. Valid only for load balancers in a Net.<br />
                If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
                If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
@@ -140,7 +140,7 @@ class LoadBalancerPolicyArgs:
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -229,7 +229,7 @@ class _LoadBalancerPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]] access_logs: Information about access logs.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyHealthCheckArgs']]] health_checks: Information about the health check configuration.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyListenerArgs']]] listeners: The listeners for the load balancer.
@@ -342,7 +342,7 @@ class _LoadBalancerPolicyState:
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         return pulumi.get(self, "cookie_name")
 
@@ -623,7 +623,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyAccessLogArgs', 'LoadBalancerPolicyAccessLogArgsDict']]]] access_logs: Information about access logs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer for which you want to create a policy.
         :param pulumi.Input[_builtins.str] load_balancer_type: The type of load balancer. Valid only for load balancers in a Net.<br />
                If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
@@ -797,7 +797,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyAccessLogArgs', 'LoadBalancerPolicyAccessLogArgsDict']]]] access_logs: Information about access logs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyApplicationStickyCookiePolicyArgs', 'LoadBalancerPolicyApplicationStickyCookiePolicyArgsDict']]]] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyHealthCheckArgs', 'LoadBalancerPolicyHealthCheckArgsDict']]]] health_checks: Information about the health check configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyListenerArgs', 'LoadBalancerPolicyListenerArgsDict']]]] listeners: The listeners for the load balancer.
@@ -877,7 +877,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         return pulumi.get(self, "cookie_name")
 

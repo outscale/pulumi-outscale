@@ -18,7 +18,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string AccountAlias;
         /// <summary>
-        /// The account ID of the owner of the OMI.
+        /// The OUTSCALE account ID of the owner of the OMI.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

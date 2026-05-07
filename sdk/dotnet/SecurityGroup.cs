@@ -92,7 +92,7 @@ namespace Pulumi.Outscale
     public partial class SecurityGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account ID that owns the source or destination security group.
+        /// The OUTSCALE account ID that owns the source or destination security group.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.Outscale
     public sealed class SecurityGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID that owns the source or destination security group.
+        /// The OUTSCALE account ID that owns the source or destination security group.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

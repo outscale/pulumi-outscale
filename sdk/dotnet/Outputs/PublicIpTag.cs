@@ -14,9 +14,9 @@ namespace Pulumi.Outscale.Outputs
     public sealed class PublicIpTag
     {
         /// <summary>
-        /// The key of the tag, with a minimum of 1 character.
+        /// The key of the tag, between 1 and 255 characters.
         /// </summary>
-        public readonly string? Key;
+        public readonly string Key;
         /// <summary>
         /// The value of the tag, between 0 and 255 characters.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Outscale.Outputs
 
         [OutputConstructor]
         private PublicIpTag(
-            string? key,
+            string key,
 
             string? value)
         {

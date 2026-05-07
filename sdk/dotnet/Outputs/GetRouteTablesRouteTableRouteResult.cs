@@ -50,7 +50,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The account ID of the owner of the VM.
+        /// The OUTSCALE account ID of the owner of the VM.
         /// </summary>
         public readonly string VmAccountId;
         /// <summary>

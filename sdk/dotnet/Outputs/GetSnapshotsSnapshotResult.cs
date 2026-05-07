@@ -18,7 +18,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string AccountAlias;
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

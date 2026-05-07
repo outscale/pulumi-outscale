@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Outscale.Inputs
 {
 
-    public sealed class SnapshotAttributesPermissionsToCreateVolumeRemovalGetArgs : global::Pulumi.ResourceArgs
+    public sealed class SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountIds")]
         private InputList<string>? _accountIds;
 
         /// <summary>
-        /// The account ID of one or more users from whom you want to remove permissions.
+        /// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         /// </summary>
         public InputList<string> AccountIds
         {
@@ -30,9 +30,9 @@ namespace Pulumi.Outscale.Inputs
         [Input("globalPermission")]
         public Input<bool>? GlobalPermission { get; set; }
 
-        public SnapshotAttributesPermissionsToCreateVolumeRemovalGetArgs()
+        public SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs()
         {
         }
-        public static new SnapshotAttributesPermissionsToCreateVolumeRemovalGetArgs Empty => new SnapshotAttributesPermissionsToCreateVolumeRemovalGetArgs();
+        public static new SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs Empty => new SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs();
     }
 }

@@ -108,7 +108,7 @@ type LookupAccessKeyArgs struct {
 	Filters []GetAccessKeyFilter `pulumi:"filters"`
 	// The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
 	State *string `pulumi:"state"`
-	// The name of the EIM user. By default, the user who sends the request (which can be the root account).
+	// The name of the EIM user. By default, the user who sends the request (which can be the root user).
 	UserName *string `pulumi:"userName"`
 }
 
@@ -148,7 +148,7 @@ type LookupAccessKeyOutputArgs struct {
 	Filters GetAccessKeyFilterArrayInput `pulumi:"filters"`
 	// The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// The name of the EIM user. By default, the user who sends the request (which can be the root account).
+	// The name of the EIM user. By default, the user who sends the request (which can be the root user).
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 

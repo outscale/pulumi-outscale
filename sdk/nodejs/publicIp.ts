@@ -64,7 +64,7 @@ export class PublicIp extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly linkPublicIpId: pulumi.Output<string>;
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     declare public /*out*/ readonly nicAccountId: pulumi.Output<string>;
     /**
@@ -88,6 +88,7 @@ export class PublicIp extends pulumi.CustomResource {
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.PublicIpTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.PublicIpTimeouts | undefined>;
     /**
      * The ID of the VM the public IP is associated with (if any).
      */
@@ -114,10 +115,12 @@ export class PublicIp extends pulumi.CustomResource {
             resourceInputs["publicIpId"] = state?.publicIpId;
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as PublicIpArgs | undefined;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["linkPublicIpId"] = undefined /*out*/;
             resourceInputs["nicAccountId"] = undefined /*out*/;
             resourceInputs["nicId"] = undefined /*out*/;
@@ -141,7 +144,7 @@ export interface PublicIpState {
      */
     linkPublicIpId?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     nicAccountId?: pulumi.Input<string>;
     /**
@@ -165,6 +168,7 @@ export interface PublicIpState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.PublicIpTag>[]>;
+    timeouts?: pulumi.Input<inputs.PublicIpTimeouts>;
     /**
      * The ID of the VM the public IP is associated with (if any).
      */
@@ -179,4 +183,5 @@ export interface PublicIpArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.PublicIpTag>[]>;
+    timeouts?: pulumi.Input<inputs.PublicIpTimeouts>;
 }

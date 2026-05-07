@@ -268,7 +268,7 @@ namespace Pulumi.Outscale
         public string? State { get; set; }
 
         /// <summary>
-        /// The name of the EIM user. By default, the user who sends the request (which can be the root account).
+        /// The name of the EIM user. By default, the user who sends the request (which can be the root user).
         /// </summary>
         [Input("userName")]
         public string? UserName { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Outscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The name of the EIM user. By default, the user who sends the request (which can be the root account).
+        /// The name of the EIM user. By default, the user who sends the request (which can be the root user).
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

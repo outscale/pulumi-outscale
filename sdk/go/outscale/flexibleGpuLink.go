@@ -90,19 +90,22 @@ import (
 //
 // ## Import
 //
-// A flexible GPU link can be imported using the flexible GPU ID. For example:
+// A flexible GPU link can be imported using the ID of the related VM. For example:
 //
 // ```sh
 //
-// $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+// $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu <vm_id>
 //
 // ```
+//
+// This will import all the flexible GPUs that are linked to that VM.
 type FlexibleGpuLink struct {
 	pulumi.CustomResourceState
 
 	// (Required) The ID of one or more fGPUs you want to attach.
-	FlexibleGpuIds pulumi.StringArrayOutput `pulumi:"flexibleGpuIds"`
-	RequestId      pulumi.StringOutput      `pulumi:"requestId"`
+	FlexibleGpuIds pulumi.StringArrayOutput         `pulumi:"flexibleGpuIds"`
+	RequestId      pulumi.StringOutput              `pulumi:"requestId"`
+	Timeouts       FlexibleGpuLinkTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the VM you want to attach the fGPU to.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
 }
@@ -144,8 +147,9 @@ func GetFlexibleGpuLink(ctx *pulumi.Context,
 // Input properties used for looking up and filtering FlexibleGpuLink resources.
 type flexibleGpuLinkState struct {
 	// (Required) The ID of one or more fGPUs you want to attach.
-	FlexibleGpuIds []string `pulumi:"flexibleGpuIds"`
-	RequestId      *string  `pulumi:"requestId"`
+	FlexibleGpuIds []string                 `pulumi:"flexibleGpuIds"`
+	RequestId      *string                  `pulumi:"requestId"`
+	Timeouts       *FlexibleGpuLinkTimeouts `pulumi:"timeouts"`
 	// The ID of the VM you want to attach the fGPU to.
 	VmId *string `pulumi:"vmId"`
 }
@@ -154,6 +158,7 @@ type FlexibleGpuLinkState struct {
 	// (Required) The ID of one or more fGPUs you want to attach.
 	FlexibleGpuIds pulumi.StringArrayInput
 	RequestId      pulumi.StringPtrInput
+	Timeouts       FlexibleGpuLinkTimeoutsPtrInput
 	// The ID of the VM you want to attach the fGPU to.
 	VmId pulumi.StringPtrInput
 }
@@ -164,7 +169,8 @@ func (FlexibleGpuLinkState) ElementType() reflect.Type {
 
 type flexibleGpuLinkArgs struct {
 	// (Required) The ID of one or more fGPUs you want to attach.
-	FlexibleGpuIds []string `pulumi:"flexibleGpuIds"`
+	FlexibleGpuIds []string                 `pulumi:"flexibleGpuIds"`
+	Timeouts       *FlexibleGpuLinkTimeouts `pulumi:"timeouts"`
 	// The ID of the VM you want to attach the fGPU to.
 	VmId string `pulumi:"vmId"`
 }
@@ -173,6 +179,7 @@ type flexibleGpuLinkArgs struct {
 type FlexibleGpuLinkArgs struct {
 	// (Required) The ID of one or more fGPUs you want to attach.
 	FlexibleGpuIds pulumi.StringArrayInput
+	Timeouts       FlexibleGpuLinkTimeoutsPtrInput
 	// The ID of the VM you want to attach the fGPU to.
 	VmId pulumi.StringInput
 }
@@ -271,6 +278,10 @@ func (o FlexibleGpuLinkOutput) FlexibleGpuIds() pulumi.StringArrayOutput {
 
 func (o FlexibleGpuLinkOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexibleGpuLink) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
+}
+
+func (o FlexibleGpuLinkOutput) Timeouts() FlexibleGpuLinkTimeoutsPtrOutput {
+	return o.ApplyT(func(v *FlexibleGpuLink) FlexibleGpuLinkTimeoutsPtrOutput { return v.Timeouts }).(FlexibleGpuLinkTimeoutsPtrOutput)
 }
 
 // The ID of the VM you want to attach the fGPU to.

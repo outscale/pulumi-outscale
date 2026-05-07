@@ -33,7 +33,7 @@ type LookupServerCertificateArgs struct {
 
 // A collection of values returned by getServerCertificate.
 type LookupServerCertificateResult struct {
-	// The date on which the server certificate expires.
+	// The date and time (UTC) on which the server certificate expires.
 	ExpirationDate string                       `pulumi:"expirationDate"`
 	Filters        []GetServerCertificateFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
@@ -45,7 +45,7 @@ type LookupServerCertificateResult struct {
 	// The path to the server certificate.
 	Path      string `pulumi:"path"`
 	RequestId string `pulumi:"requestId"`
-	// The date on which the server certificate has been uploaded.
+	// The date and time (UTC) on which the server certificate has been uploaded.
 	UploadDate string `pulumi:"uploadDate"`
 }
 
@@ -83,7 +83,7 @@ func (o LookupServerCertificateResultOutput) ToLookupServerCertificateResultOutp
 	return o
 }
 
-// The date on which the server certificate expires.
+// The date and time (UTC) on which the server certificate expires.
 func (o LookupServerCertificateResultOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.ExpirationDate }).(pulumi.StringOutput)
 }
@@ -116,7 +116,7 @@ func (o LookupServerCertificateResultOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.RequestId }).(pulumi.StringOutput)
 }
 
-// The date on which the server certificate has been uploaded.
+// The date and time (UTC) on which the server certificate has been uploaded.
 func (o LookupServerCertificateResultOutput) UploadDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.UploadDate }).(pulumi.StringOutput)
 }

@@ -79,7 +79,7 @@ export interface CaTimeouts {
 
 export interface ClientGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -88,15 +88,72 @@ export interface ClientGatewayTag {
     value: string;
 }
 
+export interface ClientGatewayTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface DhcpOptionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value: string;
+}
+
+export interface DhcpOptionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface FlexibleGpuLinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface FlexibleGpuTimeouts {
@@ -279,7 +336,7 @@ export interface GetClientGatewayFilter {
 
 export interface GetClientGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -317,7 +374,7 @@ export interface GetClientGatewaysClientGateway {
 
 export interface GetClientGatewaysClientGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -338,7 +395,7 @@ export interface GetDhcpOptionFilter {
 
 export interface GetDhcpOptionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -380,7 +437,7 @@ export interface GetDhcpOptionsDhcpOption {
 
 export interface GetDhcpOptionsDhcpOptionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -590,7 +647,7 @@ export interface GetImageExportTaskOsuExport {
 
 export interface GetImageExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -656,7 +713,7 @@ export interface GetImageExportTasksImageExportTaskOsuExport {
 
 export interface GetImageExportTasksImageExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -672,7 +729,7 @@ export interface GetImageFilter {
 
 export interface GetImagePermissionsToLaunch {
     /**
-     * The account ID of the owner of the OMI.
+     * The OUTSCALE account ID of the owner of the OMI.
      */
     accountId: string;
     /**
@@ -696,7 +753,7 @@ export interface GetImageStateComment {
 
 export interface GetImageTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -716,7 +773,7 @@ export interface GetImagesImage {
      */
     accountAlias: string;
     /**
-     * The account ID of the owner of the OMI.
+     * The OUTSCALE account ID of the owner of the OMI.
      */
     accountId: string;
     /**
@@ -836,7 +893,7 @@ export interface GetImagesImageBlockDeviceMappingBsus {
 
 export interface GetImagesImagePermissionsToLaunch {
     /**
-     * The account ID of the owner of the OMI.
+     * The OUTSCALE account ID of the owner of the OMI.
      */
     accountId: string;
     /**
@@ -860,7 +917,7 @@ export interface GetImagesImageStateComment {
 
 export interface GetImagesImageTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -876,7 +933,7 @@ export interface GetInternetServiceFilter {
 
 export interface GetInternetServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -911,7 +968,7 @@ export interface GetInternetServicesInternetService {
 
 export interface GetInternetServicesInternetServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -927,7 +984,7 @@ export interface GetKeypairFilter {
 
 export interface GetKeypairTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -966,7 +1023,7 @@ export interface GetKeypairsKeypair {
 
 export interface GetKeypairsKeypairTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -996,7 +1053,7 @@ export interface GetLoadBalancerAccessLog {
 
 export interface GetLoadBalancerApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
     cookieName: string;
     /**
@@ -1122,7 +1179,7 @@ export interface GetLoadBalancerLoadBalancerStickyCookiePolicy {
 
 export interface GetLoadBalancerSourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId: string;
     /**
@@ -1133,7 +1190,7 @@ export interface GetLoadBalancerSourceSecurityGroup {
 
 export interface GetLoadBalancerTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key: string;
     /**
@@ -1280,7 +1337,7 @@ export interface GetLoadBalancersLoadBalancerAccessLog {
 
 export interface GetLoadBalancersLoadBalancerApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
     cookieName: string;
     /**
@@ -1356,7 +1413,7 @@ export interface GetLoadBalancersLoadBalancerLoadBalancerStickyCookiePolicy {
 
 export interface GetLoadBalancersLoadBalancerSourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId: string;
     /**
@@ -1367,7 +1424,7 @@ export interface GetLoadBalancersLoadBalancerSourceSecurityGroup {
 
 export interface GetLoadBalancersLoadBalancerTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key: string;
     /**
@@ -1394,7 +1451,7 @@ export interface GetNatServicePublicIp {
 
 export interface GetNatServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1448,7 +1505,7 @@ export interface GetNatServicesNatServicePublicIp {
 
 export interface GetNatServicesNatServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1484,7 +1541,7 @@ export interface GetNetAccessPointServicesService {
 
 export interface GetNetAccessPointTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1527,7 +1584,7 @@ export interface GetNetAccessPointsNetAccessPoint {
 
 export interface GetNetAccessPointsNetAccessPointTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1538,7 +1595,7 @@ export interface GetNetAccessPointsNetAccessPointTag {
 
 export interface GetNetAttributesTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1554,7 +1611,7 @@ export interface GetNetFilter {
 
 export interface GetNetPeeringAccepterNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -1577,7 +1634,7 @@ export interface GetNetPeeringFilter {
 
 export interface GetNetPeeringSourceNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -1603,7 +1660,7 @@ export interface GetNetPeeringState {
 
 export interface GetNetPeeringTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1645,7 +1702,7 @@ export interface GetNetPeeringsNetPeering {
 
 export interface GetNetPeeringsNetPeeringAccepterNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -1660,7 +1717,7 @@ export interface GetNetPeeringsNetPeeringAccepterNet {
 
 export interface GetNetPeeringsNetPeeringSourceNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -1686,7 +1743,7 @@ export interface GetNetPeeringsNetPeeringState {
 
 export interface GetNetPeeringsNetPeeringTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1697,7 +1754,7 @@ export interface GetNetPeeringsNetPeeringTag {
 
 export interface GetNetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1740,7 +1797,7 @@ export interface GetNetsNet {
 
 export interface GetNetsNetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1772,7 +1829,7 @@ export interface GetNicLinkNic {
      */
     state: string;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId: string;
     /**
@@ -1795,7 +1852,7 @@ export interface GetNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
     /**
@@ -1837,7 +1894,7 @@ export interface GetNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
     /**
@@ -1859,7 +1916,7 @@ export interface GetNicSecurityGroup {
 
 export interface GetNicTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -1875,7 +1932,7 @@ export interface GetNicsFilter {
 
 export interface GetNicsNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId: string;
     /**
@@ -1954,7 +2011,7 @@ export interface GetNicsNicLinkNic {
      */
     state: string;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId: string;
     /**
@@ -1977,7 +2034,7 @@ export interface GetNicsNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
     /**
@@ -2019,7 +2076,7 @@ export interface GetNicsNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
     /**
@@ -2041,7 +2098,7 @@ export interface GetNicsNicSecurityGroup {
 
 export interface GetNicsNicTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2196,7 +2253,7 @@ export interface GetPublicIpFilter {
 
 export interface GetPublicIpTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2216,7 +2273,7 @@ export interface GetPublicIpsPublicIp {
      */
     linkPublicIpId: string;
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     nicAccountId: string;
     /**
@@ -2247,7 +2304,7 @@ export interface GetPublicIpsPublicIp {
 
 export interface GetPublicIpsPublicIpTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2274,7 +2331,7 @@ export interface GetQuotasFilter {
 
 export interface GetQuotasQuota {
     /**
-     * The account ID of the owner of the quotas.
+     * The OUTSCALE account ID of the owner of the quotas.
      */
     accountId: string;
     /**
@@ -2381,7 +2438,7 @@ export interface GetRouteTableRoute {
      */
     state: string;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId: string;
     /**
@@ -2399,7 +2456,7 @@ export interface GetRouteTableRoutePropagatingVirtualGateway {
 
 export interface GetRouteTableTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2498,7 +2555,7 @@ export interface GetRouteTablesRouteTableRoute {
      */
     state: string;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId: string;
     /**
@@ -2516,7 +2573,7 @@ export interface GetRouteTablesRouteTableRoutePropagatingVirtualGateway {
 
 export interface GetRouteTablesRouteTableTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2540,7 +2597,7 @@ export interface GetSecurityGroupInboundRule {
      */
     ipProtocol: string;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: string[];
     prefixListIds: string[];
@@ -2556,7 +2613,7 @@ export interface GetSecurityGroupInboundRule {
 
 export interface GetSecurityGroupInboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -2579,7 +2636,7 @@ export interface GetSecurityGroupOutboundRule {
      */
     ipProtocol: string;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: string[];
     prefixListIds: string[];
@@ -2595,7 +2652,7 @@ export interface GetSecurityGroupOutboundRule {
 
 export interface GetSecurityGroupOutboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -2610,7 +2667,7 @@ export interface GetSecurityGroupOutboundRuleSecurityGroupsMember {
 
 export interface GetSecurityGroupTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2626,7 +2683,7 @@ export interface GetSecurityGroupsFilter {
 
 export interface GetSecurityGroupsSecurityGroup {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -2669,7 +2726,7 @@ export interface GetSecurityGroupsSecurityGroupInboundRule {
      */
     ipProtocol: string;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: string[];
     prefixListIds: string[];
@@ -2685,7 +2742,7 @@ export interface GetSecurityGroupsSecurityGroupInboundRule {
 
 export interface GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -2708,7 +2765,7 @@ export interface GetSecurityGroupsSecurityGroupOutboundRule {
      */
     ipProtocol: string;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: string[];
     prefixListIds: string[];
@@ -2724,7 +2781,7 @@ export interface GetSecurityGroupsSecurityGroupOutboundRule {
 
 export interface GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -2739,7 +2796,7 @@ export interface GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMember 
 
 export interface GetSecurityGroupsSecurityGroupTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2766,7 +2823,7 @@ export interface GetServerCertificatesFilter {
 
 export interface GetServerCertificatesServerCertificate {
     /**
-     * The date on which the server certificate expires.
+     * The date and time (UTC) on which the server certificate expires.
      */
     expirationDate: string;
     /**
@@ -2786,7 +2843,7 @@ export interface GetServerCertificatesServerCertificate {
      */
     path: string;
     /**
-     * The date on which the server certificate has been uploaded.
+     * The date and time (UTC) on which the server certificate has been uploaded.
      */
     uploadDate: string;
 }
@@ -2813,7 +2870,7 @@ export interface GetSnapshotExportTaskOsuExport {
 
 export interface GetSnapshotExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2875,7 +2932,7 @@ export interface GetSnapshotExportTasksSnapshotExportTaskOsuExport {
 
 export interface GetSnapshotExportTasksSnapshotExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2891,7 +2948,7 @@ export interface GetSnapshotFilter {
 
 export interface GetSnapshotPermissionsToCreateVolume {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds: string[];
     /**
@@ -2904,7 +2961,7 @@ export interface GetSnapshotPermissionsToCreateVolume {
 
 export interface GetSnapshotTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2924,7 +2981,7 @@ export interface GetSnapshotsSnapshot {
      */
     accountAlias: string;
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     accountId: string;
     /**
@@ -2967,7 +3024,7 @@ export interface GetSnapshotsSnapshot {
 
 export interface GetSnapshotsSnapshotPermissionsToCreateVolume {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds: string[];
     /**
@@ -2980,7 +3037,7 @@ export interface GetSnapshotsSnapshotPermissionsToCreateVolume {
 
 export interface GetSnapshotsSnapshotTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -2996,7 +3053,7 @@ export interface GetSubnetFilter {
 
 export interface GetSubnetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -3047,7 +3104,7 @@ export interface GetSubnetsSubnet {
 
 export interface GetSubnetsSubnetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -3235,7 +3292,7 @@ export interface GetVirtualGatewayNetToVirtualGatewayLink {
 
 export interface GetVirtualGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -3285,7 +3342,7 @@ export interface GetVirtualGatewaysVirtualGatewayNetToVirtualGatewayLink {
 
 export interface GetVirtualGatewaysVirtualGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -3337,7 +3394,7 @@ export interface GetVmBlockDeviceMappingsCreatedBsus {
 
 export interface GetVmBlockDeviceMappingsCreatedBsusTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -3353,7 +3410,7 @@ export interface GetVmFilter {
 
 export interface GetVmNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId: string;
     /**
@@ -3449,7 +3506,7 @@ export interface GetVmNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -3483,7 +3540,7 @@ export interface GetVmNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -3501,7 +3558,7 @@ export interface GetVmNicSecurityGroup {
 
 export interface GetVmPrimaryNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId: string;
     /**
@@ -3596,7 +3653,7 @@ export interface GetVmPrimaryNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -3630,7 +3687,7 @@ export interface GetVmPrimaryNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -3730,7 +3787,7 @@ export interface GetVmStatesVmStateMaintenanceEvent {
 
 export interface GetVmTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -3983,7 +4040,7 @@ export interface GetVmsVmBlockDeviceMappingsCreatedBsus {
 
 export interface GetVmsVmBlockDeviceMappingsCreatedBsusTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -3994,7 +4051,7 @@ export interface GetVmsVmBlockDeviceMappingsCreatedBsusTag {
 
 export interface GetVmsVmNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId: string;
     /**
@@ -4090,7 +4147,7 @@ export interface GetVmsVmNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -4124,7 +4181,7 @@ export interface GetVmsVmNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -4142,7 +4199,7 @@ export interface GetVmsVmNicSecurityGroup {
 
 export interface GetVmsVmPrimaryNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId: string;
     /**
@@ -4237,7 +4294,7 @@ export interface GetVmsVmPrimaryNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -4271,7 +4328,7 @@ export interface GetVmsVmPrimaryNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -4300,7 +4357,7 @@ export interface GetVmsVmSecurityGroup {
 
 export interface GetVmsVmTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4339,7 +4396,7 @@ export interface GetVolumeLinkedVolume {
 
 export interface GetVolumeTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4421,7 +4478,7 @@ export interface GetVolumesVolumeLinkedVolume {
 
 export interface GetVolumesVolumeTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4452,7 +4509,7 @@ export interface GetVpnConnectionRoute {
 
 export interface GetVpnConnectionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4549,7 +4606,7 @@ export interface GetVpnConnectionsVpnConnectionRoute {
 
 export interface GetVpnConnectionsVpnConnectionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4658,7 +4715,7 @@ export interface ImageExportTaskOsuExportOsuApiKey {
 
 export interface ImageExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4669,7 +4726,7 @@ export interface ImageExportTaskTag {
 
 export interface ImageLaunchPermissionPermissionAdditions {
     /**
-     * The account ID of one or more users to whom you want to give permissions.
+     * The OUTSCALE account ID of one or more users to whom you want to give permissions.
      */
     accountIds?: string[];
     /**
@@ -4680,7 +4737,7 @@ export interface ImageLaunchPermissionPermissionAdditions {
 
 export interface ImageLaunchPermissionPermissionRemovals {
     /**
-     * The account ID of one or more users from whom you want to remove permissions.
+     * The OUTSCALE account ID of one or more users from whom you want to remove permissions.
      */
     accountIds?: string[];
     /**
@@ -4691,7 +4748,7 @@ export interface ImageLaunchPermissionPermissionRemovals {
 
 export interface ImageLaunchPermissionPermissionsToLaunch {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds: string[];
     /**
@@ -4704,7 +4761,7 @@ export interface ImageLaunchPermissionPermissionsToLaunch {
 
 export interface ImagePermissionsToLaunch {
     /**
-     * One or more account IDs that the permission is associated with.
+     * One or more OUTSCALE account IDs that the permission is associated with.
      */
     accountIds: string[];
     /**
@@ -4728,7 +4785,7 @@ export interface ImageStateComment {
 
 export interface ImageTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4739,7 +4796,7 @@ export interface ImageTag {
 
 export interface InternetServiceLinkTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4769,7 +4826,7 @@ export interface InternetServiceLinkTimeouts {
 
 export interface InternetServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4799,7 +4856,7 @@ export interface InternetServiceTimeouts {
 
 export interface KeypairTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -4848,7 +4905,7 @@ export interface LoadBalancerAccessLog {
 
 export interface LoadBalancerApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
     cookieName: string;
     /**
@@ -4878,7 +4935,7 @@ export interface LoadBalancerAttributesAccessLog {
 
 export interface LoadBalancerAttributesApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
     cookieName: string;
     /**
@@ -4954,7 +5011,7 @@ export interface LoadBalancerAttributesLoadBalancerStickyCookiePolicy {
 
 export interface LoadBalancerAttributesSourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId: string;
     /**
@@ -4965,7 +5022,7 @@ export interface LoadBalancerAttributesSourceSecurityGroup {
 
 export interface LoadBalancerAttributesTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key: string;
     /**
@@ -5103,7 +5160,7 @@ export interface LoadBalancerPolicyAccessLog {
 
 export interface LoadBalancerPolicyApplicationStickyCookiePolicy {
     /**
-     * The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
     cookieName: string;
     /**
@@ -5179,7 +5236,7 @@ export interface LoadBalancerPolicyLoadBalancerStickyCookiePolicy {
 
 export interface LoadBalancerPolicySourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId: string;
     /**
@@ -5190,7 +5247,7 @@ export interface LoadBalancerPolicySourceSecurityGroup {
 
 export interface LoadBalancerPolicyTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key: string;
     /**
@@ -5201,7 +5258,7 @@ export interface LoadBalancerPolicyTag {
 
 export interface LoadBalancerSourceSecurityGroup {
     /**
-     * The account ID of the owner of the security group.
+     * The OUTSCALE account ID of the owner of the security group.
      */
     securityGroupAccountId: string;
     /**
@@ -5212,7 +5269,7 @@ export interface LoadBalancerSourceSecurityGroup {
 
 export interface LoadBalancerTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 128 characters.
      */
     key: string;
     /**
@@ -5273,7 +5330,7 @@ export interface NatServicePublicIp {
 
 export interface NatServiceTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5282,9 +5339,28 @@ export interface NatServiceTag {
     value: string;
 }
 
+export interface NatServiceTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface NetAccessPointTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5314,7 +5390,7 @@ export interface NetAccessPointTimeouts {
 
 export interface NetAttributesTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5344,7 +5420,7 @@ export interface NetAttributesTimeouts {
 
 export interface NetPeeringAcceptationAccepterNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -5359,7 +5435,7 @@ export interface NetPeeringAcceptationAccepterNet {
 
 export interface NetPeeringAcceptationSourceNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -5385,7 +5461,7 @@ export interface NetPeeringAcceptationState {
 
 export interface NetPeeringAcceptationTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5415,7 +5491,7 @@ export interface NetPeeringAcceptationTimeouts {
 
 export interface NetPeeringAccepterNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -5430,7 +5506,7 @@ export interface NetPeeringAccepterNet {
 
 export interface NetPeeringSourceNet {
     /**
-     * The account ID of the owner of the source Net.
+     * The OUTSCALE account ID of the owner of the source Net.
      */
     accountId: string;
     /**
@@ -5456,7 +5532,7 @@ export interface NetPeeringState {
 
 export interface NetPeeringTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5486,7 +5562,7 @@ export interface NetPeeringTimeouts {
 
 export interface NetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5532,7 +5608,7 @@ export interface NicLinkNic {
      */
     state: string;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId: string;
     /**
@@ -5555,7 +5631,7 @@ export interface NicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
     /**
@@ -5597,7 +5673,7 @@ export interface NicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
     /**
@@ -5619,7 +5695,7 @@ export interface NicSecurityGroup {
 
 export interface NicTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5828,15 +5904,49 @@ export interface PublicIpLinkTag {
     value: string;
 }
 
+export interface PublicIpLinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
 export interface PublicIpTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value: string;
+}
+
+export interface PublicIpTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface RouteTableLinkRouteTable {
@@ -5919,7 +6029,7 @@ export interface RouteTableRoute {
      */
     state: string;
     /**
-     * The account ID of the owner of the VM.
+     * The OUTSCALE account ID of the owner of the VM.
      */
     vmAccountId: string;
     /**
@@ -5937,7 +6047,7 @@ export interface RouteTableRoutePropagatingVirtualGateway {
 
 export interface RouteTableTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -5994,7 +6104,7 @@ export interface SecurityGroupInboundRule {
      */
     ipProtocol: string;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: string[];
     /**
@@ -6013,7 +6123,7 @@ export interface SecurityGroupInboundRule {
 
 export interface SecurityGroupInboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -6038,7 +6148,7 @@ export interface SecurityGroupOutboundRule {
      */
     ipProtocol: string;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: string[];
     /**
@@ -6057,7 +6167,7 @@ export interface SecurityGroupOutboundRule {
 
 export interface SecurityGroupOutboundRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -6082,7 +6192,7 @@ export interface SecurityGroupRuleRule {
      */
     ipProtocol?: string;
     /**
-     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+     * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
     ipRanges: string[];
     /**
@@ -6101,7 +6211,7 @@ export interface SecurityGroupRuleRule {
 
 export interface SecurityGroupRuleRuleSecurityGroupsMember {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     accountId: string;
     /**
@@ -6109,7 +6219,7 @@ export interface SecurityGroupRuleRuleSecurityGroupsMember {
      */
     securityGroupId: string;
     /**
-     * (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+     * The name of a source or destination security group that you want to link to the security group of the rule.
      */
     securityGroupName: string;
 }
@@ -6135,7 +6245,7 @@ export interface SecurityGroupRuleTimeouts {
 
 export interface SecurityGroupTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6163,26 +6273,60 @@ export interface SecurityGroupTimeouts {
     update?: string;
 }
 
-export interface SnapshotAttributesPermissionsToCreateVolumeAdditions {
+export interface ServerCertificateTimeouts {
     /**
-     * The account ID of one or more users to whom you want to give permissions.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    accountIds?: string[];
+    create?: string;
     /**
-     * If true, the resource is public. If false, the resource is private.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    globalPermission?: boolean;
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
-export interface SnapshotAttributesPermissionsToCreateVolumeRemoval {
+export interface SnapshotAttributesPermissionsToCreateVolumeAdditions {
     /**
-     * The account ID of one or more users from whom you want to remove permissions.
+     * The OUTSCALE account ID of one or more users to whom you want to give permissions.
      */
-    accountIds?: string[];
+    accountIds: string[];
     /**
      * If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: boolean;
+    globalPermission: boolean;
+}
+
+export interface SnapshotAttributesPermissionsToCreateVolumeRemovals {
+    /**
+     * The OUTSCALE account ID of one or more users from whom you want to remove permissions.
+     */
+    accountIds: string[];
+    /**
+     * If true, the resource is public. If false, the resource is private.
+     */
+    globalPermission: boolean;
+}
+
+export interface SnapshotAttributesTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
 }
 
 export interface SnapshotExportTaskOsuExport {
@@ -6217,7 +6361,7 @@ export interface SnapshotExportTaskOsuExportOsuApiKey {
 
 export interface SnapshotExportTaskTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6228,7 +6372,7 @@ export interface SnapshotExportTaskTag {
 
 export interface SnapshotPermissionsToCreateVolume {
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     accountId: string;
     /**
@@ -6241,7 +6385,7 @@ export interface SnapshotPermissionsToCreateVolume {
 
 export interface SnapshotTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6250,9 +6394,28 @@ export interface SnapshotTag {
     value: string;
 }
 
+export interface SnapshotTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface SubnetTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6395,7 +6558,7 @@ export interface VirtualGatewayNetToVirtualGatewayLink {
 
 export interface VirtualGatewayTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6495,7 +6658,7 @@ export interface VmBlockDeviceMappingsCreatedBsus {
 
 export interface VmBlockDeviceMappingsCreatedBsusTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6506,7 +6669,7 @@ export interface VmBlockDeviceMappingsCreatedBsusTag {
 
 export interface VmNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId: string;
     /**
@@ -6604,7 +6767,7 @@ export interface VmNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -6638,7 +6801,7 @@ export interface VmNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -6656,7 +6819,7 @@ export interface VmNicSecurityGroup {
 
 export interface VmPrimaryNic {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     accountId: string;
     /**
@@ -6754,7 +6917,7 @@ export interface VmPrimaryNicLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -6788,7 +6951,7 @@ export interface VmPrimaryNicPrivateIpLinkPublicIp {
      */
     publicIp: string;
     /**
-     * The account ID of the owner of the public IP.
+     * The OUTSCALE account ID of the owner of the public IP.
      */
     publicIpAccountId: string;
 }
@@ -6817,7 +6980,7 @@ export interface VmSecurityGroup {
 
 export interface VmTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6870,7 +7033,7 @@ export interface VolumeLinkedVolume {
 
 export interface VolumeTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
@@ -6913,15 +7076,49 @@ export interface VpnConnectionRoute {
     state: string;
 }
 
+export interface VpnConnectionRouteTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
 export interface VpnConnectionTag {
     /**
-     * The key of the tag, with a minimum of 1 character.
+     * The key of the tag, between 1 and 255 characters.
      */
     key: string;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value: string;
+}
+
+export interface VpnConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface VpnConnectionVgwTelemetry {

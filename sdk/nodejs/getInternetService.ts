@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides information about an Internet service.
+ * Provides information about an internet service.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -72,7 +72,7 @@ export interface GetInternetServiceResult {
     readonly tags: outputs.GetInternetServiceTag[];
 }
 /**
- * Provides information about an Internet service.
+ * Provides information about an internet service.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).

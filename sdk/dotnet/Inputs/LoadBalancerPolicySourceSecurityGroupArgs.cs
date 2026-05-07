@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class LoadBalancerPolicySourceSecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID of the owner of the security group.
+        /// The OUTSCALE account ID of the owner of the security group.
         /// </summary>
         [Input("securityGroupAccountId")]
         public Input<string>? SecurityGroupAccountId { get; set; }

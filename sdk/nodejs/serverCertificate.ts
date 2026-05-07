@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -73,14 +75,13 @@ export class ServerCertificate extends pulumi.CustomResource {
     /**
      * The PEM-encoded X509 certificate.
      */
-    declare public readonly body: pulumi.Output<string | undefined>;
+    declare public readonly body: pulumi.Output<string>;
     /**
      * The PEM-encoded intermediate certification authorities.
      */
     declare public readonly chain: pulumi.Output<string | undefined>;
-    declare public readonly dryRun: pulumi.Output<string | undefined>;
     /**
-     * The date on which the server certificate expires.
+     * The date and time (UTC) on which the server certificate expires.
      */
     declare public /*out*/ readonly expirationDate: pulumi.Output<string>;
     /**
@@ -98,10 +99,11 @@ export class ServerCertificate extends pulumi.CustomResource {
     /**
      * The PEM-encoded private key matching the certificate.
      */
-    declare public readonly privateKey: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.ServerCertificateTimeouts | undefined>;
     /**
-     * The date on which the server certificate has been uploaded.
+     * The date and time (UTC) on which the server certificate has been uploaded.
      */
     declare public /*out*/ readonly uploadDate: pulumi.Output<string>;
 
@@ -112,7 +114,7 @@ export class ServerCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ServerCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ServerCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServerCertificateArgs | ServerCertificateState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -120,22 +122,28 @@ export class ServerCertificate extends pulumi.CustomResource {
             const state = argsOrState as ServerCertificateState | undefined;
             resourceInputs["body"] = state?.body;
             resourceInputs["chain"] = state?.chain;
-            resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["expirationDate"] = state?.expirationDate;
             resourceInputs["name"] = state?.name;
             resourceInputs["orn"] = state?.orn;
             resourceInputs["path"] = state?.path;
             resourceInputs["privateKey"] = state?.privateKey;
             resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["uploadDate"] = state?.uploadDate;
         } else {
             const args = argsOrState as ServerCertificateArgs | undefined;
+            if (args?.body === undefined && !opts.urn) {
+                throw new Error("Missing required property 'body'");
+            }
+            if (args?.privateKey === undefined && !opts.urn) {
+                throw new Error("Missing required property 'privateKey'");
+            }
             resourceInputs["body"] = args?.body;
             resourceInputs["chain"] = args?.chain;
-            resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["name"] = args?.name;
             resourceInputs["path"] = args?.path;
             resourceInputs["privateKey"] = args?.privateKey;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["expirationDate"] = undefined /*out*/;
             resourceInputs["orn"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -158,9 +166,8 @@ export interface ServerCertificateState {
      * The PEM-encoded intermediate certification authorities.
      */
     chain?: pulumi.Input<string>;
-    dryRun?: pulumi.Input<string>;
     /**
-     * The date on which the server certificate expires.
+     * The date and time (UTC) on which the server certificate expires.
      */
     expirationDate?: pulumi.Input<string>;
     /**
@@ -180,8 +187,9 @@ export interface ServerCertificateState {
      */
     privateKey?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ServerCertificateTimeouts>;
     /**
-     * The date on which the server certificate has been uploaded.
+     * The date and time (UTC) on which the server certificate has been uploaded.
      */
     uploadDate?: pulumi.Input<string>;
 }
@@ -193,12 +201,11 @@ export interface ServerCertificateArgs {
     /**
      * The PEM-encoded X509 certificate.
      */
-    body?: pulumi.Input<string>;
+    body: pulumi.Input<string>;
     /**
      * The PEM-encoded intermediate certification authorities.
      */
     chain?: pulumi.Input<string>;
-    dryRun?: pulumi.Input<string>;
     /**
      * A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
      */
@@ -210,5 +217,6 @@ export interface ServerCertificateArgs {
     /**
      * The PEM-encoded private key matching the certificate.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ServerCertificateTimeouts>;
 }

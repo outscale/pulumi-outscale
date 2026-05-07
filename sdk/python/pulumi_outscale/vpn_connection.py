@@ -25,7 +25,8 @@ class VpnConnectionArgs:
                  connection_type: pulumi.Input[_builtins.str],
                  virtual_gateway_id: pulumi.Input[_builtins.str],
                  static_routes_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['VpnConnectionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a VpnConnection resource.
         :param pulumi.Input[_builtins.str] client_gateway_id: The ID of the client gateway.
@@ -41,6 +42,8 @@ class VpnConnectionArgs:
             pulumi.set(__self__, "static_routes_only", static_routes_only)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="clientGatewayId")
@@ -102,6 +105,15 @@ class VpnConnectionArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['VpnConnectionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['VpnConnectionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _VpnConnectionState:
@@ -114,6 +126,7 @@ class _VpnConnectionState:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  static_routes_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['VpnConnectionTimeoutsArgs']] = None,
                  vgw_telemetries: Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionVgwTelemetryArgs']]]] = None,
                  virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -146,6 +159,8 @@ class _VpnConnectionState:
             pulumi.set(__self__, "static_routes_only", static_routes_only)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if vgw_telemetries is not None:
             pulumi.set(__self__, "vgw_telemetries", vgw_telemetries)
         if virtual_gateway_id is not None:
@@ -247,6 +262,15 @@ class _VpnConnectionState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['VpnConnectionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['VpnConnectionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="vgwTelemetries")
     def vgw_telemetries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionVgwTelemetryArgs']]]]:
         """
@@ -293,6 +317,7 @@ class VpnConnection(pulumi.CustomResource):
                  connection_type: Optional[pulumi.Input[_builtins.str]] = None,
                  static_routes_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionTagArgs', 'VpnConnectionTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VpnConnectionTimeoutsArgs', 'VpnConnectionTimeoutsArgsDict']]] = None,
                  virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -424,6 +449,7 @@ class VpnConnection(pulumi.CustomResource):
                  connection_type: Optional[pulumi.Input[_builtins.str]] = None,
                  static_routes_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionTagArgs', 'VpnConnectionTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VpnConnectionTimeoutsArgs', 'VpnConnectionTimeoutsArgsDict']]] = None,
                  virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -442,6 +468,7 @@ class VpnConnection(pulumi.CustomResource):
             __props__.__dict__["connection_type"] = connection_type
             __props__.__dict__["static_routes_only"] = static_routes_only
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["timeouts"] = timeouts
             if virtual_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'virtual_gateway_id'")
             __props__.__dict__["virtual_gateway_id"] = virtual_gateway_id
@@ -469,6 +496,7 @@ class VpnConnection(pulumi.CustomResource):
             state: Optional[pulumi.Input[_builtins.str]] = None,
             static_routes_only: Optional[pulumi.Input[_builtins.bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionTagArgs', 'VpnConnectionTagArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['VpnConnectionTimeoutsArgs', 'VpnConnectionTimeoutsArgsDict']]] = None,
             vgw_telemetries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionVgwTelemetryArgs', 'VpnConnectionVgwTelemetryArgsDict']]]]] = None,
             virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
             vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpnConnection':
@@ -502,6 +530,7 @@ class VpnConnection(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["static_routes_only"] = static_routes_only
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vgw_telemetries"] = vgw_telemetries
         __props__.__dict__["virtual_gateway_id"] = virtual_gateway_id
         __props__.__dict__["vpn_connection_id"] = vpn_connection_id
@@ -554,7 +583,7 @@ class VpnConnection(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="staticRoutesOnly")
-    def static_routes_only(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def static_routes_only(self) -> pulumi.Output[_builtins.bool]:
         """
         By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
         """
@@ -567,6 +596,11 @@ class VpnConnection(pulumi.CustomResource):
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.VpnConnectionTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="vgwTelemetries")

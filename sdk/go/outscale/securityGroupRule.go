@@ -145,14 +145,14 @@ type SecurityGroupRule struct {
 	FromPortRange pulumi.IntPtrOutput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpProtocol pulumi.StringPtrOutput `pulumi:"ipProtocol"`
-	// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+	// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpRange pulumi.StringPtrOutput `pulumi:"ipRange"`
 	// The ID of the Net for the security group.
 	NetId     pulumi.StringOutput `pulumi:"netId"`
 	RequestId pulumi.StringOutput `pulumi:"requestId"`
 	// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
 	Rules SecurityGroupRuleRuleArrayOutput `pulumi:"rules"`
-	// The account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
+	// The OUTSCALE account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
 	SecurityGroupAccountIdToLink pulumi.StringPtrOutput `pulumi:"securityGroupAccountIdToLink"`
 	// The ID of the security group for which you want to create a rule.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -207,14 +207,14 @@ type securityGroupRuleState struct {
 	FromPortRange *int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpProtocol *string `pulumi:"ipProtocol"`
-	// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+	// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpRange *string `pulumi:"ipRange"`
 	// The ID of the Net for the security group.
 	NetId     *string `pulumi:"netId"`
 	RequestId *string `pulumi:"requestId"`
 	// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
 	Rules []SecurityGroupRuleRule `pulumi:"rules"`
-	// The account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
+	// The OUTSCALE account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
 	SecurityGroupAccountIdToLink *string `pulumi:"securityGroupAccountIdToLink"`
 	// The ID of the security group for which you want to create a rule.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -234,14 +234,14 @@ type SecurityGroupRuleState struct {
 	FromPortRange pulumi.IntPtrInput
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpProtocol pulumi.StringPtrInput
-	// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+	// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpRange pulumi.StringPtrInput
 	// The ID of the Net for the security group.
 	NetId     pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
 	// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
 	Rules SecurityGroupRuleRuleArrayInput
-	// The account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
+	// The OUTSCALE account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
 	SecurityGroupAccountIdToLink pulumi.StringPtrInput
 	// The ID of the security group for which you want to create a rule.
 	SecurityGroupId pulumi.StringPtrInput
@@ -265,11 +265,11 @@ type securityGroupRuleArgs struct {
 	FromPortRange *int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpProtocol *string `pulumi:"ipProtocol"`
-	// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+	// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpRange *string `pulumi:"ipRange"`
 	// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
 	Rules []SecurityGroupRuleRule `pulumi:"rules"`
-	// The account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
+	// The OUTSCALE account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
 	SecurityGroupAccountIdToLink *string `pulumi:"securityGroupAccountIdToLink"`
 	// The ID of the security group for which you want to create a rule.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -288,11 +288,11 @@ type SecurityGroupRuleArgs struct {
 	FromPortRange pulumi.IntPtrInput
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpProtocol pulumi.StringPtrInput
-	// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+	// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 	IpRange pulumi.StringPtrInput
 	// Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `fromPortRange`, `ipProtocol`, `ipRange`, and `toPortRange`.
 	Rules SecurityGroupRuleRuleArrayInput
-	// The account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
+	// The OUTSCALE account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
 	SecurityGroupAccountIdToLink pulumi.StringPtrInput
 	// The ID of the security group for which you want to create a rule.
 	SecurityGroupId pulumi.StringInput
@@ -405,7 +405,7 @@ func (o SecurityGroupRuleOutput) IpProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.IpProtocol }).(pulumi.StringPtrOutput)
 }
 
-// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
+// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `rules` parameter and its subparameters.
 func (o SecurityGroupRuleOutput) IpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.IpRange }).(pulumi.StringPtrOutput)
 }
@@ -424,7 +424,7 @@ func (o SecurityGroupRuleOutput) Rules() SecurityGroupRuleRuleArrayOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) SecurityGroupRuleRuleArrayOutput { return v.Rules }).(SecurityGroupRuleRuleArrayOutput)
 }
 
-// The account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
+// The OUTSCALE account ID that owns the source or destination security group specified in the `securityGroupNameToLink` parameter.
 func (o SecurityGroupRuleOutput) SecurityGroupAccountIdToLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.SecurityGroupAccountIdToLink }).(pulumi.StringPtrOutput)
 }

@@ -127,7 +127,7 @@ namespace Pulumi.Outscale
         public Output<int> CookieExpirationPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        /// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         /// </summary>
         [Output("cookieName")]
         public Output<string> CookieName { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.Outscale
         public Input<int>? CookieExpirationPeriod { get; set; }
 
         /// <summary>
-        /// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        /// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         /// </summary>
         [Input("cookieName")]
         public Input<string>? CookieName { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.Outscale
         public Input<int>? CookieExpirationPeriod { get; set; }
 
         /// <summary>
-        /// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+        /// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         /// </summary>
         [Input("cookieName")]
         public Input<string>? CookieName { get; set; }

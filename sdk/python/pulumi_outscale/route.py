@@ -199,7 +199,7 @@ class _RouteState:
         :param pulumi.Input[_builtins.str] nic_id: The ID of a NIC.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table for which you want to create a route.
         :param pulumi.Input[_builtins.str] state: The state of a route in the route table (always `active`).
-        :param pulumi.Input[_builtins.str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[_builtins.str] vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         if await_active_state is not None:
@@ -391,7 +391,7 @@ class _RouteState:
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
@@ -450,7 +450,7 @@ class Route(pulumi.CustomResource):
             net_id=net01.net_id)
         ```
 
-        ### Create a route to an Internet service
+        ### Create a route to an internet service
 
         ```python
         import pulumi
@@ -511,7 +511,7 @@ class Route(pulumi.CustomResource):
             net_id=net01.net_id)
         ```
 
-        ### Create a route to an Internet service
+        ### Create a route to an internet service
 
         ```python
         import pulumi
@@ -628,7 +628,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] nic_id: The ID of a NIC.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table for which you want to create a route.
         :param pulumi.Input[_builtins.str] state: The state of a route in the route table (always `active`).
-        :param pulumi.Input[_builtins.str] vm_account_id: The account ID of the owner of the VM.
+        :param pulumi.Input[_builtins.str] vm_account_id: The OUTSCALE account ID of the owner of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -755,7 +755,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="vmAccountId")
     def vm_account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The account ID of the owner of the VM.
+        The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 

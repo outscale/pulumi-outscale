@@ -67,7 +67,7 @@ class GetSecurityGroupResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 

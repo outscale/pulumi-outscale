@@ -77,7 +77,7 @@ export interface GetAccessKeysArgs {
     filters?: inputs.GetAccessKeysFilter[];
     states?: string[];
     /**
-     * The name of the EIM user. By default, the user who sends the request (which can be the root account).
+     * The name of the EIM user. By default, the user who sends the request (which can be the root user).
      */
     userName?: string;
 }
@@ -171,7 +171,7 @@ export interface GetAccessKeysOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetAccessKeysFilterArgs>[]>;
     states?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the EIM user. By default, the user who sends the request (which can be the root account).
+     * The name of the EIM user. By default, the user who sends the request (which can be the root user).
      */
     userName?: pulumi.Input<string>;
 }

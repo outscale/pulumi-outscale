@@ -121,7 +121,7 @@ type LoadBalancerPolicy struct {
 	// One or more IDs of backend VMs for the load balancer.
 	BackendVmIds           pulumi.StringArrayOutput `pulumi:"backendVmIds"`
 	CookieExpirationPeriod pulumi.IntOutput         `pulumi:"cookieExpirationPeriod"`
-	// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 	CookieName pulumi.StringOutput `pulumi:"cookieName"`
 	// The DNS name of the load balancer.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
@@ -205,7 +205,7 @@ type loadBalancerPolicyState struct {
 	// One or more IDs of backend VMs for the load balancer.
 	BackendVmIds           []string `pulumi:"backendVmIds"`
 	CookieExpirationPeriod *int     `pulumi:"cookieExpirationPeriod"`
-	// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 	CookieName *string `pulumi:"cookieName"`
 	// The DNS name of the load balancer.
 	DnsName *string `pulumi:"dnsName"`
@@ -251,7 +251,7 @@ type LoadBalancerPolicyState struct {
 	// One or more IDs of backend VMs for the load balancer.
 	BackendVmIds           pulumi.StringArrayInput
 	CookieExpirationPeriod pulumi.IntPtrInput
-	// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 	CookieName pulumi.StringPtrInput
 	// The DNS name of the load balancer.
 	DnsName pulumi.StringPtrInput
@@ -299,7 +299,7 @@ type loadBalancerPolicyArgs struct {
 	// One or more IDs of backend VMs for the load balancer.
 	BackendVmIds           []string `pulumi:"backendVmIds"`
 	CookieExpirationPeriod *int     `pulumi:"cookieExpirationPeriod"`
-	// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 	CookieName *string `pulumi:"cookieName"`
 	// The name of the load balancer for which you want to create a policy.
 	LoadBalancerName string `pulumi:"loadBalancerName"`
@@ -326,7 +326,7 @@ type LoadBalancerPolicyArgs struct {
 	// One or more IDs of backend VMs for the load balancer.
 	BackendVmIds           pulumi.StringArrayInput
 	CookieExpirationPeriod pulumi.IntPtrInput
-	// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 	CookieName pulumi.StringPtrInput
 	// The name of the load balancer for which you want to create a policy.
 	LoadBalancerName pulumi.StringInput
@@ -454,7 +454,7 @@ func (o LoadBalancerPolicyOutput) CookieExpirationPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *LoadBalancerPolicy) pulumi.IntOutput { return v.CookieExpirationPeriod }).(pulumi.IntOutput)
 }
 
-// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 func (o LoadBalancerPolicyOutput) CookieName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPolicy) pulumi.StringOutput { return v.CookieName }).(pulumi.StringOutput)
 }

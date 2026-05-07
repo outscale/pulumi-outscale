@@ -12,7 +12,7 @@ namespace Pulumi.Outscale
     public static class GetInternetService
     {
         /// <summary>
-        /// Provides information about an Internet service.
+        /// Provides information about an internet service.
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).  
         /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -49,7 +49,7 @@ namespace Pulumi.Outscale
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInternetServiceResult>("outscale:index/getInternetService:getInternetService", args ?? new GetInternetServiceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides information about an Internet service.
+        /// Provides information about an internet service.
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).  
         /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -86,7 +86,7 @@ namespace Pulumi.Outscale
             => global::Pulumi.Deployment.Instance.Invoke<GetInternetServiceResult>("outscale:index/getInternetService:getInternetService", args ?? new GetInternetServiceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides information about an Internet service.
+        /// Provides information about an internet service.
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).  
         /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).

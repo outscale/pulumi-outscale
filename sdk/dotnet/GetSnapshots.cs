@@ -157,7 +157,7 @@ namespace Pulumi.Outscale
         private List<string>? _accountIds;
 
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         public List<string> AccountIds
         {
@@ -209,7 +209,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _accountIds;
 
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         public InputList<string> AccountIds
         {
@@ -260,7 +260,7 @@ namespace Pulumi.Outscale
     public sealed class GetSnapshotsResult
     {
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         public readonly ImmutableArray<string> AccountIds;
         public readonly ImmutableArray<Outputs.GetSnapshotsFilterResult> Filters;
