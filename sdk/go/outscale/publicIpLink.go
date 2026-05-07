@@ -104,9 +104,10 @@ type PublicIpLink struct {
 	// The public IP. This parameter is required unless you use the `publicIpId` parameter.
 	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
-	PublicIpId pulumi.StringOutput        `pulumi:"publicIpId"`
-	RequestId  pulumi.StringOutput        `pulumi:"requestId"`
-	Tags       PublicIpLinkTagArrayOutput `pulumi:"tags"`
+	PublicIpId pulumi.StringOutput           `pulumi:"publicIpId"`
+	RequestId  pulumi.StringOutput           `pulumi:"requestId"`
+	Tags       PublicIpLinkTagArrayOutput    `pulumi:"tags"`
+	Timeouts   PublicIpLinkTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
 }
@@ -153,9 +154,10 @@ type publicIpLinkState struct {
 	// The public IP. This parameter is required unless you use the `publicIpId` parameter.
 	PublicIp *string `pulumi:"publicIp"`
 	// The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
-	PublicIpId *string           `pulumi:"publicIpId"`
-	RequestId  *string           `pulumi:"requestId"`
-	Tags       []PublicIpLinkTag `pulumi:"tags"`
+	PublicIpId *string               `pulumi:"publicIpId"`
+	RequestId  *string               `pulumi:"requestId"`
+	Tags       []PublicIpLinkTag     `pulumi:"tags"`
+	Timeouts   *PublicIpLinkTimeouts `pulumi:"timeouts"`
 	// The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
 	VmId *string `pulumi:"vmId"`
 }
@@ -176,6 +178,7 @@ type PublicIpLinkState struct {
 	PublicIpId pulumi.StringPtrInput
 	RequestId  pulumi.StringPtrInput
 	Tags       PublicIpLinkTagArrayInput
+	Timeouts   PublicIpLinkTimeoutsPtrInput
 	// The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
 	VmId pulumi.StringPtrInput
 }
@@ -194,7 +197,8 @@ type publicIpLinkArgs struct {
 	// The public IP. This parameter is required unless you use the `publicIpId` parameter.
 	PublicIp *string `pulumi:"publicIp"`
 	// The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
-	PublicIpId *string `pulumi:"publicIpId"`
+	PublicIpId *string               `pulumi:"publicIpId"`
+	Timeouts   *PublicIpLinkTimeouts `pulumi:"timeouts"`
 	// The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
 	VmId *string `pulumi:"vmId"`
 }
@@ -211,6 +215,7 @@ type PublicIpLinkArgs struct {
 	PublicIp pulumi.StringPtrInput
 	// The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
 	PublicIpId pulumi.StringPtrInput
+	Timeouts   PublicIpLinkTimeoutsPtrInput
 	// The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
 	VmId pulumi.StringPtrInput
 }
@@ -342,6 +347,10 @@ func (o PublicIpLinkOutput) RequestId() pulumi.StringOutput {
 
 func (o PublicIpLinkOutput) Tags() PublicIpLinkTagArrayOutput {
 	return o.ApplyT(func(v *PublicIpLink) PublicIpLinkTagArrayOutput { return v.Tags }).(PublicIpLinkTagArrayOutput)
+}
+
+func (o PublicIpLinkOutput) Timeouts() PublicIpLinkTimeoutsPtrOutput {
+	return o.ApplyT(func(v *PublicIpLink) PublicIpLinkTimeoutsPtrOutput { return v.Timeouts }).(PublicIpLinkTimeoutsPtrOutput)
 }
 
 // The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.

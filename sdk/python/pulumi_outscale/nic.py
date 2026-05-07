@@ -145,7 +145,7 @@ class _NicState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering Nic resources.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the NIC.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the NIC.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param pulumi.Input[Sequence[pulumi.Input['NicLinkNicArgs']]] link_nics: Information about the NIC attachment.
@@ -206,7 +206,7 @@ class _NicState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
@@ -676,7 +676,7 @@ class Nic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the NIC.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the NIC.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NicLinkNicArgs', 'NicLinkNicArgsDict']]]] link_nics: Information about the NIC attachment.
@@ -723,7 +723,7 @@ class Nic(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The account ID of the owner of the NIC.
+        The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 

@@ -94,7 +94,7 @@ namespace Pulumi.Outscale
         public Output<string> AccountAlias { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Outscale
         /// **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         /// </summary>
         [Output("fileLocation")]
-        public Output<string> FileLocation { get; private set; } = null!;
+        public Output<string?> FileLocation { get; private set; } = null!;
 
         /// <summary>
         /// Permissions for the resource.
@@ -142,19 +142,19 @@ namespace Pulumi.Outscale
         /// **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         /// </summary>
         [Output("snapshotSize")]
-        public Output<int> SnapshotSize { get; private set; } = null!;
+        public Output<int?> SnapshotSize { get; private set; } = null!;
 
         /// <summary>
         /// **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         /// </summary>
         [Output("sourceRegionName")]
-        public Output<string> SourceRegionName { get; private set; } = null!;
+        public Output<string?> SourceRegionName { get; private set; } = null!;
 
         /// <summary>
         /// **(when copying a snapshot)** The ID of the snapshot you want to copy.
         /// </summary>
         [Output("sourceSnapshotId")]
-        public Output<string> SourceSnapshotId { get; private set; } = null!;
+        public Output<string?> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
         /// The state of the snapshot (`in-queue` \| `Pending` \| `Completed` \| `Error` \| `Deleting`).
@@ -167,6 +167,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.SnapshotTag>> Tags { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.SnapshotTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
@@ -268,6 +271,9 @@ namespace Pulumi.Outscale
             set => _tags = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.SnapshotTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
         /// </summary>
@@ -289,7 +295,7 @@ namespace Pulumi.Outscale
         public Input<string>? AccountAlias { get; set; }
 
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -374,6 +380,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.SnapshotTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.SnapshotTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.

@@ -105,11 +105,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewSnapshotAttributes(ctx, "snapshot_attributes02", &outscale.SnapshotAttributesArgs{
 //				SnapshotId: pulumi.Any(snapshot01.SnapshotId),
-//				PermissionsToCreateVolumeRemovals: outscale.SnapshotAttributesPermissionsToCreateVolumeRemovalArray{
-//					&outscale.SnapshotAttributesPermissionsToCreateVolumeRemovalArgs{
-//						AccountIds: pulumi.StringArray{
-//							pulumi.String("012345678910"),
-//						},
+//				PermissionsToCreateVolumeRemovals: &outscale.SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs{
+//					AccountIds: pulumi.StringArray{
+//						pulumi.String("012345678910"),
 //					},
 //				},
 //			})
@@ -124,15 +122,16 @@ import (
 type SnapshotAttributes struct {
 	pulumi.CustomResourceState
 
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Information about the users to whom you want to give permissions for the resource.
 	PermissionsToCreateVolumeAdditions SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrOutput `pulumi:"permissionsToCreateVolumeAdditions"`
 	// Information about the users from whom you want to remove permissions for the resource.
-	PermissionsToCreateVolumeRemovals SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput `pulumi:"permissionsToCreateVolumeRemovals"`
-	RequestId                         pulumi.StringOutput                                           `pulumi:"requestId"`
+	PermissionsToCreateVolumeRemovals SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput `pulumi:"permissionsToCreateVolumeRemovals"`
+	RequestId                         pulumi.StringOutput                                          `pulumi:"requestId"`
 	// The ID of the snapshot.
-	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
+	SnapshotId pulumi.StringOutput                 `pulumi:"snapshotId"`
+	Timeouts   SnapshotAttributesTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewSnapshotAttributes registers a new resource with the given unique name, arguments, and options.
@@ -168,27 +167,29 @@ func GetSnapshotAttributes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnapshotAttributes resources.
 type snapshotAttributesState struct {
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId *string `pulumi:"accountId"`
 	// Information about the users to whom you want to give permissions for the resource.
 	PermissionsToCreateVolumeAdditions *SnapshotAttributesPermissionsToCreateVolumeAdditions `pulumi:"permissionsToCreateVolumeAdditions"`
 	// Information about the users from whom you want to remove permissions for the resource.
-	PermissionsToCreateVolumeRemovals []SnapshotAttributesPermissionsToCreateVolumeRemoval `pulumi:"permissionsToCreateVolumeRemovals"`
+	PermissionsToCreateVolumeRemovals *SnapshotAttributesPermissionsToCreateVolumeRemovals `pulumi:"permissionsToCreateVolumeRemovals"`
 	RequestId                         *string                                              `pulumi:"requestId"`
 	// The ID of the snapshot.
-	SnapshotId *string `pulumi:"snapshotId"`
+	SnapshotId *string                     `pulumi:"snapshotId"`
+	Timeouts   *SnapshotAttributesTimeouts `pulumi:"timeouts"`
 }
 
 type SnapshotAttributesState struct {
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId pulumi.StringPtrInput
 	// Information about the users to whom you want to give permissions for the resource.
 	PermissionsToCreateVolumeAdditions SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrInput
 	// Information about the users from whom you want to remove permissions for the resource.
-	PermissionsToCreateVolumeRemovals SnapshotAttributesPermissionsToCreateVolumeRemovalArrayInput
+	PermissionsToCreateVolumeRemovals SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrInput
 	RequestId                         pulumi.StringPtrInput
 	// The ID of the snapshot.
 	SnapshotId pulumi.StringPtrInput
+	Timeouts   SnapshotAttributesTimeoutsPtrInput
 }
 
 func (SnapshotAttributesState) ElementType() reflect.Type {
@@ -199,9 +200,10 @@ type snapshotAttributesArgs struct {
 	// Information about the users to whom you want to give permissions for the resource.
 	PermissionsToCreateVolumeAdditions *SnapshotAttributesPermissionsToCreateVolumeAdditions `pulumi:"permissionsToCreateVolumeAdditions"`
 	// Information about the users from whom you want to remove permissions for the resource.
-	PermissionsToCreateVolumeRemovals []SnapshotAttributesPermissionsToCreateVolumeRemoval `pulumi:"permissionsToCreateVolumeRemovals"`
+	PermissionsToCreateVolumeRemovals *SnapshotAttributesPermissionsToCreateVolumeRemovals `pulumi:"permissionsToCreateVolumeRemovals"`
 	// The ID of the snapshot.
-	SnapshotId string `pulumi:"snapshotId"`
+	SnapshotId string                      `pulumi:"snapshotId"`
+	Timeouts   *SnapshotAttributesTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a SnapshotAttributes resource.
@@ -209,9 +211,10 @@ type SnapshotAttributesArgs struct {
 	// Information about the users to whom you want to give permissions for the resource.
 	PermissionsToCreateVolumeAdditions SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrInput
 	// Information about the users from whom you want to remove permissions for the resource.
-	PermissionsToCreateVolumeRemovals SnapshotAttributesPermissionsToCreateVolumeRemovalArrayInput
+	PermissionsToCreateVolumeRemovals SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrInput
 	// The ID of the snapshot.
 	SnapshotId pulumi.StringInput
+	Timeouts   SnapshotAttributesTimeoutsPtrInput
 }
 
 func (SnapshotAttributesArgs) ElementType() reflect.Type {
@@ -301,7 +304,7 @@ func (o SnapshotAttributesOutput) ToSnapshotAttributesOutputWithContext(ctx cont
 	return o
 }
 
-// The account ID of the owner of the snapshot.
+// The OUTSCALE account ID of the owner of the snapshot.
 func (o SnapshotAttributesOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotAttributes) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -314,10 +317,10 @@ func (o SnapshotAttributesOutput) PermissionsToCreateVolumeAdditions() SnapshotA
 }
 
 // Information about the users from whom you want to remove permissions for the resource.
-func (o SnapshotAttributesOutput) PermissionsToCreateVolumeRemovals() SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput {
-	return o.ApplyT(func(v *SnapshotAttributes) SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput {
+func (o SnapshotAttributesOutput) PermissionsToCreateVolumeRemovals() SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
+	return o.ApplyT(func(v *SnapshotAttributes) SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
 		return v.PermissionsToCreateVolumeRemovals
-	}).(SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput)
+	}).(SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput)
 }
 
 func (o SnapshotAttributesOutput) RequestId() pulumi.StringOutput {
@@ -327,6 +330,10 @@ func (o SnapshotAttributesOutput) RequestId() pulumi.StringOutput {
 // The ID of the snapshot.
 func (o SnapshotAttributesOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotAttributes) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+func (o SnapshotAttributesOutput) Timeouts() SnapshotAttributesTimeoutsPtrOutput {
+	return o.ApplyT(func(v *SnapshotAttributes) SnapshotAttributesTimeoutsPtrOutput { return v.Timeouts }).(SnapshotAttributesTimeoutsPtrOutput)
 }
 
 type SnapshotAttributesArrayOutput struct{ *pulumi.OutputState }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Outscale
 {
     /// <summary>
-    /// Manages an Internet service link.
+    /// Manages an internet service link.
     /// 
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
     /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -37,7 +37,7 @@ namespace Pulumi.Outscale
     /// });
     /// ```
     /// 
-    /// ### Link an Internet service to a Net
+    /// ### Link an internet service to a Net
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -85,13 +85,13 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the attachment of the Internet service to the Net (always `Available`).
+        /// The state of the attachment of the internet service to the Net (always `Available`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// One or more tags associated with the Internet service.
+        /// One or more tags associated with the internet service.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.InternetServiceLinkTag>> Tags { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The state of the attachment of the Internet service to the Net (always `Available`).
+        /// The state of the attachment of the internet service to the Net (always `Available`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.InternetServiceLinkTagGetArgs>? _tags;
 
         /// <summary>
-        /// One or more tags associated with the Internet service.
+        /// One or more tags associated with the internet service.
         /// </summary>
         public InputList<Inputs.InternetServiceLinkTagGetArgs> Tags
         {

@@ -121,7 +121,7 @@ namespace Pulumi.Outscale
     public partial class Nic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account ID of the owner of the NIC.
+        /// The OUTSCALE account ID of the owner of the NIC.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.Outscale
     public sealed class NicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID of the owner of the NIC.
+        /// The OUTSCALE account ID of the owner of the NIC.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

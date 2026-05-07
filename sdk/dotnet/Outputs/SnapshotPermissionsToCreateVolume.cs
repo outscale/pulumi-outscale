@@ -14,21 +14,21 @@ namespace Pulumi.Outscale.Outputs
     public sealed class SnapshotPermissionsToCreateVolume
     {
         /// <summary>
-        /// The account ID of the owner of the snapshot.
+        /// The OUTSCALE account ID of the owner of the snapshot.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// A global permission for all accounts.&lt;br /&gt;
         /// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).&lt;br /&gt;
         /// (Response) If true, the resource is public. If false, the resource is private.
         /// </summary>
-        public readonly bool? GlobalPermission;
+        public readonly bool GlobalPermission;
 
         [OutputConstructor]
         private SnapshotPermissionsToCreateVolume(
-            string? accountId,
+            string accountId,
 
-            bool? globalPermission)
+            bool globalPermission)
         {
             AccountId = accountId;
             GlobalPermission = globalPermission;

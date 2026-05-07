@@ -36,20 +36,20 @@ class ImageArgs:
                  vm_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
-        :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
-        :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
-        :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        :param pulumi.Input[_builtins.str] file_location: **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         :param pulumi.Input[_builtins.str] image_name: A unique name for the new OMI.<br />
                Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
-        :param pulumi.Input[_builtins.bool] no_reboot: **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
-        :param pulumi.Input[_builtins.str] root_device_name: **(required) When registering from a snapshot:** The name of the root device for the new OMI.
-        :param pulumi.Input[_builtins.str] source_image_id: **(required) When copying an OMI:** The ID of the OMI you want to copy.
-        :param pulumi.Input[_builtins.str] source_region_name: **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        :param pulumi.Input[_builtins.bool] no_reboot: **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[_builtins.str] root_device_name: **(required when registering from a snapshot)** The name of the root device for the new OMI.
+        :param pulumi.Input[_builtins.str] source_image_id: **(required when copying an OMI)** The ID of the OMI you want to copy.
+        :param pulumi.Input[_builtins.str] source_region_name: **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         :param pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
-        :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        :param pulumi.Input[_builtins.str] vm_id: **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -82,7 +82,7 @@ class ImageArgs:
     @pulumi.getter
     def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
+        **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
         """
         return pulumi.get(self, "architecture")
 
@@ -94,7 +94,7 @@ class ImageArgs:
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
         """
-        **(required) When registering from a snapshot:** One or more block device mappings.
+        **(required when registering from a snapshot)** One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
 
@@ -130,7 +130,7 @@ class ImageArgs:
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
         return pulumi.get(self, "file_location")
 
@@ -155,7 +155,7 @@ class ImageArgs:
     @pulumi.getter(name="noReboot")
     def no_reboot(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         """
         return pulumi.get(self, "no_reboot")
 
@@ -167,7 +167,7 @@ class ImageArgs:
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        **(required when registering from a snapshot)** The name of the root device for the new OMI.
         """
         return pulumi.get(self, "root_device_name")
 
@@ -179,7 +179,7 @@ class ImageArgs:
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When copying an OMI:** The ID of the OMI you want to copy.
+        **(required when copying an OMI)** The ID of the OMI you want to copy.
         """
         return pulumi.get(self, "source_image_id")
 
@@ -191,7 +191,7 @@ class ImageArgs:
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         """
         return pulumi.get(self, "source_region_name")
 
@@ -227,7 +227,7 @@ class ImageArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         return pulumi.get(self, "vm_id")
 
@@ -267,29 +267,29 @@ class _ImageState:
         """
         Input properties used for looking up and filtering Image resources.
         :param pulumi.Input[_builtins.str] account_alias: The account alias of the owner of the OMI.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the OMI.
-        :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
-        :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the OMI.
+        :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the OMI was created.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
-        :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        :param pulumi.Input[_builtins.str] file_location: **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI.
         :param pulumi.Input[_builtins.str] image_name: A unique name for the new OMI.<br />
                Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
         :param pulumi.Input[_builtins.str] image_type: The type of the OMI.
-        :param pulumi.Input[_builtins.bool] no_reboot: **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[_builtins.bool] no_reboot: **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         :param pulumi.Input[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]] permissions_to_launches: Permissions for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] product_codes: The product codes associated with the OMI.
-        :param pulumi.Input[_builtins.str] root_device_name: **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        :param pulumi.Input[_builtins.str] root_device_name: **(required when registering from a snapshot)** The name of the root device for the new OMI.
         :param pulumi.Input[_builtins.str] root_device_type: The type of root device used by the OMI (always `bsu`).
-        :param pulumi.Input[_builtins.str] source_image_id: **(required) When copying an OMI:** The ID of the OMI you want to copy.
-        :param pulumi.Input[_builtins.str] source_region_name: **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        :param pulumi.Input[_builtins.str] source_image_id: **(required when copying an OMI)** The ID of the OMI you want to copy.
+        :param pulumi.Input[_builtins.str] source_region_name: **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         :param pulumi.Input[_builtins.str] state: The state of the OMI (`pending` \\| `available` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]] state_comments: Information about the change of state.
         :param pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
-        :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        :param pulumi.Input[_builtins.str] vm_id: **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         if account_alias is not None:
             pulumi.set(__self__, "account_alias", account_alias)
@@ -358,7 +358,7 @@ class _ImageState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID of the owner of the OMI.
+        The OUTSCALE account ID of the owner of the OMI.
         """
         return pulumi.get(self, "account_id")
 
@@ -370,7 +370,7 @@ class _ImageState:
     @pulumi.getter
     def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
+        **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
         """
         return pulumi.get(self, "architecture")
 
@@ -382,7 +382,7 @@ class _ImageState:
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
         """
-        **(required) When registering from a snapshot:** One or more block device mappings.
+        **(required when registering from a snapshot)** One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
 
@@ -430,7 +430,7 @@ class _ImageState:
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
         return pulumi.get(self, "file_location")
 
@@ -488,7 +488,7 @@ class _ImageState:
     @pulumi.getter(name="noReboot")
     def no_reboot(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         """
         return pulumi.get(self, "no_reboot")
 
@@ -533,7 +533,7 @@ class _ImageState:
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        **(required when registering from a snapshot)** The name of the root device for the new OMI.
         """
         return pulumi.get(self, "root_device_name")
 
@@ -557,7 +557,7 @@ class _ImageState:
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When copying an OMI:** The ID of the OMI you want to copy.
+        **(required when copying an OMI)** The ID of the OMI you want to copy.
         """
         return pulumi.get(self, "source_image_id")
 
@@ -569,7 +569,7 @@ class _ImageState:
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         """
         return pulumi.get(self, "source_region_name")
 
@@ -629,7 +629,7 @@ class _ImageState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         return pulumi.get(self, "vm_id")
 
@@ -738,20 +738,20 @@ class Image(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
-        :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        :param pulumi.Input[_builtins.str] file_location: **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         :param pulumi.Input[_builtins.str] image_name: A unique name for the new OMI.<br />
                Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
-        :param pulumi.Input[_builtins.bool] no_reboot: **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
-        :param pulumi.Input[_builtins.str] root_device_name: **(required) When registering from a snapshot:** The name of the root device for the new OMI.
-        :param pulumi.Input[_builtins.str] source_image_id: **(required) When copying an OMI:** The ID of the OMI you want to copy.
-        :param pulumi.Input[_builtins.str] source_region_name: **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        :param pulumi.Input[_builtins.bool] no_reboot: **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[_builtins.str] root_device_name: **(required when registering from a snapshot)** The name of the root device for the new OMI.
+        :param pulumi.Input[_builtins.str] source_image_id: **(required when copying an OMI)** The ID of the OMI you want to copy.
+        :param pulumi.Input[_builtins.str] source_region_name: **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
-        :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        :param pulumi.Input[_builtins.str] vm_id: **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         ...
     @overload
@@ -942,29 +942,29 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_alias: The account alias of the owner of the OMI.
-        :param pulumi.Input[_builtins.str] account_id: The account ID of the owner of the OMI.
-        :param pulumi.Input[_builtins.str] architecture: **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required) When registering from a snapshot:** One or more block device mappings.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the OMI.
+        :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the OMI was created.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
-        :param pulumi.Input[_builtins.str] file_location: **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        :param pulumi.Input[_builtins.str] file_location: **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI.
         :param pulumi.Input[_builtins.str] image_name: A unique name for the new OMI.<br />
                Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
         :param pulumi.Input[_builtins.str] image_type: The type of the OMI.
-        :param pulumi.Input[_builtins.bool] no_reboot: **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        :param pulumi.Input[_builtins.bool] no_reboot: **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImagePermissionsToLaunchArgs', 'ImagePermissionsToLaunchArgsDict']]]] permissions_to_launches: Permissions for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] product_codes: The product codes associated with the OMI.
-        :param pulumi.Input[_builtins.str] root_device_name: **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        :param pulumi.Input[_builtins.str] root_device_name: **(required when registering from a snapshot)** The name of the root device for the new OMI.
         :param pulumi.Input[_builtins.str] root_device_type: The type of root device used by the OMI (always `bsu`).
-        :param pulumi.Input[_builtins.str] source_image_id: **(required) When copying an OMI:** The ID of the OMI you want to copy.
-        :param pulumi.Input[_builtins.str] source_region_name: **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        :param pulumi.Input[_builtins.str] source_image_id: **(required when copying an OMI)** The ID of the OMI you want to copy.
+        :param pulumi.Input[_builtins.str] source_region_name: **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         :param pulumi.Input[_builtins.str] state: The state of the OMI (`pending` \\| `available` \\| `failed`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict']]]] state_comments: Information about the change of state.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
-        :param pulumi.Input[_builtins.str] vm_id: **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        :param pulumi.Input[_builtins.str] vm_id: **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1009,7 +1009,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The account ID of the owner of the OMI.
+        The OUTSCALE account ID of the owner of the OMI.
         """
         return pulumi.get(self, "account_id")
 
@@ -1017,7 +1017,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter
     def architecture(self) -> pulumi.Output[_builtins.str]:
         """
-        **When registering from a snapshot:** The architecture of the OMI (`i386` or `x86_64`).
+        **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
         """
         return pulumi.get(self, "architecture")
 
@@ -1025,7 +1025,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> pulumi.Output[Sequence['outputs.ImageBlockDeviceMapping']]:
         """
-        **(required) When registering from a snapshot:** One or more block device mappings.
+        **(required when registering from a snapshot)** One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
 
@@ -1057,7 +1057,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="fileLocation")
     def file_location(self) -> pulumi.Output[_builtins.str]:
         """
-        **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
         return pulumi.get(self, "file_location")
 
@@ -1095,7 +1095,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="noReboot")
     def no_reboot(self) -> pulumi.Output[_builtins.bool]:
         """
-        **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         """
         return pulumi.get(self, "no_reboot")
 
@@ -1124,7 +1124,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="rootDeviceName")
     def root_device_name(self) -> pulumi.Output[_builtins.str]:
         """
-        **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        **(required when registering from a snapshot)** The name of the root device for the new OMI.
         """
         return pulumi.get(self, "root_device_name")
 
@@ -1140,7 +1140,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> pulumi.Output[_builtins.str]:
         """
-        **(required) When copying an OMI:** The ID of the OMI you want to copy.
+        **(required when copying an OMI)** The ID of the OMI you want to copy.
         """
         return pulumi.get(self, "source_image_id")
 
@@ -1148,7 +1148,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="sourceRegionName")
     def source_region_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         """
         return pulumi.get(self, "source_region_name")
 
@@ -1188,7 +1188,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[_builtins.str]:
         """
-        **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         return pulumi.get(self, "vm_id")
 

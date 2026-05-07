@@ -16,7 +16,7 @@ namespace Pulumi.Outscale.Inputs
         private InputList<string>? _accountIds;
 
         /// <summary>
-        /// The account ID of one or more users from whom you want to remove permissions.
+        /// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         /// </summary>
         public InputList<string> AccountIds
         {

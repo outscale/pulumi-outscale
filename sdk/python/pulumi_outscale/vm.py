@@ -70,7 +70,7 @@ class VmArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
-        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
@@ -374,7 +374,7 @@ class VmArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        The ID of the Subnet in which you want to create the VM.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -548,7 +548,7 @@ class _VmState:
         :param pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]] security_groups: One or more security groups associated with the VM.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM.
-        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
@@ -1144,7 +1144,7 @@ class _VmState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        The ID of the Subnet in which you want to create the VM.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -1525,7 +1525,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
-        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
@@ -1991,7 +1991,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict']]]] security_groups: One or more security groups associated with the VM.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM.
-        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
@@ -2380,7 +2380,7 @@ class Vm(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+        The ID of the Subnet in which you want to create the VM.
         """
         return pulumi.get(self, "subnet_id")
 

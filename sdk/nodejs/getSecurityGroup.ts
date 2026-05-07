@@ -59,7 +59,7 @@ export interface GetSecurityGroupArgs {
  */
 export interface GetSecurityGroupResult {
     /**
-     * The account ID that owns the source or destination security group.
+     * The OUTSCALE account ID that owns the source or destination security group.
      */
     readonly accountId: string;
     /**

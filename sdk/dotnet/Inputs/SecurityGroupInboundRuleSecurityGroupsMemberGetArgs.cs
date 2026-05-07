@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class SecurityGroupInboundRuleSecurityGroupsMemberGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID that owns the source or destination security group.
+        /// The OUTSCALE account ID that owns the source or destination security group.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;

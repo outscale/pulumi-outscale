@@ -110,7 +110,8 @@ type DhcpOption struct {
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	RequestId  pulumi.StringOutput      `pulumi:"requestId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags DhcpOptionTagArrayOutput `pulumi:"tags"`
+	Tags     DhcpOptionTagArrayOutput    `pulumi:"tags"`
+	Timeouts DhcpOptionTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewDhcpOption registers a new resource with the given unique name, arguments, and options.
@@ -157,7 +158,8 @@ type dhcpOptionState struct {
 	NtpServers []string `pulumi:"ntpServers"`
 	RequestId  *string  `pulumi:"requestId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []DhcpOptionTag `pulumi:"tags"`
+	Tags     []DhcpOptionTag     `pulumi:"tags"`
+	Timeouts *DhcpOptionTimeouts `pulumi:"timeouts"`
 }
 
 type DhcpOptionState struct {
@@ -175,7 +177,8 @@ type DhcpOptionState struct {
 	NtpServers pulumi.StringArrayInput
 	RequestId  pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags DhcpOptionTagArrayInput
+	Tags     DhcpOptionTagArrayInput
+	Timeouts DhcpOptionTimeoutsPtrInput
 }
 
 func (DhcpOptionState) ElementType() reflect.Type {
@@ -192,7 +195,8 @@ type dhcpOptionArgs struct {
 	// The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
 	NtpServers []string `pulumi:"ntpServers"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []DhcpOptionTag `pulumi:"tags"`
+	Tags     []DhcpOptionTag     `pulumi:"tags"`
+	Timeouts *DhcpOptionTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a DhcpOption resource.
@@ -206,7 +210,8 @@ type DhcpOptionArgs struct {
 	// The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
 	NtpServers pulumi.StringArrayInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags DhcpOptionTagArrayInput
+	Tags     DhcpOptionTagArrayInput
+	Timeouts DhcpOptionTimeoutsPtrInput
 }
 
 func (DhcpOptionArgs) ElementType() reflect.Type {
@@ -333,6 +338,10 @@ func (o DhcpOptionOutput) RequestId() pulumi.StringOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o DhcpOptionOutput) Tags() DhcpOptionTagArrayOutput {
 	return o.ApplyT(func(v *DhcpOption) DhcpOptionTagArrayOutput { return v.Tags }).(DhcpOptionTagArrayOutput)
+}
+
+func (o DhcpOptionOutput) Timeouts() DhcpOptionTimeoutsPtrOutput {
+	return o.ApplyT(func(v *DhcpOption) DhcpOptionTimeoutsPtrOutput { return v.Timeouts }).(DhcpOptionTimeoutsPtrOutput)
 }
 
 type DhcpOptionArrayOutput struct{ *pulumi.OutputState }

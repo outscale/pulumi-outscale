@@ -48,7 +48,7 @@ namespace Pulumi.Outscale
     /// });
     /// ```
     /// 
-    /// ### Create a route to an Internet service
+    /// ### Create a route to an internet service
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -154,7 +154,7 @@ namespace Pulumi.Outscale
         public Output<Outputs.RouteTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID of the owner of the VM.
+        /// The OUTSCALE account ID of the owner of the VM.
         /// </summary>
         [Output("vmAccountId")]
         public Output<string> VmAccountId { get; private set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.Outscale
         public Input<Inputs.RouteTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The account ID of the owner of the VM.
+        /// The OUTSCALE account ID of the owner of the VM.
         /// </summary>
         [Input("vmAccountId")]
         public Input<string>? VmAccountId { get; set; }

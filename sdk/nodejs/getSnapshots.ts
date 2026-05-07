@@ -51,7 +51,7 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
  */
 export interface GetSnapshotsArgs {
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     accountIds?: string[];
     /**
@@ -70,7 +70,7 @@ export interface GetSnapshotsArgs {
  */
 export interface GetSnapshotsResult {
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     readonly accountIds?: string[];
     readonly filters?: outputs.GetSnapshotsFilter[];
@@ -134,7 +134,7 @@ export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.
  */
 export interface GetSnapshotsOutputArgs {
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     accountIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

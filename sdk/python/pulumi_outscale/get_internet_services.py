@@ -94,7 +94,7 @@ def get_internet_services(filters: Optional[Sequence[Union['GetInternetServicesF
                           internet_service_ids: Optional[Sequence[_builtins.str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInternetServicesResult:
     """
-    Provides information about Internet services.
+    Provides information about internet services.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
     For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -139,7 +139,7 @@ def get_internet_services_output(filters: Optional[pulumi.Input[Optional[Sequenc
                                  internet_service_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInternetServicesResult]:
     """
-    Provides information about Internet services.
+    Provides information about internet services.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
     For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).

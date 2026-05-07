@@ -31,7 +31,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string>? PublicIp { get; set; }
 
         /// <summary>
-        /// The account ID of the owner of the public IP.
+        /// The OUTSCALE account ID of the owner of the public IP.
         /// </summary>
         [Input("publicIpAccountId")]
         public Input<string>? PublicIpAccountId { get; set; }

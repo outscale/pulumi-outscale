@@ -55,9 +55,9 @@ import * as utilities from "./utilities";
  *
  * const snapshotAttributes02 = new outscale.SnapshotAttributes("snapshot_attributes02", {
  *     snapshotId: snapshot01.snapshotId,
- *     permissionsToCreateVolumeRemovals: [{
+ *     permissionsToCreateVolumeRemovals: {
  *         accountIds: ["012345678910"],
- *     }],
+ *     },
  * });
  * ```
  */
@@ -90,7 +90,7 @@ export class SnapshotAttributes extends pulumi.CustomResource {
     }
 
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
@@ -100,12 +100,13 @@ export class SnapshotAttributes extends pulumi.CustomResource {
     /**
      * Information about the users from whom you want to remove permissions for the resource.
      */
-    declare public readonly permissionsToCreateVolumeRemovals: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeRemoval[] | undefined>;
+    declare public readonly permissionsToCreateVolumeRemovals: pulumi.Output<outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals | undefined>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The ID of the snapshot.
      */
     declare public readonly snapshotId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.SnapshotAttributesTimeouts | undefined>;
 
     /**
      * Create a SnapshotAttributes resource with the given unique name, arguments, and options.
@@ -125,6 +126,7 @@ export class SnapshotAttributes extends pulumi.CustomResource {
             resourceInputs["permissionsToCreateVolumeRemovals"] = state?.permissionsToCreateVolumeRemovals;
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as SnapshotAttributesArgs | undefined;
             if (args?.snapshotId === undefined && !opts.urn) {
@@ -133,6 +135,7 @@ export class SnapshotAttributes extends pulumi.CustomResource {
             resourceInputs["permissionsToCreateVolumeAdditions"] = args?.permissionsToCreateVolumeAdditions;
             resourceInputs["permissionsToCreateVolumeRemovals"] = args?.permissionsToCreateVolumeRemovals;
             resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
         }
@@ -146,7 +149,7 @@ export class SnapshotAttributes extends pulumi.CustomResource {
  */
 export interface SnapshotAttributesState {
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -156,12 +159,13 @@ export interface SnapshotAttributesState {
     /**
      * Information about the users from whom you want to remove permissions for the resource.
      */
-    permissionsToCreateVolumeRemovals?: pulumi.Input<pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeRemoval>[]>;
+    permissionsToCreateVolumeRemovals?: pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeRemovals>;
     requestId?: pulumi.Input<string>;
     /**
      * The ID of the snapshot.
      */
     snapshotId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.SnapshotAttributesTimeouts>;
 }
 
 /**
@@ -175,9 +179,10 @@ export interface SnapshotAttributesArgs {
     /**
      * Information about the users from whom you want to remove permissions for the resource.
      */
-    permissionsToCreateVolumeRemovals?: pulumi.Input<pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeRemoval>[]>;
+    permissionsToCreateVolumeRemovals?: pulumi.Input<inputs.SnapshotAttributesPermissionsToCreateVolumeRemovals>;
     /**
      * The ID of the snapshot.
      */
     snapshotId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.SnapshotAttributesTimeouts>;
 }

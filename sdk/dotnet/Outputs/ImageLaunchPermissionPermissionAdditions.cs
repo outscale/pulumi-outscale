@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class ImageLaunchPermissionPermissionAdditions
     {
         /// <summary>
-        /// The account ID of one or more users to whom you want to give permissions.
+        /// The OUTSCALE account ID of one or more users to whom you want to give permissions.
         /// </summary>
         public readonly ImmutableArray<string> AccountIds;
         /// <summary>

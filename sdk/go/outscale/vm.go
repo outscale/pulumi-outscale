@@ -592,7 +592,7 @@ type Vm struct {
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The reason explaining the current state of the VM.
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
-	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+	// The ID of the Subnet in which you want to create the VM.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags VmTagArrayOutput `pulumi:"tags"`
@@ -729,7 +729,7 @@ type vmState struct {
 	State *string `pulumi:"state"`
 	// The reason explaining the current state of the VM.
 	StateReason *string `pulumi:"stateReason"`
-	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+	// The ID of the Subnet in which you want to create the VM.
 	SubnetId *string `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []VmTag `pulumi:"tags"`
@@ -827,7 +827,7 @@ type VmState struct {
 	State pulumi.StringPtrInput
 	// The reason explaining the current state of the VM.
 	StateReason pulumi.StringPtrInput
-	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+	// The ID of the Subnet in which you want to create the VM.
 	SubnetId pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags VmTagArrayInput
@@ -888,7 +888,7 @@ type vmArgs struct {
 	SecurityGroupNames []string `pulumi:"securityGroupNames"`
 	// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 	State *string `pulumi:"state"`
-	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+	// The ID of the Subnet in which you want to create the VM.
 	SubnetId *string `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []VmTag `pulumi:"tags"`
@@ -946,7 +946,7 @@ type VmArgs struct {
 	SecurityGroupNames pulumi.StringArrayInput
 	// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 	State pulumi.StringPtrInput
-	// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+	// The ID of the Subnet in which you want to create the VM.
 	SubnetId pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags VmTagArrayInput
@@ -1253,7 +1253,7 @@ func (o VmOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
 }
 
-// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
+// The ID of the Subnet in which you want to create the VM.
 func (o VmOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }

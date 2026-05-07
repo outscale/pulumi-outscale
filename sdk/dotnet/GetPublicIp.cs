@@ -202,7 +202,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string LinkPublicIpId;
         /// <summary>
-        /// The account ID of the owner of the NIC.
+        /// The OUTSCALE account ID of the owner of the NIC.
         /// </summary>
         public readonly string NicAccountId;
         /// <summary>

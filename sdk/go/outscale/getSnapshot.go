@@ -60,7 +60,7 @@ func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulum
 
 // A collection of arguments for invoking getSnapshot.
 type LookupSnapshotArgs struct {
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId *string `pulumi:"accountId"`
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters []GetSnapshotFilter `pulumi:"filters"`
@@ -72,7 +72,7 @@ type LookupSnapshotArgs struct {
 type LookupSnapshotResult struct {
 	// The account alias of the owner of the snapshot.
 	AccountAlias string `pulumi:"accountAlias"`
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId string `pulumi:"accountId"`
 	// The date and time (UTC) at which the snapshot was created.
 	CreationDate string `pulumi:"creationDate"`
@@ -109,7 +109,7 @@ func LookupSnapshotOutput(ctx *pulumi.Context, args LookupSnapshotOutputArgs, op
 
 // A collection of arguments for invoking getSnapshot.
 type LookupSnapshotOutputArgs struct {
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
 	Filters GetSnapshotFilterArrayInput `pulumi:"filters"`
@@ -141,7 +141,7 @@ func (o LookupSnapshotResultOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.AccountAlias }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the snapshot.
+// The OUTSCALE account ID of the owner of the snapshot.
 func (o LookupSnapshotResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

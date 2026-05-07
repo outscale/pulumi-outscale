@@ -160,11 +160,11 @@ type Image struct {
 
 	// The account alias of the owner of the OMI.
 	AccountAlias pulumi.StringOutput `pulumi:"accountAlias"`
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x8664`).
+	// **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
 	Architecture pulumi.StringOutput `pulumi:"architecture"`
-	// **(required) When registering from a snapshot:** One or more block device mappings.
+	// **(required when registering from a snapshot)** One or more block device mappings.
 	BlockDeviceMappings ImageBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
 	BootModes pulumi.StringArrayOutput `pulumi:"bootModes"`
@@ -172,7 +172,7 @@ type Image struct {
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// A description for the new OMI.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+	// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
 	FileLocation pulumi.StringOutput `pulumi:"fileLocation"`
 	// The ID of the OMI.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
@@ -182,20 +182,20 @@ type Image struct {
 	// The type of the OMI.
 	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	IsPublic  pulumi.BoolOutput   `pulumi:"isPublic"`
-	// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+	// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
 	NoReboot pulumi.BoolOutput `pulumi:"noReboot"`
 	// Permissions for the resource.
 	PermissionsToLaunches ImagePermissionsToLaunchArrayOutput `pulumi:"permissionsToLaunches"`
 	// The product codes associated with the OMI.
 	ProductCodes pulumi.StringArrayOutput `pulumi:"productCodes"`
 	RequestId    pulumi.StringOutput      `pulumi:"requestId"`
-	// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+	// **(required when registering from a snapshot)** The name of the root device for the new OMI.
 	RootDeviceName pulumi.StringOutput `pulumi:"rootDeviceName"`
 	// The type of root device used by the OMI (always `bsu`).
 	RootDeviceType pulumi.StringOutput `pulumi:"rootDeviceType"`
-	// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+	// **(required when copying an OMI)** The ID of the OMI you want to copy.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
-	// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+	// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
 	SourceRegionName pulumi.StringPtrOutput `pulumi:"sourceRegionName"`
 	// The state of the OMI (`pending` \| `available` \| `failed`).
 	State pulumi.StringOutput `pulumi:"state"`
@@ -205,7 +205,7 @@ type Image struct {
 	Tags ImageTagArrayOutput `pulumi:"tags"`
 	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
 	TpmMandatory pulumi.BoolOutput `pulumi:"tpmMandatory"`
-	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+	// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
 }
 
@@ -241,11 +241,11 @@ func GetImage(ctx *pulumi.Context,
 type imageState struct {
 	// The account alias of the owner of the OMI.
 	AccountAlias *string `pulumi:"accountAlias"`
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId *string `pulumi:"accountId"`
-	// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x8664`).
+	// **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
 	Architecture *string `pulumi:"architecture"`
-	// **(required) When registering from a snapshot:** One or more block device mappings.
+	// **(required when registering from a snapshot)** One or more block device mappings.
 	BlockDeviceMappings []ImageBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
 	BootModes []string `pulumi:"bootModes"`
@@ -253,7 +253,7 @@ type imageState struct {
 	CreationDate *string `pulumi:"creationDate"`
 	// A description for the new OMI.
 	Description *string `pulumi:"description"`
-	// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+	// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
 	FileLocation *string `pulumi:"fileLocation"`
 	// The ID of the OMI.
 	ImageId *string `pulumi:"imageId"`
@@ -263,20 +263,20 @@ type imageState struct {
 	// The type of the OMI.
 	ImageType *string `pulumi:"imageType"`
 	IsPublic  *bool   `pulumi:"isPublic"`
-	// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+	// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
 	NoReboot *bool `pulumi:"noReboot"`
 	// Permissions for the resource.
 	PermissionsToLaunches []ImagePermissionsToLaunch `pulumi:"permissionsToLaunches"`
 	// The product codes associated with the OMI.
 	ProductCodes []string `pulumi:"productCodes"`
 	RequestId    *string  `pulumi:"requestId"`
-	// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+	// **(required when registering from a snapshot)** The name of the root device for the new OMI.
 	RootDeviceName *string `pulumi:"rootDeviceName"`
 	// The type of root device used by the OMI (always `bsu`).
 	RootDeviceType *string `pulumi:"rootDeviceType"`
-	// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+	// **(required when copying an OMI)** The ID of the OMI you want to copy.
 	SourceImageId *string `pulumi:"sourceImageId"`
-	// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+	// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
 	SourceRegionName *string `pulumi:"sourceRegionName"`
 	// The state of the OMI (`pending` \| `available` \| `failed`).
 	State *string `pulumi:"state"`
@@ -286,18 +286,18 @@ type imageState struct {
 	Tags []ImageTag `pulumi:"tags"`
 	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
 	TpmMandatory *bool `pulumi:"tpmMandatory"`
-	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+	// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
 	VmId *string `pulumi:"vmId"`
 }
 
 type ImageState struct {
 	// The account alias of the owner of the OMI.
 	AccountAlias pulumi.StringPtrInput
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId pulumi.StringPtrInput
-	// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x8664`).
+	// **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
 	Architecture pulumi.StringPtrInput
-	// **(required) When registering from a snapshot:** One or more block device mappings.
+	// **(required when registering from a snapshot)** One or more block device mappings.
 	BlockDeviceMappings ImageBlockDeviceMappingArrayInput
 	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
 	BootModes pulumi.StringArrayInput
@@ -305,7 +305,7 @@ type ImageState struct {
 	CreationDate pulumi.StringPtrInput
 	// A description for the new OMI.
 	Description pulumi.StringPtrInput
-	// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+	// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
 	FileLocation pulumi.StringPtrInput
 	// The ID of the OMI.
 	ImageId pulumi.StringPtrInput
@@ -315,20 +315,20 @@ type ImageState struct {
 	// The type of the OMI.
 	ImageType pulumi.StringPtrInput
 	IsPublic  pulumi.BoolPtrInput
-	// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+	// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
 	NoReboot pulumi.BoolPtrInput
 	// Permissions for the resource.
 	PermissionsToLaunches ImagePermissionsToLaunchArrayInput
 	// The product codes associated with the OMI.
 	ProductCodes pulumi.StringArrayInput
 	RequestId    pulumi.StringPtrInput
-	// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+	// **(required when registering from a snapshot)** The name of the root device for the new OMI.
 	RootDeviceName pulumi.StringPtrInput
 	// The type of root device used by the OMI (always `bsu`).
 	RootDeviceType pulumi.StringPtrInput
-	// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+	// **(required when copying an OMI)** The ID of the OMI you want to copy.
 	SourceImageId pulumi.StringPtrInput
-	// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+	// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
 	SourceRegionName pulumi.StringPtrInput
 	// The state of the OMI (`pending` \| `available` \| `failed`).
 	State pulumi.StringPtrInput
@@ -338,7 +338,7 @@ type ImageState struct {
 	Tags ImageTagArrayInput
 	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
 	TpmMandatory pulumi.BoolPtrInput
-	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+	// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
 	VmId pulumi.StringPtrInput
 }
 
@@ -347,63 +347,63 @@ func (ImageState) ElementType() reflect.Type {
 }
 
 type imageArgs struct {
-	// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x8664`).
+	// **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
 	Architecture *string `pulumi:"architecture"`
-	// **(required) When registering from a snapshot:** One or more block device mappings.
+	// **(required when registering from a snapshot)** One or more block device mappings.
 	BlockDeviceMappings []ImageBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
 	BootModes []string `pulumi:"bootModes"`
 	// A description for the new OMI.
 	Description *string `pulumi:"description"`
-	// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+	// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
 	FileLocation *string `pulumi:"fileLocation"`
 	// A unique name for the new OMI.<br />
 	// Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
 	ImageName *string `pulumi:"imageName"`
-	// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+	// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
 	NoReboot *bool `pulumi:"noReboot"`
-	// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+	// **(required when registering from a snapshot)** The name of the root device for the new OMI.
 	RootDeviceName *string `pulumi:"rootDeviceName"`
-	// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+	// **(required when copying an OMI)** The ID of the OMI you want to copy.
 	SourceImageId *string `pulumi:"sourceImageId"`
-	// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+	// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
 	SourceRegionName *string `pulumi:"sourceRegionName"`
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []ImageTag `pulumi:"tags"`
 	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
 	TpmMandatory *bool `pulumi:"tpmMandatory"`
-	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+	// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
 	VmId *string `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
-	// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x8664`).
+	// **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
 	Architecture pulumi.StringPtrInput
-	// **(required) When registering from a snapshot:** One or more block device mappings.
+	// **(required when registering from a snapshot)** One or more block device mappings.
 	BlockDeviceMappings ImageBlockDeviceMappingArrayInput
 	// The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
 	BootModes pulumi.StringArrayInput
 	// A description for the new OMI.
 	Description pulumi.StringPtrInput
-	// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+	// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
 	FileLocation pulumi.StringPtrInput
 	// A unique name for the new OMI.<br />
 	// Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
 	ImageName pulumi.StringPtrInput
-	// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+	// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
 	NoReboot pulumi.BoolPtrInput
-	// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+	// **(required when registering from a snapshot)** The name of the root device for the new OMI.
 	RootDeviceName pulumi.StringPtrInput
-	// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+	// **(required when copying an OMI)** The ID of the OMI you want to copy.
 	SourceImageId pulumi.StringPtrInput
-	// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+	// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
 	SourceRegionName pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags ImageTagArrayInput
 	// By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
 	TpmMandatory pulumi.BoolPtrInput
-	// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+	// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
 	VmId pulumi.StringPtrInput
 }
 
@@ -499,17 +499,17 @@ func (o ImageOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.AccountAlias }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the OMI.
+// The OUTSCALE account ID of the owner of the OMI.
 func (o ImageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// **When registering from a snapshot:** The architecture of the OMI (`i386` or `x8664`).
+// **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
 func (o ImageOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Architecture }).(pulumi.StringOutput)
 }
 
-// **(required) When registering from a snapshot:** One or more block device mappings.
+// **(required when registering from a snapshot)** One or more block device mappings.
 func (o ImageOutput) BlockDeviceMappings() ImageBlockDeviceMappingArrayOutput {
 	return o.ApplyT(func(v *Image) ImageBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(ImageBlockDeviceMappingArrayOutput)
 }
@@ -529,7 +529,7 @@ func (o ImageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
 func (o ImageOutput) FileLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.FileLocation }).(pulumi.StringOutput)
 }
@@ -554,7 +554,7 @@ func (o ImageOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
-// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
 func (o ImageOutput) NoReboot() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.NoReboot }).(pulumi.BoolOutput)
 }
@@ -573,7 +573,7 @@ func (o ImageOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
 }
 
-// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+// **(required when registering from a snapshot)** The name of the root device for the new OMI.
 func (o ImageOutput) RootDeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.RootDeviceName }).(pulumi.StringOutput)
 }
@@ -583,12 +583,12 @@ func (o ImageOutput) RootDeviceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.RootDeviceType }).(pulumi.StringOutput)
 }
 
-// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+// **(required when copying an OMI)** The ID of the OMI you want to copy.
 func (o ImageOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
-// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
 func (o ImageOutput) SourceRegionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.SourceRegionName }).(pulumi.StringPtrOutput)
 }
@@ -613,7 +613,7 @@ func (o ImageOutput) TpmMandatory() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.TpmMandatory }).(pulumi.BoolOutput)
 }
 
-// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
 func (o ImageOutput) VmId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.VmId }).(pulumi.StringOutput)
 }

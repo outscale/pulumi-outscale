@@ -113,14 +113,14 @@ type Snapshot struct {
 
 	// The account alias of the owner of the snapshot.
 	AccountAlias pulumi.StringOutput `pulumi:"accountAlias"`
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time (UTC) at which the snapshot was created.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// A description for the snapshot.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
-	FileLocation pulumi.StringOutput `pulumi:"fileLocation"`
+	FileLocation pulumi.StringPtrOutput `pulumi:"fileLocation"`
 	// Permissions for the resource.
 	PermissionsToCreateVolumes SnapshotPermissionsToCreateVolumeArrayOutput `pulumi:"permissionsToCreateVolumes"`
 	// The progress of the snapshot, as a percentage.
@@ -129,15 +129,16 @@ type Snapshot struct {
 	// The ID of the snapshot.
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
 	// **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
-	SnapshotSize pulumi.IntOutput `pulumi:"snapshotSize"`
+	SnapshotSize pulumi.IntPtrOutput `pulumi:"snapshotSize"`
 	// **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
-	SourceRegionName pulumi.StringOutput `pulumi:"sourceRegionName"`
+	SourceRegionName pulumi.StringPtrOutput `pulumi:"sourceRegionName"`
 	// **(when copying a snapshot)** The ID of the snapshot you want to copy.
-	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
+	SourceSnapshotId pulumi.StringPtrOutput `pulumi:"sourceSnapshotId"`
 	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State pulumi.StringOutput `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags SnapshotTagArrayOutput `pulumi:"tags"`
+	Tags     SnapshotTagArrayOutput    `pulumi:"tags"`
+	Timeouts SnapshotTimeoutsPtrOutput `pulumi:"timeouts"`
 	// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
 	VolumeId pulumi.StringOutput `pulumi:"volumeId"`
 	// The size of the volume used to create the snapshot, in gibibytes (GiB).
@@ -176,7 +177,7 @@ func GetSnapshot(ctx *pulumi.Context,
 type snapshotState struct {
 	// The account alias of the owner of the snapshot.
 	AccountAlias *string `pulumi:"accountAlias"`
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId *string `pulumi:"accountId"`
 	// The date and time (UTC) at which the snapshot was created.
 	CreationDate *string `pulumi:"creationDate"`
@@ -200,7 +201,8 @@ type snapshotState struct {
 	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State *string `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []SnapshotTag `pulumi:"tags"`
+	Tags     []SnapshotTag     `pulumi:"tags"`
+	Timeouts *SnapshotTimeouts `pulumi:"timeouts"`
 	// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
 	VolumeId *string `pulumi:"volumeId"`
 	// The size of the volume used to create the snapshot, in gibibytes (GiB).
@@ -210,7 +212,7 @@ type snapshotState struct {
 type SnapshotState struct {
 	// The account alias of the owner of the snapshot.
 	AccountAlias pulumi.StringPtrInput
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId pulumi.StringPtrInput
 	// The date and time (UTC) at which the snapshot was created.
 	CreationDate pulumi.StringPtrInput
@@ -234,7 +236,8 @@ type SnapshotState struct {
 	// The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
 	State pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags SnapshotTagArrayInput
+	Tags     SnapshotTagArrayInput
+	Timeouts SnapshotTimeoutsPtrInput
 	// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
 	VolumeId pulumi.StringPtrInput
 	// The size of the volume used to create the snapshot, in gibibytes (GiB).
@@ -257,7 +260,8 @@ type snapshotArgs struct {
 	// **(when copying a snapshot)** The ID of the snapshot you want to copy.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []SnapshotTag `pulumi:"tags"`
+	Tags     []SnapshotTag     `pulumi:"tags"`
+	Timeouts *SnapshotTimeouts `pulumi:"timeouts"`
 	// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
 	VolumeId *string `pulumi:"volumeId"`
 }
@@ -275,7 +279,8 @@ type SnapshotArgs struct {
 	// **(when copying a snapshot)** The ID of the snapshot you want to copy.
 	SourceSnapshotId pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags SnapshotTagArrayInput
+	Tags     SnapshotTagArrayInput
+	Timeouts SnapshotTimeoutsPtrInput
 	// **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
 	VolumeId pulumi.StringPtrInput
 }
@@ -372,7 +377,7 @@ func (o SnapshotOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.AccountAlias }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the snapshot.
+// The OUTSCALE account ID of the owner of the snapshot.
 func (o SnapshotOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -388,8 +393,8 @@ func (o SnapshotOutput) Description() pulumi.StringOutput {
 }
 
 // **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
-func (o SnapshotOutput) FileLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.FileLocation }).(pulumi.StringOutput)
+func (o SnapshotOutput) FileLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.FileLocation }).(pulumi.StringPtrOutput)
 }
 
 // Permissions for the resource.
@@ -412,18 +417,18 @@ func (o SnapshotOutput) SnapshotId() pulumi.StringOutput {
 }
 
 // **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
-func (o SnapshotOutput) SnapshotSize() pulumi.IntOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.SnapshotSize }).(pulumi.IntOutput)
+func (o SnapshotOutput) SnapshotSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.SnapshotSize }).(pulumi.IntPtrOutput)
 }
 
 // **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
-func (o SnapshotOutput) SourceRegionName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceRegionName }).(pulumi.StringOutput)
+func (o SnapshotOutput) SourceRegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SourceRegionName }).(pulumi.StringPtrOutput)
 }
 
 // **(when copying a snapshot)** The ID of the snapshot you want to copy.
-func (o SnapshotOutput) SourceSnapshotId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
+func (o SnapshotOutput) SourceSnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SourceSnapshotId }).(pulumi.StringPtrOutput)
 }
 
 // The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
@@ -434,6 +439,10 @@ func (o SnapshotOutput) State() pulumi.StringOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o SnapshotOutput) Tags() SnapshotTagArrayOutput {
 	return o.ApplyT(func(v *Snapshot) SnapshotTagArrayOutput { return v.Tags }).(SnapshotTagArrayOutput)
+}
+
+func (o SnapshotOutput) Timeouts() SnapshotTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Snapshot) SnapshotTimeoutsPtrOutput { return v.Timeouts }).(SnapshotTimeoutsPtrOutput)
 }
 
 // **(when creating from a volume)** The ID of the volume you want to create a snapshot of.

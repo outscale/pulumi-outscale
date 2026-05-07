@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class LoadBalancerApplicationStickyCookiePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the application cookie used for stickiness.
+        /// The name of the application cookie used for stickiness, between 1 and 255 characters.
         /// </summary>
         [Input("cookieName")]
         public Input<string>? CookieName { get; set; }

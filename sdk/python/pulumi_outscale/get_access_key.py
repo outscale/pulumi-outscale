@@ -186,7 +186,7 @@ def get_access_key(access_key_id: Optional[_builtins.str] = None,
     :param _builtins.str access_key_id: The ID of the access key.
     :param Sequence[Union['GetAccessKeyFilterArgs', 'GetAccessKeyFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str state: The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
-    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root account).
+    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root user).
     """
     __args__ = dict()
     __args__['accessKeyId'] = access_key_id
@@ -254,7 +254,7 @@ def get_access_key_output(access_key_id: Optional[pulumi.Input[Optional[_builtin
     :param _builtins.str access_key_id: The ID of the access key.
     :param Sequence[Union['GetAccessKeyFilterArgs', 'GetAccessKeyFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str state: The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
-    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root account).
+    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root user).
     """
     __args__ = dict()
     __args__['accessKeyId'] = access_key_id

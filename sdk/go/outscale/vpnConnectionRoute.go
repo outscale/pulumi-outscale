@@ -102,8 +102,9 @@ type VpnConnectionRoute struct {
 	pulumi.CustomResourceState
 
 	// The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
-	DestinationIpRange pulumi.StringOutput `pulumi:"destinationIpRange"`
-	RequestId          pulumi.StringOutput `pulumi:"requestId"`
+	DestinationIpRange pulumi.StringOutput                 `pulumi:"destinationIpRange"`
+	RequestId          pulumi.StringOutput                 `pulumi:"requestId"`
+	Timeouts           VpnConnectionRouteTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the target VPN connection of the static route.
 	VpnConnectionId pulumi.StringOutput `pulumi:"vpnConnectionId"`
 }
@@ -145,8 +146,9 @@ func GetVpnConnectionRoute(ctx *pulumi.Context,
 // Input properties used for looking up and filtering VpnConnectionRoute resources.
 type vpnConnectionRouteState struct {
 	// The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
-	DestinationIpRange *string `pulumi:"destinationIpRange"`
-	RequestId          *string `pulumi:"requestId"`
+	DestinationIpRange *string                     `pulumi:"destinationIpRange"`
+	RequestId          *string                     `pulumi:"requestId"`
+	Timeouts           *VpnConnectionRouteTimeouts `pulumi:"timeouts"`
 	// The ID of the target VPN connection of the static route.
 	VpnConnectionId *string `pulumi:"vpnConnectionId"`
 }
@@ -155,6 +157,7 @@ type VpnConnectionRouteState struct {
 	// The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
 	DestinationIpRange pulumi.StringPtrInput
 	RequestId          pulumi.StringPtrInput
+	Timeouts           VpnConnectionRouteTimeoutsPtrInput
 	// The ID of the target VPN connection of the static route.
 	VpnConnectionId pulumi.StringPtrInput
 }
@@ -165,7 +168,8 @@ func (VpnConnectionRouteState) ElementType() reflect.Type {
 
 type vpnConnectionRouteArgs struct {
 	// The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
-	DestinationIpRange string `pulumi:"destinationIpRange"`
+	DestinationIpRange string                      `pulumi:"destinationIpRange"`
+	Timeouts           *VpnConnectionRouteTimeouts `pulumi:"timeouts"`
 	// The ID of the target VPN connection of the static route.
 	VpnConnectionId string `pulumi:"vpnConnectionId"`
 }
@@ -174,6 +178,7 @@ type vpnConnectionRouteArgs struct {
 type VpnConnectionRouteArgs struct {
 	// The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
 	DestinationIpRange pulumi.StringInput
+	Timeouts           VpnConnectionRouteTimeoutsPtrInput
 	// The ID of the target VPN connection of the static route.
 	VpnConnectionId pulumi.StringInput
 }
@@ -272,6 +277,10 @@ func (o VpnConnectionRouteOutput) DestinationIpRange() pulumi.StringOutput {
 
 func (o VpnConnectionRouteOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnectionRoute) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
+}
+
+func (o VpnConnectionRouteOutput) Timeouts() VpnConnectionRouteTimeoutsPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionRoute) VpnConnectionRouteTimeoutsPtrOutput { return v.Timeouts }).(VpnConnectionRouteTimeoutsPtrOutput)
 }
 
 // The ID of the target VPN connection of the static route.

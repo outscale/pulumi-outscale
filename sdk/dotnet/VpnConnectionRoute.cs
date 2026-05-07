@@ -91,6 +91,9 @@ namespace Pulumi.Outscale
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.VpnConnectionRouteTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the target VPN connection of the static route.
         /// </summary>
@@ -149,6 +152,9 @@ namespace Pulumi.Outscale
         [Input("destinationIpRange", required: true)]
         public Input<string> DestinationIpRange { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.VpnConnectionRouteTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The ID of the target VPN connection of the static route.
         /// </summary>
@@ -171,6 +177,9 @@ namespace Pulumi.Outscale
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.VpnConnectionRouteTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the target VPN connection of the static route.

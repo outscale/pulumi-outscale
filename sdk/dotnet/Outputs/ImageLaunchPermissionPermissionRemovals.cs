@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class ImageLaunchPermissionPermissionRemovals
     {
         /// <summary>
-        /// The account ID of one or more users from whom you want to remove permissions.
+        /// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
         /// </summary>
         public readonly ImmutableArray<string> AccountIds;
         /// <summary>

@@ -160,7 +160,7 @@ def get_access_keys(access_key_ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
-    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root account).
+    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root user).
     """
     __args__ = dict()
     __args__['accessKeyIds'] = access_key_ids
@@ -230,7 +230,7 @@ def get_access_keys_output(access_key_ids: Optional[pulumi.Input[Optional[Sequen
 
 
     :param Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
-    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root account).
+    :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root user).
     """
     __args__ = dict()
     __args__['accessKeyIds'] = access_key_ids

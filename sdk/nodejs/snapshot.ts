@@ -91,7 +91,7 @@ export class Snapshot extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly accountAlias: pulumi.Output<string>;
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
@@ -105,7 +105,7 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
      */
-    declare public readonly fileLocation: pulumi.Output<string>;
+    declare public readonly fileLocation: pulumi.Output<string | undefined>;
     /**
      * Permissions for the resource.
      */
@@ -122,15 +122,15 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
      */
-    declare public readonly snapshotSize: pulumi.Output<number>;
+    declare public readonly snapshotSize: pulumi.Output<number | undefined>;
     /**
      * **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
      */
-    declare public readonly sourceRegionName: pulumi.Output<string>;
+    declare public readonly sourceRegionName: pulumi.Output<string | undefined>;
     /**
      * **(when copying a snapshot)** The ID of the snapshot you want to copy.
      */
-    declare public readonly sourceSnapshotId: pulumi.Output<string>;
+    declare public readonly sourceSnapshotId: pulumi.Output<string | undefined>;
     /**
      * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
      */
@@ -139,6 +139,7 @@ export class Snapshot extends pulumi.CustomResource {
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.SnapshotTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.SnapshotTimeouts | undefined>;
     /**
      * **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
      */
@@ -175,6 +176,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["sourceSnapshotId"] = state?.sourceSnapshotId;
             resourceInputs["state"] = state?.state;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["volumeId"] = state?.volumeId;
             resourceInputs["volumeSize"] = state?.volumeSize;
         } else {
@@ -185,6 +187,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["sourceRegionName"] = args?.sourceRegionName;
             resourceInputs["sourceSnapshotId"] = args?.sourceSnapshotId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["volumeId"] = args?.volumeId;
             resourceInputs["accountAlias"] = undefined /*out*/;
             resourceInputs["accountId"] = undefined /*out*/;
@@ -210,7 +213,7 @@ export interface SnapshotState {
      */
     accountAlias?: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the snapshot.
+     * The OUTSCALE account ID of the owner of the snapshot.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -258,6 +261,7 @@ export interface SnapshotState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[]>;
+    timeouts?: pulumi.Input<inputs.SnapshotTimeouts>;
     /**
      * **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
      */
@@ -296,6 +300,7 @@ export interface SnapshotArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[]>;
+    timeouts?: pulumi.Input<inputs.SnapshotTimeouts>;
     /**
      * **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
      */

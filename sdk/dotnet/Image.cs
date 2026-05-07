@@ -137,19 +137,19 @@ namespace Pulumi.Outscale
         public Output<string> AccountAlias { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID of the owner of the OMI.
+        /// The OUTSCALE account ID of the owner of the OMI.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// **When registering from a snapshot:** The architecture of the OMI (`I386` or `X8664`).
+        /// **(when registering from a snapshot)** The architecture of the OMI (`I386` or `X8664`). By default, set to `X8664`.
         /// </summary>
         [Output("architecture")]
         public Output<string> Architecture { get; private set; } = null!;
 
         /// <summary>
-        /// **(required) When registering from a snapshot:** One or more block device mappings.
+        /// **(required when registering from a snapshot)** One or more block device mappings.
         /// </summary>
         [Output("blockDeviceMappings")]
         public Output<ImmutableArray<Outputs.ImageBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.Outscale
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        /// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         /// </summary>
         [Output("fileLocation")]
         public Output<string> FileLocation { get; private set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.Outscale
         public Output<bool> IsPublic { get; private set; } = null!;
 
         /// <summary>
-        /// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        /// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         /// </summary>
         [Output("noReboot")]
         public Output<bool> NoReboot { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Outscale
         public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        /// **(required when registering from a snapshot)** The name of the root device for the new OMI.
         /// </summary>
         [Output("rootDeviceName")]
         public Output<string> RootDeviceName { get; private set; } = null!;
@@ -234,13 +234,13 @@ namespace Pulumi.Outscale
         public Output<string> RootDeviceType { get; private set; } = null!;
 
         /// <summary>
-        /// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+        /// **(required when copying an OMI)** The ID of the OMI you want to copy.
         /// </summary>
         [Output("sourceImageId")]
         public Output<string> SourceImageId { get; private set; } = null!;
 
         /// <summary>
-        /// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        /// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         /// </summary>
         [Output("sourceRegionName")]
         public Output<string?> SourceRegionName { get; private set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.Outscale
         public Output<bool> TpmMandatory { get; private set; } = null!;
 
         /// <summary>
-        /// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        /// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         /// </summary>
         [Output("vmId")]
         public Output<string> VmId { get; private set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Outscale
     public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// **When registering from a snapshot:** The architecture of the OMI (`I386` or `X8664`).
+        /// **(when registering from a snapshot)** The architecture of the OMI (`I386` or `X8664`). By default, set to `X8664`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.ImageBlockDeviceMappingArgs>? _blockDeviceMappings;
 
         /// <summary>
-        /// **(required) When registering from a snapshot:** One or more block device mappings.
+        /// **(required when registering from a snapshot)** One or more block device mappings.
         /// </summary>
         public InputList<Inputs.ImageBlockDeviceMappingArgs> BlockDeviceMappings
         {
@@ -358,7 +358,7 @@ namespace Pulumi.Outscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        /// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         /// </summary>
         [Input("fileLocation")]
         public Input<string>? FileLocation { get; set; }
@@ -371,25 +371,25 @@ namespace Pulumi.Outscale
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        /// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         /// </summary>
         [Input("noReboot")]
         public Input<bool>? NoReboot { get; set; }
 
         /// <summary>
-        /// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        /// **(required when registering from a snapshot)** The name of the root device for the new OMI.
         /// </summary>
         [Input("rootDeviceName")]
         public Input<string>? RootDeviceName { get; set; }
 
         /// <summary>
-        /// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+        /// **(required when copying an OMI)** The ID of the OMI you want to copy.
         /// </summary>
         [Input("sourceImageId")]
         public Input<string>? SourceImageId { get; set; }
 
         /// <summary>
-        /// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        /// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         /// </summary>
         [Input("sourceRegionName")]
         public Input<string>? SourceRegionName { get; set; }
@@ -413,7 +413,7 @@ namespace Pulumi.Outscale
         public Input<bool>? TpmMandatory { get; set; }
 
         /// <summary>
-        /// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        /// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         /// </summary>
         [Input("vmId")]
         public Input<string>? VmId { get; set; }
@@ -433,13 +433,13 @@ namespace Pulumi.Outscale
         public Input<string>? AccountAlias { get; set; }
 
         /// <summary>
-        /// The account ID of the owner of the OMI.
+        /// The OUTSCALE account ID of the owner of the OMI.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// **When registering from a snapshot:** The architecture of the OMI (`I386` or `X8664`).
+        /// **(when registering from a snapshot)** The architecture of the OMI (`I386` or `X8664`). By default, set to `X8664`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -448,7 +448,7 @@ namespace Pulumi.Outscale
         private InputList<Inputs.ImageBlockDeviceMappingGetArgs>? _blockDeviceMappings;
 
         /// <summary>
-        /// **(required) When registering from a snapshot:** One or more block device mappings.
+        /// **(required when registering from a snapshot)** One or more block device mappings.
         /// </summary>
         public InputList<Inputs.ImageBlockDeviceMappingGetArgs> BlockDeviceMappings
         {
@@ -481,7 +481,7 @@ namespace Pulumi.Outscale
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// **(required) When registering from a bucket by using a manifest file:** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
+        /// **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         /// </summary>
         [Input("fileLocation")]
         public Input<string>? FileLocation { get; set; }
@@ -509,7 +509,7 @@ namespace Pulumi.Outscale
         public Input<bool>? IsPublic { get; set; }
 
         /// <summary>
-        /// **When creating from a VM:** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
+        /// **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         /// </summary>
         [Input("noReboot")]
         public Input<bool>? NoReboot { get; set; }
@@ -542,7 +542,7 @@ namespace Pulumi.Outscale
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// **(required) When registering from a snapshot:** The name of the root device for the new OMI.
+        /// **(required when registering from a snapshot)** The name of the root device for the new OMI.
         /// </summary>
         [Input("rootDeviceName")]
         public Input<string>? RootDeviceName { get; set; }
@@ -554,13 +554,13 @@ namespace Pulumi.Outscale
         public Input<string>? RootDeviceType { get; set; }
 
         /// <summary>
-        /// **(required) When copying an OMI:** The ID of the OMI you want to copy.
+        /// **(required when copying an OMI)** The ID of the OMI you want to copy.
         /// </summary>
         [Input("sourceImageId")]
         public Input<string>? SourceImageId { get; set; }
 
         /// <summary>
-        /// **(required) When copying an OMI:** The name of the source Region (always the same as the Region of your account).
+        /// **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         /// </summary>
         [Input("sourceRegionName")]
         public Input<string>? SourceRegionName { get; set; }
@@ -602,7 +602,7 @@ namespace Pulumi.Outscale
         public Input<bool>? TpmMandatory { get; set; }
 
         /// <summary>
-        /// **(required) When creating from a VM:** The ID of the VM from which you want to create the OMI.
+        /// **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         /// </summary>
         [Input("vmId")]
         public Input<string>? VmId { get; set; }

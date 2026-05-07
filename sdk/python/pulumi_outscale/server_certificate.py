@@ -13,50 +13,62 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ServerCertificateArgs', 'ServerCertificate']
 
 @pulumi.input_type
 class ServerCertificateArgs:
     def __init__(__self__, *,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
+                 body: pulumi.Input[_builtins.str],
+                 private_key: pulumi.Input[_builtins.str],
                  chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 timeouts: Optional[pulumi.Input['ServerCertificateTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ServerCertificate resource.
         :param pulumi.Input[_builtins.str] body: The PEM-encoded X509 certificate.
+        :param pulumi.Input[_builtins.str] private_key: The PEM-encoded private key matching the certificate.
         :param pulumi.Input[_builtins.str] chain: The PEM-encoded intermediate certification authorities.
         :param pulumi.Input[_builtins.str] name: A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
         :param pulumi.Input[_builtins.str] path: The path to the server certificate, set to a slash (`/`) if not specified.
-        :param pulumi.Input[_builtins.str] private_key: The PEM-encoded private key matching the certificate.
         """
-        if body is not None:
-            pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "body", body)
+        pulumi.set(__self__, "private_key", private_key)
         if chain is not None:
             pulumi.set(__self__, "chain", chain)
-        if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if path is not None:
             pulumi.set(__self__, "path", path)
-        if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[_builtins.str]:
         """
         The PEM-encoded X509 certificate.
         """
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "body", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The PEM-encoded private key matching the certificate.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter
@@ -69,15 +81,6 @@ class ServerCertificateArgs:
     @chain.setter
     def chain(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "chain", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "dry_run")
-
-    @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
@@ -104,16 +107,13 @@ class ServerCertificateArgs:
         pulumi.set(self, "path", value)
 
     @_builtins.property
-    @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The PEM-encoded private key matching the certificate.
-        """
-        return pulumi.get(self, "private_key")
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ServerCertificateTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
 
-    @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "private_key", value)
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ServerCertificateTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -121,31 +121,29 @@ class _ServerCertificateState:
     def __init__(__self__, *,
                  body: Optional[pulumi.Input[_builtins.str]] = None,
                  chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.str]] = None,
                  expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  orn: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['ServerCertificateTimeoutsArgs']] = None,
                  upload_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerCertificate resources.
         :param pulumi.Input[_builtins.str] body: The PEM-encoded X509 certificate.
         :param pulumi.Input[_builtins.str] chain: The PEM-encoded intermediate certification authorities.
-        :param pulumi.Input[_builtins.str] expiration_date: The date on which the server certificate expires.
+        :param pulumi.Input[_builtins.str] expiration_date: The date and time (UTC) on which the server certificate expires.
         :param pulumi.Input[_builtins.str] name: A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
         :param pulumi.Input[_builtins.str] orn: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
         :param pulumi.Input[_builtins.str] path: The path to the server certificate, set to a slash (`/`) if not specified.
         :param pulumi.Input[_builtins.str] private_key: The PEM-encoded private key matching the certificate.
-        :param pulumi.Input[_builtins.str] upload_date: The date on which the server certificate has been uploaded.
+        :param pulumi.Input[_builtins.str] upload_date: The date and time (UTC) on which the server certificate has been uploaded.
         """
         if body is not None:
             pulumi.set(__self__, "body", body)
         if chain is not None:
             pulumi.set(__self__, "chain", chain)
-        if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
         if expiration_date is not None:
             pulumi.set(__self__, "expiration_date", expiration_date)
         if name is not None:
@@ -158,6 +156,8 @@ class _ServerCertificateState:
             pulumi.set(__self__, "private_key", private_key)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if upload_date is not None:
             pulumi.set(__self__, "upload_date", upload_date)
 
@@ -186,19 +186,10 @@ class _ServerCertificateState:
         pulumi.set(self, "chain", value)
 
     @_builtins.property
-    @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "dry_run")
-
-    @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "dry_run", value)
-
-    @_builtins.property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The date on which the server certificate expires.
+        The date and time (UTC) on which the server certificate expires.
         """
         return pulumi.get(self, "expiration_date")
 
@@ -264,10 +255,19 @@ class _ServerCertificateState:
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ServerCertificateTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ServerCertificateTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="uploadDate")
     def upload_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The date on which the server certificate has been uploaded.
+        The date and time (UTC) on which the server certificate has been uploaded.
         """
         return pulumi.get(self, "upload_date")
 
@@ -284,10 +284,10 @@ class ServerCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  body: Optional[pulumi.Input[_builtins.str]] = None,
                  chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ServerCertificateTimeoutsArgs', 'ServerCertificateTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a server certificate.
@@ -332,7 +332,7 @@ class ServerCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ServerCertificateArgs] = None,
+                 args: ServerCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a server certificate.
@@ -382,10 +382,10 @@ class ServerCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  body: Optional[pulumi.Input[_builtins.str]] = None,
                  chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ServerCertificateTimeoutsArgs', 'ServerCertificateTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -395,12 +395,16 @@ class ServerCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServerCertificateArgs.__new__(ServerCertificateArgs)
 
+            if body is None and not opts.urn:
+                raise TypeError("Missing required property 'body'")
             __props__.__dict__["body"] = body
             __props__.__dict__["chain"] = chain
-            __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["name"] = name
             __props__.__dict__["path"] = path
+            if private_key is None and not opts.urn:
+                raise TypeError("Missing required property 'private_key'")
             __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["expiration_date"] = None
             __props__.__dict__["orn"] = None
             __props__.__dict__["request_id"] = None
@@ -417,13 +421,13 @@ class ServerCertificate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             body: Optional[pulumi.Input[_builtins.str]] = None,
             chain: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.str]] = None,
             expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             orn: Optional[pulumi.Input[_builtins.str]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
             private_key: Optional[pulumi.Input[_builtins.str]] = None,
             request_id: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['ServerCertificateTimeoutsArgs', 'ServerCertificateTimeoutsArgsDict']]] = None,
             upload_date: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerCertificate':
         """
         Get an existing ServerCertificate resource's state with the given name, id, and optional extra
@@ -434,12 +438,12 @@ class ServerCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: The PEM-encoded X509 certificate.
         :param pulumi.Input[_builtins.str] chain: The PEM-encoded intermediate certification authorities.
-        :param pulumi.Input[_builtins.str] expiration_date: The date on which the server certificate expires.
+        :param pulumi.Input[_builtins.str] expiration_date: The date and time (UTC) on which the server certificate expires.
         :param pulumi.Input[_builtins.str] name: A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
         :param pulumi.Input[_builtins.str] orn: The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
         :param pulumi.Input[_builtins.str] path: The path to the server certificate, set to a slash (`/`) if not specified.
         :param pulumi.Input[_builtins.str] private_key: The PEM-encoded private key matching the certificate.
-        :param pulumi.Input[_builtins.str] upload_date: The date on which the server certificate has been uploaded.
+        :param pulumi.Input[_builtins.str] upload_date: The date and time (UTC) on which the server certificate has been uploaded.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -447,19 +451,19 @@ class ServerCertificate(pulumi.CustomResource):
 
         __props__.__dict__["body"] = body
         __props__.__dict__["chain"] = chain
-        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["expiration_date"] = expiration_date
         __props__.__dict__["name"] = name
         __props__.__dict__["orn"] = orn
         __props__.__dict__["path"] = path
         __props__.__dict__["private_key"] = private_key
         __props__.__dict__["request_id"] = request_id
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["upload_date"] = upload_date
         return ServerCertificate(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def body(self) -> pulumi.Output[_builtins.str]:
         """
         The PEM-encoded X509 certificate.
         """
@@ -474,15 +478,10 @@ class ServerCertificate(pulumi.CustomResource):
         return pulumi.get(self, "chain")
 
     @_builtins.property
-    @pulumi.getter(name="dryRun")
-    def dry_run(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "dry_run")
-
-    @_builtins.property
     @pulumi.getter(name="expirationDate")
     def expiration_date(self) -> pulumi.Output[_builtins.str]:
         """
-        The date on which the server certificate expires.
+        The date and time (UTC) on which the server certificate expires.
         """
         return pulumi.get(self, "expiration_date")
 
@@ -512,7 +511,7 @@ class ServerCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def private_key(self) -> pulumi.Output[_builtins.str]:
         """
         The PEM-encoded private key matching the certificate.
         """
@@ -524,10 +523,15 @@ class ServerCertificate(pulumi.CustomResource):
         return pulumi.get(self, "request_id")
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ServerCertificateTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
     @pulumi.getter(name="uploadDate")
     def upload_date(self) -> pulumi.Output[_builtins.str]:
         """
-        The date on which the server certificate has been uploaded.
+        The date and time (UTC) on which the server certificate has been uploaded.
         """
         return pulumi.get(self, "upload_date")
 

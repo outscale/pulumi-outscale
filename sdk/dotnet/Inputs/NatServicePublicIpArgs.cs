@@ -15,15 +15,15 @@ namespace Pulumi.Outscale.Inputs
         /// <summary>
         /// The public IP associated with the NAT service.
         /// </summary>
-        [Input("publicIp")]
-        public Input<string>? PublicIp { get; set; }
+        [Input("publicIp", required: true)]
+        public Input<string> PublicIp { get; set; } = null!;
 
         /// <summary>
         /// The allocation ID of the public IP to associate with the NAT service.&lt;br /&gt;
         /// If the public IP is already associated with another resource, you must first disassociate it.
         /// </summary>
-        [Input("publicIpId")]
-        public Input<string>? PublicIpId { get; set; }
+        [Input("publicIpId", required: true)]
+        public Input<string> PublicIpId { get; set; } = null!;
 
         public NatServicePublicIpArgs()
         {

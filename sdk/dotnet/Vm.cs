@@ -707,7 +707,7 @@ namespace Pulumi.Outscale
         public Output<string> StateReason { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `Nics` parameter.
+        /// The ID of the Subnet in which you want to create the VM.
         /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -963,7 +963,7 @@ namespace Pulumi.Outscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `Nics` parameter.
+        /// The ID of the Subnet in which you want to create the VM.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
@@ -1330,7 +1330,7 @@ namespace Pulumi.Outscale
         public Input<string>? StateReason { get; set; }
 
         /// <summary>
-        /// The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `Nics` parameter.
+        /// The ID of the Subnet in which you want to create the VM.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

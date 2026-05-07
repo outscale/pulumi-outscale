@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class GetQuotasQuotaResult
     {
         /// <summary>
-        /// The account ID of the owner of the quotas.
+        /// The OUTSCALE account ID of the owner of the quotas.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

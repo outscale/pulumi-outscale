@@ -136,7 +136,7 @@ namespace Pulumi.Outscale
         public Output<string?> IpProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
+        /// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Output("ipRange")]
         public Output<string?> IpRange { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.SecurityGroupRuleRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
+        /// The OUTSCALE account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
         /// </summary>
         [Output("securityGroupAccountIdToLink")]
         public Output<string?> SecurityGroupAccountIdToLink { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Outscale
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
+        /// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("ipRange")]
         public Input<string>? IpRange { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
+        /// The OUTSCALE account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
         /// </summary>
         [Input("securityGroupAccountIdToLink")]
         public Input<string>? SecurityGroupAccountIdToLink { get; set; }
@@ -325,7 +325,7 @@ namespace Pulumi.Outscale
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
+        /// The IP range for the security group rule, in CIDR notation (for example, `10.0.0.0/16`). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.
         /// </summary>
         [Input("ipRange")]
         public Input<string>? IpRange { get; set; }
@@ -352,7 +352,7 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// The account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
+        /// The OUTSCALE account ID that owns the source or destination security group specified in the `SecurityGroupNameToLink` parameter.
         /// </summary>
         [Input("securityGroupAccountIdToLink")]
         public Input<string>? SecurityGroupAccountIdToLink { get; set; }

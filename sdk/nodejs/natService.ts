@@ -127,6 +127,7 @@ export class NatService extends pulumi.CustomResource {
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.NatServiceTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.NatServiceTimeouts | undefined>;
 
     /**
      * Create a NatService resource with the given unique name, arguments, and options.
@@ -149,6 +150,7 @@ export class NatService extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["subnetId"] = state?.subnetId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as NatServiceArgs | undefined;
             if (args?.publicIpId === undefined && !opts.urn) {
@@ -160,6 +162,7 @@ export class NatService extends pulumi.CustomResource {
             resourceInputs["publicIpId"] = args?.publicIpId;
             resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["natServiceId"] = undefined /*out*/;
             resourceInputs["netId"] = undefined /*out*/;
             resourceInputs["publicIps"] = undefined /*out*/;
@@ -205,6 +208,7 @@ export interface NatServiceState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[]>;
+    timeouts?: pulumi.Input<inputs.NatServiceTimeouts>;
 }
 
 /**
@@ -224,4 +228,5 @@ export interface NatServiceArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[]>;
+    timeouts?: pulumi.Input<inputs.NatServiceTimeouts>;
 }

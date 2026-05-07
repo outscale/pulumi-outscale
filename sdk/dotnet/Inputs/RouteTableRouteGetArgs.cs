@@ -67,7 +67,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string> State { get; set; } = null!;
 
         /// <summary>
-        /// The account ID of the owner of the VM.
+        /// The OUTSCALE account ID of the owner of the VM.
         /// </summary>
         [Input("vmAccountId", required: true)]
         public Input<string> VmAccountId { get; set; } = null!;

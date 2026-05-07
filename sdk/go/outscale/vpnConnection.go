@@ -112,9 +112,10 @@ type VpnConnection struct {
 	// The state of the IPSEC tunnel (`UP` \| `DOWN`).
 	State pulumi.StringOutput `pulumi:"state"`
 	// By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
-	StaticRoutesOnly pulumi.BoolPtrOutput `pulumi:"staticRoutesOnly"`
+	StaticRoutesOnly pulumi.BoolOutput `pulumi:"staticRoutesOnly"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags VpnConnectionTagArrayOutput `pulumi:"tags"`
+	Tags     VpnConnectionTagArrayOutput    `pulumi:"tags"`
+	Timeouts VpnConnectionTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Information about the current state of one or more of the VPN tunnels.
 	VgwTelemetries VpnConnectionVgwTelemetryArrayOutput `pulumi:"vgwTelemetries"`
 	// The ID of the virtual gateway.
@@ -176,7 +177,8 @@ type vpnConnectionState struct {
 	// By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
 	StaticRoutesOnly *bool `pulumi:"staticRoutesOnly"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []VpnConnectionTag `pulumi:"tags"`
+	Tags     []VpnConnectionTag     `pulumi:"tags"`
+	Timeouts *VpnConnectionTimeouts `pulumi:"timeouts"`
 	// Information about the current state of one or more of the VPN tunnels.
 	VgwTelemetries []VpnConnectionVgwTelemetry `pulumi:"vgwTelemetries"`
 	// The ID of the virtual gateway.
@@ -200,7 +202,8 @@ type VpnConnectionState struct {
 	// By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
 	StaticRoutesOnly pulumi.BoolPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags VpnConnectionTagArrayInput
+	Tags     VpnConnectionTagArrayInput
+	Timeouts VpnConnectionTimeoutsPtrInput
 	// Information about the current state of one or more of the VPN tunnels.
 	VgwTelemetries VpnConnectionVgwTelemetryArrayInput
 	// The ID of the virtual gateway.
@@ -221,7 +224,8 @@ type vpnConnectionArgs struct {
 	// By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
 	StaticRoutesOnly *bool `pulumi:"staticRoutesOnly"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []VpnConnectionTag `pulumi:"tags"`
+	Tags     []VpnConnectionTag     `pulumi:"tags"`
+	Timeouts *VpnConnectionTimeouts `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId string `pulumi:"virtualGatewayId"`
 }
@@ -235,7 +239,8 @@ type VpnConnectionArgs struct {
 	// By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
 	StaticRoutesOnly pulumi.BoolPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags VpnConnectionTagArrayInput
+	Tags     VpnConnectionTagArrayInput
+	Timeouts VpnConnectionTimeoutsPtrInput
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringInput
 }
@@ -357,13 +362,17 @@ func (o VpnConnectionOutput) State() pulumi.StringOutput {
 }
 
 // By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
-func (o VpnConnectionOutput) StaticRoutesOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *VpnConnection) pulumi.BoolPtrOutput { return v.StaticRoutesOnly }).(pulumi.BoolPtrOutput)
+func (o VpnConnectionOutput) StaticRoutesOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VpnConnection) pulumi.BoolOutput { return v.StaticRoutesOnly }).(pulumi.BoolOutput)
 }
 
 // A tag to add to this resource. You can specify this argument several times.
 func (o VpnConnectionOutput) Tags() VpnConnectionTagArrayOutput {
 	return o.ApplyT(func(v *VpnConnection) VpnConnectionTagArrayOutput { return v.Tags }).(VpnConnectionTagArrayOutput)
+}
+
+func (o VpnConnectionOutput) Timeouts() VpnConnectionTimeoutsPtrOutput {
+	return o.ApplyT(func(v *VpnConnection) VpnConnectionTimeoutsPtrOutput { return v.Timeouts }).(VpnConnectionTimeoutsPtrOutput)
 }
 
 // Information about the current state of one or more of the VPN tunnels.

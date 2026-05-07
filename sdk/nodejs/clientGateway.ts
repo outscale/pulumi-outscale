@@ -94,6 +94,7 @@ export class ClientGateway extends pulumi.CustomResource {
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.ClientGatewayTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.ClientGatewayTimeouts | undefined>;
 
     /**
      * Create a ClientGateway resource with the given unique name, arguments, and options.
@@ -115,6 +116,7 @@ export class ClientGateway extends pulumi.CustomResource {
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["state"] = state?.state;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as ClientGatewayArgs | undefined;
             if (args?.bgpAsn === undefined && !opts.urn) {
@@ -130,6 +132,7 @@ export class ClientGateway extends pulumi.CustomResource {
             resourceInputs["connectionType"] = args?.connectionType;
             resourceInputs["publicIp"] = args?.publicIp;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["clientGatewayId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -170,6 +173,7 @@ export interface ClientGatewayState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[]>;
+    timeouts?: pulumi.Input<inputs.ClientGatewayTimeouts>;
 }
 
 /**
@@ -194,4 +198,5 @@ export interface ClientGatewayArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[]>;
+    timeouts?: pulumi.Input<inputs.ClientGatewayTimeouts>;
 }

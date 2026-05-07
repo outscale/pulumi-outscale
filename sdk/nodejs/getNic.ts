@@ -49,7 +49,7 @@ export interface GetNicArgs {
  */
 export interface GetNicResult {
     /**
-     * The account ID of the owner of the NIC.
+     * The OUTSCALE account ID of the owner of the NIC.
      */
     readonly accountId: string;
     /**

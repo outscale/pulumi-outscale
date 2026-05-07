@@ -120,6 +120,9 @@ namespace Pulumi.Outscale
         [Output("tags")]
         public Output<ImmutableArray<Outputs.PublicIpLinkTag>> Tags { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.PublicIpLinkTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `NicId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
@@ -202,6 +205,9 @@ namespace Pulumi.Outscale
         [Input("publicIpId")]
         public Input<string>? PublicIpId { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.PublicIpLinkTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `NicId` parameter instead. You cannot specify both parameters at the same time.
         /// </summary>
@@ -265,6 +271,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.PublicIpLinkTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.PublicIpLinkTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the VM.&lt;br /&gt;- In the public Cloud, this parameter is required.&lt;br /&gt;- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `NicId` parameter instead. You cannot specify both parameters at the same time.

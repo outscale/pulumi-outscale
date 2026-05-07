@@ -35,7 +35,7 @@ export interface GetServerCertificateArgs {
  */
 export interface GetServerCertificateResult {
     /**
-     * The date on which the server certificate expires.
+     * The date and time (UTC) on which the server certificate expires.
      */
     readonly expirationDate: string;
     readonly filters?: outputs.GetServerCertificateFilter[];
@@ -57,7 +57,7 @@ export interface GetServerCertificateResult {
     readonly path: string;
     readonly requestId: string;
     /**
-     * The date on which the server certificate has been uploaded.
+     * The date and time (UTC) on which the server certificate has been uploaded.
      */
     readonly uploadDate: string;
 }

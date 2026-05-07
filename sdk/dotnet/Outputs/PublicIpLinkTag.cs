@@ -13,14 +13,14 @@ namespace Pulumi.Outscale.Outputs
     [OutputType]
     public sealed class PublicIpLinkTag
     {
-        public readonly string? Key;
-        public readonly string? Value;
+        public readonly string Key;
+        public readonly string Value;
 
         [OutputConstructor]
         private PublicIpLinkTag(
-            string? key,
+            string key,
 
-            string? value)
+            string value)
         {
             Key = key;
             Value = value;

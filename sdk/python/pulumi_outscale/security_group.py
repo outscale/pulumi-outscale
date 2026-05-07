@@ -139,7 +139,7 @@ class _SecurityGroupState:
                  timeouts: Optional[pulumi.Input['SecurityGroupTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
-        :param pulumi.Input[_builtins.str] account_id: The account ID that owns the source or destination security group.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param pulumi.Input[_builtins.str] description: A description for the security group.<br />
                This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityGroupInboundRuleArgs']]] inbound_rules: The inbound rules associated with the security group.
@@ -179,7 +179,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 
@@ -514,7 +514,7 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The account ID that owns the source or destination security group.
+        :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID that owns the source or destination security group.
         :param pulumi.Input[_builtins.str] description: A description for the security group.<br />
                This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGroupInboundRuleArgs', 'SecurityGroupInboundRuleArgsDict']]]] inbound_rules: The inbound rules associated with the security group.
@@ -548,7 +548,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The account ID that owns the source or destination security group.
+        The OUTSCALE account ID that owns the source or destination security group.
         """
         return pulumi.get(self, "account_id")
 

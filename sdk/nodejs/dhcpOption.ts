@@ -113,6 +113,7 @@ export class DhcpOption extends pulumi.CustomResource {
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.DhcpOptionTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.DhcpOptionTimeouts | undefined>;
 
     /**
      * Create a DhcpOption resource with the given unique name, arguments, and options.
@@ -135,6 +136,7 @@ export class DhcpOption extends pulumi.CustomResource {
             resourceInputs["ntpServers"] = state?.ntpServers;
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as DhcpOptionArgs | undefined;
             resourceInputs["domainName"] = args?.domainName;
@@ -142,6 +144,7 @@ export class DhcpOption extends pulumi.CustomResource {
             resourceInputs["logServers"] = args?.logServers;
             resourceInputs["ntpServers"] = args?.ntpServers;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["dhcpOptionsSetId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -184,6 +187,7 @@ export interface DhcpOptionState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.DhcpOptionTag>[]>;
+    timeouts?: pulumi.Input<inputs.DhcpOptionTimeouts>;
 }
 
 /**
@@ -210,4 +214,5 @@ export interface DhcpOptionArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.DhcpOptionTag>[]>;
+    timeouts?: pulumi.Input<inputs.DhcpOptionTimeouts>;
 }

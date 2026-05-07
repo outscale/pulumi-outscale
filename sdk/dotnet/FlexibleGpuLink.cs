@@ -72,13 +72,15 @@ namespace Pulumi.Outscale
     /// 
     /// ## Import
     /// 
-    /// A flexible GPU link can be imported using the flexible GPU ID. For example:
+    /// A flexible GPU link can be imported using the ID of the related VM. For example:
     /// 
     /// ```sh
     /// 
-    /// $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+    /// $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu &lt;vm_id&gt;
     /// 
     /// ```
+    /// 
+    /// This will import all the flexible GPUs that are linked to that VM.
     /// </summary>
     [OutscaleResourceType("outscale:index/flexibleGpuLink:FlexibleGpuLink")]
     public partial class FlexibleGpuLink : global::Pulumi.CustomResource
@@ -91,6 +93,9 @@ namespace Pulumi.Outscale
 
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.FlexibleGpuLinkTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VM you want to attach the fGPU to.
@@ -156,6 +161,9 @@ namespace Pulumi.Outscale
             set => _flexibleGpuIds = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.FlexibleGpuLinkTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The ID of the VM you want to attach the fGPU to.
         /// </summary>
@@ -184,6 +192,9 @@ namespace Pulumi.Outscale
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.FlexibleGpuLinkTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the VM you want to attach the fGPU to.

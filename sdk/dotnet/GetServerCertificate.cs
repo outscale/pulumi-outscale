@@ -85,7 +85,7 @@ namespace Pulumi.Outscale
     public sealed class GetServerCertificateResult
     {
         /// <summary>
-        /// The date on which the server certificate expires.
+        /// The date and time (UTC) on which the server certificate expires.
         /// </summary>
         public readonly string ExpirationDate;
         public readonly ImmutableArray<Outputs.GetServerCertificateFilterResult> Filters;
@@ -107,7 +107,7 @@ namespace Pulumi.Outscale
         public readonly string Path;
         public readonly string RequestId;
         /// <summary>
-        /// The date on which the server certificate has been uploaded.
+        /// The date and time (UTC) on which the server certificate has been uploaded.
         /// </summary>
         public readonly string UploadDate;
 

@@ -146,7 +146,8 @@ type NatService struct {
 	// The ID of the Subnet in which you want to create the NAT service.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags NatServiceTagArrayOutput `pulumi:"tags"`
+	Tags     NatServiceTagArrayOutput    `pulumi:"tags"`
+	Timeouts NatServiceTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewNatService registers a new resource with the given unique name, arguments, and options.
@@ -200,7 +201,8 @@ type natServiceState struct {
 	// The ID of the Subnet in which you want to create the NAT service.
 	SubnetId *string `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []NatServiceTag `pulumi:"tags"`
+	Tags     []NatServiceTag     `pulumi:"tags"`
+	Timeouts *NatServiceTimeouts `pulumi:"timeouts"`
 }
 
 type NatServiceState struct {
@@ -219,7 +221,8 @@ type NatServiceState struct {
 	// The ID of the Subnet in which you want to create the NAT service.
 	SubnetId pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags NatServiceTagArrayInput
+	Tags     NatServiceTagArrayInput
+	Timeouts NatServiceTimeoutsPtrInput
 }
 
 func (NatServiceState) ElementType() reflect.Type {
@@ -233,7 +236,8 @@ type natServiceArgs struct {
 	// The ID of the Subnet in which you want to create the NAT service.
 	SubnetId string `pulumi:"subnetId"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []NatServiceTag `pulumi:"tags"`
+	Tags     []NatServiceTag     `pulumi:"tags"`
+	Timeouts *NatServiceTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a NatService resource.
@@ -244,7 +248,8 @@ type NatServiceArgs struct {
 	// The ID of the Subnet in which you want to create the NAT service.
 	SubnetId pulumi.StringInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags NatServiceTagArrayInput
+	Tags     NatServiceTagArrayInput
+	Timeouts NatServiceTimeoutsPtrInput
 }
 
 func (NatServiceArgs) ElementType() reflect.Type {
@@ -372,6 +377,10 @@ func (o NatServiceOutput) SubnetId() pulumi.StringOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o NatServiceOutput) Tags() NatServiceTagArrayOutput {
 	return o.ApplyT(func(v *NatService) NatServiceTagArrayOutput { return v.Tags }).(NatServiceTagArrayOutput)
+}
+
+func (o NatServiceOutput) Timeouts() NatServiceTimeoutsPtrOutput {
+	return o.ApplyT(func(v *NatService) NatServiceTimeoutsPtrOutput { return v.Timeouts }).(NatServiceTimeoutsPtrOutput)
 }
 
 type NatServiceArrayOutput struct{ *pulumi.OutputState }

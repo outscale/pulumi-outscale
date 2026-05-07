@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -48,13 +50,15 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * A flexible GPU link can be imported using the flexible GPU ID. For example:
+ * A flexible GPU link can be imported using the ID of the related VM. For example:
  *
  * ```sh
  *
- * $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu fgpu-12345678
+ * $ pulumi import outscale:index/flexibleGpuLink:FlexibleGpuLink imported_link_fgpu <vm_id>
  *
  * ```
+ *
+ * This will import all the flexible GPUs that are linked to that VM.
  */
 export class FlexibleGpuLink extends pulumi.CustomResource {
     /**
@@ -89,6 +93,7 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
      */
     declare public readonly flexibleGpuIds: pulumi.Output<string[]>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.FlexibleGpuLinkTimeouts | undefined>;
     /**
      * The ID of the VM you want to attach the fGPU to.
      */
@@ -109,6 +114,7 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
             const state = argsOrState as FlexibleGpuLinkState | undefined;
             resourceInputs["flexibleGpuIds"] = state?.flexibleGpuIds;
             resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FlexibleGpuLinkArgs | undefined;
@@ -119,6 +125,7 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vmId'");
             }
             resourceInputs["flexibleGpuIds"] = args?.flexibleGpuIds;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vmId"] = args?.vmId;
             resourceInputs["requestId"] = undefined /*out*/;
         }
@@ -136,6 +143,7 @@ export interface FlexibleGpuLinkState {
      */
     flexibleGpuIds?: pulumi.Input<pulumi.Input<string>[]>;
     requestId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.FlexibleGpuLinkTimeouts>;
     /**
      * The ID of the VM you want to attach the fGPU to.
      */
@@ -150,6 +158,7 @@ export interface FlexibleGpuLinkArgs {
      * (Required) The ID of one or more fGPUs you want to attach.
      */
     flexibleGpuIds: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.FlexibleGpuLinkTimeouts>;
     /**
      * The ID of the VM you want to attach the fGPU to.
      */

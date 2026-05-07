@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class VmPrimaryNicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID of the owner of the NIC.
+        /// The OUTSCALE account ID of the owner of the NIC.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class GetRouteTableTagResult
     {
         /// <summary>
-        /// The key of the tag, with a minimum of 1 character.
+        /// The key of the tag, between 1 and 255 characters.
         /// </summary>
         public readonly string Key;
         /// <summary>

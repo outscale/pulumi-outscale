@@ -117,7 +117,7 @@ class GetImageResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        The account ID of the owner of the OMI.
+        The OUTSCALE account ID of the owner of the OMI.
         """
         return pulumi.get(self, "account_id")
 

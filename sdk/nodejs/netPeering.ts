@@ -75,7 +75,8 @@ export class NetPeering extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Net you want to connect with.
+     * The ID of the Net you want to connect with.<br />
+     * If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
      */
     declare public readonly accepterNetId: pulumi.Output<string>;
     /**
@@ -83,7 +84,7 @@ export class NetPeering extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly accepterNets: pulumi.Output<outputs.NetPeeringAccepterNet[]>;
     /**
-     * The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+     * The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
      * This parameter is required if the Net you want to connect with does not belong to you.
      */
     declare public readonly accepterOwnerId: pulumi.Output<string>;
@@ -171,7 +172,8 @@ export class NetPeering extends pulumi.CustomResource {
  */
 export interface NetPeeringState {
     /**
-     * The ID of the Net you want to connect with.
+     * The ID of the Net you want to connect with.<br />
+     * If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
      */
     accepterNetId?: pulumi.Input<string>;
     /**
@@ -179,7 +181,7 @@ export interface NetPeeringState {
      */
     accepterNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringAccepterNet>[]>;
     /**
-     * The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+     * The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
      * This parameter is required if the Net you want to connect with does not belong to you.
      */
     accepterOwnerId?: pulumi.Input<string>;
@@ -217,11 +219,12 @@ export interface NetPeeringState {
  */
 export interface NetPeeringArgs {
     /**
-     * The ID of the Net you want to connect with.
+     * The ID of the Net you want to connect with.<br />
+     * If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
      */
     accepterNetId: pulumi.Input<string>;
     /**
-     * The account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent. <br /><br/ >
+     * The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
      * This parameter is required if the Net you want to connect with does not belong to you.
      */
     accepterOwnerId?: pulumi.Input<string>;

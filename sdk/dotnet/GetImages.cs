@@ -157,7 +157,7 @@ namespace Pulumi.Outscale
         private List<string>? _accountIds;
 
         /// <summary>
-        /// One or more account IDs that the permission is associated with.
+        /// One or more OUTSCALE account IDs that the permission is associated with.
         /// </summary>
         public List<string> AccountIds
         {
@@ -205,7 +205,7 @@ namespace Pulumi.Outscale
         private InputList<string>? _accountIds;
 
         /// <summary>
-        /// One or more account IDs that the permission is associated with.
+        /// One or more OUTSCALE account IDs that the permission is associated with.
         /// </summary>
         public InputList<string> AccountIds
         {
@@ -252,7 +252,7 @@ namespace Pulumi.Outscale
     public sealed class GetImagesResult
     {
         /// <summary>
-        /// One or more account IDs that the permission is associated with.
+        /// One or more OUTSCALE account IDs that the permission is associated with.
         /// </summary>
         public readonly ImmutableArray<string> AccountIds;
         public readonly ImmutableArray<Outputs.GetImagesFilterResult> Filters;

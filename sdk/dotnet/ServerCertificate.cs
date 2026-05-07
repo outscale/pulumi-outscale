@@ -64,7 +64,7 @@ namespace Pulumi.Outscale
         /// The PEM-encoded X509 certificate.
         /// </summary>
         [Output("body")]
-        public Output<string?> Body { get; private set; } = null!;
+        public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
         /// The PEM-encoded intermediate certification authorities.
@@ -72,11 +72,8 @@ namespace Pulumi.Outscale
         [Output("chain")]
         public Output<string?> Chain { get; private set; } = null!;
 
-        [Output("dryRun")]
-        public Output<string?> DryRun { get; private set; } = null!;
-
         /// <summary>
-        /// The date on which the server certificate expires.
+        /// The date and time (UTC) on which the server certificate expires.
         /// </summary>
         [Output("expirationDate")]
         public Output<string> ExpirationDate { get; private set; } = null!;
@@ -103,13 +100,16 @@ namespace Pulumi.Outscale
         /// The PEM-encoded private key matching the certificate.
         /// </summary>
         [Output("privateKey")]
-        public Output<string?> PrivateKey { get; private set; } = null!;
+        public Output<string> PrivateKey { get; private set; } = null!;
 
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.ServerCertificateTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// The date on which the server certificate has been uploaded.
+        /// The date and time (UTC) on which the server certificate has been uploaded.
         /// </summary>
         [Output("uploadDate")]
         public Output<string> UploadDate { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Outscale
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ServerCertificate(string name, ServerCertificateArgs? args = null, CustomResourceOptions? options = null)
+        public ServerCertificate(string name, ServerCertificateArgs args, CustomResourceOptions? options = null)
             : base("outscale:index/serverCertificate:ServerCertificate", name, args ?? new ServerCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -163,17 +163,14 @@ namespace Pulumi.Outscale
         /// <summary>
         /// The PEM-encoded X509 certificate.
         /// </summary>
-        [Input("body")]
-        public Input<string>? Body { get; set; }
+        [Input("body", required: true)]
+        public Input<string> Body { get; set; } = null!;
 
         /// <summary>
         /// The PEM-encoded intermediate certification authorities.
         /// </summary>
         [Input("chain")]
         public Input<string>? Chain { get; set; }
-
-        [Input("dryRun")]
-        public Input<string>? DryRun { get; set; }
 
         /// <summary>
         /// A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), minuses (`-`), or underscores (`_`).
@@ -190,8 +187,11 @@ namespace Pulumi.Outscale
         /// <summary>
         /// The PEM-encoded private key matching the certificate.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        [Input("privateKey", required: true)]
+        public Input<string> PrivateKey { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.ServerCertificateTimeoutsArgs>? Timeouts { get; set; }
 
         public ServerCertificateArgs()
         {
@@ -213,11 +213,8 @@ namespace Pulumi.Outscale
         [Input("chain")]
         public Input<string>? Chain { get; set; }
 
-        [Input("dryRun")]
-        public Input<string>? DryRun { get; set; }
-
         /// <summary>
-        /// The date on which the server certificate expires.
+        /// The date and time (UTC) on which the server certificate expires.
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
@@ -249,8 +246,11 @@ namespace Pulumi.Outscale
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.ServerCertificateTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The date on which the server certificate has been uploaded.
+        /// The date and time (UTC) on which the server certificate has been uploaded.
         /// </summary>
         [Input("uploadDate")]
         public Input<string>? UploadDate { get; set; }

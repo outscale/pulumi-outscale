@@ -14,7 +14,7 @@ namespace Pulumi.Outscale.Outputs
     public sealed class GetSecurityGroupOutboundRuleSecurityGroupsMemberResult
     {
         /// <summary>
-        /// The account ID that owns the source or destination security group.
+        /// The OUTSCALE account ID that owns the source or destination security group.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

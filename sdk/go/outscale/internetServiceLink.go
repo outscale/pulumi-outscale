@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages an Internet service link.
+// Manages an internet service link.
 //
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
 // For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
@@ -49,7 +49,7 @@ import (
 //
 // ```
 //
-// ### Link an Internet service to a Net
+// ### Link an internet service to a Net
 //
 // ```go
 // package main
@@ -93,9 +93,9 @@ type InternetServiceLink struct {
 	// The ID of the Net to which you want to attach the internet service.
 	NetId     pulumi.StringOutput `pulumi:"netId"`
 	RequestId pulumi.StringOutput `pulumi:"requestId"`
-	// The state of the attachment of the Internet service to the Net (always `available`).
+	// The state of the attachment of the internet service to the Net (always `available`).
 	State pulumi.StringOutput `pulumi:"state"`
-	// One or more tags associated with the Internet service.
+	// One or more tags associated with the internet service.
 	Tags     InternetServiceLinkTagArrayOutput    `pulumi:"tags"`
 	Timeouts InternetServiceLinkTimeoutsPtrOutput `pulumi:"timeouts"`
 }
@@ -141,9 +141,9 @@ type internetServiceLinkState struct {
 	// The ID of the Net to which you want to attach the internet service.
 	NetId     *string `pulumi:"netId"`
 	RequestId *string `pulumi:"requestId"`
-	// The state of the attachment of the Internet service to the Net (always `available`).
+	// The state of the attachment of the internet service to the Net (always `available`).
 	State *string `pulumi:"state"`
-	// One or more tags associated with the Internet service.
+	// One or more tags associated with the internet service.
 	Tags     []InternetServiceLinkTag     `pulumi:"tags"`
 	Timeouts *InternetServiceLinkTimeouts `pulumi:"timeouts"`
 }
@@ -154,9 +154,9 @@ type InternetServiceLinkState struct {
 	// The ID of the Net to which you want to attach the internet service.
 	NetId     pulumi.StringPtrInput
 	RequestId pulumi.StringPtrInput
-	// The state of the attachment of the Internet service to the Net (always `available`).
+	// The state of the attachment of the internet service to the Net (always `available`).
 	State pulumi.StringPtrInput
-	// One or more tags associated with the Internet service.
+	// One or more tags associated with the internet service.
 	Tags     InternetServiceLinkTagArrayInput
 	Timeouts InternetServiceLinkTimeoutsPtrInput
 }
@@ -283,12 +283,12 @@ func (o InternetServiceLinkOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InternetServiceLink) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
 }
 
-// The state of the attachment of the Internet service to the Net (always `available`).
+// The state of the attachment of the internet service to the Net (always `available`).
 func (o InternetServiceLinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *InternetServiceLink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// One or more tags associated with the Internet service.
+// One or more tags associated with the internet service.
 func (o InternetServiceLinkOutput) Tags() InternetServiceLinkTagArrayOutput {
 	return o.ApplyT(func(v *InternetServiceLink) InternetServiceLinkTagArrayOutput { return v.Tags }).(InternetServiceLinkTagArrayOutput)
 }

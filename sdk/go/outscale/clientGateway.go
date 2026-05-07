@@ -77,7 +77,8 @@ type ClientGateway struct {
 	// The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
 	State pulumi.StringOutput `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags ClientGatewayTagArrayOutput `pulumi:"tags"`
+	Tags     ClientGatewayTagArrayOutput    `pulumi:"tags"`
+	Timeouts ClientGatewayTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewClientGateway registers a new resource with the given unique name, arguments, and options.
@@ -133,7 +134,8 @@ type clientGatewayState struct {
 	// The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
 	State *string `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []ClientGatewayTag `pulumi:"tags"`
+	Tags     []ClientGatewayTag     `pulumi:"tags"`
+	Timeouts *ClientGatewayTimeouts `pulumi:"timeouts"`
 }
 
 type ClientGatewayState struct {
@@ -151,7 +153,8 @@ type ClientGatewayState struct {
 	// The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
 	State pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags ClientGatewayTagArrayInput
+	Tags     ClientGatewayTagArrayInput
+	Timeouts ClientGatewayTimeoutsPtrInput
 }
 
 func (ClientGatewayState) ElementType() reflect.Type {
@@ -168,7 +171,8 @@ type clientGatewayArgs struct {
 	// The public fixed IPv4 address of your client gateway.
 	PublicIp string `pulumi:"publicIp"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []ClientGatewayTag `pulumi:"tags"`
+	Tags     []ClientGatewayTag     `pulumi:"tags"`
+	Timeouts *ClientGatewayTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ClientGateway resource.
@@ -182,7 +186,8 @@ type ClientGatewayArgs struct {
 	// The public fixed IPv4 address of your client gateway.
 	PublicIp pulumi.StringInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags ClientGatewayTagArrayInput
+	Tags     ClientGatewayTagArrayInput
+	Timeouts ClientGatewayTimeoutsPtrInput
 }
 
 func (ClientGatewayArgs) ElementType() reflect.Type {
@@ -306,6 +311,10 @@ func (o ClientGatewayOutput) State() pulumi.StringOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o ClientGatewayOutput) Tags() ClientGatewayTagArrayOutput {
 	return o.ApplyT(func(v *ClientGateway) ClientGatewayTagArrayOutput { return v.Tags }).(ClientGatewayTagArrayOutput)
+}
+
+func (o ClientGatewayOutput) Timeouts() ClientGatewayTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ClientGateway) ClientGatewayTimeoutsPtrOutput { return v.Timeouts }).(ClientGatewayTimeoutsPtrOutput)
 }
 
 type ClientGatewayArrayOutput struct{ *pulumi.OutputState }

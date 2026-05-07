@@ -16,18 +16,18 @@ namespace Pulumi.Outscale.Outputs
         /// <summary>
         /// The public IP associated with the NAT service.
         /// </summary>
-        public readonly string? PublicIp;
+        public readonly string PublicIp;
         /// <summary>
         /// The allocation ID of the public IP to associate with the NAT service.&lt;br /&gt;
         /// If the public IP is already associated with another resource, you must first disassociate it.
         /// </summary>
-        public readonly string? PublicIpId;
+        public readonly string PublicIpId;
 
         [OutputConstructor]
         private NatServicePublicIp(
-            string? publicIp,
+            string publicIp,
 
-            string? publicIpId)
+            string publicIpId)
         {
             PublicIp = publicIp;
             PublicIpId = publicIpId;

@@ -13,7 +13,7 @@ namespace Pulumi.Outscale.Inputs
     public sealed class ImageExportTaskTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key of the tag, with a minimum of 1 character.
+        /// The key of the tag, between 1 and 255 characters.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

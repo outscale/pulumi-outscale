@@ -105,7 +105,7 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
     declare public readonly backendVmIds: pulumi.Output<string[]>;
     declare public readonly cookieExpirationPeriod: pulumi.Output<number>;
     /**
-     * The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
     declare public readonly cookieName: pulumi.Output<string>;
     /**
@@ -263,7 +263,7 @@ export interface LoadBalancerPolicyState {
     backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
     cookieExpirationPeriod?: pulumi.Input<number>;
     /**
-     * The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
     cookieName?: pulumi.Input<string>;
     /**
@@ -344,7 +344,7 @@ export interface LoadBalancerPolicyArgs {
     backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
     cookieExpirationPeriod?: pulumi.Input<number>;
     /**
-     * The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+     * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
     cookieName?: pulumi.Input<string>;
     /**

@@ -771,8 +771,8 @@ func (o CaTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type ClientGatewayTag struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key *string `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -789,8 +789,8 @@ type ClientGatewayTagInput interface {
 }
 
 type ClientGatewayTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -846,9 +846,9 @@ func (o ClientGatewayTagOutput) ToClientGatewayTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
-func (o ClientGatewayTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientGatewayTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The key of the tag, between 1 and 255 characters.
+func (o ClientGatewayTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientGatewayTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -876,9 +876,203 @@ func (o ClientGatewayTagArrayOutput) Index(i pulumi.IntInput) ClientGatewayTagOu
 	}).(ClientGatewayTagOutput)
 }
 
+type ClientGatewayTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// ClientGatewayTimeoutsInput is an input type that accepts ClientGatewayTimeoutsArgs and ClientGatewayTimeoutsOutput values.
+// You can construct a concrete instance of `ClientGatewayTimeoutsInput` via:
+//
+//	ClientGatewayTimeoutsArgs{...}
+type ClientGatewayTimeoutsInput interface {
+	pulumi.Input
+
+	ToClientGatewayTimeoutsOutput() ClientGatewayTimeoutsOutput
+	ToClientGatewayTimeoutsOutputWithContext(context.Context) ClientGatewayTimeoutsOutput
+}
+
+type ClientGatewayTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (ClientGatewayTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientGatewayTimeouts)(nil)).Elem()
+}
+
+func (i ClientGatewayTimeoutsArgs) ToClientGatewayTimeoutsOutput() ClientGatewayTimeoutsOutput {
+	return i.ToClientGatewayTimeoutsOutputWithContext(context.Background())
+}
+
+func (i ClientGatewayTimeoutsArgs) ToClientGatewayTimeoutsOutputWithContext(ctx context.Context) ClientGatewayTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGatewayTimeoutsOutput)
+}
+
+func (i ClientGatewayTimeoutsArgs) ToClientGatewayTimeoutsPtrOutput() ClientGatewayTimeoutsPtrOutput {
+	return i.ToClientGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientGatewayTimeoutsArgs) ToClientGatewayTimeoutsPtrOutputWithContext(ctx context.Context) ClientGatewayTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGatewayTimeoutsOutput).ToClientGatewayTimeoutsPtrOutputWithContext(ctx)
+}
+
+// ClientGatewayTimeoutsPtrInput is an input type that accepts ClientGatewayTimeoutsArgs, ClientGatewayTimeoutsPtr and ClientGatewayTimeoutsPtrOutput values.
+// You can construct a concrete instance of `ClientGatewayTimeoutsPtrInput` via:
+//
+//	        ClientGatewayTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientGatewayTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToClientGatewayTimeoutsPtrOutput() ClientGatewayTimeoutsPtrOutput
+	ToClientGatewayTimeoutsPtrOutputWithContext(context.Context) ClientGatewayTimeoutsPtrOutput
+}
+
+type clientGatewayTimeoutsPtrType ClientGatewayTimeoutsArgs
+
+func ClientGatewayTimeoutsPtr(v *ClientGatewayTimeoutsArgs) ClientGatewayTimeoutsPtrInput {
+	return (*clientGatewayTimeoutsPtrType)(v)
+}
+
+func (*clientGatewayTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientGatewayTimeouts)(nil)).Elem()
+}
+
+func (i *clientGatewayTimeoutsPtrType) ToClientGatewayTimeoutsPtrOutput() ClientGatewayTimeoutsPtrOutput {
+	return i.ToClientGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientGatewayTimeoutsPtrType) ToClientGatewayTimeoutsPtrOutputWithContext(ctx context.Context) ClientGatewayTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientGatewayTimeoutsPtrOutput)
+}
+
+type ClientGatewayTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (ClientGatewayTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientGatewayTimeouts)(nil)).Elem()
+}
+
+func (o ClientGatewayTimeoutsOutput) ToClientGatewayTimeoutsOutput() ClientGatewayTimeoutsOutput {
+	return o
+}
+
+func (o ClientGatewayTimeoutsOutput) ToClientGatewayTimeoutsOutputWithContext(ctx context.Context) ClientGatewayTimeoutsOutput {
+	return o
+}
+
+func (o ClientGatewayTimeoutsOutput) ToClientGatewayTimeoutsPtrOutput() ClientGatewayTimeoutsPtrOutput {
+	return o.ToClientGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientGatewayTimeoutsOutput) ToClientGatewayTimeoutsPtrOutputWithContext(ctx context.Context) ClientGatewayTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientGatewayTimeouts) *ClientGatewayTimeouts {
+		return &v
+	}).(ClientGatewayTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClientGatewayTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientGatewayTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ClientGatewayTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientGatewayTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ClientGatewayTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientGatewayTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClientGatewayTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientGatewayTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type ClientGatewayTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientGatewayTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientGatewayTimeouts)(nil)).Elem()
+}
+
+func (o ClientGatewayTimeoutsPtrOutput) ToClientGatewayTimeoutsPtrOutput() ClientGatewayTimeoutsPtrOutput {
+	return o
+}
+
+func (o ClientGatewayTimeoutsPtrOutput) ToClientGatewayTimeoutsPtrOutputWithContext(ctx context.Context) ClientGatewayTimeoutsPtrOutput {
+	return o
+}
+
+func (o ClientGatewayTimeoutsPtrOutput) Elem() ClientGatewayTimeoutsOutput {
+	return o.ApplyT(func(v *ClientGatewayTimeouts) ClientGatewayTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret ClientGatewayTimeouts
+		return ret
+	}).(ClientGatewayTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClientGatewayTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ClientGatewayTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ClientGatewayTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClientGatewayTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type DhcpOptionTag struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key *string `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -895,8 +1089,8 @@ type DhcpOptionTagInput interface {
 }
 
 type DhcpOptionTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -952,9 +1146,9 @@ func (o DhcpOptionTagOutput) ToDhcpOptionTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
-func (o DhcpOptionTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DhcpOptionTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The key of the tag, between 1 and 255 characters.
+func (o DhcpOptionTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DhcpOptionTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -980,6 +1174,394 @@ func (o DhcpOptionTagArrayOutput) Index(i pulumi.IntInput) DhcpOptionTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DhcpOptionTag {
 		return vs[0].([]DhcpOptionTag)[vs[1].(int)]
 	}).(DhcpOptionTagOutput)
+}
+
+type DhcpOptionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DhcpOptionTimeoutsInput is an input type that accepts DhcpOptionTimeoutsArgs and DhcpOptionTimeoutsOutput values.
+// You can construct a concrete instance of `DhcpOptionTimeoutsInput` via:
+//
+//	DhcpOptionTimeoutsArgs{...}
+type DhcpOptionTimeoutsInput interface {
+	pulumi.Input
+
+	ToDhcpOptionTimeoutsOutput() DhcpOptionTimeoutsOutput
+	ToDhcpOptionTimeoutsOutputWithContext(context.Context) DhcpOptionTimeoutsOutput
+}
+
+type DhcpOptionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DhcpOptionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DhcpOptionTimeouts)(nil)).Elem()
+}
+
+func (i DhcpOptionTimeoutsArgs) ToDhcpOptionTimeoutsOutput() DhcpOptionTimeoutsOutput {
+	return i.ToDhcpOptionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i DhcpOptionTimeoutsArgs) ToDhcpOptionTimeoutsOutputWithContext(ctx context.Context) DhcpOptionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionTimeoutsOutput)
+}
+
+func (i DhcpOptionTimeoutsArgs) ToDhcpOptionTimeoutsPtrOutput() DhcpOptionTimeoutsPtrOutput {
+	return i.ToDhcpOptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DhcpOptionTimeoutsArgs) ToDhcpOptionTimeoutsPtrOutputWithContext(ctx context.Context) DhcpOptionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionTimeoutsOutput).ToDhcpOptionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// DhcpOptionTimeoutsPtrInput is an input type that accepts DhcpOptionTimeoutsArgs, DhcpOptionTimeoutsPtr and DhcpOptionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `DhcpOptionTimeoutsPtrInput` via:
+//
+//	        DhcpOptionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DhcpOptionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDhcpOptionTimeoutsPtrOutput() DhcpOptionTimeoutsPtrOutput
+	ToDhcpOptionTimeoutsPtrOutputWithContext(context.Context) DhcpOptionTimeoutsPtrOutput
+}
+
+type dhcpOptionTimeoutsPtrType DhcpOptionTimeoutsArgs
+
+func DhcpOptionTimeoutsPtr(v *DhcpOptionTimeoutsArgs) DhcpOptionTimeoutsPtrInput {
+	return (*dhcpOptionTimeoutsPtrType)(v)
+}
+
+func (*dhcpOptionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DhcpOptionTimeouts)(nil)).Elem()
+}
+
+func (i *dhcpOptionTimeoutsPtrType) ToDhcpOptionTimeoutsPtrOutput() DhcpOptionTimeoutsPtrOutput {
+	return i.ToDhcpOptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *dhcpOptionTimeoutsPtrType) ToDhcpOptionTimeoutsPtrOutputWithContext(ctx context.Context) DhcpOptionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DhcpOptionTimeoutsPtrOutput)
+}
+
+type DhcpOptionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DhcpOptionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DhcpOptionTimeouts)(nil)).Elem()
+}
+
+func (o DhcpOptionTimeoutsOutput) ToDhcpOptionTimeoutsOutput() DhcpOptionTimeoutsOutput {
+	return o
+}
+
+func (o DhcpOptionTimeoutsOutput) ToDhcpOptionTimeoutsOutputWithContext(ctx context.Context) DhcpOptionTimeoutsOutput {
+	return o
+}
+
+func (o DhcpOptionTimeoutsOutput) ToDhcpOptionTimeoutsPtrOutput() DhcpOptionTimeoutsPtrOutput {
+	return o.ToDhcpOptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DhcpOptionTimeoutsOutput) ToDhcpOptionTimeoutsPtrOutputWithContext(ctx context.Context) DhcpOptionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DhcpOptionTimeouts) *DhcpOptionTimeouts {
+		return &v
+	}).(DhcpOptionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DhcpOptionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DhcpOptionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DhcpOptionTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DhcpOptionTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DhcpOptionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DhcpOptionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DhcpOptionTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DhcpOptionTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DhcpOptionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DhcpOptionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DhcpOptionTimeouts)(nil)).Elem()
+}
+
+func (o DhcpOptionTimeoutsPtrOutput) ToDhcpOptionTimeoutsPtrOutput() DhcpOptionTimeoutsPtrOutput {
+	return o
+}
+
+func (o DhcpOptionTimeoutsPtrOutput) ToDhcpOptionTimeoutsPtrOutputWithContext(ctx context.Context) DhcpOptionTimeoutsPtrOutput {
+	return o
+}
+
+func (o DhcpOptionTimeoutsPtrOutput) Elem() DhcpOptionTimeoutsOutput {
+	return o.ApplyT(func(v *DhcpOptionTimeouts) DhcpOptionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DhcpOptionTimeouts
+		return ret
+	}).(DhcpOptionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DhcpOptionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DhcpOptionTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DhcpOptionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DhcpOptionTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DhcpOptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type FlexibleGpuLinkTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// FlexibleGpuLinkTimeoutsInput is an input type that accepts FlexibleGpuLinkTimeoutsArgs and FlexibleGpuLinkTimeoutsOutput values.
+// You can construct a concrete instance of `FlexibleGpuLinkTimeoutsInput` via:
+//
+//	FlexibleGpuLinkTimeoutsArgs{...}
+type FlexibleGpuLinkTimeoutsInput interface {
+	pulumi.Input
+
+	ToFlexibleGpuLinkTimeoutsOutput() FlexibleGpuLinkTimeoutsOutput
+	ToFlexibleGpuLinkTimeoutsOutputWithContext(context.Context) FlexibleGpuLinkTimeoutsOutput
+}
+
+type FlexibleGpuLinkTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (FlexibleGpuLinkTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleGpuLinkTimeouts)(nil)).Elem()
+}
+
+func (i FlexibleGpuLinkTimeoutsArgs) ToFlexibleGpuLinkTimeoutsOutput() FlexibleGpuLinkTimeoutsOutput {
+	return i.ToFlexibleGpuLinkTimeoutsOutputWithContext(context.Background())
+}
+
+func (i FlexibleGpuLinkTimeoutsArgs) ToFlexibleGpuLinkTimeoutsOutputWithContext(ctx context.Context) FlexibleGpuLinkTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleGpuLinkTimeoutsOutput)
+}
+
+func (i FlexibleGpuLinkTimeoutsArgs) ToFlexibleGpuLinkTimeoutsPtrOutput() FlexibleGpuLinkTimeoutsPtrOutput {
+	return i.ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleGpuLinkTimeoutsArgs) ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(ctx context.Context) FlexibleGpuLinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleGpuLinkTimeoutsOutput).ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(ctx)
+}
+
+// FlexibleGpuLinkTimeoutsPtrInput is an input type that accepts FlexibleGpuLinkTimeoutsArgs, FlexibleGpuLinkTimeoutsPtr and FlexibleGpuLinkTimeoutsPtrOutput values.
+// You can construct a concrete instance of `FlexibleGpuLinkTimeoutsPtrInput` via:
+//
+//	        FlexibleGpuLinkTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlexibleGpuLinkTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleGpuLinkTimeoutsPtrOutput() FlexibleGpuLinkTimeoutsPtrOutput
+	ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(context.Context) FlexibleGpuLinkTimeoutsPtrOutput
+}
+
+type flexibleGpuLinkTimeoutsPtrType FlexibleGpuLinkTimeoutsArgs
+
+func FlexibleGpuLinkTimeoutsPtr(v *FlexibleGpuLinkTimeoutsArgs) FlexibleGpuLinkTimeoutsPtrInput {
+	return (*flexibleGpuLinkTimeoutsPtrType)(v)
+}
+
+func (*flexibleGpuLinkTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleGpuLinkTimeouts)(nil)).Elem()
+}
+
+func (i *flexibleGpuLinkTimeoutsPtrType) ToFlexibleGpuLinkTimeoutsPtrOutput() FlexibleGpuLinkTimeoutsPtrOutput {
+	return i.ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleGpuLinkTimeoutsPtrType) ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(ctx context.Context) FlexibleGpuLinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleGpuLinkTimeoutsPtrOutput)
+}
+
+type FlexibleGpuLinkTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (FlexibleGpuLinkTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleGpuLinkTimeouts)(nil)).Elem()
+}
+
+func (o FlexibleGpuLinkTimeoutsOutput) ToFlexibleGpuLinkTimeoutsOutput() FlexibleGpuLinkTimeoutsOutput {
+	return o
+}
+
+func (o FlexibleGpuLinkTimeoutsOutput) ToFlexibleGpuLinkTimeoutsOutputWithContext(ctx context.Context) FlexibleGpuLinkTimeoutsOutput {
+	return o
+}
+
+func (o FlexibleGpuLinkTimeoutsOutput) ToFlexibleGpuLinkTimeoutsPtrOutput() FlexibleGpuLinkTimeoutsPtrOutput {
+	return o.ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleGpuLinkTimeoutsOutput) ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(ctx context.Context) FlexibleGpuLinkTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleGpuLinkTimeouts) *FlexibleGpuLinkTimeouts {
+		return &v
+	}).(FlexibleGpuLinkTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlexibleGpuLinkTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleGpuLinkTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o FlexibleGpuLinkTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleGpuLinkTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o FlexibleGpuLinkTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleGpuLinkTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlexibleGpuLinkTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleGpuLinkTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleGpuLinkTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleGpuLinkTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleGpuLinkTimeouts)(nil)).Elem()
+}
+
+func (o FlexibleGpuLinkTimeoutsPtrOutput) ToFlexibleGpuLinkTimeoutsPtrOutput() FlexibleGpuLinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o FlexibleGpuLinkTimeoutsPtrOutput) ToFlexibleGpuLinkTimeoutsPtrOutputWithContext(ctx context.Context) FlexibleGpuLinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o FlexibleGpuLinkTimeoutsPtrOutput) Elem() FlexibleGpuLinkTimeoutsOutput {
+	return o.ApplyT(func(v *FlexibleGpuLinkTimeouts) FlexibleGpuLinkTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleGpuLinkTimeouts
+		return ret
+	}).(FlexibleGpuLinkTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlexibleGpuLinkTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleGpuLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o FlexibleGpuLinkTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleGpuLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o FlexibleGpuLinkTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleGpuLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlexibleGpuLinkTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleGpuLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlexibleGpuTimeouts struct {
@@ -1673,7 +2255,7 @@ func (o ImageExportTaskOsuExportOsuApiKeyArrayOutput) Index(i pulumi.IntInput) I
 }
 
 type ImageExportTaskTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -1691,7 +2273,7 @@ type ImageExportTaskTagInput interface {
 }
 
 type ImageExportTaskTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -1748,7 +2330,7 @@ func (o ImageExportTaskTagOutput) ToImageExportTaskTagOutputWithContext(ctx cont
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o ImageExportTaskTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageExportTaskTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -1779,7 +2361,7 @@ func (o ImageExportTaskTagArrayOutput) Index(i pulumi.IntInput) ImageExportTaskT
 }
 
 type ImageLaunchPermissionPermissionAdditions struct {
-	// The account ID of one or more users to whom you want to give permissions.
+	// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 	AccountIds []string `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission *string `pulumi:"globalPermission"`
@@ -1797,7 +2379,7 @@ type ImageLaunchPermissionPermissionAdditionsInput interface {
 }
 
 type ImageLaunchPermissionPermissionAdditionsArgs struct {
-	// The account ID of one or more users to whom you want to give permissions.
+	// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission pulumi.StringPtrInput `pulumi:"globalPermission"`
@@ -1880,7 +2462,7 @@ func (o ImageLaunchPermissionPermissionAdditionsOutput) ToImageLaunchPermissionP
 	}).(ImageLaunchPermissionPermissionAdditionsPtrOutput)
 }
 
-// The account ID of one or more users to whom you want to give permissions.
+// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 func (o ImageLaunchPermissionPermissionAdditionsOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ImageLaunchPermissionPermissionAdditions) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
@@ -1914,7 +2496,7 @@ func (o ImageLaunchPermissionPermissionAdditionsPtrOutput) Elem() ImageLaunchPer
 	}).(ImageLaunchPermissionPermissionAdditionsOutput)
 }
 
-// The account ID of one or more users to whom you want to give permissions.
+// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 func (o ImageLaunchPermissionPermissionAdditionsPtrOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ImageLaunchPermissionPermissionAdditions) []string {
 		if v == nil {
@@ -1935,7 +2517,7 @@ func (o ImageLaunchPermissionPermissionAdditionsPtrOutput) GlobalPermission() pu
 }
 
 type ImageLaunchPermissionPermissionRemovals struct {
-	// The account ID of one or more users from whom you want to remove permissions.
+	// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
 	AccountIds []string `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission *string `pulumi:"globalPermission"`
@@ -1953,7 +2535,7 @@ type ImageLaunchPermissionPermissionRemovalsInput interface {
 }
 
 type ImageLaunchPermissionPermissionRemovalsArgs struct {
-	// The account ID of one or more users from whom you want to remove permissions.
+	// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission pulumi.StringPtrInput `pulumi:"globalPermission"`
@@ -2036,7 +2618,7 @@ func (o ImageLaunchPermissionPermissionRemovalsOutput) ToImageLaunchPermissionPe
 	}).(ImageLaunchPermissionPermissionRemovalsPtrOutput)
 }
 
-// The account ID of one or more users from whom you want to remove permissions.
+// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
 func (o ImageLaunchPermissionPermissionRemovalsOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ImageLaunchPermissionPermissionRemovals) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
@@ -2070,7 +2652,7 @@ func (o ImageLaunchPermissionPermissionRemovalsPtrOutput) Elem() ImageLaunchPerm
 	}).(ImageLaunchPermissionPermissionRemovalsOutput)
 }
 
-// The account ID of one or more users from whom you want to remove permissions.
+// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
 func (o ImageLaunchPermissionPermissionRemovalsPtrOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ImageLaunchPermissionPermissionRemovals) []string {
 		if v == nil {
@@ -2091,7 +2673,7 @@ func (o ImageLaunchPermissionPermissionRemovalsPtrOutput) GlobalPermission() pul
 }
 
 type ImageLaunchPermissionPermissionsToLaunch struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds []string `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `additions`) or to make the resource private (if the parent parameter is `removals`).<br />
@@ -2111,7 +2693,7 @@ type ImageLaunchPermissionPermissionsToLaunchInput interface {
 }
 
 type ImageLaunchPermissionPermissionsToLaunchArgs struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `additions`) or to make the resource private (if the parent parameter is `removals`).<br />
@@ -2170,7 +2752,7 @@ func (o ImageLaunchPermissionPermissionsToLaunchOutput) ToImageLaunchPermissionP
 	return o
 }
 
-// One or more account IDs that the permission is associated with.
+// One or more OUTSCALE account IDs that the permission is associated with.
 func (o ImageLaunchPermissionPermissionsToLaunchOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ImageLaunchPermissionPermissionsToLaunch) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
@@ -2203,7 +2785,7 @@ func (o ImageLaunchPermissionPermissionsToLaunchArrayOutput) Index(i pulumi.IntI
 }
 
 type ImagePermissionsToLaunch struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds []string `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -2223,7 +2805,7 @@ type ImagePermissionsToLaunchInput interface {
 }
 
 type ImagePermissionsToLaunchArgs struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -2282,7 +2864,7 @@ func (o ImagePermissionsToLaunchOutput) ToImagePermissionsToLaunchOutputWithCont
 	return o
 }
 
-// One or more account IDs that the permission is associated with.
+// One or more OUTSCALE account IDs that the permission is associated with.
 func (o ImagePermissionsToLaunchOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ImagePermissionsToLaunch) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
@@ -2421,7 +3003,7 @@ func (o ImageStateCommentArrayOutput) Index(i pulumi.IntInput) ImageStateComment
 }
 
 type ImageTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -2439,7 +3021,7 @@ type ImageTagInput interface {
 }
 
 type ImageTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2496,7 +3078,7 @@ func (o ImageTagOutput) ToImageTagOutputWithContext(ctx context.Context) ImageTa
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o ImageTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -2527,7 +3109,7 @@ func (o ImageTagArrayOutput) Index(i pulumi.IntInput) ImageTagOutput {
 }
 
 type InternetServiceLinkTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -2545,7 +3127,7 @@ type InternetServiceLinkTagInput interface {
 }
 
 type InternetServiceLinkTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -2602,7 +3184,7 @@ func (o InternetServiceLinkTagOutput) ToInternetServiceLinkTagOutputWithContext(
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o InternetServiceLinkTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InternetServiceLinkTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -2827,7 +3409,7 @@ func (o InternetServiceLinkTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type InternetServiceTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -2845,7 +3427,7 @@ type InternetServiceTagInput interface {
 }
 
 type InternetServiceTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2902,7 +3484,7 @@ func (o InternetServiceTagOutput) ToInternetServiceTagOutputWithContext(ctx cont
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o InternetServiceTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v InternetServiceTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -3127,7 +3709,7 @@ func (o InternetServiceTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type KeypairTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -3145,7 +3727,7 @@ type KeypairTagInput interface {
 }
 
 type KeypairTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -3202,7 +3784,7 @@ func (o KeypairTagOutput) ToKeypairTagOutputWithContext(ctx context.Context) Key
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o KeypairTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeypairTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -3551,7 +4133,7 @@ func (o LoadBalancerAccessLogArrayOutput) Index(i pulumi.IntInput) LoadBalancerA
 }
 
 type LoadBalancerApplicationStickyCookiePolicy struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName *string `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName *string `pulumi:"policyName"`
@@ -3569,7 +4151,7 @@ type LoadBalancerApplicationStickyCookiePolicyInput interface {
 }
 
 type LoadBalancerApplicationStickyCookiePolicyArgs struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
@@ -3626,7 +4208,7 @@ func (o LoadBalancerApplicationStickyCookiePolicyOutput) ToLoadBalancerApplicati
 	return o
 }
 
-// The name of the application cookie used for stickiness.
+// The name of the application cookie used for stickiness, between 1 and 255 characters.
 func (o LoadBalancerApplicationStickyCookiePolicyOutput) CookieName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerApplicationStickyCookiePolicy) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
@@ -3851,7 +4433,7 @@ func (o LoadBalancerAttributesAccessLogPtrOutput) PublicationInterval() pulumi.I
 }
 
 type LoadBalancerAttributesApplicationStickyCookiePolicy struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName *string `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName *string `pulumi:"policyName"`
@@ -3869,7 +4451,7 @@ type LoadBalancerAttributesApplicationStickyCookiePolicyInput interface {
 }
 
 type LoadBalancerAttributesApplicationStickyCookiePolicyArgs struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
@@ -3926,7 +4508,7 @@ func (o LoadBalancerAttributesApplicationStickyCookiePolicyOutput) ToLoadBalance
 	return o
 }
 
-// The name of the application cookie used for stickiness.
+// The name of the application cookie used for stickiness, between 1 and 255 characters.
 func (o LoadBalancerAttributesApplicationStickyCookiePolicyOutput) CookieName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerAttributesApplicationStickyCookiePolicy) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
@@ -4447,7 +5029,7 @@ func (o LoadBalancerAttributesLoadBalancerStickyCookiePolicyArrayOutput) Index(i
 }
 
 type LoadBalancerAttributesSourceSecurityGroup struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId *string `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
@@ -4465,7 +5047,7 @@ type LoadBalancerAttributesSourceSecurityGroupInput interface {
 }
 
 type LoadBalancerAttributesSourceSecurityGroupArgs struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId pulumi.StringPtrInput `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
@@ -4522,7 +5104,7 @@ func (o LoadBalancerAttributesSourceSecurityGroupOutput) ToLoadBalancerAttribute
 	return o
 }
 
-// The account ID of the owner of the security group.
+// The OUTSCALE account ID of the owner of the security group.
 func (o LoadBalancerAttributesSourceSecurityGroupOutput) SecurityGroupAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerAttributesSourceSecurityGroup) *string { return v.SecurityGroupAccountId }).(pulumi.StringPtrOutput)
 }
@@ -4553,7 +5135,7 @@ func (o LoadBalancerAttributesSourceSecurityGroupArrayOutput) Index(i pulumi.Int
 }
 
 type LoadBalancerAttributesTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -4571,7 +5153,7 @@ type LoadBalancerAttributesTagInput interface {
 }
 
 type LoadBalancerAttributesTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -4628,7 +5210,7 @@ func (o LoadBalancerAttributesTagOutput) ToLoadBalancerAttributesTagOutputWithCo
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 128 characters.
 func (o LoadBalancerAttributesTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerAttributesTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -5583,7 +6165,7 @@ func (o LoadBalancerPolicyAccessLogArrayOutput) Index(i pulumi.IntInput) LoadBal
 }
 
 type LoadBalancerPolicyApplicationStickyCookiePolicy struct {
-	// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 	CookieName *string `pulumi:"cookieName"`
 	// The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
 	PolicyName *string `pulumi:"policyName"`
@@ -5601,7 +6183,7 @@ type LoadBalancerPolicyApplicationStickyCookiePolicyInput interface {
 }
 
 type LoadBalancerPolicyApplicationStickyCookiePolicyArgs struct {
-	// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
 	// The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
@@ -5658,7 +6240,7 @@ func (o LoadBalancerPolicyApplicationStickyCookiePolicyOutput) ToLoadBalancerPol
 	return o
 }
 
-// The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie.
+// The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
 func (o LoadBalancerPolicyApplicationStickyCookiePolicyOutput) CookieName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPolicyApplicationStickyCookiePolicy) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
@@ -6079,7 +6661,7 @@ func (o LoadBalancerPolicyLoadBalancerStickyCookiePolicyArrayOutput) Index(i pul
 }
 
 type LoadBalancerPolicySourceSecurityGroup struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId *string `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
@@ -6097,7 +6679,7 @@ type LoadBalancerPolicySourceSecurityGroupInput interface {
 }
 
 type LoadBalancerPolicySourceSecurityGroupArgs struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId pulumi.StringPtrInput `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
@@ -6154,7 +6736,7 @@ func (o LoadBalancerPolicySourceSecurityGroupOutput) ToLoadBalancerPolicySourceS
 	return o
 }
 
-// The account ID of the owner of the security group.
+// The OUTSCALE account ID of the owner of the security group.
 func (o LoadBalancerPolicySourceSecurityGroupOutput) SecurityGroupAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPolicySourceSecurityGroup) *string { return v.SecurityGroupAccountId }).(pulumi.StringPtrOutput)
 }
@@ -6185,7 +6767,7 @@ func (o LoadBalancerPolicySourceSecurityGroupArrayOutput) Index(i pulumi.IntInpu
 }
 
 type LoadBalancerPolicyTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -6203,7 +6785,7 @@ type LoadBalancerPolicyTagInput interface {
 }
 
 type LoadBalancerPolicyTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -6260,7 +6842,7 @@ func (o LoadBalancerPolicyTagOutput) ToLoadBalancerPolicyTagOutputWithContext(ct
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 128 characters.
 func (o LoadBalancerPolicyTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPolicyTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -6291,7 +6873,7 @@ func (o LoadBalancerPolicyTagArrayOutput) Index(i pulumi.IntInput) LoadBalancerP
 }
 
 type LoadBalancerSourceSecurityGroup struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId *string `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
@@ -6309,7 +6891,7 @@ type LoadBalancerSourceSecurityGroupInput interface {
 }
 
 type LoadBalancerSourceSecurityGroupArgs struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId pulumi.StringPtrInput `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
@@ -6366,7 +6948,7 @@ func (o LoadBalancerSourceSecurityGroupOutput) ToLoadBalancerSourceSecurityGroup
 	return o
 }
 
-// The account ID of the owner of the security group.
+// The OUTSCALE account ID of the owner of the security group.
 func (o LoadBalancerSourceSecurityGroupOutput) SecurityGroupAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerSourceSecurityGroup) *string { return v.SecurityGroupAccountId }).(pulumi.StringPtrOutput)
 }
@@ -6397,7 +6979,7 @@ func (o LoadBalancerSourceSecurityGroupArrayOutput) Index(i pulumi.IntInput) Loa
 }
 
 type LoadBalancerTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -6415,7 +6997,7 @@ type LoadBalancerTagInput interface {
 }
 
 type LoadBalancerTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -6472,7 +7054,7 @@ func (o LoadBalancerTagOutput) ToLoadBalancerTagOutputWithContext(ctx context.Co
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 128 characters.
 func (o LoadBalancerTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -6892,10 +7474,10 @@ func (o MainRouteTableLinkTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 
 type NatServicePublicIp struct {
 	// The public IP associated with the NAT service.
-	PublicIp *string `pulumi:"publicIp"`
+	PublicIp string `pulumi:"publicIp"`
 	// The allocation ID of the public IP to associate with the NAT service.<br />
 	// If the public IP is already associated with another resource, you must first disassociate it.
-	PublicIpId *string `pulumi:"publicIpId"`
+	PublicIpId string `pulumi:"publicIpId"`
 }
 
 // NatServicePublicIpInput is an input type that accepts NatServicePublicIpArgs and NatServicePublicIpOutput values.
@@ -6911,10 +7493,10 @@ type NatServicePublicIpInput interface {
 
 type NatServicePublicIpArgs struct {
 	// The public IP associated with the NAT service.
-	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
+	PublicIp pulumi.StringInput `pulumi:"publicIp"`
 	// The allocation ID of the public IP to associate with the NAT service.<br />
 	// If the public IP is already associated with another resource, you must first disassociate it.
-	PublicIpId pulumi.StringPtrInput `pulumi:"publicIpId"`
+	PublicIpId pulumi.StringInput `pulumi:"publicIpId"`
 }
 
 func (NatServicePublicIpArgs) ElementType() reflect.Type {
@@ -6969,14 +7551,14 @@ func (o NatServicePublicIpOutput) ToNatServicePublicIpOutputWithContext(ctx cont
 }
 
 // The public IP associated with the NAT service.
-func (o NatServicePublicIpOutput) PublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NatServicePublicIp) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
+func (o NatServicePublicIpOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v NatServicePublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
 // The allocation ID of the public IP to associate with the NAT service.<br />
 // If the public IP is already associated with another resource, you must first disassociate it.
-func (o NatServicePublicIpOutput) PublicIpId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NatServicePublicIp) *string { return v.PublicIpId }).(pulumi.StringPtrOutput)
+func (o NatServicePublicIpOutput) PublicIpId() pulumi.StringOutput {
+	return o.ApplyT(func(v NatServicePublicIp) string { return v.PublicIpId }).(pulumi.StringOutput)
 }
 
 type NatServicePublicIpArrayOutput struct{ *pulumi.OutputState }
@@ -7000,8 +7582,8 @@ func (o NatServicePublicIpArrayOutput) Index(i pulumi.IntInput) NatServicePublic
 }
 
 type NatServiceTag struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key *string `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -7018,8 +7600,8 @@ type NatServiceTagInput interface {
 }
 
 type NatServiceTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -7075,9 +7657,9 @@ func (o NatServiceTagOutput) ToNatServiceTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
-func (o NatServiceTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NatServiceTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The key of the tag, between 1 and 255 characters.
+func (o NatServiceTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v NatServiceTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -7105,8 +7687,202 @@ func (o NatServiceTagArrayOutput) Index(i pulumi.IntInput) NatServiceTagOutput {
 	}).(NatServiceTagOutput)
 }
 
+type NatServiceTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// NatServiceTimeoutsInput is an input type that accepts NatServiceTimeoutsArgs and NatServiceTimeoutsOutput values.
+// You can construct a concrete instance of `NatServiceTimeoutsInput` via:
+//
+//	NatServiceTimeoutsArgs{...}
+type NatServiceTimeoutsInput interface {
+	pulumi.Input
+
+	ToNatServiceTimeoutsOutput() NatServiceTimeoutsOutput
+	ToNatServiceTimeoutsOutputWithContext(context.Context) NatServiceTimeoutsOutput
+}
+
+type NatServiceTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (NatServiceTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatServiceTimeouts)(nil)).Elem()
+}
+
+func (i NatServiceTimeoutsArgs) ToNatServiceTimeoutsOutput() NatServiceTimeoutsOutput {
+	return i.ToNatServiceTimeoutsOutputWithContext(context.Background())
+}
+
+func (i NatServiceTimeoutsArgs) ToNatServiceTimeoutsOutputWithContext(ctx context.Context) NatServiceTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatServiceTimeoutsOutput)
+}
+
+func (i NatServiceTimeoutsArgs) ToNatServiceTimeoutsPtrOutput() NatServiceTimeoutsPtrOutput {
+	return i.ToNatServiceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i NatServiceTimeoutsArgs) ToNatServiceTimeoutsPtrOutputWithContext(ctx context.Context) NatServiceTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatServiceTimeoutsOutput).ToNatServiceTimeoutsPtrOutputWithContext(ctx)
+}
+
+// NatServiceTimeoutsPtrInput is an input type that accepts NatServiceTimeoutsArgs, NatServiceTimeoutsPtr and NatServiceTimeoutsPtrOutput values.
+// You can construct a concrete instance of `NatServiceTimeoutsPtrInput` via:
+//
+//	        NatServiceTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NatServiceTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToNatServiceTimeoutsPtrOutput() NatServiceTimeoutsPtrOutput
+	ToNatServiceTimeoutsPtrOutputWithContext(context.Context) NatServiceTimeoutsPtrOutput
+}
+
+type natServiceTimeoutsPtrType NatServiceTimeoutsArgs
+
+func NatServiceTimeoutsPtr(v *NatServiceTimeoutsArgs) NatServiceTimeoutsPtrInput {
+	return (*natServiceTimeoutsPtrType)(v)
+}
+
+func (*natServiceTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatServiceTimeouts)(nil)).Elem()
+}
+
+func (i *natServiceTimeoutsPtrType) ToNatServiceTimeoutsPtrOutput() NatServiceTimeoutsPtrOutput {
+	return i.ToNatServiceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *natServiceTimeoutsPtrType) ToNatServiceTimeoutsPtrOutputWithContext(ctx context.Context) NatServiceTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatServiceTimeoutsPtrOutput)
+}
+
+type NatServiceTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (NatServiceTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatServiceTimeouts)(nil)).Elem()
+}
+
+func (o NatServiceTimeoutsOutput) ToNatServiceTimeoutsOutput() NatServiceTimeoutsOutput {
+	return o
+}
+
+func (o NatServiceTimeoutsOutput) ToNatServiceTimeoutsOutputWithContext(ctx context.Context) NatServiceTimeoutsOutput {
+	return o
+}
+
+func (o NatServiceTimeoutsOutput) ToNatServiceTimeoutsPtrOutput() NatServiceTimeoutsPtrOutput {
+	return o.ToNatServiceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o NatServiceTimeoutsOutput) ToNatServiceTimeoutsPtrOutputWithContext(ctx context.Context) NatServiceTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NatServiceTimeouts) *NatServiceTimeouts {
+		return &v
+	}).(NatServiceTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NatServiceTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NatServiceTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o NatServiceTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NatServiceTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o NatServiceTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NatServiceTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NatServiceTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NatServiceTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type NatServiceTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (NatServiceTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatServiceTimeouts)(nil)).Elem()
+}
+
+func (o NatServiceTimeoutsPtrOutput) ToNatServiceTimeoutsPtrOutput() NatServiceTimeoutsPtrOutput {
+	return o
+}
+
+func (o NatServiceTimeoutsPtrOutput) ToNatServiceTimeoutsPtrOutputWithContext(ctx context.Context) NatServiceTimeoutsPtrOutput {
+	return o
+}
+
+func (o NatServiceTimeoutsPtrOutput) Elem() NatServiceTimeoutsOutput {
+	return o.ApplyT(func(v *NatServiceTimeouts) NatServiceTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret NatServiceTimeouts
+		return ret
+	}).(NatServiceTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NatServiceTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o NatServiceTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o NatServiceTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o NatServiceTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatServiceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type NetAccessPointTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -7124,7 +7900,7 @@ type NetAccessPointTagInput interface {
 }
 
 type NetAccessPointTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -7181,7 +7957,7 @@ func (o NetAccessPointTagOutput) ToNetAccessPointTagOutputWithContext(ctx contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o NetAccessPointTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NetAccessPointTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -7406,7 +8182,7 @@ func (o NetAccessPointTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type NetAttributesTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -7424,7 +8200,7 @@ type NetAttributesTagInput interface {
 }
 
 type NetAttributesTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -7481,7 +8257,7 @@ func (o NetAttributesTagOutput) ToNetAttributesTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o NetAttributesTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NetAttributesTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -7706,7 +8482,7 @@ func (o NetAttributesTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type NetPeeringAcceptationAccepterNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -7726,7 +8502,7 @@ type NetPeeringAcceptationAccepterNetInput interface {
 }
 
 type NetPeeringAcceptationAccepterNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -7785,7 +8561,7 @@ func (o NetPeeringAcceptationAccepterNetOutput) ToNetPeeringAcceptationAccepterN
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o NetPeeringAcceptationAccepterNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetPeeringAcceptationAccepterNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -7821,7 +8597,7 @@ func (o NetPeeringAcceptationAccepterNetArrayOutput) Index(i pulumi.IntInput) Ne
 }
 
 type NetPeeringAcceptationSourceNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -7841,7 +8617,7 @@ type NetPeeringAcceptationSourceNetInput interface {
 }
 
 type NetPeeringAcceptationSourceNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -7900,7 +8676,7 @@ func (o NetPeeringAcceptationSourceNetOutput) ToNetPeeringAcceptationSourceNetOu
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o NetPeeringAcceptationSourceNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetPeeringAcceptationSourceNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -8042,7 +8818,7 @@ func (o NetPeeringAcceptationStateTypeArrayOutput) Index(i pulumi.IntInput) NetP
 }
 
 type NetPeeringAcceptationTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -8060,7 +8836,7 @@ type NetPeeringAcceptationTagInput interface {
 }
 
 type NetPeeringAcceptationTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -8117,7 +8893,7 @@ func (o NetPeeringAcceptationTagOutput) ToNetPeeringAcceptationTagOutputWithCont
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o NetPeeringAcceptationTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NetPeeringAcceptationTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -8342,7 +9118,7 @@ func (o NetPeeringAcceptationTimeoutsPtrOutput) Update() pulumi.StringPtrOutput 
 }
 
 type NetPeeringAccepterNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -8362,7 +9138,7 @@ type NetPeeringAccepterNetInput interface {
 }
 
 type NetPeeringAccepterNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -8421,7 +9197,7 @@ func (o NetPeeringAccepterNetOutput) ToNetPeeringAccepterNetOutputWithContext(ct
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o NetPeeringAccepterNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetPeeringAccepterNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -8457,7 +9233,7 @@ func (o NetPeeringAccepterNetArrayOutput) Index(i pulumi.IntInput) NetPeeringAcc
 }
 
 type NetPeeringSourceNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -8477,7 +9253,7 @@ type NetPeeringSourceNetInput interface {
 }
 
 type NetPeeringSourceNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -8536,7 +9312,7 @@ func (o NetPeeringSourceNetOutput) ToNetPeeringSourceNetOutputWithContext(ctx co
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o NetPeeringSourceNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetPeeringSourceNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -8678,7 +9454,7 @@ func (o NetPeeringStateTypeArrayOutput) Index(i pulumi.IntInput) NetPeeringState
 }
 
 type NetPeeringTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -8696,7 +9472,7 @@ type NetPeeringTagInput interface {
 }
 
 type NetPeeringTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -8753,7 +9529,7 @@ func (o NetPeeringTagOutput) ToNetPeeringTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o NetPeeringTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NetPeeringTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -8978,7 +9754,7 @@ func (o NetPeeringTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type NetTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -8996,7 +9772,7 @@ type NetTagInput interface {
 }
 
 type NetTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -9053,7 +9829,7 @@ func (o NetTagOutput) ToNetTagOutputWithContext(ctx context.Context) NetTagOutpu
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o NetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v NetTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -9286,7 +10062,7 @@ type NicLinkNic struct {
 	LinkNicId *string `pulumi:"linkNicId"`
 	// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
 	State *string `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId *string `pulumi:"vmAccountId"`
 	// The ID of the VM.
 	VmId *string `pulumi:"vmId"`
@@ -9312,7 +10088,7 @@ type NicLinkNicArgs struct {
 	LinkNicId pulumi.StringPtrInput `pulumi:"linkNicId"`
 	// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringPtrInput `pulumi:"vmAccountId"`
 	// The ID of the VM.
 	VmId pulumi.StringPtrInput `pulumi:"vmId"`
@@ -9389,7 +10165,7 @@ func (o NicLinkNicOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicLinkNic) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// The account ID of the owner of the VM.
+// The OUTSCALE account ID of the owner of the VM.
 func (o NicLinkNicOutput) VmAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicLinkNic) *string { return v.VmAccountId }).(pulumi.StringPtrOutput)
 }
@@ -9426,7 +10202,7 @@ type NicLinkPublicIp struct {
 	PublicDnsName *string `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp *string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId *string `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId *string `pulumi:"publicIpId"`
@@ -9450,7 +10226,7 @@ type NicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringPtrInput `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringPtrInput `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringPtrInput `pulumi:"publicIpId"`
@@ -9522,7 +10298,7 @@ func (o NicLinkPublicIpOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicLinkPublicIp) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o NicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicLinkPublicIp) *string { return v.PublicIpAccountId }).(pulumi.StringPtrOutput)
 }
@@ -9683,7 +10459,7 @@ type NicPrivateIpLinkPublicIp struct {
 	PublicDnsName *string `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp *string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId *string `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId *string `pulumi:"publicIpId"`
@@ -9707,7 +10483,7 @@ type NicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringPtrInput `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringPtrInput `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringPtrInput `pulumi:"publicIpId"`
@@ -9779,7 +10555,7 @@ func (o NicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicPrivateIpLinkPublicIp) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o NicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicPrivateIpLinkPublicIp) *string { return v.PublicIpAccountId }).(pulumi.StringPtrOutput)
 }
@@ -9916,7 +10692,7 @@ func (o NicSecurityGroupArrayOutput) Index(i pulumi.IntInput) NicSecurityGroupOu
 }
 
 type NicTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -9934,7 +10710,7 @@ type NicTagInput interface {
 }
 
 type NicTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -9991,7 +10767,7 @@ func (o NicTagOutput) ToNicTagOutputWithContext(ctx context.Context) NicTagOutpu
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o NicTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -12297,8 +13073,8 @@ func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOu
 }
 
 type PublicIpLinkTag struct {
-	Key   *string `pulumi:"key"`
-	Value *string `pulumi:"value"`
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
 }
 
 // PublicIpLinkTagInput is an input type that accepts PublicIpLinkTagArgs and PublicIpLinkTagOutput values.
@@ -12313,8 +13089,8 @@ type PublicIpLinkTagInput interface {
 }
 
 type PublicIpLinkTagArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (PublicIpLinkTagArgs) ElementType() reflect.Type {
@@ -12368,12 +13144,12 @@ func (o PublicIpLinkTagOutput) ToPublicIpLinkTagOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o PublicIpLinkTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicIpLinkTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o PublicIpLinkTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIpLinkTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-func (o PublicIpLinkTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicIpLinkTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o PublicIpLinkTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIpLinkTag) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type PublicIpLinkTagArrayOutput struct{ *pulumi.OutputState }
@@ -12396,9 +13172,184 @@ func (o PublicIpLinkTagArrayOutput) Index(i pulumi.IntInput) PublicIpLinkTagOutp
 	}).(PublicIpLinkTagOutput)
 }
 
+type PublicIpLinkTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// PublicIpLinkTimeoutsInput is an input type that accepts PublicIpLinkTimeoutsArgs and PublicIpLinkTimeoutsOutput values.
+// You can construct a concrete instance of `PublicIpLinkTimeoutsInput` via:
+//
+//	PublicIpLinkTimeoutsArgs{...}
+type PublicIpLinkTimeoutsInput interface {
+	pulumi.Input
+
+	ToPublicIpLinkTimeoutsOutput() PublicIpLinkTimeoutsOutput
+	ToPublicIpLinkTimeoutsOutputWithContext(context.Context) PublicIpLinkTimeoutsOutput
+}
+
+type PublicIpLinkTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (PublicIpLinkTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpLinkTimeouts)(nil)).Elem()
+}
+
+func (i PublicIpLinkTimeoutsArgs) ToPublicIpLinkTimeoutsOutput() PublicIpLinkTimeoutsOutput {
+	return i.ToPublicIpLinkTimeoutsOutputWithContext(context.Background())
+}
+
+func (i PublicIpLinkTimeoutsArgs) ToPublicIpLinkTimeoutsOutputWithContext(ctx context.Context) PublicIpLinkTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpLinkTimeoutsOutput)
+}
+
+func (i PublicIpLinkTimeoutsArgs) ToPublicIpLinkTimeoutsPtrOutput() PublicIpLinkTimeoutsPtrOutput {
+	return i.ToPublicIpLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i PublicIpLinkTimeoutsArgs) ToPublicIpLinkTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpLinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpLinkTimeoutsOutput).ToPublicIpLinkTimeoutsPtrOutputWithContext(ctx)
+}
+
+// PublicIpLinkTimeoutsPtrInput is an input type that accepts PublicIpLinkTimeoutsArgs, PublicIpLinkTimeoutsPtr and PublicIpLinkTimeoutsPtrOutput values.
+// You can construct a concrete instance of `PublicIpLinkTimeoutsPtrInput` via:
+//
+//	        PublicIpLinkTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublicIpLinkTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToPublicIpLinkTimeoutsPtrOutput() PublicIpLinkTimeoutsPtrOutput
+	ToPublicIpLinkTimeoutsPtrOutputWithContext(context.Context) PublicIpLinkTimeoutsPtrOutput
+}
+
+type publicIpLinkTimeoutsPtrType PublicIpLinkTimeoutsArgs
+
+func PublicIpLinkTimeoutsPtr(v *PublicIpLinkTimeoutsArgs) PublicIpLinkTimeoutsPtrInput {
+	return (*publicIpLinkTimeoutsPtrType)(v)
+}
+
+func (*publicIpLinkTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpLinkTimeouts)(nil)).Elem()
+}
+
+func (i *publicIpLinkTimeoutsPtrType) ToPublicIpLinkTimeoutsPtrOutput() PublicIpLinkTimeoutsPtrOutput {
+	return i.ToPublicIpLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *publicIpLinkTimeoutsPtrType) ToPublicIpLinkTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpLinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpLinkTimeoutsPtrOutput)
+}
+
+type PublicIpLinkTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (PublicIpLinkTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpLinkTimeouts)(nil)).Elem()
+}
+
+func (o PublicIpLinkTimeoutsOutput) ToPublicIpLinkTimeoutsOutput() PublicIpLinkTimeoutsOutput {
+	return o
+}
+
+func (o PublicIpLinkTimeoutsOutput) ToPublicIpLinkTimeoutsOutputWithContext(ctx context.Context) PublicIpLinkTimeoutsOutput {
+	return o
+}
+
+func (o PublicIpLinkTimeoutsOutput) ToPublicIpLinkTimeoutsPtrOutput() PublicIpLinkTimeoutsPtrOutput {
+	return o.ToPublicIpLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o PublicIpLinkTimeoutsOutput) ToPublicIpLinkTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpLinkTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicIpLinkTimeouts) *PublicIpLinkTimeouts {
+		return &v
+	}).(PublicIpLinkTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PublicIpLinkTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIpLinkTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PublicIpLinkTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIpLinkTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PublicIpLinkTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIpLinkTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type PublicIpLinkTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIpLinkTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpLinkTimeouts)(nil)).Elem()
+}
+
+func (o PublicIpLinkTimeoutsPtrOutput) ToPublicIpLinkTimeoutsPtrOutput() PublicIpLinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o PublicIpLinkTimeoutsPtrOutput) ToPublicIpLinkTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpLinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o PublicIpLinkTimeoutsPtrOutput) Elem() PublicIpLinkTimeoutsOutput {
+	return o.ApplyT(func(v *PublicIpLinkTimeouts) PublicIpLinkTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIpLinkTimeouts
+		return ret
+	}).(PublicIpLinkTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PublicIpLinkTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PublicIpLinkTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PublicIpLinkTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type PublicIpTag struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key *string `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -12415,8 +13366,8 @@ type PublicIpTagInput interface {
 }
 
 type PublicIpTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -12472,9 +13423,9 @@ func (o PublicIpTagOutput) ToPublicIpTagOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
-func (o PublicIpTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicIpTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The key of the tag, between 1 and 255 characters.
+func (o PublicIpTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIpTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -12500,6 +13451,200 @@ func (o PublicIpTagArrayOutput) Index(i pulumi.IntInput) PublicIpTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicIpTag {
 		return vs[0].([]PublicIpTag)[vs[1].(int)]
 	}).(PublicIpTagOutput)
+}
+
+type PublicIpTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// PublicIpTimeoutsInput is an input type that accepts PublicIpTimeoutsArgs and PublicIpTimeoutsOutput values.
+// You can construct a concrete instance of `PublicIpTimeoutsInput` via:
+//
+//	PublicIpTimeoutsArgs{...}
+type PublicIpTimeoutsInput interface {
+	pulumi.Input
+
+	ToPublicIpTimeoutsOutput() PublicIpTimeoutsOutput
+	ToPublicIpTimeoutsOutputWithContext(context.Context) PublicIpTimeoutsOutput
+}
+
+type PublicIpTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (PublicIpTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpTimeouts)(nil)).Elem()
+}
+
+func (i PublicIpTimeoutsArgs) ToPublicIpTimeoutsOutput() PublicIpTimeoutsOutput {
+	return i.ToPublicIpTimeoutsOutputWithContext(context.Background())
+}
+
+func (i PublicIpTimeoutsArgs) ToPublicIpTimeoutsOutputWithContext(ctx context.Context) PublicIpTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpTimeoutsOutput)
+}
+
+func (i PublicIpTimeoutsArgs) ToPublicIpTimeoutsPtrOutput() PublicIpTimeoutsPtrOutput {
+	return i.ToPublicIpTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i PublicIpTimeoutsArgs) ToPublicIpTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpTimeoutsOutput).ToPublicIpTimeoutsPtrOutputWithContext(ctx)
+}
+
+// PublicIpTimeoutsPtrInput is an input type that accepts PublicIpTimeoutsArgs, PublicIpTimeoutsPtr and PublicIpTimeoutsPtrOutput values.
+// You can construct a concrete instance of `PublicIpTimeoutsPtrInput` via:
+//
+//	        PublicIpTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublicIpTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToPublicIpTimeoutsPtrOutput() PublicIpTimeoutsPtrOutput
+	ToPublicIpTimeoutsPtrOutputWithContext(context.Context) PublicIpTimeoutsPtrOutput
+}
+
+type publicIpTimeoutsPtrType PublicIpTimeoutsArgs
+
+func PublicIpTimeoutsPtr(v *PublicIpTimeoutsArgs) PublicIpTimeoutsPtrInput {
+	return (*publicIpTimeoutsPtrType)(v)
+}
+
+func (*publicIpTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpTimeouts)(nil)).Elem()
+}
+
+func (i *publicIpTimeoutsPtrType) ToPublicIpTimeoutsPtrOutput() PublicIpTimeoutsPtrOutput {
+	return i.ToPublicIpTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *publicIpTimeoutsPtrType) ToPublicIpTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpTimeoutsPtrOutput)
+}
+
+type PublicIpTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (PublicIpTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpTimeouts)(nil)).Elem()
+}
+
+func (o PublicIpTimeoutsOutput) ToPublicIpTimeoutsOutput() PublicIpTimeoutsOutput {
+	return o
+}
+
+func (o PublicIpTimeoutsOutput) ToPublicIpTimeoutsOutputWithContext(ctx context.Context) PublicIpTimeoutsOutput {
+	return o
+}
+
+func (o PublicIpTimeoutsOutput) ToPublicIpTimeoutsPtrOutput() PublicIpTimeoutsPtrOutput {
+	return o.ToPublicIpTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o PublicIpTimeoutsOutput) ToPublicIpTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicIpTimeouts) *PublicIpTimeouts {
+		return &v
+	}).(PublicIpTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PublicIpTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIpTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PublicIpTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIpTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PublicIpTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIpTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PublicIpTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIpTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type PublicIpTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIpTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpTimeouts)(nil)).Elem()
+}
+
+func (o PublicIpTimeoutsPtrOutput) ToPublicIpTimeoutsPtrOutput() PublicIpTimeoutsPtrOutput {
+	return o
+}
+
+func (o PublicIpTimeoutsPtrOutput) ToPublicIpTimeoutsPtrOutputWithContext(ctx context.Context) PublicIpTimeoutsPtrOutput {
+	return o
+}
+
+func (o PublicIpTimeoutsPtrOutput) Elem() PublicIpTimeoutsOutput {
+	return o.ApplyT(func(v *PublicIpTimeouts) PublicIpTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIpTimeouts
+		return ret
+	}).(PublicIpTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PublicIpTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o PublicIpTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o PublicIpTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o PublicIpTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type RouteTableLinkRouteTable struct {
@@ -12848,7 +13993,7 @@ type RouteTableRoute struct {
 	NicId string `pulumi:"nicId"`
 	// The state of a route in the route table (always `active`).
 	State string `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId string `pulumi:"vmAccountId"`
 	// The ID of a VM specified in a route in the table.
 	VmId string `pulumi:"vmId"`
@@ -12884,7 +14029,7 @@ type RouteTableRouteArgs struct {
 	NicId pulumi.StringInput `pulumi:"nicId"`
 	// The state of a route in the route table (always `active`).
 	State pulumi.StringInput `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringInput `pulumi:"vmAccountId"`
 	// The ID of a VM specified in a route in the table.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -12986,7 +14131,7 @@ func (o RouteTableRouteOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteTableRoute) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the VM.
+// The OUTSCALE account ID of the owner of the VM.
 func (o RouteTableRouteOutput) VmAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteTableRoute) string { return v.VmAccountId }).(pulumi.StringOutput)
 }
@@ -13114,7 +14259,7 @@ func (o RouteTableRoutePropagatingVirtualGatewayArrayOutput) Index(i pulumi.IntI
 }
 
 type RouteTableTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -13132,7 +14277,7 @@ type RouteTableTagInput interface {
 }
 
 type RouteTableTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -13189,7 +14334,7 @@ func (o RouteTableTagOutput) ToRouteTableTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o RouteTableTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteTableTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -13612,7 +14757,7 @@ type SecurityGroupInboundRule struct {
 	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol string `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges []string `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
 	SecurityGroupsMembers []SecurityGroupInboundRuleSecurityGroupsMember `pulumi:"securityGroupsMembers"`
@@ -13638,7 +14783,7 @@ type SecurityGroupInboundRuleArgs struct {
 	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
 	SecurityGroupsMembers SecurityGroupInboundRuleSecurityGroupsMemberArrayInput `pulumi:"securityGroupsMembers"`
@@ -13709,7 +14854,7 @@ func (o SecurityGroupInboundRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityGroupInboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
-// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 func (o SecurityGroupInboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupInboundRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -13752,7 +14897,7 @@ func (o SecurityGroupInboundRuleArrayOutput) Index(i pulumi.IntInput) SecurityGr
 }
 
 type SecurityGroupInboundRuleSecurityGroupsMember struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -13774,7 +14919,7 @@ type SecurityGroupInboundRuleSecurityGroupsMemberInput interface {
 }
 
 type SecurityGroupInboundRuleSecurityGroupsMemberArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
@@ -13835,7 +14980,7 @@ func (o SecurityGroupInboundRuleSecurityGroupsMemberOutput) ToSecurityGroupInbou
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o SecurityGroupInboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityGroupInboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -13877,7 +15022,7 @@ type SecurityGroupOutboundRule struct {
 	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol string `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges []string `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
 	SecurityGroupsMembers []SecurityGroupOutboundRuleSecurityGroupsMember `pulumi:"securityGroupsMembers"`
@@ -13903,7 +15048,7 @@ type SecurityGroupOutboundRuleArgs struct {
 	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
 	SecurityGroupsMembers SecurityGroupOutboundRuleSecurityGroupsMemberArrayInput `pulumi:"securityGroupsMembers"`
@@ -13974,7 +15119,7 @@ func (o SecurityGroupOutboundRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityGroupOutboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
-// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 func (o SecurityGroupOutboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupOutboundRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -14017,7 +15162,7 @@ func (o SecurityGroupOutboundRuleArrayOutput) Index(i pulumi.IntInput) SecurityG
 }
 
 type SecurityGroupOutboundRuleSecurityGroupsMember struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -14039,7 +15184,7 @@ type SecurityGroupOutboundRuleSecurityGroupsMemberInput interface {
 }
 
 type SecurityGroupOutboundRuleSecurityGroupsMemberArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
@@ -14100,7 +15245,7 @@ func (o SecurityGroupOutboundRuleSecurityGroupsMemberOutput) ToSecurityGroupOutb
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o SecurityGroupOutboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityGroupOutboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -14142,7 +15287,7 @@ type SecurityGroupRuleRule struct {
 	FromPortRange *int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol *string `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges []string `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
 	SecurityGroupsMembers []SecurityGroupRuleRuleSecurityGroupsMember `pulumi:"securityGroupsMembers"`
@@ -14168,7 +15313,7 @@ type SecurityGroupRuleRuleArgs struct {
 	FromPortRange pulumi.IntPtrInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Information about one or more source or destination security groups.
 	SecurityGroupsMembers SecurityGroupRuleRuleSecurityGroupsMemberArrayInput `pulumi:"securityGroupsMembers"`
@@ -14239,7 +15384,7 @@ func (o SecurityGroupRuleRuleOutput) IpProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRuleRule) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
 }
 
-// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 func (o SecurityGroupRuleRuleOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupRuleRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -14282,11 +15427,11 @@ func (o SecurityGroupRuleRuleArrayOutput) Index(i pulumi.IntInput) SecurityGroup
 }
 
 type SecurityGroupRuleRuleSecurityGroupsMember struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of a source or destination security group that you want to link to the security group of the rule.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+	// The name of a source or destination security group that you want to link to the security group of the rule.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 }
 
@@ -14302,11 +15447,11 @@ type SecurityGroupRuleRuleSecurityGroupsMemberInput interface {
 }
 
 type SecurityGroupRuleRuleSecurityGroupsMemberArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The ID of a source or destination security group that you want to link to the security group of the rule.
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	// (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+	// The name of a source or destination security group that you want to link to the security group of the rule.
 	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
 }
 
@@ -14361,7 +15506,7 @@ func (o SecurityGroupRuleRuleSecurityGroupsMemberOutput) ToSecurityGroupRuleRule
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o SecurityGroupRuleRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRuleRuleSecurityGroupsMember) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -14371,7 +15516,7 @@ func (o SecurityGroupRuleRuleSecurityGroupsMemberOutput) SecurityGroupId() pulum
 	return o.ApplyT(func(v SecurityGroupRuleRuleSecurityGroupsMember) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
-// (Public Cloud only) The name of a source or destination security group that you want to link to the security group of the rule.
+// The name of a source or destination security group that you want to link to the security group of the rule.
 func (o SecurityGroupRuleRuleSecurityGroupsMemberOutput) SecurityGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupRuleRuleSecurityGroupsMember) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
 }
@@ -14591,7 +15736,7 @@ func (o SecurityGroupRuleTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type SecurityGroupTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -14609,7 +15754,7 @@ type SecurityGroupTagInput interface {
 }
 
 type SecurityGroupTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -14666,7 +15811,7 @@ func (o SecurityGroupTagOutput) ToSecurityGroupTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o SecurityGroupTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityGroupTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -14890,8 +16035,202 @@ func (o SecurityGroupTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServerCertificateTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// ServerCertificateTimeoutsInput is an input type that accepts ServerCertificateTimeoutsArgs and ServerCertificateTimeoutsOutput values.
+// You can construct a concrete instance of `ServerCertificateTimeoutsInput` via:
+//
+//	ServerCertificateTimeoutsArgs{...}
+type ServerCertificateTimeoutsInput interface {
+	pulumi.Input
+
+	ToServerCertificateTimeoutsOutput() ServerCertificateTimeoutsOutput
+	ToServerCertificateTimeoutsOutputWithContext(context.Context) ServerCertificateTimeoutsOutput
+}
+
+type ServerCertificateTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (ServerCertificateTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCertificateTimeouts)(nil)).Elem()
+}
+
+func (i ServerCertificateTimeoutsArgs) ToServerCertificateTimeoutsOutput() ServerCertificateTimeoutsOutput {
+	return i.ToServerCertificateTimeoutsOutputWithContext(context.Background())
+}
+
+func (i ServerCertificateTimeoutsArgs) ToServerCertificateTimeoutsOutputWithContext(ctx context.Context) ServerCertificateTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerCertificateTimeoutsOutput)
+}
+
+func (i ServerCertificateTimeoutsArgs) ToServerCertificateTimeoutsPtrOutput() ServerCertificateTimeoutsPtrOutput {
+	return i.ToServerCertificateTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i ServerCertificateTimeoutsArgs) ToServerCertificateTimeoutsPtrOutputWithContext(ctx context.Context) ServerCertificateTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerCertificateTimeoutsOutput).ToServerCertificateTimeoutsPtrOutputWithContext(ctx)
+}
+
+// ServerCertificateTimeoutsPtrInput is an input type that accepts ServerCertificateTimeoutsArgs, ServerCertificateTimeoutsPtr and ServerCertificateTimeoutsPtrOutput values.
+// You can construct a concrete instance of `ServerCertificateTimeoutsPtrInput` via:
+//
+//	        ServerCertificateTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerCertificateTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToServerCertificateTimeoutsPtrOutput() ServerCertificateTimeoutsPtrOutput
+	ToServerCertificateTimeoutsPtrOutputWithContext(context.Context) ServerCertificateTimeoutsPtrOutput
+}
+
+type serverCertificateTimeoutsPtrType ServerCertificateTimeoutsArgs
+
+func ServerCertificateTimeoutsPtr(v *ServerCertificateTimeoutsArgs) ServerCertificateTimeoutsPtrInput {
+	return (*serverCertificateTimeoutsPtrType)(v)
+}
+
+func (*serverCertificateTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerCertificateTimeouts)(nil)).Elem()
+}
+
+func (i *serverCertificateTimeoutsPtrType) ToServerCertificateTimeoutsPtrOutput() ServerCertificateTimeoutsPtrOutput {
+	return i.ToServerCertificateTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *serverCertificateTimeoutsPtrType) ToServerCertificateTimeoutsPtrOutputWithContext(ctx context.Context) ServerCertificateTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerCertificateTimeoutsPtrOutput)
+}
+
+type ServerCertificateTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (ServerCertificateTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerCertificateTimeouts)(nil)).Elem()
+}
+
+func (o ServerCertificateTimeoutsOutput) ToServerCertificateTimeoutsOutput() ServerCertificateTimeoutsOutput {
+	return o
+}
+
+func (o ServerCertificateTimeoutsOutput) ToServerCertificateTimeoutsOutputWithContext(ctx context.Context) ServerCertificateTimeoutsOutput {
+	return o
+}
+
+func (o ServerCertificateTimeoutsOutput) ToServerCertificateTimeoutsPtrOutput() ServerCertificateTimeoutsPtrOutput {
+	return o.ToServerCertificateTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o ServerCertificateTimeoutsOutput) ToServerCertificateTimeoutsPtrOutputWithContext(ctx context.Context) ServerCertificateTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerCertificateTimeouts) *ServerCertificateTimeouts {
+		return &v
+	}).(ServerCertificateTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ServerCertificateTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCertificateTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ServerCertificateTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCertificateTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ServerCertificateTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCertificateTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ServerCertificateTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerCertificateTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type ServerCertificateTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerCertificateTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerCertificateTimeouts)(nil)).Elem()
+}
+
+func (o ServerCertificateTimeoutsPtrOutput) ToServerCertificateTimeoutsPtrOutput() ServerCertificateTimeoutsPtrOutput {
+	return o
+}
+
+func (o ServerCertificateTimeoutsPtrOutput) ToServerCertificateTimeoutsPtrOutputWithContext(ctx context.Context) ServerCertificateTimeoutsPtrOutput {
+	return o
+}
+
+func (o ServerCertificateTimeoutsPtrOutput) Elem() ServerCertificateTimeoutsOutput {
+	return o.ApplyT(func(v *ServerCertificateTimeouts) ServerCertificateTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret ServerCertificateTimeouts
+		return ret
+	}).(ServerCertificateTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ServerCertificateTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificateTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ServerCertificateTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificateTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ServerCertificateTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificateTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ServerCertificateTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerCertificateTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type SnapshotAttributesPermissionsToCreateVolumeAdditions struct {
-	// The account ID of one or more users to whom you want to give permissions.
+	// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 	AccountIds []string `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission *bool `pulumi:"globalPermission"`
@@ -14909,7 +16248,7 @@ type SnapshotAttributesPermissionsToCreateVolumeAdditionsInput interface {
 }
 
 type SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs struct {
-	// The account ID of one or more users to whom you want to give permissions.
+	// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission pulumi.BoolPtrInput `pulumi:"globalPermission"`
@@ -14992,7 +16331,7 @@ func (o SnapshotAttributesPermissionsToCreateVolumeAdditionsOutput) ToSnapshotAt
 	}).(SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrOutput)
 }
 
-// The account ID of one or more users to whom you want to give permissions.
+// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 func (o SnapshotAttributesPermissionsToCreateVolumeAdditionsOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SnapshotAttributesPermissionsToCreateVolumeAdditions) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
@@ -15026,7 +16365,7 @@ func (o SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrOutput) Elem() Sn
 	}).(SnapshotAttributesPermissionsToCreateVolumeAdditionsOutput)
 }
 
-// The account ID of one or more users to whom you want to give permissions.
+// The OUTSCALE account ID of one or more users to whom you want to give permissions.
 func (o SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SnapshotAttributesPermissionsToCreateVolumeAdditions) []string {
 		if v == nil {
@@ -15046,110 +16385,335 @@ func (o SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrOutput) GlobalPer
 	}).(pulumi.BoolPtrOutput)
 }
 
-type SnapshotAttributesPermissionsToCreateVolumeRemoval struct {
-	// The account ID of one or more users from whom you want to remove permissions.
+type SnapshotAttributesPermissionsToCreateVolumeRemovals struct {
+	// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
 	AccountIds []string `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission *bool `pulumi:"globalPermission"`
 }
 
-// SnapshotAttributesPermissionsToCreateVolumeRemovalInput is an input type that accepts SnapshotAttributesPermissionsToCreateVolumeRemovalArgs and SnapshotAttributesPermissionsToCreateVolumeRemovalOutput values.
-// You can construct a concrete instance of `SnapshotAttributesPermissionsToCreateVolumeRemovalInput` via:
+// SnapshotAttributesPermissionsToCreateVolumeRemovalsInput is an input type that accepts SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs and SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput values.
+// You can construct a concrete instance of `SnapshotAttributesPermissionsToCreateVolumeRemovalsInput` via:
 //
-//	SnapshotAttributesPermissionsToCreateVolumeRemovalArgs{...}
-type SnapshotAttributesPermissionsToCreateVolumeRemovalInput interface {
+//	SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs{...}
+type SnapshotAttributesPermissionsToCreateVolumeRemovalsInput interface {
 	pulumi.Input
 
-	ToSnapshotAttributesPermissionsToCreateVolumeRemovalOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalOutput
-	ToSnapshotAttributesPermissionsToCreateVolumeRemovalOutputWithContext(context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalOutput
+	ToSnapshotAttributesPermissionsToCreateVolumeRemovalsOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput
+	ToSnapshotAttributesPermissionsToCreateVolumeRemovalsOutputWithContext(context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput
 }
 
-type SnapshotAttributesPermissionsToCreateVolumeRemovalArgs struct {
-	// The account ID of one or more users from whom you want to remove permissions.
+type SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs struct {
+	// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// If true, the resource is public. If false, the resource is private.
 	GlobalPermission pulumi.BoolPtrInput `pulumi:"globalPermission"`
 }
 
-func (SnapshotAttributesPermissionsToCreateVolumeRemovalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemoval)(nil)).Elem()
+func (SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemovals)(nil)).Elem()
 }
 
-func (i SnapshotAttributesPermissionsToCreateVolumeRemovalArgs) ToSnapshotAttributesPermissionsToCreateVolumeRemovalOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalOutput {
-	return i.ToSnapshotAttributesPermissionsToCreateVolumeRemovalOutputWithContext(context.Background())
+func (i SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput {
+	return i.ToSnapshotAttributesPermissionsToCreateVolumeRemovalsOutputWithContext(context.Background())
 }
 
-func (i SnapshotAttributesPermissionsToCreateVolumeRemovalArgs) ToSnapshotAttributesPermissionsToCreateVolumeRemovalOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesPermissionsToCreateVolumeRemovalOutput)
+func (i SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput)
 }
 
-// SnapshotAttributesPermissionsToCreateVolumeRemovalArrayInput is an input type that accepts SnapshotAttributesPermissionsToCreateVolumeRemovalArray and SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput values.
-// You can construct a concrete instance of `SnapshotAttributesPermissionsToCreateVolumeRemovalArrayInput` via:
+func (i SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
+	return i.ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput).ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(ctx)
+}
+
+// SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrInput is an input type that accepts SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs, SnapshotAttributesPermissionsToCreateVolumeRemovalsPtr and SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput values.
+// You can construct a concrete instance of `SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrInput` via:
 //
-//	SnapshotAttributesPermissionsToCreateVolumeRemovalArray{ SnapshotAttributesPermissionsToCreateVolumeRemovalArgs{...} }
-type SnapshotAttributesPermissionsToCreateVolumeRemovalArrayInput interface {
+//	        SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrInput interface {
 	pulumi.Input
 
-	ToSnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput
-	ToSnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutputWithContext(context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput
+	ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput
+	ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput
 }
 
-type SnapshotAttributesPermissionsToCreateVolumeRemovalArray []SnapshotAttributesPermissionsToCreateVolumeRemovalInput
+type snapshotAttributesPermissionsToCreateVolumeRemovalsPtrType SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs
 
-func (SnapshotAttributesPermissionsToCreateVolumeRemovalArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SnapshotAttributesPermissionsToCreateVolumeRemoval)(nil)).Elem()
+func SnapshotAttributesPermissionsToCreateVolumeRemovalsPtr(v *SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs) SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrInput {
+	return (*snapshotAttributesPermissionsToCreateVolumeRemovalsPtrType)(v)
 }
 
-func (i SnapshotAttributesPermissionsToCreateVolumeRemovalArray) ToSnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput {
-	return i.ToSnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutputWithContext(context.Background())
+func (*snapshotAttributesPermissionsToCreateVolumeRemovalsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotAttributesPermissionsToCreateVolumeRemovals)(nil)).Elem()
 }
 
-func (i SnapshotAttributesPermissionsToCreateVolumeRemovalArray) ToSnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput)
+func (i *snapshotAttributesPermissionsToCreateVolumeRemovalsPtrType) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
+	return i.ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(context.Background())
 }
 
-type SnapshotAttributesPermissionsToCreateVolumeRemovalOutput struct{ *pulumi.OutputState }
-
-func (SnapshotAttributesPermissionsToCreateVolumeRemovalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemoval)(nil)).Elem()
+func (i *snapshotAttributesPermissionsToCreateVolumeRemovalsPtrType) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput)
 }
 
-func (o SnapshotAttributesPermissionsToCreateVolumeRemovalOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalOutput {
+type SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput struct{ *pulumi.OutputState }
+
+func (SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemovals)(nil)).Elem()
+}
+
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput {
 	return o
 }
 
-func (o SnapshotAttributesPermissionsToCreateVolumeRemovalOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalOutput {
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput {
 	return o
 }
 
-// The account ID of one or more users from whom you want to remove permissions.
-func (o SnapshotAttributesPermissionsToCreateVolumeRemovalOutput) AccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SnapshotAttributesPermissionsToCreateVolumeRemoval) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
+	return o.ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotAttributesPermissionsToCreateVolumeRemovals) *SnapshotAttributesPermissionsToCreateVolumeRemovals {
+		return &v
+	}).(SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput)
+}
+
+// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput) AccountIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SnapshotAttributesPermissionsToCreateVolumeRemovals) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
 
 // If true, the resource is public. If false, the resource is private.
-func (o SnapshotAttributesPermissionsToCreateVolumeRemovalOutput) GlobalPermission() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SnapshotAttributesPermissionsToCreateVolumeRemoval) *bool { return v.GlobalPermission }).(pulumi.BoolPtrOutput)
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput) GlobalPermission() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SnapshotAttributesPermissionsToCreateVolumeRemovals) *bool { return v.GlobalPermission }).(pulumi.BoolPtrOutput)
 }
 
-type SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput struct{ *pulumi.OutputState }
+type SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput struct{ *pulumi.OutputState }
 
-func (SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SnapshotAttributesPermissionsToCreateVolumeRemoval)(nil)).Elem()
+func (SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotAttributesPermissionsToCreateVolumeRemovals)(nil)).Elem()
 }
 
-func (o SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput {
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput() SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
 	return o
 }
 
-func (o SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput {
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput) ToSnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutputWithContext(ctx context.Context) SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput {
 	return o
 }
 
-func (o SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput) Index(i pulumi.IntInput) SnapshotAttributesPermissionsToCreateVolumeRemovalOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnapshotAttributesPermissionsToCreateVolumeRemoval {
-		return vs[0].([]SnapshotAttributesPermissionsToCreateVolumeRemoval)[vs[1].(int)]
-	}).(SnapshotAttributesPermissionsToCreateVolumeRemovalOutput)
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput) Elem() SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput {
+	return o.ApplyT(func(v *SnapshotAttributesPermissionsToCreateVolumeRemovals) SnapshotAttributesPermissionsToCreateVolumeRemovals {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotAttributesPermissionsToCreateVolumeRemovals
+		return ret
+	}).(SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput)
+}
+
+// The OUTSCALE account ID of one or more users from whom you want to remove permissions.
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput) AccountIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SnapshotAttributesPermissionsToCreateVolumeRemovals) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, the resource is public. If false, the resource is private.
+func (o SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput) GlobalPermission() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SnapshotAttributesPermissionsToCreateVolumeRemovals) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalPermission
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SnapshotAttributesTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// SnapshotAttributesTimeoutsInput is an input type that accepts SnapshotAttributesTimeoutsArgs and SnapshotAttributesTimeoutsOutput values.
+// You can construct a concrete instance of `SnapshotAttributesTimeoutsInput` via:
+//
+//	SnapshotAttributesTimeoutsArgs{...}
+type SnapshotAttributesTimeoutsInput interface {
+	pulumi.Input
+
+	ToSnapshotAttributesTimeoutsOutput() SnapshotAttributesTimeoutsOutput
+	ToSnapshotAttributesTimeoutsOutputWithContext(context.Context) SnapshotAttributesTimeoutsOutput
+}
+
+type SnapshotAttributesTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (SnapshotAttributesTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotAttributesTimeouts)(nil)).Elem()
+}
+
+func (i SnapshotAttributesTimeoutsArgs) ToSnapshotAttributesTimeoutsOutput() SnapshotAttributesTimeoutsOutput {
+	return i.ToSnapshotAttributesTimeoutsOutputWithContext(context.Background())
+}
+
+func (i SnapshotAttributesTimeoutsArgs) ToSnapshotAttributesTimeoutsOutputWithContext(ctx context.Context) SnapshotAttributesTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesTimeoutsOutput)
+}
+
+func (i SnapshotAttributesTimeoutsArgs) ToSnapshotAttributesTimeoutsPtrOutput() SnapshotAttributesTimeoutsPtrOutput {
+	return i.ToSnapshotAttributesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotAttributesTimeoutsArgs) ToSnapshotAttributesTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotAttributesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesTimeoutsOutput).ToSnapshotAttributesTimeoutsPtrOutputWithContext(ctx)
+}
+
+// SnapshotAttributesTimeoutsPtrInput is an input type that accepts SnapshotAttributesTimeoutsArgs, SnapshotAttributesTimeoutsPtr and SnapshotAttributesTimeoutsPtrOutput values.
+// You can construct a concrete instance of `SnapshotAttributesTimeoutsPtrInput` via:
+//
+//	        SnapshotAttributesTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotAttributesTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotAttributesTimeoutsPtrOutput() SnapshotAttributesTimeoutsPtrOutput
+	ToSnapshotAttributesTimeoutsPtrOutputWithContext(context.Context) SnapshotAttributesTimeoutsPtrOutput
+}
+
+type snapshotAttributesTimeoutsPtrType SnapshotAttributesTimeoutsArgs
+
+func SnapshotAttributesTimeoutsPtr(v *SnapshotAttributesTimeoutsArgs) SnapshotAttributesTimeoutsPtrInput {
+	return (*snapshotAttributesTimeoutsPtrType)(v)
+}
+
+func (*snapshotAttributesTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotAttributesTimeouts)(nil)).Elem()
+}
+
+func (i *snapshotAttributesTimeoutsPtrType) ToSnapshotAttributesTimeoutsPtrOutput() SnapshotAttributesTimeoutsPtrOutput {
+	return i.ToSnapshotAttributesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotAttributesTimeoutsPtrType) ToSnapshotAttributesTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotAttributesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotAttributesTimeoutsPtrOutput)
+}
+
+type SnapshotAttributesTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (SnapshotAttributesTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotAttributesTimeouts)(nil)).Elem()
+}
+
+func (o SnapshotAttributesTimeoutsOutput) ToSnapshotAttributesTimeoutsOutput() SnapshotAttributesTimeoutsOutput {
+	return o
+}
+
+func (o SnapshotAttributesTimeoutsOutput) ToSnapshotAttributesTimeoutsOutputWithContext(ctx context.Context) SnapshotAttributesTimeoutsOutput {
+	return o
+}
+
+func (o SnapshotAttributesTimeoutsOutput) ToSnapshotAttributesTimeoutsPtrOutput() SnapshotAttributesTimeoutsPtrOutput {
+	return o.ToSnapshotAttributesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotAttributesTimeoutsOutput) ToSnapshotAttributesTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotAttributesTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotAttributesTimeouts) *SnapshotAttributesTimeouts {
+		return &v
+	}).(SnapshotAttributesTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SnapshotAttributesTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotAttributesTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SnapshotAttributesTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotAttributesTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SnapshotAttributesTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotAttributesTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type SnapshotAttributesTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotAttributesTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotAttributesTimeouts)(nil)).Elem()
+}
+
+func (o SnapshotAttributesTimeoutsPtrOutput) ToSnapshotAttributesTimeoutsPtrOutput() SnapshotAttributesTimeoutsPtrOutput {
+	return o
+}
+
+func (o SnapshotAttributesTimeoutsPtrOutput) ToSnapshotAttributesTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotAttributesTimeoutsPtrOutput {
+	return o
+}
+
+func (o SnapshotAttributesTimeoutsPtrOutput) Elem() SnapshotAttributesTimeoutsOutput {
+	return o.ApplyT(func(v *SnapshotAttributesTimeouts) SnapshotAttributesTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotAttributesTimeouts
+		return ret
+	}).(SnapshotAttributesTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SnapshotAttributesTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotAttributesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SnapshotAttributesTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotAttributesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SnapshotAttributesTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotAttributesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type SnapshotExportTaskOsuExport struct {
@@ -15383,7 +16947,7 @@ func (o SnapshotExportTaskOsuExportOsuApiKeyArrayOutput) Index(i pulumi.IntInput
 }
 
 type SnapshotExportTaskTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -15401,7 +16965,7 @@ type SnapshotExportTaskTagInput interface {
 }
 
 type SnapshotExportTaskTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -15458,7 +17022,7 @@ func (o SnapshotExportTaskTagOutput) ToSnapshotExportTaskTagOutputWithContext(ct
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o SnapshotExportTaskTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotExportTaskTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -15489,12 +17053,12 @@ func (o SnapshotExportTaskTagArrayOutput) Index(i pulumi.IntInput) SnapshotExpor
 }
 
 type SnapshotPermissionsToCreateVolume struct {
-	// The account ID of the owner of the snapshot.
-	AccountId *string `pulumi:"accountId"`
+	// The OUTSCALE account ID of the owner of the snapshot.
+	AccountId string `pulumi:"accountId"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
 	// (Response) If true, the resource is public. If false, the resource is private.
-	GlobalPermission *bool `pulumi:"globalPermission"`
+	GlobalPermission bool `pulumi:"globalPermission"`
 }
 
 // SnapshotPermissionsToCreateVolumeInput is an input type that accepts SnapshotPermissionsToCreateVolumeArgs and SnapshotPermissionsToCreateVolumeOutput values.
@@ -15509,12 +17073,12 @@ type SnapshotPermissionsToCreateVolumeInput interface {
 }
 
 type SnapshotPermissionsToCreateVolumeArgs struct {
-	// The account ID of the owner of the snapshot.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The OUTSCALE account ID of the owner of the snapshot.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
 	// (Response) If true, the resource is public. If false, the resource is private.
-	GlobalPermission pulumi.BoolPtrInput `pulumi:"globalPermission"`
+	GlobalPermission pulumi.BoolInput `pulumi:"globalPermission"`
 }
 
 func (SnapshotPermissionsToCreateVolumeArgs) ElementType() reflect.Type {
@@ -15568,16 +17132,16 @@ func (o SnapshotPermissionsToCreateVolumeOutput) ToSnapshotPermissionsToCreateVo
 	return o
 }
 
-// The account ID of the owner of the snapshot.
-func (o SnapshotPermissionsToCreateVolumeOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SnapshotPermissionsToCreateVolume) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+// The OUTSCALE account ID of the owner of the snapshot.
+func (o SnapshotPermissionsToCreateVolumeOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotPermissionsToCreateVolume) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // A global permission for all accounts.<br />
 // (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
 // (Response) If true, the resource is public. If false, the resource is private.
-func (o SnapshotPermissionsToCreateVolumeOutput) GlobalPermission() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SnapshotPermissionsToCreateVolume) *bool { return v.GlobalPermission }).(pulumi.BoolPtrOutput)
+func (o SnapshotPermissionsToCreateVolumeOutput) GlobalPermission() pulumi.BoolOutput {
+	return o.ApplyT(func(v SnapshotPermissionsToCreateVolume) bool { return v.GlobalPermission }).(pulumi.BoolOutput)
 }
 
 type SnapshotPermissionsToCreateVolumeArrayOutput struct{ *pulumi.OutputState }
@@ -15601,8 +17165,8 @@ func (o SnapshotPermissionsToCreateVolumeArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type SnapshotTag struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key *string `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -15619,8 +17183,8 @@ type SnapshotTagInput interface {
 }
 
 type SnapshotTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -15676,9 +17240,9 @@ func (o SnapshotTagOutput) ToSnapshotTagOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
-func (o SnapshotTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SnapshotTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The key of the tag, between 1 and 255 characters.
+func (o SnapshotTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -15706,8 +17270,202 @@ func (o SnapshotTagArrayOutput) Index(i pulumi.IntInput) SnapshotTagOutput {
 	}).(SnapshotTagOutput)
 }
 
+type SnapshotTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// SnapshotTimeoutsInput is an input type that accepts SnapshotTimeoutsArgs and SnapshotTimeoutsOutput values.
+// You can construct a concrete instance of `SnapshotTimeoutsInput` via:
+//
+//	SnapshotTimeoutsArgs{...}
+type SnapshotTimeoutsInput interface {
+	pulumi.Input
+
+	ToSnapshotTimeoutsOutput() SnapshotTimeoutsOutput
+	ToSnapshotTimeoutsOutputWithContext(context.Context) SnapshotTimeoutsOutput
+}
+
+type SnapshotTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (SnapshotTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotTimeouts)(nil)).Elem()
+}
+
+func (i SnapshotTimeoutsArgs) ToSnapshotTimeoutsOutput() SnapshotTimeoutsOutput {
+	return i.ToSnapshotTimeoutsOutputWithContext(context.Background())
+}
+
+func (i SnapshotTimeoutsArgs) ToSnapshotTimeoutsOutputWithContext(ctx context.Context) SnapshotTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotTimeoutsOutput)
+}
+
+func (i SnapshotTimeoutsArgs) ToSnapshotTimeoutsPtrOutput() SnapshotTimeoutsPtrOutput {
+	return i.ToSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotTimeoutsArgs) ToSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotTimeoutsOutput).ToSnapshotTimeoutsPtrOutputWithContext(ctx)
+}
+
+// SnapshotTimeoutsPtrInput is an input type that accepts SnapshotTimeoutsArgs, SnapshotTimeoutsPtr and SnapshotTimeoutsPtrOutput values.
+// You can construct a concrete instance of `SnapshotTimeoutsPtrInput` via:
+//
+//	        SnapshotTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotTimeoutsPtrOutput() SnapshotTimeoutsPtrOutput
+	ToSnapshotTimeoutsPtrOutputWithContext(context.Context) SnapshotTimeoutsPtrOutput
+}
+
+type snapshotTimeoutsPtrType SnapshotTimeoutsArgs
+
+func SnapshotTimeoutsPtr(v *SnapshotTimeoutsArgs) SnapshotTimeoutsPtrInput {
+	return (*snapshotTimeoutsPtrType)(v)
+}
+
+func (*snapshotTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotTimeouts)(nil)).Elem()
+}
+
+func (i *snapshotTimeoutsPtrType) ToSnapshotTimeoutsPtrOutput() SnapshotTimeoutsPtrOutput {
+	return i.ToSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotTimeoutsPtrType) ToSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotTimeoutsPtrOutput)
+}
+
+type SnapshotTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (SnapshotTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotTimeouts)(nil)).Elem()
+}
+
+func (o SnapshotTimeoutsOutput) ToSnapshotTimeoutsOutput() SnapshotTimeoutsOutput {
+	return o
+}
+
+func (o SnapshotTimeoutsOutput) ToSnapshotTimeoutsOutputWithContext(ctx context.Context) SnapshotTimeoutsOutput {
+	return o
+}
+
+func (o SnapshotTimeoutsOutput) ToSnapshotTimeoutsPtrOutput() SnapshotTimeoutsPtrOutput {
+	return o.ToSnapshotTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotTimeoutsOutput) ToSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotTimeouts) *SnapshotTimeouts {
+		return &v
+	}).(SnapshotTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SnapshotTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SnapshotTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SnapshotTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SnapshotTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type SnapshotTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotTimeouts)(nil)).Elem()
+}
+
+func (o SnapshotTimeoutsPtrOutput) ToSnapshotTimeoutsPtrOutput() SnapshotTimeoutsPtrOutput {
+	return o
+}
+
+func (o SnapshotTimeoutsPtrOutput) ToSnapshotTimeoutsPtrOutputWithContext(ctx context.Context) SnapshotTimeoutsPtrOutput {
+	return o
+}
+
+func (o SnapshotTimeoutsPtrOutput) Elem() SnapshotTimeoutsOutput {
+	return o.ApplyT(func(v *SnapshotTimeouts) SnapshotTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotTimeouts
+		return ret
+	}).(SnapshotTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SnapshotTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SnapshotTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SnapshotTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SnapshotTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type SubnetTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -15725,7 +17483,7 @@ type SubnetTagInput interface {
 }
 
 type SubnetTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -15782,7 +17540,7 @@ func (o SubnetTagOutput) ToSubnetTagOutputWithContext(ctx context.Context) Subne
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o SubnetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SubnetTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -17000,7 +18758,7 @@ func (o VirtualGatewayNetToVirtualGatewayLinkArrayOutput) Index(i pulumi.IntInpu
 }
 
 type VirtualGatewayTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -17018,7 +18776,7 @@ type VirtualGatewayTagInput interface {
 }
 
 type VirtualGatewayTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -17075,7 +18833,7 @@ func (o VirtualGatewayTagOutput) ToVirtualGatewayTagOutputWithContext(ctx contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o VirtualGatewayTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualGatewayTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -17894,7 +19652,7 @@ func (o VmBlockDeviceMappingsCreatedBsusArrayOutput) Index(i pulumi.IntInput) Vm
 }
 
 type VmBlockDeviceMappingsCreatedBsusTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -17912,7 +19670,7 @@ type VmBlockDeviceMappingsCreatedBsusTagInput interface {
 }
 
 type VmBlockDeviceMappingsCreatedBsusTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -17969,7 +19727,7 @@ func (o VmBlockDeviceMappingsCreatedBsusTagOutput) ToVmBlockDeviceMappingsCreate
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o VmBlockDeviceMappingsCreatedBsusTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmBlockDeviceMappingsCreatedBsusTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -18000,7 +19758,7 @@ func (o VmBlockDeviceMappingsCreatedBsusTagArrayOutput) Index(i pulumi.IntInput)
 }
 
 type VmNic struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId *string `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
 	DeleteOnVmDeletion *bool `pulumi:"deleteOnVmDeletion"`
@@ -18048,7 +19806,7 @@ type VmNicInput interface {
 }
 
 type VmNicArgs struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
 	DeleteOnVmDeletion pulumi.BoolPtrInput `pulumi:"deleteOnVmDeletion"`
@@ -18135,7 +19893,7 @@ func (o VmNicOutput) ToVmNicOutputWithContext(ctx context.Context) VmNicOutput {
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o VmNicOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNic) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -18369,7 +20127,7 @@ type VmNicLinkPublicIp struct {
 	PublicDnsName *string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp *string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId *string `pulumi:"publicIpAccountId"`
 }
 
@@ -18389,7 +20147,7 @@ type VmNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringPtrInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringPtrInput `pulumi:"publicIpAccountId"`
 }
 
@@ -18454,7 +20212,7 @@ func (o VmNicLinkPublicIpOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNicLinkPublicIp) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o VmNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNicLinkPublicIp) *string { return v.PublicIpAccountId }).(pulumi.StringPtrOutput)
 }
@@ -18608,7 +20366,7 @@ type VmNicPrivateIpLinkPublicIp struct {
 	PublicDnsName *string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp *string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId *string `pulumi:"publicIpAccountId"`
 }
 
@@ -18628,7 +20386,7 @@ type VmNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringPtrInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringPtrInput `pulumi:"publicIpAccountId"`
 }
 
@@ -18693,7 +20451,7 @@ func (o VmNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNicPrivateIpLinkPublicIp) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o VmNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNicPrivateIpLinkPublicIp) *string { return v.PublicIpAccountId }).(pulumi.StringPtrOutput)
 }
@@ -18825,7 +20583,7 @@ func (o VmNicSecurityGroupArrayOutput) Index(i pulumi.IntInput) VmNicSecurityGro
 }
 
 type VmPrimaryNic struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId *string `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
 	DeleteOnVmDeletion *bool `pulumi:"deleteOnVmDeletion"`
@@ -18873,7 +20631,7 @@ type VmPrimaryNicInput interface {
 }
 
 type VmPrimaryNicArgs struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
 	DeleteOnVmDeletion pulumi.BoolPtrInput `pulumi:"deleteOnVmDeletion"`
@@ -18960,7 +20718,7 @@ func (o VmPrimaryNicOutput) ToVmPrimaryNicOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o VmPrimaryNicOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNic) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -19194,7 +20952,7 @@ type VmPrimaryNicLinkPublicIp struct {
 	PublicDnsName *string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp *string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId *string `pulumi:"publicIpAccountId"`
 }
 
@@ -19214,7 +20972,7 @@ type VmPrimaryNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringPtrInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringPtrInput `pulumi:"publicIpAccountId"`
 }
 
@@ -19279,7 +21037,7 @@ func (o VmPrimaryNicLinkPublicIpOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNicLinkPublicIp) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o VmPrimaryNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNicLinkPublicIp) *string { return v.PublicIpAccountId }).(pulumi.StringPtrOutput)
 }
@@ -19433,7 +21191,7 @@ type VmPrimaryNicPrivateIpLinkPublicIp struct {
 	PublicDnsName *string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp *string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId *string `pulumi:"publicIpAccountId"`
 }
 
@@ -19453,7 +21211,7 @@ type VmPrimaryNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringPtrInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringPtrInput `pulumi:"publicIpAccountId"`
 }
 
@@ -19518,7 +21276,7 @@ func (o VmPrimaryNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringPtrOutp
 	return o.ApplyT(func(v VmPrimaryNicPrivateIpLinkPublicIp) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o VmPrimaryNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNicPrivateIpLinkPublicIp) *string { return v.PublicIpAccountId }).(pulumi.StringPtrOutput)
 }
@@ -19756,7 +21514,7 @@ func (o VmSecurityGroupArrayOutput) Index(i pulumi.IntInput) VmSecurityGroupOutp
 }
 
 type VmTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -19774,7 +21532,7 @@ type VmTagInput interface {
 }
 
 type VmTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -19831,7 +21589,7 @@ func (o VmTagOutput) ToVmTagOutputWithContext(ctx context.Context) VmTagOutput {
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o VmTagOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -20189,7 +21947,7 @@ func (o VolumeLinkedVolumeArrayOutput) Index(i pulumi.IntInput) VolumeLinkedVolu
 }
 
 type VolumeTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
@@ -20207,7 +21965,7 @@ type VolumeTagInput interface {
 }
 
 type VolumeTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -20264,7 +22022,7 @@ func (o VolumeTagOutput) ToVolumeTagOutputWithContext(ctx context.Context) Volum
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o VolumeTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -20603,9 +22361,184 @@ func (o VpnConnectionRouteTypeArrayOutput) Index(i pulumi.IntInput) VpnConnectio
 	}).(VpnConnectionRouteTypeOutput)
 }
 
+type VpnConnectionRouteTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// VpnConnectionRouteTimeoutsInput is an input type that accepts VpnConnectionRouteTimeoutsArgs and VpnConnectionRouteTimeoutsOutput values.
+// You can construct a concrete instance of `VpnConnectionRouteTimeoutsInput` via:
+//
+//	VpnConnectionRouteTimeoutsArgs{...}
+type VpnConnectionRouteTimeoutsInput interface {
+	pulumi.Input
+
+	ToVpnConnectionRouteTimeoutsOutput() VpnConnectionRouteTimeoutsOutput
+	ToVpnConnectionRouteTimeoutsOutputWithContext(context.Context) VpnConnectionRouteTimeoutsOutput
+}
+
+type VpnConnectionRouteTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (VpnConnectionRouteTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionRouteTimeouts)(nil)).Elem()
+}
+
+func (i VpnConnectionRouteTimeoutsArgs) ToVpnConnectionRouteTimeoutsOutput() VpnConnectionRouteTimeoutsOutput {
+	return i.ToVpnConnectionRouteTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionRouteTimeoutsArgs) ToVpnConnectionRouteTimeoutsOutputWithContext(ctx context.Context) VpnConnectionRouteTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionRouteTimeoutsOutput)
+}
+
+func (i VpnConnectionRouteTimeoutsArgs) ToVpnConnectionRouteTimeoutsPtrOutput() VpnConnectionRouteTimeoutsPtrOutput {
+	return i.ToVpnConnectionRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionRouteTimeoutsArgs) ToVpnConnectionRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionRouteTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionRouteTimeoutsOutput).ToVpnConnectionRouteTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VpnConnectionRouteTimeoutsPtrInput is an input type that accepts VpnConnectionRouteTimeoutsArgs, VpnConnectionRouteTimeoutsPtr and VpnConnectionRouteTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VpnConnectionRouteTimeoutsPtrInput` via:
+//
+//	        VpnConnectionRouteTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionRouteTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionRouteTimeoutsPtrOutput() VpnConnectionRouteTimeoutsPtrOutput
+	ToVpnConnectionRouteTimeoutsPtrOutputWithContext(context.Context) VpnConnectionRouteTimeoutsPtrOutput
+}
+
+type vpnConnectionRouteTimeoutsPtrType VpnConnectionRouteTimeoutsArgs
+
+func VpnConnectionRouteTimeoutsPtr(v *VpnConnectionRouteTimeoutsArgs) VpnConnectionRouteTimeoutsPtrInput {
+	return (*vpnConnectionRouteTimeoutsPtrType)(v)
+}
+
+func (*vpnConnectionRouteTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionRouteTimeouts)(nil)).Elem()
+}
+
+func (i *vpnConnectionRouteTimeoutsPtrType) ToVpnConnectionRouteTimeoutsPtrOutput() VpnConnectionRouteTimeoutsPtrOutput {
+	return i.ToVpnConnectionRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionRouteTimeoutsPtrType) ToVpnConnectionRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionRouteTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionRouteTimeoutsPtrOutput)
+}
+
+type VpnConnectionRouteTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionRouteTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionRouteTimeouts)(nil)).Elem()
+}
+
+func (o VpnConnectionRouteTimeoutsOutput) ToVpnConnectionRouteTimeoutsOutput() VpnConnectionRouteTimeoutsOutput {
+	return o
+}
+
+func (o VpnConnectionRouteTimeoutsOutput) ToVpnConnectionRouteTimeoutsOutputWithContext(ctx context.Context) VpnConnectionRouteTimeoutsOutput {
+	return o
+}
+
+func (o VpnConnectionRouteTimeoutsOutput) ToVpnConnectionRouteTimeoutsPtrOutput() VpnConnectionRouteTimeoutsPtrOutput {
+	return o.ToVpnConnectionRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionRouteTimeoutsOutput) ToVpnConnectionRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionRouteTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionRouteTimeouts) *VpnConnectionRouteTimeouts {
+		return &v
+	}).(VpnConnectionRouteTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpnConnectionRouteTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionRouteTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpnConnectionRouteTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionRouteTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpnConnectionRouteTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionRouteTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionRouteTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionRouteTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionRouteTimeouts)(nil)).Elem()
+}
+
+func (o VpnConnectionRouteTimeoutsPtrOutput) ToVpnConnectionRouteTimeoutsPtrOutput() VpnConnectionRouteTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpnConnectionRouteTimeoutsPtrOutput) ToVpnConnectionRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionRouteTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpnConnectionRouteTimeoutsPtrOutput) Elem() VpnConnectionRouteTimeoutsOutput {
+	return o.ApplyT(func(v *VpnConnectionRouteTimeouts) VpnConnectionRouteTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionRouteTimeouts
+		return ret
+	}).(VpnConnectionRouteTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpnConnectionRouteTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpnConnectionRouteTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpnConnectionRouteTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type VpnConnectionTag struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key *string `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -20622,8 +22555,8 @@ type VpnConnectionTagInput interface {
 }
 
 type VpnConnectionTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the tag, between 1 and 255 characters.
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -20679,9 +22612,9 @@ func (o VpnConnectionTagOutput) ToVpnConnectionTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
-func (o VpnConnectionTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpnConnectionTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The key of the tag, between 1 and 255 characters.
+func (o VpnConnectionTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -20707,6 +22640,200 @@ func (o VpnConnectionTagArrayOutput) Index(i pulumi.IntInput) VpnConnectionTagOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpnConnectionTag {
 		return vs[0].([]VpnConnectionTag)[vs[1].(int)]
 	}).(VpnConnectionTagOutput)
+}
+
+type VpnConnectionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VpnConnectionTimeoutsInput is an input type that accepts VpnConnectionTimeoutsArgs and VpnConnectionTimeoutsOutput values.
+// You can construct a concrete instance of `VpnConnectionTimeoutsInput` via:
+//
+//	VpnConnectionTimeoutsArgs{...}
+type VpnConnectionTimeoutsInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTimeoutsOutput() VpnConnectionTimeoutsOutput
+	ToVpnConnectionTimeoutsOutputWithContext(context.Context) VpnConnectionTimeoutsOutput
+}
+
+type VpnConnectionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VpnConnectionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTimeouts)(nil)).Elem()
+}
+
+func (i VpnConnectionTimeoutsArgs) ToVpnConnectionTimeoutsOutput() VpnConnectionTimeoutsOutput {
+	return i.ToVpnConnectionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTimeoutsArgs) ToVpnConnectionTimeoutsOutputWithContext(ctx context.Context) VpnConnectionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTimeoutsOutput)
+}
+
+func (i VpnConnectionTimeoutsArgs) ToVpnConnectionTimeoutsPtrOutput() VpnConnectionTimeoutsPtrOutput {
+	return i.ToVpnConnectionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTimeoutsArgs) ToVpnConnectionTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTimeoutsOutput).ToVpnConnectionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTimeoutsPtrInput is an input type that accepts VpnConnectionTimeoutsArgs, VpnConnectionTimeoutsPtr and VpnConnectionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTimeoutsPtrInput` via:
+//
+//	        VpnConnectionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTimeoutsPtrOutput() VpnConnectionTimeoutsPtrOutput
+	ToVpnConnectionTimeoutsPtrOutputWithContext(context.Context) VpnConnectionTimeoutsPtrOutput
+}
+
+type vpnConnectionTimeoutsPtrType VpnConnectionTimeoutsArgs
+
+func VpnConnectionTimeoutsPtr(v *VpnConnectionTimeoutsArgs) VpnConnectionTimeoutsPtrInput {
+	return (*vpnConnectionTimeoutsPtrType)(v)
+}
+
+func (*vpnConnectionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTimeouts)(nil)).Elem()
+}
+
+func (i *vpnConnectionTimeoutsPtrType) ToVpnConnectionTimeoutsPtrOutput() VpnConnectionTimeoutsPtrOutput {
+	return i.ToVpnConnectionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTimeoutsPtrType) ToVpnConnectionTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTimeoutsPtrOutput)
+}
+
+type VpnConnectionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTimeouts)(nil)).Elem()
+}
+
+func (o VpnConnectionTimeoutsOutput) ToVpnConnectionTimeoutsOutput() VpnConnectionTimeoutsOutput {
+	return o
+}
+
+func (o VpnConnectionTimeoutsOutput) ToVpnConnectionTimeoutsOutputWithContext(ctx context.Context) VpnConnectionTimeoutsOutput {
+	return o
+}
+
+func (o VpnConnectionTimeoutsOutput) ToVpnConnectionTimeoutsPtrOutput() VpnConnectionTimeoutsPtrOutput {
+	return o.ToVpnConnectionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTimeoutsOutput) ToVpnConnectionTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTimeouts) *VpnConnectionTimeouts {
+		return &v
+	}).(VpnConnectionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpnConnectionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpnConnectionTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpnConnectionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpnConnectionTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTimeouts)(nil)).Elem()
+}
+
+func (o VpnConnectionTimeoutsPtrOutput) ToVpnConnectionTimeoutsPtrOutput() VpnConnectionTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTimeoutsPtrOutput) ToVpnConnectionTimeoutsPtrOutputWithContext(ctx context.Context) VpnConnectionTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTimeoutsPtrOutput) Elem() VpnConnectionTimeoutsOutput {
+	return o.ApplyT(func(v *VpnConnectionTimeouts) VpnConnectionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTimeouts
+		return ret
+	}).(VpnConnectionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpnConnectionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpnConnectionTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpnConnectionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpnConnectionTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type VpnConnectionVgwTelemetry struct {
@@ -22147,7 +24274,7 @@ func (o GetClientGatewayFilterArrayOutput) Index(i pulumi.IntInput) GetClientGat
 }
 
 type GetClientGatewayTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -22165,7 +24292,7 @@ type GetClientGatewayTagInput interface {
 }
 
 type GetClientGatewayTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -22222,7 +24349,7 @@ func (o GetClientGatewayTagOutput) ToGetClientGatewayTagOutputWithContext(ctx co
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetClientGatewayTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientGatewayTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -22395,7 +24522,7 @@ func (o GetClientGatewaysClientGatewayArrayOutput) Index(i pulumi.IntInput) GetC
 }
 
 type GetClientGatewaysClientGatewayTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -22413,7 +24540,7 @@ type GetClientGatewaysClientGatewayTagInput interface {
 }
 
 type GetClientGatewaysClientGatewayTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -22470,7 +24597,7 @@ func (o GetClientGatewaysClientGatewayTagOutput) ToGetClientGatewaysClientGatewa
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetClientGatewaysClientGatewayTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientGatewaysClientGatewayTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -22701,7 +24828,7 @@ func (o GetDhcpOptionFilterArrayOutput) Index(i pulumi.IntInput) GetDhcpOptionFi
 }
 
 type GetDhcpOptionTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -22719,7 +24846,7 @@ type GetDhcpOptionTagInput interface {
 }
 
 type GetDhcpOptionTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -22776,7 +24903,7 @@ func (o GetDhcpOptionTagOutput) ToGetDhcpOptionTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetDhcpOptionTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDhcpOptionTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -22958,7 +25085,7 @@ func (o GetDhcpOptionsDhcpOptionArrayOutput) Index(i pulumi.IntInput) GetDhcpOpt
 }
 
 type GetDhcpOptionsDhcpOptionTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -22976,7 +25103,7 @@ type GetDhcpOptionsDhcpOptionTagInput interface {
 }
 
 type GetDhcpOptionsDhcpOptionTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -23033,7 +25160,7 @@ func (o GetDhcpOptionsDhcpOptionTagOutput) ToGetDhcpOptionsDhcpOptionTagOutputWi
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetDhcpOptionsDhcpOptionTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDhcpOptionsDhcpOptionTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -24695,7 +26822,7 @@ func (o GetImageExportTaskOsuExportArrayOutput) Index(i pulumi.IntInput) GetImag
 }
 
 type GetImageExportTaskTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -24713,7 +26840,7 @@ type GetImageExportTaskTagInput interface {
 }
 
 type GetImageExportTaskTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -24770,7 +26897,7 @@ func (o GetImageExportTaskTagOutput) ToGetImageExportTaskTagOutputWithContext(ct
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetImageExportTaskTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageExportTaskTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -25178,7 +27305,7 @@ func (o GetImageExportTasksImageExportTaskOsuExportArrayOutput) Index(i pulumi.I
 }
 
 type GetImageExportTasksImageExportTaskTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -25196,7 +27323,7 @@ type GetImageExportTasksImageExportTaskTagInput interface {
 }
 
 type GetImageExportTasksImageExportTaskTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -25253,7 +27380,7 @@ func (o GetImageExportTasksImageExportTaskTagOutput) ToGetImageExportTasksImageE
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetImageExportTasksImageExportTaskTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageExportTasksImageExportTaskTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -25384,7 +27511,7 @@ func (o GetImageFilterArrayOutput) Index(i pulumi.IntInput) GetImageFilterOutput
 }
 
 type GetImagePermissionsToLaunch struct {
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId string `pulumi:"accountId"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -25404,7 +27531,7 @@ type GetImagePermissionsToLaunchInput interface {
 }
 
 type GetImagePermissionsToLaunchArgs struct {
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -25463,7 +27590,7 @@ func (o GetImagePermissionsToLaunchOutput) ToGetImagePermissionsToLaunchOutputWi
 	return o
 }
 
-// The account ID of the owner of the OMI.
+// The OUTSCALE account ID of the owner of the OMI.
 func (o GetImagePermissionsToLaunchOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagePermissionsToLaunch) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -25602,7 +27729,7 @@ func (o GetImageStateCommentArrayOutput) Index(i pulumi.IntInput) GetImageStateC
 }
 
 type GetImageTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -25620,7 +27747,7 @@ type GetImageTagInput interface {
 }
 
 type GetImageTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -25677,7 +27804,7 @@ func (o GetImageTagOutput) ToGetImageTagOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetImageTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -25810,7 +27937,7 @@ func (o GetImagesFilterArrayOutput) Index(i pulumi.IntInput) GetImagesFilterOutp
 type GetImagesImage struct {
 	// The account alias of the owner of the OMI.
 	AccountAlias string `pulumi:"accountAlias"`
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId string `pulumi:"accountId"`
 	// The architecture of the OMI.
 	Architecture string `pulumi:"architecture"`
@@ -25864,7 +27991,7 @@ type GetImagesImageInput interface {
 type GetImagesImageArgs struct {
 	// The account alias of the owner of the OMI.
 	AccountAlias pulumi.StringInput `pulumi:"accountAlias"`
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The architecture of the OMI.
 	Architecture pulumi.StringInput `pulumi:"architecture"`
@@ -25960,7 +28087,7 @@ func (o GetImagesImageOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.AccountAlias }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the OMI.
+// The OUTSCALE account ID of the owner of the OMI.
 func (o GetImagesImageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -26333,7 +28460,7 @@ func (o GetImagesImageBlockDeviceMappingBsusArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetImagesImagePermissionsToLaunch struct {
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId string `pulumi:"accountId"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -26353,7 +28480,7 @@ type GetImagesImagePermissionsToLaunchInput interface {
 }
 
 type GetImagesImagePermissionsToLaunchArgs struct {
-	// The account ID of the owner of the OMI.
+	// The OUTSCALE account ID of the owner of the OMI.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -26412,7 +28539,7 @@ func (o GetImagesImagePermissionsToLaunchOutput) ToGetImagesImagePermissionsToLa
 	return o
 }
 
-// The account ID of the owner of the OMI.
+// The OUTSCALE account ID of the owner of the OMI.
 func (o GetImagesImagePermissionsToLaunchOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImagePermissionsToLaunch) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -26551,7 +28678,7 @@ func (o GetImagesImageStateCommentArrayOutput) Index(i pulumi.IntInput) GetImage
 }
 
 type GetImagesImageTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -26569,7 +28696,7 @@ type GetImagesImageTagInput interface {
 }
 
 type GetImagesImageTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -26626,7 +28753,7 @@ func (o GetImagesImageTagOutput) ToGetImagesImageTagOutputWithContext(ctx contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetImagesImageTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImageTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -26757,7 +28884,7 @@ func (o GetInternetServiceFilterArrayOutput) Index(i pulumi.IntInput) GetInterne
 }
 
 type GetInternetServiceTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -26775,7 +28902,7 @@ type GetInternetServiceTagInput interface {
 }
 
 type GetInternetServiceTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -26832,7 +28959,7 @@ func (o GetInternetServiceTagOutput) ToGetInternetServiceTagOutputWithContext(ct
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetInternetServiceTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInternetServiceTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -27087,7 +29214,7 @@ func (o GetInternetServicesInternetServiceArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInternetServicesInternetServiceTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -27105,7 +29232,7 @@ type GetInternetServicesInternetServiceTagInput interface {
 }
 
 type GetInternetServicesInternetServiceTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -27162,7 +29289,7 @@ func (o GetInternetServicesInternetServiceTagOutput) ToGetInternetServicesIntern
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetInternetServicesInternetServiceTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInternetServicesInternetServiceTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -27293,7 +29420,7 @@ func (o GetKeypairFilterArrayOutput) Index(i pulumi.IntInput) GetKeypairFilterOu
 }
 
 type GetKeypairTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -27311,7 +29438,7 @@ type GetKeypairTagInput interface {
 }
 
 type GetKeypairTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -27368,7 +29495,7 @@ func (o GetKeypairTagOutput) ToGetKeypairTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetKeypairTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeypairTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -27632,7 +29759,7 @@ func (o GetKeypairsKeypairArrayOutput) Index(i pulumi.IntInput) GetKeypairsKeypa
 }
 
 type GetKeypairsKeypairTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -27650,7 +29777,7 @@ type GetKeypairsKeypairTagInput interface {
 }
 
 type GetKeypairsKeypairTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -27707,7 +29834,7 @@ func (o GetKeypairsKeypairTagOutput) ToGetKeypairsKeypairTagOutputWithContext(ct
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetKeypairsKeypairTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeypairsKeypairTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -27862,7 +29989,7 @@ func (o GetLoadBalancerAccessLogArrayOutput) Index(i pulumi.IntInput) GetLoadBal
 }
 
 type GetLoadBalancerApplicationStickyCookiePolicy struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName string `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName string `pulumi:"policyName"`
@@ -27880,7 +30007,7 @@ type GetLoadBalancerApplicationStickyCookiePolicyInput interface {
 }
 
 type GetLoadBalancerApplicationStickyCookiePolicyArgs struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName pulumi.StringInput `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName pulumi.StringInput `pulumi:"policyName"`
@@ -27937,7 +30064,7 @@ func (o GetLoadBalancerApplicationStickyCookiePolicyOutput) ToGetLoadBalancerApp
 	return o
 }
 
-// The name of the application cookie used for stickiness.
+// The name of the application cookie used for stickiness, between 1 and 255 characters.
 func (o GetLoadBalancerApplicationStickyCookiePolicyOutput) CookieName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerApplicationStickyCookiePolicy) string { return v.CookieName }).(pulumi.StringOutput)
 }
@@ -28818,7 +30945,7 @@ func (o GetLoadBalancerLoadBalancerStickyCookiePolicyArrayOutput) Index(i pulumi
 }
 
 type GetLoadBalancerSourceSecurityGroup struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId string `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName string `pulumi:"securityGroupName"`
@@ -28836,7 +30963,7 @@ type GetLoadBalancerSourceSecurityGroupInput interface {
 }
 
 type GetLoadBalancerSourceSecurityGroupArgs struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId pulumi.StringInput `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
@@ -28893,7 +31020,7 @@ func (o GetLoadBalancerSourceSecurityGroupOutput) ToGetLoadBalancerSourceSecurit
 	return o
 }
 
-// The account ID of the owner of the security group.
+// The OUTSCALE account ID of the owner of the security group.
 func (o GetLoadBalancerSourceSecurityGroupOutput) SecurityGroupAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerSourceSecurityGroup) string { return v.SecurityGroupAccountId }).(pulumi.StringOutput)
 }
@@ -28924,7 +31051,7 @@ func (o GetLoadBalancerSourceSecurityGroupArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetLoadBalancerTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -28942,7 +31069,7 @@ type GetLoadBalancerTagInput interface {
 }
 
 type GetLoadBalancerTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -28999,7 +31126,7 @@ func (o GetLoadBalancerTagOutput) ToGetLoadBalancerTagOutputWithContext(ctx cont
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 128 characters.
 func (o GetLoadBalancerTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -29955,7 +32082,7 @@ func (o GetLoadBalancersLoadBalancerAccessLogArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetLoadBalancersLoadBalancerApplicationStickyCookiePolicy struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName string `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName string `pulumi:"policyName"`
@@ -29973,7 +32100,7 @@ type GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyInput interface {
 }
 
 type GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyArgs struct {
-	// The name of the application cookie used for stickiness.
+	// The name of the application cookie used for stickiness, between 1 and 255 characters.
 	CookieName pulumi.StringInput `pulumi:"cookieName"`
 	// The name of the stickiness policy.
 	PolicyName pulumi.StringInput `pulumi:"policyName"`
@@ -30030,7 +32157,7 @@ func (o GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyOutput) ToGetLo
 	return o
 }
 
-// The name of the application cookie used for stickiness.
+// The name of the application cookie used for stickiness, between 1 and 255 characters.
 func (o GetLoadBalancersLoadBalancerApplicationStickyCookiePolicyOutput) CookieName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadBalancerApplicationStickyCookiePolicy) string { return v.CookieName }).(pulumi.StringOutput)
 }
@@ -30451,7 +32578,7 @@ func (o GetLoadBalancersLoadBalancerLoadBalancerStickyCookiePolicyArrayOutput) I
 }
 
 type GetLoadBalancersLoadBalancerSourceSecurityGroup struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId string `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName string `pulumi:"securityGroupName"`
@@ -30469,7 +32596,7 @@ type GetLoadBalancersLoadBalancerSourceSecurityGroupInput interface {
 }
 
 type GetLoadBalancersLoadBalancerSourceSecurityGroupArgs struct {
-	// The account ID of the owner of the security group.
+	// The OUTSCALE account ID of the owner of the security group.
 	SecurityGroupAccountId pulumi.StringInput `pulumi:"securityGroupAccountId"`
 	// The name of the security group.
 	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
@@ -30526,7 +32653,7 @@ func (o GetLoadBalancersLoadBalancerSourceSecurityGroupOutput) ToGetLoadBalancer
 	return o
 }
 
-// The account ID of the owner of the security group.
+// The OUTSCALE account ID of the owner of the security group.
 func (o GetLoadBalancersLoadBalancerSourceSecurityGroupOutput) SecurityGroupAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadBalancerSourceSecurityGroup) string { return v.SecurityGroupAccountId }).(pulumi.StringOutput)
 }
@@ -30557,7 +32684,7 @@ func (o GetLoadBalancersLoadBalancerSourceSecurityGroupArrayOutput) Index(i pulu
 }
 
 type GetLoadBalancersLoadBalancerTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -30575,7 +32702,7 @@ type GetLoadBalancersLoadBalancerTagInput interface {
 }
 
 type GetLoadBalancersLoadBalancerTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 128 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -30632,7 +32759,7 @@ func (o GetLoadBalancersLoadBalancerTagOutput) ToGetLoadBalancersLoadBalancerTag
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 128 characters.
 func (o GetLoadBalancersLoadBalancerTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersLoadBalancerTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -30869,7 +32996,7 @@ func (o GetNatServicePublicIpArrayOutput) Index(i pulumi.IntInput) GetNatService
 }
 
 type GetNatServiceTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -30887,7 +33014,7 @@ type GetNatServiceTagInput interface {
 }
 
 type GetNatServiceTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -30944,7 +33071,7 @@ func (o GetNatServiceTagOutput) ToGetNatServiceTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNatServiceTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatServiceTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -31323,7 +33450,7 @@ func (o GetNatServicesNatServicePublicIpArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetNatServicesNatServiceTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -31341,7 +33468,7 @@ type GetNatServicesNatServiceTagInput interface {
 }
 
 type GetNatServicesNatServiceTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -31398,7 +33525,7 @@ func (o GetNatServicesNatServiceTagOutput) ToGetNatServicesNatServiceTagOutputWi
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNatServicesNatServiceTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatServicesNatServiceTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -31744,7 +33871,7 @@ func (o GetNetAccessPointServicesServiceArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetNetAccessPointTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -31762,7 +33889,7 @@ type GetNetAccessPointTagInput interface {
 }
 
 type GetNetAccessPointTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -31819,7 +33946,7 @@ func (o GetNetAccessPointTagOutput) ToGetNetAccessPointTagOutputWithContext(ctx 
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNetAccessPointTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetAccessPointTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -32092,7 +34219,7 @@ func (o GetNetAccessPointsNetAccessPointArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetNetAccessPointsNetAccessPointTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -32110,7 +34237,7 @@ type GetNetAccessPointsNetAccessPointTagInput interface {
 }
 
 type GetNetAccessPointsNetAccessPointTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -32167,7 +34294,7 @@ func (o GetNetAccessPointsNetAccessPointTagOutput) ToGetNetAccessPointsNetAccess
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNetAccessPointsNetAccessPointTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetAccessPointsNetAccessPointTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -32198,7 +34325,7 @@ func (o GetNetAccessPointsNetAccessPointTagArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetNetAttributesTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -32216,7 +34343,7 @@ type GetNetAttributesTagInput interface {
 }
 
 type GetNetAttributesTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -32273,7 +34400,7 @@ func (o GetNetAttributesTagOutput) ToGetNetAttributesTagOutputWithContext(ctx co
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNetAttributesTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetAttributesTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -32404,7 +34531,7 @@ func (o GetNetFilterArrayOutput) Index(i pulumi.IntInput) GetNetFilterOutput {
 }
 
 type GetNetPeeringAccepterNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -32424,7 +34551,7 @@ type GetNetPeeringAccepterNetInput interface {
 }
 
 type GetNetPeeringAccepterNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -32483,7 +34610,7 @@ func (o GetNetPeeringAccepterNetOutput) ToGetNetPeeringAccepterNetOutputWithCont
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o GetNetPeeringAccepterNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetPeeringAccepterNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -32622,7 +34749,7 @@ func (o GetNetPeeringFilterArrayOutput) Index(i pulumi.IntInput) GetNetPeeringFi
 }
 
 type GetNetPeeringSourceNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -32642,7 +34769,7 @@ type GetNetPeeringSourceNetInput interface {
 }
 
 type GetNetPeeringSourceNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -32701,7 +34828,7 @@ func (o GetNetPeeringSourceNetOutput) ToGetNetPeeringSourceNetOutputWithContext(
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o GetNetPeeringSourceNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetPeeringSourceNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -32843,7 +34970,7 @@ func (o GetNetPeeringStateArrayOutput) Index(i pulumi.IntInput) GetNetPeeringSta
 }
 
 type GetNetPeeringTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -32861,7 +34988,7 @@ type GetNetPeeringTagInput interface {
 }
 
 type GetNetPeeringTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -32918,7 +35045,7 @@ func (o GetNetPeeringTagOutput) ToGetNetPeeringTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNetPeeringTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetPeeringTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -33185,7 +35312,7 @@ func (o GetNetPeeringsNetPeeringArrayOutput) Index(i pulumi.IntInput) GetNetPeer
 }
 
 type GetNetPeeringsNetPeeringAccepterNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -33205,7 +35332,7 @@ type GetNetPeeringsNetPeeringAccepterNetInput interface {
 }
 
 type GetNetPeeringsNetPeeringAccepterNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -33264,7 +35391,7 @@ func (o GetNetPeeringsNetPeeringAccepterNetOutput) ToGetNetPeeringsNetPeeringAcc
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o GetNetPeeringsNetPeeringAccepterNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetPeeringsNetPeeringAccepterNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -33300,7 +35427,7 @@ func (o GetNetPeeringsNetPeeringAccepterNetArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetNetPeeringsNetPeeringSourceNet struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId string `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`
@@ -33320,7 +35447,7 @@ type GetNetPeeringsNetPeeringSourceNetInput interface {
 }
 
 type GetNetPeeringsNetPeeringSourceNetArgs struct {
-	// The account ID of the owner of the source Net.
+	// The OUTSCALE account ID of the owner of the source Net.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The IP range for the source Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange pulumi.StringInput `pulumi:"ipRange"`
@@ -33379,7 +35506,7 @@ func (o GetNetPeeringsNetPeeringSourceNetOutput) ToGetNetPeeringsNetPeeringSourc
 	return o
 }
 
-// The account ID of the owner of the source Net.
+// The OUTSCALE account ID of the owner of the source Net.
 func (o GetNetPeeringsNetPeeringSourceNetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetPeeringsNetPeeringSourceNet) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -33521,7 +35648,7 @@ func (o GetNetPeeringsNetPeeringStateArrayOutput) Index(i pulumi.IntInput) GetNe
 }
 
 type GetNetPeeringsNetPeeringTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -33539,7 +35666,7 @@ type GetNetPeeringsNetPeeringTagInput interface {
 }
 
 type GetNetPeeringsNetPeeringTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -33596,7 +35723,7 @@ func (o GetNetPeeringsNetPeeringTagOutput) ToGetNetPeeringsNetPeeringTagOutputWi
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNetPeeringsNetPeeringTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetPeeringsNetPeeringTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -33627,7 +35754,7 @@ func (o GetNetPeeringsNetPeeringTagArrayOutput) Index(i pulumi.IntInput) GetNetP
 }
 
 type GetNetTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -33645,7 +35772,7 @@ type GetNetTagInput interface {
 }
 
 type GetNetTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -33702,7 +35829,7 @@ func (o GetNetTagOutput) ToGetNetTagOutputWithContext(ctx context.Context) GetNe
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -33975,7 +36102,7 @@ func (o GetNetsNetArrayOutput) Index(i pulumi.IntInput) GetNetsNetOutput {
 }
 
 type GetNetsNetTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -33993,7 +36120,7 @@ type GetNetsNetTagInput interface {
 }
 
 type GetNetsNetTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -34050,7 +36177,7 @@ func (o GetNetsNetTagOutput) ToGetNetsNetTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNetsNetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetsNetTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -34189,7 +36316,7 @@ type GetNicLinkNic struct {
 	LinkNicId string `pulumi:"linkNicId"`
 	// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
 	State string `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId string `pulumi:"vmAccountId"`
 	// The ID of the VM.
 	VmId string `pulumi:"vmId"`
@@ -34215,7 +36342,7 @@ type GetNicLinkNicArgs struct {
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
 	// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
 	State pulumi.StringInput `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringInput `pulumi:"vmAccountId"`
 	// The ID of the VM.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -34292,7 +36419,7 @@ func (o GetNicLinkNicOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicLinkNic) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the VM.
+// The OUTSCALE account ID of the owner of the VM.
 func (o GetNicLinkNicOutput) VmAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicLinkNic) string { return v.VmAccountId }).(pulumi.StringOutput)
 }
@@ -34329,7 +36456,7 @@ type GetNicLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId string `pulumi:"publicIpId"`
@@ -34353,7 +36480,7 @@ type GetNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringInput `pulumi:"publicIpId"`
@@ -34425,7 +36552,7 @@ func (o GetNicLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -34586,7 +36713,7 @@ type GetNicPrivateIpLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId string `pulumi:"publicIpId"`
@@ -34610,7 +36737,7 @@ type GetNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringInput `pulumi:"publicIpId"`
@@ -34682,7 +36809,7 @@ func (o GetNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicPrivateIpLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicPrivateIpLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -34819,7 +36946,7 @@ func (o GetNicSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetNicSecurityG
 }
 
 type GetNicTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -34837,7 +36964,7 @@ type GetNicTagInput interface {
 }
 
 type GetNicTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -34894,7 +37021,7 @@ func (o GetNicTagOutput) ToGetNicTagOutputWithContext(ctx context.Context) GetNi
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNicTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -35025,7 +37152,7 @@ func (o GetNicsFilterArrayOutput) Index(i pulumi.IntInput) GetNicsFilterOutput {
 }
 
 type GetNicsNic struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId string `pulumi:"accountId"`
 	// The description of the NIC.
 	Description string `pulumi:"description"`
@@ -35069,7 +37196,7 @@ type GetNicsNicInput interface {
 }
 
 type GetNicsNicArgs struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The description of the NIC.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -35152,7 +37279,7 @@ func (o GetNicsNicOutput) ToGetNicsNicOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o GetNicsNicOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNic) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -35256,7 +37383,7 @@ type GetNicsNicLinkNic struct {
 	LinkNicId string `pulumi:"linkNicId"`
 	// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
 	State string `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId string `pulumi:"vmAccountId"`
 	// The ID of the VM.
 	VmId string `pulumi:"vmId"`
@@ -35282,7 +37409,7 @@ type GetNicsNicLinkNicArgs struct {
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
 	// The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
 	State pulumi.StringInput `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringInput `pulumi:"vmAccountId"`
 	// The ID of the VM.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -35359,7 +37486,7 @@ func (o GetNicsNicLinkNicOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNicLinkNic) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the VM.
+// The OUTSCALE account ID of the owner of the VM.
 func (o GetNicsNicLinkNicOutput) VmAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNicLinkNic) string { return v.VmAccountId }).(pulumi.StringOutput)
 }
@@ -35396,7 +37523,7 @@ type GetNicsNicLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId string `pulumi:"publicIpId"`
@@ -35420,7 +37547,7 @@ type GetNicsNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringInput `pulumi:"publicIpId"`
@@ -35492,7 +37619,7 @@ func (o GetNicsNicLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNicLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetNicsNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNicLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -35653,7 +37780,7 @@ type GetNicsNicPrivateIpLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId string `pulumi:"publicIpId"`
@@ -35677,7 +37804,7 @@ type GetNicsNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP associated with the NIC.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 	// The allocation ID of the public IP.
 	PublicIpId pulumi.StringInput `pulumi:"publicIpId"`
@@ -35749,7 +37876,7 @@ func (o GetNicsNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNicPrivateIpLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetNicsNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNicPrivateIpLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -35886,7 +38013,7 @@ func (o GetNicsNicSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetNicsNicS
 }
 
 type GetNicsNicTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -35904,7 +38031,7 @@ type GetNicsNicTagInput interface {
 }
 
 type GetNicsNicTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -35961,7 +38088,7 @@ func (o GetNicsNicTagOutput) ToGetNicsNicTagOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetNicsNicTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicsNicTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -37281,7 +39408,7 @@ func (o GetPublicIpFilterArrayOutput) Index(i pulumi.IntInput) GetPublicIpFilter
 }
 
 type GetPublicIpTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -37299,7 +39426,7 @@ type GetPublicIpTagInput interface {
 }
 
 type GetPublicIpTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -37356,7 +39483,7 @@ func (o GetPublicIpTagOutput) ToGetPublicIpTagOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetPublicIpTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -37489,7 +39616,7 @@ func (o GetPublicIpsFilterArrayOutput) Index(i pulumi.IntInput) GetPublicIpsFilt
 type GetPublicIpsPublicIp struct {
 	// (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
 	LinkPublicIpId string `pulumi:"linkPublicIpId"`
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	NicAccountId string `pulumi:"nicAccountId"`
 	// The ID of the NIC the public IP is associated with (if any).
 	NicId string `pulumi:"nicId"`
@@ -37519,7 +39646,7 @@ type GetPublicIpsPublicIpInput interface {
 type GetPublicIpsPublicIpArgs struct {
 	// (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
 	LinkPublicIpId pulumi.StringInput `pulumi:"linkPublicIpId"`
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	NicAccountId pulumi.StringInput `pulumi:"nicAccountId"`
 	// The ID of the NIC the public IP is associated with (if any).
 	NicId pulumi.StringInput `pulumi:"nicId"`
@@ -37591,7 +39718,7 @@ func (o GetPublicIpsPublicIpOutput) LinkPublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpsPublicIp) string { return v.LinkPublicIpId }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o GetPublicIpsPublicIpOutput) NicAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpsPublicIp) string { return v.NicAccountId }).(pulumi.StringOutput)
 }
@@ -37647,7 +39774,7 @@ func (o GetPublicIpsPublicIpArrayOutput) Index(i pulumi.IntInput) GetPublicIpsPu
 }
 
 type GetPublicIpsPublicIpTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -37665,7 +39792,7 @@ type GetPublicIpsPublicIpTagInput interface {
 }
 
 type GetPublicIpsPublicIpTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -37722,7 +39849,7 @@ func (o GetPublicIpsPublicIpTagOutput) ToGetPublicIpsPublicIpTagOutputWithContex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetPublicIpsPublicIpTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpsPublicIpTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -37959,7 +40086,7 @@ func (o GetQuotasFilterArrayOutput) Index(i pulumi.IntInput) GetQuotasFilterOutp
 }
 
 type GetQuotasQuota struct {
-	// The account ID of the owner of the quotas.
+	// The OUTSCALE account ID of the owner of the quotas.
 	AccountId string `pulumi:"accountId"`
 	// The description of the quota.
 	Description string `pulumi:"description"`
@@ -37989,7 +40116,7 @@ type GetQuotasQuotaInput interface {
 }
 
 type GetQuotasQuotaArgs struct {
-	// The account ID of the owner of the quotas.
+	// The OUTSCALE account ID of the owner of the quotas.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The description of the quota.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -38058,7 +40185,7 @@ func (o GetQuotasQuotaOutput) ToGetQuotasQuotaOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The account ID of the owner of the quotas.
+// The OUTSCALE account ID of the owner of the quotas.
 func (o GetQuotasQuotaOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotasQuota) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -38473,7 +40600,7 @@ type GetRouteTableRoute struct {
 	NicId string `pulumi:"nicId"`
 	// The state of a route in the route table (always `active`).
 	State string `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId string `pulumi:"vmAccountId"`
 	// The ID of a VM specified in a route in the table.
 	VmId string `pulumi:"vmId"`
@@ -38509,7 +40636,7 @@ type GetRouteTableRouteArgs struct {
 	NicId pulumi.StringInput `pulumi:"nicId"`
 	// The state of a route in the route table (always `active`).
 	State pulumi.StringInput `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringInput `pulumi:"vmAccountId"`
 	// The ID of a VM specified in a route in the table.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -38611,7 +40738,7 @@ func (o GetRouteTableRouteOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTableRoute) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the VM.
+// The OUTSCALE account ID of the owner of the VM.
 func (o GetRouteTableRouteOutput) VmAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTableRoute) string { return v.VmAccountId }).(pulumi.StringOutput)
 }
@@ -38739,7 +40866,7 @@ func (o GetRouteTableRoutePropagatingVirtualGatewayArrayOutput) Index(i pulumi.I
 }
 
 type GetRouteTableTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -38757,7 +40884,7 @@ type GetRouteTableTagInput interface {
 }
 
 type GetRouteTableTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -38814,7 +40941,7 @@ func (o GetRouteTableTagOutput) ToGetRouteTableTagOutputWithContext(ctx context.
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetRouteTableTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTableTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -39237,7 +41364,7 @@ type GetRouteTablesRouteTableRoute struct {
 	NicId string `pulumi:"nicId"`
 	// The state of a route in the route table (always `active`).
 	State string `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId string `pulumi:"vmAccountId"`
 	// The ID of a VM specified in a route in the table.
 	VmId string `pulumi:"vmId"`
@@ -39273,7 +41400,7 @@ type GetRouteTablesRouteTableRouteArgs struct {
 	NicId pulumi.StringInput `pulumi:"nicId"`
 	// The state of a route in the route table (always `active`).
 	State pulumi.StringInput `pulumi:"state"`
-	// The account ID of the owner of the VM.
+	// The OUTSCALE account ID of the owner of the VM.
 	VmAccountId pulumi.StringInput `pulumi:"vmAccountId"`
 	// The ID of a VM specified in a route in the table.
 	VmId pulumi.StringInput `pulumi:"vmId"`
@@ -39375,7 +41502,7 @@ func (o GetRouteTablesRouteTableRouteOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTableRoute) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the VM.
+// The OUTSCALE account ID of the owner of the VM.
 func (o GetRouteTablesRouteTableRouteOutput) VmAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTableRoute) string { return v.VmAccountId }).(pulumi.StringOutput)
 }
@@ -39503,7 +41630,7 @@ func (o GetRouteTablesRouteTableRoutePropagatingVirtualGatewayArrayOutput) Index
 }
 
 type GetRouteTablesRouteTableTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -39521,7 +41648,7 @@ type GetRouteTablesRouteTableTagInput interface {
 }
 
 type GetRouteTablesRouteTableTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -39578,7 +41705,7 @@ func (o GetRouteTablesRouteTableTagOutput) ToGetRouteTablesRouteTableTagOutputWi
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetRouteTablesRouteTableTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTableTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -39713,7 +41840,7 @@ type GetSecurityGroupInboundRule struct {
 	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol string `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      []string `pulumi:"ipRanges"`
 	PrefixListIds []string `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -39738,7 +41865,7 @@ type GetSecurityGroupInboundRuleArgs struct {
 	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      pulumi.StringArrayInput `pulumi:"ipRanges"`
 	PrefixListIds pulumi.StringArrayInput `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -39808,7 +41935,7 @@ func (o GetSecurityGroupInboundRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupInboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
-// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 func (o GetSecurityGroupInboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecurityGroupInboundRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -39850,7 +41977,7 @@ func (o GetSecurityGroupInboundRuleArrayOutput) Index(i pulumi.IntInput) GetSecu
 }
 
 type GetSecurityGroupInboundRuleSecurityGroupsMember struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -39870,7 +41997,7 @@ type GetSecurityGroupInboundRuleSecurityGroupsMemberInput interface {
 }
 
 type GetSecurityGroupInboundRuleSecurityGroupsMemberArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
@@ -39929,7 +42056,7 @@ func (o GetSecurityGroupInboundRuleSecurityGroupsMemberOutput) ToGetSecurityGrou
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o GetSecurityGroupInboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupInboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -39969,7 +42096,7 @@ type GetSecurityGroupOutboundRule struct {
 	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol string `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      []string `pulumi:"ipRanges"`
 	PrefixListIds []string `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -39994,7 +42121,7 @@ type GetSecurityGroupOutboundRuleArgs struct {
 	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      pulumi.StringArrayInput `pulumi:"ipRanges"`
 	PrefixListIds pulumi.StringArrayInput `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -40064,7 +42191,7 @@ func (o GetSecurityGroupOutboundRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupOutboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
-// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 func (o GetSecurityGroupOutboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecurityGroupOutboundRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -40106,7 +42233,7 @@ func (o GetSecurityGroupOutboundRuleArrayOutput) Index(i pulumi.IntInput) GetSec
 }
 
 type GetSecurityGroupOutboundRuleSecurityGroupsMember struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -40126,7 +42253,7 @@ type GetSecurityGroupOutboundRuleSecurityGroupsMemberInput interface {
 }
 
 type GetSecurityGroupOutboundRuleSecurityGroupsMemberArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
@@ -40185,7 +42312,7 @@ func (o GetSecurityGroupOutboundRuleSecurityGroupsMemberOutput) ToGetSecurityGro
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o GetSecurityGroupOutboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupOutboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -40221,7 +42348,7 @@ func (o GetSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutput) Index(i pul
 }
 
 type GetSecurityGroupTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -40239,7 +42366,7 @@ type GetSecurityGroupTagInput interface {
 }
 
 type GetSecurityGroupTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -40296,7 +42423,7 @@ func (o GetSecurityGroupTagOutput) ToGetSecurityGroupTagOutputWithContext(ctx co
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSecurityGroupTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -40427,7 +42554,7 @@ func (o GetSecurityGroupsFilterArrayOutput) Index(i pulumi.IntInput) GetSecurity
 }
 
 type GetSecurityGroupsSecurityGroup struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The description of the security group.
 	Description string `pulumi:"description"`
@@ -40457,7 +42584,7 @@ type GetSecurityGroupsSecurityGroupInput interface {
 }
 
 type GetSecurityGroupsSecurityGroupArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The description of the security group.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -40526,7 +42653,7 @@ func (o GetSecurityGroupsSecurityGroupOutput) ToGetSecurityGroupsSecurityGroupOu
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o GetSecurityGroupsSecurityGroupOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroup) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -40595,7 +42722,7 @@ type GetSecurityGroupsSecurityGroupInboundRule struct {
 	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol string `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      []string `pulumi:"ipRanges"`
 	PrefixListIds []string `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -40620,7 +42747,7 @@ type GetSecurityGroupsSecurityGroupInboundRuleArgs struct {
 	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      pulumi.StringArrayInput `pulumi:"ipRanges"`
 	PrefixListIds pulumi.StringArrayInput `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -40690,7 +42817,7 @@ func (o GetSecurityGroupsSecurityGroupInboundRuleOutput) IpProtocol() pulumi.Str
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroupInboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
-// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 func (o GetSecurityGroupsSecurityGroupInboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroupInboundRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -40732,7 +42859,7 @@ func (o GetSecurityGroupsSecurityGroupInboundRuleArrayOutput) Index(i pulumi.Int
 }
 
 type GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMember struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -40752,7 +42879,7 @@ type GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMemberInput interfac
 }
 
 type GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMemberArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
@@ -40811,7 +42938,7 @@ func (o GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMemberOutput) ToG
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroupInboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -40853,7 +42980,7 @@ type GetSecurityGroupsSecurityGroupOutboundRule struct {
 	FromPortRange int `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol string `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      []string `pulumi:"ipRanges"`
 	PrefixListIds []string `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -40878,7 +43005,7 @@ type GetSecurityGroupsSecurityGroupOutboundRuleArgs struct {
 	FromPortRange pulumi.IntInput `pulumi:"fromPortRange"`
 	// The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
-	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+	// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 	IpRanges      pulumi.StringArrayInput `pulumi:"ipRanges"`
 	PrefixListIds pulumi.StringArrayInput `pulumi:"prefixListIds"`
 	// Information about one or more source or destination security groups.
@@ -40948,7 +43075,7 @@ func (o GetSecurityGroupsSecurityGroupOutboundRuleOutput) IpProtocol() pulumi.St
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroupOutboundRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
-// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).
+// One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
 func (o GetSecurityGroupsSecurityGroupOutboundRuleOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroupOutboundRule) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -40990,7 +43117,7 @@ func (o GetSecurityGroupsSecurityGroupOutboundRuleArrayOutput) Index(i pulumi.In
 }
 
 type GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMember struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId string `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -41010,7 +43137,7 @@ type GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberInput interfa
 }
 
 type GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberArgs struct {
-	// The account ID that owns the source or destination security group.
+	// The OUTSCALE account ID that owns the source or destination security group.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
@@ -41069,7 +43196,7 @@ func (o GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberOutput) To
 	return o
 }
 
-// The account ID that owns the source or destination security group.
+// The OUTSCALE account ID that owns the source or destination security group.
 func (o GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMember) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -41109,7 +43236,7 @@ func (o GetSecurityGroupsSecurityGroupOutboundRuleSecurityGroupsMemberArrayOutpu
 }
 
 type GetSecurityGroupsSecurityGroupTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -41127,7 +43254,7 @@ type GetSecurityGroupsSecurityGroupTagInput interface {
 }
 
 type GetSecurityGroupsSecurityGroupTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -41184,7 +43311,7 @@ func (o GetSecurityGroupsSecurityGroupTagOutput) ToGetSecurityGroupsSecurityGrou
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSecurityGroupsSecurityGroupTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupsSecurityGroupTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -41421,7 +43548,7 @@ func (o GetServerCertificatesFilterArrayOutput) Index(i pulumi.IntInput) GetServ
 }
 
 type GetServerCertificatesServerCertificate struct {
-	// The date on which the server certificate expires.
+	// The date and time (UTC) on which the server certificate expires.
 	ExpirationDate string `pulumi:"expirationDate"`
 	// The ID of the server certificate.
 	Id string `pulumi:"id"`
@@ -41431,7 +43558,7 @@ type GetServerCertificatesServerCertificate struct {
 	Orn string `pulumi:"orn"`
 	// The path to the server certificate.
 	Path string `pulumi:"path"`
-	// The date on which the server certificate has been uploaded.
+	// The date and time (UTC) on which the server certificate has been uploaded.
 	UploadDate string `pulumi:"uploadDate"`
 }
 
@@ -41447,7 +43574,7 @@ type GetServerCertificatesServerCertificateInput interface {
 }
 
 type GetServerCertificatesServerCertificateArgs struct {
-	// The date on which the server certificate expires.
+	// The date and time (UTC) on which the server certificate expires.
 	ExpirationDate pulumi.StringInput `pulumi:"expirationDate"`
 	// The ID of the server certificate.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -41457,7 +43584,7 @@ type GetServerCertificatesServerCertificateArgs struct {
 	Orn pulumi.StringInput `pulumi:"orn"`
 	// The path to the server certificate.
 	Path pulumi.StringInput `pulumi:"path"`
-	// The date on which the server certificate has been uploaded.
+	// The date and time (UTC) on which the server certificate has been uploaded.
 	UploadDate pulumi.StringInput `pulumi:"uploadDate"`
 }
 
@@ -41512,7 +43639,7 @@ func (o GetServerCertificatesServerCertificateOutput) ToGetServerCertificatesSer
 	return o
 }
 
-// The date on which the server certificate expires.
+// The date and time (UTC) on which the server certificate expires.
 func (o GetServerCertificatesServerCertificateOutput) ExpirationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerCertificatesServerCertificate) string { return v.ExpirationDate }).(pulumi.StringOutput)
 }
@@ -41537,7 +43664,7 @@ func (o GetServerCertificatesServerCertificateOutput) Path() pulumi.StringOutput
 	return o.ApplyT(func(v GetServerCertificatesServerCertificate) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The date on which the server certificate has been uploaded.
+// The date and time (UTC) on which the server certificate has been uploaded.
 func (o GetServerCertificatesServerCertificateOutput) UploadDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerCertificatesServerCertificate) string { return v.UploadDate }).(pulumi.StringOutput)
 }
@@ -41778,7 +43905,7 @@ func (o GetSnapshotExportTaskOsuExportArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetSnapshotExportTaskTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -41796,7 +43923,7 @@ type GetSnapshotExportTaskTagInput interface {
 }
 
 type GetSnapshotExportTaskTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -41853,7 +43980,7 @@ func (o GetSnapshotExportTaskTagOutput) ToGetSnapshotExportTaskTagOutputWithCont
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSnapshotExportTaskTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotExportTaskTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -42254,7 +44381,7 @@ func (o GetSnapshotExportTasksSnapshotExportTaskOsuExportArrayOutput) Index(i pu
 }
 
 type GetSnapshotExportTasksSnapshotExportTaskTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -42272,7 +44399,7 @@ type GetSnapshotExportTasksSnapshotExportTaskTagInput interface {
 }
 
 type GetSnapshotExportTasksSnapshotExportTaskTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -42329,7 +44456,7 @@ func (o GetSnapshotExportTasksSnapshotExportTaskTagOutput) ToGetSnapshotExportTa
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSnapshotExportTasksSnapshotExportTaskTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotExportTasksSnapshotExportTaskTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -42460,7 +44587,7 @@ func (o GetSnapshotFilterArrayOutput) Index(i pulumi.IntInput) GetSnapshotFilter
 }
 
 type GetSnapshotPermissionsToCreateVolume struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds []string `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -42480,7 +44607,7 @@ type GetSnapshotPermissionsToCreateVolumeInput interface {
 }
 
 type GetSnapshotPermissionsToCreateVolumeArgs struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -42539,7 +44666,7 @@ func (o GetSnapshotPermissionsToCreateVolumeOutput) ToGetSnapshotPermissionsToCr
 	return o
 }
 
-// One or more account IDs that the permission is associated with.
+// One or more OUTSCALE account IDs that the permission is associated with.
 func (o GetSnapshotPermissionsToCreateVolumeOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSnapshotPermissionsToCreateVolume) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
@@ -42572,7 +44699,7 @@ func (o GetSnapshotPermissionsToCreateVolumeArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetSnapshotTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -42590,7 +44717,7 @@ type GetSnapshotTagInput interface {
 }
 
 type GetSnapshotTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -42647,7 +44774,7 @@ func (o GetSnapshotTagOutput) ToGetSnapshotTagOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSnapshotTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -42780,7 +44907,7 @@ func (o GetSnapshotsFilterArrayOutput) Index(i pulumi.IntInput) GetSnapshotsFilt
 type GetSnapshotsSnapshot struct {
 	// The account alias of the owner of the snapshot.
 	AccountAlias string `pulumi:"accountAlias"`
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId string `pulumi:"accountId"`
 	// The date and time (UTC) at which the snapshot was created.
 	CreationDate string `pulumi:"creationDate"`
@@ -42816,7 +44943,7 @@ type GetSnapshotsSnapshotInput interface {
 type GetSnapshotsSnapshotArgs struct {
 	// The account alias of the owner of the snapshot.
 	AccountAlias pulumi.StringInput `pulumi:"accountAlias"`
-	// The account ID of the owner of the snapshot.
+	// The OUTSCALE account ID of the owner of the snapshot.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The date and time (UTC) at which the snapshot was created.
 	CreationDate pulumi.StringInput `pulumi:"creationDate"`
@@ -42894,7 +45021,7 @@ func (o GetSnapshotsSnapshotOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.AccountAlias }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the snapshot.
+// The OUTSCALE account ID of the owner of the snapshot.
 func (o GetSnapshotsSnapshotOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -42967,7 +45094,7 @@ func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSn
 }
 
 type GetSnapshotsSnapshotPermissionsToCreateVolume struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds []string `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -42987,7 +45114,7 @@ type GetSnapshotsSnapshotPermissionsToCreateVolumeInput interface {
 }
 
 type GetSnapshotsSnapshotPermissionsToCreateVolumeArgs struct {
-	// One or more account IDs that the permission is associated with.
+	// One or more OUTSCALE account IDs that the permission is associated with.
 	AccountIds pulumi.StringArrayInput `pulumi:"accountIds"`
 	// A global permission for all accounts.<br />
 	// (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
@@ -43046,7 +45173,7 @@ func (o GetSnapshotsSnapshotPermissionsToCreateVolumeOutput) ToGetSnapshotsSnaps
 	return o
 }
 
-// One or more account IDs that the permission is associated with.
+// One or more OUTSCALE account IDs that the permission is associated with.
 func (o GetSnapshotsSnapshotPermissionsToCreateVolumeOutput) AccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshotPermissionsToCreateVolume) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
@@ -43079,7 +45206,7 @@ func (o GetSnapshotsSnapshotPermissionsToCreateVolumeArrayOutput) Index(i pulumi
 }
 
 type GetSnapshotsSnapshotTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -43097,7 +45224,7 @@ type GetSnapshotsSnapshotTagInput interface {
 }
 
 type GetSnapshotsSnapshotTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -43154,7 +45281,7 @@ func (o GetSnapshotsSnapshotTagOutput) ToGetSnapshotsSnapshotTagOutputWithContex
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSnapshotsSnapshotTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshotTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -43285,7 +45412,7 @@ func (o GetSubnetFilterArrayOutput) Index(i pulumi.IntInput) GetSubnetFilterOutp
 }
 
 type GetSubnetTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -43303,7 +45430,7 @@ type GetSubnetTagInput interface {
 }
 
 type GetSubnetTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -43360,7 +45487,7 @@ func (o GetSubnetTagOutput) ToGetSubnetTagOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSubnetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -43651,7 +45778,7 @@ func (o GetSubnetsSubnetArrayOutput) Index(i pulumi.IntInput) GetSubnetsSubnetOu
 }
 
 type GetSubnetsSubnetTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -43669,7 +45796,7 @@ type GetSubnetsSubnetTagInput interface {
 }
 
 type GetSubnetsSubnetTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -43726,7 +45853,7 @@ func (o GetSubnetsSubnetTagOutput) ToGetSubnetsSubnetTagOutputWithContext(ctx co
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetSubnetsSubnetTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnetTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -45364,7 +47491,7 @@ func (o GetVirtualGatewayNetToVirtualGatewayLinkArrayOutput) Index(i pulumi.IntI
 }
 
 type GetVirtualGatewayTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -45382,7 +47509,7 @@ type GetVirtualGatewayTagInput interface {
 }
 
 type GetVirtualGatewayTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -45439,7 +47566,7 @@ func (o GetVirtualGatewayTagOutput) ToGetVirtualGatewayTagOutputWithContext(ctx 
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVirtualGatewayTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualGatewayTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -45811,7 +47938,7 @@ func (o GetVirtualGatewaysVirtualGatewayNetToVirtualGatewayLinkArrayOutput) Inde
 }
 
 type GetVirtualGatewaysVirtualGatewayTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -45829,7 +47956,7 @@ type GetVirtualGatewaysVirtualGatewayTagInput interface {
 }
 
 type GetVirtualGatewaysVirtualGatewayTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -45886,7 +48013,7 @@ func (o GetVirtualGatewaysVirtualGatewayTagOutput) ToGetVirtualGatewaysVirtualGa
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVirtualGatewaysVirtualGatewayTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualGatewaysVirtualGatewayTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -46253,7 +48380,7 @@ func (o GetVmBlockDeviceMappingsCreatedBsusArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetVmBlockDeviceMappingsCreatedBsusTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -46271,7 +48398,7 @@ type GetVmBlockDeviceMappingsCreatedBsusTagInput interface {
 }
 
 type GetVmBlockDeviceMappingsCreatedBsusTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -46328,7 +48455,7 @@ func (o GetVmBlockDeviceMappingsCreatedBsusTagOutput) ToGetVmBlockDeviceMappings
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVmBlockDeviceMappingsCreatedBsusTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmBlockDeviceMappingsCreatedBsusTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -46459,7 +48586,7 @@ func (o GetVmFilterArrayOutput) Index(i pulumi.IntInput) GetVmFilterOutput {
 }
 
 type GetVmNic struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId string `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
@@ -46507,7 +48634,7 @@ type GetVmNicInput interface {
 }
 
 type GetVmNicArgs struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
@@ -46594,7 +48721,7 @@ func (o GetVmNicOutput) ToGetVmNicOutputWithContext(ctx context.Context) GetVmNi
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o GetVmNicOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmNic) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -46831,7 +48958,7 @@ type GetVmNicLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -46851,7 +48978,7 @@ type GetVmNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -46916,7 +49043,7 @@ func (o GetVmNicLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmNicLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmNicLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -47070,7 +49197,7 @@ type GetVmNicPrivateIpLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -47090,7 +49217,7 @@ type GetVmNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -47155,7 +49282,7 @@ func (o GetVmNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmNicPrivateIpLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmNicPrivateIpLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -47287,7 +49414,7 @@ func (o GetVmNicSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetVmNicSecur
 }
 
 type GetVmPrimaryNic struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId string `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
@@ -47334,7 +49461,7 @@ type GetVmPrimaryNicInput interface {
 }
 
 type GetVmPrimaryNicArgs struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
@@ -47420,7 +49547,7 @@ func (o GetVmPrimaryNicOutput) ToGetVmPrimaryNicOutputWithContext(ctx context.Co
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o GetVmPrimaryNicOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmPrimaryNic) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -47653,7 +49780,7 @@ type GetVmPrimaryNicLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -47673,7 +49800,7 @@ type GetVmPrimaryNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -47738,7 +49865,7 @@ func (o GetVmPrimaryNicLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmPrimaryNicLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmPrimaryNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmPrimaryNicLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -47892,7 +50019,7 @@ type GetVmPrimaryNicPrivateIpLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -47912,7 +50039,7 @@ type GetVmPrimaryNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -47977,7 +50104,7 @@ func (o GetVmPrimaryNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringOutp
 	return o.ApplyT(func(v GetVmPrimaryNicPrivateIpLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmPrimaryNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmPrimaryNicPrivateIpLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -48796,7 +50923,7 @@ func (o GetVmStatesVmStateMaintenanceEventArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetVmTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -48814,7 +50941,7 @@ type GetVmTagInput interface {
 }
 
 type GetVmTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -48871,7 +50998,7 @@ func (o GetVmTagOutput) ToGetVmTagOutputWithContext(ctx context.Context) GetVmTa
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVmTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -50051,7 +52178,7 @@ func (o GetVmsVmBlockDeviceMappingsCreatedBsusArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetVmsVmBlockDeviceMappingsCreatedBsusTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -50069,7 +52196,7 @@ type GetVmsVmBlockDeviceMappingsCreatedBsusTagInput interface {
 }
 
 type GetVmsVmBlockDeviceMappingsCreatedBsusTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -50126,7 +52253,7 @@ func (o GetVmsVmBlockDeviceMappingsCreatedBsusTagOutput) ToGetVmsVmBlockDeviceMa
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVmsVmBlockDeviceMappingsCreatedBsusTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmBlockDeviceMappingsCreatedBsusTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -50157,7 +52284,7 @@ func (o GetVmsVmBlockDeviceMappingsCreatedBsusTagArrayOutput) Index(i pulumi.Int
 }
 
 type GetVmsVmNic struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId string `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
@@ -50205,7 +52332,7 @@ type GetVmsVmNicInput interface {
 }
 
 type GetVmsVmNicArgs struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
@@ -50292,7 +52419,7 @@ func (o GetVmsVmNicOutput) ToGetVmsVmNicOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o GetVmsVmNicOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmNic) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -50529,7 +52656,7 @@ type GetVmsVmNicLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -50549,7 +52676,7 @@ type GetVmsVmNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -50614,7 +52741,7 @@ func (o GetVmsVmNicLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmNicLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmsVmNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmNicLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -50768,7 +52895,7 @@ type GetVmsVmNicPrivateIpLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -50788,7 +52915,7 @@ type GetVmsVmNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -50853,7 +52980,7 @@ func (o GetVmsVmNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmNicPrivateIpLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmsVmNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmNicPrivateIpLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -50985,7 +53112,7 @@ func (o GetVmsVmNicSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetVmsVmNi
 }
 
 type GetVmsVmPrimaryNic struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId string `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
@@ -51032,7 +53159,7 @@ type GetVmsVmPrimaryNicInput interface {
 }
 
 type GetVmsVmPrimaryNicArgs struct {
-	// The account ID of the owner of the NIC.
+	// The OUTSCALE account ID of the owner of the NIC.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
@@ -51118,7 +53245,7 @@ func (o GetVmsVmPrimaryNicOutput) ToGetVmsVmPrimaryNicOutputWithContext(ctx cont
 	return o
 }
 
-// The account ID of the owner of the NIC.
+// The OUTSCALE account ID of the owner of the NIC.
 func (o GetVmsVmPrimaryNicOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmPrimaryNic) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -51351,7 +53478,7 @@ type GetVmsVmPrimaryNicLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -51371,7 +53498,7 @@ type GetVmsVmPrimaryNicLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -51436,7 +53563,7 @@ func (o GetVmsVmPrimaryNicLinkPublicIpOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmPrimaryNicLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmsVmPrimaryNicLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmPrimaryNicLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -51590,7 +53717,7 @@ type GetVmsVmPrimaryNicPrivateIpLinkPublicIp struct {
 	PublicDnsName string `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp string `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId string `pulumi:"publicIpAccountId"`
 }
 
@@ -51610,7 +53737,7 @@ type GetVmsVmPrimaryNicPrivateIpLinkPublicIpArgs struct {
 	PublicDnsName pulumi.StringInput `pulumi:"publicDnsName"`
 	// The public IP of the VM.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The account ID of the owner of the public IP.
+	// The OUTSCALE account ID of the owner of the public IP.
 	PublicIpAccountId pulumi.StringInput `pulumi:"publicIpAccountId"`
 }
 
@@ -51675,7 +53802,7 @@ func (o GetVmsVmPrimaryNicPrivateIpLinkPublicIpOutput) PublicIp() pulumi.StringO
 	return o.ApplyT(func(v GetVmsVmPrimaryNicPrivateIpLinkPublicIp) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The account ID of the owner of the public IP.
+// The OUTSCALE account ID of the owner of the public IP.
 func (o GetVmsVmPrimaryNicPrivateIpLinkPublicIpOutput) PublicIpAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmPrimaryNicPrivateIpLinkPublicIp) string { return v.PublicIpAccountId }).(pulumi.StringOutput)
 }
@@ -51913,7 +54040,7 @@ func (o GetVmsVmSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetVmsVmSecur
 }
 
 type GetVmsVmTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -51931,7 +54058,7 @@ type GetVmsVmTagInput interface {
 }
 
 type GetVmsVmTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -51988,7 +54115,7 @@ func (o GetVmsVmTagOutput) ToGetVmsVmTagOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVmsVmTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -52252,7 +54379,7 @@ func (o GetVolumeLinkedVolumeArrayOutput) Index(i pulumi.IntInput) GetVolumeLink
 }
 
 type GetVolumeTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -52270,7 +54397,7 @@ type GetVolumeTagInput interface {
 }
 
 type GetVolumeTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -52327,7 +54454,7 @@ func (o GetVolumeTagOutput) ToGetVolumeTagOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVolumeTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -52769,7 +54896,7 @@ func (o GetVolumesVolumeLinkedVolumeArrayOutput) Index(i pulumi.IntInput) GetVol
 }
 
 type GetVolumesVolumeTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -52787,7 +54914,7 @@ type GetVolumesVolumeTagInput interface {
 }
 
 type GetVolumesVolumeTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -52844,7 +54971,7 @@ func (o GetVolumesVolumeTagOutput) ToGetVolumesVolumeTagOutputWithContext(ctx co
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVolumesVolumeTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -53090,7 +55217,7 @@ func (o GetVpnConnectionRouteTypeArrayOutput) Index(i pulumi.IntInput) GetVpnCon
 }
 
 type GetVpnConnectionTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -53108,7 +55235,7 @@ type GetVpnConnectionTagInput interface {
 }
 
 type GetVpnConnectionTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -53165,7 +55292,7 @@ func (o GetVpnConnectionTagOutput) ToGetVpnConnectionTagOutputWithContext(ctx co
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVpnConnectionTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -53724,7 +55851,7 @@ func (o GetVpnConnectionsVpnConnectionRouteArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetVpnConnectionsVpnConnectionTag struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value string `pulumi:"value"`
@@ -53742,7 +55869,7 @@ type GetVpnConnectionsVpnConnectionTagInput interface {
 }
 
 type GetVpnConnectionsVpnConnectionTagArgs struct {
-	// The key of the tag, with a minimum of 1 character.
+	// The key of the tag, between 1 and 255 characters.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -53799,7 +55926,7 @@ func (o GetVpnConnectionsVpnConnectionTagOutput) ToGetVpnConnectionsVpnConnectio
 	return o
 }
 
-// The key of the tag, with a minimum of 1 character.
+// The key of the tag, between 1 and 255 characters.
 func (o GetVpnConnectionsVpnConnectionTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnConnectionsVpnConnectionTag) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -53973,8 +56100,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaTimeoutsPtrInput)(nil)).Elem(), CaTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientGatewayTagInput)(nil)).Elem(), ClientGatewayTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientGatewayTagArrayInput)(nil)).Elem(), ClientGatewayTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientGatewayTimeoutsInput)(nil)).Elem(), ClientGatewayTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientGatewayTimeoutsPtrInput)(nil)).Elem(), ClientGatewayTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionTagInput)(nil)).Elem(), DhcpOptionTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionTagArrayInput)(nil)).Elem(), DhcpOptionTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionTimeoutsInput)(nil)).Elem(), DhcpOptionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionTimeoutsPtrInput)(nil)).Elem(), DhcpOptionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleGpuLinkTimeoutsInput)(nil)).Elem(), FlexibleGpuLinkTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleGpuLinkTimeoutsPtrInput)(nil)).Elem(), FlexibleGpuLinkTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleGpuTimeoutsInput)(nil)).Elem(), FlexibleGpuTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleGpuTimeoutsPtrInput)(nil)).Elem(), FlexibleGpuTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageBlockDeviceMappingInput)(nil)).Elem(), ImageBlockDeviceMappingArgs{})
@@ -54065,6 +56198,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NatServicePublicIpArrayInput)(nil)).Elem(), NatServicePublicIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatServiceTagInput)(nil)).Elem(), NatServiceTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NatServiceTagArrayInput)(nil)).Elem(), NatServiceTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatServiceTimeoutsInput)(nil)).Elem(), NatServiceTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatServiceTimeoutsPtrInput)(nil)).Elem(), NatServiceTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetAccessPointTagInput)(nil)).Elem(), NetAccessPointTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetAccessPointTagArrayInput)(nil)).Elem(), NetAccessPointTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetAccessPointTimeoutsInput)(nil)).Elem(), NetAccessPointTimeoutsArgs{})
@@ -54135,8 +56270,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTagInput)(nil)).Elem(), PublicIpLinkTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTagArrayInput)(nil)).Elem(), PublicIpLinkTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTimeoutsInput)(nil)).Elem(), PublicIpLinkTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTimeoutsPtrInput)(nil)).Elem(), PublicIpLinkTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpTagInput)(nil)).Elem(), PublicIpTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpTagArrayInput)(nil)).Elem(), PublicIpTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpTimeoutsInput)(nil)).Elem(), PublicIpTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpTimeoutsPtrInput)(nil)).Elem(), PublicIpTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteTableLinkRouteTableInput)(nil)).Elem(), RouteTableLinkRouteTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteTableLinkRouteTableArrayInput)(nil)).Elem(), RouteTableLinkRouteTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteTableLinkTimeoutsInput)(nil)).Elem(), RouteTableLinkTimeoutsArgs{})
@@ -54169,10 +56308,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupTagArrayInput)(nil)).Elem(), SecurityGroupTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupTimeoutsInput)(nil)).Elem(), SecurityGroupTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupTimeoutsPtrInput)(nil)).Elem(), SecurityGroupTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCertificateTimeoutsInput)(nil)).Elem(), ServerCertificateTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerCertificateTimeoutsPtrInput)(nil)).Elem(), ServerCertificateTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeAdditionsInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemovalInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeRemovalArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemovalArrayInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeRemovalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemovalsInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrInput)(nil)).Elem(), SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesTimeoutsInput)(nil)).Elem(), SnapshotAttributesTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotAttributesTimeoutsPtrInput)(nil)).Elem(), SnapshotAttributesTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotExportTaskOsuExportInput)(nil)).Elem(), SnapshotExportTaskOsuExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotExportTaskOsuExportArrayInput)(nil)).Elem(), SnapshotExportTaskOsuExportArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotExportTaskOsuExportOsuApiKeyInput)(nil)).Elem(), SnapshotExportTaskOsuExportOsuApiKeyArgs{})
@@ -54183,6 +56326,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPermissionsToCreateVolumeArrayInput)(nil)).Elem(), SnapshotPermissionsToCreateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotTagInput)(nil)).Elem(), SnapshotTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotTagArrayInput)(nil)).Elem(), SnapshotTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotTimeoutsInput)(nil)).Elem(), SnapshotTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotTimeoutsPtrInput)(nil)).Elem(), SnapshotTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetTagInput)(nil)).Elem(), SubnetTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetTagArrayInput)(nil)).Elem(), SubnetTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetTimeoutsInput)(nil)).Elem(), SubnetTimeoutsArgs{})
@@ -54255,8 +56400,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTimeoutsPtrInput)(nil)).Elem(), VolumeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionRouteTypeInput)(nil)).Elem(), VpnConnectionRouteTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionRouteTypeArrayInput)(nil)).Elem(), VpnConnectionRouteTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionRouteTimeoutsInput)(nil)).Elem(), VpnConnectionRouteTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionRouteTimeoutsPtrInput)(nil)).Elem(), VpnConnectionRouteTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTagInput)(nil)).Elem(), VpnConnectionTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTagArrayInput)(nil)).Elem(), VpnConnectionTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTimeoutsInput)(nil)).Elem(), VpnConnectionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTimeoutsPtrInput)(nil)).Elem(), VpnConnectionTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionVgwTelemetryInput)(nil)).Elem(), VpnConnectionVgwTelemetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionVgwTelemetryArrayInput)(nil)).Elem(), VpnConnectionVgwTelemetryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessKeyFilterInput)(nil)).Elem(), GetAccessKeyFilterArgs{})
@@ -54819,8 +56968,14 @@ func init() {
 	pulumi.RegisterOutputType(CaTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ClientGatewayTagOutput{})
 	pulumi.RegisterOutputType(ClientGatewayTagArrayOutput{})
+	pulumi.RegisterOutputType(ClientGatewayTimeoutsOutput{})
+	pulumi.RegisterOutputType(ClientGatewayTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(DhcpOptionTagOutput{})
 	pulumi.RegisterOutputType(DhcpOptionTagArrayOutput{})
+	pulumi.RegisterOutputType(DhcpOptionTimeoutsOutput{})
+	pulumi.RegisterOutputType(DhcpOptionTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleGpuLinkTimeoutsOutput{})
+	pulumi.RegisterOutputType(FlexibleGpuLinkTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleGpuTimeoutsOutput{})
 	pulumi.RegisterOutputType(FlexibleGpuTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ImageBlockDeviceMappingOutput{})
@@ -54911,6 +57066,8 @@ func init() {
 	pulumi.RegisterOutputType(NatServicePublicIpArrayOutput{})
 	pulumi.RegisterOutputType(NatServiceTagOutput{})
 	pulumi.RegisterOutputType(NatServiceTagArrayOutput{})
+	pulumi.RegisterOutputType(NatServiceTimeoutsOutput{})
+	pulumi.RegisterOutputType(NatServiceTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(NetAccessPointTagOutput{})
 	pulumi.RegisterOutputType(NetAccessPointTagArrayOutput{})
 	pulumi.RegisterOutputType(NetAccessPointTimeoutsOutput{})
@@ -54981,8 +57138,12 @@ func init() {
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
 	pulumi.RegisterOutputType(PublicIpLinkTagOutput{})
 	pulumi.RegisterOutputType(PublicIpLinkTagArrayOutput{})
+	pulumi.RegisterOutputType(PublicIpLinkTimeoutsOutput{})
+	pulumi.RegisterOutputType(PublicIpLinkTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PublicIpTagOutput{})
 	pulumi.RegisterOutputType(PublicIpTagArrayOutput{})
+	pulumi.RegisterOutputType(PublicIpTimeoutsOutput{})
+	pulumi.RegisterOutputType(PublicIpTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(RouteTableLinkRouteTableOutput{})
 	pulumi.RegisterOutputType(RouteTableLinkRouteTableArrayOutput{})
 	pulumi.RegisterOutputType(RouteTableLinkTimeoutsOutput{})
@@ -55015,10 +57176,14 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGroupTagArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGroupTimeoutsOutput{})
 	pulumi.RegisterOutputType(SecurityGroupTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(ServerCertificateTimeoutsOutput{})
+	pulumi.RegisterOutputType(ServerCertificateTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeAdditionsOutput{})
 	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeAdditionsPtrOutput{})
-	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeRemovalOutput{})
-	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeRemovalArrayOutput{})
+	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeRemovalsOutput{})
+	pulumi.RegisterOutputType(SnapshotAttributesPermissionsToCreateVolumeRemovalsPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotAttributesTimeoutsOutput{})
+	pulumi.RegisterOutputType(SnapshotAttributesTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotExportTaskOsuExportOutput{})
 	pulumi.RegisterOutputType(SnapshotExportTaskOsuExportArrayOutput{})
 	pulumi.RegisterOutputType(SnapshotExportTaskOsuExportOsuApiKeyOutput{})
@@ -55029,6 +57194,8 @@ func init() {
 	pulumi.RegisterOutputType(SnapshotPermissionsToCreateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(SnapshotTagOutput{})
 	pulumi.RegisterOutputType(SnapshotTagArrayOutput{})
+	pulumi.RegisterOutputType(SnapshotTimeoutsOutput{})
+	pulumi.RegisterOutputType(SnapshotTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SubnetTagOutput{})
 	pulumi.RegisterOutputType(SubnetTagArrayOutput{})
 	pulumi.RegisterOutputType(SubnetTimeoutsOutput{})
@@ -55101,8 +57268,12 @@ func init() {
 	pulumi.RegisterOutputType(VolumeTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VpnConnectionRouteTypeOutput{})
 	pulumi.RegisterOutputType(VpnConnectionRouteTypeArrayOutput{})
+	pulumi.RegisterOutputType(VpnConnectionRouteTimeoutsOutput{})
+	pulumi.RegisterOutputType(VpnConnectionRouteTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VpnConnectionTagOutput{})
 	pulumi.RegisterOutputType(VpnConnectionTagArrayOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTimeoutsOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VpnConnectionVgwTelemetryOutput{})
 	pulumi.RegisterOutputType(VpnConnectionVgwTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessKeyFilterOutput{})
