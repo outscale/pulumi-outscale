@@ -25,7 +25,7 @@ languages:
     - python
 # Disable Java publishing and pushing the provider binary to the CDN as these only work internally within Pulumi.
 publish:
-    sdk: "all,!java"
+    sdk: "none"
     cdn: false
 # Enables automatic generation of basic docs pages for the registry.
 # registryDocs: true
@@ -53,3 +53,5 @@ license:
     ignore:
         # License are in a LICENSES folder
         - github.com/outscale/goutils/sdk/ptr
+        - github.com/outscale/goutils/sdk/batch
+        - github.com/outscale/goutils/sdk/log
