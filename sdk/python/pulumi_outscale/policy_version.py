@@ -244,7 +244,7 @@ class PolicyVersion(pulumi.CustomResource):
 
         policy2_version_02 = outscale.PolicyVersion("Policy2-version-02",
             policy_orn=policy_2["orn"],
-            document=std.index.file(input="policy.json")["result"],
+            document=std.file(input="policy.json")["result"],
             set_as_default=True)
         ```
 
@@ -277,7 +277,7 @@ class PolicyVersion(pulumi.CustomResource):
 
         policy2_version_02 = outscale.PolicyVersion("Policy2-version-02",
             policy_orn=policy_2["orn"],
-            document=std.index.file(input="policy.json")["result"],
+            document=std.file(input="policy.json")["result"],
             set_as_default=True)
         ```
 

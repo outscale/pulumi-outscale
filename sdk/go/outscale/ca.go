@@ -56,7 +56,9 @@ import (
 // A CA can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/ca:Ca ImportedCa ca-12345678
+//
 // ```
 type Ca struct {
 	pulumi.CustomResourceState

@@ -40,8 +40,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getQuota(args?: GetQuotaArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaResult> {
-    args = args || {};
+export function getQuota(args: GetQuotaArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("outscale:index/getQuota:getQuota", {
         "filters": args.filters,
@@ -55,7 +54,7 @@ export interface GetQuotaArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: inputs.GetQuotaFilter[];
+    filters: inputs.GetQuotaFilter[];
 }
 
 /**
@@ -70,7 +69,7 @@ export interface GetQuotaResult {
      * The description of the quota.
      */
     readonly description: string;
-    readonly filters?: outputs.GetQuotaFilter[];
+    readonly filters: outputs.GetQuotaFilter[];
     readonly id: string;
     /**
      * The maximum value of the quota for the OUTSCALE user account (if there is no limit, `0`).
@@ -132,8 +131,7 @@ export interface GetQuotaResult {
  * });
  * ```
  */
-export function getQuotaOutput(args?: GetQuotaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotaResult> {
-    args = args || {};
+export function getQuotaOutput(args: GetQuotaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("outscale:index/getQuota:getQuota", {
         "filters": args.filters,
@@ -147,5 +145,5 @@ export interface GetQuotaOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetQuotaFilterArgs>[]>;
+    filters: pulumi.Input<pulumi.Input<inputs.GetQuotaFilterArgs>[]>;
 }

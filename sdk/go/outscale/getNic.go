@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupNic(ctx, &outscale.LookupNicArgs{
+//			_, err := outscale.GetNic(ctx, &outscale.LookupNicArgs{
 //				Filters: []outscale.GetNicFilter{
 //					{
 //						Name: "nic_ids",

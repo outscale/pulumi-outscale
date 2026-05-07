@@ -53,7 +53,9 @@ import (
 // An OKS project can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/oksProject:OksProject project id
+//
 // ```
 type OksProject struct {
 	pulumi.CustomResourceState

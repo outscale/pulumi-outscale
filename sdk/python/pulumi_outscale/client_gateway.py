@@ -249,7 +249,9 @@ class ClientGateway(pulumi.CustomResource):
         A client gateway can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/clientGateway:ClientGateway ImportedClientGateway cgw-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -294,7 +296,9 @@ class ClientGateway(pulumi.CustomResource):
         A client gateway can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/clientGateway:ClientGateway ImportedClientGateway cgw-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

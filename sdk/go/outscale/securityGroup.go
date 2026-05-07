@@ -109,7 +109,9 @@ import (
 // A security group can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/securityGroup:SecurityGroup ImportedSecurityGroup sg-87654321
+//
 // ```
 type SecurityGroup struct {
 	pulumi.CustomResourceState

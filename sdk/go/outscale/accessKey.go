@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an access key.
+//
+// !> When creating an access key, the secret key is stored in the Terraform state. For security reasons, it is strongly recommended to create access keys using the API rather than the Terraform resource. For more information on how to create access keys using the OUTSCALE API, see the [API documentation](https://docs.outscale.com/api#createaccesskey).
+//
+// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
+// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+//
 // ## Example Usage
 //
 // ### Creating an access key for yourself
@@ -75,7 +82,9 @@ import (
 // An access key can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/accessKey:AccessKey ImportedAccessKey ABCDEFGHIJ0123456789
+//
 // ```
 type AccessKey struct {
 	pulumi.CustomResourceState

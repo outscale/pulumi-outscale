@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupNetAccessPoint(ctx, &outscale.LookupNetAccessPointArgs{
+//			_, err := outscale.GetNetAccessPoint(ctx, &outscale.LookupNetAccessPointArgs{
 //				Filters: []outscale.GetNetAccessPointFilter{
 //					{
 //						Name: "net_access_point_ids",
@@ -65,7 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupNetAccessPoint(ctx, &outscale.LookupNetAccessPointArgs{
+//			_, err := outscale.GetNetAccessPoint(ctx, &outscale.LookupNetAccessPointArgs{
 //				Filters: []outscale.GetNetAccessPointFilter{
 //					{
 //						Name: "net_ids",

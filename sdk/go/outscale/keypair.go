@@ -91,7 +91,9 @@ import (
 // A keypair can be imported using its name. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id
+//
 // ```
 type Keypair struct {
 	pulumi.CustomResourceState

@@ -469,8 +469,11 @@ class SecurityGroupRule(pulumi.CustomResource):
         For example:
 
         ```sh
+
         $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
+
         ```
+        > **Note:** You can specify only one IP range at a time. To import a rule with several IP ranges, you need to have as many imports as there are IP ranges.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -554,8 +557,11 @@ class SecurityGroupRule(pulumi.CustomResource):
         For example:
 
         ```sh
+
         $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
+
         ```
+        > **Note:** You can specify only one IP range at a time. To import a rule with several IP ranges, you need to have as many imports as there are IP ranges.
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.

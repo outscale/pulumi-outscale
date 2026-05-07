@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupPolicy(ctx, &outscale.LookupPolicyArgs{
+//			_, err := outscale.GetPolicy(ctx, &outscale.LookupPolicyArgs{
 //				PolicyOrn: "orn:ows:idauth::012345678910:policy/example/example-user-policy",
 //			}, nil)
 //			if err != nil {

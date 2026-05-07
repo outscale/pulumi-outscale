@@ -258,7 +258,9 @@ namespace Pulumi.Outscale
     /// A load balancer can be imported using its name. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/loadBalancer:LoadBalancer ImportedLbu Name-of-the-Lbu
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/loadBalancer:LoadBalancer")]

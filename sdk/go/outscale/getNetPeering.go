@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupNetPeering(ctx, &outscale.LookupNetPeeringArgs{
+//			_, err := outscale.GetNetPeering(ctx, &outscale.LookupNetPeeringArgs{
 //				Filters: []outscale.GetNetPeeringFilter{
 //					{
 //						Name: "net_peering_ids",

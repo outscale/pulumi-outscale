@@ -270,7 +270,9 @@ class FlexibleGpu(pulumi.CustomResource):
         A flexible GPU can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -312,7 +314,9 @@ class FlexibleGpu(pulumi.CustomResource):
         A flexible GPU can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

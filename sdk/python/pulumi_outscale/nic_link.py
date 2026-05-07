@@ -243,7 +243,9 @@ class NicLink(pulumi.CustomResource):
         A NIC link can be imported using the NIC ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -302,7 +304,9 @@ class NicLink(pulumi.CustomResource):
         A NIC link can be imported using the NIC ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

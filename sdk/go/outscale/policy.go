@@ -58,7 +58,9 @@ import (
 // A policy can be imported using its ORN. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/policy:Policy policy1 orn
+//
 // ```
 type Policy struct {
 	pulumi.CustomResourceState

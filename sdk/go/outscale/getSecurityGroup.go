@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupSecurityGroup(ctx, &outscale.LookupSecurityGroupArgs{
+//			_, err := outscale.GetSecurityGroup(ctx, &outscale.LookupSecurityGroupArgs{
 //				Filters: []outscale.GetSecurityGroupFilter{
 //					{
 //						Name: "security_group_ids",

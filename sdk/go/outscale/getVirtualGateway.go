@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupVirtualGateway(ctx, &outscale.LookupVirtualGatewayArgs{
+//			_, err := outscale.GetVirtualGateway(ctx, &outscale.LookupVirtualGatewayArgs{
 //				Filters: []outscale.GetVirtualGatewayFilter{
 //					{
 //						Name: "virtual_gateway_ids",

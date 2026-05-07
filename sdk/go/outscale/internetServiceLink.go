@@ -81,7 +81,9 @@ import (
 // An internet service link can be imported using the internet service ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/internetServiceLink:InternetServiceLink ImportedInternetServiceLink igw-87654321
+//
 // ```
 type InternetServiceLink struct {
 	pulumi.CustomResourceState

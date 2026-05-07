@@ -238,7 +238,9 @@ class RouteTable(pulumi.CustomResource):
         A route table can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/routeTable:RouteTable ImportedRouteTable rtb-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -283,7 +285,9 @@ class RouteTable(pulumi.CustomResource):
         A route table can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/routeTable:RouteTable ImportedRouteTable rtb-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

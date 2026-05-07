@@ -12,19 +12,509 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a virtual machine (VM).
+//
+// > **Important** Consider using the `primaryNic` argument if you plan to use the `NicLink`resource.
+//
+// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\
+// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+//
+// ## Example Usage
+//
+// ### Create a VM in the public Cloud
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			securityGroup01, err := outscale.NewSecurityGroup(ctx, "security_group01", &outscale.SecurityGroupArgs{
+//				Description:       pulumi.String("vm security group"),
+//				SecurityGroupName: pulumi.String("vm_security_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, map[string]interface{}{
+//				"input": "    <CONFIGURATION>\n",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav5.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroup01.SecurityGroupId,
+//				},
+//				PlacementSubregionName: pulumi.String("eu-west-2a"),
+//				PlacementTenancy:       pulumi.String("default"),
+//				Tags: outscale.VmTagArray{
+//					&outscale.VmTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-public-vm"),
+//					},
+//				},
+//				UserData: invokeBase64encode.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a VM with block device mappings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			volume01, err := outscale.NewVolume(ctx, "volume01", &outscale.VolumeArgs{
+//				SubregionName: pulumi.String("eu-west-2a"),
+//				Size:          pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			snapshot01, err := outscale.NewSnapshot(ctx, "snapshot01", &outscale.SnapshotArgs{
+//				VolumeId: volume01.VolumeId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			securityGroup01, err := outscale.NewSecurityGroup(ctx, "security_group01", &outscale.SecurityGroupArgs{
+//				Description:       pulumi.String("vm security group"),
+//				SecurityGroupName: pulumi.String("vm_security_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav5.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroup01.SecurityGroupId,
+//				},
+//				BlockDeviceMappings: outscale.VmBlockDeviceMappingArray{
+//					&outscale.VmBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/sdb"),
+//						Bsu: &outscale.VmBlockDeviceMappingBsuArgs{
+//							VolumeSize: pulumi.Int(15),
+//							VolumeType: pulumi.String("gp2"),
+//							SnapshotId: snapshot01.SnapshotId,
+//						},
+//					},
+//					&outscale.VmBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/sdc"),
+//						Bsu: &outscale.VmBlockDeviceMappingBsuArgs{
+//							VolumeSize:         pulumi.Int(22),
+//							VolumeType:         pulumi.String("io1"),
+//							Iops:               pulumi.Int(150),
+//							DeleteOnVmDeletion: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a VM in a Net with a network
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
+//				IpRange: pulumi.String("10.0.0.0/16"),
+//				Tags: outscale.NetTagArray{
+//					&outscale.NetTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-net-for-vm"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.0.0/24"),
+//				SubregionName: pulumi.String("eu-west-2b"),
+//				Tags: outscale.SubnetTagArray{
+//					&outscale.SubnetTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-subnet-for-vm"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			internetService01, err := outscale.NewInternetService(ctx, "internet_service01", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewInternetServiceLink(ctx, "internet_service_link01", &outscale.InternetServiceLinkArgs{
+//				InternetServiceId: internetService01.InternetServiceId,
+//				NetId:             net01.NetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			routeTable01, err := outscale.NewRouteTable(ctx, "route_table01", &outscale.RouteTableArgs{
+//				NetId: net01.NetId,
+//				Tags: outscale.RouteTableTagArray{
+//					&outscale.RouteTableTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-route-table-for-vm"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewRouteTableLink(ctx, "route_table_link01", &outscale.RouteTableLinkArgs{
+//				RouteTableId: routeTable01.RouteTableId,
+//				SubnetId:     subnet01.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewRoute(ctx, "route01", &outscale.RouteArgs{
+//				GatewayId:          internetService01.InternetServiceId,
+//				DestinationIpRange: pulumi.String("0.0.0.0/0"),
+//				RouteTableId:       routeTable01.RouteTableId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			securityGroup01, err := outscale.NewSecurityGroup(ctx, "security_group01", &outscale.SecurityGroupArgs{
+//				Description:       pulumi.String("Terraform security group for VM"),
+//				SecurityGroupName: pulumi.String("terraform-security-group-for-vm"),
+//				NetId:             net01.NetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav5.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroup01.SecurityGroupId,
+//				},
+//				SubnetId: subnet01.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a VM with a primary NIC
+//
+// > **Note:** If you plan to use the `NicLink`resource, it is recommended to specify the `primaryNic` argument to define the primary network interface of a VM.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
+//				IpRange: pulumi.String("10.0.0.0/16"),
+//				Tags: outscale.NetTagArray{
+//					&outscale.NetTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-net-for-vm-with-nic"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.0.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//				Tags: outscale.SubnetTagArray{
+//					&outscale.SubnetTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-subnet-for-vm-with-nic"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic01, err := outscale.NewNic(ctx, "nic01", &outscale.NicArgs{
+//				SubnetId: subnet01.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav5.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				PrimaryNics: outscale.VmPrimaryNicArray{
+//					&outscale.VmPrimaryNicArgs{
+//						NicId:        nic01.NicId,
+//						DeviceNumber: pulumi.Int(0),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a VM with secondary NICs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
+//				IpRange: pulumi.String("10.0.0.0/16"),
+//				Tags: outscale.NetTagArray{
+//					&outscale.NetTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-net-for-vm-with-nic"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.0.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//				Tags: outscale.SubnetTagArray{
+//					&outscale.SubnetTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-subnet"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic01, err := outscale.NewNic(ctx, "nic01", &outscale.NicArgs{
+//				SubnetId: subnet01.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet02, err := outscale.NewSubnet(ctx, "subnet02", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.1.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//				Tags: outscale.SubnetTagArray{
+//					&outscale.SubnetTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-another-subnet"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic02, err := outscale.NewNic(ctx, "nic02", &outscale.NicArgs{
+//				SubnetId: subnet02.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic03, err := outscale.NewNic(ctx, "nic03", &outscale.NicArgs{
+//				SubnetId: subnet02.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav5.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				PrimaryNics: outscale.VmPrimaryNicArray{
+//					&outscale.VmPrimaryNicArgs{
+//						NicId:        nic01.NicId,
+//						DeviceNumber: pulumi.Int(0),
+//					},
+//				},
+//				Nics: outscale.VmNicArray{
+//					&outscale.VmNicArgs{
+//						NicId:        nic02.NicId,
+//						DeviceNumber: pulumi.Int(1),
+//					},
+//					&outscale.VmNicArgs{
+//						NicId:        nic03.NicId,
+//						DeviceNumber: pulumi.Int(2),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a VM with Secure Boot
+//
+// > **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			securityGroup01, err := outscale.NewSecurityGroup(ctx, "security_group01", &outscale.SecurityGroupArgs{
+//				Description:       pulumi.String("vm security group"),
+//				SecurityGroupName: pulumi.String("vm_security_group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav5.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroup01.SecurityGroupId,
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//				State:              pulumi.String("stopped"),
+//				BootMode:           pulumi.String("uefi"),
+//				SecureBootAction:   pulumi.String("enable"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A VM can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678
+//
 // ```
 type Vm struct {
 	pulumi.CustomResourceState
 
 	// The action to perform on the next boot of the VM.
 	ActionsOnNextBoots VmActionsOnNextBootArrayOutput `pulumi:"actionsOnNextBoots"`
-	AdminPassword      pulumi.StringOutput            `pulumi:"adminPassword"`
+	// (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `getAdminPassword` is false or not specified, the VM resource is created without the `adminPassword` attribute. Once `adminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `getAdminPassword` is true, the VM resource itself is not considered created until the `adminPassword` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
+	AdminPassword pulumi.StringOutput `pulumi:"adminPassword"`
 	// The architecture of the VM (`i386` \| `x8664`).
 	Architecture pulumi.StringOutput `pulumi:"architecture"`
 	// One or more block device mappings.
@@ -107,8 +597,9 @@ type Vm struct {
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags VmTagArrayOutput `pulumi:"tags"`
 	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
-	TpmEnabled pulumi.BoolOutput      `pulumi:"tpmEnabled"`
-	UserData   pulumi.StringPtrOutput `pulumi:"userData"`
+	TpmEnabled pulumi.BoolOutput `pulumi:"tpmEnabled"`
+	// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The ID of the VM.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -159,7 +650,8 @@ func GetVm(ctx *pulumi.Context,
 type vmState struct {
 	// The action to perform on the next boot of the VM.
 	ActionsOnNextBoots []VmActionsOnNextBoot `pulumi:"actionsOnNextBoots"`
-	AdminPassword      *string               `pulumi:"adminPassword"`
+	// (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `getAdminPassword` is false or not specified, the VM resource is created without the `adminPassword` attribute. Once `adminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `getAdminPassword` is true, the VM resource itself is not considered created until the `adminPassword` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
+	AdminPassword *string `pulumi:"adminPassword"`
 	// The architecture of the VM (`i386` \| `x8664`).
 	Architecture *string `pulumi:"architecture"`
 	// One or more block device mappings.
@@ -242,8 +734,9 @@ type vmState struct {
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []VmTag `pulumi:"tags"`
 	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
-	TpmEnabled *bool   `pulumi:"tpmEnabled"`
-	UserData   *string `pulumi:"userData"`
+	TpmEnabled *bool `pulumi:"tpmEnabled"`
+	// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+	UserData *string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId *string `pulumi:"vmId"`
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -255,7 +748,8 @@ type vmState struct {
 type VmState struct {
 	// The action to perform on the next boot of the VM.
 	ActionsOnNextBoots VmActionsOnNextBootArrayInput
-	AdminPassword      pulumi.StringPtrInput
+	// (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `getAdminPassword` is false or not specified, the VM resource is created without the `adminPassword` attribute. Once `adminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `getAdminPassword` is true, the VM resource itself is not considered created until the `adminPassword` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
+	AdminPassword pulumi.StringPtrInput
 	// The architecture of the VM (`i386` \| `x8664`).
 	Architecture pulumi.StringPtrInput
 	// One or more block device mappings.
@@ -339,7 +833,8 @@ type VmState struct {
 	Tags VmTagArrayInput
 	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
 	TpmEnabled pulumi.BoolPtrInput
-	UserData   pulumi.StringPtrInput
+	// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+	UserData pulumi.StringPtrInput
 	// The ID of the VM.
 	VmId pulumi.StringPtrInput
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -398,8 +893,9 @@ type vmArgs struct {
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags []VmTag `pulumi:"tags"`
 	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
-	TpmEnabled *bool   `pulumi:"tpmEnabled"`
-	UserData   *string `pulumi:"userData"`
+	TpmEnabled *bool `pulumi:"tpmEnabled"`
+	// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+	UserData *string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId *string `pulumi:"vmId"`
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -456,7 +952,8 @@ type VmArgs struct {
 	Tags VmTagArrayInput
 	// If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
 	TpmEnabled pulumi.BoolPtrInput
-	UserData   pulumi.StringPtrInput
+	// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+	UserData pulumi.StringPtrInput
 	// The ID of the VM.
 	VmId pulumi.StringPtrInput
 	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
@@ -557,6 +1054,7 @@ func (o VmOutput) ActionsOnNextBoots() VmActionsOnNextBootArrayOutput {
 	return o.ApplyT(func(v *Vm) VmActionsOnNextBootArrayOutput { return v.ActionsOnNextBoots }).(VmActionsOnNextBootArrayOutput)
 }
 
+// (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `getAdminPassword` is false or not specified, the VM resource is created without the `adminPassword` attribute. Once `adminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `getAdminPassword` is true, the VM resource itself is not considered created until the `adminPassword` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
 func (o VmOutput) AdminPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.AdminPassword }).(pulumi.StringOutput)
 }
@@ -770,6 +1268,7 @@ func (o VmOutput) TpmEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Vm) pulumi.BoolOutput { return v.TpmEnabled }).(pulumi.BoolOutput)
 }
 
+// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
 func (o VmOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

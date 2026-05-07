@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * const policy2_version_02 = new outscale.PolicyVersion("Policy2-version-02", {
  *     policyOrn: policy_2.orn,
- *     document: std.index.file({
+ *     document: std.file({
  *         input: "policy.json",
  *     }).result,
  *     setAsDefault: true,

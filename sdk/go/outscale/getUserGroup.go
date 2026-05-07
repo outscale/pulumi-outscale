@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupUserGroup(ctx, &outscale.LookupUserGroupArgs{
+//			_, err := outscale.GetUserGroup(ctx, &outscale.LookupUserGroupArgs{
 //				UserGroupName: "user_group_name",
 //				Path:          pulumi.StringRef("/"),
 //			}, nil)

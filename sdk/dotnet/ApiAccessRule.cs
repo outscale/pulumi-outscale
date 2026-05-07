@@ -53,7 +53,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var ca01 = new Outscale.Ca("ca01", new()
     ///     {
-    ///         CaPem = Std.Index.File.Invoke(new()
+    ///         CaPem = Std.File.Invoke(new()
     ///         {
     ///             Input = "&lt;PATH&gt;",
     ///         }).Result,
@@ -82,7 +82,9 @@ namespace Pulumi.Outscale
     /// An API access rule can be imported using its ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/apiAccessRule:ApiAccessRule")]

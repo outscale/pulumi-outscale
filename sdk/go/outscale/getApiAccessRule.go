@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupApiAccessRule(ctx, &outscale.LookupApiAccessRuleArgs{
+//			_, err := outscale.GetApiAccessRule(ctx, &outscale.LookupApiAccessRuleArgs{
 //				Filters: []outscale.GetApiAccessRuleFilter{
 //					{
 //						Name: "api_access_rule_ids",

@@ -50,7 +50,9 @@ import * as utilities from "./utilities";
  * A volume link can be imported using a volume ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/volumeLink:VolumeLink ImportedVolumeLink vol-12345678
+ *
  * ```
  */
 export class VolumeLink extends pulumi.CustomResource {

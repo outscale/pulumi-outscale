@@ -176,7 +176,7 @@ class ApiAccessPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         unique = outscale.ApiAccessPolicy("unique",
-            max_access_key_expiration_seconds=3153600000,
+            max_access_key_expiration_seconds=int(3153600000),
             require_trusted_env=True)
         ```
 
@@ -233,7 +233,7 @@ class ApiAccessPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         unique = outscale.ApiAccessPolicy("unique",
-            max_access_key_expiration_seconds=3153600000,
+            max_access_key_expiration_seconds=int(3153600000),
             require_trusted_env=True)
         ```
 

@@ -660,7 +660,9 @@ class LoadBalancer(pulumi.CustomResource):
         A load balancer can be imported using its name. For example:
 
         ```sh
+
         $ pulumi import outscale:index/loadBalancer:LoadBalancer ImportedLbu Name-of-the-Lbu
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -815,7 +817,9 @@ class LoadBalancer(pulumi.CustomResource):
         A load balancer can be imported using its name. For example:
 
         ```sh
+
         $ pulumi import outscale:index/loadBalancer:LoadBalancer ImportedLbu Name-of-the-Lbu
+
         ```
 
         :param str resource_name: The name of the resource.

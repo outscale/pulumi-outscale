@@ -33,7 +33,9 @@ import * as utilities from "./utilities";
  * A flexible GPU can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
+ *
  * ```
  */
 export class FlexibleGpu extends pulumi.CustomResource {

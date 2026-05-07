@@ -74,7 +74,9 @@ namespace Pulumi.Outscale
     /// A VPN connection route can be imported using the VPN connection ID and the route destination IP range. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/vpnConnectionRoute:VpnConnectionRoute ImportedRoute vpn-12345678_10.0.0.0/0
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/vpnConnectionRoute:VpnConnectionRoute")]

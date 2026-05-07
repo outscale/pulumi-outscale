@@ -324,7 +324,7 @@ class Policy(pulumi.CustomResource):
         policy_1 = outscale.Policy("policy-1",
            policy_name="terraform-policy-1",
            description="test-terraform",
-           document=std.index.file(input="policy.json")["result"],
+           document=std.file(input="policy.json")["result"],
            path="/")
         ```
 
@@ -333,7 +333,9 @@ class Policy(pulumi.CustomResource):
         A policy can be imported using its ORN. For example:
 
         ```sh
+
         $ pulumi import outscale:index/policy:Policy policy1 orn
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -365,7 +367,7 @@ class Policy(pulumi.CustomResource):
         policy_1 = outscale.Policy("policy-1",
            policy_name="terraform-policy-1",
            description="test-terraform",
-           document=std.index.file(input="policy.json")["result"],
+           document=std.file(input="policy.json")["result"],
            path="/")
         ```
 
@@ -374,7 +376,9 @@ class Policy(pulumi.CustomResource):
         A policy can be imported using its ORN. For example:
 
         ```sh
+
         $ pulumi import outscale:index/policy:Policy policy1 orn
+
         ```
 
         :param str resource_name: The name of the resource.

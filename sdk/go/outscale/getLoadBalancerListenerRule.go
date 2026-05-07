@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupLoadBalancerListenerRule(ctx, &outscale.LookupLoadBalancerListenerRuleArgs{
+//			_, err := outscale.GetLoadBalancerListenerRule(ctx, &outscale.LookupLoadBalancerListenerRuleArgs{
 //				Filters: []outscale.GetLoadBalancerListenerRuleFilter{
 //					{
 //						Name: "listener_rule_names",

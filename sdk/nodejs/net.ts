@@ -64,7 +64,9 @@ import * as utilities from "./utilities";
  * A Net can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/net:Net ImportedNet vpc-87654321
+ *
  * ```
  */
 export class Net extends pulumi.CustomResource {

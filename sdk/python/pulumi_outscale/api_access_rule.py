@@ -256,7 +256,7 @@ class ApiAccessRule(pulumi.CustomResource):
         import pulumi_std as std
 
         ca01 = outscale.Ca("ca01",
-            ca_pem=std.index.file(input="<PATH>")["result"],
+            ca_pem=std.file(input="<PATH>")["result"],
             description="Terraform CA")
         api_access_rule02 = outscale.ApiAccessRule("api_access_rule02",
             ip_ranges=[
@@ -272,7 +272,9 @@ class ApiAccessRule(pulumi.CustomResource):
         An API access rule can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -318,7 +320,7 @@ class ApiAccessRule(pulumi.CustomResource):
         import pulumi_std as std
 
         ca01 = outscale.Ca("ca01",
-            ca_pem=std.index.file(input="<PATH>")["result"],
+            ca_pem=std.file(input="<PATH>")["result"],
             description="Terraform CA")
         api_access_rule02 = outscale.ApiAccessRule("api_access_rule02",
             ip_ranges=[
@@ -334,7 +336,9 @@ class ApiAccessRule(pulumi.CustomResource):
         An API access rule can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+
         ```
 
         :param str resource_name: The name of the resource.

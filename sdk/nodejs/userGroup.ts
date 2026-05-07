@@ -90,7 +90,9 @@ import * as utilities from "./utilities";
  * A user group can be imported using its group ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/userGroup:UserGroup group1 user_group_id
+ *
  * ```
  */
 export class UserGroup extends pulumi.CustomResource {

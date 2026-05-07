@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -103,7 +101,9 @@ import (
 // A NIC link can be imported using the NIC ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
+//
 // ```
 type NicLink struct {
 	pulumi.CustomResourceState

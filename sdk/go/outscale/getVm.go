@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupVm(ctx, &outscale.LookupVmArgs{
+//			_, err := outscale.GetVm(ctx, &outscale.LookupVmArgs{
 //				Filters: []outscale.GetVmFilter{
 //					{
 //						Name: "vm_ids",
