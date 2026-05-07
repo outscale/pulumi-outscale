@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupInternetService(ctx, &outscale.LookupInternetServiceArgs{
+//			_, err := outscale.GetInternetService(ctx, &outscale.LookupInternetServiceArgs{
 //				Filters: []outscale.GetInternetServiceFilter{
 //					{
 //						Name: "internet_service_ids",

@@ -731,7 +731,9 @@ class Image(pulumi.CustomResource):
         An image can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -830,7 +832,9 @@ class Image(pulumi.CustomResource):
         An image can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

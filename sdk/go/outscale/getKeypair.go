@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupKeypair(ctx, &outscale.LookupKeypairArgs{
+//			_, err := outscale.GetKeypair(ctx, &outscale.LookupKeypairArgs{
 //				Filters: []outscale.GetKeypairFilter{
 //					{
 //						Name: "keypair_names",

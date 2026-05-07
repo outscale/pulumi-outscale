@@ -189,7 +189,7 @@ class Ca(pulumi.CustomResource):
         import pulumi_std as std
 
         ca01 = outscale.Ca("ca01",
-            ca_pem=std.index.file(input="<PATH>")["result"],
+            ca_pem=std.file(input="<PATH>")["result"],
             description="Terraform certificate authority")
         ```
 
@@ -198,7 +198,9 @@ class Ca(pulumi.CustomResource):
         A CA can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/ca:Ca ImportedCa ca-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -226,7 +228,7 @@ class Ca(pulumi.CustomResource):
         import pulumi_std as std
 
         ca01 = outscale.Ca("ca01",
-            ca_pem=std.index.file(input="<PATH>")["result"],
+            ca_pem=std.file(input="<PATH>")["result"],
             description="Terraform certificate authority")
         ```
 
@@ -235,7 +237,9 @@ class Ca(pulumi.CustomResource):
         A CA can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/ca:Ca ImportedCa ca-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

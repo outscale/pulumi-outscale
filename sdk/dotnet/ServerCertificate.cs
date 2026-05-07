@@ -29,15 +29,15 @@ namespace Pulumi.Outscale
     ///     var serverCertificate01 = new Outscale.ServerCertificate("server_certificate_01", new()
     ///     {
     ///         Name = "terraform-server-certificate",
-    ///         Body = Std.Index.File.Invoke(new()
+    ///         Body = Std.File.Invoke(new()
     ///         {
     ///             Input = "&lt;PATH&gt;",
     ///         }).Result,
-    ///         Chain = Std.Index.File.Invoke(new()
+    ///         Chain = Std.File.Invoke(new()
     ///         {
     ///             Input = "&lt;PATH&gt;",
     ///         }).Result,
-    ///         PrivateKey = Std.Index.File.Invoke(new()
+    ///         PrivateKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "&lt;PATH&gt;",
     ///         }).Result,
@@ -52,7 +52,9 @@ namespace Pulumi.Outscale
     /// A server certificate can be imported using its ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/serverCertificate:ServerCertificate")]

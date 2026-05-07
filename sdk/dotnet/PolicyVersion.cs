@@ -31,7 +31,7 @@ namespace Pulumi.Outscale
     ///     var policy2_version_02 = new Outscale.PolicyVersion("Policy2-version-02", new()
     ///     {
     ///         PolicyOrn = policy_2.Orn,
-    ///         Document = Std.Index.File.Invoke(new()
+    ///         Document = Std.File.Invoke(new()
     ///         {
     ///             Input = "policy.json",
     ///         }).Result,

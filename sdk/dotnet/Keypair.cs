@@ -49,7 +49,7 @@ namespace Pulumi.Outscale
     ///     var keypair02 = new Outscale.Keypair("keypair02", new()
     ///     {
     ///         KeypairName = "terraform-keypair-import-file",
-    ///         PublicKey = Std.Index.File.Invoke(new()
+    ///         PublicKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "&lt;PATH&gt;",
     ///         }).Result,
@@ -69,7 +69,9 @@ namespace Pulumi.Outscale
     /// A keypair can be imported using its name. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/keypair:Keypair")]

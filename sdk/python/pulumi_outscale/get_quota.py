@@ -81,7 +81,7 @@ class GetQuotaResult:
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[Sequence['outputs.GetQuotaFilterResult']]:
+    def filters(self) -> Sequence['outputs.GetQuotaFilterResult']:
         return pulumi.get(self, "filters")
 
     @_builtins.property
@@ -216,7 +216,7 @@ def get_quota(filters: Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFi
         request_id=pulumi.get(__ret__, 'request_id'),
         short_description=pulumi.get(__ret__, 'short_description'),
         used_value=pulumi.get(__ret__, 'used_value'))
-def get_quota_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict']]]]] = None,
+def get_quota_output(filters: Optional[pulumi.Input[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict']]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotaResult]:
     """
     Provides information about a quota.

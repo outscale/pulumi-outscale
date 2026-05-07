@@ -41,7 +41,9 @@ import * as utilities from "./utilities";
  * A Net peering can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/netPeering:NetPeering ImportedNetPeering pcx-12345678
+ *
  * ```
  */
 export class NetPeering extends pulumi.CustomResource {

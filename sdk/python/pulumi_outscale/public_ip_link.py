@@ -329,7 +329,9 @@ class PublicIpLink(pulumi.CustomResource):
         A public IP link can be imported using the public IP or the public IP link ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/publicIpLink:PublicIpLink ImportedPublicIpLink eipassoc-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,7 +387,9 @@ class PublicIpLink(pulumi.CustomResource):
         A public IP link can be imported using the public IP or the public IP link ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/publicIpLink:PublicIpLink ImportedPublicIpLink eipassoc-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

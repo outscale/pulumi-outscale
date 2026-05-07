@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupImage(ctx, &outscale.LookupImageArgs{
+//			_, err := outscale.GetImage(ctx, &outscale.LookupImageArgs{
 //				Filters: []outscale.GetImageFilter{
 //					{
 //						Name: "image_ids",

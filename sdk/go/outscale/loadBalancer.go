@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -262,7 +260,9 @@ import (
 // A load balancer can be imported using its name. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/loadBalancer:LoadBalancer ImportedLbu Name-of-the-Lbu
+//
 // ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState

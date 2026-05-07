@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupVolume(ctx, &outscale.LookupVolumeArgs{
+//			_, err := outscale.GetVolume(ctx, &outscale.LookupVolumeArgs{
 //				Filters: []outscale.GetVolumeFilter{
 //					{
 //						Name: "volume_ids",

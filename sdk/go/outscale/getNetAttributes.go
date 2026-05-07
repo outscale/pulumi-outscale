@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupNetAttributes(ctx, &outscale.LookupNetAttributesArgs{
+//			_, err := outscale.GetNetAttributes(ctx, &outscale.LookupNetAttributesArgs{
 //				NetId: "vpc-12345678",
 //			}, nil)
 //			if err != nil {

@@ -152,7 +152,9 @@ import * as utilities from "./utilities";
  * A load balancer can be imported using its name. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/loadBalancer:LoadBalancer ImportedLbu Name-of-the-Lbu
+ *
  * ```
  */
 export class LoadBalancer extends pulumi.CustomResource {

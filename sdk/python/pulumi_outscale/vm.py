@@ -73,6 +73,7 @@ class VmArgs:
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -408,6 +409,9 @@ class VmArgs:
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -505,6 +509,7 @@ class _VmState:
         """
         Input properties used for looking up and filtering Vm resources.
         :param pulumi.Input[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]] actions_on_next_boots: The action to perform on the next boot of the VM.
+        :param pulumi.Input[_builtins.str] admin_password: (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `get_admin_password` is false or not specified, the VM resource is created without the `admin_password` attribute. Once `admin_password` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `get_admin_password` is true, the VM resource itself is not considered created until the `admin_password` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
         :param pulumi.Input[_builtins.str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]] block_device_mappings_createds: The block device mapping of the VM.
@@ -546,6 +551,7 @@ class _VmState:
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -662,6 +668,9 @@ class _VmState:
     @_builtins.property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `get_admin_password` is false or not specified, the VM resource is created without the `admin_password` attribute. Once `admin_password` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `get_admin_password` is true, the VM resource itself is not considered created until the `admin_password` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
+        """
         return pulumi.get(self, "admin_password")
 
     @admin_password.setter
@@ -1170,6 +1179,9 @@ class _VmState:
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -1248,12 +1260,247 @@ class Vm(pulumi.CustomResource):
                  vm_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a virtual machine (VM).
+
+        > **Important** Consider using the `primary_nic` argument if you plan to use the `NicLink`resource.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+
+        ## Example Usage
+
+        ### Create a VM in the public Cloud
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="vm security group",
+            security_group_name="vm_security_group")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            placement_subregion_name="eu-west-2a",
+            placement_tenancy="default",
+            tags=[{
+                "key": "name",
+                "value": "terraform-public-vm",
+            }],
+            user_data=std.base64encode(input="    <CONFIGURATION>\\n")["result"])
+        ```
+
+        ### Create a VM with block device mappings
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name="eu-west-2a",
+            size=10)
+        snapshot01 = outscale.Snapshot("snapshot01", volume_id=volume01.volume_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="vm security group",
+            security_group_name="vm_security_group")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            block_device_mappings=[
+                {
+                    "device_name": "/dev/sdb",
+                    "bsu": {
+                        "volume_size": 15,
+                        "volume_type": "gp2",
+                        "snapshot_id": snapshot01.snapshot_id,
+                    },
+                },
+                {
+                    "device_name": "/dev/sdc",
+                    "bsu": {
+                        "volume_size": 22,
+                        "volume_type": "io1",
+                        "iops": 150,
+                        "delete_on_vm_deletion": True,
+                    },
+                },
+            ])
+        ```
+
+        ### Create a VM in a Net with a network
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[{
+                "key": "name",
+                "value": "terraform-net-for-vm",
+            }])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b",
+            tags=[{
+                "key": "name",
+                "value": "terraform-subnet-for-vm",
+            }])
+        internet_service01 = outscale.InternetService("internet_service01")
+        internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
+            internet_service_id=internet_service01.internet_service_id,
+            net_id=net01.net_id)
+        route_table01 = outscale.RouteTable("route_table01",
+            net_id=net01.net_id,
+            tags=[{
+                "key": "name",
+                "value": "terraform-route-table-for-vm",
+            }])
+        route_table_link01 = outscale.RouteTableLink("route_table_link01",
+            route_table_id=route_table01.route_table_id,
+            subnet_id=subnet01.subnet_id)
+        route01 = outscale.Route("route01",
+            gateway_id=internet_service01.internet_service_id,
+            destination_ip_range="0.0.0.0/0",
+            route_table_id=route_table01.route_table_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="Terraform security group for VM",
+            security_group_name="terraform-security-group-for-vm",
+            net_id=net01.net_id)
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            subnet_id=subnet01.subnet_id)
+        ```
+
+        ### Create a VM with a primary NIC
+
+        > **Note:** If you plan to use the `NicLink`resource, it is recommended to specify the `primary_nic` argument to define the primary network interface of a VM.
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[{
+                "key": "name",
+                "value": "terraform-net-for-vm-with-nic",
+            }])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a",
+            tags=[{
+                "key": "name",
+                "value": "terraform-subnet-for-vm-with-nic",
+            }])
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            primary_nics=[{
+                "nic_id": nic01.nic_id,
+                "device_number": 0,
+            }])
+        ```
+
+        ### Create a VM with secondary NICs
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[{
+                "key": "name",
+                "value": "terraform-net-for-vm-with-nic",
+            }])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a",
+            tags=[{
+                "key": "name",
+                "value": "terraform-subnet",
+            }])
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a",
+            tags=[{
+                "key": "name",
+                "value": "terraform-another-subnet",
+            }])
+        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
+        nic03 = outscale.Nic("nic03", subnet_id=subnet02.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            primary_nics=[{
+                "nic_id": nic01.nic_id,
+                "device_number": 0,
+            }],
+            nics=[
+                {
+                    "nic_id": nic02.nic_id,
+                    "device_number": 1,
+                },
+                {
+                    "nic_id": nic03.nic_id,
+                    "device_number": 2,
+                },
+            ])
+        ```
+
+        ### Create a VM with Secure Boot
+
+        > **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="vm security group",
+            security_group_name="vm_security_group")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            deletion_protection=False,
+            state="stopped",
+            boot_mode="uefi",
+            secure_boot_action="enable")
+        ```
+
         ## Import
 
         A VM can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -1281,6 +1528,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -1292,12 +1540,247 @@ class Vm(pulumi.CustomResource):
                  args: VmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a virtual machine (VM).
+
+        > **Important** Consider using the `primary_nic` argument if you plan to use the `NicLink`resource.
+
+        For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\\
+        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+
+        ## Example Usage
+
+        ### Create a VM in the public Cloud
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+        import pulumi_std as std
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="vm security group",
+            security_group_name="vm_security_group")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            placement_subregion_name="eu-west-2a",
+            placement_tenancy="default",
+            tags=[{
+                "key": "name",
+                "value": "terraform-public-vm",
+            }],
+            user_data=std.base64encode(input="    <CONFIGURATION>\\n")["result"])
+        ```
+
+        ### Create a VM with block device mappings
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        volume01 = outscale.Volume("volume01",
+            subregion_name="eu-west-2a",
+            size=10)
+        snapshot01 = outscale.Snapshot("snapshot01", volume_id=volume01.volume_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="vm security group",
+            security_group_name="vm_security_group")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            block_device_mappings=[
+                {
+                    "device_name": "/dev/sdb",
+                    "bsu": {
+                        "volume_size": 15,
+                        "volume_type": "gp2",
+                        "snapshot_id": snapshot01.snapshot_id,
+                    },
+                },
+                {
+                    "device_name": "/dev/sdc",
+                    "bsu": {
+                        "volume_size": 22,
+                        "volume_type": "io1",
+                        "iops": 150,
+                        "delete_on_vm_deletion": True,
+                    },
+                },
+            ])
+        ```
+
+        ### Create a VM in a Net with a network
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[{
+                "key": "name",
+                "value": "terraform-net-for-vm",
+            }])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b",
+            tags=[{
+                "key": "name",
+                "value": "terraform-subnet-for-vm",
+            }])
+        internet_service01 = outscale.InternetService("internet_service01")
+        internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
+            internet_service_id=internet_service01.internet_service_id,
+            net_id=net01.net_id)
+        route_table01 = outscale.RouteTable("route_table01",
+            net_id=net01.net_id,
+            tags=[{
+                "key": "name",
+                "value": "terraform-route-table-for-vm",
+            }])
+        route_table_link01 = outscale.RouteTableLink("route_table_link01",
+            route_table_id=route_table01.route_table_id,
+            subnet_id=subnet01.subnet_id)
+        route01 = outscale.Route("route01",
+            gateway_id=internet_service01.internet_service_id,
+            destination_ip_range="0.0.0.0/0",
+            route_table_id=route_table01.route_table_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="Terraform security group for VM",
+            security_group_name="terraform-security-group-for-vm",
+            net_id=net01.net_id)
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            subnet_id=subnet01.subnet_id)
+        ```
+
+        ### Create a VM with a primary NIC
+
+        > **Note:** If you plan to use the `NicLink`resource, it is recommended to specify the `primary_nic` argument to define the primary network interface of a VM.
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[{
+                "key": "name",
+                "value": "terraform-net-for-vm-with-nic",
+            }])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a",
+            tags=[{
+                "key": "name",
+                "value": "terraform-subnet-for-vm-with-nic",
+            }])
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            primary_nics=[{
+                "nic_id": nic01.nic_id,
+                "device_number": 0,
+            }])
+        ```
+
+        ### Create a VM with secondary NICs
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
+            tags=[{
+                "key": "name",
+                "value": "terraform-net-for-vm-with-nic",
+            }])
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a",
+            tags=[{
+                "key": "name",
+                "value": "terraform-subnet",
+            }])
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a",
+            tags=[{
+                "key": "name",
+                "value": "terraform-another-subnet",
+            }])
+        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
+        nic03 = outscale.Nic("nic03", subnet_id=subnet02.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            primary_nics=[{
+                "nic_id": nic01.nic_id,
+                "device_number": 0,
+            }],
+            nics=[
+                {
+                    "nic_id": nic02.nic_id,
+                    "device_number": 1,
+                },
+                {
+                    "nic_id": nic03.nic_id,
+                    "device_number": 2,
+                },
+            ])
+        ```
+
+        ### Create a VM with Secure Boot
+
+        > **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        security_group01 = outscale.SecurityGroup("security_group01",
+            description="vm security group",
+            security_group_name="vm_security_group")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
+            deletion_protection=False,
+            state="stopped",
+            boot_mode="uefi",
+            secure_boot_action="enable")
+        ```
+
         ## Import
 
         A VM can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -1469,6 +1952,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmActionsOnNextBootArgs', 'VmActionsOnNextBootArgsDict']]]] actions_on_next_boots: The action to perform on the next boot of the VM.
+        :param pulumi.Input[_builtins.str] admin_password: (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `get_admin_password` is false or not specified, the VM resource is created without the `admin_password` attribute. Once `admin_password` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `get_admin_password` is true, the VM resource itself is not considered created until the `admin_password` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
         :param pulumi.Input[_builtins.str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]] block_device_mappings: One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingsCreatedArgs', 'VmBlockDeviceMappingsCreatedArgsDict']]]] block_device_mappings_createds: The block device mapping of the VM.
@@ -1510,6 +1994,7 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `nics` parameter.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
+        :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
         :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
@@ -1579,6 +2064,9 @@ class Vm(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `get_admin_password` is false or not specified, the VM resource is created without the `admin_password` attribute. Once `admin_password` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `get_admin_password` is true, the VM resource itself is not considered created until the `admin_password` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
+        """
         return pulumi.get(self, "admin_password")
 
     @_builtins.property
@@ -1915,6 +2403,9 @@ class Vm(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+        """
         return pulumi.get(self, "user_data")
 
     @_builtins.property

@@ -25,8 +25,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -106,7 +104,9 @@ import (
 // A snapshot can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
+//
 // ```
 type Snapshot struct {
 	pulumi.CustomResourceState

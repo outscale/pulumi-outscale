@@ -276,7 +276,9 @@ class User(pulumi.CustomResource):
         A user can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/user:User user1 user_id
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -330,7 +332,9 @@ class User(pulumi.CustomResource):
         A user can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/user:User user1 user_id
+
         ```
 
         :param str resource_name: The name of the resource.

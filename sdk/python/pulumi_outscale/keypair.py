@@ -266,7 +266,7 @@ class Keypair(pulumi.CustomResource):
 
         keypair02 = outscale.Keypair("keypair02",
             keypair_name="terraform-keypair-import-file",
-            public_key=std.index.file(input="<PATH>")["result"])
+            public_key=std.file(input="<PATH>")["result"])
         keypair03 = outscale.Keypair("keypair03",
             keypair_name="terraform-keypair-import-text",
             public_key="UFVCTElDIEtFWQ==")
@@ -277,7 +277,9 @@ class Keypair(pulumi.CustomResource):
         A keypair can be imported using its name. For example:
 
         ```sh
+
         $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -318,7 +320,7 @@ class Keypair(pulumi.CustomResource):
 
         keypair02 = outscale.Keypair("keypair02",
             keypair_name="terraform-keypair-import-file",
-            public_key=std.index.file(input="<PATH>")["result"])
+            public_key=std.file(input="<PATH>")["result"])
         keypair03 = outscale.Keypair("keypair03",
             keypair_name="terraform-keypair-import-text",
             public_key="UFVCTElDIEtFWQ==")
@@ -329,7 +331,9 @@ class Keypair(pulumi.CustomResource):
         A keypair can be imported using its name. For example:
 
         ```sh
+
         $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id
+
         ```
 
         :param str resource_name: The name of the resource.

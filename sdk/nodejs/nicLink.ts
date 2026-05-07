@@ -51,7 +51,9 @@ import * as utilities from "./utilities";
  * A NIC link can be imported using the NIC ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
+ *
  * ```
  */
 export class NicLink extends pulumi.CustomResource {

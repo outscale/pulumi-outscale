@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupSubnet(ctx, &outscale.LookupSubnetArgs{
+//			_, err := outscale.GetSubnet(ctx, &outscale.LookupSubnetArgs{
 //				Filters: []outscale.GetSubnetFilter{
 //					{
 //						Name: "net_ids",

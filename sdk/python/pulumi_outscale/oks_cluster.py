@@ -720,7 +720,9 @@ class OksCluster(pulumi.CustomResource):
         An OKS cluster can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/oksCluster:OksCluster cluster id
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -783,7 +785,9 @@ class OksCluster(pulumi.CustomResource):
         An OKS cluster can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/oksCluster:OksCluster cluster id
+
         ```
 
         :param str resource_name: The name of the resource.

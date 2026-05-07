@@ -338,7 +338,9 @@ class VpnConnection(pulumi.CustomResource):
         A VPN connection can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/vpnConnection:VpnConnection ImportedVPN vpn-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -398,7 +400,9 @@ class VpnConnection(pulumi.CustomResource):
         A VPN connection can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/vpnConnection:VpnConnection ImportedVPN vpn-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

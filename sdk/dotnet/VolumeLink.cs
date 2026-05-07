@@ -72,7 +72,9 @@ namespace Pulumi.Outscale
     /// A volume link can be imported using a volume ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/volumeLink:VolumeLink ImportedVolumeLink vol-12345678
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/volumeLink:VolumeLink")]

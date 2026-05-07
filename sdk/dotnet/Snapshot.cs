@@ -79,7 +79,9 @@ namespace Pulumi.Outscale
     /// A snapshot can be imported using its ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/snapshot:Snapshot")]

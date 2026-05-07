@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupCa(ctx, &outscale.LookupCaArgs{
+//			_, err := outscale.GetCa(ctx, &outscale.LookupCaArgs{
 //				Filters: []outscale.GetCaFilter{
 //					{
 //						Name: "ca_ids",

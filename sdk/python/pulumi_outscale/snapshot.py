@@ -457,7 +457,9 @@ class Snapshot(pulumi.CustomResource):
         A snapshot can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -521,7 +523,9 @@ class Snapshot(pulumi.CustomResource):
         A snapshot can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/snapshot:Snapshot ImportedSnapshot snap-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

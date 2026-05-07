@@ -70,7 +70,9 @@ import (
 // A server certificate can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+//
 // ```
 type ServerCertificate struct {
 	pulumi.CustomResourceState

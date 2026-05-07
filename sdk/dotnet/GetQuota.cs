@@ -69,7 +69,7 @@ namespace Pulumi.Outscale
         /// });
         /// ```
         /// </summary>
-        public static Task<GetQuotaResult> InvokeAsync(GetQuotaArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetQuotaResult> InvokeAsync(GetQuotaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaResult>("outscale:index/getQuota:getQuota", args ?? new GetQuotaArgs(), options.WithDefaults());
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Pulumi.Outscale
         /// });
         /// ```
         /// </summary>
-        public static Output<GetQuotaResult> Invoke(GetQuotaInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetQuotaResult> Invoke(GetQuotaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaResult>("outscale:index/getQuota:getQuota", args ?? new GetQuotaInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Pulumi.Outscale
 
     public sealed class GetQuotaArgs : global::Pulumi.InvokeArgs
     {
-        [Input("filters")]
+        [Input("filters", required: true)]
         private List<Inputs.GetQuotaFilterArgs>? _filters;
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Pulumi.Outscale
 
     public sealed class GetQuotaInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("filters")]
+        [Input("filters", required: true)]
         private InputList<Inputs.GetQuotaFilterInputArgs>? _filters;
 
         /// <summary>

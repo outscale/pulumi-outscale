@@ -208,7 +208,9 @@ class InternetServiceLink(pulumi.CustomResource):
         An internet service link can be imported using the internet service ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/internetServiceLink:InternetServiceLink ImportedInternetServiceLink igw-87654321
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -256,7 +258,9 @@ class InternetServiceLink(pulumi.CustomResource):
         An internet service link can be imported using the internet service ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/internetServiceLink:InternetServiceLink ImportedInternetServiceLink igw-87654321
+
         ```
 
         :param str resource_name: The name of the resource.

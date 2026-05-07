@@ -151,7 +151,9 @@ import (
 // An image can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
+//
 // ```
 type Image struct {
 	pulumi.CustomResourceState

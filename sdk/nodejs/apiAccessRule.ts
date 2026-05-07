@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const ca01 = new outscale.Ca("ca01", {
- *     caPem: std.index.file({
+ *     caPem: std.file({
  *         input: "<PATH>",
  *     }).result,
  *     description: "Terraform CA",
@@ -57,7 +57,9 @@ import * as utilities from "./utilities";
  * An API access rule can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+ *
  * ```
  */
 export class ApiAccessRule extends pulumi.CustomResource {
