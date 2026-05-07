@@ -135,7 +135,9 @@ namespace Pulumi.Outscale
     /// A user group can be imported using its group ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/userGroup:UserGroup group1 user_group_id
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/userGroup:UserGroup")]

@@ -272,7 +272,9 @@ class VolumeLink(pulumi.CustomResource):
         A volume link can be imported using a volume ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/volumeLink:VolumeLink ImportedVolumeLink vol-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -328,7 +330,9 @@ class VolumeLink(pulumi.CustomResource):
         A volume link can be imported using a volume ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/volumeLink:VolumeLink ImportedVolumeLink vol-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

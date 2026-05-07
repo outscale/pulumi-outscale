@@ -35,7 +35,9 @@ namespace Pulumi.Outscale
     /// A public IP can be imported using its ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/publicIp:PublicIp ImportedPublicIp eipalloc-12345678
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/publicIp:PublicIp")]

@@ -10,12 +10,456 @@ using Pulumi.Serialization;
 namespace Pulumi.Outscale
 {
     /// <summary>
+    /// Manages a virtual machine (VM).
+    /// 
+    /// &gt; **Important** Consider using the `PrimaryNic` argument if you plan to use the `outscale.NicLink`resource.
+    /// 
+    /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\
+    /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a VM in the public Cloud
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keypair01 = new Outscale.Keypair("keypair01", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-for-vm",
+    ///     });
+    /// 
+    ///     var securityGroup01 = new Outscale.SecurityGroup("security_group01", new()
+    ///     {
+    ///         Description = "vm security group",
+    ///         SecurityGroupName = "vm_security_group",
+    ///     });
+    /// 
+    ///     var vm01 = new Outscale.Vm("vm01", new()
+    ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav5.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             securityGroup01.SecurityGroupId,
+    ///         },
+    ///         PlacementSubregionName = "eu-west-2a",
+    ///         PlacementTenancy = "default",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.VmTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-public-vm",
+    ///             },
+    ///         },
+    ///         UserData = Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = @"    &lt;CONFIGURATION&gt;
+    /// ",
+    ///         }).Result,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a VM with block device mappings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var volume01 = new Outscale.Volume("volume01", new()
+    ///     {
+    ///         SubregionName = "eu-west-2a",
+    ///         Size = 10,
+    ///     });
+    /// 
+    ///     var snapshot01 = new Outscale.Snapshot("snapshot01", new()
+    ///     {
+    ///         VolumeId = volume01.VolumeId,
+    ///     });
+    /// 
+    ///     var keypair01 = new Outscale.Keypair("keypair01", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-for-vm",
+    ///     });
+    /// 
+    ///     var securityGroup01 = new Outscale.SecurityGroup("security_group01", new()
+    ///     {
+    ///         Description = "vm security group",
+    ///         SecurityGroupName = "vm_security_group",
+    ///     });
+    /// 
+    ///     var vm01 = new Outscale.Vm("vm01", new()
+    ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav5.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             securityGroup01.SecurityGroupId,
+    ///         },
+    ///         BlockDeviceMappings = new[]
+    ///         {
+    ///             new Outscale.Inputs.VmBlockDeviceMappingArgs
+    ///             {
+    ///                 DeviceName = "/dev/sdb",
+    ///                 Bsu = new Outscale.Inputs.VmBlockDeviceMappingBsuArgs
+    ///                 {
+    ///                     VolumeSize = 15,
+    ///                     VolumeType = "gp2",
+    ///                     SnapshotId = snapshot01.SnapshotId,
+    ///                 },
+    ///             },
+    ///             new Outscale.Inputs.VmBlockDeviceMappingArgs
+    ///             {
+    ///                 DeviceName = "/dev/sdc",
+    ///                 Bsu = new Outscale.Inputs.VmBlockDeviceMappingBsuArgs
+    ///                 {
+    ///                     VolumeSize = 22,
+    ///                     VolumeType = "io1",
+    ///                     Iops = 150,
+    ///                     DeleteOnVmDeletion = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a VM in a Net with a network
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net01 = new Outscale.Net("net01", new()
+    ///     {
+    ///         IpRange = "10.0.0.0/16",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.NetTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-net-for-vm",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet01 = new Outscale.Subnet("subnet01", new()
+    ///     {
+    ///         NetId = net01.NetId,
+    ///         IpRange = "10.0.0.0/24",
+    ///         SubregionName = "eu-west-2b",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.SubnetTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-subnet-for-vm",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var internetService01 = new Outscale.InternetService("internet_service01");
+    /// 
+    ///     var internetServiceLink01 = new Outscale.InternetServiceLink("internet_service_link01", new()
+    ///     {
+    ///         InternetServiceId = internetService01.InternetServiceId,
+    ///         NetId = net01.NetId,
+    ///     });
+    /// 
+    ///     var routeTable01 = new Outscale.RouteTable("route_table01", new()
+    ///     {
+    ///         NetId = net01.NetId,
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.RouteTableTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-route-table-for-vm",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var routeTableLink01 = new Outscale.RouteTableLink("route_table_link01", new()
+    ///     {
+    ///         RouteTableId = routeTable01.RouteTableId,
+    ///         SubnetId = subnet01.SubnetId,
+    ///     });
+    /// 
+    ///     var route01 = new Outscale.Route("route01", new()
+    ///     {
+    ///         GatewayId = internetService01.InternetServiceId,
+    ///         DestinationIpRange = "0.0.0.0/0",
+    ///         RouteTableId = routeTable01.RouteTableId,
+    ///     });
+    /// 
+    ///     var keypair01 = new Outscale.Keypair("keypair01", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-for-vm",
+    ///     });
+    /// 
+    ///     var securityGroup01 = new Outscale.SecurityGroup("security_group01", new()
+    ///     {
+    ///         Description = "Terraform security group for VM",
+    ///         SecurityGroupName = "terraform-security-group-for-vm",
+    ///         NetId = net01.NetId,
+    ///     });
+    /// 
+    ///     var vm01 = new Outscale.Vm("vm01", new()
+    ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav5.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             securityGroup01.SecurityGroupId,
+    ///         },
+    ///         SubnetId = subnet01.SubnetId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a VM with a primary NIC
+    /// 
+    /// &gt; **Note:** If you plan to use the `outscale.NicLink`resource, it is recommended to specify the `PrimaryNic` argument to define the primary network interface of a VM.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net01 = new Outscale.Net("net01", new()
+    ///     {
+    ///         IpRange = "10.0.0.0/16",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.NetTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-net-for-vm-with-nic",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet01 = new Outscale.Subnet("subnet01", new()
+    ///     {
+    ///         NetId = net01.NetId,
+    ///         IpRange = "10.0.0.0/24",
+    ///         SubregionName = "eu-west-2a",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.SubnetTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-subnet-for-vm-with-nic",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var nic01 = new Outscale.Nic("nic01", new()
+    ///     {
+    ///         SubnetId = subnet01.SubnetId,
+    ///     });
+    /// 
+    ///     var keypair01 = new Outscale.Keypair("keypair01", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-for-vm",
+    ///     });
+    /// 
+    ///     var vm01 = new Outscale.Vm("vm01", new()
+    ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav5.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
+    ///         PrimaryNics = new[]
+    ///         {
+    ///             new Outscale.Inputs.VmPrimaryNicArgs
+    ///             {
+    ///                 NicId = nic01.NicId,
+    ///                 DeviceNumber = 0,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a VM with secondary NICs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net01 = new Outscale.Net("net01", new()
+    ///     {
+    ///         IpRange = "10.0.0.0/16",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.NetTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-net-for-vm-with-nic",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet01 = new Outscale.Subnet("subnet01", new()
+    ///     {
+    ///         NetId = net01.NetId,
+    ///         IpRange = "10.0.0.0/24",
+    ///         SubregionName = "eu-west-2a",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.SubnetTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-subnet",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var nic01 = new Outscale.Nic("nic01", new()
+    ///     {
+    ///         SubnetId = subnet01.SubnetId,
+    ///     });
+    /// 
+    ///     var subnet02 = new Outscale.Subnet("subnet02", new()
+    ///     {
+    ///         NetId = net01.NetId,
+    ///         IpRange = "10.0.1.0/24",
+    ///         SubregionName = "eu-west-2a",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.SubnetTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-another-subnet",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var nic02 = new Outscale.Nic("nic02", new()
+    ///     {
+    ///         SubnetId = subnet02.SubnetId,
+    ///     });
+    /// 
+    ///     var nic03 = new Outscale.Nic("nic03", new()
+    ///     {
+    ///         SubnetId = subnet02.SubnetId,
+    ///     });
+    /// 
+    ///     var keypair01 = new Outscale.Keypair("keypair01", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-for-vm",
+    ///     });
+    /// 
+    ///     var vm01 = new Outscale.Vm("vm01", new()
+    ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav5.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
+    ///         PrimaryNics = new[]
+    ///         {
+    ///             new Outscale.Inputs.VmPrimaryNicArgs
+    ///             {
+    ///                 NicId = nic01.NicId,
+    ///                 DeviceNumber = 0,
+    ///             },
+    ///         },
+    ///         Nics = new[]
+    ///         {
+    ///             new Outscale.Inputs.VmNicArgs
+    ///             {
+    ///                 NicId = nic02.NicId,
+    ///                 DeviceNumber = 1,
+    ///             },
+    ///             new Outscale.Inputs.VmNicArgs
+    ///             {
+    ///                 NicId = nic03.NicId,
+    ///                 DeviceNumber = 2,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a VM with Secure Boot
+    /// 
+    /// &gt; **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Outscale = Pulumi.Outscale;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keypair01 = new Outscale.Keypair("keypair01", new()
+    ///     {
+    ///         KeypairName = "terraform-keypair-for-vm",
+    ///     });
+    /// 
+    ///     var securityGroup01 = new Outscale.SecurityGroup("security_group01", new()
+    ///     {
+    ///         Description = "vm security group",
+    ///         SecurityGroupName = "vm_security_group",
+    ///     });
+    /// 
+    ///     var vm01 = new Outscale.Vm("vm01", new()
+    ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav5.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             securityGroup01.SecurityGroupId,
+    ///         },
+    ///         DeletionProtection = false,
+    ///         State = "stopped",
+    ///         BootMode = "uefi",
+    ///         SecureBootAction = "enable",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A VM can be imported using its ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/vm:Vm ImportedVm i-12345678
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/vm:Vm")]
@@ -27,6 +471,9 @@ namespace Pulumi.Outscale
         [Output("actionsOnNextBoots")]
         public Output<ImmutableArray<Outputs.VmActionsOnNextBoot>> ActionsOnNextBoots { get; private set; } = null!;
 
+        /// <summary>
+        /// (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.&lt;br /&gt;If `GetAdminPassword` is false or not specified, the VM resource is created without the `AdminPassword` attribute. Once `AdminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.&lt;br /&gt;If `GetAdminPassword` is true, the VM resource itself is not considered created until the `AdminPassword` attribute is available.&lt;br /&gt;Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
+        /// </summary>
         [Output("adminPassword")]
         public Output<string> AdminPassword { get; private set; } = null!;
 
@@ -277,6 +724,9 @@ namespace Pulumi.Outscale
         [Output("tpmEnabled")]
         public Output<bool> TpmEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+        /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
 
@@ -536,6 +986,9 @@ namespace Pulumi.Outscale
         [Input("tpmEnabled")]
         public Input<bool>? TpmEnabled { get; set; }
 
+        /// <summary>
+        /// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
@@ -577,6 +1030,9 @@ namespace Pulumi.Outscale
             set => _actionsOnNextBoots = value;
         }
 
+        /// <summary>
+        /// (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.&lt;br /&gt;If `GetAdminPassword` is false or not specified, the VM resource is created without the `AdminPassword` attribute. Once `AdminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.&lt;br /&gt;If `GetAdminPassword` is true, the VM resource itself is not considered created until the `AdminPassword` attribute is available.&lt;br /&gt;Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
+        /// </summary>
         [Input("adminPassword")]
         public Input<string>? AdminPassword { get; set; }
 
@@ -897,6 +1353,9 @@ namespace Pulumi.Outscale
         [Input("tpmEnabled")]
         public Input<bool>? TpmEnabled { get; set; }
 
+        /// <summary>
+        /// Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
+        /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 

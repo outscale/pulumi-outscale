@@ -77,7 +77,9 @@ import (
 // A Net attribute can be imported using the Net ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/netAttributes:NetAttributes ImportedNet vpc-12345678
+//
 // ```
 type NetAttributes struct {
 	pulumi.CustomResourceState

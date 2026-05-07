@@ -54,7 +54,9 @@ import (
 // A virtual gateway can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/virtualGateway:VirtualGateway ImportedVirtualGateway vgw-12345678
+//
 // ```
 type VirtualGateway struct {
 	pulumi.CustomResourceState

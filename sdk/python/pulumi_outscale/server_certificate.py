@@ -304,9 +304,9 @@ class ServerCertificate(pulumi.CustomResource):
 
         server_certificate01 = outscale.ServerCertificate("server_certificate_01",
             name="terraform-server-certificate",
-            body=std.index.file(input="<PATH>")["result"],
-            chain=std.index.file(input="<PATH>")["result"],
-            private_key=std.index.file(input="<PATH>")["result"],
+            body=std.file(input="<PATH>")["result"],
+            chain=std.file(input="<PATH>")["result"],
+            private_key=std.file(input="<PATH>")["result"],
             path="<PATH>")
         ```
 
@@ -315,7 +315,9 @@ class ServerCertificate(pulumi.CustomResource):
         A server certificate can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -347,9 +349,9 @@ class ServerCertificate(pulumi.CustomResource):
 
         server_certificate01 = outscale.ServerCertificate("server_certificate_01",
             name="terraform-server-certificate",
-            body=std.index.file(input="<PATH>")["result"],
-            chain=std.index.file(input="<PATH>")["result"],
-            private_key=std.index.file(input="<PATH>")["result"],
+            body=std.file(input="<PATH>")["result"],
+            chain=std.file(input="<PATH>")["result"],
+            private_key=std.file(input="<PATH>")["result"],
             path="<PATH>")
         ```
 
@@ -358,7 +360,9 @@ class ServerCertificate(pulumi.CustomResource):
         A server certificate can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+
         ```
 
         :param str resource_name: The name of the resource.

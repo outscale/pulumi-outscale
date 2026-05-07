@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -92,7 +90,9 @@ import (
 // A volume link can be imported using a volume ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/volumeLink:VolumeLink ImportedVolumeLink vol-12345678
+//
 // ```
 type VolumeLink struct {
 	pulumi.CustomResourceState

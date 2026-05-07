@@ -276,7 +276,9 @@ class Net(pulumi.CustomResource):
         A Net can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/net:Net ImportedNet vpc-87654321
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -343,7 +345,9 @@ class Net(pulumi.CustomResource):
         A Net can be imported using its ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/net:Net ImportedNet vpc-87654321
+
         ```
 
         :param str resource_name: The name of the resource.

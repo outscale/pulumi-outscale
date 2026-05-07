@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -55,7 +53,9 @@ import (
 // A flexible GPU can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
+//
 // ```
 type FlexibleGpu struct {
 	pulumi.CustomResourceState

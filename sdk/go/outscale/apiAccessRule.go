@@ -100,7 +100,9 @@ import (
 // An API access rule can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
+//
 // ```
 type ApiAccessRule struct {
 	pulumi.CustomResourceState

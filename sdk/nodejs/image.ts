@@ -83,7 +83,9 @@ import * as utilities from "./utilities";
  * An image can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
+ *
  * ```
  */
 export class Image extends pulumi.CustomResource {

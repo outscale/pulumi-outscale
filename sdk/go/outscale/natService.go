@@ -124,7 +124,9 @@ import (
 // A NAT service can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/natService:NatService ImportedNatService nat-87654321
+//
 // ```
 type NatService struct {
 	pulumi.CustomResourceState

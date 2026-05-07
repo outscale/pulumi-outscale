@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupClientGateway(ctx, &outscale.LookupClientGatewayArgs{
+//			_, err := outscale.GetClientGateway(ctx, &outscale.LookupClientGatewayArgs{
 //				Filters: []outscale.GetClientGatewayFilter{
 //					{
 //						Name: "client_gateway_ids",

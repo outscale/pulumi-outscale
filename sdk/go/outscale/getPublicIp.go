@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupPublicIp(ctx, &outscale.LookupPublicIpArgs{
+//			_, err := outscale.GetPublicIp(ctx, &outscale.LookupPublicIpArgs{
 //				Filters: []outscale.GetPublicIpFilter{
 //					{
 //						Name: "public_ips",

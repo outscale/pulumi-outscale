@@ -239,7 +239,9 @@ class NetAttributes(pulumi.CustomResource):
         A Net attribute can be imported using the Net ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/netAttributes:NetAttributes ImportedNet vpc-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -286,7 +288,9 @@ class NetAttributes(pulumi.CustomResource):
         A Net attribute can be imported using the Net ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/netAttributes:NetAttributes ImportedNet vpc-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

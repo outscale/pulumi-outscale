@@ -68,7 +68,9 @@ namespace Pulumi.Outscale
     /// A user can be imported using its ID. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/user:User user1 user_id
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/user:User")]

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupUser(ctx, &outscale.LookupUserArgs{
+//			_, err := outscale.GetUser(ctx, &outscale.LookupUserArgs{
 //				Filters: []outscale.GetUserFilter{
 //					{
 //						Name: "user_ids",

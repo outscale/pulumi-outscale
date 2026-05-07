@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupAccessKey(ctx, &outscale.LookupAccessKeyArgs{
+//			_, err := outscale.GetAccessKey(ctx, &outscale.LookupAccessKeyArgs{
 //				Filters: []outscale.GetAccessKeyFilter{
 //					{
 //						Name: "access_key_ids",
@@ -65,7 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupAccessKey(ctx, &outscale.LookupAccessKeyArgs{
+//			_, err := outscale.GetAccessKey(ctx, &outscale.LookupAccessKeyArgs{
 //				UserName: pulumi.StringRef("user_name"),
 //				Filters: []outscale.GetAccessKeyFilter{
 //					{

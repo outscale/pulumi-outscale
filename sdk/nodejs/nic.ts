@@ -73,7 +73,9 @@ import * as utilities from "./utilities";
  * A NIC can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/nic:Nic ImportedNic eni-12345678
+ *
  * ```
  */
 export class Nic extends pulumi.CustomResource {

@@ -188,7 +188,9 @@ class VirtualGatewayLink(pulumi.CustomResource):
         A virtual gateway link can be imported using its virtual gateway ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/virtualGatewayLink:VirtualGatewayLink ImportedVirtualGatewayLink vgw-12345678
+
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +238,9 @@ class VirtualGatewayLink(pulumi.CustomResource):
         A virtual gateway link can be imported using its virtual gateway ID. For example:
 
         ```sh
+
         $ pulumi import outscale:index/virtualGatewayLink:VirtualGatewayLink ImportedVirtualGatewayLink vgw-12345678
+
         ```
 
         :param str resource_name: The name of the resource.

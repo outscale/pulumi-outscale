@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *
  * const keypair02 = new outscale.Keypair("keypair02", {
  *     keypairName: "terraform-keypair-import-file",
- *     publicKey: std.index.file({
+ *     publicKey: std.file({
  *         input: "<PATH>",
  *     }).result,
  * });
@@ -47,7 +47,9 @@ import * as utilities from "./utilities";
  * A keypair can be imported using its name. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/keypair:Keypair ImportedKeypair keypair_id
+ *
  * ```
  */
 export class Keypair extends pulumi.CustomResource {

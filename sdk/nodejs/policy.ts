@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const policy_1 = new outscale.Policy("policy-1", {
  *    policyName: "terraform-policy-1",
  *    description: "test-terraform",
- *    document: std.index.file({
+ *    document: std.file({
  *        input: "policy.json",
  *    }).result,
  *    path: "/",
@@ -34,7 +34,9 @@ import * as utilities from "./utilities";
  * A policy can be imported using its ORN. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/policy:Policy policy1 orn
+ *
  * ```
  */
 export class Policy extends pulumi.CustomResource {

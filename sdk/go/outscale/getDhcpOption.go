@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupDhcpOption(ctx, &outscale.LookupDhcpOptionArgs{
+//			_, err := outscale.GetDhcpOption(ctx, &outscale.LookupDhcpOptionArgs{
 //				Filters: []outscale.GetDhcpOptionFilter{
 //					{
 //						Name: "dhcp_options_set_id",

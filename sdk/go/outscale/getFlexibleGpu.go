@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupFlexibleGpu(ctx, &outscale.LookupFlexibleGpuArgs{
+//			_, err := outscale.GetFlexibleGpu(ctx, &outscale.LookupFlexibleGpuArgs{
 //				Filters: []outscale.GetFlexibleGpuFilter{
 //					{
 //						Name: "flexible_gpu_ids",

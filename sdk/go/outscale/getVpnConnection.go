@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupVpnConnection(ctx, &outscale.LookupVpnConnectionArgs{
+//			_, err := outscale.GetVpnConnection(ctx, &outscale.LookupVpnConnectionArgs{
 //				Filters: []outscale.GetVpnConnectionFilter{
 //					{
 //						Name: "vpn_connection_ids",

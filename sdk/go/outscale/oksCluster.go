@@ -67,7 +67,9 @@ import (
 // An OKS cluster can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/oksCluster:OksCluster cluster id
+//
 // ```
 type OksCluster struct {
 	pulumi.CustomResourceState

@@ -131,8 +131,11 @@ import (
 // For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/securityGroupRule:SecurityGroupRule ImportedRule sg-87654321_outbound_-1_-1_-1_10.0.0.0/16
+//
 // ```
+// > **Note:** You can specify only one IP range at a time. To import a rule with several IP ranges, you need to have as many imports as there are IP ranges.
 type SecurityGroupRule struct {
 	pulumi.CustomResourceState
 

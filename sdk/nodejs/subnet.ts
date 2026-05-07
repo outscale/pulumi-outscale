@@ -40,7 +40,9 @@ import * as utilities from "./utilities";
  * A subnet can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678
+ *
  * ```
  */
 export class Subnet extends pulumi.CustomResource {

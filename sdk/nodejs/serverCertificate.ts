@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  *
  * const serverCertificate01 = new outscale.ServerCertificate("server_certificate_01", {
  *     name: "terraform-server-certificate",
- *     body: std.index.file({
+ *     body: std.file({
  *         input: "<PATH>",
  *     }).result,
- *     chain: std.index.file({
+ *     chain: std.file({
  *         input: "<PATH>",
  *     }).result,
- *     privateKey: std.index.file({
+ *     privateKey: std.file({
  *         input: "<PATH>",
  *     }).result,
  *     path: "<PATH>",
@@ -37,7 +37,9 @@ import * as utilities from "./utilities";
  * A server certificate can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/serverCertificate:ServerCertificate ImportedServerCertificate 0123456789
+ *
  * ```
  */
 export class ServerCertificate extends pulumi.CustomResource {

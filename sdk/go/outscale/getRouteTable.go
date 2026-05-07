@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := outscale.LookupRouteTable(ctx, &outscale.LookupRouteTableArgs{
+//			_, err := outscale.GetRouteTable(ctx, &outscale.LookupRouteTableArgs{
 //				Filters: []outscale.GetRouteTableFilter{
 //					{
 //						Name: "route_table_ids",

@@ -33,7 +33,9 @@ import * as utilities from "./utilities";
  * An OKS project can be imported using its ID. For example:
  *
  * ```sh
+ *
  * $ pulumi import outscale:index/oksProject:OksProject project id
+ *
  * ```
  */
 export class OksProject extends pulumi.CustomResource {

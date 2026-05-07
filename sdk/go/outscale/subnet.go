@@ -77,7 +77,9 @@ import (
 // A subnet can be imported using its ID. For example:
 //
 // ```sh
+//
 // $ pulumi import outscale:index/subnet:Subnet ImportedSubnet subnet-12345678
+//
 // ```
 type Subnet struct {
 	pulumi.CustomResourceState

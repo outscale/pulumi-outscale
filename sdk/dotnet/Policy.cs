@@ -30,7 +30,7 @@ namespace Pulumi.Outscale
     ///    {
     ///        PolicyName = "terraform-policy-1",
     ///        Description = "test-terraform",
-    ///        Document = Std.Index.File.Invoke(new()
+    ///        Document = Std.File.Invoke(new()
     ///        {
     ///            Input = "policy.json",
     ///        }).Result,
@@ -45,7 +45,9 @@ namespace Pulumi.Outscale
     /// A policy can be imported using its ORN. For example:
     /// 
     /// ```sh
+    /// 
     /// $ pulumi import outscale:index/policy:Policy policy1 orn
+    /// 
     /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/policy:Policy")]
