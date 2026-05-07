@@ -40,18 +40,15 @@ checkUpstreamUpgrade: true
 clean-github-workflows: false
 # Whether we automatically merge upstream provider upgrades.
 autoMergeProviderUpgrades: false
-# Enables ESC for CI secrets. Optional.
-esc:
-    enabled: false
 github-app:
     enabled: false
 actions:
     preTest:
         - name: Set OUTSCALE Credentials
           run: |
-              echo "OUTSCALE_ACCESSKEYID=${{ secrets.OUTSCALE_ACCESSKEYID }}" >> $GITHUB_ENV
-              echo "OUTSCALE_REGION=${{ secrets.OUTSCALE_REGION }}" >> $GITHUB_ENV
-              echo "OUTSCALE_SECRETKEYID=${{ secrets.OUTSCALE_SECRETKEYID }}" >> $GITHUB_ENV
+            echo "OUTSCALE_ACCESSKEYID=${{ secrets.OUTSCALE_ACCESSKEYID }}" >> $GITHUB_ENV
+            echo "OUTSCALE_REGION=${{ secrets.OUTSCALE_REGION }}" >> $GITHUB_ENV
+            echo "OUTSCALE_SECRETKEYID=${{ secrets.OUTSCALE_SECRETKEYID }}" >> $GITHUB_ENV
 license:
     ignore:
         # License are in a LICENSES folder
