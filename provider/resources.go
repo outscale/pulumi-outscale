@@ -103,44 +103,6 @@ func endpointsSchema() *schema.Schema {
 	}
 }
 
-func providerConfigureClient(d *schema.ResourceData) (any, error) {
-	config := outscale.Config{
-		Endpoints:    make(map[string]string),
-		X509CertPath: d.Get("x509_cert_path").(string),
-		X509KeyPath:  d.Get("x509_key_path").(string),
-		Insecure:     d.Get("insecure").(bool),
-	}
-
-	if ak, ok := d.GetOk("access_key_id"); ok {
-		config.AccessKeyID = ak.(string)
-	}
-	if sk, ok := d.GetOk("secret_key_id"); ok {
-		config.SecretKeyID = sk.(string)
-	}
-	if region, ok := d.GetOk("region"); ok {
-		config.Region = region.(string)
-		config.APIRegion = region.(string)
-	}
-	endpointsSet := d.Get("endpoints").(*schema.Set)
-
-	for _, endpointsSetI := range endpointsSet.List() {
-		endpoints := endpointsSetI.(map[string]any)
-		config.Endpoints["api"] = endpoints["api"].(string)
-		config.APIEndpoint = endpoints["api"].(string)
-	}
-	if x509CertPath, ok := d.GetOk("x509_cert_path"); ok {
-		config.APIX509Cert = x509CertPath.(string)
-	}
-	if x509KeyPath, ok := d.GetOk("x509_key_path"); ok {
-		config.APIX509Key = x509KeyPath.(string)
-	}
-	if insecure, ok := d.GetOk("insecure"); ok {
-		config.APIInsecure = insecure.(bool)
-	}
-
-	return config.Client()
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	ctx := context.Background()
@@ -193,7 +155,8 @@ func Provider() tfbridge.ProviderInfo {
 		ResourcesMap:   tfOutscaleSchemaProvider.ResourcesMap,
 		DataSourcesMap: tfOutscaleSchemaProvider.DataSourcesMap,
 
-		ConfigureFunc: providerConfigureClient,
+		// Use the upstream provider's ConfigureContextFunc instead of a custom one.
+		ConfigureContextFunc: tfOutscaleSchemaProvider.ConfigureContextFunc,
 	}
 
 	// Map the Terraform resources to Pulumi resources.
@@ -219,7 +182,7 @@ func Provider() tfbridge.ProviderInfo {
 		res := ressourceFactory()
 		resp := resource.MetadataResponse{}
 		res.Metadata(ctx, resource.MetadataRequest{
-			ProviderTypeName: "outscale",
+			ProviderTypeName: mainPkg,
 		}, &resp)
 		resourceMap[resp.TypeName] = &tfbridge.ResourceInfo{
 			Tok: outscaleResource(mainMod, resourceNameToPulumiIdentifier(resp.TypeName)),
@@ -256,7 +219,7 @@ func Provider() tfbridge.ProviderInfo {
 
 		// Call the Metadata API to get the type name.
 		ds.Metadata(ctx, datasource.MetadataRequest{
-			ProviderTypeName: "outscale",
+			ProviderTypeName: mainPkg,
 		}, &resp)
 
 		dsMap[resp.TypeName] = &tfbridge.DataSourceInfo{
@@ -271,15 +234,15 @@ func Provider() tfbridge.ProviderInfo {
 			tfFrameworkProvider,
 		),
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Name:         "outscale",
+		Name:         mainPkg,
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "Outscale",
+		DisplayName: mainPkg,
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Outscale",
+		Publisher: mainPkg,
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -295,13 +258,13 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "outscale", "category/cloud"},
+		Keywords:   []string{"pulumi", mainPkg, "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
 		Repository: "https://github.com/outscale/pulumi-outscale",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "outscale",
+		GitHubOrg: mainPkg,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"access_key_id": {
 				Default: &tfbridge.DefaultInfo{
