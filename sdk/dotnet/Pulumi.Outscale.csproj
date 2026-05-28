@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Outscale</Authors>
-    <Company>Outscale</Company>
+    <Authors>outscale</Authors>
+    <Company>outscale</Company>
     <Description>A Pulumi package for creating and managing outscale cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
