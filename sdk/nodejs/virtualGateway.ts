@@ -72,20 +72,21 @@ export class VirtualGateway extends pulumi.CustomResource {
     /**
      * The Net to which the virtual gateway is attached.
      */
-    declare public readonly netToVirtualGatewayLinks: pulumi.Output<outputs.VirtualGatewayNetToVirtualGatewayLink[]>;
-    declare public readonly requestId: pulumi.Output<string>;
+    declare public /*out*/ readonly netToVirtualGatewayLinks: pulumi.Output<outputs.VirtualGatewayNetToVirtualGatewayLink[]>;
+    declare public /*out*/ readonly requestId: pulumi.Output<string>;
     /**
      * The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    declare public readonly state: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.VirtualGatewayTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.VirtualGatewayTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */
-    declare public readonly virtualGatewayId: pulumi.Output<string>;
+    declare public /*out*/ readonly virtualGatewayId: pulumi.Output<string>;
 
     /**
      * Create a VirtualGateway resource with the given unique name, arguments, and options.
@@ -105,6 +106,7 @@ export class VirtualGateway extends pulumi.CustomResource {
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["state"] = state?.state;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
         } else {
             const args = argsOrState as VirtualGatewayArgs | undefined;
@@ -112,11 +114,12 @@ export class VirtualGateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'connectionType'");
             }
             resourceInputs["connectionType"] = args?.connectionType;
-            resourceInputs["netToVirtualGatewayLinks"] = args?.netToVirtualGatewayLinks;
-            resourceInputs["requestId"] = args?.requestId;
-            resourceInputs["state"] = args?.state;
             resourceInputs["tags"] = args?.tags;
-            resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["netToVirtualGatewayLinks"] = undefined /*out*/;
+            resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["virtualGatewayId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VirtualGateway.__pulumiType, name, resourceInputs, opts);
@@ -144,6 +147,7 @@ export interface VirtualGatewayState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayTag>[]>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayTimeouts>;
     /**
      * The ID of the virtual gateway.
      */
@@ -159,20 +163,8 @@ export interface VirtualGatewayArgs {
      */
     connectionType: pulumi.Input<string>;
     /**
-     * The Net to which the virtual gateway is attached.
-     */
-    netToVirtualGatewayLinks?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayNetToVirtualGatewayLink>[]>;
-    requestId?: pulumi.Input<string>;
-    /**
-     * The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
-     */
-    state?: pulumi.Input<string>;
-    /**
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayTag>[]>;
-    /**
-     * The ID of the virtual gateway.
-     */
-    virtualGatewayId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayTimeouts>;
 }

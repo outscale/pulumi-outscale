@@ -19,6 +19,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Create a cluster
+//
 // ```go
 // package main
 //
@@ -46,7 +48,7 @@ import (
 //				},
 //				CidrPods:      pulumi.String("10.91.0.0/16"),
 //				CidrService:   pulumi.String("10.92.0.0/16"),
-//				Version:       pulumi.String("1.32"),
+//				Version:       pulumi.String("1.35"),
 //				Name:          pulumi.String("cluster01"),
 //				ControlPlanes: pulumi.String("cp.mono.master"),
 //				Tags: pulumi.StringMap{
@@ -61,6 +63,65 @@ import (
 //	}
 //
 // ```
+//
+// ### Use the Kubernetes provider to deploy CRDs
+//
+// To use the Kubernetes provider, you first need to create an OKS project and OKS cluster as in the above example. Then, with the cluster's `kubeconfigAttributes`, you can initialize the provider as follows:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// If you want to deploy a Custom Resource Definition (CRD), you can then use a `kubernetesManifest` resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kubernetes/sdk/go/kubernetes"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kubernetes.NewManifest(ctx, "example", &kubernetes.ManifestArgs{
+//				Manifest: map[string]interface{}{
+//					"apiVersion": "example.com/v1",
+//					"kind":       "ExampleResource",
+//					"metadata": map[string]interface{}{
+//						"name": "example",
+//					},
+//					"spec": map[string]interface{}{
+//						"value": "example",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **Important:** Note that the `kubernetesManifest` resource builds a client during `pulumi preview` to validate the manifest, and will fail if the cluster does not already exist. Therefore, you need to either deploy your configuration in multiple steps, or deploy the cluster first before you can create this resource.<br /><br />
+// Alternatively, you can deploy CRDs in a single step without the need of another Terraform provider by using the native `OksManifest` resource, which retrieves the kubeconfig dynamically from the cluster. See the `OksManifest` page for an example.
 //
 // ## Import
 //
@@ -100,8 +161,10 @@ type OksCluster struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
 	DisableApiTermination pulumi.BoolOutput `pulumi:"disableApiTermination"`
-	// A file containing access configuration to the cluster.
+	// (Sensitive value) A file containing access configuration to the cluster.
 	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
+	// (Sensitive value) Access configuration to the cluster.
+	KubeconfigAttributes OksClusterKubeconfigAttributesOutput `pulumi:"kubeconfigAttributes"`
 	// A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which you want to create a cluster.
@@ -143,6 +206,7 @@ func NewOksCluster(ctx *pulumi.Context,
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"kubeconfig",
+		"kubeconfigAttributes",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -194,8 +258,10 @@ type oksClusterState struct {
 	Description *string `pulumi:"description"`
 	// If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
 	DisableApiTermination *bool `pulumi:"disableApiTermination"`
-	// A file containing access configuration to the cluster.
+	// (Sensitive value) A file containing access configuration to the cluster.
 	Kubeconfig *string `pulumi:"kubeconfig"`
+	// (Sensitive value) Access configuration to the cluster.
+	KubeconfigAttributes *OksClusterKubeconfigAttributes `pulumi:"kubeconfigAttributes"`
 	// A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which you want to create a cluster.
@@ -240,8 +306,10 @@ type OksClusterState struct {
 	Description pulumi.StringPtrInput
 	// If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
 	DisableApiTermination pulumi.BoolPtrInput
-	// A file containing access configuration to the cluster.
+	// (Sensitive value) A file containing access configuration to the cluster.
 	Kubeconfig pulumi.StringPtrInput
+	// (Sensitive value) Access configuration to the cluster.
+	KubeconfigAttributes OksClusterKubeconfigAttributesPtrInput
 	// A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which you want to create a cluster.
@@ -492,9 +560,14 @@ func (o OksClusterOutput) DisableApiTermination() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OksCluster) pulumi.BoolOutput { return v.DisableApiTermination }).(pulumi.BoolOutput)
 }
 
-// A file containing access configuration to the cluster.
+// (Sensitive value) A file containing access configuration to the cluster.
 func (o OksClusterOutput) Kubeconfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *OksCluster) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
+}
+
+// (Sensitive value) Access configuration to the cluster.
+func (o OksClusterOutput) KubeconfigAttributes() OksClusterKubeconfigAttributesOutput {
+	return o.ApplyT(func(v *OksCluster) OksClusterKubeconfigAttributesOutput { return v.KubeconfigAttributes }).(OksClusterKubeconfigAttributesOutput)
 }
 
 // A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.

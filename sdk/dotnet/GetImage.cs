@@ -19,6 +19,8 @@ namespace Pulumi.Outscale
         /// 
         /// ## Example Usage
         /// 
+        /// ### Get an image from its ID
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,6 +42,43 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Get the most recent Debian 12 image provided by OUTSCALE
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Outscale = Pulumi.Outscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var omi = Outscale.GetImage.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Outscale.Inputs.GetImageFilterInputArgs
+        ///             {
+        ///                 Name = "account_aliases",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Outscale",
+        ///                 },
+        ///             },
+        ///             new Outscale.Inputs.GetImageFilterInputArgs
+        ///             {
+        ///                 Name = "image_names",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Debian-12-*",
+        ///                 },
+        ///             },
+        ///         },
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
@@ -56,6 +95,8 @@ namespace Pulumi.Outscale
         /// 
         /// ## Example Usage
         /// 
+        /// ### Get an image from its ID
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,6 +122,43 @@ namespace Pulumi.Outscale
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Get the most recent Debian 12 image provided by OUTSCALE
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Outscale = Pulumi.Outscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var omi = Outscale.GetImage.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Outscale.Inputs.GetImageFilterInputArgs
+        ///             {
+        ///                 Name = "account_aliases",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Outscale",
+        ///                 },
+        ///             },
+        ///             new Outscale.Inputs.GetImageFilterInputArgs
+        ///             {
+        ///                 Name = "image_names",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Debian-12-*",
+        ///                 },
+        ///             },
+        ///         },
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("outscale:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
@@ -92,6 +170,8 @@ namespace Pulumi.Outscale
         /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Get an image from its ID
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -114,6 +194,43 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Get the most recent Debian 12 image provided by OUTSCALE
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Outscale = Pulumi.Outscale;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var omi = Outscale.GetImage.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Outscale.Inputs.GetImageFilterInputArgs
+        ///             {
+        ///                 Name = "account_aliases",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Outscale",
+        ///                 },
+        ///             },
+        ///             new Outscale.Inputs.GetImageFilterInputArgs
+        ///             {
+        ///                 Name = "image_names",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "Debian-12-*",
+        ///                 },
+        ///             },
+        ///         },
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
@@ -155,6 +272,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("imageId")]
         public string? ImageId { get; set; }
+
+        [Input("mostRecent")]
+        public bool? MostRecent { get; set; }
 
         [Input("permissions")]
         private List<string>? _permissions;
@@ -201,6 +321,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
 
         [Input("permissions")]
         private InputList<string>? _permissions;
@@ -270,6 +393,7 @@ namespace Pulumi.Outscale
         /// </summary>
         public readonly string ImageType;
         public readonly bool IsPublic;
+        public readonly bool? MostRecent;
         public readonly ImmutableArray<string> Permissions;
         /// <summary>
         /// Permissions for the resource.
@@ -339,6 +463,8 @@ namespace Pulumi.Outscale
 
             bool isPublic,
 
+            bool? mostRecent,
+
             ImmutableArray<string> permissions,
 
             ImmutableArray<Outputs.GetImagePermissionsToLaunchResult> permissionsToLaunches,
@@ -375,6 +501,7 @@ namespace Pulumi.Outscale
             ImageName = imageName;
             ImageType = imageType;
             IsPublic = isPublic;
+            MostRecent = mostRecent;
             Permissions = permissions;
             PermissionsToLaunches = permissionsToLaunches;
             ProductCodes = productCodes;

@@ -90,11 +90,12 @@ import (
 type VirtualGatewayLink struct {
 	pulumi.CustomResourceState
 
-	DryRun pulumi.StringOutput `pulumi:"dryRun"`
 	// The ID of the Net to which you want to attach the virtual gateway.
-	NetId                    pulumi.StringOutput                                  `pulumi:"netId"`
+	NetId pulumi.StringOutput `pulumi:"netId"`
+	// The Net to which the virtual gateway is attached.
 	NetToVirtualGatewayLinks VirtualGatewayLinkNetToVirtualGatewayLinkArrayOutput `pulumi:"netToVirtualGatewayLinks"`
 	RequestId                pulumi.StringOutput                                  `pulumi:"requestId"`
+	Timeouts                 VirtualGatewayLinkTimeoutsPtrOutput                  `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringOutput `pulumi:"virtualGatewayId"`
 }
@@ -135,21 +136,23 @@ func GetVirtualGatewayLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VirtualGatewayLink resources.
 type virtualGatewayLinkState struct {
-	DryRun *string `pulumi:"dryRun"`
 	// The ID of the Net to which you want to attach the virtual gateway.
-	NetId                    *string                                     `pulumi:"netId"`
+	NetId *string `pulumi:"netId"`
+	// The Net to which the virtual gateway is attached.
 	NetToVirtualGatewayLinks []VirtualGatewayLinkNetToVirtualGatewayLink `pulumi:"netToVirtualGatewayLinks"`
 	RequestId                *string                                     `pulumi:"requestId"`
+	Timeouts                 *VirtualGatewayLinkTimeouts                 `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId *string `pulumi:"virtualGatewayId"`
 }
 
 type VirtualGatewayLinkState struct {
-	DryRun pulumi.StringPtrInput
 	// The ID of the Net to which you want to attach the virtual gateway.
-	NetId                    pulumi.StringPtrInput
+	NetId pulumi.StringPtrInput
+	// The Net to which the virtual gateway is attached.
 	NetToVirtualGatewayLinks VirtualGatewayLinkNetToVirtualGatewayLinkArrayInput
 	RequestId                pulumi.StringPtrInput
+	Timeouts                 VirtualGatewayLinkTimeoutsPtrInput
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringPtrInput
 }
@@ -159,18 +162,18 @@ func (VirtualGatewayLinkState) ElementType() reflect.Type {
 }
 
 type virtualGatewayLinkArgs struct {
-	DryRun *string `pulumi:"dryRun"`
 	// The ID of the Net to which you want to attach the virtual gateway.
-	NetId string `pulumi:"netId"`
+	NetId    string                      `pulumi:"netId"`
+	Timeouts *VirtualGatewayLinkTimeouts `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId string `pulumi:"virtualGatewayId"`
 }
 
 // The set of arguments for constructing a VirtualGatewayLink resource.
 type VirtualGatewayLinkArgs struct {
-	DryRun pulumi.StringPtrInput
 	// The ID of the Net to which you want to attach the virtual gateway.
-	NetId pulumi.StringInput
+	NetId    pulumi.StringInput
+	Timeouts VirtualGatewayLinkTimeoutsPtrInput
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringInput
 }
@@ -262,15 +265,12 @@ func (o VirtualGatewayLinkOutput) ToVirtualGatewayLinkOutputWithContext(ctx cont
 	return o
 }
 
-func (o VirtualGatewayLinkOutput) DryRun() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualGatewayLink) pulumi.StringOutput { return v.DryRun }).(pulumi.StringOutput)
-}
-
 // The ID of the Net to which you want to attach the virtual gateway.
 func (o VirtualGatewayLinkOutput) NetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualGatewayLink) pulumi.StringOutput { return v.NetId }).(pulumi.StringOutput)
 }
 
+// The Net to which the virtual gateway is attached.
 func (o VirtualGatewayLinkOutput) NetToVirtualGatewayLinks() VirtualGatewayLinkNetToVirtualGatewayLinkArrayOutput {
 	return o.ApplyT(func(v *VirtualGatewayLink) VirtualGatewayLinkNetToVirtualGatewayLinkArrayOutput {
 		return v.NetToVirtualGatewayLinks
@@ -279,6 +279,10 @@ func (o VirtualGatewayLinkOutput) NetToVirtualGatewayLinks() VirtualGatewayLinkN
 
 func (o VirtualGatewayLinkOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualGatewayLink) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
+}
+
+func (o VirtualGatewayLinkOutput) Timeouts() VirtualGatewayLinkTimeoutsPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayLink) VirtualGatewayLinkTimeoutsPtrOutput { return v.Timeouts }).(VirtualGatewayLinkTimeoutsPtrOutput)
 }
 
 // The ID of the virtual gateway.

@@ -1817,7 +1817,7 @@ export interface GetNicLinkNic {
      */
     deleteOnVmDeletion: string;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: number;
     /**
@@ -1999,7 +1999,7 @@ export interface GetNicsNicLinkNic {
      */
     deleteOnVmDeletion: boolean;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: number;
     /**
@@ -2105,6 +2105,25 @@ export interface GetNicsNicTag {
      * The value of the tag, between 0 and 255 characters.
      */
     value: string;
+}
+
+export interface GetOksKubeconfigKubeconfigAttributes {
+    /**
+     * The client certificate for accessing the cluster.
+     */
+    clientCertificate: string;
+    /**
+     * The private key matching the client certificate.
+     */
+    clientKey: string;
+    /**
+     * The Certificate Authority (CA) associated with the cluster.
+     */
+    clusterCaCertificate: string;
+    /**
+     * The URL of the Kubernetes API server of the cluster.
+     */
+    host: string;
 }
 
 export interface GetPoliciesFilter {
@@ -3422,7 +3441,7 @@ export interface GetVmNic {
      */
     description: string;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: number;
     /**
@@ -3483,7 +3502,7 @@ export interface GetVmNicLinkNic {
      */
     deleteOnVmDeletion: boolean;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: string;
     /**
@@ -3570,7 +3589,7 @@ export interface GetVmPrimaryNic {
      */
     description: string;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: number;
     /**
@@ -3630,7 +3649,7 @@ export interface GetVmPrimaryNicLinkNic {
      */
     deleteOnVmDeletion: boolean;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: string;
     /**
@@ -4063,7 +4082,7 @@ export interface GetVmsVmNic {
      */
     description: string;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: number;
     /**
@@ -4124,7 +4143,7 @@ export interface GetVmsVmNicLinkNic {
      */
     deleteOnVmDeletion: boolean;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: string;
     /**
@@ -4211,7 +4230,7 @@ export interface GetVmsVmPrimaryNic {
      */
     description: string;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: number;
     /**
@@ -4271,7 +4290,7 @@ export interface GetVmsVmPrimaryNicLinkNic {
      */
     deleteOnVmDeletion: boolean;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: string;
     /**
@@ -5596,7 +5615,7 @@ export interface NicLinkNic {
      */
     deleteOnVmDeletion: string;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: number;
     /**
@@ -5808,6 +5827,25 @@ export interface OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
     weekDay: string;
 }
 
+export interface OksClusterKubeconfigAttributes {
+    /**
+     * The client certificate for accessing the cluster.
+     */
+    clientCertificate: string;
+    /**
+     * The private key matching the client certificate.
+     */
+    clientKey: string;
+    /**
+     * The Certificate Authority (CA) associated with the cluster.
+     */
+    clusterCaCertificate: string;
+    /**
+     * The URL of the Kubernetes API server of the cluster.
+     */
+    host: string;
+}
+
 export interface OksClusterStatuses {
     /**
      * Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
@@ -5848,6 +5886,38 @@ export interface OksClusterTimeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     update?: string;
+}
+
+export interface OksManifestTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface OksManifestWaitFor {
+    /**
+     * Maps of key/value pairs in the `"{.field_path}" = "expectedValue"` format.<br />
+     * Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+     * Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+     */
+    fields: {[key: string]: string};
+    /**
+     * A custom timeout for the `waitFor` checks. If not specified, falls back to the CRUD operation default timeout.
+     */
+    timeout?: string;
 }
 
 export interface OksProjectTimeouts {
@@ -6545,6 +6615,21 @@ export interface VirtualGatewayLinkNetToVirtualGatewayLink {
     state: string;
 }
 
+export interface VirtualGatewayLinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
 export interface VirtualGatewayNetToVirtualGatewayLink {
     /**
      * The ID of the Net to which the virtual gateway is attached.
@@ -6556,6 +6641,25 @@ export interface VirtualGatewayNetToVirtualGatewayLink {
     state: string;
 }
 
+export interface VirtualGatewayRoutePropagationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface VirtualGatewayTag {
     /**
      * The key of the tag, between 1 and 255 characters.
@@ -6565,6 +6669,25 @@ export interface VirtualGatewayTag {
      * The value of the tag, between 0 and 255 characters.
      */
     value: string;
+}
+
+export interface VirtualGatewayTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface VmActionsOnNextBoot {
@@ -6681,7 +6804,7 @@ export interface VmNic {
      */
     description: string;
     /**
-     * The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+     * The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
      */
     deviceNumber: number;
     /**
@@ -6744,7 +6867,7 @@ export interface VmNicLinkNic {
      */
     deleteOnVmDeletion: boolean;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: string;
     /**
@@ -6894,7 +7017,7 @@ export interface VmPrimaryNicLinkNic {
      */
     deleteOnVmDeletion: boolean;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber: string;
     /**

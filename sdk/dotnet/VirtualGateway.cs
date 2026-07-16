@@ -81,6 +81,9 @@ namespace Pulumi.Outscale
         [Output("tags")]
         public Output<ImmutableArray<Outputs.VirtualGatewayTag>> Tags { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.VirtualGatewayTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the virtual gateway.
         /// </summary>
@@ -139,27 +142,6 @@ namespace Pulumi.Outscale
         [Input("connectionType", required: true)]
         public Input<string> ConnectionType { get; set; } = null!;
 
-        [Input("netToVirtualGatewayLinks")]
-        private InputList<Inputs.VirtualGatewayNetToVirtualGatewayLinkArgs>? _netToVirtualGatewayLinks;
-
-        /// <summary>
-        /// The Net to which the virtual gateway is attached.
-        /// </summary>
-        public InputList<Inputs.VirtualGatewayNetToVirtualGatewayLinkArgs> NetToVirtualGatewayLinks
-        {
-            get => _netToVirtualGatewayLinks ?? (_netToVirtualGatewayLinks = new InputList<Inputs.VirtualGatewayNetToVirtualGatewayLinkArgs>());
-            set => _netToVirtualGatewayLinks = value;
-        }
-
-        [Input("requestId")]
-        public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// The state of the virtual gateway (`Pending` \| `Available` \| `Deleting` \| `Deleted`).
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
         [Input("tags")]
         private InputList<Inputs.VirtualGatewayTagArgs>? _tags;
 
@@ -172,11 +154,8 @@ namespace Pulumi.Outscale
             set => _tags = value;
         }
 
-        /// <summary>
-        /// The ID of the virtual gateway.
-        /// </summary>
-        [Input("virtualGatewayId")]
-        public Input<string>? VirtualGatewayId { get; set; }
+        [Input("timeouts")]
+        public Input<Inputs.VirtualGatewayTimeoutsArgs>? Timeouts { get; set; }
 
         public VirtualGatewayArgs()
         {
@@ -224,6 +203,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.VirtualGatewayTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.VirtualGatewayTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the virtual gateway.

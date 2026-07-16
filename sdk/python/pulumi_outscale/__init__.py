@@ -57,6 +57,7 @@ from .get_net_peerings import *
 from .get_nets import *
 from .get_nic import *
 from .get_nics import *
+from .get_oks_crd_templates import *
 from .get_oks_kubeconfig import *
 from .get_oks_quotas import *
 from .get_policies import *
@@ -124,6 +125,7 @@ from .nic import *
 from .nic_link import *
 from .nic_private_ip import *
 from .oks_cluster import *
+from .oks_manifest import *
 from .oks_project import *
 from .policy import *
 from .policy_version import *
@@ -401,6 +403,14 @@ _utilities.register(
   "fqn": "pulumi_outscale",
   "classes": {
    "outscale:index/oksCluster:OksCluster": "OksCluster"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oksManifest",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oksManifest:OksManifest": "OksManifest"
   }
  },
  {

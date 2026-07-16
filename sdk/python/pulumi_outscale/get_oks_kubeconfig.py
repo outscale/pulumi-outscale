@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetOksKubeconfigResult',
@@ -26,7 +27,7 @@ class GetOksKubeconfigResult:
     """
     A collection of values returned by getOksKubeconfig.
     """
-    def __init__(__self__, cluster_id=None, group=None, id=None, kubeconfig=None, request_id=None, ttl=None, user=None, x_encrypt_nacl=None):
+    def __init__(__self__, cluster_id=None, group=None, id=None, kubeconfig=None, kubeconfig_attributes=None, request_id=None, ttl=None, user=None, x_encrypt_nacl=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -39,6 +40,9 @@ class GetOksKubeconfigResult:
         if kubeconfig and not isinstance(kubeconfig, str):
             raise TypeError("Expected argument 'kubeconfig' to be a str")
         pulumi.set(__self__, "kubeconfig", kubeconfig)
+        if kubeconfig_attributes and not isinstance(kubeconfig_attributes, dict):
+            raise TypeError("Expected argument 'kubeconfig_attributes' to be a dict")
+        pulumi.set(__self__, "kubeconfig_attributes", kubeconfig_attributes)
         if request_id and not isinstance(request_id, str):
             raise TypeError("Expected argument 'request_id' to be a str")
         pulumi.set(__self__, "request_id", request_id)
@@ -71,9 +75,17 @@ class GetOksKubeconfigResult:
     @pulumi.getter
     def kubeconfig(self) -> _builtins.str:
         """
-        A file containing access configuration to the cluster.
+        (Sensitive value) A file containing access configuration to the cluster.
         """
         return pulumi.get(self, "kubeconfig")
+
+    @_builtins.property
+    @pulumi.getter(name="kubeconfigAttributes")
+    def kubeconfig_attributes(self) -> 'outputs.GetOksKubeconfigKubeconfigAttributesResult':
+        """
+        (Sensitive value) Access configuration to the cluster.
+        """
+        return pulumi.get(self, "kubeconfig_attributes")
 
     @_builtins.property
     @pulumi.getter(name="requestId")
@@ -106,6 +118,7 @@ class AwaitableGetOksKubeconfigResult(GetOksKubeconfigResult):
             group=self.group,
             id=self.id,
             kubeconfig=self.kubeconfig,
+            kubeconfig_attributes=self.kubeconfig_attributes,
             request_id=self.request_id,
             ttl=self.ttl,
             user=self.user,
@@ -154,6 +167,7 @@ def get_oks_kubeconfig(cluster_id: Optional[_builtins.str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         kubeconfig=pulumi.get(__ret__, 'kubeconfig'),
+        kubeconfig_attributes=pulumi.get(__ret__, 'kubeconfig_attributes'),
         request_id=pulumi.get(__ret__, 'request_id'),
         ttl=pulumi.get(__ret__, 'ttl'),
         user=pulumi.get(__ret__, 'user'),
@@ -199,6 +213,7 @@ def get_oks_kubeconfig_output(cluster_id: Optional[pulumi.Input[_builtins.str]] 
         group=pulumi.get(__response__, 'group'),
         id=pulumi.get(__response__, 'id'),
         kubeconfig=pulumi.get(__response__, 'kubeconfig'),
+        kubeconfig_attributes=pulumi.get(__response__, 'kubeconfig_attributes'),
         request_id=pulumi.get(__response__, 'request_id'),
         ttl=pulumi.get(__response__, 'ttl'),
         user=pulumi.get(__response__, 'user'),

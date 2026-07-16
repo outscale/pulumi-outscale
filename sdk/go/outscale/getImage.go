@@ -18,6 +18,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Get an image from its ID
+//
 // ```go
 // package main
 //
@@ -48,6 +50,46 @@ import (
 //	}
 //
 // ```
+//
+// ### Get the most recent Debian 12 image provided by OUTSCALE
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := outscale.GetImage(ctx, &outscale.LookupImageArgs{
+//				Filters: []outscale.GetImageFilter{
+//					{
+//						Name: "account_aliases",
+//						Values: []string{
+//							"Outscale",
+//						},
+//					},
+//					{
+//						Name: "image_names",
+//						Values: []string{
+//							"Debian-12-*",
+//						},
+//					},
+//				},
+//				MostRecent: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageResult
@@ -66,6 +108,7 @@ type LookupImageArgs struct {
 	Filters []GetImageFilter `pulumi:"filters"`
 	// The ID of the OMI.
 	ImageId     *string  `pulumi:"imageId"`
+	MostRecent  *bool    `pulumi:"mostRecent"`
 	Permissions []string `pulumi:"permissions"`
 }
 
@@ -97,6 +140,7 @@ type LookupImageResult struct {
 	// The type of the OMI.
 	ImageType   string   `pulumi:"imageType"`
 	IsPublic    bool     `pulumi:"isPublic"`
+	MostRecent  *bool    `pulumi:"mostRecent"`
 	Permissions []string `pulumi:"permissions"`
 	// Permissions for the resource.
 	PermissionsToLaunches []GetImagePermissionsToLaunch `pulumi:"permissionsToLaunches"`
@@ -136,6 +180,7 @@ type LookupImageOutputArgs struct {
 	Filters GetImageFilterArrayInput `pulumi:"filters"`
 	// The ID of the OMI.
 	ImageId     pulumi.StringPtrInput   `pulumi:"imageId"`
+	MostRecent  pulumi.BoolPtrInput     `pulumi:"mostRecent"`
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 }
 
@@ -224,6 +269,10 @@ func (o LookupImageResultOutput) ImageType() pulumi.StringOutput {
 
 func (o LookupImageResultOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+func (o LookupImageResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupImageResultOutput) Permissions() pulumi.StringArrayOutput {

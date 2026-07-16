@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -64,9 +66,13 @@ export interface GetOksKubeconfigResult {
     readonly group?: string;
     readonly id: string;
     /**
-     * A file containing access configuration to the cluster.
+     * (Sensitive value) A file containing access configuration to the cluster.
      */
     readonly kubeconfig: string;
+    /**
+     * (Sensitive value) Access configuration to the cluster.
+     */
+    readonly kubeconfigAttributes: outputs.GetOksKubeconfigKubeconfigAttributes;
     readonly requestId: string;
     readonly ttl?: string;
     readonly user?: string;

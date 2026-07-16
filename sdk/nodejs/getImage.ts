@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Get an image from its ID
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as outscale from "@outscale/pulumi-outscale";
@@ -25,6 +27,27 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ *
+ * ### Get the most recent Debian 12 image provided by OUTSCALE
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const omi = outscale.getImage({
+ *     filters: [
+ *         {
+ *             name: "account_aliases",
+ *             values: ["Outscale"],
+ *         },
+ *         {
+ *             name: "image_names",
+ *             values: ["Debian-12-*"],
+ *         },
+ *     ],
+ *     mostRecent: true,
+ * });
+ * ```
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
@@ -33,6 +56,7 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
         "blockDeviceMappings": args.blockDeviceMappings,
         "filters": args.filters,
         "imageId": args.imageId,
+        "mostRecent": args.mostRecent,
         "permissions": args.permissions,
     }, opts);
 }
@@ -53,6 +77,7 @@ export interface GetImageArgs {
      * The ID of the OMI.
      */
     imageId?: string;
+    mostRecent?: boolean;
     permissions?: string[];
 }
 
@@ -110,6 +135,7 @@ export interface GetImageResult {
      */
     readonly imageType: string;
     readonly isPublic: boolean;
+    readonly mostRecent?: boolean;
     readonly permissions?: string[];
     /**
      * Permissions for the resource.
@@ -157,6 +183,8 @@ export interface GetImageResult {
  *
  * ## Example Usage
  *
+ * ### Get an image from its ID
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as outscale from "@outscale/pulumi-outscale";
@@ -168,6 +196,27 @@ export interface GetImageResult {
  *     }],
  * });
  * ```
+ *
+ * ### Get the most recent Debian 12 image provided by OUTSCALE
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const omi = outscale.getImage({
+ *     filters: [
+ *         {
+ *             name: "account_aliases",
+ *             values: ["Outscale"],
+ *         },
+ *         {
+ *             name: "image_names",
+ *             values: ["Debian-12-*"],
+ *         },
+ *     ],
+ *     mostRecent: true,
+ * });
+ * ```
  */
 export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageResult> {
     args = args || {};
@@ -176,6 +225,7 @@ export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOu
         "blockDeviceMappings": args.blockDeviceMappings,
         "filters": args.filters,
         "imageId": args.imageId,
+        "mostRecent": args.mostRecent,
         "permissions": args.permissions,
     }, opts);
 }
@@ -196,5 +246,6 @@ export interface GetImageOutputArgs {
      * The ID of the OMI.
      */
     imageId?: pulumi.Input<string>;
+    mostRecent?: pulumi.Input<boolean>;
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
 }
