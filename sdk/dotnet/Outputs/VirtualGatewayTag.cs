@@ -16,7 +16,7 @@ namespace Pulumi.Outscale.Outputs
         /// <summary>
         /// The key of the tag, between 1 and 255 characters.
         /// </summary>
-        public readonly string? Key;
+        public readonly string Key;
         /// <summary>
         /// The value of the tag, between 0 and 255 characters.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Outscale.Outputs
 
         [OutputConstructor]
         private VirtualGatewayTag(
-            string? key,
+            string key,
 
             string? value)
         {

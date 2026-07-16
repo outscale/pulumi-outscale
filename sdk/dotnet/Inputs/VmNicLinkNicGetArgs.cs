@@ -19,7 +19,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<bool>? DeleteOnVmDeletion { get; set; }
 
         /// <summary>
-        /// The device index for the NIC attachment (between `1` and `7`, both included).
+        /// The device index for the NIC attachment (between `0` and `7`, both included).
         /// </summary>
         [Input("deviceNumber")]
         public Input<string>? DeviceNumber { get; set; }

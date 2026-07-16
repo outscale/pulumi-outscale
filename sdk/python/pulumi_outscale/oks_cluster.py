@@ -322,6 +322,7 @@ class _OksClusterState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_api_termination: Optional[pulumi.Input[_builtins.bool]] = None,
                  kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
+                 kubeconfig_attributes: Optional[pulumi.Input['OksClusterKubeconfigAttributesArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  quirks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -345,7 +346,8 @@ class _OksClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cp_subregions: The list of Subregions where control plane components are deployed.
         :param pulumi.Input[_builtins.str] description: A description of the cluster.
         :param pulumi.Input[_builtins.bool] disable_api_termination: If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
-        :param pulumi.Input[_builtins.str] kubeconfig: A file containing access configuration to the cluster.
+        :param pulumi.Input[_builtins.str] kubeconfig: (Sensitive value) A file containing access configuration to the cluster.
+        :param pulumi.Input['OksClusterKubeconfigAttributesArgs'] kubeconfig_attributes: (Sensitive value) Access configuration to the cluster.
         :param pulumi.Input[_builtins.str] name: A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project in which you want to create a cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] quirks: The list of special configurations or behaviors for the cluster.
@@ -382,6 +384,8 @@ class _OksClusterState:
             pulumi.set(__self__, "disable_api_termination", disable_api_termination)
         if kubeconfig is not None:
             pulumi.set(__self__, "kubeconfig", kubeconfig)
+        if kubeconfig_attributes is not None:
+            pulumi.set(__self__, "kubeconfig_attributes", kubeconfig_attributes)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -559,13 +563,25 @@ class _OksClusterState:
     @pulumi.getter
     def kubeconfig(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A file containing access configuration to the cluster.
+        (Sensitive value) A file containing access configuration to the cluster.
         """
         return pulumi.get(self, "kubeconfig")
 
     @kubeconfig.setter
     def kubeconfig(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "kubeconfig", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kubeconfigAttributes")
+    def kubeconfig_attributes(self) -> Optional[pulumi.Input['OksClusterKubeconfigAttributesArgs']]:
+        """
+        (Sensitive value) Access configuration to the cluster.
+        """
+        return pulumi.get(self, "kubeconfig_attributes")
+
+    @kubeconfig_attributes.setter
+    def kubeconfig_attributes(self, value: Optional[pulumi.Input['OksClusterKubeconfigAttributesArgs']]):
+        pulumi.set(self, "kubeconfig_attributes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -694,6 +710,8 @@ class OksCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Create a cluster
+
         ```python
         import pulumi
         import pulumi_outscale as outscale
@@ -707,13 +725,42 @@ class OksCluster(pulumi.CustomResource):
             admin_whitelists=["0.0.0.0/0"],
             cidr_pods="10.91.0.0/16",
             cidr_service="10.92.0.0/16",
-            version="1.32",
+            version="1.35",
             name="cluster01",
             control_planes="cp.mono.master",
             tags={
                 "tagkey": "tagvalue",
             })
         ```
+
+        ### Use the Kubernetes provider to deploy CRDs
+
+        To use the Kubernetes provider, you first need to create an OKS project and OKS cluster as in the above example. Then, with the cluster's `kubeconfig_attributes`, you can initialize the provider as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        If you want to deploy a Custom Resource Definition (CRD), you can then use a `kubernetes_manifest` resource:
+
+        ```python
+        import pulumi
+        import pulumi_kubernetes as kubernetes
+
+        example = kubernetes.Manifest("example", manifest={
+            apiVersion: example.com/v1,
+            kind: ExampleResource,
+            metadata: {
+                name: example,
+            },
+            spec: {
+                value: example,
+            },
+        })
+        ```
+
+        > **Important:** Note that the `kubernetes_manifest` resource builds a client during `pulumi preview` to validate the manifest, and will fail if the cluster does not already exist. Therefore, you need to either deploy your configuration in multiple steps, or deploy the cluster first before you can create this resource.<br /><br />
+        Alternatively, you can deploy CRDs in a single step without the need of another Terraform provider by using the native `OksManifest` resource, which retrieves the kubeconfig dynamically from the cluster. See the `OksManifest` page for an example.
 
         ## Import
 
@@ -759,6 +806,8 @@ class OksCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Create a cluster
+
         ```python
         import pulumi
         import pulumi_outscale as outscale
@@ -772,13 +821,42 @@ class OksCluster(pulumi.CustomResource):
             admin_whitelists=["0.0.0.0/0"],
             cidr_pods="10.91.0.0/16",
             cidr_service="10.92.0.0/16",
-            version="1.32",
+            version="1.35",
             name="cluster01",
             control_planes="cp.mono.master",
             tags={
                 "tagkey": "tagvalue",
             })
         ```
+
+        ### Use the Kubernetes provider to deploy CRDs
+
+        To use the Kubernetes provider, you first need to create an OKS project and OKS cluster as in the above example. Then, with the cluster's `kubeconfig_attributes`, you can initialize the provider as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        If you want to deploy a Custom Resource Definition (CRD), you can then use a `kubernetes_manifest` resource:
+
+        ```python
+        import pulumi
+        import pulumi_kubernetes as kubernetes
+
+        example = kubernetes.Manifest("example", manifest={
+            apiVersion: example.com/v1,
+            kind: ExampleResource,
+            metadata: {
+                name: example,
+            },
+            spec: {
+                value: example,
+            },
+        })
+        ```
+
+        > **Important:** Note that the `kubernetes_manifest` resource builds a client during `pulumi preview` to validate the manifest, and will fail if the cluster does not already exist. Therefore, you need to either deploy your configuration in multiple steps, or deploy the cluster first before you can create this resource.<br /><br />
+        Alternatively, you can deploy CRDs in a single step without the need of another Terraform provider by using the native `OksManifest` resource, which retrieves the kubeconfig dynamically from the cluster. See the `OksManifest` page for an example.
 
         ## Import
 
@@ -862,9 +940,10 @@ class OksCluster(pulumi.CustomResource):
             __props__.__dict__["version"] = version
             __props__.__dict__["cni"] = None
             __props__.__dict__["kubeconfig"] = None
+            __props__.__dict__["kubeconfig_attributes"] = None
             __props__.__dict__["request_id"] = None
             __props__.__dict__["statuses"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeconfig"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeconfig", "kubeconfigAttributes"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(OksCluster, __self__).__init__(
             'outscale:index/oksCluster:OksCluster',
@@ -890,6 +969,7 @@ class OksCluster(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             disable_api_termination: Optional[pulumi.Input[_builtins.bool]] = None,
             kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
+            kubeconfig_attributes: Optional[pulumi.Input[Union['OksClusterKubeconfigAttributesArgs', 'OksClusterKubeconfigAttributesArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             quirks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -918,7 +998,8 @@ class OksCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cp_subregions: The list of Subregions where control plane components are deployed.
         :param pulumi.Input[_builtins.str] description: A description of the cluster.
         :param pulumi.Input[_builtins.bool] disable_api_termination: If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
-        :param pulumi.Input[_builtins.str] kubeconfig: A file containing access configuration to the cluster.
+        :param pulumi.Input[_builtins.str] kubeconfig: (Sensitive value) A file containing access configuration to the cluster.
+        :param pulumi.Input[Union['OksClusterKubeconfigAttributesArgs', 'OksClusterKubeconfigAttributesArgsDict']] kubeconfig_attributes: (Sensitive value) Access configuration to the cluster.
         :param pulumi.Input[_builtins.str] name: A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project in which you want to create a cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] quirks: The list of special configurations or behaviors for the cluster.
@@ -945,6 +1026,7 @@ class OksCluster(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_api_termination"] = disable_api_termination
         __props__.__dict__["kubeconfig"] = kubeconfig
+        __props__.__dict__["kubeconfig_attributes"] = kubeconfig_attributes
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["quirks"] = quirks
@@ -1063,9 +1145,17 @@ class OksCluster(pulumi.CustomResource):
     @pulumi.getter
     def kubeconfig(self) -> pulumi.Output[_builtins.str]:
         """
-        A file containing access configuration to the cluster.
+        (Sensitive value) A file containing access configuration to the cluster.
         """
         return pulumi.get(self, "kubeconfig")
+
+    @_builtins.property
+    @pulumi.getter(name="kubeconfigAttributes")
+    def kubeconfig_attributes(self) -> pulumi.Output['outputs.OksClusterKubeconfigAttributes']:
+        """
+        (Sensitive value) Access configuration to the cluster.
+        """
+        return pulumi.get(self, "kubeconfig_attributes")
 
     @_builtins.property
     @pulumi.getter

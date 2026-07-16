@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Create a cluster
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as outscale from "@outscale/pulumi-outscale";
@@ -28,7 +30,7 @@ import * as utilities from "./utilities";
  *     adminWhitelists: ["0.0.0.0/0"],
  *     cidrPods: "10.91.0.0/16",
  *     cidrService: "10.92.0.0/16",
- *     version: "1.32",
+ *     version: "1.35",
  *     name: "cluster01",
  *     controlPlanes: "cp.mono.master",
  *     tags: {
@@ -36,6 +38,35 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ### Use the Kubernetes provider to deploy CRDs
+ *
+ * To use the Kubernetes provider, you first need to create an OKS project and OKS cluster as in the above example. Then, with the cluster's `kubeconfigAttributes`, you can initialize the provider as follows:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * If you want to deploy a Custom Resource Definition (CRD), you can then use a `kubernetesManifest` resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kubernetes from "@pulumi/kubernetes";
+ *
+ * const example = new kubernetes.index.Manifest("example", {manifest: {
+ *     apiVersion: "example.com/v1",
+ *     kind: "ExampleResource",
+ *     metadata: {
+ *         name: "example",
+ *     },
+ *     spec: {
+ *         value: "example",
+ *     },
+ * }});
+ * ```
+ *
+ * > **Important:** Note that the `kubernetesManifest` resource builds a client during `pulumi preview` to validate the manifest, and will fail if the cluster does not already exist. Therefore, you need to either deploy your configuration in multiple steps, or deploy the cluster first before you can create this resource.<br /><br />
+ * Alternatively, you can deploy CRDs in a single step without the need of another Terraform provider by using the native `outscale.OksManifest` resource, which retrieves the kubeconfig dynamically from the cluster. See the `outscale.OksManifest` page for an example.
  *
  * ## Import
  *
@@ -128,9 +159,13 @@ export class OksCluster extends pulumi.CustomResource {
      */
     declare public readonly disableApiTermination: pulumi.Output<boolean>;
     /**
-     * A file containing access configuration to the cluster.
+     * (Sensitive value) A file containing access configuration to the cluster.
      */
     declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
+    /**
+     * (Sensitive value) Access configuration to the cluster.
+     */
+    declare public /*out*/ readonly kubeconfigAttributes: pulumi.Output<outputs.OksClusterKubeconfigAttributes>;
     /**
      * A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
      */
@@ -188,6 +223,7 @@ export class OksCluster extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["disableApiTermination"] = state?.disableApiTermination;
             resourceInputs["kubeconfig"] = state?.kubeconfig;
+            resourceInputs["kubeconfigAttributes"] = state?.kubeconfigAttributes;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["quirks"] = state?.quirks;
@@ -233,11 +269,12 @@ export class OksCluster extends pulumi.CustomResource {
             resourceInputs["version"] = args?.version;
             resourceInputs["cni"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;
+            resourceInputs["kubeconfigAttributes"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["kubeconfig"] };
+        const secretOpts = { additionalSecretOutputs: ["kubeconfig", "kubeconfigAttributes"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(OksCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -300,9 +337,13 @@ export interface OksClusterState {
      */
     disableApiTermination?: pulumi.Input<boolean>;
     /**
-     * A file containing access configuration to the cluster.
+     * (Sensitive value) A file containing access configuration to the cluster.
      */
     kubeconfig?: pulumi.Input<string>;
+    /**
+     * (Sensitive value) Access configuration to the cluster.
+     */
+    kubeconfigAttributes?: pulumi.Input<inputs.OksClusterKubeconfigAttributes>;
     /**
      * A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
      */

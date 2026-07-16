@@ -260,6 +260,11 @@ export const getNics: typeof import("./getNics").getNics = null as any;
 export const getNicsOutput: typeof import("./getNics").getNicsOutput = null as any;
 utilities.lazyLoad(exports, ["getNics","getNicsOutput"], () => require("./getNics"));
 
+export { GetOksCrdTemplatesResult } from "./getOksCrdTemplates";
+export const getOksCrdTemplates: typeof import("./getOksCrdTemplates").getOksCrdTemplates = null as any;
+export const getOksCrdTemplatesOutput: typeof import("./getOksCrdTemplates").getOksCrdTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getOksCrdTemplates","getOksCrdTemplatesOutput"], () => require("./getOksCrdTemplates"));
+
 export { GetOksKubeconfigArgs, GetOksKubeconfigResult, GetOksKubeconfigOutputArgs } from "./getOksKubeconfig";
 export const getOksKubeconfig: typeof import("./getOksKubeconfig").getOksKubeconfig = null as any;
 export const getOksKubeconfigOutput: typeof import("./getOksKubeconfig").getOksKubeconfigOutput = null as any;
@@ -595,6 +600,11 @@ export type OksCluster = import("./oksCluster").OksCluster;
 export const OksCluster: typeof import("./oksCluster").OksCluster = null as any;
 utilities.lazyLoad(exports, ["OksCluster"], () => require("./oksCluster"));
 
+export { OksManifestArgs, OksManifestState } from "./oksManifest";
+export type OksManifest = import("./oksManifest").OksManifest;
+export const OksManifest: typeof import("./oksManifest").OksManifest = null as any;
+utilities.lazyLoad(exports, ["OksManifest"], () => require("./oksManifest"));
+
 export { OksProjectArgs, OksProjectState } from "./oksProject";
 export type OksProject = import("./oksProject").OksProject;
 export const OksProject: typeof import("./oksProject").OksProject = null as any;
@@ -797,6 +807,8 @@ const _module = {
                 return new NicPrivateIp(name, <any>undefined, { urn })
             case "outscale:index/oksCluster:OksCluster":
                 return new OksCluster(name, <any>undefined, { urn })
+            case "outscale:index/oksManifest:OksManifest":
+                return new OksManifest(name, <any>undefined, { urn })
             case "outscale:index/oksProject:OksProject":
                 return new OksProject(name, <any>undefined, { urn })
             case "outscale:index/policy:Policy":
@@ -882,6 +894,7 @@ pulumi.runtime.registerResourceModule("outscale", "index/nic", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/nicLink", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/nicPrivateIp", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/oksCluster", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oksManifest", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/oksProject", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/policy", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/policyVersion", _module)

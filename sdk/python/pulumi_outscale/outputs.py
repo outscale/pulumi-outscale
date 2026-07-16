@@ -99,8 +99,11 @@ __all__ = [
     'OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual',
     'OksClusterAutoMaintenancesPatchUpgradeMaintenance',
     'OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual',
+    'OksClusterKubeconfigAttributes',
     'OksClusterStatuses',
     'OksClusterTimeouts',
+    'OksManifestTimeouts',
+    'OksManifestWaitFor',
     'OksProjectTimeouts',
     'PolicyTimeouts',
     'PolicyVersionTimeouts',
@@ -142,8 +145,11 @@ __all__ = [
     'UserPolicy',
     'UserTimeouts',
     'VirtualGatewayLinkNetToVirtualGatewayLink',
+    'VirtualGatewayLinkTimeouts',
     'VirtualGatewayNetToVirtualGatewayLink',
+    'VirtualGatewayRoutePropagationTimeouts',
     'VirtualGatewayTag',
+    'VirtualGatewayTimeouts',
     'VmActionsOnNextBoot',
     'VmBlockDeviceMapping',
     'VmBlockDeviceMappingBsu',
@@ -303,6 +309,7 @@ __all__ = [
     'GetNicsNicPrivateIpLinkPublicIpResult',
     'GetNicsNicSecurityGroupResult',
     'GetNicsNicTagResult',
+    'GetOksKubeconfigKubeconfigAttributesResult',
     'GetPoliciesFilterResult',
     'GetPoliciesLinkedToUserGroupFilterResult',
     'GetPoliciesLinkedToUserGroupPolicyResult',
@@ -4362,7 +4369,7 @@ class NicLinkNic(dict):
                  vm_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.int device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
         :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
@@ -4393,7 +4400,7 @@ class NicLinkNic(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> Optional[_builtins.int]:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -5252,6 +5259,82 @@ class OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual(dict):
 
 
 @pulumi.output_type
+class OksClusterKubeconfigAttributes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "clusterCaCertificate":
+            suggest = "cluster_ca_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OksClusterKubeconfigAttributes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OksClusterKubeconfigAttributes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OksClusterKubeconfigAttributes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_certificate: Optional[_builtins.str] = None,
+                 client_key: Optional[_builtins.str] = None,
+                 cluster_ca_certificate: Optional[_builtins.str] = None,
+                 host: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str client_certificate: The client certificate for accessing the cluster.
+        :param _builtins.str client_key: The private key matching the client certificate.
+        :param _builtins.str cluster_ca_certificate: The Certificate Authority (CA) associated with the cluster.
+        :param _builtins.str host: The URL of the Kubernetes API server of the cluster.
+        """
+        if client_certificate is not None:
+            pulumi.set(__self__, "client_certificate", client_certificate)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if cluster_ca_certificate is not None:
+            pulumi.set(__self__, "cluster_ca_certificate", cluster_ca_certificate)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> Optional[_builtins.str]:
+        """
+        The client certificate for accessing the cluster.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[_builtins.str]:
+        """
+        The private key matching the client certificate.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterCaCertificate")
+    def cluster_ca_certificate(self) -> Optional[_builtins.str]:
+        """
+        The Certificate Authority (CA) associated with the cluster.
+        """
+        return pulumi.get(self, "cluster_ca_certificate")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The URL of the Kubernetes API server of the cluster.
+        """
+        return pulumi.get(self, "host")
+
+
+@pulumi.output_type
 class OksClusterStatuses(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5394,6 +5477,95 @@ class OksClusterTimeouts(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OksManifestTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OksManifestWaitFor(dict):
+    def __init__(__self__, *,
+                 fields: Mapping[str, _builtins.str],
+                 timeout: Optional[_builtins.str] = None):
+        """
+        :param Mapping[str, _builtins.str] fields: Maps of key/value pairs in the `"{.field_path}" = "expected_value"` format.<br />
+               Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+               Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+        :param _builtins.str timeout: A custom timeout for the `wait_for` checks. If not specified, falls back to the CRUD operation default timeout.
+        """
+        pulumi.set(__self__, "fields", fields)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Mapping[str, _builtins.str]:
+        """
+        Maps of key/value pairs in the `"{.field_path}" = "expected_value"` format.<br />
+        Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+        Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+        """
+        return pulumi.get(self, "fields")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.str]:
+        """
+        A custom timeout for the `wait_for` checks. If not specified, falls back to the CRUD operation default timeout.
+        """
+        return pulumi.get(self, "timeout")
 
 
 @pulumi.output_type
@@ -7803,6 +7975,49 @@ class VirtualGatewayLinkNetToVirtualGatewayLink(dict):
 
 
 @pulumi.output_type
+class VirtualGatewayLinkTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class VirtualGatewayNetToVirtualGatewayLink(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7851,22 +8066,76 @@ class VirtualGatewayNetToVirtualGatewayLink(dict):
 
 
 @pulumi.output_type
+class VirtualGatewayRoutePropagationTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class VirtualGatewayTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str key: The key of the tag, between 1 and 255 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
         The key of the tag, between 1 and 255 characters.
         """
@@ -7879,6 +8148,61 @@ class VirtualGatewayTag(dict):
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VirtualGatewayTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -8347,7 +8671,7 @@ class VmNic(dict):
                  state: Optional[_builtins.str] = None,
                  subnet_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.int device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+        :param _builtins.int device_number: The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
         :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
         :param _builtins.str description: The description of the NIC, if you are creating a NIC when creating the VM.
@@ -8403,7 +8727,7 @@ class VmNic(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.int:
         """
-        The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+        The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
         """
         return pulumi.get(self, "device_number")
 
@@ -8566,7 +8890,7 @@ class VmNicLinkNic(dict):
                  state: Optional[_builtins.str] = None):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.str device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.str device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         """
@@ -8591,7 +8915,7 @@ class VmNicLinkNic(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> Optional[_builtins.str]:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -9153,7 +9477,7 @@ class VmPrimaryNicLinkNic(dict):
                  state: Optional[_builtins.str] = None):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.str device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.str device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         """
@@ -9178,7 +9502,7 @@ class VmPrimaryNicLinkNic(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> Optional[_builtins.str]:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -14653,7 +14977,7 @@ class GetNicLinkNicResult(dict):
                  vm_id: _builtins.str):
         """
         :param _builtins.str delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.int device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
         :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
@@ -14678,7 +15002,7 @@ class GetNicLinkNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.int:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -15150,7 +15474,7 @@ class GetNicsNicLinkNicResult(dict):
                  vm_id: _builtins.str):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.int device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
         :param _builtins.str vm_account_id: The OUTSCALE account ID of the owner of the VM.
@@ -15175,7 +15499,7 @@ class GetNicsNicLinkNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.int:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -15443,6 +15767,57 @@ class GetNicsNicTagResult(dict):
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetOksKubeconfigKubeconfigAttributesResult(dict):
+    def __init__(__self__, *,
+                 client_certificate: _builtins.str,
+                 client_key: _builtins.str,
+                 cluster_ca_certificate: _builtins.str,
+                 host: _builtins.str):
+        """
+        :param _builtins.str client_certificate: The client certificate for accessing the cluster.
+        :param _builtins.str client_key: The private key matching the client certificate.
+        :param _builtins.str cluster_ca_certificate: The Certificate Authority (CA) associated with the cluster.
+        :param _builtins.str host: The URL of the Kubernetes API server of the cluster.
+        """
+        pulumi.set(__self__, "client_certificate", client_certificate)
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "cluster_ca_certificate", cluster_ca_certificate)
+        pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> _builtins.str:
+        """
+        The client certificate for accessing the cluster.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> _builtins.str:
+        """
+        The private key matching the client certificate.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterCaCertificate")
+    def cluster_ca_certificate(self) -> _builtins.str:
+        """
+        The Certificate Authority (CA) associated with the cluster.
+        """
+        return pulumi.get(self, "cluster_ca_certificate")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        The URL of the Kubernetes API server of the cluster.
+        """
+        return pulumi.get(self, "host")
 
 
 @pulumi.output_type
@@ -19195,7 +19570,7 @@ class GetVmNicResult(dict):
         :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
-        :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.int device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param Sequence['GetVmNicLinkNicArgs'] link_nics: Information about the network interface card (NIC).
         :param Sequence['GetVmNicLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
@@ -19256,7 +19631,7 @@ class GetVmNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.int:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -19376,7 +19751,7 @@ class GetVmNicLinkNicResult(dict):
                  state: _builtins.str):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.str device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.str device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
         """
@@ -19397,7 +19772,7 @@ class GetVmNicLinkNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.str:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -19602,7 +19977,7 @@ class GetVmPrimaryNicResult(dict):
         :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
-        :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.int device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param Sequence['GetVmPrimaryNicLinkNicArgs'] link_nics: Information about the network interface card (NIC).
         :param Sequence['GetVmPrimaryNicLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
@@ -19662,7 +20037,7 @@ class GetVmPrimaryNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.int:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -19777,7 +20152,7 @@ class GetVmPrimaryNicLinkNicResult(dict):
                  state: _builtins.str):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.str device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.str device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
         """
@@ -19798,7 +20173,7 @@ class GetVmPrimaryNicLinkNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.str:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -20987,7 +21362,7 @@ class GetVmsVmNicResult(dict):
         :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
-        :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.int device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param Sequence['GetVmsVmNicLinkNicArgs'] link_nics: Information about the network interface card (NIC).
         :param Sequence['GetVmsVmNicLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
@@ -21048,7 +21423,7 @@ class GetVmsVmNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.int:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -21168,7 +21543,7 @@ class GetVmsVmNicLinkNicResult(dict):
                  state: _builtins.str):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.str device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.str device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
         """
@@ -21189,7 +21564,7 @@ class GetVmsVmNicLinkNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.str:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -21394,7 +21769,7 @@ class GetVmsVmPrimaryNicResult(dict):
         :param _builtins.str account_id: The OUTSCALE account ID of the owner of the NIC.
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
         :param _builtins.str description: The description of the NIC.
-        :param _builtins.int device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.int device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.bool is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         :param Sequence['GetVmsVmPrimaryNicLinkNicArgs'] link_nics: Information about the network interface card (NIC).
         :param Sequence['GetVmsVmPrimaryNicLinkPublicIpArgs'] link_public_ips: Information about the public IP associated with the NIC.
@@ -21454,7 +21829,7 @@ class GetVmsVmPrimaryNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.int:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
@@ -21569,7 +21944,7 @@ class GetVmsVmPrimaryNicLinkNicResult(dict):
                  state: _builtins.str):
         """
         :param _builtins.bool delete_on_vm_deletion: If true, the NIC is deleted when the VM is terminated.
-        :param _builtins.str device_number: The device index for the NIC attachment (between `1` and `7`, both included).
+        :param _builtins.str device_number: The device index for the NIC attachment (between `0` and `7`, both included).
         :param _builtins.str link_nic_id: The ID of the NIC to attach.
         :param _builtins.str state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
         """
@@ -21590,7 +21965,7 @@ class GetVmsVmPrimaryNicLinkNicResult(dict):
     @pulumi.getter(name="deviceNumber")
     def device_number(self) -> _builtins.str:
         """
-        The device index for the NIC attachment (between `1` and `7`, both included).
+        The device index for the NIC attachment (between `0` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 

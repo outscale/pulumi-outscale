@@ -69,7 +69,8 @@ type VirtualGateway struct {
 	// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
 	State pulumi.StringOutput `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags VirtualGatewayTagArrayOutput `pulumi:"tags"`
+	Tags     VirtualGatewayTagArrayOutput    `pulumi:"tags"`
+	Timeouts VirtualGatewayTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringOutput `pulumi:"virtualGatewayId"`
 }
@@ -115,7 +116,8 @@ type virtualGatewayState struct {
 	// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
 	State *string `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []VirtualGatewayTag `pulumi:"tags"`
+	Tags     []VirtualGatewayTag     `pulumi:"tags"`
+	Timeouts *VirtualGatewayTimeouts `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId *string `pulumi:"virtualGatewayId"`
 }
@@ -129,7 +131,8 @@ type VirtualGatewayState struct {
 	// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
 	State pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags VirtualGatewayTagArrayInput
+	Tags     VirtualGatewayTagArrayInput
+	Timeouts VirtualGatewayTimeoutsPtrInput
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringPtrInput
 }
@@ -141,30 +144,18 @@ func (VirtualGatewayState) ElementType() reflect.Type {
 type virtualGatewayArgs struct {
 	// The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
 	ConnectionType string `pulumi:"connectionType"`
-	// The Net to which the virtual gateway is attached.
-	NetToVirtualGatewayLinks []VirtualGatewayNetToVirtualGatewayLink `pulumi:"netToVirtualGatewayLinks"`
-	RequestId                *string                                 `pulumi:"requestId"`
-	// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
-	State *string `pulumi:"state"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []VirtualGatewayTag `pulumi:"tags"`
-	// The ID of the virtual gateway.
-	VirtualGatewayId *string `pulumi:"virtualGatewayId"`
+	Tags     []VirtualGatewayTag     `pulumi:"tags"`
+	Timeouts *VirtualGatewayTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a VirtualGateway resource.
 type VirtualGatewayArgs struct {
 	// The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
 	ConnectionType pulumi.StringInput
-	// The Net to which the virtual gateway is attached.
-	NetToVirtualGatewayLinks VirtualGatewayNetToVirtualGatewayLinkArrayInput
-	RequestId                pulumi.StringPtrInput
-	// The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
-	State pulumi.StringPtrInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags VirtualGatewayTagArrayInput
-	// The ID of the virtual gateway.
-	VirtualGatewayId pulumi.StringPtrInput
+	Tags     VirtualGatewayTagArrayInput
+	Timeouts VirtualGatewayTimeoutsPtrInput
 }
 
 func (VirtualGatewayArgs) ElementType() reflect.Type {
@@ -278,6 +269,10 @@ func (o VirtualGatewayOutput) State() pulumi.StringOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o VirtualGatewayOutput) Tags() VirtualGatewayTagArrayOutput {
 	return o.ApplyT(func(v *VirtualGateway) VirtualGatewayTagArrayOutput { return v.Tags }).(VirtualGatewayTagArrayOutput)
+}
+
+func (o VirtualGatewayOutput) Timeouts() VirtualGatewayTimeoutsPtrOutput {
+	return o.ApplyT(func(v *VirtualGateway) VirtualGatewayTimeoutsPtrOutput { return v.Timeouts }).(VirtualGatewayTimeoutsPtrOutput)
 }
 
 // The ID of the virtual gateway.

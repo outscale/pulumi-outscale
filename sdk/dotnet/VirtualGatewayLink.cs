@@ -72,20 +72,23 @@ namespace Pulumi.Outscale
     [OutscaleResourceType("outscale:index/virtualGatewayLink:VirtualGatewayLink")]
     public partial class VirtualGatewayLink : global::Pulumi.CustomResource
     {
-        [Output("dryRun")]
-        public Output<string> DryRun { get; private set; } = null!;
-
         /// <summary>
         /// The ID of the Net to which you want to attach the virtual gateway.
         /// </summary>
         [Output("netId")]
         public Output<string> NetId { get; private set; } = null!;
 
+        /// <summary>
+        /// The Net to which the virtual gateway is attached.
+        /// </summary>
         [Output("netToVirtualGatewayLinks")]
         public Output<ImmutableArray<Outputs.VirtualGatewayLinkNetToVirtualGatewayLink>> NetToVirtualGatewayLinks { get; private set; } = null!;
 
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.VirtualGatewayLinkTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the virtual gateway.
@@ -139,14 +142,14 @@ namespace Pulumi.Outscale
 
     public sealed class VirtualGatewayLinkArgs : global::Pulumi.ResourceArgs
     {
-        [Input("dryRun")]
-        public Input<string>? DryRun { get; set; }
-
         /// <summary>
         /// The ID of the Net to which you want to attach the virtual gateway.
         /// </summary>
         [Input("netId", required: true)]
         public Input<string> NetId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.VirtualGatewayLinkTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the virtual gateway.
@@ -162,9 +165,6 @@ namespace Pulumi.Outscale
 
     public sealed class VirtualGatewayLinkState : global::Pulumi.ResourceArgs
     {
-        [Input("dryRun")]
-        public Input<string>? DryRun { get; set; }
-
         /// <summary>
         /// The ID of the Net to which you want to attach the virtual gateway.
         /// </summary>
@@ -173,6 +173,10 @@ namespace Pulumi.Outscale
 
         [Input("netToVirtualGatewayLinks")]
         private InputList<Inputs.VirtualGatewayLinkNetToVirtualGatewayLinkGetArgs>? _netToVirtualGatewayLinks;
+
+        /// <summary>
+        /// The Net to which the virtual gateway is attached.
+        /// </summary>
         public InputList<Inputs.VirtualGatewayLinkNetToVirtualGatewayLinkGetArgs> NetToVirtualGatewayLinks
         {
             get => _netToVirtualGatewayLinks ?? (_netToVirtualGatewayLinks = new InputList<Inputs.VirtualGatewayLinkNetToVirtualGatewayLinkGetArgs>());
@@ -181,6 +185,9 @@ namespace Pulumi.Outscale
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.VirtualGatewayLinkTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the virtual gateway.

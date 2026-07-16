@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -79,6 +81,7 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
      * The ID of the route table.
      */
     declare public readonly routeTableId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.VirtualGatewayRoutePropagationTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */
@@ -100,6 +103,7 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
             resourceInputs["enable"] = state?.enable;
             resourceInputs["requestId"] = state?.requestId;
             resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
         } else {
             const args = argsOrState as VirtualGatewayRoutePropagationArgs | undefined;
@@ -114,6 +118,7 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
             }
             resourceInputs["enable"] = args?.enable;
             resourceInputs["routeTableId"] = args?.routeTableId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
             resourceInputs["requestId"] = undefined /*out*/;
         }
@@ -135,6 +140,7 @@ export interface VirtualGatewayRoutePropagationState {
      * The ID of the route table.
      */
     routeTableId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayRoutePropagationTimeouts>;
     /**
      * The ID of the virtual gateway.
      */
@@ -153,6 +159,7 @@ export interface VirtualGatewayRoutePropagationArgs {
      * The ID of the route table.
      */
     routeTableId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayRoutePropagationTimeouts>;
     /**
      * The ID of the virtual gateway.
      */

@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Manages a virtual machine (VM).
  *
- * > **Important** Consider using the `primaryNic` argument if you plan to use the `outscale.NicLink`resource.
- *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\
  * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
  *
@@ -146,99 +144,6 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Create a VM with a primary NIC
- *
- * > **Note:** If you plan to use the `outscale.NicLink`resource, it is recommended to specify the `primaryNic` argument to define the primary network interface of a VM.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@outscale/pulumi-outscale";
- *
- * const net01 = new outscale.Net("net01", {
- *     ipRange: "10.0.0.0/16",
- *     tags: [{
- *         key: "name",
- *         value: "terraform-net-for-vm-with-nic",
- *     }],
- * });
- * const subnet01 = new outscale.Subnet("subnet01", {
- *     netId: net01.netId,
- *     ipRange: "10.0.0.0/24",
- *     subregionName: "eu-west-2a",
- *     tags: [{
- *         key: "name",
- *         value: "terraform-subnet-for-vm-with-nic",
- *     }],
- * });
- * const nic01 = new outscale.Nic("nic01", {subnetId: subnet01.subnetId});
- * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
- * const vm01 = new outscale.Vm("vm01", {
- *     imageId: imageId,
- *     vmType: "tinav5.c1r1p2",
- *     keypairName: keypair01.keypairName,
- *     primaryNics: [{
- *         nicId: nic01.nicId,
- *         deviceNumber: 0,
- *     }],
- * });
- * ```
- *
- * ### Create a VM with secondary NICs
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as outscale from "@outscale/pulumi-outscale";
- *
- * const net01 = new outscale.Net("net01", {
- *     ipRange: "10.0.0.0/16",
- *     tags: [{
- *         key: "name",
- *         value: "terraform-net-for-vm-with-nic",
- *     }],
- * });
- * const subnet01 = new outscale.Subnet("subnet01", {
- *     netId: net01.netId,
- *     ipRange: "10.0.0.0/24",
- *     subregionName: "eu-west-2a",
- *     tags: [{
- *         key: "name",
- *         value: "terraform-subnet",
- *     }],
- * });
- * const nic01 = new outscale.Nic("nic01", {subnetId: subnet01.subnetId});
- * const subnet02 = new outscale.Subnet("subnet02", {
- *     netId: net01.netId,
- *     ipRange: "10.0.1.0/24",
- *     subregionName: "eu-west-2a",
- *     tags: [{
- *         key: "name",
- *         value: "terraform-another-subnet",
- *     }],
- * });
- * const nic02 = new outscale.Nic("nic02", {subnetId: subnet02.subnetId});
- * const nic03 = new outscale.Nic("nic03", {subnetId: subnet02.subnetId});
- * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
- * const vm01 = new outscale.Vm("vm01", {
- *     imageId: imageId,
- *     vmType: "tinav5.c1r1p2",
- *     keypairName: keypair01.keypairName,
- *     primaryNics: [{
- *         nicId: nic01.nicId,
- *         deviceNumber: 0,
- *     }],
- *     nics: [
- *         {
- *             nicId: nic02.nicId,
- *             deviceNumber: 1,
- *         },
- *         {
- *             nicId: nic03.nicId,
- *             deviceNumber: 2,
- *         },
- *     ],
- * });
- * ```
- *
  * ### Create a VM with Secure Boot
  *
  * > **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
@@ -261,6 +166,137 @@ import * as utilities from "./utilities";
  *     state: "stopped",
  *     bootMode: "uefi",
  *     secureBootAction: "enable",
+ * });
+ * ```
+ *
+ * ### Method 1: Define all NICs in `outscale.Vm`
+ *
+ * Use the `nics` block if you want to define the full NIC layout when creating the VM.
+ *
+ * With this method:
+ *
+ * * The primary NIC is defined with `deviceNumber = 0`.
+ * * Secondary NICs are defined with `deviceNumber = 1` to `7`.
+ * * All NICs are managed directly in the `outscale.Vm` resource.
+ * * Changing the NIC layout requires replacing the VM.
+ *
+ * Example with NICs created inline:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/24",
+ *     subregionName: "eu-west-2a",
+ * });
+ * const subnet02 = new outscale.Subnet("subnet02", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.1.0/24",
+ *     subregionName: "eu-west-2a",
+ * });
+ * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
+ * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
+ *     nics: [
+ *         {
+ *             deleteOnVmDeletion: true,
+ *             subnetId: subnet01.subnetId,
+ *             deviceNumber: 0,
+ *         },
+ *         {
+ *             deleteOnVmDeletion: true,
+ *             subnetId: subnet02.subnetId,
+ *             deviceNumber: 1,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * Example with existing NICs attached at VM creation:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/24",
+ *     subregionName: "eu-west-2a",
+ * });
+ * const subnet02 = new outscale.Subnet("subnet02", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.1.0/24",
+ *     subregionName: "eu-west-2a",
+ * });
+ * const nic01 = new outscale.Nic("nic01", {subnetId: subnet01.subnetId});
+ * const nic02 = new outscale.Nic("nic02", {subnetId: subnet02.subnetId});
+ * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
+ * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
+ *     nics: [
+ *         {
+ *             nicId: nic01.nicId,
+ *             deviceNumber: 0,
+ *         },
+ *         {
+ *             nicId: nic02.nicId,
+ *             deviceNumber: 1,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Method 2: Define the primary NIC and then attach secondary NICs separately
+ *
+ * Use the `primaryNic` block, together with distinct `outscale.NicLink` resources, if you want to define the primary NIC in `outscale.Vm` but may want to attach additional NICs later.
+ *
+ * With this method:
+ *
+ * * The primary NIC is defined in `primaryNic`.
+ * * Secondary NICs are managed with distinct `outscale.NicLink` resources.
+ * * Secondary NICs can be added or removed without replacing the VM.
+ *
+ * Example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as outscale from "@outscale/pulumi-outscale";
+ *
+ * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
+ * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/24",
+ *     subregionName: "eu-west-2a",
+ * });
+ * const subnet02 = new outscale.Subnet("subnet02", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.1.0/24",
+ *     subregionName: "eu-west-2a",
+ * });
+ * const nic01 = new outscale.Nic("nic01", {subnetId: subnet01.subnetId});
+ * const nic02 = new outscale.Nic("nic02", {subnetId: subnet02.subnetId});
+ * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
+ * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
+ *     primaryNics: [{
+ *         nicId: nic01.nicId,
+ *         deviceNumber: 0,
+ *     }],
+ * });
+ * const nicLink01 = new outscale.NicLink("nic_link01", {
+ *     deviceNumber: 1,
+ *     vmId: vm01.vmId,
+ *     nicId: nic02.nicId,
  * });
  * ```
  *
@@ -377,7 +413,7 @@ export class Vm extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly netId: pulumi.Output<string>;
     /**
-     * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+     * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
      */
     declare public readonly nics: pulumi.Output<outputs.VmNic[]>;
     /**
@@ -397,7 +433,7 @@ export class Vm extends pulumi.CustomResource {
      */
     declare public readonly placementTenancy: pulumi.Output<string>;
     /**
-     * The primary network interface of the VM.
+     * The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
      */
     declare public readonly primaryNics: pulumi.Output<outputs.VmPrimaryNic[]>;
     /**
@@ -691,7 +727,7 @@ export interface VmState {
      */
     netId?: pulumi.Input<string>;
     /**
-     * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+     * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
      */
     nics?: pulumi.Input<pulumi.Input<inputs.VmNic>[]>;
     /**
@@ -711,7 +747,7 @@ export interface VmState {
      */
     placementTenancy?: pulumi.Input<string>;
     /**
-     * The primary network interface of the VM.
+     * The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
      */
     primaryNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNic>[]>;
     /**
@@ -848,7 +884,7 @@ export interface VmArgs {
      */
     nestedVirtualization?: pulumi.Input<boolean>;
     /**
-     * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+     * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
      */
     nics?: pulumi.Input<pulumi.Input<inputs.VmNic>[]>;
     /**
@@ -864,7 +900,7 @@ export interface VmArgs {
      */
     placementTenancy?: pulumi.Input<string>;
     /**
-     * The primary network interface of the VM.
+     * The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
      */
     primaryNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNic>[]>;
     /**

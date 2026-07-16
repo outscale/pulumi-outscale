@@ -14,8 +14,6 @@ import (
 
 // Manages a virtual machine (VM).
 //
-// > **Important** Consider using the `primaryNic` argument if you plan to use the `NicLink`resource.
-//
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\
 // For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
 //
@@ -267,188 +265,6 @@ import (
 //
 // ```
 //
-// ### Create a VM with a primary NIC
-//
-// > **Note:** If you plan to use the `NicLink`resource, it is recommended to specify the `primaryNic` argument to define the primary network interface of a VM.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
-//				IpRange: pulumi.String("10.0.0.0/16"),
-//				Tags: outscale.NetTagArray{
-//					&outscale.NetTagArgs{
-//						Key:   pulumi.String("name"),
-//						Value: pulumi.String("terraform-net-for-vm-with-nic"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
-//				NetId:         net01.NetId,
-//				IpRange:       pulumi.String("10.0.0.0/24"),
-//				SubregionName: pulumi.String("eu-west-2a"),
-//				Tags: outscale.SubnetTagArray{
-//					&outscale.SubnetTagArgs{
-//						Key:   pulumi.String("name"),
-//						Value: pulumi.String("terraform-subnet-for-vm-with-nic"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			nic01, err := outscale.NewNic(ctx, "nic01", &outscale.NicArgs{
-//				SubnetId: subnet01.SubnetId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
-//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
-//				ImageId:     pulumi.Any(imageId),
-//				VmType:      pulumi.String("tinav5.c1r1p2"),
-//				KeypairName: keypair01.KeypairName,
-//				PrimaryNics: outscale.VmPrimaryNicArray{
-//					&outscale.VmPrimaryNicArgs{
-//						NicId:        nic01.NicId,
-//						DeviceNumber: pulumi.Int(0),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a VM with secondary NICs
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
-//				IpRange: pulumi.String("10.0.0.0/16"),
-//				Tags: outscale.NetTagArray{
-//					&outscale.NetTagArgs{
-//						Key:   pulumi.String("name"),
-//						Value: pulumi.String("terraform-net-for-vm-with-nic"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
-//				NetId:         net01.NetId,
-//				IpRange:       pulumi.String("10.0.0.0/24"),
-//				SubregionName: pulumi.String("eu-west-2a"),
-//				Tags: outscale.SubnetTagArray{
-//					&outscale.SubnetTagArgs{
-//						Key:   pulumi.String("name"),
-//						Value: pulumi.String("terraform-subnet"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			nic01, err := outscale.NewNic(ctx, "nic01", &outscale.NicArgs{
-//				SubnetId: subnet01.SubnetId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnet02, err := outscale.NewSubnet(ctx, "subnet02", &outscale.SubnetArgs{
-//				NetId:         net01.NetId,
-//				IpRange:       pulumi.String("10.0.1.0/24"),
-//				SubregionName: pulumi.String("eu-west-2a"),
-//				Tags: outscale.SubnetTagArray{
-//					&outscale.SubnetTagArgs{
-//						Key:   pulumi.String("name"),
-//						Value: pulumi.String("terraform-another-subnet"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			nic02, err := outscale.NewNic(ctx, "nic02", &outscale.NicArgs{
-//				SubnetId: subnet02.SubnetId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			nic03, err := outscale.NewNic(ctx, "nic03", &outscale.NicArgs{
-//				SubnetId: subnet02.SubnetId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
-//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
-//				ImageId:     pulumi.Any(imageId),
-//				VmType:      pulumi.String("tinav5.c1r1p2"),
-//				KeypairName: keypair01.KeypairName,
-//				PrimaryNics: outscale.VmPrimaryNicArray{
-//					&outscale.VmPrimaryNicArgs{
-//						NicId:        nic01.NicId,
-//						DeviceNumber: pulumi.Int(0),
-//					},
-//				},
-//				Nics: outscale.VmNicArray{
-//					&outscale.VmNicArgs{
-//						NicId:        nic02.NicId,
-//						DeviceNumber: pulumi.Int(1),
-//					},
-//					&outscale.VmNicArgs{
-//						NicId:        nic03.NicId,
-//						DeviceNumber: pulumi.Int(2),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ### Create a VM with Secure Boot
 //
 // > **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
@@ -489,6 +305,255 @@ import (
 //				State:              pulumi.String("stopped"),
 //				BootMode:           pulumi.String("uefi"),
 //				SecureBootAction:   pulumi.String("enable"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Method 1: Define all NICs in `Vm`
+//
+// Use the `nics` block if you want to define the full NIC layout when creating the VM.
+//
+// With this method:
+//
+// * The primary NIC is defined with `deviceNumber = 0`.
+// * Secondary NICs are defined with `deviceNumber = 1` to `7`.
+// * All NICs are managed directly in the `Vm` resource.
+// * Changing the NIC layout requires replacing the VM.
+//
+// Example with NICs created inline:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
+//				IpRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.0.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet02, err := outscale.NewSubnet(ctx, "subnet02", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.1.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav7.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				Nics: outscale.VmNicArray{
+//					&outscale.VmNicArgs{
+//						DeleteOnVmDeletion: pulumi.Bool(true),
+//						SubnetId:           subnet01.SubnetId,
+//						DeviceNumber:       pulumi.Int(0),
+//					},
+//					&outscale.VmNicArgs{
+//						DeleteOnVmDeletion: pulumi.Bool(true),
+//						SubnetId:           subnet02.SubnetId,
+//						DeviceNumber:       pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Example with existing NICs attached at VM creation:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
+//				IpRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.0.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet02, err := outscale.NewSubnet(ctx, "subnet02", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.1.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic01, err := outscale.NewNic(ctx, "nic01", &outscale.NicArgs{
+//				SubnetId: subnet01.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic02, err := outscale.NewNic(ctx, "nic02", &outscale.NicArgs{
+//				SubnetId: subnet02.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav7.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				Nics: outscale.VmNicArray{
+//					&outscale.VmNicArgs{
+//						NicId:        nic01.NicId,
+//						DeviceNumber: pulumi.Int(0),
+//					},
+//					&outscale.VmNicArgs{
+//						NicId:        nic02.NicId,
+//						DeviceNumber: pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Method 2: Define the primary NIC and then attach secondary NICs separately
+//
+// Use the `primaryNic` block, together with distinct `NicLink` resources, if you want to define the primary NIC in `Vm` but may want to attach additional NICs later.
+//
+// With this method:
+//
+// * The primary NIC is defined in `primaryNic`.
+// * Secondary NICs are managed with distinct `NicLink` resources.
+// * Secondary NICs can be added or removed without replacing the VM.
+//
+// Example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/outscale/pulumi-outscale/sdk/go/outscale"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
+//				IpRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.0.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet02, err := outscale.NewSubnet(ctx, "subnet02", &outscale.SubnetArgs{
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.1.0/24"),
+//				SubregionName: pulumi.String("eu-west-2a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic01, err := outscale.NewNic(ctx, "nic01", &outscale.NicArgs{
+//				SubnetId: subnet01.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			nic02, err := outscale.NewNic(ctx, "nic02", &outscale.NicArgs{
+//				SubnetId: subnet02.SubnetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			keypair01, err := outscale.NewKeypair(ctx, "keypair01", &outscale.KeypairArgs{
+//				KeypairName: pulumi.String("terraform-keypair-for-vm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vm01, err := outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav7.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				PrimaryNics: outscale.VmPrimaryNicArray{
+//					&outscale.VmPrimaryNicArgs{
+//						NicId:        nic01.NicId,
+//						DeviceNumber: pulumi.Int(0),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = outscale.NewNicLink(ctx, "nic_link01", &outscale.NicLinkArgs{
+//				DeviceNumber: pulumi.Int(1),
+//				VmId:         vm01.VmId,
+//				NicId:        nic02.NicId,
 //			})
 //			if err != nil {
 //				return err
@@ -549,7 +614,7 @@ type Vm struct {
 	NestedVirtualization pulumi.BoolPtrOutput `pulumi:"nestedVirtualization"`
 	// The ID of the Net for the NIC.
 	NetId pulumi.StringOutput `pulumi:"netId"`
-	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
 	Nics VmNicArrayOutput `pulumi:"nics"`
 	// Indicates the operating system (OS) of the VM.
 	OsFamily pulumi.StringOutput `pulumi:"osFamily"`
@@ -559,7 +624,7 @@ type Vm struct {
 	PlacementSubregionName pulumi.StringOutput `pulumi:"placementSubregionName"`
 	// The tenancy of the VM (`default` | `dedicated`).
 	PlacementTenancy pulumi.StringOutput `pulumi:"placementTenancy"`
-	// The primary network interface of the VM.
+	// The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
 	PrimaryNics VmPrimaryNicArrayOutput `pulumi:"primaryNics"`
 	// The name of the private DNS.
 	PrivateDnsName pulumi.StringOutput `pulumi:"privateDnsName"`
@@ -686,7 +751,7 @@ type vmState struct {
 	NestedVirtualization *bool `pulumi:"nestedVirtualization"`
 	// The ID of the Net for the NIC.
 	NetId *string `pulumi:"netId"`
-	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
 	Nics []VmNic `pulumi:"nics"`
 	// Indicates the operating system (OS) of the VM.
 	OsFamily *string `pulumi:"osFamily"`
@@ -696,7 +761,7 @@ type vmState struct {
 	PlacementSubregionName *string `pulumi:"placementSubregionName"`
 	// The tenancy of the VM (`default` | `dedicated`).
 	PlacementTenancy *string `pulumi:"placementTenancy"`
-	// The primary network interface of the VM.
+	// The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
 	PrimaryNics []VmPrimaryNic `pulumi:"primaryNics"`
 	// The name of the private DNS.
 	PrivateDnsName *string `pulumi:"privateDnsName"`
@@ -784,7 +849,7 @@ type VmState struct {
 	NestedVirtualization pulumi.BoolPtrInput
 	// The ID of the Net for the NIC.
 	NetId pulumi.StringPtrInput
-	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
 	Nics VmNicArrayInput
 	// Indicates the operating system (OS) of the VM.
 	OsFamily pulumi.StringPtrInput
@@ -794,7 +859,7 @@ type VmState struct {
 	PlacementSubregionName pulumi.StringPtrInput
 	// The tenancy of the VM (`default` | `dedicated`).
 	PlacementTenancy pulumi.StringPtrInput
-	// The primary network interface of the VM.
+	// The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
 	PrimaryNics VmPrimaryNicArrayInput
 	// The name of the private DNS.
 	PrivateDnsName pulumi.StringPtrInput
@@ -868,7 +933,7 @@ type vmArgs struct {
 	KeypairNameWo *string `pulumi:"keypairNameWo"`
 	// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
 	NestedVirtualization *bool `pulumi:"nestedVirtualization"`
-	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
 	Nics []VmNic `pulumi:"nics"`
 	// The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
 	Performance *string `pulumi:"performance"`
@@ -876,7 +941,7 @@ type vmArgs struct {
 	PlacementSubregionName *string `pulumi:"placementSubregionName"`
 	// The tenancy of the VM (`default` | `dedicated`).
 	PlacementTenancy *string `pulumi:"placementTenancy"`
-	// The primary network interface of the VM.
+	// The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
 	PrimaryNics []VmPrimaryNic `pulumi:"primaryNics"`
 	// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps []string `pulumi:"privateIps"`
@@ -926,7 +991,7 @@ type VmArgs struct {
 	KeypairNameWo pulumi.StringPtrInput
 	// (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
 	NestedVirtualization pulumi.BoolPtrInput
-	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+	// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
 	Nics VmNicArrayInput
 	// The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
 	Performance pulumi.StringPtrInput
@@ -934,7 +999,7 @@ type VmArgs struct {
 	PlacementSubregionName pulumi.StringPtrInput
 	// The tenancy of the VM (`default` | `dedicated`).
 	PlacementTenancy pulumi.StringPtrInput
-	// The primary network interface of the VM.
+	// The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
 	PrimaryNics VmPrimaryNicArrayInput
 	// One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
 	PrivateIps pulumi.StringArrayInput
@@ -1144,7 +1209,7 @@ func (o VmOutput) NetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.NetId }).(pulumi.StringOutput)
 }
 
-// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. To define a NIC as the primary network interface of the VM, use the `primaryNic` argument.
+// One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
 func (o VmOutput) Nics() VmNicArrayOutput {
 	return o.ApplyT(func(v *Vm) VmNicArrayOutput { return v.Nics }).(VmNicArrayOutput)
 }
@@ -1169,7 +1234,7 @@ func (o VmOutput) PlacementTenancy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.PlacementTenancy }).(pulumi.StringOutput)
 }
 
-// The primary network interface of the VM.
+// The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
 func (o VmOutput) PrimaryNics() VmPrimaryNicArrayOutput {
 	return o.ApplyT(func(v *Vm) VmPrimaryNicArrayOutput { return v.PrimaryNics }).(VmPrimaryNicArrayOutput)
 }

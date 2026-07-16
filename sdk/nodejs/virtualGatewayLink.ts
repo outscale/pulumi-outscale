@@ -74,13 +74,16 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualGatewayLink.__pulumiType;
     }
 
-    declare public readonly dryRun: pulumi.Output<string>;
     /**
      * The ID of the Net to which you want to attach the virtual gateway.
      */
     declare public readonly netId: pulumi.Output<string>;
+    /**
+     * The Net to which the virtual gateway is attached.
+     */
     declare public /*out*/ readonly netToVirtualGatewayLinks: pulumi.Output<outputs.VirtualGatewayLinkNetToVirtualGatewayLink[]>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.VirtualGatewayLinkTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */
@@ -99,10 +102,10 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VirtualGatewayLinkState | undefined;
-            resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["netId"] = state?.netId;
             resourceInputs["netToVirtualGatewayLinks"] = state?.netToVirtualGatewayLinks;
             resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["virtualGatewayId"] = state?.virtualGatewayId;
         } else {
             const args = argsOrState as VirtualGatewayLinkArgs | undefined;
@@ -112,8 +115,8 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
             if (args?.virtualGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'virtualGatewayId'");
             }
-            resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["netId"] = args?.netId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["virtualGatewayId"] = args?.virtualGatewayId;
             resourceInputs["netToVirtualGatewayLinks"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -127,13 +130,16 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VirtualGatewayLink resources.
  */
 export interface VirtualGatewayLinkState {
-    dryRun?: pulumi.Input<string>;
     /**
      * The ID of the Net to which you want to attach the virtual gateway.
      */
     netId?: pulumi.Input<string>;
+    /**
+     * The Net to which the virtual gateway is attached.
+     */
     netToVirtualGatewayLinks?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayLinkNetToVirtualGatewayLink>[]>;
     requestId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayLinkTimeouts>;
     /**
      * The ID of the virtual gateway.
      */
@@ -144,11 +150,11 @@ export interface VirtualGatewayLinkState {
  * The set of arguments for constructing a VirtualGatewayLink resource.
  */
 export interface VirtualGatewayLinkArgs {
-    dryRun?: pulumi.Input<string>;
     /**
      * The ID of the Net to which you want to attach the virtual gateway.
      */
     netId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayLinkTimeouts>;
     /**
      * The ID of the virtual gateway.
      */
