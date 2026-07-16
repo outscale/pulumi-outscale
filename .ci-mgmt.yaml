@@ -55,3 +55,4 @@ license:
         - github.com/outscale/goutils/sdk/ptr
         - github.com/outscale/goutils/sdk/batch
         - github.com/outscale/goutils/sdk/log
+parallel: 1
