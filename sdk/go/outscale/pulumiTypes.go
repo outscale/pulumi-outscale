@@ -10056,7 +10056,7 @@ func (o NetTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 type NicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion *string `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber *int `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId *string `pulumi:"linkNicId"`
@@ -10082,7 +10082,7 @@ type NicLinkNicInput interface {
 type NicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.StringPtrInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.IntPtrInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringPtrInput `pulumi:"linkNicId"`
@@ -10150,7 +10150,7 @@ func (o NicLinkNicOutput) DeleteOnVmDeletion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NicLinkNic) *string { return v.DeleteOnVmDeletion }).(pulumi.StringPtrOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o NicLinkNicOutput) DeviceNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NicLinkNic) *int { return v.DeviceNumber }).(pulumi.IntPtrOutput)
 }
@@ -12024,6 +12024,200 @@ func (o OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput) WeekDa
 	}).(pulumi.StringPtrOutput)
 }
 
+type OksClusterKubeconfigAttributes struct {
+	// The client certificate for accessing the cluster.
+	ClientCertificate *string `pulumi:"clientCertificate"`
+	// The private key matching the client certificate.
+	ClientKey *string `pulumi:"clientKey"`
+	// The Certificate Authority (CA) associated with the cluster.
+	ClusterCaCertificate *string `pulumi:"clusterCaCertificate"`
+	// The URL of the Kubernetes API server of the cluster.
+	Host *string `pulumi:"host"`
+}
+
+// OksClusterKubeconfigAttributesInput is an input type that accepts OksClusterKubeconfigAttributesArgs and OksClusterKubeconfigAttributesOutput values.
+// You can construct a concrete instance of `OksClusterKubeconfigAttributesInput` via:
+//
+//	OksClusterKubeconfigAttributesArgs{...}
+type OksClusterKubeconfigAttributesInput interface {
+	pulumi.Input
+
+	ToOksClusterKubeconfigAttributesOutput() OksClusterKubeconfigAttributesOutput
+	ToOksClusterKubeconfigAttributesOutputWithContext(context.Context) OksClusterKubeconfigAttributesOutput
+}
+
+type OksClusterKubeconfigAttributesArgs struct {
+	// The client certificate for accessing the cluster.
+	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
+	// The private key matching the client certificate.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// The Certificate Authority (CA) associated with the cluster.
+	ClusterCaCertificate pulumi.StringPtrInput `pulumi:"clusterCaCertificate"`
+	// The URL of the Kubernetes API server of the cluster.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+}
+
+func (OksClusterKubeconfigAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterKubeconfigAttributes)(nil)).Elem()
+}
+
+func (i OksClusterKubeconfigAttributesArgs) ToOksClusterKubeconfigAttributesOutput() OksClusterKubeconfigAttributesOutput {
+	return i.ToOksClusterKubeconfigAttributesOutputWithContext(context.Background())
+}
+
+func (i OksClusterKubeconfigAttributesArgs) ToOksClusterKubeconfigAttributesOutputWithContext(ctx context.Context) OksClusterKubeconfigAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterKubeconfigAttributesOutput)
+}
+
+func (i OksClusterKubeconfigAttributesArgs) ToOksClusterKubeconfigAttributesPtrOutput() OksClusterKubeconfigAttributesPtrOutput {
+	return i.ToOksClusterKubeconfigAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i OksClusterKubeconfigAttributesArgs) ToOksClusterKubeconfigAttributesPtrOutputWithContext(ctx context.Context) OksClusterKubeconfigAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterKubeconfigAttributesOutput).ToOksClusterKubeconfigAttributesPtrOutputWithContext(ctx)
+}
+
+// OksClusterKubeconfigAttributesPtrInput is an input type that accepts OksClusterKubeconfigAttributesArgs, OksClusterKubeconfigAttributesPtr and OksClusterKubeconfigAttributesPtrOutput values.
+// You can construct a concrete instance of `OksClusterKubeconfigAttributesPtrInput` via:
+//
+//	        OksClusterKubeconfigAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksClusterKubeconfigAttributesPtrInput interface {
+	pulumi.Input
+
+	ToOksClusterKubeconfigAttributesPtrOutput() OksClusterKubeconfigAttributesPtrOutput
+	ToOksClusterKubeconfigAttributesPtrOutputWithContext(context.Context) OksClusterKubeconfigAttributesPtrOutput
+}
+
+type oksClusterKubeconfigAttributesPtrType OksClusterKubeconfigAttributesArgs
+
+func OksClusterKubeconfigAttributesPtr(v *OksClusterKubeconfigAttributesArgs) OksClusterKubeconfigAttributesPtrInput {
+	return (*oksClusterKubeconfigAttributesPtrType)(v)
+}
+
+func (*oksClusterKubeconfigAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterKubeconfigAttributes)(nil)).Elem()
+}
+
+func (i *oksClusterKubeconfigAttributesPtrType) ToOksClusterKubeconfigAttributesPtrOutput() OksClusterKubeconfigAttributesPtrOutput {
+	return i.ToOksClusterKubeconfigAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *oksClusterKubeconfigAttributesPtrType) ToOksClusterKubeconfigAttributesPtrOutputWithContext(ctx context.Context) OksClusterKubeconfigAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksClusterKubeconfigAttributesPtrOutput)
+}
+
+type OksClusterKubeconfigAttributesOutput struct{ *pulumi.OutputState }
+
+func (OksClusterKubeconfigAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksClusterKubeconfigAttributes)(nil)).Elem()
+}
+
+func (o OksClusterKubeconfigAttributesOutput) ToOksClusterKubeconfigAttributesOutput() OksClusterKubeconfigAttributesOutput {
+	return o
+}
+
+func (o OksClusterKubeconfigAttributesOutput) ToOksClusterKubeconfigAttributesOutputWithContext(ctx context.Context) OksClusterKubeconfigAttributesOutput {
+	return o
+}
+
+func (o OksClusterKubeconfigAttributesOutput) ToOksClusterKubeconfigAttributesPtrOutput() OksClusterKubeconfigAttributesPtrOutput {
+	return o.ToOksClusterKubeconfigAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o OksClusterKubeconfigAttributesOutput) ToOksClusterKubeconfigAttributesPtrOutputWithContext(ctx context.Context) OksClusterKubeconfigAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksClusterKubeconfigAttributes) *OksClusterKubeconfigAttributes {
+		return &v
+	}).(OksClusterKubeconfigAttributesPtrOutput)
+}
+
+// The client certificate for accessing the cluster.
+func (o OksClusterKubeconfigAttributesOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterKubeconfigAttributes) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The private key matching the client certificate.
+func (o OksClusterKubeconfigAttributesOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterKubeconfigAttributes) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority (CA) associated with the cluster.
+func (o OksClusterKubeconfigAttributesOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterKubeconfigAttributes) *string { return v.ClusterCaCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Kubernetes API server of the cluster.
+func (o OksClusterKubeconfigAttributesOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksClusterKubeconfigAttributes) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+type OksClusterKubeconfigAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (OksClusterKubeconfigAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksClusterKubeconfigAttributes)(nil)).Elem()
+}
+
+func (o OksClusterKubeconfigAttributesPtrOutput) ToOksClusterKubeconfigAttributesPtrOutput() OksClusterKubeconfigAttributesPtrOutput {
+	return o
+}
+
+func (o OksClusterKubeconfigAttributesPtrOutput) ToOksClusterKubeconfigAttributesPtrOutputWithContext(ctx context.Context) OksClusterKubeconfigAttributesPtrOutput {
+	return o
+}
+
+func (o OksClusterKubeconfigAttributesPtrOutput) Elem() OksClusterKubeconfigAttributesOutput {
+	return o.ApplyT(func(v *OksClusterKubeconfigAttributes) OksClusterKubeconfigAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret OksClusterKubeconfigAttributes
+		return ret
+	}).(OksClusterKubeconfigAttributesOutput)
+}
+
+// The client certificate for accessing the cluster.
+func (o OksClusterKubeconfigAttributesPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterKubeconfigAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private key matching the client certificate.
+func (o OksClusterKubeconfigAttributesPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterKubeconfigAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority (CA) associated with the cluster.
+func (o OksClusterKubeconfigAttributesPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterKubeconfigAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterCaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Kubernetes API server of the cluster.
+func (o OksClusterKubeconfigAttributesPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksClusterKubeconfigAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
 type OksClusterStatuses struct {
 	// Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
 	AvailableUpgrade *string `pulumi:"availableUpgrade"`
@@ -12428,6 +12622,364 @@ func (o OksClusterTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksManifestTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OksManifestTimeoutsInput is an input type that accepts OksManifestTimeoutsArgs and OksManifestTimeoutsOutput values.
+// You can construct a concrete instance of `OksManifestTimeoutsInput` via:
+//
+//	OksManifestTimeoutsArgs{...}
+type OksManifestTimeoutsInput interface {
+	pulumi.Input
+
+	ToOksManifestTimeoutsOutput() OksManifestTimeoutsOutput
+	ToOksManifestTimeoutsOutputWithContext(context.Context) OksManifestTimeoutsOutput
+}
+
+type OksManifestTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OksManifestTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksManifestTimeouts)(nil)).Elem()
+}
+
+func (i OksManifestTimeoutsArgs) ToOksManifestTimeoutsOutput() OksManifestTimeoutsOutput {
+	return i.ToOksManifestTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OksManifestTimeoutsArgs) ToOksManifestTimeoutsOutputWithContext(ctx context.Context) OksManifestTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestTimeoutsOutput)
+}
+
+func (i OksManifestTimeoutsArgs) ToOksManifestTimeoutsPtrOutput() OksManifestTimeoutsPtrOutput {
+	return i.ToOksManifestTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OksManifestTimeoutsArgs) ToOksManifestTimeoutsPtrOutputWithContext(ctx context.Context) OksManifestTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestTimeoutsOutput).ToOksManifestTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OksManifestTimeoutsPtrInput is an input type that accepts OksManifestTimeoutsArgs, OksManifestTimeoutsPtr and OksManifestTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OksManifestTimeoutsPtrInput` via:
+//
+//	        OksManifestTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksManifestTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOksManifestTimeoutsPtrOutput() OksManifestTimeoutsPtrOutput
+	ToOksManifestTimeoutsPtrOutputWithContext(context.Context) OksManifestTimeoutsPtrOutput
+}
+
+type oksManifestTimeoutsPtrType OksManifestTimeoutsArgs
+
+func OksManifestTimeoutsPtr(v *OksManifestTimeoutsArgs) OksManifestTimeoutsPtrInput {
+	return (*oksManifestTimeoutsPtrType)(v)
+}
+
+func (*oksManifestTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksManifestTimeouts)(nil)).Elem()
+}
+
+func (i *oksManifestTimeoutsPtrType) ToOksManifestTimeoutsPtrOutput() OksManifestTimeoutsPtrOutput {
+	return i.ToOksManifestTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oksManifestTimeoutsPtrType) ToOksManifestTimeoutsPtrOutputWithContext(ctx context.Context) OksManifestTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestTimeoutsPtrOutput)
+}
+
+type OksManifestTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OksManifestTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksManifestTimeouts)(nil)).Elem()
+}
+
+func (o OksManifestTimeoutsOutput) ToOksManifestTimeoutsOutput() OksManifestTimeoutsOutput {
+	return o
+}
+
+func (o OksManifestTimeoutsOutput) ToOksManifestTimeoutsOutputWithContext(ctx context.Context) OksManifestTimeoutsOutput {
+	return o
+}
+
+func (o OksManifestTimeoutsOutput) ToOksManifestTimeoutsPtrOutput() OksManifestTimeoutsPtrOutput {
+	return o.ToOksManifestTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OksManifestTimeoutsOutput) ToOksManifestTimeoutsPtrOutputWithContext(ctx context.Context) OksManifestTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksManifestTimeouts) *OksManifestTimeouts {
+		return &v
+	}).(OksManifestTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksManifestTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksManifestTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OksManifestTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksManifestTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OksManifestTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksManifestTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksManifestTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksManifestTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OksManifestTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OksManifestTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksManifestTimeouts)(nil)).Elem()
+}
+
+func (o OksManifestTimeoutsPtrOutput) ToOksManifestTimeoutsPtrOutput() OksManifestTimeoutsPtrOutput {
+	return o
+}
+
+func (o OksManifestTimeoutsPtrOutput) ToOksManifestTimeoutsPtrOutputWithContext(ctx context.Context) OksManifestTimeoutsPtrOutput {
+	return o
+}
+
+func (o OksManifestTimeoutsPtrOutput) Elem() OksManifestTimeoutsOutput {
+	return o.ApplyT(func(v *OksManifestTimeouts) OksManifestTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OksManifestTimeouts
+		return ret
+	}).(OksManifestTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksManifestTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksManifestTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OksManifestTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksManifestTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OksManifestTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksManifestTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OksManifestTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksManifestTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OksManifestWaitFor struct {
+	// Maps of key/value pairs in the `"{.field_path}" = "expectedValue"` format.<br />
+	// Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+	// Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+	Fields map[string]string `pulumi:"fields"`
+	// A custom timeout for the `waitFor` checks. If not specified, falls back to the CRUD operation default timeout.
+	Timeout *string `pulumi:"timeout"`
+}
+
+// OksManifestWaitForInput is an input type that accepts OksManifestWaitForArgs and OksManifestWaitForOutput values.
+// You can construct a concrete instance of `OksManifestWaitForInput` via:
+//
+//	OksManifestWaitForArgs{...}
+type OksManifestWaitForInput interface {
+	pulumi.Input
+
+	ToOksManifestWaitForOutput() OksManifestWaitForOutput
+	ToOksManifestWaitForOutputWithContext(context.Context) OksManifestWaitForOutput
+}
+
+type OksManifestWaitForArgs struct {
+	// Maps of key/value pairs in the `"{.field_path}" = "expectedValue"` format.<br />
+	// Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+	// Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+	Fields pulumi.StringMapInput `pulumi:"fields"`
+	// A custom timeout for the `waitFor` checks. If not specified, falls back to the CRUD operation default timeout.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+func (OksManifestWaitForArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksManifestWaitFor)(nil)).Elem()
+}
+
+func (i OksManifestWaitForArgs) ToOksManifestWaitForOutput() OksManifestWaitForOutput {
+	return i.ToOksManifestWaitForOutputWithContext(context.Background())
+}
+
+func (i OksManifestWaitForArgs) ToOksManifestWaitForOutputWithContext(ctx context.Context) OksManifestWaitForOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestWaitForOutput)
+}
+
+func (i OksManifestWaitForArgs) ToOksManifestWaitForPtrOutput() OksManifestWaitForPtrOutput {
+	return i.ToOksManifestWaitForPtrOutputWithContext(context.Background())
+}
+
+func (i OksManifestWaitForArgs) ToOksManifestWaitForPtrOutputWithContext(ctx context.Context) OksManifestWaitForPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestWaitForOutput).ToOksManifestWaitForPtrOutputWithContext(ctx)
+}
+
+// OksManifestWaitForPtrInput is an input type that accepts OksManifestWaitForArgs, OksManifestWaitForPtr and OksManifestWaitForPtrOutput values.
+// You can construct a concrete instance of `OksManifestWaitForPtrInput` via:
+//
+//	        OksManifestWaitForArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksManifestWaitForPtrInput interface {
+	pulumi.Input
+
+	ToOksManifestWaitForPtrOutput() OksManifestWaitForPtrOutput
+	ToOksManifestWaitForPtrOutputWithContext(context.Context) OksManifestWaitForPtrOutput
+}
+
+type oksManifestWaitForPtrType OksManifestWaitForArgs
+
+func OksManifestWaitForPtr(v *OksManifestWaitForArgs) OksManifestWaitForPtrInput {
+	return (*oksManifestWaitForPtrType)(v)
+}
+
+func (*oksManifestWaitForPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksManifestWaitFor)(nil)).Elem()
+}
+
+func (i *oksManifestWaitForPtrType) ToOksManifestWaitForPtrOutput() OksManifestWaitForPtrOutput {
+	return i.ToOksManifestWaitForPtrOutputWithContext(context.Background())
+}
+
+func (i *oksManifestWaitForPtrType) ToOksManifestWaitForPtrOutputWithContext(ctx context.Context) OksManifestWaitForPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestWaitForPtrOutput)
+}
+
+type OksManifestWaitForOutput struct{ *pulumi.OutputState }
+
+func (OksManifestWaitForOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksManifestWaitFor)(nil)).Elem()
+}
+
+func (o OksManifestWaitForOutput) ToOksManifestWaitForOutput() OksManifestWaitForOutput {
+	return o
+}
+
+func (o OksManifestWaitForOutput) ToOksManifestWaitForOutputWithContext(ctx context.Context) OksManifestWaitForOutput {
+	return o
+}
+
+func (o OksManifestWaitForOutput) ToOksManifestWaitForPtrOutput() OksManifestWaitForPtrOutput {
+	return o.ToOksManifestWaitForPtrOutputWithContext(context.Background())
+}
+
+func (o OksManifestWaitForOutput) ToOksManifestWaitForPtrOutputWithContext(ctx context.Context) OksManifestWaitForPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksManifestWaitFor) *OksManifestWaitFor {
+		return &v
+	}).(OksManifestWaitForPtrOutput)
+}
+
+// Maps of key/value pairs in the `"{.field_path}" = "expectedValue"` format.<br />
+// Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+// Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+func (o OksManifestWaitForOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OksManifestWaitFor) map[string]string { return v.Fields }).(pulumi.StringMapOutput)
+}
+
+// A custom timeout for the `waitFor` checks. If not specified, falls back to the CRUD operation default timeout.
+func (o OksManifestWaitForOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksManifestWaitFor) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type OksManifestWaitForPtrOutput struct{ *pulumi.OutputState }
+
+func (OksManifestWaitForPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksManifestWaitFor)(nil)).Elem()
+}
+
+func (o OksManifestWaitForPtrOutput) ToOksManifestWaitForPtrOutput() OksManifestWaitForPtrOutput {
+	return o
+}
+
+func (o OksManifestWaitForPtrOutput) ToOksManifestWaitForPtrOutputWithContext(ctx context.Context) OksManifestWaitForPtrOutput {
+	return o
+}
+
+func (o OksManifestWaitForPtrOutput) Elem() OksManifestWaitForOutput {
+	return o.ApplyT(func(v *OksManifestWaitFor) OksManifestWaitFor {
+		if v != nil {
+			return *v
+		}
+		var ret OksManifestWaitFor
+		return ret
+	}).(OksManifestWaitForOutput)
+}
+
+// Maps of key/value pairs in the `"{.field_path}" = "expectedValue"` format.<br />
+// Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+// Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+func (o OksManifestWaitForPtrOutput) Fields() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OksManifestWaitFor) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Fields
+	}).(pulumi.StringMapOutput)
+}
+
+// A custom timeout for the `waitFor` checks. If not specified, falls back to the CRUD operation default timeout.
+func (o OksManifestWaitForPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksManifestWaitFor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18651,6 +19203,181 @@ func (o VirtualGatewayLinkNetToVirtualGatewayLinkArrayOutput) Index(i pulumi.Int
 	}).(VirtualGatewayLinkNetToVirtualGatewayLinkOutput)
 }
 
+type VirtualGatewayLinkTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// VirtualGatewayLinkTimeoutsInput is an input type that accepts VirtualGatewayLinkTimeoutsArgs and VirtualGatewayLinkTimeoutsOutput values.
+// You can construct a concrete instance of `VirtualGatewayLinkTimeoutsInput` via:
+//
+//	VirtualGatewayLinkTimeoutsArgs{...}
+type VirtualGatewayLinkTimeoutsInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayLinkTimeoutsOutput() VirtualGatewayLinkTimeoutsOutput
+	ToVirtualGatewayLinkTimeoutsOutputWithContext(context.Context) VirtualGatewayLinkTimeoutsOutput
+}
+
+type VirtualGatewayLinkTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (VirtualGatewayLinkTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayLinkTimeouts)(nil)).Elem()
+}
+
+func (i VirtualGatewayLinkTimeoutsArgs) ToVirtualGatewayLinkTimeoutsOutput() VirtualGatewayLinkTimeoutsOutput {
+	return i.ToVirtualGatewayLinkTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VirtualGatewayLinkTimeoutsArgs) ToVirtualGatewayLinkTimeoutsOutputWithContext(ctx context.Context) VirtualGatewayLinkTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayLinkTimeoutsOutput)
+}
+
+func (i VirtualGatewayLinkTimeoutsArgs) ToVirtualGatewayLinkTimeoutsPtrOutput() VirtualGatewayLinkTimeoutsPtrOutput {
+	return i.ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualGatewayLinkTimeoutsArgs) ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayLinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayLinkTimeoutsOutput).ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VirtualGatewayLinkTimeoutsPtrInput is an input type that accepts VirtualGatewayLinkTimeoutsArgs, VirtualGatewayLinkTimeoutsPtr and VirtualGatewayLinkTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VirtualGatewayLinkTimeoutsPtrInput` via:
+//
+//	        VirtualGatewayLinkTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualGatewayLinkTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayLinkTimeoutsPtrOutput() VirtualGatewayLinkTimeoutsPtrOutput
+	ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(context.Context) VirtualGatewayLinkTimeoutsPtrOutput
+}
+
+type virtualGatewayLinkTimeoutsPtrType VirtualGatewayLinkTimeoutsArgs
+
+func VirtualGatewayLinkTimeoutsPtr(v *VirtualGatewayLinkTimeoutsArgs) VirtualGatewayLinkTimeoutsPtrInput {
+	return (*virtualGatewayLinkTimeoutsPtrType)(v)
+}
+
+func (*virtualGatewayLinkTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualGatewayLinkTimeouts)(nil)).Elem()
+}
+
+func (i *virtualGatewayLinkTimeoutsPtrType) ToVirtualGatewayLinkTimeoutsPtrOutput() VirtualGatewayLinkTimeoutsPtrOutput {
+	return i.ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualGatewayLinkTimeoutsPtrType) ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayLinkTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayLinkTimeoutsPtrOutput)
+}
+
+type VirtualGatewayLinkTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VirtualGatewayLinkTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayLinkTimeouts)(nil)).Elem()
+}
+
+func (o VirtualGatewayLinkTimeoutsOutput) ToVirtualGatewayLinkTimeoutsOutput() VirtualGatewayLinkTimeoutsOutput {
+	return o
+}
+
+func (o VirtualGatewayLinkTimeoutsOutput) ToVirtualGatewayLinkTimeoutsOutputWithContext(ctx context.Context) VirtualGatewayLinkTimeoutsOutput {
+	return o
+}
+
+func (o VirtualGatewayLinkTimeoutsOutput) ToVirtualGatewayLinkTimeoutsPtrOutput() VirtualGatewayLinkTimeoutsPtrOutput {
+	return o.ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualGatewayLinkTimeoutsOutput) ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayLinkTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualGatewayLinkTimeouts) *VirtualGatewayLinkTimeouts {
+		return &v
+	}).(VirtualGatewayLinkTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayLinkTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayLinkTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualGatewayLinkTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayLinkTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualGatewayLinkTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayLinkTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type VirtualGatewayLinkTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualGatewayLinkTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualGatewayLinkTimeouts)(nil)).Elem()
+}
+
+func (o VirtualGatewayLinkTimeoutsPtrOutput) ToVirtualGatewayLinkTimeoutsPtrOutput() VirtualGatewayLinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualGatewayLinkTimeoutsPtrOutput) ToVirtualGatewayLinkTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayLinkTimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualGatewayLinkTimeoutsPtrOutput) Elem() VirtualGatewayLinkTimeoutsOutput {
+	return o.ApplyT(func(v *VirtualGatewayLinkTimeouts) VirtualGatewayLinkTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualGatewayLinkTimeouts
+		return ret
+	}).(VirtualGatewayLinkTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayLinkTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualGatewayLinkTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualGatewayLinkTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayLinkTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualGatewayNetToVirtualGatewayLink struct {
 	// The ID of the Net to which the virtual gateway is attached.
 	NetId *string `pulumi:"netId"`
@@ -18757,9 +19484,203 @@ func (o VirtualGatewayNetToVirtualGatewayLinkArrayOutput) Index(i pulumi.IntInpu
 	}).(VirtualGatewayNetToVirtualGatewayLinkOutput)
 }
 
+type VirtualGatewayRoutePropagationTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VirtualGatewayRoutePropagationTimeoutsInput is an input type that accepts VirtualGatewayRoutePropagationTimeoutsArgs and VirtualGatewayRoutePropagationTimeoutsOutput values.
+// You can construct a concrete instance of `VirtualGatewayRoutePropagationTimeoutsInput` via:
+//
+//	VirtualGatewayRoutePropagationTimeoutsArgs{...}
+type VirtualGatewayRoutePropagationTimeoutsInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayRoutePropagationTimeoutsOutput() VirtualGatewayRoutePropagationTimeoutsOutput
+	ToVirtualGatewayRoutePropagationTimeoutsOutputWithContext(context.Context) VirtualGatewayRoutePropagationTimeoutsOutput
+}
+
+type VirtualGatewayRoutePropagationTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VirtualGatewayRoutePropagationTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayRoutePropagationTimeouts)(nil)).Elem()
+}
+
+func (i VirtualGatewayRoutePropagationTimeoutsArgs) ToVirtualGatewayRoutePropagationTimeoutsOutput() VirtualGatewayRoutePropagationTimeoutsOutput {
+	return i.ToVirtualGatewayRoutePropagationTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VirtualGatewayRoutePropagationTimeoutsArgs) ToVirtualGatewayRoutePropagationTimeoutsOutputWithContext(ctx context.Context) VirtualGatewayRoutePropagationTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayRoutePropagationTimeoutsOutput)
+}
+
+func (i VirtualGatewayRoutePropagationTimeoutsArgs) ToVirtualGatewayRoutePropagationTimeoutsPtrOutput() VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return i.ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualGatewayRoutePropagationTimeoutsArgs) ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayRoutePropagationTimeoutsOutput).ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VirtualGatewayRoutePropagationTimeoutsPtrInput is an input type that accepts VirtualGatewayRoutePropagationTimeoutsArgs, VirtualGatewayRoutePropagationTimeoutsPtr and VirtualGatewayRoutePropagationTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VirtualGatewayRoutePropagationTimeoutsPtrInput` via:
+//
+//	        VirtualGatewayRoutePropagationTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualGatewayRoutePropagationTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayRoutePropagationTimeoutsPtrOutput() VirtualGatewayRoutePropagationTimeoutsPtrOutput
+	ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(context.Context) VirtualGatewayRoutePropagationTimeoutsPtrOutput
+}
+
+type virtualGatewayRoutePropagationTimeoutsPtrType VirtualGatewayRoutePropagationTimeoutsArgs
+
+func VirtualGatewayRoutePropagationTimeoutsPtr(v *VirtualGatewayRoutePropagationTimeoutsArgs) VirtualGatewayRoutePropagationTimeoutsPtrInput {
+	return (*virtualGatewayRoutePropagationTimeoutsPtrType)(v)
+}
+
+func (*virtualGatewayRoutePropagationTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualGatewayRoutePropagationTimeouts)(nil)).Elem()
+}
+
+func (i *virtualGatewayRoutePropagationTimeoutsPtrType) ToVirtualGatewayRoutePropagationTimeoutsPtrOutput() VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return i.ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualGatewayRoutePropagationTimeoutsPtrType) ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayRoutePropagationTimeoutsPtrOutput)
+}
+
+type VirtualGatewayRoutePropagationTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VirtualGatewayRoutePropagationTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayRoutePropagationTimeouts)(nil)).Elem()
+}
+
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) ToVirtualGatewayRoutePropagationTimeoutsOutput() VirtualGatewayRoutePropagationTimeoutsOutput {
+	return o
+}
+
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) ToVirtualGatewayRoutePropagationTimeoutsOutputWithContext(ctx context.Context) VirtualGatewayRoutePropagationTimeoutsOutput {
+	return o
+}
+
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) ToVirtualGatewayRoutePropagationTimeoutsPtrOutput() VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return o.ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualGatewayRoutePropagationTimeouts) *VirtualGatewayRoutePropagationTimeouts {
+		return &v
+	}).(VirtualGatewayRoutePropagationTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayRoutePropagationTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayRoutePropagationTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayRoutePropagationTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayRoutePropagationTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayRoutePropagationTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VirtualGatewayRoutePropagationTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualGatewayRoutePropagationTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualGatewayRoutePropagationTimeouts)(nil)).Elem()
+}
+
+func (o VirtualGatewayRoutePropagationTimeoutsPtrOutput) ToVirtualGatewayRoutePropagationTimeoutsPtrOutput() VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualGatewayRoutePropagationTimeoutsPtrOutput) ToVirtualGatewayRoutePropagationTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualGatewayRoutePropagationTimeoutsPtrOutput) Elem() VirtualGatewayRoutePropagationTimeoutsOutput {
+	return o.ApplyT(func(v *VirtualGatewayRoutePropagationTimeouts) VirtualGatewayRoutePropagationTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualGatewayRoutePropagationTimeouts
+		return ret
+	}).(VirtualGatewayRoutePropagationTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayRoutePropagationTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayRoutePropagationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualGatewayRoutePropagationTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayRoutePropagationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualGatewayRoutePropagationTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayRoutePropagationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayRoutePropagationTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayRoutePropagationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualGatewayTag struct {
 	// The key of the tag, between 1 and 255 characters.
-	Key *string `pulumi:"key"`
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -18777,7 +19698,7 @@ type VirtualGatewayTagInput interface {
 
 type VirtualGatewayTagArgs struct {
 	// The key of the tag, between 1 and 255 characters.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -18834,8 +19755,8 @@ func (o VirtualGatewayTagOutput) ToVirtualGatewayTagOutputWithContext(ctx contex
 }
 
 // The key of the tag, between 1 and 255 characters.
-func (o VirtualGatewayTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualGatewayTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o VirtualGatewayTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualGatewayTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -18861,6 +19782,200 @@ func (o VirtualGatewayTagArrayOutput) Index(i pulumi.IntInput) VirtualGatewayTag
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualGatewayTag {
 		return vs[0].([]VirtualGatewayTag)[vs[1].(int)]
 	}).(VirtualGatewayTagOutput)
+}
+
+type VirtualGatewayTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VirtualGatewayTimeoutsInput is an input type that accepts VirtualGatewayTimeoutsArgs and VirtualGatewayTimeoutsOutput values.
+// You can construct a concrete instance of `VirtualGatewayTimeoutsInput` via:
+//
+//	VirtualGatewayTimeoutsArgs{...}
+type VirtualGatewayTimeoutsInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayTimeoutsOutput() VirtualGatewayTimeoutsOutput
+	ToVirtualGatewayTimeoutsOutputWithContext(context.Context) VirtualGatewayTimeoutsOutput
+}
+
+type VirtualGatewayTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VirtualGatewayTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayTimeouts)(nil)).Elem()
+}
+
+func (i VirtualGatewayTimeoutsArgs) ToVirtualGatewayTimeoutsOutput() VirtualGatewayTimeoutsOutput {
+	return i.ToVirtualGatewayTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VirtualGatewayTimeoutsArgs) ToVirtualGatewayTimeoutsOutputWithContext(ctx context.Context) VirtualGatewayTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayTimeoutsOutput)
+}
+
+func (i VirtualGatewayTimeoutsArgs) ToVirtualGatewayTimeoutsPtrOutput() VirtualGatewayTimeoutsPtrOutput {
+	return i.ToVirtualGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualGatewayTimeoutsArgs) ToVirtualGatewayTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayTimeoutsOutput).ToVirtualGatewayTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VirtualGatewayTimeoutsPtrInput is an input type that accepts VirtualGatewayTimeoutsArgs, VirtualGatewayTimeoutsPtr and VirtualGatewayTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VirtualGatewayTimeoutsPtrInput` via:
+//
+//	        VirtualGatewayTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualGatewayTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayTimeoutsPtrOutput() VirtualGatewayTimeoutsPtrOutput
+	ToVirtualGatewayTimeoutsPtrOutputWithContext(context.Context) VirtualGatewayTimeoutsPtrOutput
+}
+
+type virtualGatewayTimeoutsPtrType VirtualGatewayTimeoutsArgs
+
+func VirtualGatewayTimeoutsPtr(v *VirtualGatewayTimeoutsArgs) VirtualGatewayTimeoutsPtrInput {
+	return (*virtualGatewayTimeoutsPtrType)(v)
+}
+
+func (*virtualGatewayTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualGatewayTimeouts)(nil)).Elem()
+}
+
+func (i *virtualGatewayTimeoutsPtrType) ToVirtualGatewayTimeoutsPtrOutput() VirtualGatewayTimeoutsPtrOutput {
+	return i.ToVirtualGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualGatewayTimeoutsPtrType) ToVirtualGatewayTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayTimeoutsPtrOutput)
+}
+
+type VirtualGatewayTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VirtualGatewayTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGatewayTimeouts)(nil)).Elem()
+}
+
+func (o VirtualGatewayTimeoutsOutput) ToVirtualGatewayTimeoutsOutput() VirtualGatewayTimeoutsOutput {
+	return o
+}
+
+func (o VirtualGatewayTimeoutsOutput) ToVirtualGatewayTimeoutsOutputWithContext(ctx context.Context) VirtualGatewayTimeoutsOutput {
+	return o
+}
+
+func (o VirtualGatewayTimeoutsOutput) ToVirtualGatewayTimeoutsPtrOutput() VirtualGatewayTimeoutsPtrOutput {
+	return o.ToVirtualGatewayTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualGatewayTimeoutsOutput) ToVirtualGatewayTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualGatewayTimeouts) *VirtualGatewayTimeouts {
+		return &v
+	}).(VirtualGatewayTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualGatewayTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualGatewayTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualGatewayTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VirtualGatewayTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualGatewayTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualGatewayTimeouts)(nil)).Elem()
+}
+
+func (o VirtualGatewayTimeoutsPtrOutput) ToVirtualGatewayTimeoutsPtrOutput() VirtualGatewayTimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualGatewayTimeoutsPtrOutput) ToVirtualGatewayTimeoutsPtrOutputWithContext(ctx context.Context) VirtualGatewayTimeoutsPtrOutput {
+	return o
+}
+
+func (o VirtualGatewayTimeoutsPtrOutput) Elem() VirtualGatewayTimeoutsOutput {
+	return o.ApplyT(func(v *VirtualGatewayTimeouts) VirtualGatewayTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualGatewayTimeouts
+		return ret
+	}).(VirtualGatewayTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VirtualGatewayTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VirtualGatewayTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VirtualGatewayTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type VmActionsOnNextBoot struct {
@@ -19764,7 +20879,7 @@ type VmNic struct {
 	DeleteOnVmDeletion *bool `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC, if you are creating a NIC when creating the VM.
 	Description *string `pulumi:"description"`
-	// The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+	// The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
 	DeviceNumber int `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked *bool `pulumi:"isSourceDestChecked"`
@@ -19812,7 +20927,7 @@ type VmNicArgs struct {
 	DeleteOnVmDeletion pulumi.BoolPtrInput `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC, if you are creating a NIC when creating the VM.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+	// The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
 	DeviceNumber pulumi.IntInput `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked pulumi.BoolPtrInput `pulumi:"isSourceDestChecked"`
@@ -19908,7 +21023,7 @@ func (o VmNicOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNic) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+// The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
 func (o VmNicOutput) DeviceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v VmNic) int { return v.DeviceNumber }).(pulumi.IntOutput)
 }
@@ -20001,7 +21116,7 @@ func (o VmNicArrayOutput) Index(i pulumi.IntInput) VmNicOutput {
 type VmNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion *bool `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber *string `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId *string `pulumi:"linkNicId"`
@@ -20023,7 +21138,7 @@ type VmNicLinkNicInput interface {
 type VmNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolPtrInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.StringPtrInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringPtrInput `pulumi:"linkNicId"`
@@ -20087,7 +21202,7 @@ func (o VmNicLinkNicOutput) DeleteOnVmDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmNicLinkNic) *bool { return v.DeleteOnVmDeletion }).(pulumi.BoolPtrOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o VmNicLinkNicOutput) DeviceNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmNicLinkNic) *string { return v.DeviceNumber }).(pulumi.StringPtrOutput)
 }
@@ -20826,7 +21941,7 @@ func (o VmPrimaryNicArrayOutput) Index(i pulumi.IntInput) VmPrimaryNicOutput {
 type VmPrimaryNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion *bool `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber *string `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId *string `pulumi:"linkNicId"`
@@ -20848,7 +21963,7 @@ type VmPrimaryNicLinkNicInput interface {
 type VmPrimaryNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolPtrInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.StringPtrInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringPtrInput `pulumi:"linkNicId"`
@@ -20912,7 +22027,7 @@ func (o VmPrimaryNicLinkNicOutput) DeleteOnVmDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNicLinkNic) *bool { return v.DeleteOnVmDeletion }).(pulumi.BoolPtrOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o VmPrimaryNicLinkNicOutput) DeviceNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmPrimaryNicLinkNic) *string { return v.DeviceNumber }).(pulumi.StringPtrOutput)
 }
@@ -36310,7 +37425,7 @@ func (o GetNicFilterArrayOutput) Index(i pulumi.IntInput) GetNicFilterOutput {
 type GetNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion string `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber int `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId string `pulumi:"linkNicId"`
@@ -36336,7 +37451,7 @@ type GetNicLinkNicInput interface {
 type GetNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.StringInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.IntInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
@@ -36404,7 +37519,7 @@ func (o GetNicLinkNicOutput) DeleteOnVmDeletion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNicLinkNic) string { return v.DeleteOnVmDeletion }).(pulumi.StringOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetNicLinkNicOutput) DeviceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNicLinkNic) int { return v.DeviceNumber }).(pulumi.IntOutput)
 }
@@ -37377,7 +38492,7 @@ func (o GetNicsNicArrayOutput) Index(i pulumi.IntInput) GetNicsNicOutput {
 type GetNicsNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber int `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId string `pulumi:"linkNicId"`
@@ -37403,7 +38518,7 @@ type GetNicsNicLinkNicInput interface {
 type GetNicsNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.IntInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
@@ -37471,7 +38586,7 @@ func (o GetNicsNicLinkNicOutput) DeleteOnVmDeletion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNicsNicLinkNic) bool { return v.DeleteOnVmDeletion }).(pulumi.BoolOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetNicsNicLinkNicOutput) DeviceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNicsNicLinkNic) int { return v.DeviceNumber }).(pulumi.IntOutput)
 }
@@ -38116,6 +39231,85 @@ func (o GetNicsNicTagArrayOutput) Index(i pulumi.IntInput) GetNicsNicTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNicsNicTag {
 		return vs[0].([]GetNicsNicTag)[vs[1].(int)]
 	}).(GetNicsNicTagOutput)
+}
+
+type GetOksKubeconfigKubeconfigAttributes struct {
+	// The client certificate for accessing the cluster.
+	ClientCertificate string `pulumi:"clientCertificate"`
+	// The private key matching the client certificate.
+	ClientKey string `pulumi:"clientKey"`
+	// The Certificate Authority (CA) associated with the cluster.
+	ClusterCaCertificate string `pulumi:"clusterCaCertificate"`
+	// The URL of the Kubernetes API server of the cluster.
+	Host string `pulumi:"host"`
+}
+
+// GetOksKubeconfigKubeconfigAttributesInput is an input type that accepts GetOksKubeconfigKubeconfigAttributesArgs and GetOksKubeconfigKubeconfigAttributesOutput values.
+// You can construct a concrete instance of `GetOksKubeconfigKubeconfigAttributesInput` via:
+//
+//	GetOksKubeconfigKubeconfigAttributesArgs{...}
+type GetOksKubeconfigKubeconfigAttributesInput interface {
+	pulumi.Input
+
+	ToGetOksKubeconfigKubeconfigAttributesOutput() GetOksKubeconfigKubeconfigAttributesOutput
+	ToGetOksKubeconfigKubeconfigAttributesOutputWithContext(context.Context) GetOksKubeconfigKubeconfigAttributesOutput
+}
+
+type GetOksKubeconfigKubeconfigAttributesArgs struct {
+	// The client certificate for accessing the cluster.
+	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
+	// The private key matching the client certificate.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	// The Certificate Authority (CA) associated with the cluster.
+	ClusterCaCertificate pulumi.StringInput `pulumi:"clusterCaCertificate"`
+	// The URL of the Kubernetes API server of the cluster.
+	Host pulumi.StringInput `pulumi:"host"`
+}
+
+func (GetOksKubeconfigKubeconfigAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOksKubeconfigKubeconfigAttributes)(nil)).Elem()
+}
+
+func (i GetOksKubeconfigKubeconfigAttributesArgs) ToGetOksKubeconfigKubeconfigAttributesOutput() GetOksKubeconfigKubeconfigAttributesOutput {
+	return i.ToGetOksKubeconfigKubeconfigAttributesOutputWithContext(context.Background())
+}
+
+func (i GetOksKubeconfigKubeconfigAttributesArgs) ToGetOksKubeconfigKubeconfigAttributesOutputWithContext(ctx context.Context) GetOksKubeconfigKubeconfigAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOksKubeconfigKubeconfigAttributesOutput)
+}
+
+type GetOksKubeconfigKubeconfigAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetOksKubeconfigKubeconfigAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOksKubeconfigKubeconfigAttributes)(nil)).Elem()
+}
+
+func (o GetOksKubeconfigKubeconfigAttributesOutput) ToGetOksKubeconfigKubeconfigAttributesOutput() GetOksKubeconfigKubeconfigAttributesOutput {
+	return o
+}
+
+func (o GetOksKubeconfigKubeconfigAttributesOutput) ToGetOksKubeconfigKubeconfigAttributesOutputWithContext(ctx context.Context) GetOksKubeconfigKubeconfigAttributesOutput {
+	return o
+}
+
+// The client certificate for accessing the cluster.
+func (o GetOksKubeconfigKubeconfigAttributesOutput) ClientCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOksKubeconfigKubeconfigAttributes) string { return v.ClientCertificate }).(pulumi.StringOutput)
+}
+
+// The private key matching the client certificate.
+func (o GetOksKubeconfigKubeconfigAttributesOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOksKubeconfigKubeconfigAttributes) string { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+// The Certificate Authority (CA) associated with the cluster.
+func (o GetOksKubeconfigKubeconfigAttributesOutput) ClusterCaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOksKubeconfigKubeconfigAttributes) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
+}
+
+// The URL of the Kubernetes API server of the cluster.
+func (o GetOksKubeconfigKubeconfigAttributesOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOksKubeconfigKubeconfigAttributes) string { return v.Host }).(pulumi.StringOutput)
 }
 
 type GetPoliciesFilter struct {
@@ -48592,7 +49786,7 @@ type GetVmNic struct {
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description string `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber int `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked bool `pulumi:"isSourceDestChecked"`
@@ -48640,7 +49834,7 @@ type GetVmNicArgs struct {
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.IntInput `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked pulumi.BoolInput `pulumi:"isSourceDestChecked"`
@@ -48736,7 +49930,7 @@ func (o GetVmNicOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmNic) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmNicOutput) DeviceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVmNic) int { return v.DeviceNumber }).(pulumi.IntOutput)
 }
@@ -48832,7 +50026,7 @@ func (o GetVmNicArrayOutput) Index(i pulumi.IntInput) GetVmNicOutput {
 type GetVmNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber string `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId string `pulumi:"linkNicId"`
@@ -48854,7 +50048,7 @@ type GetVmNicLinkNicInput interface {
 type GetVmNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.StringInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
@@ -48918,7 +50112,7 @@ func (o GetVmNicLinkNicOutput) DeleteOnVmDeletion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVmNicLinkNic) bool { return v.DeleteOnVmDeletion }).(pulumi.BoolOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmNicLinkNicOutput) DeviceNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmNicLinkNic) string { return v.DeviceNumber }).(pulumi.StringOutput)
 }
@@ -49420,7 +50614,7 @@ type GetVmPrimaryNic struct {
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description string `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber int `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked bool `pulumi:"isSourceDestChecked"`
@@ -49467,7 +50661,7 @@ type GetVmPrimaryNicArgs struct {
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.IntInput `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked pulumi.BoolInput `pulumi:"isSourceDestChecked"`
@@ -49562,7 +50756,7 @@ func (o GetVmPrimaryNicOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmPrimaryNic) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmPrimaryNicOutput) DeviceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVmPrimaryNic) int { return v.DeviceNumber }).(pulumi.IntOutput)
 }
@@ -49654,7 +50848,7 @@ func (o GetVmPrimaryNicArrayOutput) Index(i pulumi.IntInput) GetVmPrimaryNicOutp
 type GetVmPrimaryNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber string `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId string `pulumi:"linkNicId"`
@@ -49676,7 +50870,7 @@ type GetVmPrimaryNicLinkNicInput interface {
 type GetVmPrimaryNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.StringInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
@@ -49740,7 +50934,7 @@ func (o GetVmPrimaryNicLinkNicOutput) DeleteOnVmDeletion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVmPrimaryNicLinkNic) bool { return v.DeleteOnVmDeletion }).(pulumi.BoolOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmPrimaryNicLinkNicOutput) DeviceNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmPrimaryNicLinkNic) string { return v.DeviceNumber }).(pulumi.StringOutput)
 }
@@ -52290,7 +53484,7 @@ type GetVmsVmNic struct {
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description string `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber int `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked bool `pulumi:"isSourceDestChecked"`
@@ -52338,7 +53532,7 @@ type GetVmsVmNicArgs struct {
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.IntInput `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked pulumi.BoolInput `pulumi:"isSourceDestChecked"`
@@ -52434,7 +53628,7 @@ func (o GetVmsVmNicOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmNic) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmsVmNicOutput) DeviceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVmsVmNic) int { return v.DeviceNumber }).(pulumi.IntOutput)
 }
@@ -52530,7 +53724,7 @@ func (o GetVmsVmNicArrayOutput) Index(i pulumi.IntInput) GetVmsVmNicOutput {
 type GetVmsVmNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber string `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId string `pulumi:"linkNicId"`
@@ -52552,7 +53746,7 @@ type GetVmsVmNicLinkNicInput interface {
 type GetVmsVmNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.StringInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
@@ -52616,7 +53810,7 @@ func (o GetVmsVmNicLinkNicOutput) DeleteOnVmDeletion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVmsVmNicLinkNic) bool { return v.DeleteOnVmDeletion }).(pulumi.BoolOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmsVmNicLinkNicOutput) DeviceNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmNicLinkNic) string { return v.DeviceNumber }).(pulumi.StringOutput)
 }
@@ -53118,7 +54312,7 @@ type GetVmsVmPrimaryNic struct {
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description string `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber int `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked bool `pulumi:"isSourceDestChecked"`
@@ -53165,7 +54359,7 @@ type GetVmsVmPrimaryNicArgs struct {
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
 	// The description of the NIC.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.IntInput `pulumi:"deviceNumber"`
 	// (Net only) If true, the source/destination check is enabled. If false, it is disabled.
 	IsSourceDestChecked pulumi.BoolInput `pulumi:"isSourceDestChecked"`
@@ -53260,7 +54454,7 @@ func (o GetVmsVmPrimaryNicOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmPrimaryNic) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmsVmPrimaryNicOutput) DeviceNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVmsVmPrimaryNic) int { return v.DeviceNumber }).(pulumi.IntOutput)
 }
@@ -53352,7 +54546,7 @@ func (o GetVmsVmPrimaryNicArrayOutput) Index(i pulumi.IntInput) GetVmsVmPrimaryN
 type GetVmsVmPrimaryNicLinkNic struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion bool `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber string `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId string `pulumi:"linkNicId"`
@@ -53374,7 +54568,7 @@ type GetVmsVmPrimaryNicLinkNicInput interface {
 type GetVmsVmPrimaryNicLinkNicArgs struct {
 	// If true, the NIC is deleted when the VM is terminated.
 	DeleteOnVmDeletion pulumi.BoolInput `pulumi:"deleteOnVmDeletion"`
-	// The device index for the NIC attachment (between `1` and `7`, both included).
+	// The device index for the NIC attachment (between `0` and `7`, both included).
 	DeviceNumber pulumi.StringInput `pulumi:"deviceNumber"`
 	// The ID of the NIC to attach.
 	LinkNicId pulumi.StringInput `pulumi:"linkNicId"`
@@ -53438,7 +54632,7 @@ func (o GetVmsVmPrimaryNicLinkNicOutput) DeleteOnVmDeletion() pulumi.BoolOutput 
 	return o.ApplyT(func(v GetVmsVmPrimaryNicLinkNic) bool { return v.DeleteOnVmDeletion }).(pulumi.BoolOutput)
 }
 
-// The device index for the NIC attachment (between `1` and `7`, both included).
+// The device index for the NIC attachment (between `0` and `7`, both included).
 func (o GetVmsVmPrimaryNicLinkNicOutput) DeviceNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVmPrimaryNicLinkNic) string { return v.DeviceNumber }).(pulumi.StringOutput)
 }
@@ -56256,10 +57450,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrInput)(nil)).Elem(), OksClusterAutoMaintenancesPatchUpgradeMaintenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualInput)(nil)).Elem(), OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrInput)(nil)).Elem(), OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterKubeconfigAttributesInput)(nil)).Elem(), OksClusterKubeconfigAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterKubeconfigAttributesPtrInput)(nil)).Elem(), OksClusterKubeconfigAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterStatusesInput)(nil)).Elem(), OksClusterStatusesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterStatusesPtrInput)(nil)).Elem(), OksClusterStatusesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterTimeoutsInput)(nil)).Elem(), OksClusterTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterTimeoutsPtrInput)(nil)).Elem(), OksClusterTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestTimeoutsInput)(nil)).Elem(), OksManifestTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestTimeoutsPtrInput)(nil)).Elem(), OksManifestTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestWaitForInput)(nil)).Elem(), OksManifestWaitForArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestWaitForPtrInput)(nil)).Elem(), OksManifestWaitForArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksProjectTimeoutsInput)(nil)).Elem(), OksProjectTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksProjectTimeoutsPtrInput)(nil)).Elem(), OksProjectTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutsInput)(nil)).Elem(), PolicyTimeoutsArgs{})
@@ -56344,10 +57544,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserTimeoutsPtrInput)(nil)).Elem(), UserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayLinkNetToVirtualGatewayLinkInput)(nil)).Elem(), VirtualGatewayLinkNetToVirtualGatewayLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayLinkNetToVirtualGatewayLinkArrayInput)(nil)).Elem(), VirtualGatewayLinkNetToVirtualGatewayLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayLinkTimeoutsInput)(nil)).Elem(), VirtualGatewayLinkTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayLinkTimeoutsPtrInput)(nil)).Elem(), VirtualGatewayLinkTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayNetToVirtualGatewayLinkInput)(nil)).Elem(), VirtualGatewayNetToVirtualGatewayLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayNetToVirtualGatewayLinkArrayInput)(nil)).Elem(), VirtualGatewayNetToVirtualGatewayLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayRoutePropagationTimeoutsInput)(nil)).Elem(), VirtualGatewayRoutePropagationTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayRoutePropagationTimeoutsPtrInput)(nil)).Elem(), VirtualGatewayRoutePropagationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayTagInput)(nil)).Elem(), VirtualGatewayTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayTagArrayInput)(nil)).Elem(), VirtualGatewayTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayTimeoutsInput)(nil)).Elem(), VirtualGatewayTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualGatewayTimeoutsPtrInput)(nil)).Elem(), VirtualGatewayTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmActionsOnNextBootInput)(nil)).Elem(), VmActionsOnNextBootArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmActionsOnNextBootArrayInput)(nil)).Elem(), VmActionsOnNextBootArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmBlockDeviceMappingInput)(nil)).Elem(), VmBlockDeviceMappingArgs{})
@@ -56666,6 +57872,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNicsNicSecurityGroupArrayInput)(nil)).Elem(), GetNicsNicSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNicsNicTagInput)(nil)).Elem(), GetNicsNicTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNicsNicTagArrayInput)(nil)).Elem(), GetNicsNicTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOksKubeconfigKubeconfigAttributesInput)(nil)).Elem(), GetOksKubeconfigKubeconfigAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesFilterInput)(nil)).Elem(), GetPoliciesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesFilterArrayInput)(nil)).Elem(), GetPoliciesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPoliciesLinkedToUserGroupFilterInput)(nil)).Elem(), GetPoliciesLinkedToUserGroupFilterArgs{})
@@ -57124,10 +58331,16 @@ func init() {
 	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPatchUpgradeMaintenancePtrOutput{})
 	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualOutput{})
 	pulumi.RegisterOutputType(OksClusterAutoMaintenancesPatchUpgradeMaintenanceActualPtrOutput{})
+	pulumi.RegisterOutputType(OksClusterKubeconfigAttributesOutput{})
+	pulumi.RegisterOutputType(OksClusterKubeconfigAttributesPtrOutput{})
 	pulumi.RegisterOutputType(OksClusterStatusesOutput{})
 	pulumi.RegisterOutputType(OksClusterStatusesPtrOutput{})
 	pulumi.RegisterOutputType(OksClusterTimeoutsOutput{})
 	pulumi.RegisterOutputType(OksClusterTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OksManifestTimeoutsOutput{})
+	pulumi.RegisterOutputType(OksManifestTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OksManifestWaitForOutput{})
+	pulumi.RegisterOutputType(OksManifestWaitForPtrOutput{})
 	pulumi.RegisterOutputType(OksProjectTimeoutsOutput{})
 	pulumi.RegisterOutputType(OksProjectTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTimeoutsOutput{})
@@ -57212,10 +58425,16 @@ func init() {
 	pulumi.RegisterOutputType(UserTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualGatewayLinkNetToVirtualGatewayLinkOutput{})
 	pulumi.RegisterOutputType(VirtualGatewayLinkNetToVirtualGatewayLinkArrayOutput{})
+	pulumi.RegisterOutputType(VirtualGatewayLinkTimeoutsOutput{})
+	pulumi.RegisterOutputType(VirtualGatewayLinkTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualGatewayNetToVirtualGatewayLinkOutput{})
 	pulumi.RegisterOutputType(VirtualGatewayNetToVirtualGatewayLinkArrayOutput{})
+	pulumi.RegisterOutputType(VirtualGatewayRoutePropagationTimeoutsOutput{})
+	pulumi.RegisterOutputType(VirtualGatewayRoutePropagationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualGatewayTagOutput{})
 	pulumi.RegisterOutputType(VirtualGatewayTagArrayOutput{})
+	pulumi.RegisterOutputType(VirtualGatewayTimeoutsOutput{})
+	pulumi.RegisterOutputType(VirtualGatewayTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VmActionsOnNextBootOutput{})
 	pulumi.RegisterOutputType(VmActionsOnNextBootArrayOutput{})
 	pulumi.RegisterOutputType(VmBlockDeviceMappingOutput{})
@@ -57534,6 +58753,7 @@ func init() {
 	pulumi.RegisterOutputType(GetNicsNicSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetNicsNicTagOutput{})
 	pulumi.RegisterOutputType(GetNicsNicTagArrayOutput{})
+	pulumi.RegisterOutputType(GetOksKubeconfigKubeconfigAttributesOutput{})
 	pulumi.RegisterOutputType(GetPoliciesFilterOutput{})
 	pulumi.RegisterOutputType(GetPoliciesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetPoliciesLinkedToUserGroupFilterOutput{})

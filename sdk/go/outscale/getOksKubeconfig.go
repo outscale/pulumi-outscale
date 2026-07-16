@@ -70,12 +70,14 @@ type GetOksKubeconfigResult struct {
 	ClusterId string  `pulumi:"clusterId"`
 	Group     *string `pulumi:"group"`
 	Id        string  `pulumi:"id"`
-	// A file containing access configuration to the cluster.
-	Kubeconfig   string  `pulumi:"kubeconfig"`
-	RequestId    string  `pulumi:"requestId"`
-	Ttl          *string `pulumi:"ttl"`
-	User         *string `pulumi:"user"`
-	XEncryptNacl *string `pulumi:"xEncryptNacl"`
+	// (Sensitive value) A file containing access configuration to the cluster.
+	Kubeconfig string `pulumi:"kubeconfig"`
+	// (Sensitive value) Access configuration to the cluster.
+	KubeconfigAttributes GetOksKubeconfigKubeconfigAttributes `pulumi:"kubeconfigAttributes"`
+	RequestId            string                               `pulumi:"requestId"`
+	Ttl                  *string                              `pulumi:"ttl"`
+	User                 *string                              `pulumi:"user"`
+	XEncryptNacl         *string                              `pulumi:"xEncryptNacl"`
 }
 
 func GetOksKubeconfigOutput(ctx *pulumi.Context, args GetOksKubeconfigOutputArgs, opts ...pulumi.InvokeOption) GetOksKubeconfigResultOutput {
@@ -132,9 +134,14 @@ func (o GetOksKubeconfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOksKubeconfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A file containing access configuration to the cluster.
+// (Sensitive value) A file containing access configuration to the cluster.
 func (o GetOksKubeconfigResultOutput) Kubeconfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOksKubeconfigResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
+}
+
+// (Sensitive value) Access configuration to the cluster.
+func (o GetOksKubeconfigResultOutput) KubeconfigAttributes() GetOksKubeconfigKubeconfigAttributesOutput {
+	return o.ApplyT(func(v GetOksKubeconfigResult) GetOksKubeconfigKubeconfigAttributes { return v.KubeconfigAttributes }).(GetOksKubeconfigKubeconfigAttributesOutput)
 }
 
 func (o GetOksKubeconfigResultOutput) RequestId() pulumi.StringOutput {

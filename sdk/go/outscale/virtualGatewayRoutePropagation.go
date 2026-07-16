@@ -100,7 +100,8 @@ type VirtualGatewayRoutePropagation struct {
 	Enable    pulumi.BoolOutput   `pulumi:"enable"`
 	RequestId pulumi.StringOutput `pulumi:"requestId"`
 	// The ID of the route table.
-	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
+	RouteTableId pulumi.StringOutput                             `pulumi:"routeTableId"`
+	Timeouts     VirtualGatewayRoutePropagationTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringOutput `pulumi:"virtualGatewayId"`
 }
@@ -148,7 +149,8 @@ type virtualGatewayRoutePropagationState struct {
 	Enable    *bool   `pulumi:"enable"`
 	RequestId *string `pulumi:"requestId"`
 	// The ID of the route table.
-	RouteTableId *string `pulumi:"routeTableId"`
+	RouteTableId *string                                 `pulumi:"routeTableId"`
+	Timeouts     *VirtualGatewayRoutePropagationTimeouts `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId *string `pulumi:"virtualGatewayId"`
 }
@@ -159,6 +161,7 @@ type VirtualGatewayRoutePropagationState struct {
 	RequestId pulumi.StringPtrInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringPtrInput
+	Timeouts     VirtualGatewayRoutePropagationTimeoutsPtrInput
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringPtrInput
 }
@@ -171,7 +174,8 @@ type virtualGatewayRoutePropagationArgs struct {
 	// If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
 	Enable bool `pulumi:"enable"`
 	// The ID of the route table.
-	RouteTableId string `pulumi:"routeTableId"`
+	RouteTableId string                                  `pulumi:"routeTableId"`
+	Timeouts     *VirtualGatewayRoutePropagationTimeouts `pulumi:"timeouts"`
 	// The ID of the virtual gateway.
 	VirtualGatewayId string `pulumi:"virtualGatewayId"`
 }
@@ -182,6 +186,7 @@ type VirtualGatewayRoutePropagationArgs struct {
 	Enable pulumi.BoolInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringInput
+	Timeouts     VirtualGatewayRoutePropagationTimeoutsPtrInput
 	// The ID of the virtual gateway.
 	VirtualGatewayId pulumi.StringInput
 }
@@ -285,6 +290,12 @@ func (o VirtualGatewayRoutePropagationOutput) RequestId() pulumi.StringOutput {
 // The ID of the route table.
 func (o VirtualGatewayRoutePropagationOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualGatewayRoutePropagation) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+func (o VirtualGatewayRoutePropagationOutput) Timeouts() VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+	return o.ApplyT(func(v *VirtualGatewayRoutePropagation) VirtualGatewayRoutePropagationTimeoutsPtrOutput {
+		return v.Timeouts
+	}).(VirtualGatewayRoutePropagationTimeoutsPtrOutput)
 }
 
 // The ID of the virtual gateway.

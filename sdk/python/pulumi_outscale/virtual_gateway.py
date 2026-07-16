@@ -22,30 +22,18 @@ __all__ = ['VirtualGatewayArgs', 'VirtualGateway']
 class VirtualGatewayArgs:
     def __init__(__self__, *,
                  connection_type: pulumi.Input[_builtins.str],
-                 net_to_virtual_gateway_links: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]]] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 timeouts: Optional[pulumi.Input['VirtualGatewayTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a VirtualGateway resource.
         :param pulumi.Input[_builtins.str] connection_type: The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
-        :param pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
-        :param pulumi.Input[_builtins.str] state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
-        :param pulumi.Input[_builtins.str] virtual_gateway_id: The ID of the virtual gateway.
         """
         pulumi.set(__self__, "connection_type", connection_type)
-        if net_to_virtual_gateway_links is not None:
-            pulumi.set(__self__, "net_to_virtual_gateway_links", net_to_virtual_gateway_links)
-        if request_id is not None:
-            pulumi.set(__self__, "request_id", request_id)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if virtual_gateway_id is not None:
-            pulumi.set(__self__, "virtual_gateway_id", virtual_gateway_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
@@ -60,39 +48,6 @@ class VirtualGatewayArgs:
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
-    @pulumi.getter(name="netToVirtualGatewayLinks")
-    def net_to_virtual_gateway_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]]]:
-        """
-        The Net to which the virtual gateway is attached.
-        """
-        return pulumi.get(self, "net_to_virtual_gateway_links")
-
-    @net_to_virtual_gateway_links.setter
-    def net_to_virtual_gateway_links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayNetToVirtualGatewayLinkArgs']]]]):
-        pulumi.set(self, "net_to_virtual_gateway_links", value)
-
-    @_builtins.property
-    @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "request_id")
-
-    @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "request_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "state", value)
-
-    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]]]:
         """
@@ -105,16 +60,13 @@ class VirtualGatewayArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
-    @pulumi.getter(name="virtualGatewayId")
-    def virtual_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the virtual gateway.
-        """
-        return pulumi.get(self, "virtual_gateway_id")
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['VirtualGatewayTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
 
-    @virtual_gateway_id.setter
-    def virtual_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "virtual_gateway_id", value)
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['VirtualGatewayTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -125,6 +77,7 @@ class _VirtualGatewayState:
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['VirtualGatewayTimeoutsArgs']] = None,
                  virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualGateway resources.
@@ -144,6 +97,8 @@ class _VirtualGatewayState:
             pulumi.set(__self__, "state", state)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if virtual_gateway_id is not None:
             pulumi.set(__self__, "virtual_gateway_id", virtual_gateway_id)
 
@@ -205,6 +160,15 @@ class _VirtualGatewayState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['VirtualGatewayTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['VirtualGatewayTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="virtualGatewayId")
     def virtual_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -224,11 +188,8 @@ class VirtualGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_to_virtual_gateway_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayNetToVirtualGatewayLinkArgs', 'VirtualGatewayNetToVirtualGatewayLinkArgsDict']]]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayTagArgs', 'VirtualGatewayTagArgsDict']]]]] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VirtualGatewayTimeoutsArgs', 'VirtualGatewayTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a virtual gateway.
@@ -263,10 +224,7 @@ class VirtualGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_type: The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayNetToVirtualGatewayLinkArgs', 'VirtualGatewayNetToVirtualGatewayLinkArgsDict']]]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
-        :param pulumi.Input[_builtins.str] state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayTagArgs', 'VirtualGatewayTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
-        :param pulumi.Input[_builtins.str] virtual_gateway_id: The ID of the virtual gateway.
         """
         ...
     @overload
@@ -320,11 +278,8 @@ class VirtualGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_to_virtual_gateway_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayNetToVirtualGatewayLinkArgs', 'VirtualGatewayNetToVirtualGatewayLinkArgsDict']]]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayTagArgs', 'VirtualGatewayTagArgsDict']]]]] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['VirtualGatewayTimeoutsArgs', 'VirtualGatewayTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,11 +292,12 @@ class VirtualGateway(pulumi.CustomResource):
             if connection_type is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_type'")
             __props__.__dict__["connection_type"] = connection_type
-            __props__.__dict__["net_to_virtual_gateway_links"] = net_to_virtual_gateway_links
-            __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["state"] = state
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["virtual_gateway_id"] = virtual_gateway_id
+            __props__.__dict__["timeouts"] = timeouts
+            __props__.__dict__["net_to_virtual_gateway_links"] = None
+            __props__.__dict__["request_id"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["virtual_gateway_id"] = None
         super(VirtualGateway, __self__).__init__(
             'outscale:index/virtualGateway:VirtualGateway',
             resource_name,
@@ -357,6 +313,7 @@ class VirtualGateway(pulumi.CustomResource):
             request_id: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayTagArgs', 'VirtualGatewayTagArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['VirtualGatewayTimeoutsArgs', 'VirtualGatewayTimeoutsArgsDict']]] = None,
             virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualGateway':
         """
         Get an existing VirtualGateway resource's state with the given name, id, and optional extra
@@ -380,6 +337,7 @@ class VirtualGateway(pulumi.CustomResource):
         __props__.__dict__["request_id"] = request_id
         __props__.__dict__["state"] = state
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["virtual_gateway_id"] = virtual_gateway_id
         return VirtualGateway(resource_name, opts=opts, __props__=__props__)
 
@@ -419,6 +377,11 @@ class VirtualGateway(pulumi.CustomResource):
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.VirtualGatewayTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="virtualGatewayId")

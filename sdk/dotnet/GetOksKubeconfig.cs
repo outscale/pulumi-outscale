@@ -188,9 +188,13 @@ namespace Pulumi.Outscale
         public readonly string? Group;
         public readonly string Id;
         /// <summary>
-        /// A file containing access configuration to the cluster.
+        /// (Sensitive value) A file containing access configuration to the cluster.
         /// </summary>
         public readonly string Kubeconfig;
+        /// <summary>
+        /// (Sensitive value) Access configuration to the cluster.
+        /// </summary>
+        public readonly Outputs.GetOksKubeconfigKubeconfigAttributesResult KubeconfigAttributes;
         public readonly string RequestId;
         public readonly string? Ttl;
         public readonly string? User;
@@ -206,6 +210,8 @@ namespace Pulumi.Outscale
 
             string kubeconfig,
 
+            Outputs.GetOksKubeconfigKubeconfigAttributesResult kubeconfigAttributes,
+
             string requestId,
 
             string? ttl,
@@ -218,6 +224,7 @@ namespace Pulumi.Outscale
             Group = group;
             Id = id;
             Kubeconfig = kubeconfig;
+            KubeconfigAttributes = kubeconfigAttributes;
             RequestId = requestId;
             Ttl = ttl;
             User = user;

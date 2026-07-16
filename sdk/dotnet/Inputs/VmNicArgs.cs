@@ -31,7 +31,7 @@ namespace Pulumi.Outscale.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+        /// The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
         /// </summary>
         [Input("deviceNumber", required: true)]
         public Input<int> DeviceNumber { get; set; } = null!;

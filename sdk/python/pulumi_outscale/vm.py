@@ -60,11 +60,11 @@ class VmArgs:
         :param pulumi.Input[_builtins.str] keypair_name_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
-        :param pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
-        :param pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]] primary_nics: The primary network interface of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
@@ -254,7 +254,7 @@ class VmArgs:
     @pulumi.getter
     def nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]:
         """
-        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "nics")
 
@@ -302,7 +302,7 @@ class VmArgs:
     @pulumi.getter(name="primaryNics")
     def primary_nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]:
         """
-        The primary network interface of the VM.
+        The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "primary_nics")
 
@@ -527,12 +527,12 @@ class _VmState:
         :param pulumi.Input[_builtins.int] launch_number: The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        :param pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] os_family: Indicates the operating system (OS) of the VM.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
-        :param pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]] primary_nics: The primary network interface of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the VM.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
@@ -883,7 +883,7 @@ class _VmState:
     @pulumi.getter
     def nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]:
         """
-        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "nics")
 
@@ -943,7 +943,7 @@ class _VmState:
     @pulumi.getter(name="primaryNics")
     def primary_nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]:
         """
-        The primary network interface of the VM.
+        The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "primary_nics")
 
@@ -1262,8 +1262,6 @@ class Vm(pulumi.CustomResource):
         """
         Manages a virtual machine (VM).
 
-        > **Important** Consider using the `primary_nic` argument if you plan to use the `NicLink`resource.
-
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
 
@@ -1384,92 +1382,6 @@ class Vm(pulumi.CustomResource):
             subnet_id=subnet01.subnet_id)
         ```
 
-        ### Create a VM with a primary NIC
-
-        > **Note:** If you plan to use the `NicLink`resource, it is recommended to specify the `primary_nic` argument to define the primary network interface of a VM.
-
-        ```python
-        import pulumi
-        import pulumi_outscale as outscale
-
-        net01 = outscale.Net("net01",
-            ip_range="10.0.0.0/16",
-            tags=[{
-                "key": "name",
-                "value": "terraform-net-for-vm-with-nic",
-            }])
-        subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2a",
-            tags=[{
-                "key": "name",
-                "value": "terraform-subnet-for-vm-with-nic",
-            }])
-        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
-        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
-        vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            primary_nics=[{
-                "nic_id": nic01.nic_id,
-                "device_number": 0,
-            }])
-        ```
-
-        ### Create a VM with secondary NICs
-
-        ```python
-        import pulumi
-        import pulumi_outscale as outscale
-
-        net01 = outscale.Net("net01",
-            ip_range="10.0.0.0/16",
-            tags=[{
-                "key": "name",
-                "value": "terraform-net-for-vm-with-nic",
-            }])
-        subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2a",
-            tags=[{
-                "key": "name",
-                "value": "terraform-subnet",
-            }])
-        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
-        subnet02 = outscale.Subnet("subnet02",
-            net_id=net01.net_id,
-            ip_range="10.0.1.0/24",
-            subregion_name="eu-west-2a",
-            tags=[{
-                "key": "name",
-                "value": "terraform-another-subnet",
-            }])
-        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
-        nic03 = outscale.Nic("nic03", subnet_id=subnet02.subnet_id)
-        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
-        vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            primary_nics=[{
-                "nic_id": nic01.nic_id,
-                "device_number": 0,
-            }],
-            nics=[
-                {
-                    "nic_id": nic02.nic_id,
-                    "device_number": 1,
-                },
-                {
-                    "nic_id": nic03.nic_id,
-                    "device_number": 2,
-                },
-            ])
-        ```
-
         ### Create a VM with Secure Boot
 
         > **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
@@ -1491,6 +1403,127 @@ class Vm(pulumi.CustomResource):
             state="stopped",
             boot_mode="uefi",
             secure_boot_action="enable")
+        ```
+
+        ### Method 1: Define all NICs in `Vm`
+
+        Use the `nics` block if you want to define the full NIC layout when creating the VM.
+
+        With this method:
+
+        * The primary NIC is defined with `device_number = 0`.
+        * Secondary NICs are defined with `device_number = 1` to `7`.
+        * All NICs are managed directly in the `Vm` resource.
+        * Changing the NIC layout requires replacing the VM.
+
+        Example with NICs created inline:
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a")
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a")
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            nics=[
+                {
+                    "delete_on_vm_deletion": True,
+                    "subnet_id": subnet01.subnet_id,
+                    "device_number": 0,
+                },
+                {
+                    "delete_on_vm_deletion": True,
+                    "subnet_id": subnet02.subnet_id,
+                    "device_number": 1,
+                },
+            ])
+        ```
+
+        Example with existing NICs attached at VM creation:
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a")
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a")
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            nics=[
+                {
+                    "nic_id": nic01.nic_id,
+                    "device_number": 0,
+                },
+                {
+                    "nic_id": nic02.nic_id,
+                    "device_number": 1,
+                },
+            ])
+        ```
+
+        ### Method 2: Define the primary NIC and then attach secondary NICs separately
+
+        Use the `primary_nic` block, together with distinct `NicLink` resources, if you want to define the primary NIC in `Vm` but may want to attach additional NICs later.
+
+        With this method:
+
+        * The primary NIC is defined in `primary_nic`.
+        * Secondary NICs are managed with distinct `NicLink` resources.
+        * Secondary NICs can be added or removed without replacing the VM.
+
+        Example:
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a")
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a")
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            primary_nics=[{
+                "nic_id": nic01.nic_id,
+                "device_number": 0,
+            }])
+        nic_link01 = outscale.NicLink("nic_link01",
+            device_number=1,
+            vm_id=vm01.vm_id,
+            nic_id=nic02.nic_id)
         ```
 
         ## Import
@@ -1515,11 +1548,11 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] keypair_name_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
@@ -1541,8 +1574,6 @@ class Vm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a virtual machine (VM).
-
-        > **Important** Consider using the `primary_nic` argument if you plan to use the `NicLink`resource.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\\
         For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
@@ -1664,92 +1695,6 @@ class Vm(pulumi.CustomResource):
             subnet_id=subnet01.subnet_id)
         ```
 
-        ### Create a VM with a primary NIC
-
-        > **Note:** If you plan to use the `NicLink`resource, it is recommended to specify the `primary_nic` argument to define the primary network interface of a VM.
-
-        ```python
-        import pulumi
-        import pulumi_outscale as outscale
-
-        net01 = outscale.Net("net01",
-            ip_range="10.0.0.0/16",
-            tags=[{
-                "key": "name",
-                "value": "terraform-net-for-vm-with-nic",
-            }])
-        subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2a",
-            tags=[{
-                "key": "name",
-                "value": "terraform-subnet-for-vm-with-nic",
-            }])
-        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
-        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
-        vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            primary_nics=[{
-                "nic_id": nic01.nic_id,
-                "device_number": 0,
-            }])
-        ```
-
-        ### Create a VM with secondary NICs
-
-        ```python
-        import pulumi
-        import pulumi_outscale as outscale
-
-        net01 = outscale.Net("net01",
-            ip_range="10.0.0.0/16",
-            tags=[{
-                "key": "name",
-                "value": "terraform-net-for-vm-with-nic",
-            }])
-        subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2a",
-            tags=[{
-                "key": "name",
-                "value": "terraform-subnet",
-            }])
-        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
-        subnet02 = outscale.Subnet("subnet02",
-            net_id=net01.net_id,
-            ip_range="10.0.1.0/24",
-            subregion_name="eu-west-2a",
-            tags=[{
-                "key": "name",
-                "value": "terraform-another-subnet",
-            }])
-        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
-        nic03 = outscale.Nic("nic03", subnet_id=subnet02.subnet_id)
-        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
-        vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            primary_nics=[{
-                "nic_id": nic01.nic_id,
-                "device_number": 0,
-            }],
-            nics=[
-                {
-                    "nic_id": nic02.nic_id,
-                    "device_number": 1,
-                },
-                {
-                    "nic_id": nic03.nic_id,
-                    "device_number": 2,
-                },
-            ])
-        ```
-
         ### Create a VM with Secure Boot
 
         > **Important** Secure Boot is only available with VMs booting in Unified Extensible Firmware Interface (UEFI).
@@ -1771,6 +1716,127 @@ class Vm(pulumi.CustomResource):
             state="stopped",
             boot_mode="uefi",
             secure_boot_action="enable")
+        ```
+
+        ### Method 1: Define all NICs in `Vm`
+
+        Use the `nics` block if you want to define the full NIC layout when creating the VM.
+
+        With this method:
+
+        * The primary NIC is defined with `device_number = 0`.
+        * Secondary NICs are defined with `device_number = 1` to `7`.
+        * All NICs are managed directly in the `Vm` resource.
+        * Changing the NIC layout requires replacing the VM.
+
+        Example with NICs created inline:
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a")
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a")
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            nics=[
+                {
+                    "delete_on_vm_deletion": True,
+                    "subnet_id": subnet01.subnet_id,
+                    "device_number": 0,
+                },
+                {
+                    "delete_on_vm_deletion": True,
+                    "subnet_id": subnet02.subnet_id,
+                    "device_number": 1,
+                },
+            ])
+        ```
+
+        Example with existing NICs attached at VM creation:
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a")
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a")
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            nics=[
+                {
+                    "nic_id": nic01.nic_id,
+                    "device_number": 0,
+                },
+                {
+                    "nic_id": nic02.nic_id,
+                    "device_number": 1,
+                },
+            ])
+        ```
+
+        ### Method 2: Define the primary NIC and then attach secondary NICs separately
+
+        Use the `primary_nic` block, together with distinct `NicLink` resources, if you want to define the primary NIC in `Vm` but may want to attach additional NICs later.
+
+        With this method:
+
+        * The primary NIC is defined in `primary_nic`.
+        * Secondary NICs are managed with distinct `NicLink` resources.
+        * Secondary NICs can be added or removed without replacing the VM.
+
+        Example:
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
+        subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2a")
+        subnet02 = outscale.Subnet("subnet02",
+            net_id=net01.net_id,
+            ip_range="10.0.1.0/24",
+            subregion_name="eu-west-2a")
+        nic01 = outscale.Nic("nic01", subnet_id=subnet01.subnet_id)
+        nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
+        keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
+        vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            primary_nics=[{
+                "nic_id": nic01.nic_id,
+                "device_number": 0,
+            }])
+        nic_link01 = outscale.NicLink("nic_link01",
+            device_number=1,
+            vm_id=vm01.vm_id,
+            nic_id=nic02.nic_id)
         ```
 
         ## Import
@@ -1970,12 +2036,12 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] launch_number: The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] os_family: Indicates the operating system (OS) of the VM.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the VM.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
@@ -2207,7 +2273,7 @@ class Vm(pulumi.CustomResource):
     @pulumi.getter
     def nics(self) -> pulumi.Output[Sequence['outputs.VmNic']]:
         """
-        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. To define a NIC as the primary network interface of the VM, use the `primary_nic` argument.
+        One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "nics")
 
@@ -2247,7 +2313,7 @@ class Vm(pulumi.CustomResource):
     @pulumi.getter(name="primaryNics")
     def primary_nics(self) -> pulumi.Output[Sequence['outputs.VmPrimaryNic']]:
         """
-        The primary network interface of the VM.
+        The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "primary_nics")
 

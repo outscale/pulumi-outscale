@@ -17,6 +17,8 @@ namespace Pulumi.Outscale
     /// 
     /// ## Example Usage
     /// 
+    /// ### Create a cluster
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -41,7 +43,7 @@ namespace Pulumi.Outscale
     ///         },
     ///         CidrPods = "10.91.0.0/16",
     ///         CidrService = "10.92.0.0/16",
-    ///         Version = "1.32",
+    ///         Version = "1.35",
     ///         Name = "cluster01",
     ///         ControlPlanes = "cp.mono.master",
     ///         Tags = 
@@ -52,6 +54,53 @@ namespace Pulumi.Outscale
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Use the Kubernetes provider to deploy CRDs
+    /// 
+    /// To use the Kubernetes provider, you first need to create an OKS project and OKS cluster as in the above example. Then, with the cluster's `KubeconfigAttributes`, you can initialize the provider as follows:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// If you want to deploy a Custom Resource Definition (CRD), you can then use a `KubernetesManifest` resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kubernetes = Pulumi.Kubernetes;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Kubernetes.Manifest("example", new()
+    ///     {
+    ///         Manifest = 
+    ///         {
+    ///             { "apiVersion", "example.com/v1" },
+    ///             { "kind", "ExampleResource" },
+    ///             { "metadata", 
+    ///             {
+    ///                 { "name", "example" },
+    ///             } },
+    ///             { "spec", 
+    ///             {
+    ///                 { "value", "example" },
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **Important:** Note that the `KubernetesManifest` resource builds a client during `pulumi preview` to validate the manifest, and will fail if the cluster does not already exist. Therefore, you need to either deploy your configuration in multiple steps, or deploy the cluster first before you can create this resource.&lt;br /&gt;&lt;br /&gt;
+    /// Alternatively, you can deploy CRDs in a single step without the need of another Terraform provider by using the native `outscale.OksManifest` resource, which retrieves the kubeconfig dynamically from the cluster. See the `outscale.OksManifest` page for an example.
     /// 
     /// ## Import
     /// 
@@ -145,10 +194,16 @@ namespace Pulumi.Outscale
         public Output<bool> DisableApiTermination { get; private set; } = null!;
 
         /// <summary>
-        /// A file containing access configuration to the cluster.
+        /// (Sensitive value) A file containing access configuration to the cluster.
         /// </summary>
         [Output("kubeconfig")]
         public Output<string> Kubeconfig { get; private set; } = null!;
+
+        /// <summary>
+        /// (Sensitive value) Access configuration to the cluster.
+        /// </summary>
+        [Output("kubeconfigAttributes")]
+        public Output<Outputs.OksClusterKubeconfigAttributes> KubeconfigAttributes { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
@@ -221,6 +276,7 @@ namespace Pulumi.Outscale
                 AdditionalSecretOutputs =
                 {
                     "kubeconfig",
+                    "kubeconfigAttributes",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -476,7 +532,7 @@ namespace Pulumi.Outscale
         private Input<string>? _kubeconfig;
 
         /// <summary>
-        /// A file containing access configuration to the cluster.
+        /// (Sensitive value) A file containing access configuration to the cluster.
         /// </summary>
         public Input<string>? Kubeconfig
         {
@@ -485,6 +541,22 @@ namespace Pulumi.Outscale
             {
                 var emptySecret = Output.CreateSecret(0);
                 _kubeconfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("kubeconfigAttributes")]
+        private Input<Inputs.OksClusterKubeconfigAttributesGetArgs>? _kubeconfigAttributes;
+
+        /// <summary>
+        /// (Sensitive value) Access configuration to the cluster.
+        /// </summary>
+        public Input<Inputs.OksClusterKubeconfigAttributesGetArgs>? KubeconfigAttributes
+        {
+            get => _kubeconfigAttributes;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubeconfigAttributes = Output.Tuple<Input<Inputs.OksClusterKubeconfigAttributesGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

@@ -81,6 +81,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NicPrivateIp{}
 	case "outscale:index/oksCluster:OksCluster":
 		r = &OksCluster{}
+	case "outscale:index/oksManifest:OksManifest":
+		r = &OksManifest{}
 	case "outscale:index/oksProject:OksProject":
 		r = &OksProject{}
 	case "outscale:index/policy:Policy":
@@ -310,6 +312,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"outscale",
 		"index/oksCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oksManifest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

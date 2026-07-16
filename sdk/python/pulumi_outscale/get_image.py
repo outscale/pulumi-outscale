@@ -28,7 +28,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, account_alias=None, account_id=None, architecture=None, block_device_mappings=None, boot_modes=None, creation_date=None, description=None, file_location=None, filters=None, id=None, image_id=None, image_name=None, image_type=None, is_public=None, permissions=None, permissions_to_launches=None, product_codes=None, request_id=None, root_device_name=None, root_device_type=None, secure_boot=None, state=None, state_comments=None, tags=None, tpm_mandatory=None):
+    def __init__(__self__, account_alias=None, account_id=None, architecture=None, block_device_mappings=None, boot_modes=None, creation_date=None, description=None, file_location=None, filters=None, id=None, image_id=None, image_name=None, image_type=None, is_public=None, most_recent=None, permissions=None, permissions_to_launches=None, product_codes=None, request_id=None, root_device_name=None, root_device_type=None, secure_boot=None, state=None, state_comments=None, tags=None, tpm_mandatory=None):
         if account_alias and not isinstance(account_alias, str):
             raise TypeError("Expected argument 'account_alias' to be a str")
         pulumi.set(__self__, "account_alias", account_alias)
@@ -71,6 +71,9 @@ class GetImageResult:
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
         pulumi.set(__self__, "is_public", is_public)
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError("Expected argument 'most_recent' to be a bool")
+        pulumi.set(__self__, "most_recent", most_recent)
         if permissions and not isinstance(permissions, list):
             raise TypeError("Expected argument 'permissions' to be a list")
         pulumi.set(__self__, "permissions", permissions)
@@ -212,6 +215,11 @@ class GetImageResult:
         return pulumi.get(self, "is_public")
 
     @_builtins.property
+    @pulumi.getter(name="mostRecent")
+    def most_recent(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "most_recent")
+
+    @_builtins.property
     @pulumi.getter
     def permissions(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "permissions")
@@ -314,6 +322,7 @@ class AwaitableGetImageResult(GetImageResult):
             image_name=self.image_name,
             image_type=self.image_type,
             is_public=self.is_public,
+            most_recent=self.most_recent,
             permissions=self.permissions,
             permissions_to_launches=self.permissions_to_launches,
             product_codes=self.product_codes,
@@ -330,6 +339,7 @@ class AwaitableGetImageResult(GetImageResult):
 def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']]] = None,
               filters: Optional[Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']]] = None,
               image_id: Optional[_builtins.str] = None,
+              most_recent: Optional[_builtins.bool] = None,
               permissions: Optional[Sequence[_builtins.str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
@@ -339,6 +349,8 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
     For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
 
     ## Example Usage
+
+    ### Get an image from its ID
 
     ```python
     import pulumi
@@ -350,6 +362,25 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
     }])
     ```
 
+    ### Get the most recent Debian 12 image provided by OUTSCALE
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    omi = outscale.get_image(filters=[
+            {
+                "name": "account_aliases",
+                "values": ["Outscale"],
+            },
+            {
+                "name": "image_names",
+                "values": ["Debian-12-*"],
+            },
+        ],
+        most_recent=True)
+    ```
+
 
     :param Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']] block_device_mappings: One or more block device mappings.
     :param Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
@@ -359,6 +390,7 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
     __args__['blockDeviceMappings'] = block_device_mappings
     __args__['filters'] = filters
     __args__['imageId'] = image_id
+    __args__['mostRecent'] = most_recent
     __args__['permissions'] = permissions
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('outscale:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
@@ -378,6 +410,7 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
         image_name=pulumi.get(__ret__, 'image_name'),
         image_type=pulumi.get(__ret__, 'image_type'),
         is_public=pulumi.get(__ret__, 'is_public'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
         permissions=pulumi.get(__ret__, 'permissions'),
         permissions_to_launches=pulumi.get(__ret__, 'permissions_to_launches'),
         product_codes=pulumi.get(__ret__, 'product_codes'),
@@ -392,6 +425,7 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
 def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']]]]] = None,
                      filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']]]]] = None,
                      image_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                     most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                      permissions: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
@@ -401,6 +435,8 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
     For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
 
     ## Example Usage
+
+    ### Get an image from its ID
 
     ```python
     import pulumi
@@ -412,6 +448,25 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
     }])
     ```
 
+    ### Get the most recent Debian 12 image provided by OUTSCALE
+
+    ```python
+    import pulumi
+    import pulumi_outscale as outscale
+
+    omi = outscale.get_image(filters=[
+            {
+                "name": "account_aliases",
+                "values": ["Outscale"],
+            },
+            {
+                "name": "image_names",
+                "values": ["Debian-12-*"],
+            },
+        ],
+        most_recent=True)
+    ```
+
 
     :param Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']] block_device_mappings: One or more block device mappings.
     :param Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
@@ -421,6 +476,7 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
     __args__['blockDeviceMappings'] = block_device_mappings
     __args__['filters'] = filters
     __args__['imageId'] = image_id
+    __args__['mostRecent'] = most_recent
     __args__['permissions'] = permissions
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('outscale:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
@@ -439,6 +495,7 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
         image_name=pulumi.get(__response__, 'image_name'),
         image_type=pulumi.get(__response__, 'image_type'),
         is_public=pulumi.get(__response__, 'is_public'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
         permissions=pulumi.get(__response__, 'permissions'),
         permissions_to_launches=pulumi.get(__response__, 'permissions_to_launches'),
         product_codes=pulumi.get(__response__, 'product_codes'),

@@ -95,6 +95,9 @@ namespace Pulumi.Outscale
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.VirtualGatewayRoutePropagationTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the virtual gateway.
         /// </summary>
@@ -159,6 +162,9 @@ namespace Pulumi.Outscale
         [Input("routeTableId", required: true)]
         public Input<string> RouteTableId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.VirtualGatewayRoutePropagationTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// The ID of the virtual gateway.
         /// </summary>
@@ -187,6 +193,9 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.VirtualGatewayRoutePropagationTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the virtual gateway.

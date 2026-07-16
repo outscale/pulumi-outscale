@@ -2215,7 +2215,7 @@ export interface NicLinkNic {
      */
     deleteOnVmDeletion?: pulumi.Input<string>;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber?: pulumi.Input<number>;
     /**
@@ -2427,6 +2427,25 @@ export interface OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
     weekDay?: pulumi.Input<string>;
 }
 
+export interface OksClusterKubeconfigAttributes {
+    /**
+     * The client certificate for accessing the cluster.
+     */
+    clientCertificate?: pulumi.Input<string>;
+    /**
+     * The private key matching the client certificate.
+     */
+    clientKey?: pulumi.Input<string>;
+    /**
+     * The Certificate Authority (CA) associated with the cluster.
+     */
+    clusterCaCertificate?: pulumi.Input<string>;
+    /**
+     * The URL of the Kubernetes API server of the cluster.
+     */
+    host?: pulumi.Input<string>;
+}
+
 export interface OksClusterStatuses {
     /**
      * Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
@@ -2467,6 +2486,38 @@ export interface OksClusterTimeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     update?: pulumi.Input<string>;
+}
+
+export interface OksManifestTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OksManifestWaitFor {
+    /**
+     * Maps of key/value pairs in the `"{.field_path}" = "expectedValue"` format.<br />
+     * Each key must be a [JSONPath](https://kubernetes.io/docs/reference/kubectl/jsonpath/) field path, but the enclosing characters (`{` `}`) and the first `.` are optional, and each value must be a regex pattern. All the configured fields must match for the wait to complete.<br />
+     * Examples: `"{.status.progress.ready}" = "1"`, `"status.progress.ready" = "1"`, `"status.state.name" = "idle|reconciliation"`.
+     */
+    fields: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A custom timeout for the `waitFor` checks. If not specified, falls back to the CRUD operation default timeout.
+     */
+    timeout?: pulumi.Input<string>;
 }
 
 export interface OksProjectTimeouts {
@@ -3171,6 +3222,21 @@ export interface VirtualGatewayLinkNetToVirtualGatewayLink {
     state?: pulumi.Input<string>;
 }
 
+export interface VirtualGatewayLinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface VirtualGatewayNetToVirtualGatewayLink {
     /**
      * The ID of the Net to which the virtual gateway is attached.
@@ -3182,15 +3248,53 @@ export interface VirtualGatewayNetToVirtualGatewayLink {
     state?: pulumi.Input<string>;
 }
 
+export interface VirtualGatewayRoutePropagationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface VirtualGatewayTag {
     /**
      * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface VirtualGatewayTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface VmActionsOnNextBoot {
@@ -3307,7 +3411,7 @@ export interface VmNic {
      */
     description?: pulumi.Input<string>;
     /**
-     * The index of the VM device for the NIC attachment (between `1` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
+     * The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
      */
     deviceNumber: pulumi.Input<number>;
     /**
@@ -3370,7 +3474,7 @@ export interface VmNicLinkNic {
      */
     deleteOnVmDeletion?: pulumi.Input<boolean>;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber?: pulumi.Input<string>;
     /**
@@ -3520,7 +3624,7 @@ export interface VmPrimaryNicLinkNic {
      */
     deleteOnVmDeletion?: pulumi.Input<boolean>;
     /**
-     * The device index for the NIC attachment (between `1` and `7`, both included).
+     * The device index for the NIC attachment (between `0` and `7`, both included).
      */
     deviceNumber?: pulumi.Input<string>;
     /**
