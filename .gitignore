@@ -45,3 +45,5 @@ go.work.sum
 
 osc-ricochet-2/
 pkg/mod
+
+.direnv
