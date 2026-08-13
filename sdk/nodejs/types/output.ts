@@ -1216,11 +1216,11 @@ export interface GetLoadBalancerVmHealthBackendVmHealth {
      */
     description: string;
     /**
-     * The state of the backend VM (`InService` \| `OutOfService` \| `Unknown`).
+     * The state of the backend VM (`UP` \| `DOWN` \| `UNKNOWN`).
      */
     state: string;
     /**
-     * Information about the cause of `OutOfService` VMs.<br />
+     * Information about the cause of `DOWN` VMs.<br />
      * Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \| `Instance` \| `N/A`).
      */
     stateReason: string;
@@ -2921,7 +2921,7 @@ export interface GetSnapshotExportTasksSnapshotExportTask {
      */
     snapshotId: string;
     /**
-     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
+     * The state of the snapshot export task (`pending` \| `initializing` \| `preparing` \| `uploading` \| `completed` \| `cancelled` \| `failed`).
      */
     state: string;
     /**
@@ -3733,6 +3733,17 @@ export interface GetVmSecurityGroup {
     securityGroupName: string;
 }
 
+export interface GetVmShutdownBehaviorConfiguration {
+    /**
+     * The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+     */
+    guestAction: string;
+    /**
+     * The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+     */
+    hostAction: string;
+}
+
 export interface GetVmStateFilter {
     name: string;
     values: string[];
@@ -3979,11 +3990,15 @@ export interface GetVmsVm {
      */
     securityGroups: outputs.GetVmsVmSecurityGroup[];
     /**
+     * Information about the actions performed by the orchestrator when the VM shuts down.
+     */
+    shutdownBehaviorConfigurations: outputs.GetVmsVmShutdownBehaviorConfiguration[];
+    /**
      * The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
      */
     state: string;
     /**
-     * The reason explaining the current state of the VM.
+     * The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
      */
     stateReason: string;
     /**
@@ -4007,7 +4022,7 @@ export interface GetVmsVm {
      */
     vmId: string;
     /**
-     * The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+     * The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
      */
     vmInitiatedShutdownBehavior: string;
     /**
@@ -4372,6 +4387,17 @@ export interface GetVmsVmSecurityGroup {
      * The name of the security group.
      */
     securityGroupName: string;
+}
+
+export interface GetVmsVmShutdownBehaviorConfiguration {
+    /**
+     * The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+     */
+    guestAction: string;
+    /**
+     * The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+     */
+    hostAction: string;
 }
 
 export interface GetVmsVmTag {
@@ -5106,7 +5132,7 @@ export interface LoadBalancerListener {
      * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
      * This parameter is required for `HTTPS` and `SSL` protocols.
      */
-    serverCertificateId?: string;
+    serverCertificateId: string;
 }
 
 export interface LoadBalancerListenerRuleListener {
@@ -5149,6 +5175,25 @@ export interface LoadBalancerListenerRuleListenerRule {
      * The priority level of the listener rule, between `1` and `19999` both included. Each rule must have a unique priority level. Otherwise, an error is returned.
      */
     priority: number;
+}
+
+export interface LoadBalancerListenerRuleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface LoadBalancerLoadBalancerStickyCookiePolicy {
@@ -5275,6 +5320,21 @@ export interface LoadBalancerPolicyTag {
     value: string;
 }
 
+export interface LoadBalancerPolicyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
 export interface LoadBalancerSourceSecurityGroup {
     /**
      * The OUTSCALE account ID of the owner of the security group.
@@ -5295,6 +5355,25 @@ export interface LoadBalancerTag {
      * The value of the tag, between 0 and 255 characters.
      */
     value: string;
+}
+
+export interface LoadBalancerTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface LoadBalancerVmsTimeouts {
@@ -7099,6 +7178,17 @@ export interface VmSecurityGroup {
      * The name of the security group.
      */
     securityGroupName: string;
+}
+
+export interface VmShutdownBehaviorConfiguration {
+    /**
+     * The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+     */
+    guestAction: string;
+    /**
+     * The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+     */
+    hostAction: string;
 }
 
 export interface VmTag {

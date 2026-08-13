@@ -157,6 +157,9 @@ namespace Pulumi.Outscale
         [Output("requestId")]
         public Output<string> RequestId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.LoadBalancerListenerRuleTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// The IDs of the backend VMs.
         /// </summary>
@@ -221,6 +224,9 @@ namespace Pulumi.Outscale
         [Input("listenerRule", required: true)]
         public Input<Inputs.LoadBalancerListenerRuleListenerRuleArgs> ListenerRule { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.LoadBalancerListenerRuleTimeoutsArgs>? Timeouts { get; set; }
+
         [Input("vmIds", required: true)]
         private InputList<string>? _vmIds;
 
@@ -255,6 +261,9 @@ namespace Pulumi.Outscale
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.LoadBalancerListenerRuleTimeoutsGetArgs>? Timeouts { get; set; }
 
         [Input("vmIds")]
         private InputList<string>? _vmIds;

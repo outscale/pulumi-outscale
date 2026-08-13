@@ -306,7 +306,8 @@ type LoadBalancer struct {
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
 	SubregionNames pulumi.StringArrayOutput `pulumi:"subregionNames"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags LoadBalancerTagArrayOutput `pulumi:"tags"`
+	Tags     LoadBalancerTagArrayOutput    `pulumi:"tags"`
+	Timeouts LoadBalancerTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewLoadBalancer registers a new resource with the given unique name, arguments, and options.
@@ -316,9 +317,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Listeners == nil {
-		return nil, errors.New("invalid value for required argument 'Listeners'")
-	}
 	if args.LoadBalancerName == nil {
 		return nil, errors.New("invalid value for required argument 'LoadBalancerName'")
 	}
@@ -384,7 +382,8 @@ type loadBalancerState struct {
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
 	SubregionNames []string `pulumi:"subregionNames"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []LoadBalancerTag `pulumi:"tags"`
+	Tags     []LoadBalancerTag     `pulumi:"tags"`
+	Timeouts *LoadBalancerTimeouts `pulumi:"timeouts"`
 }
 
 type LoadBalancerState struct {
@@ -427,7 +426,8 @@ type LoadBalancerState struct {
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
 	SubregionNames pulumi.StringArrayInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags LoadBalancerTagArrayInput
+	Tags     LoadBalancerTagArrayInput
+	Timeouts LoadBalancerTimeoutsPtrInput
 }
 
 func (LoadBalancerState) ElementType() reflect.Type {
@@ -435,8 +435,6 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
-	// Information about access logs.
-	AccessLogs []LoadBalancerAccessLog `pulumi:"accessLogs"`
 	// One or more listeners to create.
 	Listeners []LoadBalancerListener `pulumi:"listeners"`
 	// The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
@@ -454,13 +452,12 @@ type loadBalancerArgs struct {
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
 	SubregionNames []string `pulumi:"subregionNames"`
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags []LoadBalancerTag `pulumi:"tags"`
+	Tags     []LoadBalancerTag     `pulumi:"tags"`
+	Timeouts *LoadBalancerTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
-	// Information about access logs.
-	AccessLogs LoadBalancerAccessLogArrayInput
 	// One or more listeners to create.
 	Listeners LoadBalancerListenerArrayInput
 	// The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
@@ -478,7 +475,8 @@ type LoadBalancerArgs struct {
 	// (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
 	SubregionNames pulumi.StringArrayInput
 	// A tag to add to this resource. You can specify this argument several times.
-	Tags LoadBalancerTagArrayInput
+	Tags     LoadBalancerTagArrayInput
+	Timeouts LoadBalancerTimeoutsPtrInput
 }
 
 func (LoadBalancerArgs) ElementType() reflect.Type {
@@ -670,6 +668,10 @@ func (o LoadBalancerOutput) SubregionNames() pulumi.StringArrayOutput {
 // A tag to add to this resource. You can specify this argument several times.
 func (o LoadBalancerOutput) Tags() LoadBalancerTagArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerTagArrayOutput { return v.Tags }).(LoadBalancerTagArrayOutput)
+}
+
+func (o LoadBalancerOutput) Timeouts() LoadBalancerTimeoutsPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerTimeoutsPtrOutput { return v.Timeouts }).(LoadBalancerTimeoutsPtrOutput)
 }
 
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }

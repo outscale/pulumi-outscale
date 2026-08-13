@@ -188,7 +188,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Information about access logs.
      */
-    declare public readonly accessLogs: pulumi.Output<outputs.LoadBalancerAccessLog[]>;
+    declare public /*out*/ readonly accessLogs: pulumi.Output<outputs.LoadBalancerAccessLog[]>;
     /**
      * The stickiness policies defined for the load balancer.
      */
@@ -212,7 +212,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * One or more listeners to create.
      */
-    declare public readonly listeners: pulumi.Output<outputs.LoadBalancerListener[]>;
+    declare public readonly listeners: pulumi.Output<outputs.LoadBalancerListener[] | undefined>;
     /**
      * The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
      */
@@ -263,6 +263,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * A tag to add to this resource. You can specify this argument several times.
      */
     declare public readonly tags: pulumi.Output<outputs.LoadBalancerTag[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.LoadBalancerTimeouts | undefined>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -297,15 +298,12 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["subnets"] = state?.subnets;
             resourceInputs["subregionNames"] = state?.subregionNames;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if (args?.listeners === undefined && !opts.urn) {
-                throw new Error("Missing required property 'listeners'");
-            }
             if (args?.loadBalancerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerName'");
             }
-            resourceInputs["accessLogs"] = args?.accessLogs;
             resourceInputs["listeners"] = args?.listeners;
             resourceInputs["loadBalancerName"] = args?.loadBalancerName;
             resourceInputs["loadBalancerType"] = args?.loadBalancerType;
@@ -315,6 +313,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["subnets"] = args?.subnets;
             resourceInputs["subregionNames"] = args?.subregionNames;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["accessLogs"] = undefined /*out*/;
             resourceInputs["applicationStickyCookiePolicies"] = undefined /*out*/;
             resourceInputs["backendIps"] = undefined /*out*/;
             resourceInputs["backendVmIds"] = undefined /*out*/;
@@ -413,6 +413,7 @@ export interface LoadBalancerState {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerTag>[]>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerTimeouts>;
 }
 
 /**
@@ -420,13 +421,9 @@ export interface LoadBalancerState {
  */
 export interface LoadBalancerArgs {
     /**
-     * Information about access logs.
-     */
-    accessLogs?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAccessLog>[]>;
-    /**
      * One or more listeners to create.
      */
-    listeners: pulumi.Input<pulumi.Input<inputs.LoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerListener>[]>;
     /**
      * The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
      */
@@ -459,4 +456,5 @@ export interface LoadBalancerArgs {
      * A tag to add to this resource. You can specify this argument several times.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerTag>[]>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerTimeouts>;
 }

@@ -124,6 +124,7 @@ export class LoadBalancerListenerRule extends pulumi.CustomResource {
      */
     declare public readonly listenerRule: pulumi.Output<outputs.LoadBalancerListenerRuleListenerRule>;
     declare public /*out*/ readonly requestId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.LoadBalancerListenerRuleTimeouts | undefined>;
     /**
      * The IDs of the backend VMs.
      */
@@ -145,6 +146,7 @@ export class LoadBalancerListenerRule extends pulumi.CustomResource {
             resourceInputs["listener"] = state?.listener;
             resourceInputs["listenerRule"] = state?.listenerRule;
             resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vmIds"] = state?.vmIds;
         } else {
             const args = argsOrState as LoadBalancerListenerRuleArgs | undefined;
@@ -159,6 +161,7 @@ export class LoadBalancerListenerRule extends pulumi.CustomResource {
             }
             resourceInputs["listener"] = args?.listener;
             resourceInputs["listenerRule"] = args?.listenerRule;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vmIds"] = args?.vmIds;
             resourceInputs["requestId"] = undefined /*out*/;
         }
@@ -180,6 +183,7 @@ export interface LoadBalancerListenerRuleState {
      */
     listenerRule?: pulumi.Input<inputs.LoadBalancerListenerRuleListenerRule>;
     requestId?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerListenerRuleTimeouts>;
     /**
      * The IDs of the backend VMs.
      */
@@ -198,6 +202,7 @@ export interface LoadBalancerListenerRuleArgs {
      * Information about the listener rule.
      */
     listenerRule: pulumi.Input<inputs.LoadBalancerListenerRuleListenerRule>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerListenerRuleTimeouts>;
     /**
      * The IDs of the backend VMs.
      */

@@ -21,21 +21,20 @@ __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 @pulumi.input_type
 class LoadBalancerArgs:
     def __init__(__self__, *,
-                 listeners: pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]],
                  load_balancer_name: pulumi.Input[_builtins.str],
-                 access_logs: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAccessLogArgs']]]] = None,
+                 listeners: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]]] = None,
                  load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
                  public_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  secured_cookies: Optional[pulumi.Input[_builtins.bool]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['LoadBalancerTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]] listeners: One or more listeners to create.
         :param pulumi.Input[_builtins.str] load_balancer_name: The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAccessLogArgs']]] access_logs: Information about access logs.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]] listeners: One or more listeners to create.
         :param pulumi.Input[_builtins.str] load_balancer_type: The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
         :param pulumi.Input[_builtins.str] public_ip: (internet-facing only) The public IP you want to associate with the load balancer. If not specified, a public IP owned by 3DS OUTSCALE is associated.
         :param pulumi.Input[_builtins.bool] secured_cookies: Whether secure cookies are enabled for the load balancer.
@@ -44,10 +43,9 @@ class LoadBalancerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subregion_names: (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
-        pulumi.set(__self__, "listeners", listeners)
         pulumi.set(__self__, "load_balancer_name", load_balancer_name)
-        if access_logs is not None:
-            pulumi.set(__self__, "access_logs", access_logs)
+        if listeners is not None:
+            pulumi.set(__self__, "listeners", listeners)
         if load_balancer_type is not None:
             pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         if public_ip is not None:
@@ -62,18 +60,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "subregion_names", subregion_names)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter
-    def listeners(self) -> pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]]:
-        """
-        One or more listeners to create.
-        """
-        return pulumi.get(self, "listeners")
-
-    @listeners.setter
-    def listeners(self, value: pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]]):
-        pulumi.set(self, "listeners", value)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
@@ -88,16 +76,16 @@ class LoadBalancerArgs:
         pulumi.set(self, "load_balancer_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="accessLogs")
-    def access_logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAccessLogArgs']]]]:
+    @pulumi.getter
+    def listeners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]]]:
         """
-        Information about access logs.
+        One or more listeners to create.
         """
-        return pulumi.get(self, "access_logs")
+        return pulumi.get(self, "listeners")
 
-    @access_logs.setter
-    def access_logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAccessLogArgs']]]]):
-        pulumi.set(self, "access_logs", value)
+    @listeners.setter
+    def listeners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]]]):
+        pulumi.set(self, "listeners", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerType")
@@ -183,6 +171,15 @@ class LoadBalancerArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _LoadBalancerState:
@@ -206,7 +203,8 @@ class _LoadBalancerState:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]]] = None,
+                 timeouts: Optional[pulumi.Input['LoadBalancerTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerAccessLogArgs']]] access_logs: Information about access logs.
@@ -270,6 +268,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "subregion_names", subregion_names)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="accessLogs")
@@ -509,6 +509,15 @@ class _LoadBalancerState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("outscale:index/loadBalancer:LoadBalancer")
 class LoadBalancer(pulumi.CustomResource):
@@ -516,7 +525,6 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerAccessLogArgs', 'LoadBalancerAccessLogArgsDict']]]]] = None,
                  listeners: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerListenerArgs', 'LoadBalancerListenerArgsDict']]]]] = None,
                  load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -526,6 +534,7 @@ class LoadBalancer(pulumi.CustomResource):
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerTagArgs', 'LoadBalancerTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['LoadBalancerTimeoutsArgs', 'LoadBalancerTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a load balancer.
@@ -667,7 +676,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerAccessLogArgs', 'LoadBalancerAccessLogArgsDict']]]] access_logs: Information about access logs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerListenerArgs', 'LoadBalancerListenerArgsDict']]]] listeners: One or more listeners to create.
         :param pulumi.Input[_builtins.str] load_balancer_name: The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
         :param pulumi.Input[_builtins.str] load_balancer_type: The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
@@ -837,7 +845,6 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerAccessLogArgs', 'LoadBalancerAccessLogArgsDict']]]]] = None,
                  listeners: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerListenerArgs', 'LoadBalancerListenerArgsDict']]]]] = None,
                  load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -847,6 +854,7 @@ class LoadBalancer(pulumi.CustomResource):
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerTagArgs', 'LoadBalancerTagArgsDict']]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['LoadBalancerTimeoutsArgs', 'LoadBalancerTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -856,9 +864,6 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
-            __props__.__dict__["access_logs"] = access_logs
-            if listeners is None and not opts.urn:
-                raise TypeError("Missing required property 'listeners'")
             __props__.__dict__["listeners"] = listeners
             if load_balancer_name is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_name'")
@@ -870,6 +875,8 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["subnets"] = subnets
             __props__.__dict__["subregion_names"] = subregion_names
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["timeouts"] = timeouts
+            __props__.__dict__["access_logs"] = None
             __props__.__dict__["application_sticky_cookie_policies"] = None
             __props__.__dict__["backend_ips"] = None
             __props__.__dict__["backend_vm_ids"] = None
@@ -909,7 +916,8 @@ class LoadBalancer(pulumi.CustomResource):
             state: Optional[pulumi.Input[_builtins.str]] = None,
             subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerTagArgs', 'LoadBalancerTagArgsDict']]]]] = None) -> 'LoadBalancer':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerTagArgs', 'LoadBalancerTagArgsDict']]]]] = None,
+            timeouts: Optional[pulumi.Input[Union['LoadBalancerTimeoutsArgs', 'LoadBalancerTimeoutsArgsDict']]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -962,6 +970,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["subnets"] = subnets
         __props__.__dict__["subregion_names"] = subregion_names
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["timeouts"] = timeouts
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1014,7 +1023,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def listeners(self) -> pulumi.Output[Sequence['outputs.LoadBalancerListener']]:
+    def listeners(self) -> pulumi.Output[Optional[Sequence['outputs.LoadBalancerListener']]]:
         """
         One or more listeners to create.
         """
@@ -1121,4 +1130,9 @@ class LoadBalancer(pulumi.CustomResource):
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.LoadBalancerTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

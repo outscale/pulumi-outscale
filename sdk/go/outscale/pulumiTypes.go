@@ -5943,6 +5943,200 @@ func (o LoadBalancerListenerRuleListenerRulePtrOutput) Priority() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+type LoadBalancerListenerRuleTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// LoadBalancerListenerRuleTimeoutsInput is an input type that accepts LoadBalancerListenerRuleTimeoutsArgs and LoadBalancerListenerRuleTimeoutsOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerRuleTimeoutsInput` via:
+//
+//	LoadBalancerListenerRuleTimeoutsArgs{...}
+type LoadBalancerListenerRuleTimeoutsInput interface {
+	pulumi.Input
+
+	ToLoadBalancerListenerRuleTimeoutsOutput() LoadBalancerListenerRuleTimeoutsOutput
+	ToLoadBalancerListenerRuleTimeoutsOutputWithContext(context.Context) LoadBalancerListenerRuleTimeoutsOutput
+}
+
+type LoadBalancerListenerRuleTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (LoadBalancerListenerRuleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerRuleTimeouts)(nil)).Elem()
+}
+
+func (i LoadBalancerListenerRuleTimeoutsArgs) ToLoadBalancerListenerRuleTimeoutsOutput() LoadBalancerListenerRuleTimeoutsOutput {
+	return i.ToLoadBalancerListenerRuleTimeoutsOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerListenerRuleTimeoutsArgs) ToLoadBalancerListenerRuleTimeoutsOutputWithContext(ctx context.Context) LoadBalancerListenerRuleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerRuleTimeoutsOutput)
+}
+
+func (i LoadBalancerListenerRuleTimeoutsArgs) ToLoadBalancerListenerRuleTimeoutsPtrOutput() LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return i.ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerListenerRuleTimeoutsArgs) ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerRuleTimeoutsOutput).ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerListenerRuleTimeoutsPtrInput is an input type that accepts LoadBalancerListenerRuleTimeoutsArgs, LoadBalancerListenerRuleTimeoutsPtr and LoadBalancerListenerRuleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerListenerRuleTimeoutsPtrInput` via:
+//
+//	        LoadBalancerListenerRuleTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerListenerRuleTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerListenerRuleTimeoutsPtrOutput() LoadBalancerListenerRuleTimeoutsPtrOutput
+	ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(context.Context) LoadBalancerListenerRuleTimeoutsPtrOutput
+}
+
+type loadBalancerListenerRuleTimeoutsPtrType LoadBalancerListenerRuleTimeoutsArgs
+
+func LoadBalancerListenerRuleTimeoutsPtr(v *LoadBalancerListenerRuleTimeoutsArgs) LoadBalancerListenerRuleTimeoutsPtrInput {
+	return (*loadBalancerListenerRuleTimeoutsPtrType)(v)
+}
+
+func (*loadBalancerListenerRuleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerRuleTimeouts)(nil)).Elem()
+}
+
+func (i *loadBalancerListenerRuleTimeoutsPtrType) ToLoadBalancerListenerRuleTimeoutsPtrOutput() LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return i.ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerListenerRuleTimeoutsPtrType) ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerListenerRuleTimeoutsPtrOutput)
+}
+
+type LoadBalancerListenerRuleTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerListenerRuleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerListenerRuleTimeouts)(nil)).Elem()
+}
+
+func (o LoadBalancerListenerRuleTimeoutsOutput) ToLoadBalancerListenerRuleTimeoutsOutput() LoadBalancerListenerRuleTimeoutsOutput {
+	return o
+}
+
+func (o LoadBalancerListenerRuleTimeoutsOutput) ToLoadBalancerListenerRuleTimeoutsOutputWithContext(ctx context.Context) LoadBalancerListenerRuleTimeoutsOutput {
+	return o
+}
+
+func (o LoadBalancerListenerRuleTimeoutsOutput) ToLoadBalancerListenerRuleTimeoutsPtrOutput() LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return o.ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerListenerRuleTimeoutsOutput) ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerListenerRuleTimeouts) *LoadBalancerListenerRuleTimeouts {
+		return &v
+	}).(LoadBalancerListenerRuleTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerListenerRuleTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerRuleTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o LoadBalancerListenerRuleTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerRuleTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o LoadBalancerListenerRuleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerRuleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerListenerRuleTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerListenerRuleTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerListenerRuleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerListenerRuleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerListenerRuleTimeouts)(nil)).Elem()
+}
+
+func (o LoadBalancerListenerRuleTimeoutsPtrOutput) ToLoadBalancerListenerRuleTimeoutsPtrOutput() LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerListenerRuleTimeoutsPtrOutput) ToLoadBalancerListenerRuleTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerListenerRuleTimeoutsPtrOutput) Elem() LoadBalancerListenerRuleTimeoutsOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerRuleTimeouts) LoadBalancerListenerRuleTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerListenerRuleTimeouts
+		return ret
+	}).(LoadBalancerListenerRuleTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerListenerRuleTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o LoadBalancerListenerRuleTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o LoadBalancerListenerRuleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerListenerRuleTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerRuleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type LoadBalancerLoadBalancerStickyCookiePolicy struct {
 	// The name of the stickiness policy.
 	PolicyName *string `pulumi:"policyName"`
@@ -6768,9 +6962,9 @@ func (o LoadBalancerPolicySourceSecurityGroupArrayOutput) Index(i pulumi.IntInpu
 
 type LoadBalancerPolicyTag struct {
 	// The key of the tag, between 1 and 128 characters.
-	Key *string `pulumi:"key"`
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
-	Value *string `pulumi:"value"`
+	Value string `pulumi:"value"`
 }
 
 // LoadBalancerPolicyTagInput is an input type that accepts LoadBalancerPolicyTagArgs and LoadBalancerPolicyTagOutput values.
@@ -6786,9 +6980,9 @@ type LoadBalancerPolicyTagInput interface {
 
 type LoadBalancerPolicyTagArgs struct {
 	// The key of the tag, between 1 and 128 characters.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (LoadBalancerPolicyTagArgs) ElementType() reflect.Type {
@@ -6843,13 +7037,13 @@ func (o LoadBalancerPolicyTagOutput) ToLoadBalancerPolicyTagOutputWithContext(ct
 }
 
 // The key of the tag, between 1 and 128 characters.
-func (o LoadBalancerPolicyTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadBalancerPolicyTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o LoadBalancerPolicyTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerPolicyTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
-func (o LoadBalancerPolicyTagOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadBalancerPolicyTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o LoadBalancerPolicyTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerPolicyTag) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type LoadBalancerPolicyTagArrayOutput struct{ *pulumi.OutputState }
@@ -6870,6 +7064,181 @@ func (o LoadBalancerPolicyTagArrayOutput) Index(i pulumi.IntInput) LoadBalancerP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPolicyTag {
 		return vs[0].([]LoadBalancerPolicyTag)[vs[1].(int)]
 	}).(LoadBalancerPolicyTagOutput)
+}
+
+type LoadBalancerPolicyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// LoadBalancerPolicyTimeoutsInput is an input type that accepts LoadBalancerPolicyTimeoutsArgs and LoadBalancerPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `LoadBalancerPolicyTimeoutsInput` via:
+//
+//	LoadBalancerPolicyTimeoutsArgs{...}
+type LoadBalancerPolicyTimeoutsInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPolicyTimeoutsOutput() LoadBalancerPolicyTimeoutsOutput
+	ToLoadBalancerPolicyTimeoutsOutputWithContext(context.Context) LoadBalancerPolicyTimeoutsOutput
+}
+
+type LoadBalancerPolicyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (LoadBalancerPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPolicyTimeouts)(nil)).Elem()
+}
+
+func (i LoadBalancerPolicyTimeoutsArgs) ToLoadBalancerPolicyTimeoutsOutput() LoadBalancerPolicyTimeoutsOutput {
+	return i.ToLoadBalancerPolicyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPolicyTimeoutsArgs) ToLoadBalancerPolicyTimeoutsOutputWithContext(ctx context.Context) LoadBalancerPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPolicyTimeoutsOutput)
+}
+
+func (i LoadBalancerPolicyTimeoutsArgs) ToLoadBalancerPolicyTimeoutsPtrOutput() LoadBalancerPolicyTimeoutsPtrOutput {
+	return i.ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPolicyTimeoutsArgs) ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPolicyTimeoutsOutput).ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerPolicyTimeoutsPtrInput is an input type that accepts LoadBalancerPolicyTimeoutsArgs, LoadBalancerPolicyTimeoutsPtr and LoadBalancerPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerPolicyTimeoutsPtrInput` via:
+//
+//	        LoadBalancerPolicyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerPolicyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPolicyTimeoutsPtrOutput() LoadBalancerPolicyTimeoutsPtrOutput
+	ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(context.Context) LoadBalancerPolicyTimeoutsPtrOutput
+}
+
+type loadBalancerPolicyTimeoutsPtrType LoadBalancerPolicyTimeoutsArgs
+
+func LoadBalancerPolicyTimeoutsPtr(v *LoadBalancerPolicyTimeoutsArgs) LoadBalancerPolicyTimeoutsPtrInput {
+	return (*loadBalancerPolicyTimeoutsPtrType)(v)
+}
+
+func (*loadBalancerPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerPolicyTimeouts)(nil)).Elem()
+}
+
+func (i *loadBalancerPolicyTimeoutsPtrType) ToLoadBalancerPolicyTimeoutsPtrOutput() LoadBalancerPolicyTimeoutsPtrOutput {
+	return i.ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerPolicyTimeoutsPtrType) ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPolicyTimeoutsPtrOutput)
+}
+
+type LoadBalancerPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPolicyTimeouts)(nil)).Elem()
+}
+
+func (o LoadBalancerPolicyTimeoutsOutput) ToLoadBalancerPolicyTimeoutsOutput() LoadBalancerPolicyTimeoutsOutput {
+	return o
+}
+
+func (o LoadBalancerPolicyTimeoutsOutput) ToLoadBalancerPolicyTimeoutsOutputWithContext(ctx context.Context) LoadBalancerPolicyTimeoutsOutput {
+	return o
+}
+
+func (o LoadBalancerPolicyTimeoutsOutput) ToLoadBalancerPolicyTimeoutsPtrOutput() LoadBalancerPolicyTimeoutsPtrOutput {
+	return o.ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerPolicyTimeoutsOutput) ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerPolicyTimeouts) *LoadBalancerPolicyTimeouts {
+		return &v
+	}).(LoadBalancerPolicyTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerPolicyTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPolicyTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o LoadBalancerPolicyTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPolicyTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o LoadBalancerPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerPolicyTimeouts)(nil)).Elem()
+}
+
+func (o LoadBalancerPolicyTimeoutsPtrOutput) ToLoadBalancerPolicyTimeoutsPtrOutput() LoadBalancerPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerPolicyTimeoutsPtrOutput) ToLoadBalancerPolicyTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerPolicyTimeoutsPtrOutput) Elem() LoadBalancerPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *LoadBalancerPolicyTimeouts) LoadBalancerPolicyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerPolicyTimeouts
+		return ret
+	}).(LoadBalancerPolicyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerPolicyTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o LoadBalancerPolicyTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o LoadBalancerPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type LoadBalancerSourceSecurityGroup struct {
@@ -6980,7 +7349,7 @@ func (o LoadBalancerSourceSecurityGroupArrayOutput) Index(i pulumi.IntInput) Loa
 
 type LoadBalancerTag struct {
 	// The key of the tag, between 1 and 128 characters.
-	Key *string `pulumi:"key"`
+	Key string `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value *string `pulumi:"value"`
 }
@@ -6998,7 +7367,7 @@ type LoadBalancerTagInput interface {
 
 type LoadBalancerTagArgs struct {
 	// The key of the tag, between 1 and 128 characters.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
 	// The value of the tag, between 0 and 255 characters.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -7055,8 +7424,8 @@ func (o LoadBalancerTagOutput) ToLoadBalancerTagOutputWithContext(ctx context.Co
 }
 
 // The key of the tag, between 1 and 128 characters.
-func (o LoadBalancerTagOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoadBalancerTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o LoadBalancerTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // The value of the tag, between 0 and 255 characters.
@@ -7082,6 +7451,200 @@ func (o LoadBalancerTagArrayOutput) Index(i pulumi.IntInput) LoadBalancerTagOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerTag {
 		return vs[0].([]LoadBalancerTag)[vs[1].(int)]
 	}).(LoadBalancerTagOutput)
+}
+
+type LoadBalancerTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// LoadBalancerTimeoutsInput is an input type that accepts LoadBalancerTimeoutsArgs and LoadBalancerTimeoutsOutput values.
+// You can construct a concrete instance of `LoadBalancerTimeoutsInput` via:
+//
+//	LoadBalancerTimeoutsArgs{...}
+type LoadBalancerTimeoutsInput interface {
+	pulumi.Input
+
+	ToLoadBalancerTimeoutsOutput() LoadBalancerTimeoutsOutput
+	ToLoadBalancerTimeoutsOutputWithContext(context.Context) LoadBalancerTimeoutsOutput
+}
+
+type LoadBalancerTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (LoadBalancerTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerTimeouts)(nil)).Elem()
+}
+
+func (i LoadBalancerTimeoutsArgs) ToLoadBalancerTimeoutsOutput() LoadBalancerTimeoutsOutput {
+	return i.ToLoadBalancerTimeoutsOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerTimeoutsArgs) ToLoadBalancerTimeoutsOutputWithContext(ctx context.Context) LoadBalancerTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerTimeoutsOutput)
+}
+
+func (i LoadBalancerTimeoutsArgs) ToLoadBalancerTimeoutsPtrOutput() LoadBalancerTimeoutsPtrOutput {
+	return i.ToLoadBalancerTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerTimeoutsArgs) ToLoadBalancerTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerTimeoutsOutput).ToLoadBalancerTimeoutsPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerTimeoutsPtrInput is an input type that accepts LoadBalancerTimeoutsArgs, LoadBalancerTimeoutsPtr and LoadBalancerTimeoutsPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerTimeoutsPtrInput` via:
+//
+//	        LoadBalancerTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerTimeoutsPtrOutput() LoadBalancerTimeoutsPtrOutput
+	ToLoadBalancerTimeoutsPtrOutputWithContext(context.Context) LoadBalancerTimeoutsPtrOutput
+}
+
+type loadBalancerTimeoutsPtrType LoadBalancerTimeoutsArgs
+
+func LoadBalancerTimeoutsPtr(v *LoadBalancerTimeoutsArgs) LoadBalancerTimeoutsPtrInput {
+	return (*loadBalancerTimeoutsPtrType)(v)
+}
+
+func (*loadBalancerTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerTimeouts)(nil)).Elem()
+}
+
+func (i *loadBalancerTimeoutsPtrType) ToLoadBalancerTimeoutsPtrOutput() LoadBalancerTimeoutsPtrOutput {
+	return i.ToLoadBalancerTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerTimeoutsPtrType) ToLoadBalancerTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerTimeoutsPtrOutput)
+}
+
+type LoadBalancerTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerTimeouts)(nil)).Elem()
+}
+
+func (o LoadBalancerTimeoutsOutput) ToLoadBalancerTimeoutsOutput() LoadBalancerTimeoutsOutput {
+	return o
+}
+
+func (o LoadBalancerTimeoutsOutput) ToLoadBalancerTimeoutsOutputWithContext(ctx context.Context) LoadBalancerTimeoutsOutput {
+	return o
+}
+
+func (o LoadBalancerTimeoutsOutput) ToLoadBalancerTimeoutsPtrOutput() LoadBalancerTimeoutsPtrOutput {
+	return o.ToLoadBalancerTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerTimeoutsOutput) ToLoadBalancerTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerTimeouts) *LoadBalancerTimeouts {
+		return &v
+	}).(LoadBalancerTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o LoadBalancerTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o LoadBalancerTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerTimeouts)(nil)).Elem()
+}
+
+func (o LoadBalancerTimeoutsPtrOutput) ToLoadBalancerTimeoutsPtrOutput() LoadBalancerTimeoutsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerTimeoutsPtrOutput) ToLoadBalancerTimeoutsPtrOutputWithContext(ctx context.Context) LoadBalancerTimeoutsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerTimeoutsPtrOutput) Elem() LoadBalancerTimeoutsOutput {
+	return o.ApplyT(func(v *LoadBalancerTimeouts) LoadBalancerTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerTimeouts
+		return ret
+	}).(LoadBalancerTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o LoadBalancerTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o LoadBalancerTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o LoadBalancerTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type LoadBalancerVmsTimeouts struct {
@@ -22628,6 +23191,162 @@ func (o VmSecurityGroupArrayOutput) Index(i pulumi.IntInput) VmSecurityGroupOutp
 	}).(VmSecurityGroupOutput)
 }
 
+type VmShutdownBehaviorConfiguration struct {
+	// The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+	GuestAction *string `pulumi:"guestAction"`
+	// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+	HostAction *string `pulumi:"hostAction"`
+}
+
+// VmShutdownBehaviorConfigurationInput is an input type that accepts VmShutdownBehaviorConfigurationArgs and VmShutdownBehaviorConfigurationOutput values.
+// You can construct a concrete instance of `VmShutdownBehaviorConfigurationInput` via:
+//
+//	VmShutdownBehaviorConfigurationArgs{...}
+type VmShutdownBehaviorConfigurationInput interface {
+	pulumi.Input
+
+	ToVmShutdownBehaviorConfigurationOutput() VmShutdownBehaviorConfigurationOutput
+	ToVmShutdownBehaviorConfigurationOutputWithContext(context.Context) VmShutdownBehaviorConfigurationOutput
+}
+
+type VmShutdownBehaviorConfigurationArgs struct {
+	// The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+	GuestAction pulumi.StringPtrInput `pulumi:"guestAction"`
+	// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+	HostAction pulumi.StringPtrInput `pulumi:"hostAction"`
+}
+
+func (VmShutdownBehaviorConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (i VmShutdownBehaviorConfigurationArgs) ToVmShutdownBehaviorConfigurationOutput() VmShutdownBehaviorConfigurationOutput {
+	return i.ToVmShutdownBehaviorConfigurationOutputWithContext(context.Background())
+}
+
+func (i VmShutdownBehaviorConfigurationArgs) ToVmShutdownBehaviorConfigurationOutputWithContext(ctx context.Context) VmShutdownBehaviorConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmShutdownBehaviorConfigurationOutput)
+}
+
+func (i VmShutdownBehaviorConfigurationArgs) ToVmShutdownBehaviorConfigurationPtrOutput() VmShutdownBehaviorConfigurationPtrOutput {
+	return i.ToVmShutdownBehaviorConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i VmShutdownBehaviorConfigurationArgs) ToVmShutdownBehaviorConfigurationPtrOutputWithContext(ctx context.Context) VmShutdownBehaviorConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmShutdownBehaviorConfigurationOutput).ToVmShutdownBehaviorConfigurationPtrOutputWithContext(ctx)
+}
+
+// VmShutdownBehaviorConfigurationPtrInput is an input type that accepts VmShutdownBehaviorConfigurationArgs, VmShutdownBehaviorConfigurationPtr and VmShutdownBehaviorConfigurationPtrOutput values.
+// You can construct a concrete instance of `VmShutdownBehaviorConfigurationPtrInput` via:
+//
+//	        VmShutdownBehaviorConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmShutdownBehaviorConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToVmShutdownBehaviorConfigurationPtrOutput() VmShutdownBehaviorConfigurationPtrOutput
+	ToVmShutdownBehaviorConfigurationPtrOutputWithContext(context.Context) VmShutdownBehaviorConfigurationPtrOutput
+}
+
+type vmShutdownBehaviorConfigurationPtrType VmShutdownBehaviorConfigurationArgs
+
+func VmShutdownBehaviorConfigurationPtr(v *VmShutdownBehaviorConfigurationArgs) VmShutdownBehaviorConfigurationPtrInput {
+	return (*vmShutdownBehaviorConfigurationPtrType)(v)
+}
+
+func (*vmShutdownBehaviorConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (i *vmShutdownBehaviorConfigurationPtrType) ToVmShutdownBehaviorConfigurationPtrOutput() VmShutdownBehaviorConfigurationPtrOutput {
+	return i.ToVmShutdownBehaviorConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *vmShutdownBehaviorConfigurationPtrType) ToVmShutdownBehaviorConfigurationPtrOutputWithContext(ctx context.Context) VmShutdownBehaviorConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmShutdownBehaviorConfigurationPtrOutput)
+}
+
+type VmShutdownBehaviorConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VmShutdownBehaviorConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (o VmShutdownBehaviorConfigurationOutput) ToVmShutdownBehaviorConfigurationOutput() VmShutdownBehaviorConfigurationOutput {
+	return o
+}
+
+func (o VmShutdownBehaviorConfigurationOutput) ToVmShutdownBehaviorConfigurationOutputWithContext(ctx context.Context) VmShutdownBehaviorConfigurationOutput {
+	return o
+}
+
+func (o VmShutdownBehaviorConfigurationOutput) ToVmShutdownBehaviorConfigurationPtrOutput() VmShutdownBehaviorConfigurationPtrOutput {
+	return o.ToVmShutdownBehaviorConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o VmShutdownBehaviorConfigurationOutput) ToVmShutdownBehaviorConfigurationPtrOutputWithContext(ctx context.Context) VmShutdownBehaviorConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmShutdownBehaviorConfiguration) *VmShutdownBehaviorConfiguration {
+		return &v
+	}).(VmShutdownBehaviorConfigurationPtrOutput)
+}
+
+// The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+func (o VmShutdownBehaviorConfigurationOutput) GuestAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmShutdownBehaviorConfiguration) *string { return v.GuestAction }).(pulumi.StringPtrOutput)
+}
+
+// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+func (o VmShutdownBehaviorConfigurationOutput) HostAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmShutdownBehaviorConfiguration) *string { return v.HostAction }).(pulumi.StringPtrOutput)
+}
+
+type VmShutdownBehaviorConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VmShutdownBehaviorConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (o VmShutdownBehaviorConfigurationPtrOutput) ToVmShutdownBehaviorConfigurationPtrOutput() VmShutdownBehaviorConfigurationPtrOutput {
+	return o
+}
+
+func (o VmShutdownBehaviorConfigurationPtrOutput) ToVmShutdownBehaviorConfigurationPtrOutputWithContext(ctx context.Context) VmShutdownBehaviorConfigurationPtrOutput {
+	return o
+}
+
+func (o VmShutdownBehaviorConfigurationPtrOutput) Elem() VmShutdownBehaviorConfigurationOutput {
+	return o.ApplyT(func(v *VmShutdownBehaviorConfiguration) VmShutdownBehaviorConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VmShutdownBehaviorConfiguration
+		return ret
+	}).(VmShutdownBehaviorConfigurationOutput)
+}
+
+// The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+func (o VmShutdownBehaviorConfigurationPtrOutput) GuestAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmShutdownBehaviorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GuestAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+func (o VmShutdownBehaviorConfigurationPtrOutput) HostAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmShutdownBehaviorConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostAction
+	}).(pulumi.StringPtrOutput)
+}
+
 type VmTag struct {
 	// The key of the tag, between 1 and 255 characters.
 	Key *string `pulumi:"key"`
@@ -32480,9 +33199,9 @@ func (o GetLoadBalancerTagsTagArrayOutput) Index(i pulumi.IntInput) GetLoadBalan
 type GetLoadBalancerVmHealthBackendVmHealth struct {
 	// The description of the state of the backend VM.
 	Description string `pulumi:"description"`
-	// The state of the backend VM (`InService` \| `OutOfService` \| `Unknown`).
+	// The state of the backend VM (`UP` \| `DOWN` \| `UNKNOWN`).
 	State string `pulumi:"state"`
-	// Information about the cause of `OutOfService` VMs.<br />
+	// Information about the cause of `DOWN` VMs.<br />
 	// Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \| `Instance` \| `N/A`).
 	StateReason string `pulumi:"stateReason"`
 	// The ID of the backend VM.
@@ -32503,9 +33222,9 @@ type GetLoadBalancerVmHealthBackendVmHealthInput interface {
 type GetLoadBalancerVmHealthBackendVmHealthArgs struct {
 	// The description of the state of the backend VM.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The state of the backend VM (`InService` \| `OutOfService` \| `Unknown`).
+	// The state of the backend VM (`UP` \| `DOWN` \| `UNKNOWN`).
 	State pulumi.StringInput `pulumi:"state"`
-	// Information about the cause of `OutOfService` VMs.<br />
+	// Information about the cause of `DOWN` VMs.<br />
 	// Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \| `Instance` \| `N/A`).
 	StateReason pulumi.StringInput `pulumi:"stateReason"`
 	// The ID of the backend VM.
@@ -32568,12 +33287,12 @@ func (o GetLoadBalancerVmHealthBackendVmHealthOutput) Description() pulumi.Strin
 	return o.ApplyT(func(v GetLoadBalancerVmHealthBackendVmHealth) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The state of the backend VM (`InService` \| `OutOfService` \| `Unknown`).
+// The state of the backend VM (`UP` \| `DOWN` \| `UNKNOWN`).
 func (o GetLoadBalancerVmHealthBackendVmHealthOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerVmHealthBackendVmHealth) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Information about the cause of `OutOfService` VMs.<br />
+// Information about the cause of `DOWN` VMs.<br />
 // Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \| `Instance` \| `N/A`).
 func (o GetLoadBalancerVmHealthBackendVmHealthOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerVmHealthBackendVmHealth) string { return v.StateReason }).(pulumi.StringOutput)
@@ -45313,7 +46032,7 @@ type GetSnapshotExportTasksSnapshotExportTask struct {
 	Progress int `pulumi:"progress"`
 	// The ID of the snapshot to be exported.
 	SnapshotId string `pulumi:"snapshotId"`
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `initializing` \| `preparing` \| `uploading` \| `completed` \| `cancelled` \| `failed`).
 	State string `pulumi:"state"`
 	// One or more tags associated with the snapshot export task.
 	Tags []GetSnapshotExportTasksSnapshotExportTaskTag `pulumi:"tags"`
@@ -45341,7 +46060,7 @@ type GetSnapshotExportTasksSnapshotExportTaskArgs struct {
 	Progress pulumi.IntInput `pulumi:"progress"`
 	// The ID of the snapshot to be exported.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
+	// The state of the snapshot export task (`pending` \| `initializing` \| `preparing` \| `uploading` \| `completed` \| `cancelled` \| `failed`).
 	State pulumi.StringInput `pulumi:"state"`
 	// One or more tags associated with the snapshot export task.
 	Tags GetSnapshotExportTasksSnapshotExportTaskTagArrayInput `pulumi:"tags"`
@@ -45422,7 +46141,7 @@ func (o GetSnapshotExportTasksSnapshotExportTaskOutput) SnapshotId() pulumi.Stri
 	return o.ApplyT(func(v GetSnapshotExportTasksSnapshotExportTask) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
+// The state of the snapshot export task (`pending` \| `initializing` \| `preparing` \| `uploading` \| `completed` \| `cancelled` \| `failed`).
 func (o GetSnapshotExportTasksSnapshotExportTaskOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotExportTasksSnapshotExportTask) string { return v.State }).(pulumi.StringOutput)
 }
@@ -51535,6 +52254,112 @@ func (o GetVmSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetVmSecurityGro
 	}).(GetVmSecurityGroupOutput)
 }
 
+type GetVmShutdownBehaviorConfiguration struct {
+	// The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+	GuestAction string `pulumi:"guestAction"`
+	// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+	HostAction string `pulumi:"hostAction"`
+}
+
+// GetVmShutdownBehaviorConfigurationInput is an input type that accepts GetVmShutdownBehaviorConfigurationArgs and GetVmShutdownBehaviorConfigurationOutput values.
+// You can construct a concrete instance of `GetVmShutdownBehaviorConfigurationInput` via:
+//
+//	GetVmShutdownBehaviorConfigurationArgs{...}
+type GetVmShutdownBehaviorConfigurationInput interface {
+	pulumi.Input
+
+	ToGetVmShutdownBehaviorConfigurationOutput() GetVmShutdownBehaviorConfigurationOutput
+	ToGetVmShutdownBehaviorConfigurationOutputWithContext(context.Context) GetVmShutdownBehaviorConfigurationOutput
+}
+
+type GetVmShutdownBehaviorConfigurationArgs struct {
+	// The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+	GuestAction pulumi.StringInput `pulumi:"guestAction"`
+	// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+	HostAction pulumi.StringInput `pulumi:"hostAction"`
+}
+
+func (GetVmShutdownBehaviorConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (i GetVmShutdownBehaviorConfigurationArgs) ToGetVmShutdownBehaviorConfigurationOutput() GetVmShutdownBehaviorConfigurationOutput {
+	return i.ToGetVmShutdownBehaviorConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetVmShutdownBehaviorConfigurationArgs) ToGetVmShutdownBehaviorConfigurationOutputWithContext(ctx context.Context) GetVmShutdownBehaviorConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmShutdownBehaviorConfigurationOutput)
+}
+
+// GetVmShutdownBehaviorConfigurationArrayInput is an input type that accepts GetVmShutdownBehaviorConfigurationArray and GetVmShutdownBehaviorConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetVmShutdownBehaviorConfigurationArrayInput` via:
+//
+//	GetVmShutdownBehaviorConfigurationArray{ GetVmShutdownBehaviorConfigurationArgs{...} }
+type GetVmShutdownBehaviorConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetVmShutdownBehaviorConfigurationArrayOutput() GetVmShutdownBehaviorConfigurationArrayOutput
+	ToGetVmShutdownBehaviorConfigurationArrayOutputWithContext(context.Context) GetVmShutdownBehaviorConfigurationArrayOutput
+}
+
+type GetVmShutdownBehaviorConfigurationArray []GetVmShutdownBehaviorConfigurationInput
+
+func (GetVmShutdownBehaviorConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (i GetVmShutdownBehaviorConfigurationArray) ToGetVmShutdownBehaviorConfigurationArrayOutput() GetVmShutdownBehaviorConfigurationArrayOutput {
+	return i.ToGetVmShutdownBehaviorConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetVmShutdownBehaviorConfigurationArray) ToGetVmShutdownBehaviorConfigurationArrayOutputWithContext(ctx context.Context) GetVmShutdownBehaviorConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmShutdownBehaviorConfigurationArrayOutput)
+}
+
+type GetVmShutdownBehaviorConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetVmShutdownBehaviorConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (o GetVmShutdownBehaviorConfigurationOutput) ToGetVmShutdownBehaviorConfigurationOutput() GetVmShutdownBehaviorConfigurationOutput {
+	return o
+}
+
+func (o GetVmShutdownBehaviorConfigurationOutput) ToGetVmShutdownBehaviorConfigurationOutputWithContext(ctx context.Context) GetVmShutdownBehaviorConfigurationOutput {
+	return o
+}
+
+// The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+func (o GetVmShutdownBehaviorConfigurationOutput) GuestAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmShutdownBehaviorConfiguration) string { return v.GuestAction }).(pulumi.StringOutput)
+}
+
+// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+func (o GetVmShutdownBehaviorConfigurationOutput) HostAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmShutdownBehaviorConfiguration) string { return v.HostAction }).(pulumi.StringOutput)
+}
+
+type GetVmShutdownBehaviorConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVmShutdownBehaviorConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (o GetVmShutdownBehaviorConfigurationArrayOutput) ToGetVmShutdownBehaviorConfigurationArrayOutput() GetVmShutdownBehaviorConfigurationArrayOutput {
+	return o
+}
+
+func (o GetVmShutdownBehaviorConfigurationArrayOutput) ToGetVmShutdownBehaviorConfigurationArrayOutputWithContext(ctx context.Context) GetVmShutdownBehaviorConfigurationArrayOutput {
+	return o
+}
+
+func (o GetVmShutdownBehaviorConfigurationArrayOutput) Index(i pulumi.IntInput) GetVmShutdownBehaviorConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVmShutdownBehaviorConfiguration {
+		return vs[0].([]GetVmShutdownBehaviorConfiguration)[vs[1].(int)]
+	}).(GetVmShutdownBehaviorConfigurationOutput)
+}
+
 type GetVmStateFilter struct {
 	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
@@ -52637,9 +53462,11 @@ type GetVmsVm struct {
 	SecurityGroupNames []string `pulumi:"securityGroupNames"`
 	// One or more security groups associated with the VM.
 	SecurityGroups []GetVmsVmSecurityGroup `pulumi:"securityGroups"`
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfigurations []GetVmsVmShutdownBehaviorConfiguration `pulumi:"shutdownBehaviorConfigurations"`
 	// The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
 	State string `pulumi:"state"`
-	// The reason explaining the current state of the VM.
+	// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 	StateReason string `pulumi:"stateReason"`
 	// The ID of the Subnet for the VM.
 	SubnetId string `pulumi:"subnetId"`
@@ -52651,7 +53478,7 @@ type GetVmsVm struct {
 	UserData string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId string `pulumi:"vmId"`
-	// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+	// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior string `pulumi:"vmInitiatedShutdownBehavior"`
 	// The type of VM. For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType string `pulumi:"vmType"`
@@ -52732,9 +53559,11 @@ type GetVmsVmArgs struct {
 	SecurityGroupNames pulumi.StringArrayInput `pulumi:"securityGroupNames"`
 	// One or more security groups associated with the VM.
 	SecurityGroups GetVmsVmSecurityGroupArrayInput `pulumi:"securityGroups"`
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfigurations GetVmsVmShutdownBehaviorConfigurationArrayInput `pulumi:"shutdownBehaviorConfigurations"`
 	// The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
 	State pulumi.StringInput `pulumi:"state"`
-	// The reason explaining the current state of the VM.
+	// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 	StateReason pulumi.StringInput `pulumi:"stateReason"`
 	// The ID of the Subnet for the VM.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
@@ -52746,7 +53575,7 @@ type GetVmsVmArgs struct {
 	UserData pulumi.StringInput `pulumi:"userData"`
 	// The ID of the VM.
 	VmId pulumi.StringInput `pulumi:"vmId"`
-	// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+	// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior pulumi.StringInput `pulumi:"vmInitiatedShutdownBehavior"`
 	// The type of VM. For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType pulumi.StringInput `pulumi:"vmType"`
@@ -52968,12 +53797,17 @@ func (o GetVmsVmOutput) SecurityGroups() GetVmsVmSecurityGroupArrayOutput {
 	return o.ApplyT(func(v GetVmsVm) []GetVmsVmSecurityGroup { return v.SecurityGroups }).(GetVmsVmSecurityGroupArrayOutput)
 }
 
+// Information about the actions performed by the orchestrator when the VM shuts down.
+func (o GetVmsVmOutput) ShutdownBehaviorConfigurations() GetVmsVmShutdownBehaviorConfigurationArrayOutput {
+	return o.ApplyT(func(v GetVmsVm) []GetVmsVmShutdownBehaviorConfiguration { return v.ShutdownBehaviorConfigurations }).(GetVmsVmShutdownBehaviorConfigurationArrayOutput)
+}
+
 // The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
 func (o GetVmsVmOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVm) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The reason explaining the current state of the VM.
+// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 func (o GetVmsVmOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVm) string { return v.StateReason }).(pulumi.StringOutput)
 }
@@ -53003,7 +53837,7 @@ func (o GetVmsVmOutput) VmId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVm) string { return v.VmId }).(pulumi.StringOutput)
 }
 
-// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
 func (o GetVmsVmOutput) VmInitiatedShutdownBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsVm) string { return v.VmInitiatedShutdownBehavior }).(pulumi.StringOutput)
 }
@@ -55233,6 +56067,112 @@ func (o GetVmsVmSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetVmsVmSecur
 	}).(GetVmsVmSecurityGroupOutput)
 }
 
+type GetVmsVmShutdownBehaviorConfiguration struct {
+	// The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+	GuestAction string `pulumi:"guestAction"`
+	// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+	HostAction string `pulumi:"hostAction"`
+}
+
+// GetVmsVmShutdownBehaviorConfigurationInput is an input type that accepts GetVmsVmShutdownBehaviorConfigurationArgs and GetVmsVmShutdownBehaviorConfigurationOutput values.
+// You can construct a concrete instance of `GetVmsVmShutdownBehaviorConfigurationInput` via:
+//
+//	GetVmsVmShutdownBehaviorConfigurationArgs{...}
+type GetVmsVmShutdownBehaviorConfigurationInput interface {
+	pulumi.Input
+
+	ToGetVmsVmShutdownBehaviorConfigurationOutput() GetVmsVmShutdownBehaviorConfigurationOutput
+	ToGetVmsVmShutdownBehaviorConfigurationOutputWithContext(context.Context) GetVmsVmShutdownBehaviorConfigurationOutput
+}
+
+type GetVmsVmShutdownBehaviorConfigurationArgs struct {
+	// The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+	GuestAction pulumi.StringInput `pulumi:"guestAction"`
+	// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+	HostAction pulumi.StringInput `pulumi:"hostAction"`
+}
+
+func (GetVmsVmShutdownBehaviorConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmsVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (i GetVmsVmShutdownBehaviorConfigurationArgs) ToGetVmsVmShutdownBehaviorConfigurationOutput() GetVmsVmShutdownBehaviorConfigurationOutput {
+	return i.ToGetVmsVmShutdownBehaviorConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetVmsVmShutdownBehaviorConfigurationArgs) ToGetVmsVmShutdownBehaviorConfigurationOutputWithContext(ctx context.Context) GetVmsVmShutdownBehaviorConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmsVmShutdownBehaviorConfigurationOutput)
+}
+
+// GetVmsVmShutdownBehaviorConfigurationArrayInput is an input type that accepts GetVmsVmShutdownBehaviorConfigurationArray and GetVmsVmShutdownBehaviorConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetVmsVmShutdownBehaviorConfigurationArrayInput` via:
+//
+//	GetVmsVmShutdownBehaviorConfigurationArray{ GetVmsVmShutdownBehaviorConfigurationArgs{...} }
+type GetVmsVmShutdownBehaviorConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetVmsVmShutdownBehaviorConfigurationArrayOutput() GetVmsVmShutdownBehaviorConfigurationArrayOutput
+	ToGetVmsVmShutdownBehaviorConfigurationArrayOutputWithContext(context.Context) GetVmsVmShutdownBehaviorConfigurationArrayOutput
+}
+
+type GetVmsVmShutdownBehaviorConfigurationArray []GetVmsVmShutdownBehaviorConfigurationInput
+
+func (GetVmsVmShutdownBehaviorConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmsVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (i GetVmsVmShutdownBehaviorConfigurationArray) ToGetVmsVmShutdownBehaviorConfigurationArrayOutput() GetVmsVmShutdownBehaviorConfigurationArrayOutput {
+	return i.ToGetVmsVmShutdownBehaviorConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetVmsVmShutdownBehaviorConfigurationArray) ToGetVmsVmShutdownBehaviorConfigurationArrayOutputWithContext(ctx context.Context) GetVmsVmShutdownBehaviorConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmsVmShutdownBehaviorConfigurationArrayOutput)
+}
+
+type GetVmsVmShutdownBehaviorConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetVmsVmShutdownBehaviorConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmsVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (o GetVmsVmShutdownBehaviorConfigurationOutput) ToGetVmsVmShutdownBehaviorConfigurationOutput() GetVmsVmShutdownBehaviorConfigurationOutput {
+	return o
+}
+
+func (o GetVmsVmShutdownBehaviorConfigurationOutput) ToGetVmsVmShutdownBehaviorConfigurationOutputWithContext(ctx context.Context) GetVmsVmShutdownBehaviorConfigurationOutput {
+	return o
+}
+
+// The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+func (o GetVmsVmShutdownBehaviorConfigurationOutput) GuestAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmsVmShutdownBehaviorConfiguration) string { return v.GuestAction }).(pulumi.StringOutput)
+}
+
+// The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+func (o GetVmsVmShutdownBehaviorConfigurationOutput) HostAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmsVmShutdownBehaviorConfiguration) string { return v.HostAction }).(pulumi.StringOutput)
+}
+
+type GetVmsVmShutdownBehaviorConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVmsVmShutdownBehaviorConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmsVmShutdownBehaviorConfiguration)(nil)).Elem()
+}
+
+func (o GetVmsVmShutdownBehaviorConfigurationArrayOutput) ToGetVmsVmShutdownBehaviorConfigurationArrayOutput() GetVmsVmShutdownBehaviorConfigurationArrayOutput {
+	return o
+}
+
+func (o GetVmsVmShutdownBehaviorConfigurationArrayOutput) ToGetVmsVmShutdownBehaviorConfigurationArrayOutputWithContext(ctx context.Context) GetVmsVmShutdownBehaviorConfigurationArrayOutput {
+	return o
+}
+
+func (o GetVmsVmShutdownBehaviorConfigurationArrayOutput) Index(i pulumi.IntInput) GetVmsVmShutdownBehaviorConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVmsVmShutdownBehaviorConfiguration {
+		return vs[0].([]GetVmsVmShutdownBehaviorConfiguration)[vs[1].(int)]
+	}).(GetVmsVmShutdownBehaviorConfigurationOutput)
+}
+
 type GetVmsVmTag struct {
 	// The key of the tag, between 1 and 255 characters.
 	Key string `pulumi:"key"`
@@ -57364,6 +58304,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerRuleListenerPtrInput)(nil)).Elem(), LoadBalancerListenerRuleListenerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerRuleListenerRuleInput)(nil)).Elem(), LoadBalancerListenerRuleListenerRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerRuleListenerRulePtrInput)(nil)).Elem(), LoadBalancerListenerRuleListenerRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerRuleTimeoutsInput)(nil)).Elem(), LoadBalancerListenerRuleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerListenerRuleTimeoutsPtrInput)(nil)).Elem(), LoadBalancerListenerRuleTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerStickyCookiePolicyInput)(nil)).Elem(), LoadBalancerLoadBalancerStickyCookiePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerLoadBalancerStickyCookiePolicyArrayInput)(nil)).Elem(), LoadBalancerLoadBalancerStickyCookiePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPolicyAccessLogInput)(nil)).Elem(), LoadBalancerPolicyAccessLogArgs{})
@@ -57380,10 +58322,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPolicySourceSecurityGroupArrayInput)(nil)).Elem(), LoadBalancerPolicySourceSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPolicyTagInput)(nil)).Elem(), LoadBalancerPolicyTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPolicyTagArrayInput)(nil)).Elem(), LoadBalancerPolicyTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPolicyTimeoutsInput)(nil)).Elem(), LoadBalancerPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPolicyTimeoutsPtrInput)(nil)).Elem(), LoadBalancerPolicyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerSourceSecurityGroupInput)(nil)).Elem(), LoadBalancerSourceSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerSourceSecurityGroupArrayInput)(nil)).Elem(), LoadBalancerSourceSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerTagInput)(nil)).Elem(), LoadBalancerTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerTagArrayInput)(nil)).Elem(), LoadBalancerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerTimeoutsInput)(nil)).Elem(), LoadBalancerTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerTimeoutsPtrInput)(nil)).Elem(), LoadBalancerTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerVmsTimeoutsInput)(nil)).Elem(), LoadBalancerVmsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerVmsTimeoutsPtrInput)(nil)).Elem(), LoadBalancerVmsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MainRouteTableLinkTimeoutsInput)(nil)).Elem(), MainRouteTableLinkTimeoutsArgs{})
@@ -57594,6 +58540,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmPrimaryNicSecurityGroupArrayInput)(nil)).Elem(), VmPrimaryNicSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmSecurityGroupInput)(nil)).Elem(), VmSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmSecurityGroupArrayInput)(nil)).Elem(), VmSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmShutdownBehaviorConfigurationInput)(nil)).Elem(), VmShutdownBehaviorConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmShutdownBehaviorConfigurationPtrInput)(nil)).Elem(), VmShutdownBehaviorConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmTagInput)(nil)).Elem(), VmTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmTagArrayInput)(nil)).Elem(), VmTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeLinkTimeoutsInput)(nil)).Elem(), VolumeLinkTimeoutsArgs{})
@@ -58077,6 +59025,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmPrimaryNicSecurityGroupArrayInput)(nil)).Elem(), GetVmPrimaryNicSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmSecurityGroupInput)(nil)).Elem(), GetVmSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmSecurityGroupArrayInput)(nil)).Elem(), GetVmSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmShutdownBehaviorConfigurationInput)(nil)).Elem(), GetVmShutdownBehaviorConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmShutdownBehaviorConfigurationArrayInput)(nil)).Elem(), GetVmShutdownBehaviorConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmStateFilterInput)(nil)).Elem(), GetVmStateFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmStateFilterArrayInput)(nil)).Elem(), GetVmStateFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmStateMaintenanceEventInput)(nil)).Elem(), GetVmStateMaintenanceEventArgs{})
@@ -58131,6 +59081,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsVmPrimaryNicSecurityGroupArrayInput)(nil)).Elem(), GetVmsVmPrimaryNicSecurityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsVmSecurityGroupInput)(nil)).Elem(), GetVmsVmSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsVmSecurityGroupArrayInput)(nil)).Elem(), GetVmsVmSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsVmShutdownBehaviorConfigurationInput)(nil)).Elem(), GetVmsVmShutdownBehaviorConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsVmShutdownBehaviorConfigurationArrayInput)(nil)).Elem(), GetVmsVmShutdownBehaviorConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsVmTagInput)(nil)).Elem(), GetVmsVmTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsVmTagArrayInput)(nil)).Elem(), GetVmsVmTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeFilterInput)(nil)).Elem(), GetVolumeFilterArgs{})
@@ -58245,6 +59197,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerListenerRuleListenerPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerListenerRuleListenerRuleOutput{})
 	pulumi.RegisterOutputType(LoadBalancerListenerRuleListenerRulePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerRuleTimeoutsOutput{})
+	pulumi.RegisterOutputType(LoadBalancerListenerRuleTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerLoadBalancerStickyCookiePolicyOutput{})
 	pulumi.RegisterOutputType(LoadBalancerLoadBalancerStickyCookiePolicyArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPolicyAccessLogOutput{})
@@ -58261,10 +59215,14 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerPolicySourceSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPolicyTagOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPolicyTagArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPolicyTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerSourceSecurityGroupOutput{})
 	pulumi.RegisterOutputType(LoadBalancerSourceSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerTagOutput{})
 	pulumi.RegisterOutputType(LoadBalancerTagArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerTimeoutsOutput{})
+	pulumi.RegisterOutputType(LoadBalancerTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerVmsTimeoutsOutput{})
 	pulumi.RegisterOutputType(LoadBalancerVmsTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(MainRouteTableLinkTimeoutsOutput{})
@@ -58475,6 +59433,8 @@ func init() {
 	pulumi.RegisterOutputType(VmPrimaryNicSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(VmSecurityGroupOutput{})
 	pulumi.RegisterOutputType(VmSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(VmShutdownBehaviorConfigurationOutput{})
+	pulumi.RegisterOutputType(VmShutdownBehaviorConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(VmTagOutput{})
 	pulumi.RegisterOutputType(VmTagArrayOutput{})
 	pulumi.RegisterOutputType(VolumeLinkTimeoutsOutput{})
@@ -58958,6 +59918,8 @@ func init() {
 	pulumi.RegisterOutputType(GetVmPrimaryNicSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetVmSecurityGroupOutput{})
 	pulumi.RegisterOutputType(GetVmSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetVmShutdownBehaviorConfigurationOutput{})
+	pulumi.RegisterOutputType(GetVmShutdownBehaviorConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetVmStateFilterOutput{})
 	pulumi.RegisterOutputType(GetVmStateFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVmStateMaintenanceEventOutput{})
@@ -59012,6 +59974,8 @@ func init() {
 	pulumi.RegisterOutputType(GetVmsVmPrimaryNicSecurityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetVmsVmSecurityGroupOutput{})
 	pulumi.RegisterOutputType(GetVmsVmSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetVmsVmShutdownBehaviorConfigurationOutput{})
+	pulumi.RegisterOutputType(GetVmsVmShutdownBehaviorConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetVmsVmTagOutput{})
 	pulumi.RegisterOutputType(GetVmsVmTagArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumeFilterOutput{})

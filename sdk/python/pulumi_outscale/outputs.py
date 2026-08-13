@@ -56,6 +56,7 @@ __all__ = [
     'LoadBalancerListener',
     'LoadBalancerListenerRuleListener',
     'LoadBalancerListenerRuleListenerRule',
+    'LoadBalancerListenerRuleTimeouts',
     'LoadBalancerLoadBalancerStickyCookiePolicy',
     'LoadBalancerPolicyAccessLog',
     'LoadBalancerPolicyApplicationStickyCookiePolicy',
@@ -64,8 +65,10 @@ __all__ = [
     'LoadBalancerPolicyLoadBalancerStickyCookiePolicy',
     'LoadBalancerPolicySourceSecurityGroup',
     'LoadBalancerPolicyTag',
+    'LoadBalancerPolicyTimeouts',
     'LoadBalancerSourceSecurityGroup',
     'LoadBalancerTag',
+    'LoadBalancerTimeouts',
     'LoadBalancerVmsTimeouts',
     'MainRouteTableLinkTimeouts',
     'NatServicePublicIp',
@@ -170,6 +173,7 @@ __all__ = [
     'VmPrimaryNicPrivateIpLinkPublicIp',
     'VmPrimaryNicSecurityGroup',
     'VmSecurityGroup',
+    'VmShutdownBehaviorConfiguration',
     'VmTag',
     'VolumeLinkTimeouts',
     'VolumeLinkedVolume',
@@ -412,6 +416,7 @@ __all__ = [
     'GetVmPrimaryNicPrivateIpLinkPublicIpResult',
     'GetVmPrimaryNicSecurityGroupResult',
     'GetVmSecurityGroupResult',
+    'GetVmShutdownBehaviorConfigurationResult',
     'GetVmStateFilterResult',
     'GetVmStateMaintenanceEventResult',
     'GetVmStatesFilterResult',
@@ -439,6 +444,7 @@ __all__ = [
     'GetVmsVmPrimaryNicPrivateIpLinkPublicIpResult',
     'GetVmsVmPrimaryNicSecurityGroupResult',
     'GetVmsVmSecurityGroupResult',
+    'GetVmsVmShutdownBehaviorConfigurationResult',
     'GetVmsVmTagResult',
     'GetVolumeFilterResult',
     'GetVolumeLinkedVolumeResult',
@@ -2784,6 +2790,61 @@ class LoadBalancerListenerRuleListenerRule(dict):
 
 
 @pulumi.output_type
+class LoadBalancerListenerRuleTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class LoadBalancerLoadBalancerStickyCookiePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3254,20 +3315,18 @@ class LoadBalancerPolicySourceSecurityGroup(dict):
 @pulumi.output_type
 class LoadBalancerPolicyTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
+                 key: _builtins.str,
+                 value: _builtins.str):
         """
         :param _builtins.str key: The key of the tag, between 1 and 128 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
         The key of the tag, between 1 and 128 characters.
         """
@@ -3275,11 +3334,54 @@ class LoadBalancerPolicyTag(dict):
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
+    def value(self) -> _builtins.str:
         """
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class LoadBalancerPolicyTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -3335,20 +3437,19 @@ class LoadBalancerSourceSecurityGroup(dict):
 @pulumi.output_type
 class LoadBalancerTag(dict):
     def __init__(__self__, *,
-                 key: Optional[_builtins.str] = None,
+                 key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str key: The key of the tag, between 1 and 128 characters.
         :param _builtins.str value: The value of the tag, between 0 and 255 characters.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[_builtins.str]:
+    def key(self) -> _builtins.str:
         """
         The key of the tag, between 1 and 128 characters.
         """
@@ -3361,6 +3462,61 @@ class LoadBalancerTag(dict):
         The value of the tag, between 0 and 255 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class LoadBalancerTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -9830,6 +9986,56 @@ class VmSecurityGroup(dict):
 
 
 @pulumi.output_type
+class VmShutdownBehaviorConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guestAction":
+            suggest = "guest_action"
+        elif key == "hostAction":
+            suggest = "host_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmShutdownBehaviorConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmShutdownBehaviorConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmShutdownBehaviorConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guest_action: Optional[_builtins.str] = None,
+                 host_action: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str guest_action: The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+        :param _builtins.str host_action: The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+        """
+        if guest_action is not None:
+            pulumi.set(__self__, "guest_action", guest_action)
+        if host_action is not None:
+            pulumi.set(__self__, "host_action", host_action)
+
+    @_builtins.property
+    @pulumi.getter(name="guestAction")
+    def guest_action(self) -> Optional[_builtins.str]:
+        """
+        The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+        """
+        return pulumi.get(self, "guest_action")
+
+    @_builtins.property
+    @pulumi.getter(name="hostAction")
+    def host_action(self) -> Optional[_builtins.str]:
+        """
+        The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+        """
+        return pulumi.get(self, "host_action")
+
+
+@pulumi.output_type
 class VmTag(dict):
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
@@ -13297,8 +13503,8 @@ class GetLoadBalancerVmHealthBackendVmHealthResult(dict):
                  vm_id: _builtins.str):
         """
         :param _builtins.str description: The description of the state of the backend VM.
-        :param _builtins.str state: The state of the backend VM (`InService` \\| `OutOfService` \\| `Unknown`).
-        :param _builtins.str state_reason: Information about the cause of `OutOfService` VMs.<br />
+        :param _builtins.str state: The state of the backend VM (`UP` \\| `DOWN` \\| `UNKNOWN`).
+        :param _builtins.str state_reason: Information about the cause of `DOWN` VMs.<br />
                Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \\| `Instance` \\| `N/A`).
         :param _builtins.str vm_id: The ID of the backend VM.
         """
@@ -13319,7 +13525,7 @@ class GetLoadBalancerVmHealthBackendVmHealthResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the backend VM (`InService` \\| `OutOfService` \\| `Unknown`).
+        The state of the backend VM (`UP` \\| `DOWN` \\| `UNKNOWN`).
         """
         return pulumi.get(self, "state")
 
@@ -13327,7 +13533,7 @@ class GetLoadBalancerVmHealthBackendVmHealthResult(dict):
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> _builtins.str:
         """
-        Information about the cause of `OutOfService` VMs.<br />
+        Information about the cause of `DOWN` VMs.<br />
         Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \\| `Instance` \\| `N/A`).
         """
         return pulumi.get(self, "state_reason")
@@ -18064,7 +18270,7 @@ class GetSnapshotExportTasksSnapshotExportTaskResult(dict):
         :param Sequence['GetSnapshotExportTasksSnapshotExportTaskOsuExportArgs'] osu_exports: Information about the snapshot export task.
         :param _builtins.int progress: The progress of the snapshot export task, as a percentage.
         :param _builtins.str snapshot_id: The ID of the snapshot to be exported.
-        :param _builtins.str state: The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
+        :param _builtins.str state: The state of the snapshot export task (`pending` \\| `initializing` \\| `preparing` \\| `uploading` \\| `completed` \\| `cancelled` \\| `failed`).
         :param Sequence['GetSnapshotExportTasksSnapshotExportTaskTagArgs'] tags: One or more tags associated with the snapshot export task.
         :param _builtins.str task_id: The ID of the snapshot export task.
         """
@@ -18112,7 +18318,7 @@ class GetSnapshotExportTasksSnapshotExportTaskResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `cancelled` \\| `failed`).
+        The state of the snapshot export task (`pending` \\| `initializing` \\| `preparing` \\| `uploading` \\| `completed` \\| `cancelled` \\| `failed`).
         """
         return pulumi.get(self, "state")
 
@@ -20384,6 +20590,35 @@ class GetVmSecurityGroupResult(dict):
 
 
 @pulumi.output_type
+class GetVmShutdownBehaviorConfigurationResult(dict):
+    def __init__(__self__, *,
+                 guest_action: _builtins.str,
+                 host_action: _builtins.str):
+        """
+        :param _builtins.str guest_action: The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+        :param _builtins.str host_action: The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+        """
+        pulumi.set(__self__, "guest_action", guest_action)
+        pulumi.set(__self__, "host_action", host_action)
+
+    @_builtins.property
+    @pulumi.getter(name="guestAction")
+    def guest_action(self) -> _builtins.str:
+        """
+        The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+        """
+        return pulumi.get(self, "guest_action")
+
+    @_builtins.property
+    @pulumi.getter(name="hostAction")
+    def host_action(self) -> _builtins.str:
+        """
+        The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+        """
+        return pulumi.get(self, "host_action")
+
+
+@pulumi.output_type
 class GetVmStateFilterResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -20775,6 +21010,7 @@ class GetVmsVmResult(dict):
                  security_group_ids: Sequence[_builtins.str],
                  security_group_names: Sequence[_builtins.str],
                  security_groups: Sequence['outputs.GetVmsVmSecurityGroupResult'],
+                 shutdown_behavior_configurations: Sequence['outputs.GetVmsVmShutdownBehaviorConfigurationResult'],
                  state: _builtins.str,
                  state_reason: _builtins.str,
                  subnet_id: _builtins.str,
@@ -20814,14 +21050,15 @@ class GetVmsVmResult(dict):
         :param Sequence[_builtins.str] security_group_ids: The IDs of the security groups for the VMs (only in the public Cloud).
         :param Sequence[_builtins.str] security_group_names: The names of the security groups for the VMs (only in the public Cloud).
         :param Sequence['GetVmsVmSecurityGroupArgs'] security_groups: One or more security groups associated with the VM.
+        :param Sequence['GetVmsVmShutdownBehaviorConfigurationArgs'] shutdown_behavior_configurations: Information about the actions performed by the orchestrator when the VM shuts down.
         :param _builtins.str state: The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).
-        :param _builtins.str state_reason: The reason explaining the current state of the VM.
+        :param _builtins.str state_reason: The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         :param _builtins.str subnet_id: The ID of the Subnet for the VM.
         :param Sequence['GetVmsVmTagArgs'] tags: One or more tags associated with the VM.
         :param _builtins.bool tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param _builtins.str user_data: The Base64-encoded MIME user data.
         :param _builtins.str vm_id: The ID of the VM.
-        :param _builtins.str vm_initiated_shutdown_behavior: The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+        :param _builtins.str vm_initiated_shutdown_behavior: The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         :param _builtins.str vm_type: The type of VM. For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
         """
         pulumi.set(__self__, "actions_on_next_boots", actions_on_next_boots)
@@ -20858,6 +21095,7 @@ class GetVmsVmResult(dict):
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "security_group_names", security_group_names)
         pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "shutdown_behavior_configurations", shutdown_behavior_configurations)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_reason", state_reason)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -21126,6 +21364,14 @@ class GetVmsVmResult(dict):
         return pulumi.get(self, "security_groups")
 
     @_builtins.property
+    @pulumi.getter(name="shutdownBehaviorConfigurations")
+    def shutdown_behavior_configurations(self) -> Sequence['outputs.GetVmsVmShutdownBehaviorConfigurationResult']:
+        """
+        Information about the actions performed by the orchestrator when the VM shuts down.
+        """
+        return pulumi.get(self, "shutdown_behavior_configurations")
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
@@ -21137,7 +21383,7 @@ class GetVmsVmResult(dict):
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> _builtins.str:
         """
-        The reason explaining the current state of the VM.
+        The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         """
         return pulumi.get(self, "state_reason")
 
@@ -21185,7 +21431,7 @@ class GetVmsVmResult(dict):
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
     def vm_initiated_shutdown_behavior(self) -> _builtins.str:
         """
-        The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+        The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
@@ -22173,6 +22419,35 @@ class GetVmsVmSecurityGroupResult(dict):
         The name of the security group.
         """
         return pulumi.get(self, "security_group_name")
+
+
+@pulumi.output_type
+class GetVmsVmShutdownBehaviorConfigurationResult(dict):
+    def __init__(__self__, *,
+                 guest_action: _builtins.str,
+                 host_action: _builtins.str):
+        """
+        :param _builtins.str guest_action: The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+        :param _builtins.str host_action: The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+        """
+        pulumi.set(__self__, "guest_action", guest_action)
+        pulumi.set(__self__, "host_action", host_action)
+
+    @_builtins.property
+    @pulumi.getter(name="guestAction")
+    def guest_action(self) -> _builtins.str:
+        """
+        The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: `stop` | `terminate`.
+        """
+        return pulumi.get(self, "guest_action")
+
+    @_builtins.property
+    @pulumi.getter(name="hostAction")
+    def host_action(self) -> _builtins.str:
+        """
+        The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: `restart` | `stop`.
+        """
+        return pulumi.get(self, "host_action")
 
 
 @pulumi.output_type

@@ -116,7 +116,7 @@ namespace Pulumi.Outscale
         public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the snapshot export task (`Pending` \| `Active` \| `Completed` \| `Cancelled` \| `Failed`).
+        /// The state of the snapshot export task (`Pending` \| `Initializing` \| `Preparing` \| `Uploading` \| `Completed` \| `Cancelled` \| `Failed`).
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Outscale
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The state of the snapshot export task (`Pending` \| `Active` \| `Completed` \| `Cancelled` \| `Failed`).
+        /// The state of the snapshot export task (`Pending` \| `Initializing` \| `Preparing` \| `Uploading` \| `Completed` \| `Cancelled` \| `Failed`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

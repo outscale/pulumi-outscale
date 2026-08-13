@@ -228,6 +228,9 @@ namespace Pulumi.Outscale
         [Output("tags")]
         public Output<ImmutableArray<Outputs.LoadBalancerPolicyTag>> Tags { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.LoadBalancerPolicyTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a LoadBalancerPolicy resource with the given unique name, arguments, and options.
@@ -274,18 +277,6 @@ namespace Pulumi.Outscale
 
     public sealed class LoadBalancerPolicyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessLogs")]
-        private InputList<Inputs.LoadBalancerPolicyAccessLogArgs>? _accessLogs;
-
-        /// <summary>
-        /// Information about access logs.
-        /// </summary>
-        public InputList<Inputs.LoadBalancerPolicyAccessLogArgs> AccessLogs
-        {
-            get => _accessLogs ?? (_accessLogs = new InputList<Inputs.LoadBalancerPolicyAccessLogArgs>());
-            set => _accessLogs = value;
-        }
-
         [Input("backendVmIds")]
         private InputList<string>? _backendVmIds;
 
@@ -368,6 +359,9 @@ namespace Pulumi.Outscale
             get => _subregionNames ?? (_subregionNames = new InputList<string>());
             set => _subregionNames = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.LoadBalancerPolicyTimeoutsArgs>? Timeouts { get; set; }
 
         public LoadBalancerPolicyArgs()
         {
@@ -565,6 +559,9 @@ namespace Pulumi.Outscale
             get => _tags ?? (_tags = new InputList<Inputs.LoadBalancerPolicyTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("timeouts")]
+        public Input<Inputs.LoadBalancerPolicyTimeoutsGetArgs>? Timeouts { get; set; }
 
         public LoadBalancerPolicyState()
         {

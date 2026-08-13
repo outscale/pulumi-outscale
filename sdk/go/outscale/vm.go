@@ -653,9 +653,11 @@ type Vm struct {
 	SecurityGroupNames pulumi.StringArrayOutput `pulumi:"securityGroupNames"`
 	// One or more security groups associated with the VM.
 	SecurityGroups VmSecurityGroupArrayOutput `pulumi:"securityGroups"`
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfiguration VmShutdownBehaviorConfigurationOutput `pulumi:"shutdownBehaviorConfiguration"`
 	// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 	State pulumi.StringPtrOutput `pulumi:"state"`
-	// The reason explaining the current state of the VM.
+	// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
 	// The ID of the Subnet in which you want to create the VM.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
@@ -667,7 +669,9 @@ type Vm struct {
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The ID of the VM.
 	VmId pulumi.StringOutput `pulumi:"vmId"`
-	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+	//
+	// Deprecated: Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior pulumi.StringOutput `pulumi:"vmInitiatedShutdownBehavior"`
 	// The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType pulumi.StringOutput `pulumi:"vmType"`
@@ -790,9 +794,11 @@ type vmState struct {
 	SecurityGroupNames []string `pulumi:"securityGroupNames"`
 	// One or more security groups associated with the VM.
 	SecurityGroups []VmSecurityGroup `pulumi:"securityGroups"`
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfiguration *VmShutdownBehaviorConfiguration `pulumi:"shutdownBehaviorConfiguration"`
 	// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 	State *string `pulumi:"state"`
-	// The reason explaining the current state of the VM.
+	// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 	StateReason *string `pulumi:"stateReason"`
 	// The ID of the Subnet in which you want to create the VM.
 	SubnetId *string `pulumi:"subnetId"`
@@ -804,7 +810,9 @@ type vmState struct {
 	UserData *string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId *string `pulumi:"vmId"`
-	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+	//
+	// Deprecated: Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior *string `pulumi:"vmInitiatedShutdownBehavior"`
 	// The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType *string `pulumi:"vmType"`
@@ -888,9 +896,11 @@ type VmState struct {
 	SecurityGroupNames pulumi.StringArrayInput
 	// One or more security groups associated with the VM.
 	SecurityGroups VmSecurityGroupArrayInput
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfiguration VmShutdownBehaviorConfigurationPtrInput
 	// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 	State pulumi.StringPtrInput
-	// The reason explaining the current state of the VM.
+	// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 	StateReason pulumi.StringPtrInput
 	// The ID of the Subnet in which you want to create the VM.
 	SubnetId pulumi.StringPtrInput
@@ -902,7 +912,9 @@ type VmState struct {
 	UserData pulumi.StringPtrInput
 	// The ID of the VM.
 	VmId pulumi.StringPtrInput
-	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+	//
+	// Deprecated: Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior pulumi.StringPtrInput
 	// The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType pulumi.StringPtrInput
@@ -951,6 +963,8 @@ type vmArgs struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
 	SecurityGroupNames []string `pulumi:"securityGroupNames"`
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfiguration *VmShutdownBehaviorConfiguration `pulumi:"shutdownBehaviorConfiguration"`
 	// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 	State *string `pulumi:"state"`
 	// The ID of the Subnet in which you want to create the VM.
@@ -963,7 +977,9 @@ type vmArgs struct {
 	UserData *string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId *string `pulumi:"vmId"`
-	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+	//
+	// Deprecated: Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior *string `pulumi:"vmInitiatedShutdownBehavior"`
 	// The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType *string `pulumi:"vmType"`
@@ -1009,6 +1025,8 @@ type VmArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// One or more names of security groups for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
 	SecurityGroupNames pulumi.StringArrayInput
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfiguration VmShutdownBehaviorConfigurationPtrInput
 	// The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 	State pulumi.StringPtrInput
 	// The ID of the Subnet in which you want to create the VM.
@@ -1021,7 +1039,9 @@ type VmArgs struct {
 	UserData pulumi.StringPtrInput
 	// The ID of the VM.
 	VmId pulumi.StringPtrInput
-	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+	// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+	//
+	// Deprecated: Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior pulumi.StringPtrInput
 	// The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType pulumi.StringPtrInput
@@ -1308,12 +1328,17 @@ func (o VmOutput) SecurityGroups() VmSecurityGroupArrayOutput {
 	return o.ApplyT(func(v *Vm) VmSecurityGroupArrayOutput { return v.SecurityGroups }).(VmSecurityGroupArrayOutput)
 }
 
+// Information about the actions performed by the orchestrator when the VM shuts down.
+func (o VmOutput) ShutdownBehaviorConfiguration() VmShutdownBehaviorConfigurationOutput {
+	return o.ApplyT(func(v *Vm) VmShutdownBehaviorConfigurationOutput { return v.ShutdownBehaviorConfiguration }).(VmShutdownBehaviorConfigurationOutput)
+}
+
 // The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
 func (o VmOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// The reason explaining the current state of the VM.
+// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 func (o VmOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
 }
@@ -1343,7 +1368,9 @@ func (o VmOutput) VmId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.VmId }).(pulumi.StringOutput)
 }
 
-// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+// The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+//
+// Deprecated: Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
 func (o VmOutput) VmInitiatedShutdownBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vm) pulumi.StringOutput { return v.VmInitiatedShutdownBehavior }).(pulumi.StringOutput)
 }

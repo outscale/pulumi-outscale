@@ -98,7 +98,7 @@ export class SnapshotExportTask extends pulumi.CustomResource {
      */
     declare public readonly snapshotId: pulumi.Output<string>;
     /**
-     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
+     * The state of the snapshot export task (`pending` \| `initializing` \| `preparing` \| `uploading` \| `completed` \| `cancelled` \| `failed`).
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -181,7 +181,7 @@ export interface SnapshotExportTaskState {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * The state of the snapshot export task (`pending` \| `active` \| `completed` \| `cancelled` \| `failed`).
+     * The state of the snapshot export task (`pending` \| `initializing` \| `preparing` \| `uploading` \| `completed` \| `cancelled` \| `failed`).
      */
     state?: pulumi.Input<string>;
     /**

@@ -22,8 +22,7 @@ import * as utilities from "./utilities";
  *
  * const flexibleGpu01 = new outscale.FlexibleGpu("flexible_gpu01", {
  *     modelName: modelName,
- *     generation: "v4",
- *     subregionName: `${region}a`,
+ *     generation: "v5",
  *     deleteOnVmDeletion: true,
  * });
  * ```
@@ -87,7 +86,7 @@ export class FlexibleGpu extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * The Subregion in which you want to create the fGPU.
+     * The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
      */
     declare public readonly subregionName: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.FlexibleGpuTimeouts | undefined>;
@@ -121,9 +120,6 @@ export class FlexibleGpu extends pulumi.CustomResource {
             const args = argsOrState as FlexibleGpuArgs | undefined;
             if (args?.modelName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'modelName'");
-            }
-            if (args?.subregionName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'subregionName'");
             }
             resourceInputs["deleteOnVmDeletion"] = args?.deleteOnVmDeletion;
             resourceInputs["generation"] = args?.generation;
@@ -164,7 +160,7 @@ export interface FlexibleGpuState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The Subregion in which you want to create the fGPU.
+     * The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
      */
     subregionName?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.FlexibleGpuTimeouts>;
@@ -191,8 +187,8 @@ export interface FlexibleGpuArgs {
      */
     modelName: pulumi.Input<string>;
     /**
-     * The Subregion in which you want to create the fGPU.
+     * The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
      */
-    subregionName: pulumi.Input<string>;
+    subregionName?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.FlexibleGpuTimeouts>;
 }

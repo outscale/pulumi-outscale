@@ -162,6 +162,7 @@ type LoadBalancerListenerRule struct {
 	// Information about the listener rule.
 	ListenerRule LoadBalancerListenerRuleListenerRuleOutput `pulumi:"listenerRule"`
 	RequestId    pulumi.StringOutput                        `pulumi:"requestId"`
+	Timeouts     LoadBalancerListenerRuleTimeoutsPtrOutput  `pulumi:"timeouts"`
 	// The IDs of the backend VMs.
 	VmIds pulumi.StringArrayOutput `pulumi:"vmIds"`
 }
@@ -210,6 +211,7 @@ type loadBalancerListenerRuleState struct {
 	// Information about the listener rule.
 	ListenerRule *LoadBalancerListenerRuleListenerRule `pulumi:"listenerRule"`
 	RequestId    *string                               `pulumi:"requestId"`
+	Timeouts     *LoadBalancerListenerRuleTimeouts     `pulumi:"timeouts"`
 	// The IDs of the backend VMs.
 	VmIds []string `pulumi:"vmIds"`
 }
@@ -220,6 +222,7 @@ type LoadBalancerListenerRuleState struct {
 	// Information about the listener rule.
 	ListenerRule LoadBalancerListenerRuleListenerRulePtrInput
 	RequestId    pulumi.StringPtrInput
+	Timeouts     LoadBalancerListenerRuleTimeoutsPtrInput
 	// The IDs of the backend VMs.
 	VmIds pulumi.StringArrayInput
 }
@@ -233,6 +236,7 @@ type loadBalancerListenerRuleArgs struct {
 	Listener LoadBalancerListenerRuleListener `pulumi:"listener"`
 	// Information about the listener rule.
 	ListenerRule LoadBalancerListenerRuleListenerRule `pulumi:"listenerRule"`
+	Timeouts     *LoadBalancerListenerRuleTimeouts    `pulumi:"timeouts"`
 	// The IDs of the backend VMs.
 	VmIds []string `pulumi:"vmIds"`
 }
@@ -243,6 +247,7 @@ type LoadBalancerListenerRuleArgs struct {
 	Listener LoadBalancerListenerRuleListenerInput
 	// Information about the listener rule.
 	ListenerRule LoadBalancerListenerRuleListenerRuleInput
+	Timeouts     LoadBalancerListenerRuleTimeoutsPtrInput
 	// The IDs of the backend VMs.
 	VmIds pulumi.StringArrayInput
 }
@@ -346,6 +351,10 @@ func (o LoadBalancerListenerRuleOutput) ListenerRule() LoadBalancerListenerRuleL
 
 func (o LoadBalancerListenerRuleOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerListenerRule) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerListenerRuleOutput) Timeouts() LoadBalancerListenerRuleTimeoutsPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerListenerRule) LoadBalancerListenerRuleTimeoutsPtrOutput { return v.Timeouts }).(LoadBalancerListenerRuleTimeoutsPtrOutput)
 }
 
 // The IDs of the backend VMs.

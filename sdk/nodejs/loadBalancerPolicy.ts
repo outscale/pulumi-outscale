@@ -94,7 +94,7 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
     /**
      * Information about access logs.
      */
-    declare public readonly accessLogs: pulumi.Output<outputs.LoadBalancerPolicyAccessLog[]>;
+    declare public /*out*/ readonly accessLogs: pulumi.Output<outputs.LoadBalancerPolicyAccessLog[]>;
     /**
      * The stickiness policies defined for the load balancer.
      */
@@ -170,6 +170,7 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
      * One or more tags associated with the load balancer.
      */
     declare public /*out*/ readonly tags: pulumi.Output<outputs.LoadBalancerPolicyTag[]>;
+    declare public readonly timeouts: pulumi.Output<outputs.LoadBalancerPolicyTimeouts | undefined>;
 
     /**
      * Create a LoadBalancerPolicy resource with the given unique name, arguments, and options.
@@ -206,6 +207,7 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
             resourceInputs["subnets"] = state?.subnets;
             resourceInputs["subregionNames"] = state?.subregionNames;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as LoadBalancerPolicyArgs | undefined;
             if (args?.loadBalancerName === undefined && !opts.urn) {
@@ -217,7 +219,6 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
             if (args?.policyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyType'");
             }
-            resourceInputs["accessLogs"] = args?.accessLogs;
             resourceInputs["backendVmIds"] = args?.backendVmIds;
             resourceInputs["cookieExpirationPeriod"] = args?.cookieExpirationPeriod;
             resourceInputs["cookieName"] = args?.cookieName;
@@ -228,6 +229,8 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
             resourceInputs["securityGroups"] = args?.securityGroups;
             resourceInputs["subnets"] = args?.subnets;
             resourceInputs["subregionNames"] = args?.subregionNames;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["accessLogs"] = undefined /*out*/;
             resourceInputs["applicationStickyCookiePolicies"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["healthChecks"] = undefined /*out*/;
@@ -328,16 +331,13 @@ export interface LoadBalancerPolicyState {
      * One or more tags associated with the load balancer.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyTag>[]>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerPolicyTimeouts>;
 }
 
 /**
  * The set of arguments for constructing a LoadBalancerPolicy resource.
  */
 export interface LoadBalancerPolicyArgs {
-    /**
-     * Information about access logs.
-     */
-    accessLogs?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyAccessLog>[]>;
     /**
      * One or more IDs of backend VMs for the load balancer.
      */
@@ -377,4 +377,5 @@ export interface LoadBalancerPolicyArgs {
      * The ID of the Subregion in which the load balancer was created.
      */
     subregionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerPolicyTimeouts>;
 }

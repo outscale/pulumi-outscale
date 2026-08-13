@@ -35,8 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewFlexibleGpu(ctx, "flexible_gpu01", &outscale.FlexibleGpuArgs{
 //				ModelName:          pulumi.Any(modelName),
-//				Generation:         pulumi.String("v4"),
-//				SubregionName:      pulumi.Sprintf("%va", region),
+//				Generation:         pulumi.String("v5"),
 //				DeleteOnVmDeletion: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -70,7 +69,7 @@ type FlexibleGpu struct {
 	ModelName pulumi.StringOutput `pulumi:"modelName"`
 	// The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
 	State pulumi.StringOutput `pulumi:"state"`
-	// The Subregion in which you want to create the fGPU.
+	// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
 	SubregionName pulumi.StringOutput          `pulumi:"subregionName"`
 	Timeouts      FlexibleGpuTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The ID of the VM the fGPU is attached to, if any.
@@ -86,9 +85,6 @@ func NewFlexibleGpu(ctx *pulumi.Context,
 
 	if args.ModelName == nil {
 		return nil, errors.New("invalid value for required argument 'ModelName'")
-	}
-	if args.SubregionName == nil {
-		return nil, errors.New("invalid value for required argument 'SubregionName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FlexibleGpu
@@ -123,7 +119,7 @@ type flexibleGpuState struct {
 	ModelName *string `pulumi:"modelName"`
 	// The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
 	State *string `pulumi:"state"`
-	// The Subregion in which you want to create the fGPU.
+	// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
 	SubregionName *string              `pulumi:"subregionName"`
 	Timeouts      *FlexibleGpuTimeouts `pulumi:"timeouts"`
 	// The ID of the VM the fGPU is attached to, if any.
@@ -141,7 +137,7 @@ type FlexibleGpuState struct {
 	ModelName pulumi.StringPtrInput
 	// The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
 	State pulumi.StringPtrInput
-	// The Subregion in which you want to create the fGPU.
+	// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
 	SubregionName pulumi.StringPtrInput
 	Timeouts      FlexibleGpuTimeoutsPtrInput
 	// The ID of the VM the fGPU is attached to, if any.
@@ -159,8 +155,8 @@ type flexibleGpuArgs struct {
 	Generation *string `pulumi:"generation"`
 	// The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
 	ModelName string `pulumi:"modelName"`
-	// The Subregion in which you want to create the fGPU.
-	SubregionName string               `pulumi:"subregionName"`
+	// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
+	SubregionName *string              `pulumi:"subregionName"`
 	Timeouts      *FlexibleGpuTimeouts `pulumi:"timeouts"`
 }
 
@@ -172,8 +168,8 @@ type FlexibleGpuArgs struct {
 	Generation pulumi.StringPtrInput
 	// The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
 	ModelName pulumi.StringInput
-	// The Subregion in which you want to create the fGPU.
-	SubregionName pulumi.StringInput
+	// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
+	SubregionName pulumi.StringPtrInput
 	Timeouts      FlexibleGpuTimeoutsPtrInput
 }
 
@@ -289,7 +285,7 @@ func (o FlexibleGpuOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexibleGpu) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The Subregion in which you want to create the fGPU.
+// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
 func (o FlexibleGpuOutput) SubregionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexibleGpu) pulumi.StringOutput { return v.SubregionName }).(pulumi.StringOutput)
 }

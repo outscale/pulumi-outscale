@@ -490,11 +490,15 @@ export class Vm extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly securityGroups: pulumi.Output<outputs.VmSecurityGroup[]>;
     /**
+     * Information about the actions performed by the orchestrator when the VM shuts down.
+     */
+    declare public readonly shutdownBehaviorConfiguration: pulumi.Output<outputs.VmShutdownBehaviorConfiguration>;
+    /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
     declare public readonly state: pulumi.Output<string | undefined>;
     /**
-     * The reason explaining the current state of the VM.
+     * The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
      */
     declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
@@ -518,7 +522,9 @@ export class Vm extends pulumi.CustomResource {
      */
     declare public readonly vmId: pulumi.Output<string>;
     /**
-     * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+     * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+     *
+     * @deprecated Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
      */
     declare public readonly vmInitiatedShutdownBehavior: pulumi.Output<string>;
     /**
@@ -578,6 +584,7 @@ export class Vm extends pulumi.CustomResource {
             resourceInputs["securityGroupIds"] = state?.securityGroupIds;
             resourceInputs["securityGroupNames"] = state?.securityGroupNames;
             resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["shutdownBehaviorConfiguration"] = state?.shutdownBehaviorConfiguration;
             resourceInputs["state"] = state?.state;
             resourceInputs["stateReason"] = state?.stateReason;
             resourceInputs["subnetId"] = state?.subnetId;
@@ -611,6 +618,7 @@ export class Vm extends pulumi.CustomResource {
             resourceInputs["secureBootAction"] = args?.secureBootAction;
             resourceInputs["securityGroupIds"] = args?.securityGroupIds;
             resourceInputs["securityGroupNames"] = args?.securityGroupNames;
+            resourceInputs["shutdownBehaviorConfiguration"] = args?.shutdownBehaviorConfiguration;
             resourceInputs["state"] = args?.state;
             resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["tags"] = args?.tags;
@@ -804,11 +812,15 @@ export interface VmState {
      */
     securityGroups?: pulumi.Input<pulumi.Input<inputs.VmSecurityGroup>[]>;
     /**
+     * Information about the actions performed by the orchestrator when the VM shuts down.
+     */
+    shutdownBehaviorConfiguration?: pulumi.Input<inputs.VmShutdownBehaviorConfiguration>;
+    /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
     state?: pulumi.Input<string>;
     /**
-     * The reason explaining the current state of the VM.
+     * The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
      */
     stateReason?: pulumi.Input<string>;
     /**
@@ -832,7 +844,9 @@ export interface VmState {
      */
     vmId?: pulumi.Input<string>;
     /**
-     * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+     * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+     *
+     * @deprecated Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
      */
     vmInitiatedShutdownBehavior?: pulumi.Input<string>;
     /**
@@ -920,6 +934,10 @@ export interface VmArgs {
      */
     securityGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Information about the actions performed by the orchestrator when the VM shuts down.
+     */
+    shutdownBehaviorConfiguration?: pulumi.Input<inputs.VmShutdownBehaviorConfiguration>;
+    /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
     state?: pulumi.Input<string>;
@@ -944,7 +962,9 @@ export interface VmArgs {
      */
     vmId?: pulumi.Input<string>;
     /**
-     * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+     * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
+     *
+     * @deprecated Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
      */
     vmInitiatedShutdownBehavior?: pulumi.Input<string>;
     /**
