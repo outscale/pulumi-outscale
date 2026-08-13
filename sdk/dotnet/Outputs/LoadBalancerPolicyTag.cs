@@ -16,17 +16,17 @@ namespace Pulumi.Outscale.Outputs
         /// <summary>
         /// The key of the tag, between 1 and 128 characters.
         /// </summary>
-        public readonly string? Key;
+        public readonly string Key;
         /// <summary>
         /// The value of the tag, between 0 and 255 characters.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private LoadBalancerPolicyTag(
-            string? key,
+            string key,
 
-            string? value)
+            string value)
         {
             Key = key;
             Value = value;

@@ -22,23 +22,24 @@ __all__ = ['FlexibleGpuArgs', 'FlexibleGpu']
 class FlexibleGpuArgs:
     def __init__(__self__, *,
                  model_name: pulumi.Input[_builtins.str],
-                 subregion_name: pulumi.Input[_builtins.str],
                  delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
                  generation: Optional[pulumi.Input[_builtins.str]] = None,
+                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['FlexibleGpuTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FlexibleGpu resource.
         :param pulumi.Input[_builtins.str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
-        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU.
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
         :param pulumi.Input[_builtins.str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
+        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         """
         pulumi.set(__self__, "model_name", model_name)
-        pulumi.set(__self__, "subregion_name", subregion_name)
         if delete_on_vm_deletion is not None:
             pulumi.set(__self__, "delete_on_vm_deletion", delete_on_vm_deletion)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
+        if subregion_name is not None:
+            pulumi.set(__self__, "subregion_name", subregion_name)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
 
@@ -53,18 +54,6 @@ class FlexibleGpuArgs:
     @model_name.setter
     def model_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "model_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subregionName")
-    def subregion_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Subregion in which you want to create the fGPU.
-        """
-        return pulumi.get(self, "subregion_name")
-
-    @subregion_name.setter
-    def subregion_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")
@@ -89,6 +78,18 @@ class FlexibleGpuArgs:
     @generation.setter
     def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "generation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subregionName")
+    def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
+        """
+        return pulumi.get(self, "subregion_name")
+
+    @subregion_name.setter
+    def subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -118,7 +119,7 @@ class _FlexibleGpuState:
         :param pulumi.Input[_builtins.str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
         :param pulumi.Input[_builtins.str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
         :param pulumi.Input[_builtins.str] state: The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
-        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU.
+        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM the fGPU is attached to, if any.
         """
         if delete_on_vm_deletion is not None:
@@ -202,7 +203,7 @@ class _FlexibleGpuState:
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Subregion in which you want to create the fGPU.
+        The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         """
         return pulumi.get(self, "subregion_name")
 
@@ -260,8 +261,7 @@ class FlexibleGpu(pulumi.CustomResource):
 
         flexible_gpu01 = outscale.FlexibleGpu("flexible_gpu01",
             model_name=model_name,
-            generation="v4",
-            subregion_name=f"{region}a",
+            generation="v5",
             delete_on_vm_deletion=True)
         ```
 
@@ -280,7 +280,7 @@ class FlexibleGpu(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
         :param pulumi.Input[_builtins.str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
         :param pulumi.Input[_builtins.str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
-        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU.
+        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         """
         ...
     @overload
@@ -304,8 +304,7 @@ class FlexibleGpu(pulumi.CustomResource):
 
         flexible_gpu01 = outscale.FlexibleGpu("flexible_gpu01",
             model_name=model_name,
-            generation="v4",
-            subregion_name=f"{region}a",
+            generation="v5",
             delete_on_vm_deletion=True)
         ```
 
@@ -353,8 +352,6 @@ class FlexibleGpu(pulumi.CustomResource):
             if model_name is None and not opts.urn:
                 raise TypeError("Missing required property 'model_name'")
             __props__.__dict__["model_name"] = model_name
-            if subregion_name is None and not opts.urn:
-                raise TypeError("Missing required property 'subregion_name'")
             __props__.__dict__["subregion_name"] = subregion_name
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["flexible_gpu_id"] = None
@@ -390,7 +387,7 @@ class FlexibleGpu(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
         :param pulumi.Input[_builtins.str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
         :param pulumi.Input[_builtins.str] state: The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
-        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU.
+        :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM the fGPU is attached to, if any.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -451,7 +448,7 @@ class FlexibleGpu(pulumi.CustomResource):
     @pulumi.getter(name="subregionName")
     def subregion_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The Subregion in which you want to create the fGPU.
+        The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         """
         return pulumi.get(self, "subregion_name")
 

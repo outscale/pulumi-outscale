@@ -18,11 +18,11 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The state of the backend VM (`InService` \| `OutOfService` \| `Unknown`).
+        /// The state of the backend VM (`UP` \| `DOWN` \| `UNKNOWN`).
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Information about the cause of `OutOfService` VMs.&lt;br /&gt;
+        /// Information about the cause of `DOWN` VMs.&lt;br /&gt;
         /// Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \| `Instance` \| `N/A`).
         /// </summary>
         public readonly string StateReason;

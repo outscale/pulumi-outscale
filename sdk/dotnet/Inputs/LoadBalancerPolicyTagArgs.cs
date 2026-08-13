@@ -15,14 +15,14 @@ namespace Pulumi.Outscale.Inputs
         /// <summary>
         /// The key of the tag, between 1 and 128 characters.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// The value of the tag, between 0 and 255 characters.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public LoadBalancerPolicyTagArgs()
         {

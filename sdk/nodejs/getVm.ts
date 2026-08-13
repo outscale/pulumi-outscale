@@ -169,11 +169,15 @@ export interface GetVmResult {
      */
     readonly securityGroups: outputs.GetVmSecurityGroup[];
     /**
+     * Information about the actions performed by the orchestrator when the VM shuts down.
+     */
+    readonly shutdownBehaviorConfigurations: outputs.GetVmShutdownBehaviorConfiguration[];
+    /**
      * The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
      */
     readonly state: string;
     /**
-     * The reason explaining the current state of the VM.
+     * The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
      */
     readonly stateReason: string;
     /**
@@ -197,7 +201,7 @@ export interface GetVmResult {
      */
     readonly vmId: string;
     /**
-     * The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+     * The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
      */
     readonly vmInitiatedShutdownBehavior: string;
     /**

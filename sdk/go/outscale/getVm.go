@@ -130,9 +130,11 @@ type LookupVmResult struct {
 	SecurityGroupNames []string `pulumi:"securityGroupNames"`
 	// One or more security groups associated with the VM.
 	SecurityGroups []GetVmSecurityGroup `pulumi:"securityGroups"`
+	// Information about the actions performed by the orchestrator when the VM shuts down.
+	ShutdownBehaviorConfigurations []GetVmShutdownBehaviorConfiguration `pulumi:"shutdownBehaviorConfigurations"`
 	// The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
 	State string `pulumi:"state"`
-	// The reason explaining the current state of the VM.
+	// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 	StateReason string `pulumi:"stateReason"`
 	// The ID of the Subnet for the VM.
 	SubnetId string `pulumi:"subnetId"`
@@ -144,7 +146,7 @@ type LookupVmResult struct {
 	UserData string `pulumi:"userData"`
 	// The ID of the VM.
 	VmId string `pulumi:"vmId"`
-	// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+	// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
 	VmInitiatedShutdownBehavior string `pulumi:"vmInitiatedShutdownBehavior"`
 	// The type of VM. For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
 	VmType string `pulumi:"vmType"`
@@ -356,12 +358,17 @@ func (o LookupVmResultOutput) SecurityGroups() GetVmSecurityGroupArrayOutput {
 	return o.ApplyT(func(v LookupVmResult) []GetVmSecurityGroup { return v.SecurityGroups }).(GetVmSecurityGroupArrayOutput)
 }
 
+// Information about the actions performed by the orchestrator when the VM shuts down.
+func (o LookupVmResultOutput) ShutdownBehaviorConfigurations() GetVmShutdownBehaviorConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupVmResult) []GetVmShutdownBehaviorConfiguration { return v.ShutdownBehaviorConfigurations }).(GetVmShutdownBehaviorConfigurationArrayOutput)
+}
+
 // The state of the VM (`pending` \| `running` \| `stopping` \| `stopped` \| `shutting-down` \| `terminated` \| `quarantine`).
 func (o LookupVmResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The reason explaining the current state of the VM.
+// The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
 func (o LookupVmResultOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmResult) string { return v.StateReason }).(pulumi.StringOutput)
 }
@@ -391,7 +398,7 @@ func (o LookupVmResultOutput) VmId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmResult) string { return v.VmId }).(pulumi.StringOutput)
 }
 
-// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+// The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
 func (o LookupVmResultOutput) VmInitiatedShutdownBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmResult) string { return v.VmInitiatedShutdownBehavior }).(pulumi.StringOutput)
 }

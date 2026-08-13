@@ -30,8 +30,7 @@ namespace Pulumi.Outscale
     ///     var flexibleGpu01 = new Outscale.FlexibleGpu("flexible_gpu01", new()
     ///     {
     ///         ModelName = modelName,
-    ///         Generation = "v4",
-    ///         SubregionName = $"{region}a",
+    ///         Generation = "v5",
     ///         DeleteOnVmDeletion = true,
     ///     });
     /// 
@@ -82,7 +81,7 @@ namespace Pulumi.Outscale
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The Subregion in which you want to create the fGPU.
+        /// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         /// </summary>
         [Output("subregionName")]
         public Output<string> SubregionName { get; private set; } = null!;
@@ -161,10 +160,10 @@ namespace Pulumi.Outscale
         public Input<string> ModelName { get; set; } = null!;
 
         /// <summary>
-        /// The Subregion in which you want to create the fGPU.
+        /// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         /// </summary>
-        [Input("subregionName", required: true)]
-        public Input<string> SubregionName { get; set; } = null!;
+        [Input("subregionName")]
+        public Input<string>? SubregionName { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.FlexibleGpuTimeoutsArgs>? Timeouts { get; set; }
@@ -208,7 +207,7 @@ namespace Pulumi.Outscale
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The Subregion in which you want to create the fGPU.
+        /// The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         /// </summary>
         [Input("subregionName")]
         public Input<string>? SubregionName { get; set; }

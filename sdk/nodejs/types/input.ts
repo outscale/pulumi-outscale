@@ -1751,6 +1751,25 @@ export interface LoadBalancerListenerRuleListenerRule {
     priority: pulumi.Input<number>;
 }
 
+export interface LoadBalancerListenerRuleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface LoadBalancerLoadBalancerStickyCookiePolicy {
     /**
      * The name of the stickiness policy.
@@ -1868,11 +1887,26 @@ export interface LoadBalancerPolicyTag {
     /**
      * The key of the tag, between 1 and 128 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface LoadBalancerPolicyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
 }
 
 export interface LoadBalancerSourceSecurityGroup {
@@ -1890,11 +1924,30 @@ export interface LoadBalancerTag {
     /**
      * The key of the tag, between 1 and 128 characters.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface LoadBalancerTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface LoadBalancerVmsTimeouts {
@@ -3706,6 +3759,17 @@ export interface VmSecurityGroup {
      * The name of the security group.
      */
     securityGroupName?: pulumi.Input<string>;
+}
+
+export interface VmShutdownBehaviorConfiguration {
+    /**
+     * The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
+     */
+    guestAction?: pulumi.Input<string>;
+    /**
+     * The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
+     */
+    hostAction?: pulumi.Input<string>;
 }
 
 export interface VmTag {

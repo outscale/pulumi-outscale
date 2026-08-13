@@ -135,11 +135,15 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVmsVmSecurityGroupResult> SecurityGroups;
         /// <summary>
+        /// Information about the actions performed by the orchestrator when the VM shuts down.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVmsVmShutdownBehaviorConfigurationResult> ShutdownBehaviorConfigurations;
+        /// <summary>
         /// The state of the VM (`Pending` \| `Running` \| `Stopping` \| `Stopped` \| `shutting-down` \| `Terminated` \| `Quarantine`).
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The reason explaining the current state of the VM.
+        /// The reason explaining the current state of the VM. For more information, see [Creating VMs &gt; VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         /// </summary>
         public readonly string StateReason;
         /// <summary>
@@ -163,7 +167,7 @@ namespace Pulumi.Outscale.Outputs
         /// </summary>
         public readonly string VmId;
         /// <summary>
-        /// The VM behavior when you stop it. If set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is deleted.
+        /// The VM behavior when you stop it. If set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `ShutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
         /// </summary>
         public readonly string VmInitiatedShutdownBehavior;
         /// <summary>
@@ -241,6 +245,8 @@ namespace Pulumi.Outscale.Outputs
 
             ImmutableArray<Outputs.GetVmsVmSecurityGroupResult> securityGroups,
 
+            ImmutableArray<Outputs.GetVmsVmShutdownBehaviorConfigurationResult> shutdownBehaviorConfigurations,
+
             string state,
 
             string stateReason,
@@ -293,6 +299,7 @@ namespace Pulumi.Outscale.Outputs
             SecurityGroupIds = securityGroupIds;
             SecurityGroupNames = securityGroupNames;
             SecurityGroups = securityGroups;
+            ShutdownBehaviorConfigurations = shutdownBehaviorConfigurations;
             State = state;
             StateReason = stateReason;
             SubnetId = subnetId;

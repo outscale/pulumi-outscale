@@ -23,7 +23,8 @@ class LoadBalancerListenerRuleArgs:
     def __init__(__self__, *,
                  listener: pulumi.Input['LoadBalancerListenerRuleListenerArgs'],
                  listener_rule: pulumi.Input['LoadBalancerListenerRuleListenerRuleArgs'],
-                 vm_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+                 vm_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 timeouts: Optional[pulumi.Input['LoadBalancerListenerRuleTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a LoadBalancerListenerRule resource.
         :param pulumi.Input['LoadBalancerListenerRuleListenerArgs'] listener: Information about the load balancer.
@@ -33,6 +34,8 @@ class LoadBalancerListenerRuleArgs:
         pulumi.set(__self__, "listener", listener)
         pulumi.set(__self__, "listener_rule", listener_rule)
         pulumi.set(__self__, "vm_ids", vm_ids)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
@@ -70,6 +73,15 @@ class LoadBalancerListenerRuleArgs:
     def vm_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "vm_ids", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerListenerRuleTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerListenerRuleTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _LoadBalancerListenerRuleState:
@@ -77,6 +89,7 @@ class _LoadBalancerListenerRuleState:
                  listener: Optional[pulumi.Input['LoadBalancerListenerRuleListenerArgs']] = None,
                  listener_rule: Optional[pulumi.Input['LoadBalancerListenerRuleListenerRuleArgs']] = None,
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['LoadBalancerListenerRuleTimeoutsArgs']] = None,
                  vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerListenerRule resources.
@@ -90,6 +103,8 @@ class _LoadBalancerListenerRuleState:
             pulumi.set(__self__, "listener_rule", listener_rule)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if vm_ids is not None:
             pulumi.set(__self__, "vm_ids", vm_ids)
 
@@ -127,6 +142,15 @@ class _LoadBalancerListenerRuleState:
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerListenerRuleTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerListenerRuleTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="vmIds")
     def vm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -147,6 +171,7 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  listener: Optional[pulumi.Input[Union['LoadBalancerListenerRuleListenerArgs', 'LoadBalancerListenerRuleListenerArgsDict']]] = None,
                  listener_rule: Optional[pulumi.Input[Union['LoadBalancerListenerRuleListenerRuleArgs', 'LoadBalancerListenerRuleListenerRuleArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['LoadBalancerListenerRuleTimeoutsArgs', 'LoadBalancerListenerRuleTimeoutsArgsDict']]] = None,
                  vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -330,6 +355,7 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  listener: Optional[pulumi.Input[Union['LoadBalancerListenerRuleListenerArgs', 'LoadBalancerListenerRuleListenerArgsDict']]] = None,
                  listener_rule: Optional[pulumi.Input[Union['LoadBalancerListenerRuleListenerRuleArgs', 'LoadBalancerListenerRuleListenerRuleArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['LoadBalancerListenerRuleTimeoutsArgs', 'LoadBalancerListenerRuleTimeoutsArgsDict']]] = None,
                  vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -346,6 +372,7 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
             if listener_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'listener_rule'")
             __props__.__dict__["listener_rule"] = listener_rule
+            __props__.__dict__["timeouts"] = timeouts
             if vm_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'vm_ids'")
             __props__.__dict__["vm_ids"] = vm_ids
@@ -363,6 +390,7 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
             listener: Optional[pulumi.Input[Union['LoadBalancerListenerRuleListenerArgs', 'LoadBalancerListenerRuleListenerArgsDict']]] = None,
             listener_rule: Optional[pulumi.Input[Union['LoadBalancerListenerRuleListenerRuleArgs', 'LoadBalancerListenerRuleListenerRuleArgsDict']]] = None,
             request_id: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['LoadBalancerListenerRuleTimeoutsArgs', 'LoadBalancerListenerRuleTimeoutsArgsDict']]] = None,
             vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'LoadBalancerListenerRule':
         """
         Get an existing LoadBalancerListenerRule resource's state with the given name, id, and optional extra
@@ -382,6 +410,7 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
         __props__.__dict__["listener"] = listener
         __props__.__dict__["listener_rule"] = listener_rule
         __props__.__dict__["request_id"] = request_id
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vm_ids"] = vm_ids
         return LoadBalancerListenerRule(resource_name, opts=opts, __props__=__props__)
 
@@ -405,6 +434,11 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "request_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.LoadBalancerListenerRuleTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="vmIds")

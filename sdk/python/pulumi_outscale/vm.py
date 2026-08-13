@@ -40,6 +40,7 @@ class VmArgs:
                  secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_behavior_configuration: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]] = None,
@@ -69,13 +70,14 @@ class VmArgs:
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        :param pulumi.Input['VmShutdownBehaviorConfigurationArgs'] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
-        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
         """
         pulumi.set(__self__, "image_id", image_id)
@@ -115,6 +117,8 @@ class VmArgs:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_group_names is not None:
             pulumi.set(__self__, "security_group_names", security_group_names)
+        if shutdown_behavior_configuration is not None:
+            pulumi.set(__self__, "shutdown_behavior_configuration", shutdown_behavior_configuration)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if subnet_id is not None:
@@ -127,6 +131,9 @@ class VmArgs:
             pulumi.set(__self__, "user_data", user_data)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
+        if vm_initiated_shutdown_behavior is not None:
+            warnings.warn("""Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""vm_initiated_shutdown_behavior is deprecated: Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""")
         if vm_initiated_shutdown_behavior is not None:
             pulumi.set(__self__, "vm_initiated_shutdown_behavior", vm_initiated_shutdown_behavior)
         if vm_type is not None:
@@ -359,6 +366,18 @@ class VmArgs:
         pulumi.set(self, "security_group_names", value)
 
     @_builtins.property
+    @pulumi.getter(name="shutdownBehaviorConfiguration")
+    def shutdown_behavior_configuration(self) -> Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]:
+        """
+        Information about the actions performed by the orchestrator when the VM shuts down.
+        """
+        return pulumi.get(self, "shutdown_behavior_configuration")
+
+    @shutdown_behavior_configuration.setter
+    def shutdown_behavior_configuration(self, value: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]):
+        pulumi.set(self, "shutdown_behavior_configuration", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -432,9 +451,10 @@ class VmArgs:
 
     @_builtins.property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
+    @_utilities.deprecated("""Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""")
     def vm_initiated_shutdown_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
@@ -497,6 +517,7 @@ class _VmState:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]]] = None,
+                 shutdown_behavior_configuration: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  state_reason: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -546,14 +567,15 @@ class _VmState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]] security_groups: One or more security groups associated with the VM.
+        :param pulumi.Input['VmShutdownBehaviorConfigurationArgs'] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
-        :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM.
+        :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
-        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
         """
         if actions_on_next_boots is not None:
@@ -634,6 +656,8 @@ class _VmState:
             pulumi.set(__self__, "security_group_names", security_group_names)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if shutdown_behavior_configuration is not None:
+            pulumi.set(__self__, "shutdown_behavior_configuration", shutdown_behavior_configuration)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if state_reason is not None:
@@ -648,6 +672,9 @@ class _VmState:
             pulumi.set(__self__, "user_data", user_data)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
+        if vm_initiated_shutdown_behavior is not None:
+            warnings.warn("""Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""vm_initiated_shutdown_behavior is deprecated: Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""")
         if vm_initiated_shutdown_behavior is not None:
             pulumi.set(__self__, "vm_initiated_shutdown_behavior", vm_initiated_shutdown_behavior)
         if vm_type is not None:
@@ -1117,6 +1144,18 @@ class _VmState:
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
+    @pulumi.getter(name="shutdownBehaviorConfiguration")
+    def shutdown_behavior_configuration(self) -> Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]:
+        """
+        Information about the actions performed by the orchestrator when the VM shuts down.
+        """
+        return pulumi.get(self, "shutdown_behavior_configuration")
+
+    @shutdown_behavior_configuration.setter
+    def shutdown_behavior_configuration(self, value: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]):
+        pulumi.set(self, "shutdown_behavior_configuration", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1132,7 +1171,7 @@ class _VmState:
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The reason explaining the current state of the VM.
+        The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         """
         return pulumi.get(self, "state_reason")
 
@@ -1202,9 +1241,10 @@ class _VmState:
 
     @_builtins.property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
+    @_utilities.deprecated("""Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""")
     def vm_initiated_shutdown_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
@@ -1250,6 +1290,7 @@ class Vm(pulumi.CustomResource):
                  secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_behavior_configuration: Optional[pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
@@ -1557,13 +1598,14 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
+        :param pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
-        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
         """
         ...
@@ -1883,6 +1925,7 @@ class Vm(pulumi.CustomResource):
                  secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_behavior_configuration: Optional[pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
@@ -1921,6 +1964,7 @@ class Vm(pulumi.CustomResource):
             __props__.__dict__["secure_boot_action"] = secure_boot_action
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["security_group_names"] = security_group_names
+            __props__.__dict__["shutdown_behavior_configuration"] = shutdown_behavior_configuration
             __props__.__dict__["state"] = state
             __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["tags"] = tags
@@ -2001,6 +2045,7 @@ class Vm(pulumi.CustomResource):
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict']]]]] = None,
+            shutdown_behavior_configuration: Optional[pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             state_reason: Optional[pulumi.Input[_builtins.str]] = None,
             subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2055,14 +2100,15 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict']]]] security_groups: One or more security groups associated with the VM.
+        :param pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
-        :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM.
+        :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
-        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        :param pulumi.Input[_builtins.str] vm_initiated_shutdown_behavior: The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         :param pulumi.Input[_builtins.str] vm_type: The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2108,6 +2154,7 @@ class Vm(pulumi.CustomResource):
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_group_names"] = security_group_names
         __props__.__dict__["security_groups"] = security_groups
+        __props__.__dict__["shutdown_behavior_configuration"] = shutdown_behavior_configuration
         __props__.__dict__["state"] = state
         __props__.__dict__["state_reason"] = state_reason
         __props__.__dict__["subnet_id"] = subnet_id
@@ -2427,6 +2474,14 @@ class Vm(pulumi.CustomResource):
         return pulumi.get(self, "security_groups")
 
     @_builtins.property
+    @pulumi.getter(name="shutdownBehaviorConfiguration")
+    def shutdown_behavior_configuration(self) -> pulumi.Output['outputs.VmShutdownBehaviorConfiguration']:
+        """
+        Information about the actions performed by the orchestrator when the VM shuts down.
+        """
+        return pulumi.get(self, "shutdown_behavior_configuration")
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -2438,7 +2493,7 @@ class Vm(pulumi.CustomResource):
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> pulumi.Output[_builtins.str]:
         """
-        The reason explaining the current state of the VM.
+        The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         """
         return pulumi.get(self, "state_reason")
 
@@ -2484,9 +2539,10 @@ class Vm(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
+    @_utilities.deprecated("""Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""")
     def vm_initiated_shutdown_behavior(self) -> pulumi.Output[_builtins.str]:
         """
-        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.
+        The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 

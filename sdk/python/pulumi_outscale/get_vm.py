@@ -28,7 +28,7 @@ class GetVmResult:
     """
     A collection of values returned by getVm.
     """
-    def __init__(__self__, actions_on_next_boots=None, architecture=None, block_device_mappings_createds=None, boot_mode=None, bsu_optimized=None, client_token=None, creation_date=None, deletion_protection=None, filters=None, hypervisor=None, id=None, image_id=None, is_source_dest_checked=None, keypair_name=None, launch_number=None, nested_virtualization=None, net_id=None, nics=None, os_family=None, performance=None, placement_subregion_name=None, placement_tenancy=None, primary_nics=None, private_dns_name=None, private_ip=None, private_ips=None, product_codes=None, public_dns_name=None, public_ip=None, request_id=None, reservation_id=None, root_device_name=None, root_device_type=None, security_group_ids=None, security_group_names=None, security_groups=None, state=None, state_reason=None, subnet_id=None, tags=None, tpm_enabled=None, user_data=None, vm_id=None, vm_initiated_shutdown_behavior=None, vm_type=None):
+    def __init__(__self__, actions_on_next_boots=None, architecture=None, block_device_mappings_createds=None, boot_mode=None, bsu_optimized=None, client_token=None, creation_date=None, deletion_protection=None, filters=None, hypervisor=None, id=None, image_id=None, is_source_dest_checked=None, keypair_name=None, launch_number=None, nested_virtualization=None, net_id=None, nics=None, os_family=None, performance=None, placement_subregion_name=None, placement_tenancy=None, primary_nics=None, private_dns_name=None, private_ip=None, private_ips=None, product_codes=None, public_dns_name=None, public_ip=None, request_id=None, reservation_id=None, root_device_name=None, root_device_type=None, security_group_ids=None, security_group_names=None, security_groups=None, shutdown_behavior_configurations=None, state=None, state_reason=None, subnet_id=None, tags=None, tpm_enabled=None, user_data=None, vm_id=None, vm_initiated_shutdown_behavior=None, vm_type=None):
         if actions_on_next_boots and not isinstance(actions_on_next_boots, list):
             raise TypeError("Expected argument 'actions_on_next_boots' to be a list")
         pulumi.set(__self__, "actions_on_next_boots", actions_on_next_boots)
@@ -137,6 +137,9 @@ class GetVmResult:
         if security_groups and not isinstance(security_groups, list):
             raise TypeError("Expected argument 'security_groups' to be a list")
         pulumi.set(__self__, "security_groups", security_groups)
+        if shutdown_behavior_configurations and not isinstance(shutdown_behavior_configurations, list):
+            raise TypeError("Expected argument 'shutdown_behavior_configurations' to be a list")
+        pulumi.set(__self__, "shutdown_behavior_configurations", shutdown_behavior_configurations)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -430,6 +433,14 @@ class GetVmResult:
         return pulumi.get(self, "security_groups")
 
     @_builtins.property
+    @pulumi.getter(name="shutdownBehaviorConfigurations")
+    def shutdown_behavior_configurations(self) -> Sequence['outputs.GetVmShutdownBehaviorConfigurationResult']:
+        """
+        Information about the actions performed by the orchestrator when the VM shuts down.
+        """
+        return pulumi.get(self, "shutdown_behavior_configurations")
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
@@ -441,7 +452,7 @@ class GetVmResult:
     @pulumi.getter(name="stateReason")
     def state_reason(self) -> _builtins.str:
         """
-        The reason explaining the current state of the VM.
+        The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         """
         return pulumi.get(self, "state_reason")
 
@@ -489,7 +500,7 @@ class GetVmResult:
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
     def vm_initiated_shutdown_behavior(self) -> _builtins.str:
         """
-        The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.
+        The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted. Important: This attribute is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
@@ -544,6 +555,7 @@ class AwaitableGetVmResult(GetVmResult):
             security_group_ids=self.security_group_ids,
             security_group_names=self.security_group_names,
             security_groups=self.security_groups,
+            shutdown_behavior_configurations=self.shutdown_behavior_configurations,
             state=self.state,
             state_reason=self.state_reason,
             subnet_id=self.subnet_id,
@@ -620,6 +632,7 @@ def get_vm(filters: Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsD
         security_group_ids=pulumi.get(__ret__, 'security_group_ids'),
         security_group_names=pulumi.get(__ret__, 'security_group_names'),
         security_groups=pulumi.get(__ret__, 'security_groups'),
+        shutdown_behavior_configurations=pulumi.get(__ret__, 'shutdown_behavior_configurations'),
         state=pulumi.get(__ret__, 'state'),
         state_reason=pulumi.get(__ret__, 'state_reason'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
@@ -693,6 +706,7 @@ def get_vm_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmF
         security_group_ids=pulumi.get(__response__, 'security_group_ids'),
         security_group_names=pulumi.get(__response__, 'security_group_names'),
         security_groups=pulumi.get(__response__, 'security_groups'),
+        shutdown_behavior_configurations=pulumi.get(__response__, 'shutdown_behavior_configurations'),
         state=pulumi.get(__response__, 'state'),
         state_reason=pulumi.get(__response__, 'state_reason'),
         subnet_id=pulumi.get(__response__, 'subnet_id'),

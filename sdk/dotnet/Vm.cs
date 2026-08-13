@@ -737,13 +737,19 @@ namespace Pulumi.Outscale
         public Output<ImmutableArray<Outputs.VmSecurityGroup>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
+        /// Information about the actions performed by the orchestrator when the VM shuts down.
+        /// </summary>
+        [Output("shutdownBehaviorConfiguration")]
+        public Output<Outputs.VmShutdownBehaviorConfiguration> ShutdownBehaviorConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
 
         /// <summary>
-        /// The reason explaining the current state of the VM.
+        /// The reason explaining the current state of the VM. For more information, see [Creating VMs &gt; VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         /// </summary>
         [Output("stateReason")]
         public Output<string> StateReason { get; private set; } = null!;
@@ -779,7 +785,7 @@ namespace Pulumi.Outscale
         public Output<string> VmId { get; private set; } = null!;
 
         /// <summary>
-        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated.
+        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `ShutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
         /// </summary>
         [Output("vmInitiatedShutdownBehavior")]
         public Output<string> VmInitiatedShutdownBehavior { get; private set; } = null!;
@@ -999,6 +1005,12 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
+        /// Information about the actions performed by the orchestrator when the VM shuts down.
+        /// </summary>
+        [Input("shutdownBehaviorConfiguration")]
+        public Input<Inputs.VmShutdownBehaviorConfigurationArgs>? ShutdownBehaviorConfiguration { get; set; }
+
+        /// <summary>
         /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         [Input("state")]
@@ -1041,7 +1053,7 @@ namespace Pulumi.Outscale
         public Input<string>? VmId { get; set; }
 
         /// <summary>
-        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated.
+        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `ShutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
         /// </summary>
         [Input("vmInitiatedShutdownBehavior")]
         public Input<string>? VmInitiatedShutdownBehavior { get; set; }
@@ -1360,13 +1372,19 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
+        /// Information about the actions performed by the orchestrator when the VM shuts down.
+        /// </summary>
+        [Input("shutdownBehaviorConfiguration")]
+        public Input<Inputs.VmShutdownBehaviorConfigurationGetArgs>? ShutdownBehaviorConfiguration { get; set; }
+
+        /// <summary>
         /// The state of the VM (`Running` | `Stopped`). If set to `Stopped`, the VM is stopped regardless of the value of the `VmInitiatedShutdownBehavior` argument.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The reason explaining the current state of the VM.
+        /// The reason explaining the current state of the VM. For more information, see [Creating VMs &gt; VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         /// </summary>
         [Input("stateReason")]
         public Input<string>? StateReason { get; set; }
@@ -1408,7 +1426,7 @@ namespace Pulumi.Outscale
         public Input<string>? VmId { get; set; }
 
         /// <summary>
-        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated.
+        /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `ShutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
         /// </summary>
         [Input("vmInitiatedShutdownBehavior")]
         public Input<string>? VmInitiatedShutdownBehavior { get; set; }

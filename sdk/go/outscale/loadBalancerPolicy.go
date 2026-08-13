@@ -156,7 +156,8 @@ type LoadBalancerPolicy struct {
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames pulumi.StringArrayOutput `pulumi:"subregionNames"`
 	// One or more tags associated with the load balancer.
-	Tags LoadBalancerPolicyTagArrayOutput `pulumi:"tags"`
+	Tags     LoadBalancerPolicyTagArrayOutput    `pulumi:"tags"`
+	Timeouts LoadBalancerPolicyTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewLoadBalancerPolicy registers a new resource with the given unique name, arguments, and options.
@@ -240,7 +241,8 @@ type loadBalancerPolicyState struct {
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames []string `pulumi:"subregionNames"`
 	// One or more tags associated with the load balancer.
-	Tags []LoadBalancerPolicyTag `pulumi:"tags"`
+	Tags     []LoadBalancerPolicyTag     `pulumi:"tags"`
+	Timeouts *LoadBalancerPolicyTimeouts `pulumi:"timeouts"`
 }
 
 type LoadBalancerPolicyState struct {
@@ -286,7 +288,8 @@ type LoadBalancerPolicyState struct {
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames pulumi.StringArrayInput
 	// One or more tags associated with the load balancer.
-	Tags LoadBalancerPolicyTagArrayInput
+	Tags     LoadBalancerPolicyTagArrayInput
+	Timeouts LoadBalancerPolicyTimeoutsPtrInput
 }
 
 func (LoadBalancerPolicyState) ElementType() reflect.Type {
@@ -294,8 +297,6 @@ func (LoadBalancerPolicyState) ElementType() reflect.Type {
 }
 
 type loadBalancerPolicyArgs struct {
-	// Information about access logs.
-	AccessLogs []LoadBalancerPolicyAccessLog `pulumi:"accessLogs"`
 	// One or more IDs of backend VMs for the load balancer.
 	BackendVmIds           []string `pulumi:"backendVmIds"`
 	CookieExpirationPeriod *int     `pulumi:"cookieExpirationPeriod"`
@@ -316,13 +317,12 @@ type loadBalancerPolicyArgs struct {
 	// The ID of the Subnet in which the load balancer was created.
 	Subnets []string `pulumi:"subnets"`
 	// The ID of the Subregion in which the load balancer was created.
-	SubregionNames []string `pulumi:"subregionNames"`
+	SubregionNames []string                    `pulumi:"subregionNames"`
+	Timeouts       *LoadBalancerPolicyTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a LoadBalancerPolicy resource.
 type LoadBalancerPolicyArgs struct {
-	// Information about access logs.
-	AccessLogs LoadBalancerPolicyAccessLogArrayInput
 	// One or more IDs of backend VMs for the load balancer.
 	BackendVmIds           pulumi.StringArrayInput
 	CookieExpirationPeriod pulumi.IntPtrInput
@@ -344,6 +344,7 @@ type LoadBalancerPolicyArgs struct {
 	Subnets pulumi.StringArrayInput
 	// The ID of the Subregion in which the load balancer was created.
 	SubregionNames pulumi.StringArrayInput
+	Timeouts       LoadBalancerPolicyTimeoutsPtrInput
 }
 
 func (LoadBalancerPolicyArgs) ElementType() reflect.Type {
@@ -546,6 +547,10 @@ func (o LoadBalancerPolicyOutput) SubregionNames() pulumi.StringArrayOutput {
 // One or more tags associated with the load balancer.
 func (o LoadBalancerPolicyOutput) Tags() LoadBalancerPolicyTagArrayOutput {
 	return o.ApplyT(func(v *LoadBalancerPolicy) LoadBalancerPolicyTagArrayOutput { return v.Tags }).(LoadBalancerPolicyTagArrayOutput)
+}
+
+func (o LoadBalancerPolicyOutput) Timeouts() LoadBalancerPolicyTimeoutsPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPolicy) LoadBalancerPolicyTimeoutsPtrOutput { return v.Timeouts }).(LoadBalancerPolicyTimeoutsPtrOutput)
 }
 
 type LoadBalancerPolicyArrayOutput struct{ *pulumi.OutputState }
