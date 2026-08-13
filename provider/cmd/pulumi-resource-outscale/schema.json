@@ -1095,7 +1095,8 @@
                         "backendProtocol",
                         "loadBalancerPort",
                         "loadBalancerProtocol",
-                        "policyNames"
+                        "policyNames",
+                        "serverCertificateId"
                     ]
                 }
             }
@@ -1137,8 +1138,7 @@
                 },
                 "listenerRuleName": {
                     "type": "string",
-                    "description": "A human-readable name for the listener rule.\n",
-                    "willReplaceOnChanges": true
+                    "description": "A human-readable name for the listener rule.\n"
                 },
                 "pathPattern": {
                     "type": "string",
@@ -1146,8 +1146,7 @@
                 },
                 "priority": {
                     "type": "integer",
-                    "description": "The priority level of the listener rule, between \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`19999`\" pulumi-lang-dotnet=\"`19999`\" pulumi-lang-go=\"`19999`\" pulumi-lang-python=\"`19999`\" pulumi-lang-yaml=\"`19999`\" pulumi-lang-java=\"`19999`\" pulumi-lang-hcl=\"`19999`\"\u003e`19999`\u003c/span\u003e both included. Each rule must have a unique priority level. Otherwise, an error is returned.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The priority level of the listener rule, between \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`19999`\" pulumi-lang-dotnet=\"`19999`\" pulumi-lang-go=\"`19999`\" pulumi-lang-python=\"`19999`\" pulumi-lang-yaml=\"`19999`\" pulumi-lang-java=\"`19999`\" pulumi-lang-hcl=\"`19999`\"\u003e`19999`\u003c/span\u003e both included. Each rule must have a unique priority level. Otherwise, an error is returned.\n"
                 }
             },
             "type": "object",
@@ -1168,6 +1167,27 @@
                     ]
                 }
             }
+        },
+        "outscale:index/LoadBalancerListenerRuleTimeouts:LoadBalancerListenerRuleTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "outscale:index/LoadBalancerLoadBalancerStickyCookiePolicy:LoadBalancerLoadBalancerStickyCookiePolicy": {
             "properties": {
@@ -1376,14 +1396,27 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "key",
-                        "value"
-                    ]
+            "required": [
+                "key",
+                "value"
+            ]
+        },
+        "outscale:index/LoadBalancerPolicyTimeouts:LoadBalancerPolicyTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
                 }
-            }
+            },
+            "type": "object"
         },
         "outscale:index/LoadBalancerSourceSecurityGroup:LoadBalancerSourceSecurityGroup": {
             "properties": {
@@ -1418,6 +1451,9 @@
                 }
             },
             "type": "object",
+            "required": [
+                "key"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -1426,6 +1462,27 @@
                     ]
                 }
             }
+        },
+        "outscale:index/LoadBalancerTimeouts:LoadBalancerTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "outscale:index/LoadBalancerVmsTimeouts:LoadBalancerVmsTimeouts": {
             "properties": {
@@ -4272,6 +4329,27 @@
                 }
             }
         },
+        "outscale:index/VmShutdownBehaviorConfiguration:VmShutdownBehaviorConfiguration": {
+            "properties": {
+                "guestAction": {
+                    "type": "string",
+                    "description": "The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e. Possible values: \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e.\n"
+                },
+                "hostAction": {
+                    "type": "string",
+                    "description": "The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e. Possible values: \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "guestAction",
+                        "hostAction"
+                    ]
+                }
+            }
+        },
         "outscale:index/VmTag:VmTag": {
             "properties": {
                 "key": {
@@ -6574,11 +6652,11 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "The state of the backend VM (`InService` \\| `OutOfService` \\| `Unknown`).\n"
+                    "description": "The state of the backend VM (`UP` \\| `DOWN` \\| `UNKNOWN`).\n"
                 },
                 "stateReason": {
                     "type": "string",
-                    "description": "Information about the cause of `OutOfService` VMs.\u003cbr /\u003e\nSpecifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \\| `Instance` \\| `N/A`).\n"
+                    "description": "Information about the cause of `DOWN` VMs.\u003cbr /\u003e\nSpecifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \\| `Instance` \\| `N/A`).\n"
                 },
                 "vmId": {
                     "type": "string",
@@ -9876,7 +9954,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n"
+                    "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`initializing`\" pulumi-lang-dotnet=\"`Initializing`\" pulumi-lang-go=\"`initializing`\" pulumi-lang-python=\"`initializing`\" pulumi-lang-yaml=\"`initializing`\" pulumi-lang-java=\"`initializing`\" pulumi-lang-hcl=\"`initializing`\"\u003e`initializing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`preparing`\" pulumi-lang-dotnet=\"`Preparing`\" pulumi-lang-go=\"`preparing`\" pulumi-lang-python=\"`preparing`\" pulumi-lang-yaml=\"`preparing`\" pulumi-lang-java=\"`preparing`\" pulumi-lang-hcl=\"`preparing`\"\u003e`preparing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`uploading`\" pulumi-lang-dotnet=\"`Uploading`\" pulumi-lang-go=\"`uploading`\" pulumi-lang-python=\"`uploading`\" pulumi-lang-yaml=\"`uploading`\" pulumi-lang-java=\"`uploading`\" pulumi-lang-hcl=\"`uploading`\"\u003e`uploading`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n"
                 },
                 "tags": {
                     "type": "array",
@@ -11453,6 +11531,28 @@
                 }
             }
         },
+        "outscale:index/getVmShutdownBehaviorConfiguration:getVmShutdownBehaviorConfiguration": {
+            "properties": {
+                "guestAction": {
+                    "type": "string",
+                    "description": "The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e.\n"
+                },
+                "hostAction": {
+                    "type": "string",
+                    "description": "The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "guestAction",
+                "hostAction"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "outscale:index/getVmStateFilter:getVmStateFilter": {
             "properties": {
                 "name": {
@@ -11856,13 +11956,20 @@
                     },
                     "description": "One or more security groups associated with the VM.\n"
                 },
+                "shutdownBehaviorConfigurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/outscale:index/getVmsVmShutdownBehaviorConfiguration:getVmsVmShutdownBehaviorConfiguration"
+                    },
+                    "description": "Information about the actions performed by the orchestrator when the VM shuts down.\n"
+                },
                 "state": {
                     "type": "string",
                     "description": "The state of the VM (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`stopping`\" pulumi-lang-dotnet=\"`Stopping`\" pulumi-lang-go=\"`stopping`\" pulumi-lang-python=\"`stopping`\" pulumi-lang-yaml=\"`stopping`\" pulumi-lang-java=\"`stopping`\" pulumi-lang-hcl=\"`stopping`\"\u003e`stopping`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e \\| `shutting-down` \\| \u003cspan pulumi-lang-nodejs=\"`terminated`\" pulumi-lang-dotnet=\"`Terminated`\" pulumi-lang-go=\"`terminated`\" pulumi-lang-python=\"`terminated`\" pulumi-lang-yaml=\"`terminated`\" pulumi-lang-java=\"`terminated`\" pulumi-lang-hcl=\"`terminated`\"\u003e`terminated`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`quarantine`\" pulumi-lang-dotnet=\"`Quarantine`\" pulumi-lang-go=\"`quarantine`\" pulumi-lang-python=\"`quarantine`\" pulumi-lang-yaml=\"`quarantine`\" pulumi-lang-java=\"`quarantine`\" pulumi-lang-hcl=\"`quarantine`\"\u003e`quarantine`\u003c/span\u003e).\n"
                 },
                 "stateReason": {
                     "type": "string",
-                    "description": "The reason explaining the current state of the VM.\n"
+                    "description": "The reason explaining the current state of the VM. For more information, see [Creating VMs \u003e VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).\n"
                 },
                 "subnetId": {
                     "type": "string",
@@ -11889,7 +11996,7 @@
                 },
                 "vmInitiatedShutdownBehavior": {
                     "type": "string",
-                    "description": "The VM behavior when you stop it. If set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is deleted.\n"
+                    "description": "The VM behavior when you stop it. If set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is deleted. Important: This attribute is deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e and will be removed in the next major version of the provider.\n"
                 },
                 "vmType": {
                     "type": "string",
@@ -11932,6 +12039,7 @@
                 "securityGroupIds",
                 "securityGroupNames",
                 "securityGroups",
+                "shutdownBehaviorConfigurations",
                 "state",
                 "stateReason",
                 "subnetId",
@@ -12581,6 +12689,28 @@
             "required": [
                 "securityGroupId",
                 "securityGroupName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "outscale:index/getVmsVmShutdownBehaviorConfiguration:getVmsVmShutdownBehaviorConfiguration": {
+            "properties": {
+                "guestAction": {
+                    "type": "string",
+                    "description": "The action performed by the orchestrator when the VM is shut down from the guest operating system. Possible values: \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e.\n"
+                },
+                "hostAction": {
+                    "type": "string",
+                    "description": "The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. Possible values: \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "guestAction",
+                "hostAction"
             ],
             "language": {
                 "nodejs": {
@@ -13833,7 +13963,7 @@
             }
         },
         "outscale:index/flexibleGpu:FlexibleGpu": {
-            "description": "Manages a flexible GPU.\n\nFor more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).  \nFor more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).\n\n## Example Usage\n\n### Create a flexible GPU\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as outscale from \"@outscale/pulumi-outscale\";\n\nconst flexibleGpu01 = new outscale.FlexibleGpu(\"flexible_gpu01\", {\n    modelName: modelName,\n    generation: \"v4\",\n    subregionName: `${region}a`,\n    deleteOnVmDeletion: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_outscale as outscale\n\nflexible_gpu01 = outscale.FlexibleGpu(\"flexible_gpu01\",\n    model_name=model_name,\n    generation=\"v4\",\n    subregion_name=f\"{region}a\",\n    delete_on_vm_deletion=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Outscale = Pulumi.Outscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var flexibleGpu01 = new Outscale.FlexibleGpu(\"flexible_gpu01\", new()\n    {\n        ModelName = modelName,\n        Generation = \"v4\",\n        SubregionName = $\"{region}a\",\n        DeleteOnVmDeletion = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/outscale/pulumi-outscale/sdk/go/outscale\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := outscale.NewFlexibleGpu(ctx, \"flexible_gpu01\", \u0026outscale.FlexibleGpuArgs{\n\t\t\tModelName:          pulumi.Any(modelName),\n\t\t\tGeneration:         pulumi.String(\"v4\"),\n\t\t\tSubregionName:      pulumi.Sprintf(\"%va\", region),\n\t\t\tDeleteOnVmDeletion: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    outscale = {\n      source = \"pulumi/outscale\"\n    }\n  }\n}\n\nresource \"outscale_flexiblegpu\" \"flexible_gpu01\" {\n  model_name            = modelName\n  generation            = \"v4\"\n  subregion_name        =\"${region}a\"\n  delete_on_vm_deletion = true\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.outscale.pulumi.outscale.FlexibleGpu;\nimport com.outscale.pulumi.outscale.FlexibleGpuArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var flexibleGpu01 = new FlexibleGpu(\"flexibleGpu01\", FlexibleGpuArgs.builder()\n            .modelName(modelName)\n            .generation(\"v4\")\n            .subregionName(String.format(\"%sa\", region))\n            .deleteOnVmDeletion(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  flexibleGpu01:\n    type: outscale:FlexibleGpu\n    name: flexible_gpu01\n    properties:\n      modelName: ${modelName}\n      generation: v4\n      subregionName: ${region}a\n      deleteOnVmDeletion: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA flexible GPU can be imported using its ID. For example:\n\n```sh\n\n$ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678\n\n```\n\n",
+            "description": "Manages a flexible GPU.\n\nFor more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).  \nFor more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).\n\n## Example Usage\n\n### Create a flexible GPU\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as outscale from \"@outscale/pulumi-outscale\";\n\nconst flexibleGpu01 = new outscale.FlexibleGpu(\"flexible_gpu01\", {\n    modelName: modelName,\n    generation: \"v5\",\n    deleteOnVmDeletion: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_outscale as outscale\n\nflexible_gpu01 = outscale.FlexibleGpu(\"flexible_gpu01\",\n    model_name=model_name,\n    generation=\"v5\",\n    delete_on_vm_deletion=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Outscale = Pulumi.Outscale;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var flexibleGpu01 = new Outscale.FlexibleGpu(\"flexible_gpu01\", new()\n    {\n        ModelName = modelName,\n        Generation = \"v5\",\n        DeleteOnVmDeletion = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/outscale/pulumi-outscale/sdk/go/outscale\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := outscale.NewFlexibleGpu(ctx, \"flexible_gpu01\", \u0026outscale.FlexibleGpuArgs{\n\t\t\tModelName:          pulumi.Any(modelName),\n\t\t\tGeneration:         pulumi.String(\"v5\"),\n\t\t\tDeleteOnVmDeletion: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    outscale = {\n      source = \"pulumi/outscale\"\n    }\n  }\n}\n\nresource \"outscale_flexiblegpu\" \"flexible_gpu01\" {\n  model_name            = modelName\n  generation            = \"v5\"\n  delete_on_vm_deletion = true\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.outscale.pulumi.outscale.FlexibleGpu;\nimport com.outscale.pulumi.outscale.FlexibleGpuArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var flexibleGpu01 = new FlexibleGpu(\"flexibleGpu01\", FlexibleGpuArgs.builder()\n            .modelName(modelName)\n            .generation(\"v5\")\n            .deleteOnVmDeletion(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  flexibleGpu01:\n    type: outscale:FlexibleGpu\n    name: flexible_gpu01\n    properties:\n      modelName: ${modelName}\n      generation: v5\n      deleteOnVmDeletion: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA flexible GPU can be imported using its ID. For example:\n\n```sh\n\n$ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678\n\n```\n\n",
             "properties": {
                 "deleteOnVmDeletion": {
                     "type": "boolean",
@@ -13857,7 +13987,7 @@
                 },
                 "subregionName": {
                     "type": "string",
-                    "description": "The Subregion in which you want to create the fGPU.\n"
+                    "description": "The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/outscale:index/FlexibleGpuTimeouts:FlexibleGpuTimeouts"
@@ -13891,15 +14021,14 @@
                 },
                 "subregionName": {
                     "type": "string",
-                    "description": "The Subregion in which you want to create the fGPU.\n"
+                    "description": "The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.\n"
                 },
                 "timeouts": {
                     "$ref": "#/types/outscale:index/FlexibleGpuTimeouts:FlexibleGpuTimeouts"
                 }
             },
             "requiredInputs": [
-                "modelName",
-                "subregionName"
+                "modelName"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering FlexibleGpu resources.\n",
@@ -13926,7 +14055,7 @@
                     },
                     "subregionName": {
                         "type": "string",
-                        "description": "The Subregion in which you want to create the fGPU.\n"
+                        "description": "The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.\n"
                     },
                     "timeouts": {
                         "$ref": "#/types/outscale:index/FlexibleGpuTimeouts:FlexibleGpuTimeouts"
@@ -14969,6 +15098,9 @@
                         "$ref": "#/types/outscale:index/LoadBalancerTag:LoadBalancerTag"
                     },
                     "description": "A tag to add to this resource. You can specify this argument several times.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/LoadBalancerTimeouts:LoadBalancerTimeouts"
                 }
             },
             "required": [
@@ -14978,7 +15110,6 @@
                 "backendVmIds",
                 "dnsName",
                 "healthChecks",
-                "listeners",
                 "loadBalancerName",
                 "loadBalancerStickyCookiePolicies",
                 "loadBalancerType",
@@ -14993,13 +15124,6 @@
                 "subregionNames"
             ],
             "inputProperties": {
-                "accessLogs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/outscale:index/LoadBalancerAccessLog:LoadBalancerAccessLog"
-                    },
-                    "description": "Information about access logs.\n"
-                },
                 "listeners": {
                     "type": "array",
                     "items": {
@@ -15009,13 +15133,11 @@
                 },
                 "loadBalancerName": {
                     "type": "string",
-                    "description": "The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.\n"
                 },
                 "loadBalancerType": {
                     "type": "string",
-                    "description": "The type of load balancer: `internet-facing` or \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e. Use this parameter only for load balancers in a Net.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of load balancer: `internet-facing` or \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e. Use this parameter only for load balancers in a Net.\n"
                 },
                 "publicIp": {
                     "type": "string",
@@ -15037,16 +15159,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "(Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.\n",
-                    "willReplaceOnChanges": true
+                    "description": "(Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.\n"
                 },
                 "subregionNames": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "(public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.\n",
-                    "willReplaceOnChanges": true
+                    "description": "(public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -15054,10 +15174,12 @@
                         "$ref": "#/types/outscale:index/LoadBalancerTag:LoadBalancerTag"
                     },
                     "description": "A tag to add to this resource. You can specify this argument several times.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/LoadBalancerTimeouts:LoadBalancerTimeouts"
                 }
             },
             "requiredInputs": [
-                "listeners",
                 "loadBalancerName"
             ],
             "stateInputs": {
@@ -15111,8 +15233,7 @@
                     },
                     "loadBalancerName": {
                         "type": "string",
-                        "description": "The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.\n"
                     },
                     "loadBalancerStickyCookiePolicies": {
                         "type": "array",
@@ -15123,8 +15244,7 @@
                     },
                     "loadBalancerType": {
                         "type": "string",
-                        "description": "The type of load balancer: `internet-facing` or \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e. Use this parameter only for load balancers in a Net.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The type of load balancer: `internet-facing` or \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e. Use this parameter only for load balancers in a Net.\n"
                     },
                     "netId": {
                         "type": "string",
@@ -15164,16 +15284,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "(Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.\n",
-                        "willReplaceOnChanges": true
+                        "description": "(Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.\n"
                     },
                     "subregionNames": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "(public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.\n",
-                        "willReplaceOnChanges": true
+                        "description": "(public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -15181,6 +15299,9 @@
                             "$ref": "#/types/outscale:index/LoadBalancerTag:LoadBalancerTag"
                         },
                         "description": "A tag to add to this resource. You can specify this argument several times.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/LoadBalancerTimeouts:LoadBalancerTimeouts"
                     }
                 },
                 "type": "object"
@@ -15473,6 +15594,9 @@
                 "requestId": {
                     "type": "string"
                 },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/LoadBalancerListenerRuleTimeouts:LoadBalancerListenerRuleTimeouts"
+                },
                 "vmIds": {
                     "type": "array",
                     "items": {
@@ -15496,13 +15620,15 @@
                     "$ref": "#/types/outscale:index/LoadBalancerListenerRuleListenerRule:LoadBalancerListenerRuleListenerRule",
                     "description": "Information about the listener rule.\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/LoadBalancerListenerRuleTimeouts:LoadBalancerListenerRuleTimeouts"
+                },
                 "vmIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IDs of the backend VMs.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The IDs of the backend VMs.\n"
                 }
             },
             "requiredInputs": [
@@ -15524,13 +15650,15 @@
                     "requestId": {
                         "type": "string"
                     },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/LoadBalancerListenerRuleTimeouts:LoadBalancerListenerRuleTimeouts"
+                    },
                     "vmIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IDs of the backend VMs.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The IDs of the backend VMs.\n"
                     }
                 },
                 "type": "object"
@@ -15655,6 +15783,9 @@
                         "$ref": "#/types/outscale:index/LoadBalancerPolicyTag:LoadBalancerPolicyTag"
                     },
                     "description": "One or more tags associated with the load balancer.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/LoadBalancerPolicyTimeouts:LoadBalancerPolicyTimeouts"
                 }
             },
             "required": [
@@ -15682,73 +15813,59 @@
                 "tags"
             ],
             "inputProperties": {
-                "accessLogs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/outscale:index/LoadBalancerPolicyAccessLog:LoadBalancerPolicyAccessLog"
-                    },
-                    "description": "Information about access logs.\n"
-                },
                 "backendVmIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "One or more IDs of backend VMs for the load balancer.\n",
-                    "willReplaceOnChanges": true
+                    "description": "One or more IDs of backend VMs for the load balancer.\n"
                 },
                 "cookieExpirationPeriod": {
-                    "type": "integer",
-                    "willReplaceOnChanges": true
+                    "type": "integer"
                 },
                 "cookieName": {
                     "type": "string",
-                    "description": "The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.\n"
                 },
                 "loadBalancerName": {
                     "type": "string",
-                    "description": "The name of the load balancer for which you want to create a policy.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the load balancer for which you want to create a policy.\n"
                 },
                 "loadBalancerType": {
                     "type": "string",
-                    "description": "The type of load balancer. Valid only for load balancers in a Net.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e, the load balancer has a public DNS name that resolves to a private IP.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of load balancer. Valid only for load balancers in a Net.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e, the load balancer has a public DNS name that resolves to a private IP.\n"
                 },
                 "policyName": {
                     "type": "string",
-                    "description": "The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).\n"
                 },
                 "policyType": {
                     "type": "string",
-                    "description": "The type of stickiness policy you want to create: \u003cspan pulumi-lang-nodejs=\"`app`\" pulumi-lang-dotnet=\"`App`\" pulumi-lang-go=\"`app`\" pulumi-lang-python=\"`app`\" pulumi-lang-yaml=\"`app`\" pulumi-lang-java=\"`app`\" pulumi-lang-hcl=\"`app`\"\u003e`app`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`loadBalancer`\" pulumi-lang-dotnet=\"`LoadBalancer`\" pulumi-lang-go=\"`loadBalancer`\" pulumi-lang-python=\"`load_balancer`\" pulumi-lang-yaml=\"`loadBalancer`\" pulumi-lang-java=\"`loadBalancer`\" pulumi-lang-hcl=\"`load_balancer`\"\u003e`loadBalancer`\u003c/span\u003e.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of stickiness policy you want to create: \u003cspan pulumi-lang-nodejs=\"`app`\" pulumi-lang-dotnet=\"`App`\" pulumi-lang-go=\"`app`\" pulumi-lang-python=\"`app`\" pulumi-lang-yaml=\"`app`\" pulumi-lang-java=\"`app`\" pulumi-lang-hcl=\"`app`\"\u003e`app`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`loadBalancer`\" pulumi-lang-dotnet=\"`LoadBalancer`\" pulumi-lang-go=\"`loadBalancer`\" pulumi-lang-python=\"`load_balancer`\" pulumi-lang-yaml=\"`loadBalancer`\" pulumi-lang-java=\"`loadBalancer`\" pulumi-lang-hcl=\"`load_balancer`\"\u003e`loadBalancer`\u003c/span\u003e.\n"
                 },
                 "securityGroups": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.\n",
-                    "willReplaceOnChanges": true
+                    "description": "One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.\n"
                 },
                 "subnets": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Subnet in which the load balancer was created.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Subnet in which the load balancer was created.\n"
                 },
                 "subregionNames": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Subregion in which the load balancer was created.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The ID of the Subregion in which the load balancer was created.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/outscale:index/LoadBalancerPolicyTimeouts:LoadBalancerPolicyTimeouts"
                 }
             },
             "requiredInputs": [
@@ -15778,22 +15895,18 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "One or more IDs of backend VMs for the load balancer.\n",
-                        "willReplaceOnChanges": true
+                        "description": "One or more IDs of backend VMs for the load balancer.\n"
                     },
                     "cookieExpirationPeriod": {
-                        "type": "integer",
-                        "willReplaceOnChanges": true
+                        "type": "integer"
                     },
                     "cookieName": {
                         "type": "string",
-                        "description": "The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.\n"
                     },
                     "dnsName": {
                         "type": "string",
-                        "description": "The DNS name of the load balancer.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The DNS name of the load balancer.\n"
                     },
                     "healthChecks": {
                         "type": "array",
@@ -15811,8 +15924,7 @@
                     },
                     "loadBalancerName": {
                         "type": "string",
-                        "description": "The name of the load balancer for which you want to create a policy.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the load balancer for which you want to create a policy.\n"
                     },
                     "loadBalancerStickyCookiePolicies": {
                         "type": "array",
@@ -15823,8 +15935,7 @@
                     },
                     "loadBalancerType": {
                         "type": "string",
-                        "description": "The type of load balancer. Valid only for load balancers in a Net.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e, the load balancer has a public DNS name that resolves to a private IP.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The type of load balancer. Valid only for load balancers in a Net.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.\u003cbr /\u003e\nIf \u003cspan pulumi-lang-nodejs=\"`loadBalancerType`\" pulumi-lang-dotnet=\"`LoadBalancerType`\" pulumi-lang-go=\"`loadBalancerType`\" pulumi-lang-python=\"`load_balancer_type`\" pulumi-lang-yaml=\"`loadBalancerType`\" pulumi-lang-java=\"`loadBalancerType`\" pulumi-lang-hcl=\"`load_balancer_type`\"\u003e`loadBalancerType`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`internal`\" pulumi-lang-dotnet=\"`Internal`\" pulumi-lang-go=\"`internal`\" pulumi-lang-python=\"`internal`\" pulumi-lang-yaml=\"`internal`\" pulumi-lang-java=\"`internal`\" pulumi-lang-hcl=\"`internal`\"\u003e`internal`\u003c/span\u003e, the load balancer has a public DNS name that resolves to a private IP.\n"
                     },
                     "netId": {
                         "type": "string",
@@ -15832,13 +15943,11 @@
                     },
                     "policyName": {
                         "type": "string",
-                        "description": "The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).\n"
                     },
                     "policyType": {
                         "type": "string",
-                        "description": "The type of stickiness policy you want to create: \u003cspan pulumi-lang-nodejs=\"`app`\" pulumi-lang-dotnet=\"`App`\" pulumi-lang-go=\"`app`\" pulumi-lang-python=\"`app`\" pulumi-lang-yaml=\"`app`\" pulumi-lang-java=\"`app`\" pulumi-lang-hcl=\"`app`\"\u003e`app`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`loadBalancer`\" pulumi-lang-dotnet=\"`LoadBalancer`\" pulumi-lang-go=\"`loadBalancer`\" pulumi-lang-python=\"`load_balancer`\" pulumi-lang-yaml=\"`loadBalancer`\" pulumi-lang-java=\"`loadBalancer`\" pulumi-lang-hcl=\"`load_balancer`\"\u003e`loadBalancer`\u003c/span\u003e.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The type of stickiness policy you want to create: \u003cspan pulumi-lang-nodejs=\"`app`\" pulumi-lang-dotnet=\"`App`\" pulumi-lang-go=\"`app`\" pulumi-lang-python=\"`app`\" pulumi-lang-yaml=\"`app`\" pulumi-lang-java=\"`app`\" pulumi-lang-hcl=\"`app`\"\u003e`app`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`loadBalancer`\" pulumi-lang-dotnet=\"`LoadBalancer`\" pulumi-lang-go=\"`loadBalancer`\" pulumi-lang-python=\"`load_balancer`\" pulumi-lang-yaml=\"`loadBalancer`\" pulumi-lang-java=\"`loadBalancer`\" pulumi-lang-hcl=\"`load_balancer`\"\u003e`loadBalancer`\u003c/span\u003e.\n"
                     },
                     "publicIp": {
                         "type": "string"
@@ -15854,8 +15963,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.\n",
-                        "willReplaceOnChanges": true
+                        "description": "One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.\n"
                     },
                     "sourceSecurityGroups": {
                         "type": "array",
@@ -15869,16 +15977,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The ID of the Subnet in which the load balancer was created.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Subnet in which the load balancer was created.\n"
                     },
                     "subregionNames": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The ID of the Subregion in which the load balancer was created.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The ID of the Subregion in which the load balancer was created.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -15886,6 +15992,9 @@
                             "$ref": "#/types/outscale:index/LoadBalancerPolicyTag:LoadBalancerPolicyTag"
                         },
                         "description": "One or more tags associated with the load balancer.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/outscale:index/LoadBalancerPolicyTimeouts:LoadBalancerPolicyTimeouts"
                     }
                 },
                 "type": "object"
@@ -19567,7 +19676,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n"
+                    "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`initializing`\" pulumi-lang-dotnet=\"`Initializing`\" pulumi-lang-go=\"`initializing`\" pulumi-lang-python=\"`initializing`\" pulumi-lang-yaml=\"`initializing`\" pulumi-lang-java=\"`initializing`\" pulumi-lang-hcl=\"`initializing`\"\u003e`initializing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`preparing`\" pulumi-lang-dotnet=\"`Preparing`\" pulumi-lang-go=\"`preparing`\" pulumi-lang-python=\"`preparing`\" pulumi-lang-yaml=\"`preparing`\" pulumi-lang-java=\"`preparing`\" pulumi-lang-hcl=\"`preparing`\"\u003e`preparing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`uploading`\" pulumi-lang-dotnet=\"`Uploading`\" pulumi-lang-go=\"`uploading`\" pulumi-lang-python=\"`uploading`\" pulumi-lang-yaml=\"`uploading`\" pulumi-lang-java=\"`uploading`\" pulumi-lang-hcl=\"`uploading`\"\u003e`uploading`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n"
                 },
                 "tags": {
                     "type": "array",
@@ -19654,7 +19763,7 @@
                     },
                     "state": {
                         "type": "string",
-                        "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n"
+                        "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`initializing`\" pulumi-lang-dotnet=\"`Initializing`\" pulumi-lang-go=\"`initializing`\" pulumi-lang-python=\"`initializing`\" pulumi-lang-yaml=\"`initializing`\" pulumi-lang-java=\"`initializing`\" pulumi-lang-hcl=\"`initializing`\"\u003e`initializing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`preparing`\" pulumi-lang-dotnet=\"`Preparing`\" pulumi-lang-go=\"`preparing`\" pulumi-lang-python=\"`preparing`\" pulumi-lang-yaml=\"`preparing`\" pulumi-lang-java=\"`preparing`\" pulumi-lang-hcl=\"`preparing`\"\u003e`preparing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`uploading`\" pulumi-lang-dotnet=\"`Uploading`\" pulumi-lang-go=\"`uploading`\" pulumi-lang-python=\"`uploading`\" pulumi-lang-yaml=\"`uploading`\" pulumi-lang-java=\"`uploading`\" pulumi-lang-hcl=\"`uploading`\"\u003e`uploading`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n"
                     },
                     "tags": {
                         "type": "array",
@@ -20487,13 +20596,17 @@
                     },
                     "description": "One or more security groups associated with the VM.\n"
                 },
+                "shutdownBehaviorConfiguration": {
+                    "$ref": "#/types/outscale:index/VmShutdownBehaviorConfiguration:VmShutdownBehaviorConfiguration",
+                    "description": "Information about the actions performed by the orchestrator when the VM shuts down.\n"
+                },
                 "state": {
                     "type": "string",
                     "description": "The state of the VM (\u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e). If set to \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e, the VM is stopped regardless of the value of the \u003cspan pulumi-lang-nodejs=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-dotnet=\"`VmInitiatedShutdownBehavior`\" pulumi-lang-go=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-python=\"`vm_initiated_shutdown_behavior`\" pulumi-lang-yaml=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-java=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-hcl=\"`vm_initiated_shutdown_behavior`\"\u003e`vmInitiatedShutdownBehavior`\u003c/span\u003e argument.\n"
                 },
                 "stateReason": {
                     "type": "string",
-                    "description": "The reason explaining the current state of the VM.\n"
+                    "description": "The reason explaining the current state of the VM. For more information, see [Creating VMs \u003e VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).\n"
                 },
                 "subnetId": {
                     "type": "string",
@@ -20520,7 +20633,8 @@
                 },
                 "vmInitiatedShutdownBehavior": {
                     "type": "string",
-                    "description": "The VM behavior when you stop it. By default or if set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is terminated.\n"
+                    "description": "The VM behavior when you stop it. By default or if set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is terminated. Important: This argument is deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e and will be removed in the next major version of the provider.\n",
+                    "deprecationMessage": "Configure \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e instead. This attribute will be removed in the next major version of the provider."
                 },
                 "vmType": {
                     "type": "string",
@@ -20560,6 +20674,7 @@
                 "rootDeviceType",
                 "securityGroupIds",
                 "securityGroups",
+                "shutdownBehaviorConfiguration",
                 "stateReason",
                 "subnetId",
                 "tpmEnabled",
@@ -20666,6 +20781,10 @@
                     },
                     "description": "One or more names of security groups for the VMs. You must specify at least one of the following parameters: \u003cspan pulumi-lang-nodejs=\"`securityGroupIds`\" pulumi-lang-dotnet=\"`SecurityGroupIds`\" pulumi-lang-go=\"`securityGroupIds`\" pulumi-lang-python=\"`security_group_ids`\" pulumi-lang-yaml=\"`securityGroupIds`\" pulumi-lang-java=\"`securityGroupIds`\" pulumi-lang-hcl=\"`security_group_ids`\"\u003e`securityGroupIds`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`securityGroupNames`\" pulumi-lang-dotnet=\"`SecurityGroupNames`\" pulumi-lang-go=\"`securityGroupNames`\" pulumi-lang-python=\"`security_group_names`\" pulumi-lang-yaml=\"`securityGroupNames`\" pulumi-lang-java=\"`securityGroupNames`\" pulumi-lang-hcl=\"`security_group_names`\"\u003e`securityGroupNames`\u003c/span\u003e.\n"
                 },
+                "shutdownBehaviorConfiguration": {
+                    "$ref": "#/types/outscale:index/VmShutdownBehaviorConfiguration:VmShutdownBehaviorConfiguration",
+                    "description": "Information about the actions performed by the orchestrator when the VM shuts down.\n"
+                },
                 "state": {
                     "type": "string",
                     "description": "The state of the VM (\u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e). If set to \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e, the VM is stopped regardless of the value of the \u003cspan pulumi-lang-nodejs=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-dotnet=\"`VmInitiatedShutdownBehavior`\" pulumi-lang-go=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-python=\"`vm_initiated_shutdown_behavior`\" pulumi-lang-yaml=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-java=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-hcl=\"`vm_initiated_shutdown_behavior`\"\u003e`vmInitiatedShutdownBehavior`\u003c/span\u003e argument.\n"
@@ -20697,7 +20816,8 @@
                 },
                 "vmInitiatedShutdownBehavior": {
                     "type": "string",
-                    "description": "The VM behavior when you stop it. By default or if set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is terminated.\n"
+                    "description": "The VM behavior when you stop it. By default or if set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is terminated. Important: This argument is deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e and will be removed in the next major version of the provider.\n",
+                    "deprecationMessage": "Configure \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e instead. This attribute will be removed in the next major version of the provider."
                 },
                 "vmType": {
                     "type": "string",
@@ -20899,13 +21019,17 @@
                         },
                         "description": "One or more security groups associated with the VM.\n"
                     },
+                    "shutdownBehaviorConfiguration": {
+                        "$ref": "#/types/outscale:index/VmShutdownBehaviorConfiguration:VmShutdownBehaviorConfiguration",
+                        "description": "Information about the actions performed by the orchestrator when the VM shuts down.\n"
+                    },
                     "state": {
                         "type": "string",
                         "description": "The state of the VM (\u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e). If set to \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e, the VM is stopped regardless of the value of the \u003cspan pulumi-lang-nodejs=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-dotnet=\"`VmInitiatedShutdownBehavior`\" pulumi-lang-go=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-python=\"`vm_initiated_shutdown_behavior`\" pulumi-lang-yaml=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-java=\"`vmInitiatedShutdownBehavior`\" pulumi-lang-hcl=\"`vm_initiated_shutdown_behavior`\"\u003e`vmInitiatedShutdownBehavior`\u003c/span\u003e argument.\n"
                     },
                     "stateReason": {
                         "type": "string",
-                        "description": "The reason explaining the current state of the VM.\n"
+                        "description": "The reason explaining the current state of the VM. For more information, see [Creating VMs \u003e VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).\n"
                     },
                     "subnetId": {
                         "type": "string",
@@ -20934,7 +21058,8 @@
                     },
                     "vmInitiatedShutdownBehavior": {
                         "type": "string",
-                        "description": "The VM behavior when you stop it. By default or if set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is terminated.\n"
+                        "description": "The VM behavior when you stop it. By default or if set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is terminated. Important: This argument is deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e and will be removed in the next major version of the provider.\n",
+                        "deprecationMessage": "Configure \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e instead. This attribute will be removed in the next major version of the provider."
                     },
                     "vmType": {
                         "type": "string",
@@ -25947,7 +26072,7 @@
                         "type": "string"
                     },
                     "state": {
-                        "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n",
+                        "description": "The state of the snapshot export task (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`initializing`\" pulumi-lang-dotnet=\"`Initializing`\" pulumi-lang-go=\"`initializing`\" pulumi-lang-python=\"`initializing`\" pulumi-lang-yaml=\"`initializing`\" pulumi-lang-java=\"`initializing`\" pulumi-lang-hcl=\"`initializing`\"\u003e`initializing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`preparing`\" pulumi-lang-dotnet=\"`Preparing`\" pulumi-lang-go=\"`preparing`\" pulumi-lang-python=\"`preparing`\" pulumi-lang-yaml=\"`preparing`\" pulumi-lang-java=\"`preparing`\" pulumi-lang-hcl=\"`preparing`\"\u003e`preparing`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`uploading`\" pulumi-lang-dotnet=\"`Uploading`\" pulumi-lang-go=\"`uploading`\" pulumi-lang-python=\"`uploading`\" pulumi-lang-yaml=\"`uploading`\" pulumi-lang-java=\"`uploading`\" pulumi-lang-hcl=\"`uploading`\"\u003e`uploading`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`completed`\" pulumi-lang-dotnet=\"`Completed`\" pulumi-lang-go=\"`completed`\" pulumi-lang-python=\"`completed`\" pulumi-lang-yaml=\"`completed`\" pulumi-lang-java=\"`completed`\" pulumi-lang-hcl=\"`completed`\"\u003e`completed`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`cancelled`\" pulumi-lang-dotnet=\"`Cancelled`\" pulumi-lang-go=\"`cancelled`\" pulumi-lang-python=\"`cancelled`\" pulumi-lang-yaml=\"`cancelled`\" pulumi-lang-java=\"`cancelled`\" pulumi-lang-hcl=\"`cancelled`\"\u003e`cancelled`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e).\n",
                         "type": "string"
                     },
                     "tags": {
@@ -27009,12 +27134,19 @@
                         },
                         "type": "array"
                     },
+                    "shutdownBehaviorConfigurations": {
+                        "description": "Information about the actions performed by the orchestrator when the VM shuts down.\n",
+                        "items": {
+                            "$ref": "#/types/outscale:index/getVmShutdownBehaviorConfiguration:getVmShutdownBehaviorConfiguration"
+                        },
+                        "type": "array"
+                    },
                     "state": {
                         "description": "The state of the VM (\u003cspan pulumi-lang-nodejs=\"`pending`\" pulumi-lang-dotnet=\"`Pending`\" pulumi-lang-go=\"`pending`\" pulumi-lang-python=\"`pending`\" pulumi-lang-yaml=\"`pending`\" pulumi-lang-java=\"`pending`\" pulumi-lang-hcl=\"`pending`\"\u003e`pending`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`stopping`\" pulumi-lang-dotnet=\"`Stopping`\" pulumi-lang-go=\"`stopping`\" pulumi-lang-python=\"`stopping`\" pulumi-lang-yaml=\"`stopping`\" pulumi-lang-java=\"`stopping`\" pulumi-lang-hcl=\"`stopping`\"\u003e`stopping`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`stopped`\" pulumi-lang-dotnet=\"`Stopped`\" pulumi-lang-go=\"`stopped`\" pulumi-lang-python=\"`stopped`\" pulumi-lang-yaml=\"`stopped`\" pulumi-lang-java=\"`stopped`\" pulumi-lang-hcl=\"`stopped`\"\u003e`stopped`\u003c/span\u003e \\| `shutting-down` \\| \u003cspan pulumi-lang-nodejs=\"`terminated`\" pulumi-lang-dotnet=\"`Terminated`\" pulumi-lang-go=\"`terminated`\" pulumi-lang-python=\"`terminated`\" pulumi-lang-yaml=\"`terminated`\" pulumi-lang-java=\"`terminated`\" pulumi-lang-hcl=\"`terminated`\"\u003e`terminated`\u003c/span\u003e \\| \u003cspan pulumi-lang-nodejs=\"`quarantine`\" pulumi-lang-dotnet=\"`Quarantine`\" pulumi-lang-go=\"`quarantine`\" pulumi-lang-python=\"`quarantine`\" pulumi-lang-yaml=\"`quarantine`\" pulumi-lang-java=\"`quarantine`\" pulumi-lang-hcl=\"`quarantine`\"\u003e`quarantine`\u003c/span\u003e).\n",
                         "type": "string"
                     },
                     "stateReason": {
-                        "description": "The reason explaining the current state of the VM.\n",
+                        "description": "The reason explaining the current state of the VM. For more information, see [Creating VMs \u003e VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).\n",
                         "type": "string"
                     },
                     "subnetId": {
@@ -27041,7 +27173,7 @@
                         "type": "string"
                     },
                     "vmInitiatedShutdownBehavior": {
-                        "description": "The VM behavior when you stop it. If set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is deleted.\n",
+                        "description": "The VM behavior when you stop it. If set to \u003cspan pulumi-lang-nodejs=\"`stop`\" pulumi-lang-dotnet=\"`Stop`\" pulumi-lang-go=\"`stop`\" pulumi-lang-python=\"`stop`\" pulumi-lang-yaml=\"`stop`\" pulumi-lang-java=\"`stop`\" pulumi-lang-hcl=\"`stop`\"\u003e`stop`\u003c/span\u003e, the VM stops. If set to \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\" pulumi-lang-hcl=\"`restart`\"\u003e`restart`\u003c/span\u003e, the VM stops then automatically restarts. If set to \u003cspan pulumi-lang-nodejs=\"`terminate`\" pulumi-lang-dotnet=\"`Terminate`\" pulumi-lang-go=\"`terminate`\" pulumi-lang-python=\"`terminate`\" pulumi-lang-yaml=\"`terminate`\" pulumi-lang-java=\"`terminate`\" pulumi-lang-hcl=\"`terminate`\"\u003e`terminate`\u003c/span\u003e, the VM stops and is deleted. Important: This attribute is deprecated in favor of \u003cspan pulumi-lang-nodejs=\"`shutdownBehaviorConfiguration`\" pulumi-lang-dotnet=\"`ShutdownBehaviorConfiguration`\" pulumi-lang-go=\"`shutdownBehaviorConfiguration`\" pulumi-lang-python=\"`shutdown_behavior_configuration`\" pulumi-lang-yaml=\"`shutdownBehaviorConfiguration`\" pulumi-lang-java=\"`shutdownBehaviorConfiguration`\" pulumi-lang-hcl=\"`shutdown_behavior_configuration`\"\u003e`shutdownBehaviorConfiguration`\u003c/span\u003e and will be removed in the next major version of the provider.\n",
                         "type": "string"
                     },
                     "vmType": {
@@ -27084,6 +27216,7 @@
                     "securityGroupIds",
                     "securityGroupNames",
                     "securityGroups",
+                    "shutdownBehaviorConfigurations",
                     "state",
                     "stateReason",
                     "subnetId",

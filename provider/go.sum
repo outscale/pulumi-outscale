@@ -3743,8 +3743,8 @@ github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
 github.com/oapi-codegen/nullable v1.1.0 h1:eAh8JVc5430VtYVnq00Hrbpag9PFRGWLjxR1/3KntMs=
 github.com/oapi-codegen/nullable v1.1.0/go.mod h1:KUZ3vUzkmEKY90ksAmit2+5juDIhIZhfDl+0PwOQlFY=
-github.com/oapi-codegen/runtime v1.5.0 h1:aiil4QnH+eiWYSO60eaYZ4aur7sJH3rz6BvT5EBFnxc=
-github.com/oapi-codegen/runtime v1.5.0/go.mod h1:GwV7hC2hviaMzj+ITfHVRESK5J2W/GefVwIND/bMGvU=
+github.com/oapi-codegen/runtime v1.6.0 h1:7Xx+GlueD6nRuyKoCPzL434Jfi3BetbiJOrzCHp/VPU=
+github.com/oapi-codegen/runtime v1.6.0/go.mod h1:GwV7hC2hviaMzj+ITfHVRESK5J2W/GefVwIND/bMGvU=
 github.com/oklog/oklog v0.3.2/go.mod h1:FCV+B7mhrz4o+ueLpx+KqkyXRGMWOYEvfiXtdGtbWGs=
 github.com/oklog/run v1.0.0/go.mod h1:dlhp/R75TPv97u0XWUtDeV/lRKWPKSdTuV0TZvrmrQA=
 github.com/oklog/run v1.1.0/go.mod h1:sVPdnTZT1zYwAJeCMu2Th4T21pA3FPOQRfWjQlk7DVU=
@@ -3823,10 +3823,10 @@ github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnh
 github.com/orisano/pixelmatch v0.0.0-20220722002657-fb0b55479cde/go.mod h1:nZgzbfBr3hhjoZnS66nKrHmduYNpc34ny7RK4z5/HM0=
 github.com/outscale/goutils/sdk v0.0.5 h1:UVu7uC38VOSCPqeCORsw1rKWaoHrsv+TTp6TGUHenjo=
 github.com/outscale/goutils/sdk v0.0.5/go.mod h1:LiXmAIA3CAXCdanEARKQ3Q/Lb8n8dKeGSbPRxIe43kc=
-github.com/outscale/osc-sdk-go/v3 v3.0.0-rc.3 h1:dE2Swgp2M3gSdv5Yx28JFHF1LBhGzVOb6NbVjyshFAs=
-github.com/outscale/osc-sdk-go/v3 v3.0.0-rc.3/go.mod h1:Yi0j2XAZ0/8g0ObVFofMSL5+IuNIDp/AiEI6gXc7txc=
-github.com/outscale/terraform-provider-outscale v1.7.0 h1:j/JpUF6TJk/0n011QHLfVKztrRLRQLH7YCR2Y4b170s=
-github.com/outscale/terraform-provider-outscale v1.7.0/go.mod h1:XowYJWe2N6GFjvYkwn746OOJlY34xL7L4fIuZxlckFQ=
+github.com/outscale/osc-sdk-go/v3 v3.0.0-rc.4 h1:A/tYGv1FDtscUyGKjo9+ZMjSMLx2D8z6uatklJtzot4=
+github.com/outscale/osc-sdk-go/v3 v3.0.0-rc.4/go.mod h1:3lfuRe10qyX65byo8dmnnGAUhsThw8H14enH8d34yiI=
+github.com/outscale/terraform-provider-outscale v1.8.0 h1:ekO/4/r2mO3rOvfXU7e5smBucK3nUueOVXKD9NR9fI8=
+github.com/outscale/terraform-provider-outscale v1.8.0/go.mod h1:koUtyp+GQhthFU4+37jSByXcT6QiGlZ0cFmnqFNGqrg=
 github.com/pact-foundation/pact-go v1.0.4/go.mod h1:uExwJY4kCzNPcHRj+hCR/HBbOOIwwtUjcrb0b5/5kLM=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pborman/uuid v1.2.0/go.mod h1:X/NO0urCmaxf9VXbdlT7C2Yzkj2IKimNn4k+gtPdI/k=
