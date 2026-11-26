@@ -13,7 +13,7 @@ namespace Pulumi.Outscale
     /// Manages a virtual machine (VM).
     /// 
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\
-    /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+    /// For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
     /// 
     /// ## Example Usage
     /// 
@@ -821,6 +821,7 @@ namespace Pulumi.Outscale
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "adminPassword",
                     "keypairNameWo",
                 },
             };
@@ -1084,11 +1085,21 @@ namespace Pulumi.Outscale
             set => _actionsOnNextBoots = value;
         }
 
+        [Input("adminPassword")]
+        private Input<string>? _adminPassword;
+
         /// <summary>
         /// (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.&lt;br /&gt;If `GetAdminPassword` is false or not specified, the VM resource is created without the `AdminPassword` attribute. Once `AdminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.&lt;br /&gt;If `GetAdminPassword` is true, the VM resource itself is not considered created until the `AdminPassword` attribute is available.&lt;br /&gt;Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
         /// </summary>
-        [Input("adminPassword")]
-        public Input<string>? AdminPassword { get; set; }
+        public Input<string>? AdminPassword
+        {
+            get => _adminPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The architecture of the VM (`I386` \| `X8664`).

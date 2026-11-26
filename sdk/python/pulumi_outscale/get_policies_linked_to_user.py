@@ -74,7 +74,7 @@ def get_policies_linked_to_user(user_name: Optional[_builtins.str] = None,
     Provides information about a link policy to user.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#readlinkedpolicies).
+    For more information on this resource actions, see the [ReadLinkedPolicies](https://docs.outscale.com/api.html#readlinkedpolicies) API method.
 
     ## Example Usage
 
@@ -103,7 +103,7 @@ def get_policies_linked_to_user_output(user_name: Optional[pulumi.Input[_builtin
     Provides information about a link policy to user.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#readlinkedpolicies).
+    For more information on this resource actions, see the [ReadLinkedPolicies](https://docs.outscale.com/api.html#readlinkedpolicies) API method.
 
     ## Example Usage
 

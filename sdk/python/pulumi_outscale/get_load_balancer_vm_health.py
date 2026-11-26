@@ -107,7 +107,7 @@ def get_load_balancer_vm_health(backend_vm_ids: Optional[Sequence[_builtins.str]
     Provides information about the health of one or more backend VMs registered with a specific load balancer.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmshealth).
+    For more information on this resource actions, see the [ReadVmsHealth](https://docs.outscale.com/api#readvmshealth) API method.
 
     ## Example Usage
 
@@ -148,7 +148,7 @@ def get_load_balancer_vm_health_output(backend_vm_ids: Optional[pulumi.Input[Opt
     Provides information about the health of one or more backend VMs registered with a specific load balancer.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmshealth).
+    For more information on this resource actions, see the [ReadVmsHealth](https://docs.outscale.com/api#readvmshealth) API method.
 
     ## Example Usage
 

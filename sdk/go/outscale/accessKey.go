@@ -16,7 +16,7 @@ import (
 // > When creating an access key, the secret key is stored in the Terraform state. For security reasons, it is strongly recommended to create access keys using the API rather than the Terraform resource. For more information on how to create access keys using the OUTSCALE API, see the [API documentation](https://docs.outscale.com/api#createaccesskey).
 //
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
-// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
 //
 // ## Example Usage
 //
@@ -115,6 +115,10 @@ func NewAccessKey(ctx *pulumi.Context,
 		args = &AccessKeyArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secretKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessKey
 	err := ctx.RegisterResource("outscale:index/accessKey:AccessKey", name, args, &resource, opts...)

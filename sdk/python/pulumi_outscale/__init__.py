@@ -127,6 +127,16 @@ from .nic_private_ip import *
 from .oks_cluster import *
 from .oks_manifest import *
 from .oks_project import *
+from .oos_bucket import *
+from .oos_bucket_cors import *
+from .oos_bucket_encryption import *
+from .oos_bucket_lifecycle import *
+from .oos_bucket_policy import *
+from .oos_bucket_versioning import *
+from .oos_object import *
+from .oos_object_copy import *
+from .oos_object_retention import *
+from .oos_presigned_url import *
 from .policy import *
 from .policy_version import *
 from .provider import *
@@ -419,6 +429,86 @@ _utilities.register(
   "fqn": "pulumi_outscale",
   "classes": {
    "outscale:index/oksProject:OksProject": "OksProject"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosBucket",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosBucket:OosBucket": "OosBucket"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosBucketCors",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosBucketCors:OosBucketCors": "OosBucketCors"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosBucketEncryption",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosBucketEncryption:OosBucketEncryption": "OosBucketEncryption"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosBucketLifecycle",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosBucketLifecycle:OosBucketLifecycle": "OosBucketLifecycle"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosBucketPolicy",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosBucketPolicy:OosBucketPolicy": "OosBucketPolicy"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosBucketVersioning",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosBucketVersioning:OosBucketVersioning": "OosBucketVersioning"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosObject",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosObject:OosObject": "OosObject"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosObjectCopy",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosObjectCopy:OosObjectCopy": "OosObjectCopy"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosObjectRetention",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosObjectRetention:OosObjectRetention": "OosObjectRetention"
+  }
+ },
+ {
+  "pkg": "outscale",
+  "mod": "index/oosPresignedUrl",
+  "fqn": "pulumi_outscale",
+  "classes": {
+   "outscale:index/oosPresignedUrl:OosPresignedUrl": "OosPresignedUrl"
   }
  },
  {

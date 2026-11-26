@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Provides information about Regions.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readregions).
+ * For more information on this resource actions, see the [ReadRegions](https://docs.outscale.com/api#readregions) API method.
  *
  * ## Example Usage
  *
@@ -45,7 +45,7 @@ export interface GetRegionsResult {
  * Provides information about Regions.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readregions).
+ * For more information on this resource actions, see the [ReadRegions](https://docs.outscale.com/api#readregions) API method.
  *
  * ## Example Usage
  *

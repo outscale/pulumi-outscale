@@ -148,7 +148,7 @@ class FlexibleGpuLink(pulumi.CustomResource):
         When linking a flexible GPU to a VM, the VM will automatically be stopped and started again.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+        For more information on this resource actions, see the [FlexibleGpu](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu) API methods.
 
         ## Example Usage
 
@@ -210,7 +210,7 @@ class FlexibleGpuLink(pulumi.CustomResource):
         When linking a flexible GPU to a VM, the VM will automatically be stopped and started again.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+        For more information on this resource actions, see the [FlexibleGpu](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu) API methods.
 
         ## Example Usage
 

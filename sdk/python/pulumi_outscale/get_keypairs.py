@@ -97,7 +97,7 @@ def get_keypairs(filters: Optional[Sequence[Union['GetKeypairsFilterArgs', 'GetK
     Provides information about keypairs.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+    For more information on this resource actions, see the [Keypair](https://docs.outscale.com/api#3ds-outscale-api-keypair) API methods.
 
     ## Example Usage
 
@@ -136,7 +136,7 @@ def get_keypairs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     Provides information about keypairs.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+    For more information on this resource actions, see the [Keypair](https://docs.outscale.com/api#3ds-outscale-api-keypair) API methods.
 
     ## Example Usage
 

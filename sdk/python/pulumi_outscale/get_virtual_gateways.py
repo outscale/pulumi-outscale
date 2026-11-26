@@ -100,7 +100,7 @@ def get_virtual_gateways(filters: Optional[Sequence[Union['GetVirtualGatewaysFil
     Provides information about virtual gateways.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Gateways.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+    For more information on this resource actions, see the [VirtualGateway](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway) API methods.
 
     ## Example Usage
 
@@ -146,7 +146,7 @@ def get_virtual_gateways_output(filters: Optional[pulumi.Input[Optional[Sequence
     Provides information about virtual gateways.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Gateways.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+    For more information on this resource actions, see the [VirtualGateway](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway) API methods.
 
     ## Example Usage
 

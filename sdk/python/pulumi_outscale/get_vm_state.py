@@ -134,7 +134,7 @@ def get_vm_state(all_vms: Optional[_builtins.bool] = None,
     Provides information about a VM state.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmsstate).
+    For more information on this resource actions, see the [ReadVmsState](https://docs.outscale.com/api#readvmsstate) API method.
 
     ## Example Usage
 
@@ -178,7 +178,7 @@ def get_vm_state_output(all_vms: Optional[pulumi.Input[Optional[_builtins.bool]]
     Provides information about a VM state.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmsstate).
+    For more information on this resource actions, see the [ReadVmsState](https://docs.outscale.com/api#readvmsstate) API method.
 
     ## Example Usage
 

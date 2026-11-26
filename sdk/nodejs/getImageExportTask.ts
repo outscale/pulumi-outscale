@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Provides information about an image export task.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ * For more information on this resource actions, see the [Image](https://docs.outscale.com/api#3ds-outscale-api-image) API methods.
  *
  * ## Example Usage
  *
@@ -90,7 +90,7 @@ export interface GetImageExportTaskResult {
  * Provides information about an image export task.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-image).
+ * For more information on this resource actions, see the [Image](https://docs.outscale.com/api#3ds-outscale-api-image) API methods.
  *
  * ## Example Usage
  *

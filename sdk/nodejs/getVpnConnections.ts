@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Provides information about VPN connections.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPN-Connections.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+ * For more information on this resource actions, see the [VpnConnection](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection) API methods.
  *
  * ## Example Usage
  *
@@ -75,7 +75,7 @@ export interface GetVpnConnectionsResult {
  * Provides information about VPN connections.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VPN-Connections.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection).
+ * For more information on this resource actions, see the [VpnConnection](https://docs.outscale.com/api#3ds-outscale-api-vpnconnection) API methods.
  *
  * ## Example Usage
  *

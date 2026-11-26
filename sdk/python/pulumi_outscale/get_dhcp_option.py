@@ -159,7 +159,7 @@ def get_dhcp_option(filters: Optional[Sequence[Union['GetDhcpOptionFilterArgs', 
     Provides information about a DHCP option.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+    For more information on this resource actions, see the [DhcpOption](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption) API methods.
 
     ## Example Usage
 
@@ -198,7 +198,7 @@ def get_dhcp_option_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
     Provides information about a DHCP option.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption).
+    For more information on this resource actions, see the [DhcpOption](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption) API methods.
 
     ## Example Usage
 

@@ -148,7 +148,7 @@ def get_client_gateway(client_gateway_id: Optional[_builtins.str] = None,
     Provides information about a client gateway.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Client-Gateways.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+    For more information on this resource actions, see the [ClientGateway](https://docs.outscale.com/api#3ds-outscale-api-clientgateway) API methods.
 
     ## Example Usage
 
@@ -189,7 +189,7 @@ def get_client_gateway_output(client_gateway_id: Optional[pulumi.Input[Optional[
     Provides information about a client gateway.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Client-Gateways.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+    For more information on this resource actions, see the [ClientGateway](https://docs.outscale.com/api#3ds-outscale-api-clientgateway) API methods.
 
     ## Example Usage
 

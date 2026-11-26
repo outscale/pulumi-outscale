@@ -97,7 +97,7 @@ def get_internet_services(filters: Optional[Sequence[Union['GetInternetServicesF
     Provides information about internet services.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+    For more information on this resource actions, see the [InternetService](https://docs.outscale.com/api#3ds-outscale-api-internetservice) API methods.
 
     ## Example Usage
 
@@ -142,7 +142,7 @@ def get_internet_services_output(filters: Optional[pulumi.Input[Optional[Sequenc
     Provides information about internet services.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-internetservice).
+    For more information on this resource actions, see the [InternetService](https://docs.outscale.com/api#3ds-outscale-api-internetservice) API methods.
 
     ## Example Usage
 

@@ -23,6 +23,7 @@ class OksManifestArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
                  manifest: pulumi.Input[_builtins.str],
+                 field_manager: Optional[pulumi.Input['OksManifestFieldManagerArgs']] = None,
                  skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeouts: Optional[pulumi.Input['OksManifestTimeoutsArgs']] = None,
                  wait: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -31,12 +32,15 @@ class OksManifestArgs:
         The set of arguments for constructing a OksManifest resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
+        :param pulumi.Input['OksManifestFieldManagerArgs'] field_manager: Server-side apply field manager options:
         :param pulumi.Input[_builtins.bool] skip_delete: If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
         :param pulumi.Input[_builtins.bool] wait: : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
         :param pulumi.Input['OksManifestWaitForArgs'] wait_for: Wait until the fields in the Kubernetes object match the expected values after apply:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "manifest", manifest)
+        if field_manager is not None:
+            pulumi.set(__self__, "field_manager", field_manager)
         if skip_delete is not None:
             pulumi.set(__self__, "skip_delete", skip_delete)
         if timeouts is not None:
@@ -69,6 +73,18 @@ class OksManifestArgs:
     @manifest.setter
     def manifest(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "manifest", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldManager")
+    def field_manager(self) -> Optional[pulumi.Input['OksManifestFieldManagerArgs']]:
+        """
+        Server-side apply field manager options:
+        """
+        return pulumi.get(self, "field_manager")
+
+    @field_manager.setter
+    def field_manager(self, value: Optional[pulumi.Input['OksManifestFieldManagerArgs']]):
+        pulumi.set(self, "field_manager", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDelete")
@@ -120,6 +136,7 @@ class OksManifestArgs:
 class _OksManifestState:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 field_manager: Optional[pulumi.Input['OksManifestFieldManagerArgs']] = None,
                  manifest: Optional[pulumi.Input[_builtins.str]] = None,
                  object: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -129,6 +146,7 @@ class _OksManifestState:
         """
         Input properties used for looking up and filtering OksManifest resources.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
+        :param pulumi.Input['OksManifestFieldManagerArgs'] field_manager: Server-side apply field manager options:
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
         :param pulumi.Input[_builtins.str] object: The applied Kubernetes object returned as YAML.
         :param pulumi.Input[_builtins.bool] skip_delete: If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
@@ -137,6 +155,8 @@ class _OksManifestState:
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if field_manager is not None:
+            pulumi.set(__self__, "field_manager", field_manager)
         if manifest is not None:
             pulumi.set(__self__, "manifest", manifest)
         if object is not None:
@@ -161,6 +181,18 @@ class _OksManifestState:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldManager")
+    def field_manager(self) -> Optional[pulumi.Input['OksManifestFieldManagerArgs']]:
+        """
+        Server-side apply field manager options:
+        """
+        return pulumi.get(self, "field_manager")
+
+    @field_manager.setter
+    def field_manager(self, value: Optional[pulumi.Input['OksManifestFieldManagerArgs']]):
+        pulumi.set(self, "field_manager", value)
 
     @_builtins.property
     @pulumi.getter
@@ -239,6 +271,7 @@ class OksManifest(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 field_manager: Optional[pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']]] = None,
                  manifest: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeouts: Optional[pulumi.Input[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict']]] = None,
@@ -314,9 +347,28 @@ class OksManifest(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        A Kubernetes manifest can be imported using the cluster ID, API version, kind, name, and optionally the namespace, in the format `<cluster_id>,<api_version>,<kind>,<name>[,<namespace>]`. For example:
+
+        ```sh
+
+        $ pulumi import outscale:index/oksManifest:OksManifest nodepool cluster-id,oks.dev/v1beta2,NodePool,pool-1
+
+        ```
+
+        or
+
+        ```sh
+
+        $ pulumi import outscale:index/oksManifest:OksManifest configmap cluster-id,v1,ConfigMap,example,default
+
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
+        :param pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']] field_manager: Server-side apply field manager options:
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
         :param pulumi.Input[_builtins.bool] skip_delete: If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
         :param pulumi.Input[_builtins.bool] wait: : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
@@ -397,6 +449,24 @@ class OksManifest(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        A Kubernetes manifest can be imported using the cluster ID, API version, kind, name, and optionally the namespace, in the format `<cluster_id>,<api_version>,<kind>,<name>[,<namespace>]`. For example:
+
+        ```sh
+
+        $ pulumi import outscale:index/oksManifest:OksManifest nodepool cluster-id,oks.dev/v1beta2,NodePool,pool-1
+
+        ```
+
+        or
+
+        ```sh
+
+        $ pulumi import outscale:index/oksManifest:OksManifest configmap cluster-id,v1,ConfigMap,example,default
+
+        ```
+
         :param str resource_name: The name of the resource.
         :param OksManifestArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -413,6 +483,7 @@ class OksManifest(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 field_manager: Optional[pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']]] = None,
                  manifest: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeouts: Optional[pulumi.Input[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict']]] = None,
@@ -430,6 +501,7 @@ class OksManifest(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["field_manager"] = field_manager
             if manifest is None and not opts.urn:
                 raise TypeError("Missing required property 'manifest'")
             __props__.__dict__["manifest"] = manifest
@@ -449,6 +521,7 @@ class OksManifest(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+            field_manager: Optional[pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']]] = None,
             manifest: Optional[pulumi.Input[_builtins.str]] = None,
             object: Optional[pulumi.Input[_builtins.str]] = None,
             skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -463,6 +536,7 @@ class OksManifest(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
+        :param pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']] field_manager: Server-side apply field manager options:
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
         :param pulumi.Input[_builtins.str] object: The applied Kubernetes object returned as YAML.
         :param pulumi.Input[_builtins.bool] skip_delete: If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
@@ -474,6 +548,7 @@ class OksManifest(pulumi.CustomResource):
         __props__ = _OksManifestState.__new__(_OksManifestState)
 
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["field_manager"] = field_manager
         __props__.__dict__["manifest"] = manifest
         __props__.__dict__["object"] = object
         __props__.__dict__["skip_delete"] = skip_delete
@@ -489,6 +564,14 @@ class OksManifest(pulumi.CustomResource):
         The ID of the cluster on which you want to apply the manifest.
         """
         return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldManager")
+    def field_manager(self) -> pulumi.Output['outputs.OksManifestFieldManager']:
+        """
+        Server-side apply field manager options:
+        """
+        return pulumi.get(self, "field_manager")
 
     @_builtins.property
     @pulumi.getter

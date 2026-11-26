@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Provides information about a load balancer.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer).
+ * For more information on this resource actions, see the [LoadBalancer](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer) API methods.
  *
  * ## Example Usage
  *
@@ -182,7 +182,7 @@ export interface GetLoadBalancerResult {
  * Provides information about a load balancer.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer).
+ * For more information on this resource actions, see the [LoadBalancer](https://docs.outscale.com/api#3ds-outscale-api-loadbalancer) API methods.
  *
  * ## Example Usage
  *

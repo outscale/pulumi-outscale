@@ -13,7 +13,7 @@ namespace Pulumi.Outscale
     /// Manages a virtual gateway route propagation.
     /// 
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Routing-Configuration-for-VPN-Connections.html).\
-    /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#updateroutepropagation).
+    /// For more information on this resource actions, see the [UpdateRoutePropagation](https://docs.outscale.com/api#updateroutepropagation) API method.
     /// 
     /// ## Example Usage
     /// 

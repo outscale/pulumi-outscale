@@ -123,11 +123,31 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// A Kubernetes manifest can be imported using the cluster ID, API version, kind, name, and optionally the namespace, in the format `<cluster_id>,<api_version>,<kind>,<name>[,<namespace>]`. For example:
+//
+// ```sh
+//
+// $ pulumi import outscale:index/oksManifest:OksManifest nodepool cluster-id,oks.dev/v1beta2,NodePool,pool-1
+//
+// ```
+//
+// or
+//
+// ```sh
+//
+// $ pulumi import outscale:index/oksManifest:OksManifest configmap cluster-id,v1,ConfigMap,example,default
+//
+// ```
 type OksManifest struct {
 	pulumi.CustomResourceState
 
 	// The ID of the cluster on which you want to apply the manifest.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// Server-side apply field manager options:
+	FieldManager OksManifestFieldManagerOutput `pulumi:"fieldManager"`
 	// The Kubernetes YAML manifest.
 	Manifest pulumi.StringOutput `pulumi:"manifest"`
 	// The applied Kubernetes object returned as YAML.
@@ -179,6 +199,8 @@ func GetOksManifest(ctx *pulumi.Context,
 type oksManifestState struct {
 	// The ID of the cluster on which you want to apply the manifest.
 	ClusterId *string `pulumi:"clusterId"`
+	// Server-side apply field manager options:
+	FieldManager *OksManifestFieldManager `pulumi:"fieldManager"`
 	// The Kubernetes YAML manifest.
 	Manifest *string `pulumi:"manifest"`
 	// The applied Kubernetes object returned as YAML.
@@ -195,6 +217,8 @@ type oksManifestState struct {
 type OksManifestState struct {
 	// The ID of the cluster on which you want to apply the manifest.
 	ClusterId pulumi.StringPtrInput
+	// Server-side apply field manager options:
+	FieldManager OksManifestFieldManagerPtrInput
 	// The Kubernetes YAML manifest.
 	Manifest pulumi.StringPtrInput
 	// The applied Kubernetes object returned as YAML.
@@ -215,6 +239,8 @@ func (OksManifestState) ElementType() reflect.Type {
 type oksManifestArgs struct {
 	// The ID of the cluster on which you want to apply the manifest.
 	ClusterId string `pulumi:"clusterId"`
+	// Server-side apply field manager options:
+	FieldManager *OksManifestFieldManager `pulumi:"fieldManager"`
 	// The Kubernetes YAML manifest.
 	Manifest string `pulumi:"manifest"`
 	// If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
@@ -230,6 +256,8 @@ type oksManifestArgs struct {
 type OksManifestArgs struct {
 	// The ID of the cluster on which you want to apply the manifest.
 	ClusterId pulumi.StringInput
+	// Server-side apply field manager options:
+	FieldManager OksManifestFieldManagerPtrInput
 	// The Kubernetes YAML manifest.
 	Manifest pulumi.StringInput
 	// If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
@@ -331,6 +359,11 @@ func (o OksManifestOutput) ToOksManifestOutputWithContext(ctx context.Context) O
 // The ID of the cluster on which you want to apply the manifest.
 func (o OksManifestOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OksManifest) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Server-side apply field manager options:
+func (o OksManifestOutput) FieldManager() OksManifestFieldManagerOutput {
+	return o.ApplyT(func(v *OksManifest) OksManifestFieldManagerOutput { return v.FieldManager }).(OksManifestFieldManagerOutput)
 }
 
 // The Kubernetes YAML manifest.

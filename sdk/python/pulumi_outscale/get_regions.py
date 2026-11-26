@@ -76,7 +76,7 @@ def get_regions(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegi
     Provides information about Regions.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readregions).
+    For more information on this resource actions, see the [ReadRegions](https://docs.outscale.com/api#readregions) API method.
 
     ## Example Usage
 
@@ -100,7 +100,7 @@ def get_regions_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeO
     Provides information about Regions.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readregions).
+    For more information on this resource actions, see the [ReadRegions](https://docs.outscale.com/api#readregions) API method.
 
     ## Example Usage
 

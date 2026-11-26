@@ -1304,7 +1304,7 @@ class Vm(pulumi.CustomResource):
         Manages a virtual machine (VM).
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+        For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
 
         ## Example Usage
 
@@ -1618,7 +1618,7 @@ class Vm(pulumi.CustomResource):
         Manages a virtual machine (VM).
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+        For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
 
         ## Example Usage
 
@@ -1994,7 +1994,7 @@ class Vm(pulumi.CustomResource):
             __props__.__dict__["root_device_type"] = None
             __props__.__dict__["security_groups"] = None
             __props__.__dict__["state_reason"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["keypairNameWo"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["adminPassword", "keypairNameWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Vm, __self__).__init__(
             'outscale:index/vm:Vm',

@@ -87,7 +87,7 @@ def get_cas(filters: Optional[Sequence[Union['GetCasFilterArgs', 'GetCasFilterAr
     Provides information about Certificate Authorities (CAs).
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+    For more information on this resource actions, see the [Ca](https://docs.outscale.com/api#3ds-outscale-api-ca) API methods.
 
     ## Example Usage
 
@@ -123,7 +123,7 @@ def get_cas_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetCa
     Provides information about Certificate Authorities (CAs).
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-ca).
+    For more information on this resource actions, see the [Ca](https://docs.outscale.com/api#3ds-outscale-api-ca) API methods.
 
     ## Example Usage
 

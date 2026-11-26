@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Manages a virtual machine (VM).
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+ * For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
  *
  * ## Example Usage
  *
@@ -650,7 +650,7 @@ export class Vm extends pulumi.CustomResource {
             resourceInputs["stateReason"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["keypairNameWo"] };
+        const secretOpts = { additionalSecretOutputs: ["adminPassword", "keypairNameWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Vm.__pulumiType, name, resourceInputs, opts);
     }

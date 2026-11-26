@@ -15,7 +15,7 @@ import (
 // Manages a virtual machine (VM).
 //
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).\
-// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+// For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
 //
 // ## Example Usage
 //
@@ -68,7 +68,7 @@ import (
 //				},
 //				PlacementSubregionName: pulumi.String("eu-west-2a"),
 //				PlacementTenancy:       pulumi.String("default"),
-//				UserData:               invokeBase64encode.Result.(pulumi.String),
+//				UserData:               invokeBase64encode.Result,
 //			})
 //			if err != nil {
 //				return err
@@ -691,6 +691,7 @@ func NewVm(ctx *pulumi.Context,
 		args.KeypairNameWo = pulumi.ToSecret(args.KeypairNameWo).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"adminPassword",
 		"keypairNameWo",
 	})
 	opts = append(opts, secrets)

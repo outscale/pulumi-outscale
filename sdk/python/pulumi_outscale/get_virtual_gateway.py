@@ -138,7 +138,7 @@ def get_virtual_gateway(connection_type: Optional[_builtins.str] = None,
     Provides information about a virtual gateway.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Gateways.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+    For more information on this resource actions, see the [VirtualGateway](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway) API methods.
 
     ## Example Usage
 
@@ -184,7 +184,7 @@ def get_virtual_gateway_output(connection_type: Optional[pulumi.Input[Optional[_
     Provides information about a virtual gateway.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Virtual-Gateways.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway).
+    For more information on this resource actions, see the [VirtualGateway](https://docs.outscale.com/api#3ds-outscale-api-virtualgateway) API methods.
 
     ## Example Usage
 

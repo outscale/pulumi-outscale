@@ -84,7 +84,7 @@ def get_entities_linked_to_policy(entities_types: Optional[Sequence[_builtins.st
     Provides information about  entities (account, users, or user groups) linked to a specific managed policy.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#readentitieslinkedtopolicy).
+    For more information on this resource actions, see the [ReadEntitiesLinkedToPolicy](https://docs.outscale.com/api.html#readentitieslinkedtopolicy) API method.
 
     ## Example Usage
 
@@ -122,7 +122,7 @@ def get_entities_linked_to_policy_output(entities_types: Optional[pulumi.Input[O
     Provides information about  entities (account, users, or user groups) linked to a specific managed policy.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#readentitieslinkedtopolicy).
+    For more information on this resource actions, see the [ReadEntitiesLinkedToPolicy](https://docs.outscale.com/api.html#readentitieslinkedtopolicy) API method.
 
     ## Example Usage
 

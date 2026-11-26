@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Manages a Net peering.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Peerings.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netpeering).
+ * For more information on this resource actions, see the [NetPeering](https://docs.outscale.com/api#3ds-outscale-api-netpeering) API methods.
  *
  * ## Example Usage
  *

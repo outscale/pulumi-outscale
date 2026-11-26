@@ -15,7 +15,7 @@ namespace Pulumi.Outscale
         /// Provides information about access keys.
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).  
-        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+        /// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
         /// 
         /// ## Example Usage
         /// 
@@ -93,7 +93,7 @@ namespace Pulumi.Outscale
         /// Provides information about access keys.
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).  
-        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+        /// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
         /// 
         /// ## Example Usage
         /// 
@@ -171,7 +171,7 @@ namespace Pulumi.Outscale
         /// Provides information about access keys.
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).  
-        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+        /// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
         /// 
         /// ## Example Usage
         /// 

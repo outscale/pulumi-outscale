@@ -135,7 +135,7 @@ def get_server_certificate(filters: Optional[Sequence[Union['GetServerCertificat
     Provides information about a server certificate.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+    For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
 
     :param Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
@@ -160,7 +160,7 @@ def get_server_certificate_output(filters: Optional[pulumi.Input[Optional[Sequen
     Provides information about a server certificate.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+    For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
 
     :param Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
