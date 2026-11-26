@@ -143,6 +143,12 @@ func (NetPeeringAcceptationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*netPeeringAcceptationState)(nil)).Elem()
 }
 
+// NetPeeringAcceptationExists checks whether an existing NetPeeringAcceptation resource with the given ID exists.
+func NetPeeringAcceptationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetPeeringAcceptationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/netPeeringAcceptation:NetPeeringAcceptation", id, state, "", opts...)
+}
+
 type netPeeringAcceptationArgs struct {
 	// The ID of the Net peering you want to accept.
 	NetPeeringId string                         `pulumi:"netPeeringId"`

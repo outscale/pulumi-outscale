@@ -52,6 +52,17 @@ export class OksProject extends pulumi.CustomResource {
         return new OksProject(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OksProject resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OksProjectState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oksProject:OksProject", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oksProject:OksProject';
 
@@ -167,45 +178,45 @@ export interface OksProjectState {
     /**
      * The CIDR block to associate with the Net of the project.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the project was created (date-time).
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A description for the project.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, project deletion through the API is disabled. If false, it is enabled. By default, false.
      */
-    disableApiTermination?: pulumi.Input<boolean>;
+    disableApiTermination?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name for the project, between 1 and 40 characters. This name must start with a letter and contain only lowercase letters, numbers, or hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of special configurations or behaviors for the project.
      */
-    quirks?: pulumi.Input<pulumi.Input<string>[]>;
+    quirks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Region on which the project is deployed.
      */
-    region?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The status of the project.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The key/value combinations of the tags associated with the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.OksProjectTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.OksProjectTimeouts | undefined>;
     /**
      * The timestamp when the project was last updated (date-time).
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -219,19 +230,19 @@ export interface OksProjectArgs {
     /**
      * A description for the project.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, project deletion through the API is disabled. If false, it is enabled. By default, false.
      */
-    disableApiTermination?: pulumi.Input<boolean>;
+    disableApiTermination?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name for the project, between 1 and 40 characters. This name must start with a letter and contain only lowercase letters, numbers, or hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of special configurations or behaviors for the project.
      */
-    quirks?: pulumi.Input<pulumi.Input<string>[]>;
+    quirks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Region on which the project is deployed.
      */
@@ -239,6 +250,6 @@ export interface OksProjectArgs {
     /**
      * The key/value combinations of the tags associated with the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.OksProjectTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.OksProjectTimeouts | undefined>;
 }

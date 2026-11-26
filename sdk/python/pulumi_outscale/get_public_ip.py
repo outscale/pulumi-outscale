@@ -165,7 +165,7 @@ class AwaitableGetPublicIpResult(GetPublicIpResult):
             vm_id=self.vm_id)
 
 
-def get_public_ip(filters: Optional[Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict']]] = None,
+def get_public_ip(filters: Optional[Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict', 'outputs.GetPublicIpFilterResult']]] = None,
                   public_ip: Optional[_builtins.str] = None,
                   public_ip_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublicIpResult:
@@ -188,7 +188,7 @@ def get_public_ip(filters: Optional[Sequence[Union['GetPublicIpFilterArgs', 'Get
     ```
 
 
-    :param Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict', 'outputs.GetPublicIpFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str public_ip: The public IP.
     :param _builtins.str public_ip_id: The allocation ID of the public IP.
     """
@@ -211,9 +211,9 @@ def get_public_ip(filters: Optional[Sequence[Union['GetPublicIpFilterArgs', 'Get
         request_id=pulumi.get(__ret__, 'request_id'),
         tags=pulumi.get(__ret__, 'tags'),
         vm_id=pulumi.get(__ret__, 'vm_id'))
-def get_public_ip_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict']]]]] = None,
-                         public_ip: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         public_ip_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_public_ip_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict', 'outputs.GetPublicIpFilterResult']]]]] = None,
+                         public_ip: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         public_ip_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPublicIpResult]:
     """
     Provides information about a public IP.
@@ -234,7 +234,7 @@ def get_public_ip_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     ```
 
 
-    :param Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetPublicIpFilterArgs', 'GetPublicIpFilterArgsDict', 'outputs.GetPublicIpFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str public_ip: The public IP.
     :param _builtins.str public_ip_id: The allocation ID of the public IP.
     """

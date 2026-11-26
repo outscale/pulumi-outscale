@@ -229,6 +229,12 @@ func (SecurityGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGroupState)(nil)).Elem()
 }
 
+// SecurityGroupExists checks whether an existing SecurityGroup resource with the given ID exists.
+func SecurityGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/securityGroup:SecurityGroup", id, state, "", opts...)
+}
+
 type securityGroupArgs struct {
 	// A description for the security group.<br />
 	// This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.

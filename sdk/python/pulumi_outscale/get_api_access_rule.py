@@ -129,7 +129,7 @@ class AwaitableGetApiAccessRuleResult(GetApiAccessRuleResult):
             request_id=self.request_id)
 
 
-def get_api_access_rule(filters: Optional[Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict']]] = None,
+def get_api_access_rule(filters: Optional[Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict', 'outputs.GetApiAccessRuleFilterResult']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiAccessRuleResult:
     """
     Provides information about an API access rule.
@@ -150,7 +150,7 @@ def get_api_access_rule(filters: Optional[Sequence[Union['GetApiAccessRuleFilter
     ```
 
 
-    :param Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict', 'outputs.GetApiAccessRuleFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -166,7 +166,7 @@ def get_api_access_rule(filters: Optional[Sequence[Union['GetApiAccessRuleFilter
         id=pulumi.get(__ret__, 'id'),
         ip_ranges=pulumi.get(__ret__, 'ip_ranges'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_api_access_rule_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict']]]]] = None,
+def get_api_access_rule_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict', 'outputs.GetApiAccessRuleFilterResult']]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiAccessRuleResult]:
     """
     Provides information about an API access rule.
@@ -187,7 +187,7 @@ def get_api_access_rule_output(filters: Optional[pulumi.Input[Optional[Sequence[
     ```
 
 
-    :param Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetApiAccessRuleFilterArgs', 'GetApiAccessRuleFilterArgsDict', 'outputs.GetApiAccessRuleFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

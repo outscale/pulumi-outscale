@@ -117,12 +117,8 @@ type GetNetAccessPointsResult struct {
 }
 
 func GetNetAccessPointsOutput(ctx *pulumi.Context, args GetNetAccessPointsOutputArgs, opts ...pulumi.InvokeOption) GetNetAccessPointsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetAccessPointsResultOutput, error) {
-			args := v.(GetNetAccessPointsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getNetAccessPoints:getNetAccessPoints", args, GetNetAccessPointsResultOutput{}, options).(GetNetAccessPointsResultOutput), nil
-		}).(GetNetAccessPointsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getNetAccessPoints:getNetAccessPoints", args, GetNetAccessPointsResultOutput{}, options).(GetNetAccessPointsResultOutput)
 }
 
 // A collection of arguments for invoking getNetAccessPoints.

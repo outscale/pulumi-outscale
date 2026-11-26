@@ -83,6 +83,17 @@ export class Net extends pulumi.CustomResource {
         return new Net(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Net resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NetState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/net:Net", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/net:Net';
 
@@ -171,29 +182,29 @@ export interface NetState {
     /**
      * The ID of the DHCP options set (or `default` if you want to associate the default one).
      */
-    dhcpOptionsSetId?: pulumi.Input<string>;
+    dhcpOptionsSetId?: pulumi.Input<string | undefined>;
     /**
      * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net.
      */
-    netId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the Net (`pending` \| `available` \| `deleting`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[] | undefined>;
     /**
      * The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
      */
-    tenancy?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.NetTimeouts>;
+    tenancy?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.NetTimeouts | undefined>;
 }
 
 /**
@@ -207,10 +218,10 @@ export interface NetArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NetTag>[] | undefined>;
     /**
      * The tenancy options for the VMs:<br />- `default` if a VM created in a Net can be launched with any tenancy.<br />- `dedicated` if it can be launched with dedicated tenancy VMs running on single-tenant hardware.<br />- `dedicated group ID` if it can be launched in a dedicated group on single-tenant hardware.
      */
-    tenancy?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.NetTimeouts>;
+    tenancy?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.NetTimeouts | undefined>;
 }

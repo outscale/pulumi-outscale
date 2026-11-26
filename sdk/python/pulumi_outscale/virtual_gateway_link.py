@@ -23,9 +23,10 @@ class VirtualGatewayLinkArgs:
     def __init__(__self__, *,
                  net_id: pulumi.Input[_builtins.str],
                  virtual_gateway_id: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['VirtualGatewayLinkTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['VirtualGatewayLinkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a VirtualGatewayLink resource.
+
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the virtual gateway.
         :param pulumi.Input[_builtins.str] virtual_gateway_id: The ID of the virtual gateway.
         """
@@ -60,24 +61,25 @@ class VirtualGatewayLinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VirtualGatewayLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VirtualGatewayLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VirtualGatewayLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VirtualGatewayLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _VirtualGatewayLinkState:
     def __init__(__self__, *,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_to_virtual_gateway_links: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayLinkNetToVirtualGatewayLinkArgs']]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['VirtualGatewayLinkTimeoutsArgs']] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_to_virtual_gateway_links: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualGatewayLinkNetToVirtualGatewayLinkArgs']]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['VirtualGatewayLinkTimeoutsArgs']] = None,
+                 virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualGatewayLink resources.
+
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the virtual gateway.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualGatewayLinkNetToVirtualGatewayLinkArgs']]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
         :param pulumi.Input[_builtins.str] virtual_gateway_id: The ID of the virtual gateway.
@@ -95,56 +97,56 @@ class _VirtualGatewayLinkState:
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net to which you want to attach the virtual gateway.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="netToVirtualGatewayLinks")
-    def net_to_virtual_gateway_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayLinkNetToVirtualGatewayLinkArgs']]]]:
+    def net_to_virtual_gateway_links(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualGatewayLinkNetToVirtualGatewayLinkArgs']]]]:
         """
         The Net to which the virtual gateway is attached.
         """
         return pulumi.get(self, "net_to_virtual_gateway_links")
 
     @net_to_virtual_gateway_links.setter
-    def net_to_virtual_gateway_links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualGatewayLinkNetToVirtualGatewayLinkArgs']]]]):
+    def net_to_virtual_gateway_links(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualGatewayLinkNetToVirtualGatewayLinkArgs']]]]):
         pulumi.set(self, "net_to_virtual_gateway_links", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VirtualGatewayLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VirtualGatewayLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VirtualGatewayLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VirtualGatewayLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualGatewayId")
-    def virtual_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual gateway.
         """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
-    def virtual_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_gateway_id", value)
 
 
@@ -154,9 +156,9 @@ class VirtualGatewayLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VirtualGatewayLinkTimeoutsArgs', 'VirtualGatewayLinkTimeoutsArgsDict']]] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VirtualGatewayLinkTimeoutsArgs', 'VirtualGatewayLinkTimeoutsArgsDict', 'outputs.VirtualGatewayLinkTimeouts']]] = None,
+                 virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a virtual gateway link.
@@ -196,6 +198,7 @@ class VirtualGatewayLink(pulumi.CustomResource):
         $ pulumi import outscale:index/virtualGatewayLink:VirtualGatewayLink ImportedVirtualGatewayLink vgw-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -247,6 +250,7 @@ class VirtualGatewayLink(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param VirtualGatewayLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,9 +266,9 @@ class VirtualGatewayLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VirtualGatewayLinkTimeoutsArgs', 'VirtualGatewayLinkTimeoutsArgsDict']]] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VirtualGatewayLinkTimeoutsArgs', 'VirtualGatewayLinkTimeoutsArgsDict', 'outputs.VirtualGatewayLinkTimeouts']]] = None,
+                 virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,11 +297,11 @@ class VirtualGatewayLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            net_to_virtual_gateway_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayLinkNetToVirtualGatewayLinkArgs', 'VirtualGatewayLinkNetToVirtualGatewayLinkArgsDict']]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['VirtualGatewayLinkTimeoutsArgs', 'VirtualGatewayLinkTimeoutsArgsDict']]] = None,
-            virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualGatewayLink':
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_to_virtual_gateway_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualGatewayLinkNetToVirtualGatewayLinkArgs', 'VirtualGatewayLinkNetToVirtualGatewayLinkArgsDict', 'outputs.VirtualGatewayLinkNetToVirtualGatewayLink']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VirtualGatewayLinkTimeoutsArgs', 'VirtualGatewayLinkTimeoutsArgsDict', 'outputs.VirtualGatewayLinkTimeouts']]] = None,
+            virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualGatewayLink':
         """
         Get an existing VirtualGatewayLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -306,7 +310,7 @@ class VirtualGatewayLink(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the virtual gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayLinkNetToVirtualGatewayLinkArgs', 'VirtualGatewayLinkNetToVirtualGatewayLinkArgsDict']]]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualGatewayLinkNetToVirtualGatewayLinkArgs', 'VirtualGatewayLinkNetToVirtualGatewayLinkArgsDict', 'outputs.VirtualGatewayLinkNetToVirtualGatewayLink']]]] net_to_virtual_gateway_links: The Net to which the virtual gateway is attached.
         :param pulumi.Input[_builtins.str] virtual_gateway_id: The ID of the virtual gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -319,6 +323,22 @@ class VirtualGatewayLink(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["virtual_gateway_id"] = virtual_gateway_id
         return VirtualGatewayLink(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_to_virtual_gateway_links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualGatewayLinkNetToVirtualGatewayLinkArgs', 'VirtualGatewayLinkNetToVirtualGatewayLinkArgsDict', 'outputs.VirtualGatewayLinkNetToVirtualGatewayLink']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VirtualGatewayLinkTimeoutsArgs', 'VirtualGatewayLinkTimeoutsArgsDict', 'outputs.VirtualGatewayLinkTimeouts']]] = None,
+            virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["netId"] = net_id
+        __props__["netToVirtualGatewayLinks"] = net_to_virtual_gateway_links
+        __props__["requestId"] = request_id
+        __props__["timeouts"] = timeouts
+        __props__["virtualGatewayId"] = virtual_gateway_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/virtualGatewayLink:VirtualGatewayLink', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="netId")

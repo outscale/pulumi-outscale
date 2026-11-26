@@ -122,9 +122,9 @@ export interface GetRouteTablesOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetRouteTablesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetRouteTablesFilterArgs>[] | undefined>;
     /**
      * The ID of the route table.
      */
-    routeTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTableIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

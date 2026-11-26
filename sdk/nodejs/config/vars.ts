@@ -10,12 +10,31 @@ declare var exports: any;
 const __config = new pulumi.Config("outscale");
 
 /**
- * The Access Key ID for API operations
+ * The Access Key ID for API operations.
  */
 export declare const accessKeyId: string | undefined;
 Object.defineProperty(exports, "accessKeyId", {
     get() {
         return __config.get("accessKeyId") ?? utilities.getEnv("OUTSCALE_ACCESSKEYID");
+    },
+    enumerable: true,
+});
+
+export declare const api: outputs.config.Api | undefined;
+Object.defineProperty(exports, "api", {
+    get() {
+        return __config.getObject<outputs.config.Api>("api");
+    },
+    enumerable: true,
+});
+
+/**
+ * Path to the configuration file in which you have defined your credentials.
+ */
+export declare const configFile: string | undefined;
+Object.defineProperty(exports, "configFile", {
+    get() {
+        return __config.get("configFile");
     },
     enumerable: true,
 });
@@ -29,12 +48,39 @@ Object.defineProperty(exports, "endpoints", {
 });
 
 /**
- * tls insecure connection
+ * TLS insecure connection for IaaS API operations.
  */
 export declare const insecure: boolean | undefined;
 Object.defineProperty(exports, "insecure", {
     get() {
         return __config.getObject<boolean>("insecure");
+    },
+    enumerable: true,
+});
+
+export declare const oks: outputs.config.Oks | undefined;
+Object.defineProperty(exports, "oks", {
+    get() {
+        return __config.getObject<outputs.config.Oks>("oks");
+    },
+    enumerable: true,
+});
+
+export declare const oos: outputs.config.Oos | undefined;
+Object.defineProperty(exports, "oos", {
+    get() {
+        return __config.getObject<outputs.config.Oos>("oos");
+    },
+    enumerable: true,
+});
+
+/**
+ * Name of your profile in which you define your credencial
+ */
+export declare const profile: string | undefined;
+Object.defineProperty(exports, "profile", {
+    get() {
+        return __config.get("profile");
     },
     enumerable: true,
 });
@@ -51,6 +97,17 @@ Object.defineProperty(exports, "region", {
 });
 
 /**
+ * Sanitize sensitive data in the logs. Defaults to true.
+ */
+export declare const sanitize: boolean | undefined;
+Object.defineProperty(exports, "sanitize", {
+    get() {
+        return __config.getObject<boolean>("sanitize");
+    },
+    enumerable: true,
+});
+
+/**
  * The Secret Key ID for API operations.
  */
 export declare const secretKeyId: string | undefined;
@@ -62,7 +119,7 @@ Object.defineProperty(exports, "secretKeyId", {
 });
 
 /**
- * The path to your x509 cert
+ * Path to the x509 certificate for IaaS API operations.
  */
 export declare const x509CertPath: string | undefined;
 Object.defineProperty(exports, "x509CertPath", {
@@ -73,7 +130,7 @@ Object.defineProperty(exports, "x509CertPath", {
 });
 
 /**
- * The path to your x509 key
+ * Path to the x509 key for IaaS API operations.
  */
 export declare const x509KeyPath: string | undefined;
 Object.defineProperty(exports, "x509KeyPath", {

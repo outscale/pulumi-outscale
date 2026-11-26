@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const clientGateway01 = new outscale.ClientGateway("client_gateway01", {
+ *     bgpAsn: 65000,
+ *     publicIp: "111.11.11.111",
+ *     connectionType: "ipsec.1",
  *     tags: [{
  *         key: "Name",
  *         value: "client_gateway_01",
  *     }],
- *     bgpAsn: 65000,
- *     publicIp: "111.11.11.111",
- *     connectionType: "ipsec.1",
  * });
  * ```
  *
@@ -51,6 +51,17 @@ export class ClientGateway extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClientGatewayState, opts?: pulumi.CustomResourceOptions): ClientGateway {
         return new ClientGateway(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing ClientGateway resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ClientGatewayState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/clientGateway:ClientGateway", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -151,29 +162,29 @@ export interface ClientGatewayState {
      * This number must be between `1` and `4294967295`, except `50624`, `53306`, and `132418`. <br/>
      * If you do not have an ASN, you can choose one between `64512` and `65534` (both included), or between `4200000000` and `4294967295` (both included).
      */
-    bgpAsn?: pulumi.Input<number>;
+    bgpAsn?: pulumi.Input<number | undefined>;
     /**
      * The ID of the client gateway.
      */
-    clientGatewayId?: pulumi.Input<string>;
+    clientGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The communication protocol used to establish tunnel with your client gateway (always `ipsec.1`).
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * The public fixed IPv4 address of your client gateway.
      */
-    publicIp?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the client gateway (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[]>;
-    timeouts?: pulumi.Input<inputs.ClientGatewayTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.ClientGatewayTimeouts | undefined>;
 }
 
 /**
@@ -197,6 +208,6 @@ export interface ClientGatewayArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[]>;
-    timeouts?: pulumi.Input<inputs.ClientGatewayTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ClientGatewayTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.ClientGatewayTimeouts | undefined>;
 }

@@ -129,7 +129,7 @@ class AwaitableGetServerCertificateResult(GetServerCertificateResult):
             upload_date=self.upload_date)
 
 
-def get_server_certificate(filters: Optional[Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict']]] = None,
+def get_server_certificate(filters: Optional[Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict', 'outputs.GetServerCertificateFilterResult']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerCertificateResult:
     """
     Provides information about a server certificate.
@@ -138,7 +138,7 @@ def get_server_certificate(filters: Optional[Sequence[Union['GetServerCertificat
     For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
 
-    :param Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict', 'outputs.GetServerCertificateFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -154,7 +154,7 @@ def get_server_certificate(filters: Optional[Sequence[Union['GetServerCertificat
         path=pulumi.get(__ret__, 'path'),
         request_id=pulumi.get(__ret__, 'request_id'),
         upload_date=pulumi.get(__ret__, 'upload_date'))
-def get_server_certificate_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict']]]]] = None,
+def get_server_certificate_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict', 'outputs.GetServerCertificateFilterResult']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerCertificateResult]:
     """
     Provides information about a server certificate.
@@ -163,7 +163,7 @@ def get_server_certificate_output(filters: Optional[pulumi.Input[Optional[Sequen
     For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
 
-    :param Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetServerCertificateFilterArgs', 'GetServerCertificateFilterArgsDict', 'outputs.GetServerCertificateFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

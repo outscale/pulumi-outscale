@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about an internet service.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
         /// For more information on this resource actions, see the [InternetService](https://docs.outscale.com/api#3ds-outscale-api-internetservice) API methods.
         /// 
         /// ## Example Usage
@@ -51,7 +51,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about an internet service.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
         /// For more information on this resource actions, see the [InternetService](https://docs.outscale.com/api#3ds-outscale-api-internetservice) API methods.
         /// 
         /// ## Example Usage
@@ -88,7 +88,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about an internet service.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Internet-Services.html).\
         /// For more information on this resource actions, see the [InternetService](https://docs.outscale.com/api#3ds-outscale-api-internetservice) API methods.
         /// 
         /// ## Example Usage

@@ -17,19 +17,40 @@ from . import outputs
 
 accessKeyId: Optional[str]
 """
-The Access Key ID for API operations
+The Access Key ID for API operations.
+"""
+
+api: Optional[str]
+
+configFile: Optional[str]
+"""
+Path to the configuration file in which you have defined your credentials.
 """
 
 endpoints: Optional[str]
 
 insecure: Optional[bool]
 """
-tls insecure connection
+TLS insecure connection for IaaS API operations.
+"""
+
+oks: Optional[str]
+
+oos: Optional[str]
+
+profile: Optional[str]
+"""
+Name of your profile in which you define your credencial
 """
 
 region: Optional[str]
 """
 The Region for API operations.
+"""
+
+sanitize: Optional[bool]
+"""
+Sanitize sensitive data in the logs. Defaults to true.
 """
 
 secretKeyId: Optional[str]
@@ -39,11 +60,11 @@ The Secret Key ID for API operations.
 
 x509CertPath: Optional[str]
 """
-The path to your x509 cert
+Path to the x509 certificate for IaaS API operations.
 """
 
 x509KeyPath: Optional[str]
 """
-The path to your x509 key
+Path to the x509 key for IaaS API operations.
 """
 

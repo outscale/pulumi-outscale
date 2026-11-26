@@ -24,9 +24,20 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def access_key_id(self) -> Optional[str]:
         """
-        The Access Key ID for API operations
+        The Access Key ID for API operations.
         """
         return __config__.get('accessKeyId') or _utilities.get_env('OUTSCALE_ACCESSKEYID')
+
+    @_builtins.property
+    def api(self) -> Optional[str]:
+        return __config__.get('api')
+
+    @_builtins.property
+    def config_file(self) -> Optional[str]:
+        """
+        Path to the configuration file in which you have defined your credentials.
+        """
+        return __config__.get('configFile')
 
     @_builtins.property
     def endpoints(self) -> Optional[str]:
@@ -35,9 +46,24 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def insecure(self) -> Optional[bool]:
         """
-        tls insecure connection
+        TLS insecure connection for IaaS API operations.
         """
         return __config__.get_bool('insecure')
+
+    @_builtins.property
+    def oks(self) -> Optional[str]:
+        return __config__.get('oks')
+
+    @_builtins.property
+    def oos(self) -> Optional[str]:
+        return __config__.get('oos')
+
+    @_builtins.property
+    def profile(self) -> Optional[str]:
+        """
+        Name of your profile in which you define your credencial
+        """
+        return __config__.get('profile')
 
     @_builtins.property
     def region(self) -> Optional[str]:
@@ -45,6 +71,13 @@ class _ExportableConfig(types.ModuleType):
         The Region for API operations.
         """
         return __config__.get('region') or _utilities.get_env('OUTSCALE_REGION')
+
+    @_builtins.property
+    def sanitize(self) -> Optional[bool]:
+        """
+        Sanitize sensitive data in the logs. Defaults to true.
+        """
+        return __config__.get_bool('sanitize')
 
     @_builtins.property
     def secret_key_id(self) -> Optional[str]:
@@ -56,14 +89,14 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def x509_cert_path(self) -> Optional[str]:
         """
-        The path to your x509 cert
+        Path to the x509 certificate for IaaS API operations.
         """
         return __config__.get('x509CertPath')
 
     @_builtins.property
     def x509_key_path(self) -> Optional[str]:
         """
-        The path to your x509 key
+        Path to the x509 key for IaaS API operations.
         """
         return __config__.get('x509KeyPath')
 

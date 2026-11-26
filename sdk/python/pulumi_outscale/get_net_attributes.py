@@ -165,7 +165,7 @@ def get_net_attributes(net_id: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         tags=pulumi.get(__ret__, 'tags'),
         tenancy=pulumi.get(__ret__, 'tenancy'))
-def get_net_attributes_output(net_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_net_attributes_output(net_id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetAttributesResult]:
     """
     Provides information about the attributes of a Net.

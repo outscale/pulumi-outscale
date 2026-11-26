@@ -207,6 +207,12 @@ func (VolumeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeState)(nil)).Elem()
 }
 
+// VolumeExists checks whether an existing Volume resource with the given ID exists.
+func VolumeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/volume:Volume", id, state, "", opts...)
+}
+
 type volumeArgs struct {
 	// The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
 	Iops *int `pulumi:"iops"`

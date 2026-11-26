@@ -35,6 +35,7 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const accessKey01 = outscale.getAccessKey({
+ *     userName: "user_name",
  *     filters: [
  *         {
  *             name: "access_key_ids",
@@ -45,7 +46,6 @@ import * as utilities from "./utilities";
  *             values: ["ACTIVE"],
  *         },
  *     ],
- *     userName: "user_name",
  * });
  * ```
  */
@@ -143,6 +143,7 @@ export interface GetAccessKeyResult {
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const accessKey01 = outscale.getAccessKey({
+ *     userName: "user_name",
  *     filters: [
  *         {
  *             name: "access_key_ids",
@@ -153,7 +154,6 @@ export interface GetAccessKeyResult {
  *             values: ["ACTIVE"],
  *         },
  *     ],
- *     userName: "user_name",
  * });
  * ```
  */
@@ -175,17 +175,17 @@ export interface GetAccessKeyOutputArgs {
     /**
      * The ID of the access key.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetAccessKeyFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetAccessKeyFilterArgs>[] | undefined>;
     /**
      * The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The name of the EIM user. By default, the user who sends the request (which can be the root user).
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

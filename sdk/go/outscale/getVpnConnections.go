@@ -84,12 +84,8 @@ type GetVpnConnectionsResult struct {
 }
 
 func GetVpnConnectionsOutput(ctx *pulumi.Context, args GetVpnConnectionsOutputArgs, opts ...pulumi.InvokeOption) GetVpnConnectionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVpnConnectionsResultOutput, error) {
-			args := v.(GetVpnConnectionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getVpnConnections:getVpnConnections", args, GetVpnConnectionsResultOutput{}, options).(GetVpnConnectionsResultOutput), nil
-		}).(GetVpnConnectionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getVpnConnections:getVpnConnections", args, GetVpnConnectionsResultOutput{}, options).(GetVpnConnectionsResultOutput)
 }
 
 // A collection of arguments for invoking getVpnConnections.

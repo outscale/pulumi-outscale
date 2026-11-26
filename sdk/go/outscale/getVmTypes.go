@@ -131,12 +131,8 @@ type GetVmTypesResult struct {
 }
 
 func GetVmTypesOutput(ctx *pulumi.Context, args GetVmTypesOutputArgs, opts ...pulumi.InvokeOption) GetVmTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVmTypesResultOutput, error) {
-			args := v.(GetVmTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getVmTypes:getVmTypes", args, GetVmTypesResultOutput{}, options).(GetVmTypesResultOutput), nil
-		}).(GetVmTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getVmTypes:getVmTypes", args, GetVmTypesResultOutput{}, options).(GetVmTypesResultOutput)
 }
 
 // A collection of arguments for invoking getVmTypes.

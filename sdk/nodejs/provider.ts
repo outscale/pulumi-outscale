@@ -28,9 +28,17 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The Access Key ID for API operations
+     * The Access Key ID for API operations.
      */
     declare public readonly accessKeyId: pulumi.Output<string | undefined>;
+    /**
+     * Path to the configuration file in which you have defined your credentials.
+     */
+    declare public readonly configFile: pulumi.Output<string | undefined>;
+    /**
+     * Name of your profile in which you define your credencial
+     */
+    declare public readonly profile: pulumi.Output<string | undefined>;
     /**
      * The Region for API operations.
      */
@@ -40,11 +48,15 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly secretKeyId: pulumi.Output<string | undefined>;
     /**
-     * The path to your x509 cert
+     * Path to the x509 certificate for IaaS API operations.
+     *
+     * @deprecated 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
      */
     declare public readonly x509CertPath: pulumi.Output<string | undefined>;
     /**
-     * The path to your x509 key
+     * Path to the x509 key for IaaS API operations.
+     *
+     * @deprecated 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
      */
     declare public readonly x509KeyPath: pulumi.Output<string | undefined>;
 
@@ -60,9 +72,15 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["accessKeyId"] = (args?.accessKeyId) ?? utilities.getEnv("OUTSCALE_ACCESSKEYID");
+            resourceInputs["api"] = pulumi.output(args?.api).apply(JSON.stringify);
+            resourceInputs["configFile"] = args?.configFile;
             resourceInputs["endpoints"] = pulumi.output(args?.endpoints).apply(JSON.stringify);
             resourceInputs["insecure"] = pulumi.output(args?.insecure).apply(JSON.stringify);
+            resourceInputs["oks"] = pulumi.output(args?.oks).apply(JSON.stringify);
+            resourceInputs["oos"] = pulumi.output(args?.oos).apply(JSON.stringify);
+            resourceInputs["profile"] = args?.profile;
             resourceInputs["region"] = (args?.region) ?? utilities.getEnv("OUTSCALE_REGION");
+            resourceInputs["sanitize"] = pulumi.output(args?.sanitize).apply(JSON.stringify);
             resourceInputs["secretKeyId"] = (args?.secretKeyId) ?? utilities.getEnv("OUTSCALE_SECRETKEYID");
             resourceInputs["x509CertPath"] = args?.x509CertPath;
             resourceInputs["x509KeyPath"] = args?.x509KeyPath;
@@ -86,30 +104,54 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The Access Key ID for API operations
+     * The Access Key ID for API operations.
      */
-    accessKeyId?: pulumi.Input<string>;
-    endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
+    accessKeyId?: pulumi.Input<string | undefined>;
+    api?: pulumi.Input<inputs.ProviderApi | undefined>;
     /**
-     * tls insecure connection
+     * Path to the configuration file in which you have defined your credentials.
      */
-    insecure?: pulumi.Input<boolean>;
+    configFile?: pulumi.Input<string | undefined>;
+    /**
+     * @deprecated 'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[] | undefined>;
+    /**
+     * TLS insecure connection for IaaS API operations.
+     *
+     * @deprecated 'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
+     */
+    insecure?: pulumi.Input<boolean | undefined>;
+    oks?: pulumi.Input<inputs.ProviderOks | undefined>;
+    oos?: pulumi.Input<inputs.ProviderOos | undefined>;
+    /**
+     * Name of your profile in which you define your credencial
+     */
+    profile?: pulumi.Input<string | undefined>;
     /**
      * The Region for API operations.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    /**
+     * Sanitize sensitive data in the logs. Defaults to true.
+     */
+    sanitize?: pulumi.Input<boolean | undefined>;
     /**
      * The Secret Key ID for API operations.
      */
-    secretKeyId?: pulumi.Input<string>;
+    secretKeyId?: pulumi.Input<string | undefined>;
     /**
-     * The path to your x509 cert
+     * Path to the x509 certificate for IaaS API operations.
+     *
+     * @deprecated 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
      */
-    x509CertPath?: pulumi.Input<string>;
+    x509CertPath?: pulumi.Input<string | undefined>;
     /**
-     * The path to your x509 key
+     * Path to the x509 key for IaaS API operations.
+     *
+     * @deprecated 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
      */
-    x509KeyPath?: pulumi.Input<string>;
+    x509KeyPath?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

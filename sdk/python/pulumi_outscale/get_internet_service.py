@@ -117,7 +117,7 @@ class AwaitableGetInternetServiceResult(GetInternetServiceResult):
             tags=self.tags)
 
 
-def get_internet_service(filters: Optional[Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict']]] = None,
+def get_internet_service(filters: Optional[Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict', 'outputs.GetInternetServiceFilterResult']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInternetServiceResult:
     """
     Provides information about an internet service.
@@ -138,7 +138,7 @@ def get_internet_service(filters: Optional[Sequence[Union['GetInternetServiceFil
     ```
 
 
-    :param Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict', 'outputs.GetInternetServiceFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -153,7 +153,7 @@ def get_internet_service(filters: Optional[Sequence[Union['GetInternetServiceFil
         request_id=pulumi.get(__ret__, 'request_id'),
         state=pulumi.get(__ret__, 'state'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_internet_service_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict']]]]] = None,
+def get_internet_service_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict', 'outputs.GetInternetServiceFilterResult']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInternetServiceResult]:
     """
     Provides information about an internet service.
@@ -174,7 +174,7 @@ def get_internet_service_output(filters: Optional[pulumi.Input[Optional[Sequence
     ```
 
 
-    :param Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetInternetServiceFilterArgs', 'GetInternetServiceFilterArgsDict', 'outputs.GetInternetServiceFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

@@ -21,10 +21,10 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const image01 = new outscale.ImageLaunchPermission("image01", {
+ *     imageId: "ami-12345678",
  *     permissionAdditions: {
  *         accountIds: ["012345678910"],
  *     },
- *     imageId: "ami-12345678",
  * });
  * ```
  *
@@ -35,10 +35,10 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const image02 = new outscale.ImageLaunchPermission("image02", {
+ *     imageId: "ami-12345678",
  *     permissionRemovals: {
  *         accountIds: ["012345678910"],
  *     },
- *     imageId: "ami-12345678",
  * });
  * ```
  */
@@ -54,6 +54,17 @@ export class ImageLaunchPermission extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageLaunchPermissionState, opts?: pulumi.CustomResourceOptions): ImageLaunchPermission {
         return new ImageLaunchPermission(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing ImageLaunchPermission resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ImageLaunchPermissionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/imageLaunchPermission:ImageLaunchPermission", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -135,24 +146,24 @@ export interface ImageLaunchPermissionState {
     /**
      * The description of the OMI.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the OMI you want to modify.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Information about the users to whom you want to give permissions for the resource.
      */
-    permissionAdditions?: pulumi.Input<inputs.ImageLaunchPermissionPermissionAdditions>;
+    permissionAdditions?: pulumi.Input<inputs.ImageLaunchPermissionPermissionAdditions | undefined>;
     /**
      * Information about the users from whom you want to remove permissions for the resource.
      */
-    permissionRemovals?: pulumi.Input<inputs.ImageLaunchPermissionPermissionRemovals>;
+    permissionRemovals?: pulumi.Input<inputs.ImageLaunchPermissionPermissionRemovals | undefined>;
     /**
      * Permissions for the resource.
      */
-    permissionsToLaunches?: pulumi.Input<pulumi.Input<inputs.ImageLaunchPermissionPermissionsToLaunch>[]>;
-    requestId?: pulumi.Input<string>;
+    permissionsToLaunches?: pulumi.Input<pulumi.Input<inputs.ImageLaunchPermissionPermissionsToLaunch>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,9 +177,9 @@ export interface ImageLaunchPermissionArgs {
     /**
      * Information about the users to whom you want to give permissions for the resource.
      */
-    permissionAdditions?: pulumi.Input<inputs.ImageLaunchPermissionPermissionAdditions>;
+    permissionAdditions?: pulumi.Input<inputs.ImageLaunchPermissionPermissionAdditions | undefined>;
     /**
      * Information about the users from whom you want to remove permissions for the resource.
      */
-    permissionRemovals?: pulumi.Input<inputs.ImageLaunchPermissionPermissionRemovals>;
+    permissionRemovals?: pulumi.Input<inputs.ImageLaunchPermissionPermissionRemovals | undefined>;
 }

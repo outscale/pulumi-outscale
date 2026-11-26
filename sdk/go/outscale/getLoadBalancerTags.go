@@ -38,12 +38,8 @@ type GetLoadBalancerTagsResult struct {
 }
 
 func GetLoadBalancerTagsOutput(ctx *pulumi.Context, args GetLoadBalancerTagsOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerTagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLoadBalancerTagsResultOutput, error) {
-			args := v.(GetLoadBalancerTagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getLoadBalancerTags:getLoadBalancerTags", args, GetLoadBalancerTagsResultOutput{}, options).(GetLoadBalancerTagsResultOutput), nil
-		}).(GetLoadBalancerTagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getLoadBalancerTags:getLoadBalancerTags", args, GetLoadBalancerTagsResultOutput{}, options).(GetLoadBalancerTagsResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancerTags.

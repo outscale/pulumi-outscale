@@ -66,6 +66,17 @@ export class Route extends pulumi.CustomResource {
         return new Route(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Route resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RouteState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/route:Route", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/route:Route';
 
@@ -203,57 +214,57 @@ export interface RouteState {
      *
      * @deprecated Route's state is always active. The attribute will be removed in the next major version.
      */
-    awaitActiveState?: pulumi.Input<boolean>;
+    awaitActiveState?: pulumi.Input<boolean | undefined>;
     /**
      * The method used to create the route.
      */
-    creationMethod?: pulumi.Input<string>;
+    creationMethod?: pulumi.Input<string | undefined>;
     /**
      * The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
      */
-    destinationIpRange?: pulumi.Input<string>;
+    destinationIpRange?: pulumi.Input<string | undefined>;
     /**
      * The ID of the OUTSCALE service.
      */
-    destinationServiceId?: pulumi.Input<string>;
+    destinationServiceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of an internet service or virtual gateway attached to your Net.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a NAT service.
      */
-    natServiceId?: pulumi.Input<string>;
+    natServiceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net access point.
      */
-    netAccessPointId?: pulumi.Input<string>;
+    netAccessPointId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a Net peering.
      */
-    netPeeringId?: pulumi.Input<string>;
+    netPeeringId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a NIC.
      */
-    nicId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table for which you want to create a route.
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
     /**
      * The state of a route in the route table (always `active`).
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.RouteTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.RouteTimeouts | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the VM.
      */
-    vmAccountId?: pulumi.Input<string>;
+    vmAccountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a NAT VM in your Net (attached to exactly one NIC).
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,7 +276,7 @@ export interface RouteArgs {
      *
      * @deprecated Route's state is always active. The attribute will be removed in the next major version.
      */
-    awaitActiveState?: pulumi.Input<boolean>;
+    awaitActiveState?: pulumi.Input<boolean | undefined>;
     /**
      * The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
      */
@@ -273,26 +284,26 @@ export interface RouteArgs {
     /**
      * The ID of an internet service or virtual gateway attached to your Net.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a NAT service.
      */
-    natServiceId?: pulumi.Input<string>;
+    natServiceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a Net peering.
      */
-    netPeeringId?: pulumi.Input<string>;
+    netPeeringId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a NIC.
      */
-    nicId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table for which you want to create a route.
      */
     routeTableId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.RouteTimeouts>;
+    timeouts?: pulumi.Input<inputs.RouteTimeouts | undefined>;
     /**
      * The ID of a NAT VM in your Net (attached to exactly one NIC).
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }

@@ -115,7 +115,7 @@ class AwaitableGetSnapshotsResult(GetSnapshotsResult):
 
 
 def get_snapshots(account_ids: Optional[Sequence[_builtins.str]] = None,
-                  filters: Optional[Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict']]] = None,
+                  filters: Optional[Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict', 'outputs.GetSnapshotsFilterResult']]] = None,
                   permission_to_create_volumes: Optional[Sequence[_builtins.str]] = None,
                   snapshot_ids: Optional[Sequence[_builtins.str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotsResult:
@@ -148,7 +148,7 @@ def get_snapshots(account_ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] account_ids: The OUTSCALE account ID of the owner of the snapshot.
-    :param Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict', 'outputs.GetSnapshotsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] snapshot_ids: The ID of the snapshot.
     """
     __args__ = dict()
@@ -167,10 +167,10 @@ def get_snapshots(account_ids: Optional[Sequence[_builtins.str]] = None,
         request_id=pulumi.get(__ret__, 'request_id'),
         snapshot_ids=pulumi.get(__ret__, 'snapshot_ids'),
         snapshots=pulumi.get(__ret__, 'snapshots'))
-def get_snapshots_output(account_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict']]]]] = None,
-                         permission_to_create_volumes: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         snapshot_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_snapshots_output(account_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict', 'outputs.GetSnapshotsFilterResult']]]]] = None,
+                         permission_to_create_volumes: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         snapshot_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
     Provides information about snapshots.
@@ -201,7 +201,7 @@ def get_snapshots_output(account_ids: Optional[pulumi.Input[Optional[Sequence[_b
 
 
     :param Sequence[_builtins.str] account_ids: The OUTSCALE account ID of the owner of the snapshot.
-    :param Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSnapshotsFilterArgs', 'GetSnapshotsFilterArgsDict', 'outputs.GetSnapshotsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] snapshot_ids: The ID of the snapshot.
     """
     __args__ = dict()

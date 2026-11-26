@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a server certificate.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
         /// For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
         /// </summary>
         public static Task<GetServerCertificateResult> InvokeAsync(GetServerCertificateArgs? args = null, InvokeOptions? options = null)
@@ -23,7 +23,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a server certificate.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
         /// For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
         /// </summary>
         public static Output<GetServerCertificateResult> Invoke(GetServerCertificateInvokeArgs? args = null, InvokeOptions? options = null)
@@ -32,7 +32,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a server certificate.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
         /// For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
         /// </summary>
         public static Output<GetServerCertificateResult> Invoke(GetServerCertificateInvokeArgs args, InvokeOutputOptions options)

@@ -21,15 +21,16 @@ __all__ = ['PublicIpLinkArgs', 'PublicIpLink']
 @pulumi.input_type
 class PublicIpLinkArgs:
     def __init__(__self__, *,
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['PublicIpLinkTimeoutsArgs']] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['PublicIpLinkTimeoutsArgs']] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PublicIpLink resource.
+
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
         :param pulumi.Input[_builtins.str] nic_id: (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
         :param pulumi.Input[_builtins.str] private_ip: (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
@@ -54,102 +55,103 @@ class PublicIpLinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowRelink")
-    def allow_relink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_relink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
         """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
-    def allow_relink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_relink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_relink", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public IP. This parameter is required unless you use the `public_ip_id` parameter.
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpId")
-    def public_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
         """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
-    def public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['PublicIpLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['PublicIpLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['PublicIpLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['PublicIpLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _PublicIpLinkState:
     def __init__(__self__, *,
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpLinkTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['PublicIpLinkTimeoutsArgs']] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpLinkTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['PublicIpLinkTimeoutsArgs']] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIpLink resources.
+
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
         :param pulumi.Input[_builtins.str] link_public_ip_id: (Net only) The ID representing the association of the public IP with the VM or the NIC.
         :param pulumi.Input[_builtins.str] nic_id: (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
@@ -183,122 +185,122 @@ class _PublicIpLinkState:
 
     @_builtins.property
     @pulumi.getter(name="allowRelink")
-    def allow_relink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_relink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
         """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
-    def allow_relink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_relink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_relink", value)
 
     @_builtins.property
     @pulumi.getter(name="linkPublicIpId")
-    def link_public_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_public_ip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Net only) The ID representing the association of the public IP with the VM or the NIC.
         """
         return pulumi.get(self, "link_public_ip_id")
 
     @link_public_ip_id.setter
-    def link_public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_public_ip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_public_ip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicAccountId")
-    def nic_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "nic_account_id")
 
     @nic_account_id.setter
-    def nic_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vm_id` parameter instead. You cannot specify both parameters at the same time.
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public IP. This parameter is required unless you use the `public_ip_id` parameter.
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpId")
-    def public_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation ID of the public IP. This parameter is required unless you use the `public_ip` parameter.
         """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
-    def public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpLinkTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpLinkTagArgs']]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpLinkTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpLinkTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['PublicIpLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['PublicIpLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['PublicIpLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['PublicIpLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nic_id` parameter instead. You cannot specify both parameters at the same time.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -308,13 +310,13 @@ class PublicIpLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['PublicIpLinkTimeoutsArgs', 'PublicIpLinkTimeoutsArgsDict']]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PublicIpLinkTimeoutsArgs', 'PublicIpLinkTimeoutsArgsDict', 'outputs.PublicIpLinkTimeouts']]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a public IP link.
@@ -358,6 +360,7 @@ class PublicIpLink(pulumi.CustomResource):
         $ pulumi import outscale:index/publicIpLink:PublicIpLink ImportedPublicIpLink eipassoc-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -417,6 +420,7 @@ class PublicIpLink(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param PublicIpLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -432,13 +436,13 @@ class PublicIpLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['PublicIpLinkTimeoutsArgs', 'PublicIpLinkTimeoutsArgsDict']]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PublicIpLinkTimeoutsArgs', 'PublicIpLinkTimeoutsArgsDict', 'outputs.PublicIpLinkTimeouts']]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -469,17 +473,17 @@ class PublicIpLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-            link_public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PublicIpLinkTagArgs', 'PublicIpLinkTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['PublicIpLinkTimeoutsArgs', 'PublicIpLinkTimeoutsArgsDict']]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicIpLink':
+            allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+            link_public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicIpLinkTagArgs', 'PublicIpLinkTagArgsDict', 'outputs.PublicIpLinkTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['PublicIpLinkTimeoutsArgs', 'PublicIpLinkTimeoutsArgsDict', 'outputs.PublicIpLinkTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PublicIpLink':
         """
         Get an existing PublicIpLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -511,6 +515,34 @@ class PublicIpLink(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vm_id"] = vm_id
         return PublicIpLink(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+            link_public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicIpLinkTagArgs', 'PublicIpLinkTagArgsDict', 'outputs.PublicIpLinkTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['PublicIpLinkTimeoutsArgs', 'PublicIpLinkTimeoutsArgsDict', 'outputs.PublicIpLinkTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowRelink"] = allow_relink
+        __props__["linkPublicIpId"] = link_public_ip_id
+        __props__["nicAccountId"] = nic_account_id
+        __props__["nicId"] = nic_id
+        __props__["privateIp"] = private_ip
+        __props__["publicIp"] = public_ip
+        __props__["publicIpId"] = public_ip_id
+        __props__["requestId"] = request_id
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/publicIpLink:PublicIpLink', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="allowRelink")

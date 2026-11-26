@@ -8080,11 +8080,46 @@ export interface VpnConnectionVgwTelemetry {
 }
 
 export namespace config {
+    export interface Api {
+        endpoint?: string;
+        /**
+         * TLS insecure connection
+         */
+        insecure?: boolean;
+        region?: string;
+        /**
+         * Path to the x509 certificate
+         *
+         * @deprecated 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+         */
+        x509CertPath?: string;
+        /**
+         * Path to the x509 key
+         *
+         * @deprecated 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+         */
+        x509KeyPath?: string;
+    }
+
     export interface Endpoints {
         /**
-         * Use this to override the default service endpoint URL
+         * The Endpoint for Outscale API operations.
          */
         api?: string;
+        /**
+         * The Endpoint for OKS API operations.
+         */
+        oks?: string;
+    }
+
+    export interface Oks {
+        endpoint?: string;
+        region?: string;
+    }
+
+    export interface Oos {
+        endpoint?: string;
+        region?: string;
     }
 
 }

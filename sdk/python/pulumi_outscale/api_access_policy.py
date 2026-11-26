@@ -23,10 +23,11 @@ class ApiAccessPolicyArgs:
     def __init__(__self__, *,
                  max_access_key_expiration_seconds: pulumi.Input[_builtins.int],
                  require_trusted_env: pulumi.Input[_builtins.bool],
-                 require_trusted_env_secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['ApiAccessPolicyTimeoutsArgs']] = None):
+                 require_trusted_env_secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['ApiAccessPolicyTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ApiAccessPolicy resource.
+
         :param pulumi.Input[_builtins.int] max_access_key_expiration_seconds: The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
         :param pulumi.Input[_builtins.bool] require_trusted_env: If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
         :param pulumi.Input[_builtins.bool] require_trusted_env_secure_mode: (Default: `false`) If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0` and that the parameter `require_trusted_env` is set to true.<br />
@@ -65,7 +66,7 @@ class ApiAccessPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="requireTrustedEnvSecureMode")
-    def require_trusted_env_secure_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_trusted_env_secure_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Default: `false`) If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0` and that the parameter `require_trusted_env` is set to true.<br />
         This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
@@ -73,29 +74,30 @@ class ApiAccessPolicyArgs:
         return pulumi.get(self, "require_trusted_env_secure_mode")
 
     @require_trusted_env_secure_mode.setter
-    def require_trusted_env_secure_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_trusted_env_secure_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_trusted_env_secure_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ApiAccessPolicyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ApiAccessPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ApiAccessPolicyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ApiAccessPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _ApiAccessPolicyState:
     def __init__(__self__, *,
-                 max_access_key_expiration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_trusted_env: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_trusted_env_secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['ApiAccessPolicyTimeoutsArgs']] = None):
+                 max_access_key_expiration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_trusted_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_trusted_env_secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['ApiAccessPolicyTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ApiAccessPolicy resources.
+
         :param pulumi.Input[_builtins.int] max_access_key_expiration_seconds: The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
         :param pulumi.Input[_builtins.str] request_id: The ID of the API request.
         :param pulumi.Input[_builtins.bool] require_trusted_env: If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
@@ -115,43 +117,43 @@ class _ApiAccessPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="maxAccessKeyExpirationSeconds")
-    def max_access_key_expiration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_access_key_expiration_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
         """
         return pulumi.get(self, "max_access_key_expiration_seconds")
 
     @max_access_key_expiration_seconds.setter
-    def max_access_key_expiration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_access_key_expiration_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_access_key_expiration_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the API request.
         """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTrustedEnv")
-    def require_trusted_env(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_trusted_env(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
         """
         return pulumi.get(self, "require_trusted_env")
 
     @require_trusted_env.setter
-    def require_trusted_env(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_trusted_env(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_trusted_env", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTrustedEnvSecureMode")
-    def require_trusted_env_secure_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_trusted_env_secure_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Default: `false`) If true, a trusted session is activated, provided that you specify the `max_access_key_expiration_seconds` parameter with a value greater than `0` and that the parameter `require_trusted_env` is set to true.<br />
         This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
@@ -159,16 +161,16 @@ class _ApiAccessPolicyState:
         return pulumi.get(self, "require_trusted_env_secure_mode")
 
     @require_trusted_env_secure_mode.setter
-    def require_trusted_env_secure_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_trusted_env_secure_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_trusted_env_secure_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ApiAccessPolicyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ApiAccessPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ApiAccessPolicyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ApiAccessPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -178,10 +180,10 @@ class ApiAccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 max_access_key_expiration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 require_trusted_env: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_trusted_env_secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ApiAccessPolicyTimeoutsArgs', 'ApiAccessPolicyTimeoutsArgsDict']]] = None,
+                 max_access_key_expiration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 require_trusted_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_trusted_env_secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ApiAccessPolicyTimeoutsArgs', 'ApiAccessPolicyTimeoutsArgsDict', 'outputs.ApiAccessPolicyTimeouts']]] = None,
                  __props__=None):
         """
         Manages the API access policy.
@@ -227,6 +229,7 @@ class ApiAccessPolicy(pulumi.CustomResource):
             max_access_key_expiration_seconds=0,
             require_trusted_env=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -286,6 +289,7 @@ class ApiAccessPolicy(pulumi.CustomResource):
             require_trusted_env=False)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param ApiAccessPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -301,10 +305,10 @@ class ApiAccessPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 max_access_key_expiration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 require_trusted_env: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_trusted_env_secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ApiAccessPolicyTimeoutsArgs', 'ApiAccessPolicyTimeoutsArgsDict']]] = None,
+                 max_access_key_expiration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 require_trusted_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_trusted_env_secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ApiAccessPolicyTimeoutsArgs', 'ApiAccessPolicyTimeoutsArgsDict', 'outputs.ApiAccessPolicyTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -333,11 +337,11 @@ class ApiAccessPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            max_access_key_expiration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            require_trusted_env: Optional[pulumi.Input[_builtins.bool]] = None,
-            require_trusted_env_secure_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            timeouts: Optional[pulumi.Input[Union['ApiAccessPolicyTimeoutsArgs', 'ApiAccessPolicyTimeoutsArgsDict']]] = None) -> 'ApiAccessPolicy':
+            max_access_key_expiration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            require_trusted_env: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_trusted_env_secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['ApiAccessPolicyTimeoutsArgs', 'ApiAccessPolicyTimeoutsArgsDict', 'outputs.ApiAccessPolicyTimeouts']]] = None) -> 'ApiAccessPolicy':
         """
         Get an existing ApiAccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -361,6 +365,22 @@ class ApiAccessPolicy(pulumi.CustomResource):
         __props__.__dict__["require_trusted_env_secure_mode"] = require_trusted_env_secure_mode
         __props__.__dict__["timeouts"] = timeouts
         return ApiAccessPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            max_access_key_expiration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            require_trusted_env: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_trusted_env_secure_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['ApiAccessPolicyTimeoutsArgs', 'ApiAccessPolicyTimeoutsArgsDict', 'outputs.ApiAccessPolicyTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["maxAccessKeyExpirationSeconds"] = max_access_key_expiration_seconds
+        __props__["requestId"] = request_id
+        __props__["requireTrustedEnv"] = require_trusted_env
+        __props__["requireTrustedEnvSecureMode"] = require_trusted_env_secure_mode
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/apiAccessPolicy:ApiAccessPolicy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="maxAccessKeyExpirationSeconds")

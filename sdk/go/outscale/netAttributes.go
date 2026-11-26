@@ -173,6 +173,12 @@ func (NetAttributesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*netAttributesState)(nil)).Elem()
 }
 
+// NetAttributesExists checks whether an existing NetAttributes resource with the given ID exists.
+func NetAttributesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetAttributesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/netAttributes:NetAttributes", id, state, "", opts...)
+}
+
 type netAttributesArgs struct {
 	// The ID of the DHCP options set (or `default` if you want to associate the default one).
 	DhcpOptionsSetId string `pulumi:"dhcpOptionsSetId"`

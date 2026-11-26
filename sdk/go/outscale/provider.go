@@ -18,15 +18,23 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The Access Key ID for API operations
+	// The Access Key ID for API operations.
 	AccessKeyId pulumi.StringPtrOutput `pulumi:"accessKeyId"`
+	// Path to the configuration file in which you have defined your credentials.
+	ConfigFile pulumi.StringPtrOutput `pulumi:"configFile"`
+	// Name of your profile in which you define your credencial
+	Profile pulumi.StringPtrOutput `pulumi:"profile"`
 	// The Region for API operations.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The Secret Key ID for API operations.
 	SecretKeyId pulumi.StringPtrOutput `pulumi:"secretKeyId"`
-	// The path to your x509 cert
+	// Path to the x509 certificate for IaaS API operations.
+	//
+	// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
 	X509CertPath pulumi.StringPtrOutput `pulumi:"x509CertPath"`
-	// The path to your x509 key
+	// Path to the x509 key for IaaS API operations.
+	//
+	// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
 	X509KeyPath pulumi.StringPtrOutput `pulumi:"x509KeyPath"`
 }
 
@@ -62,35 +70,67 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The Access Key ID for API operations
-	AccessKeyId *string            `pulumi:"accessKeyId"`
-	Endpoints   []ProviderEndpoint `pulumi:"endpoints"`
-	// tls insecure connection
-	Insecure *bool `pulumi:"insecure"`
+	// The Access Key ID for API operations.
+	AccessKeyId *string      `pulumi:"accessKeyId"`
+	Api         *ProviderApi `pulumi:"api"`
+	// Path to the configuration file in which you have defined your credentials.
+	ConfigFile *string `pulumi:"configFile"`
+	// Deprecated: 'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
+	Endpoints []ProviderEndpoint `pulumi:"endpoints"`
+	// TLS insecure connection for IaaS API operations.
+	//
+	// Deprecated: 'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
+	Insecure *bool        `pulumi:"insecure"`
+	Oks      *ProviderOks `pulumi:"oks"`
+	Oos      *ProviderOos `pulumi:"oos"`
+	// Name of your profile in which you define your credencial
+	Profile *string `pulumi:"profile"`
 	// The Region for API operations.
 	Region *string `pulumi:"region"`
+	// Sanitize sensitive data in the logs. Defaults to true.
+	Sanitize *bool `pulumi:"sanitize"`
 	// The Secret Key ID for API operations.
 	SecretKeyId *string `pulumi:"secretKeyId"`
-	// The path to your x509 cert
+	// Path to the x509 certificate for IaaS API operations.
+	//
+	// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
 	X509CertPath *string `pulumi:"x509CertPath"`
-	// The path to your x509 key
+	// Path to the x509 key for IaaS API operations.
+	//
+	// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
 	X509KeyPath *string `pulumi:"x509KeyPath"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The Access Key ID for API operations
+	// The Access Key ID for API operations.
 	AccessKeyId pulumi.StringPtrInput
-	Endpoints   ProviderEndpointArrayInput
-	// tls insecure connection
+	Api         ProviderApiPtrInput
+	// Path to the configuration file in which you have defined your credentials.
+	ConfigFile pulumi.StringPtrInput
+	// Deprecated: 'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
+	Endpoints ProviderEndpointArrayInput
+	// TLS insecure connection for IaaS API operations.
+	//
+	// Deprecated: 'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
 	Insecure pulumi.BoolPtrInput
+	Oks      ProviderOksPtrInput
+	Oos      ProviderOosPtrInput
+	// Name of your profile in which you define your credencial
+	Profile pulumi.StringPtrInput
 	// The Region for API operations.
 	Region pulumi.StringPtrInput
+	// Sanitize sensitive data in the logs. Defaults to true.
+	Sanitize pulumi.BoolPtrInput
 	// The Secret Key ID for API operations.
 	SecretKeyId pulumi.StringPtrInput
-	// The path to your x509 cert
+	// Path to the x509 certificate for IaaS API operations.
+	//
+	// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
 	X509CertPath pulumi.StringPtrInput
-	// The path to your x509 key
+	// Path to the x509 key for IaaS API operations.
+	//
+	// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
 	X509KeyPath pulumi.StringPtrInput
 }
 
@@ -154,9 +194,19 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The Access Key ID for API operations
+// The Access Key ID for API operations.
 func (o ProviderOutput) AccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Path to the configuration file in which you have defined your credentials.
+func (o ProviderOutput) ConfigFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigFile }).(pulumi.StringPtrOutput)
+}
+
+// Name of your profile in which you define your credencial
+func (o ProviderOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Profile }).(pulumi.StringPtrOutput)
 }
 
 // The Region for API operations.
@@ -169,12 +219,16 @@ func (o ProviderOutput) SecretKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The path to your x509 cert
+// Path to the x509 certificate for IaaS API operations.
+//
+// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
 func (o ProviderOutput) X509CertPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.X509CertPath }).(pulumi.StringPtrOutput)
 }
 
-// The path to your x509 key
+// Path to the x509 key for IaaS API operations.
+//
+// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
 func (o ProviderOutput) X509KeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.X509KeyPath }).(pulumi.StringPtrOutput)
 }

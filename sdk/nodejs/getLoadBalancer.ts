@@ -222,43 +222,43 @@ export interface GetLoadBalancerOutputArgs {
     /**
      * Information about access logs.
      */
-    accessLogs?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerAccessLogArgs>[]>;
+    accessLogs?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerAccessLogArgs>[] | undefined>;
     /**
      * The DNS name of the load balancer.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerFilterArgs>[] | undefined>;
     /**
      * Information about the health check configuration.
      */
-    healthChecks?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerHealthCheckArgs>[]>;
+    healthChecks?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerHealthCheckArgs>[] | undefined>;
     /**
      * The listeners for the load balancer.
      */
-    listeners?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerListenerArgs>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerListenerArgs>[] | undefined>;
     /**
      * The name of the load balancer.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * The type of load balancer. Valid only for load balancers in a Net.<br />
      * If `loadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
      * If `loadBalancerType` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
      */
-    loadBalancerType?: pulumi.Input<string>;
+    loadBalancerType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net for the load balancer.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Subnet in which the load balancer was created.
      */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

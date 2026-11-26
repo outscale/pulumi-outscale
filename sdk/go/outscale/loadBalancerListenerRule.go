@@ -42,6 +42,10 @@ import (
 //				return err
 //			}
 //			loadBalancer01, err := outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String("terraform-public-load-balancer"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.Sprintf("%va", region),
+//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(80),
@@ -55,10 +59,6 @@ import (
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-public-load-balancer"),
 //					},
-//				},
-//				LoadBalancerName: pulumi.String("terraform-public-load-balancer"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.Sprintf("%va", region),
 //				},
 //			})
 //			if err != nil {
@@ -229,6 +229,12 @@ type LoadBalancerListenerRuleState struct {
 
 func (LoadBalancerListenerRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerListenerRuleState)(nil)).Elem()
+}
+
+// LoadBalancerListenerRuleExists checks whether an existing LoadBalancerListenerRule resource with the given ID exists.
+func LoadBalancerListenerRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerListenerRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/loadBalancerListenerRule:LoadBalancerListenerRule", id, state, "", opts...)
 }
 
 type loadBalancerListenerRuleArgs struct {

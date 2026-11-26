@@ -109,7 +109,7 @@ class AwaitableGetAccessKeysResult(GetAccessKeysResult):
 
 
 def get_access_keys(access_key_ids: Optional[Sequence[_builtins.str]] = None,
-                    filters: Optional[Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict']]] = None,
+                    filters: Optional[Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict', 'outputs.GetAccessKeysFilterResult']]] = None,
                     states: Optional[Sequence[_builtins.str]] = None,
                     user_name: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessKeysResult:
@@ -142,7 +142,8 @@ def get_access_keys(access_key_ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_outscale as outscale
 
-    access_keys = outscale.get_access_keys(filters=[
+    access_keys = outscale.get_access_keys(user_name="user_name",
+        filters=[
             {
                 "name": "access_key_ids",
                 "values": [
@@ -154,12 +155,11 @@ def get_access_keys(access_key_ids: Optional[Sequence[_builtins.str]] = None,
                 "name": "states",
                 "values": ["ACTIVE"],
             },
-        ],
-        user_name="user_name")
+        ])
     ```
 
 
-    :param Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict', 'outputs.GetAccessKeysFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root user).
     """
     __args__ = dict()
@@ -178,10 +178,10 @@ def get_access_keys(access_key_ids: Optional[Sequence[_builtins.str]] = None,
         request_id=pulumi.get(__ret__, 'request_id'),
         states=pulumi.get(__ret__, 'states'),
         user_name=pulumi.get(__ret__, 'user_name'))
-def get_access_keys_output(access_key_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict']]]]] = None,
-                           states: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           user_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_access_keys_output(access_key_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           filters: pulumi.Input[Optional[Optional[Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict', 'outputs.GetAccessKeysFilterResult']]]]] = None,
+                           states: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           user_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessKeysResult]:
     """
     Provides information about access keys.
@@ -212,7 +212,8 @@ def get_access_keys_output(access_key_ids: Optional[pulumi.Input[Optional[Sequen
     import pulumi
     import pulumi_outscale as outscale
 
-    access_keys = outscale.get_access_keys(filters=[
+    access_keys = outscale.get_access_keys(user_name="user_name",
+        filters=[
             {
                 "name": "access_key_ids",
                 "values": [
@@ -224,12 +225,11 @@ def get_access_keys_output(access_key_ids: Optional[pulumi.Input[Optional[Sequen
                 "name": "states",
                 "values": ["ACTIVE"],
             },
-        ],
-        user_name="user_name")
+        ])
     ```
 
 
-    :param Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetAccessKeysFilterArgs', 'GetAccessKeysFilterArgsDict', 'outputs.GetAccessKeysFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str user_name: The name of the EIM user. By default, the user who sends the request (which can be the root user).
     """
     __args__ = dict()

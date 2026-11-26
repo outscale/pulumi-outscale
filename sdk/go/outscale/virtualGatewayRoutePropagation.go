@@ -170,6 +170,12 @@ func (VirtualGatewayRoutePropagationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualGatewayRoutePropagationState)(nil)).Elem()
 }
 
+// VirtualGatewayRoutePropagationExists checks whether an existing VirtualGatewayRoutePropagation resource with the given ID exists.
+func VirtualGatewayRoutePropagationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualGatewayRoutePropagationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/virtualGatewayRoutePropagation:VirtualGatewayRoutePropagation", id, state, "", opts...)
+}
+
 type virtualGatewayRoutePropagationArgs struct {
 	// If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
 	Enable bool `pulumi:"enable"`

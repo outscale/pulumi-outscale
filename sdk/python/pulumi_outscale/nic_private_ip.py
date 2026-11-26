@@ -20,11 +20,12 @@ __all__ = ['NicPrivateIpInitArgs', 'NicPrivateIp']
 class NicPrivateIpInitArgs:
     def __init__(__self__, *,
                  nic_id: pulumi.Input[_builtins.str],
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secondary_private_ip_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secondary_private_ip_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a NicPrivateIp resource.
+
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
@@ -52,52 +53,53 @@ class NicPrivateIpInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowRelink")
-    def allow_relink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_relink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
         """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
-    def allow_relink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_relink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_relink", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryPrivateIpCount")
-    def secondary_private_ip_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_private_ip_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of secondary private IPs to assign to the NIC.
         """
         return pulumi.get(self, "secondary_private_ip_count")
 
     @secondary_private_ip_count.setter
-    def secondary_private_ip_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_private_ip_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_private_ip_count", value)
 
 
 @pulumi.input_type
 class _NicPrivateIpState:
     def __init__(__self__, *,
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_private_ip_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_private_ip_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NicPrivateIp resources.
+
         :param pulumi.Input[_builtins.bool] allow_relink: If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
@@ -118,68 +120,68 @@ class _NicPrivateIpState:
 
     @_builtins.property
     @pulumi.getter(name="allowRelink")
-    def allow_relink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_relink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
         """
         return pulumi.get(self, "allow_relink")
 
     @allow_relink.setter
-    def allow_relink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_relink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_relink", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NIC.
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryPrivateIp")
-    def primary_private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "primary_private_ip")
 
     @primary_private_ip.setter
-    def primary_private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryPrivateIpCount")
-    def secondary_private_ip_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_private_ip_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of secondary private IPs to assign to the NIC.
         """
         return pulumi.get(self, "secondary_private_ip_count")
 
     @secondary_private_ip_count.setter
-    def secondary_private_ip_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_private_ip_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_private_ip_count", value)
 
 
@@ -189,10 +191,10 @@ class NicPrivateIp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secondary_private_ip_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secondary_private_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a NIC's private IPs.
@@ -240,6 +242,7 @@ class NicPrivateIp(pulumi.CustomResource):
             nic_id=nic01["nicId"],
             secondary_private_ip_count=2)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -301,6 +304,7 @@ class NicPrivateIp(pulumi.CustomResource):
             secondary_private_ip_count=2)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param NicPrivateIpInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -316,10 +320,10 @@ class NicPrivateIp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secondary_private_ip_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secondary_private_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,12 +351,12 @@ class NicPrivateIp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_relink: Optional[pulumi.Input[_builtins.bool]] = None,
-            nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_private_ip_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'NicPrivateIp':
+            allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_private_ip_count: pulumi.Input[Optional[_builtins.int]] = None) -> 'NicPrivateIp':
         """
         Get an existing NicPrivateIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -376,6 +380,24 @@ class NicPrivateIp(pulumi.CustomResource):
         __props__.__dict__["request_id"] = request_id
         __props__.__dict__["secondary_private_ip_count"] = secondary_private_ip_count
         return NicPrivateIp(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_relink: pulumi.Input[Optional[_builtins.bool]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_private_ip_count: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowRelink"] = allow_relink
+        __props__["nicId"] = nic_id
+        __props__["primaryPrivateIp"] = primary_private_ip
+        __props__["privateIps"] = private_ips
+        __props__["requestId"] = request_id
+        __props__["secondaryPrivateIpCount"] = secondary_private_ip_count
+        return pulumi.runtime.exists_resource(None, 'outscale:index/nicPrivateIp:NicPrivateIp', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="allowRelink")

@@ -83,6 +83,17 @@ export class NatService extends pulumi.CustomResource {
         return new NatService(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing NatService resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NatServiceState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/natService:NatService", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/natService:NatService';
 
@@ -181,34 +192,34 @@ export interface NatServiceState {
     /**
      * The ID of the NAT service.
      */
-    natServiceId?: pulumi.Input<string>;
+    natServiceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net in which the NAT service is.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The allocation ID of the public IP to associate with the NAT service.<br />
      * If the public IP is already associated with another resource, you must first disassociate it.
      */
-    publicIpId?: pulumi.Input<string>;
+    publicIpId?: pulumi.Input<string | undefined>;
     /**
      * Information about the public IP or IPs associated with the NAT service.
      */
-    publicIps?: pulumi.Input<pulumi.Input<inputs.NatServicePublicIp>[]>;
-    requestId?: pulumi.Input<string>;
+    publicIps?: pulumi.Input<pulumi.Input<inputs.NatServicePublicIp>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the NAT service (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Subnet in which you want to create the NAT service.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[]>;
-    timeouts?: pulumi.Input<inputs.NatServiceTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.NatServiceTimeouts | undefined>;
 }
 
 /**
@@ -227,6 +238,6 @@ export interface NatServiceArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[]>;
-    timeouts?: pulumi.Input<inputs.NatServiceTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NatServiceTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.NatServiceTimeouts | undefined>;
 }

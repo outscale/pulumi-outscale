@@ -116,6 +116,12 @@ func (OosBucketVersioningState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosBucketVersioningState)(nil)).Elem()
 }
 
+// OosBucketVersioningExists checks whether an existing OosBucketVersioning resource with the given ID exists.
+func OosBucketVersioningExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosBucketVersioningState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosBucketVersioning:OosBucketVersioning", id, state, "", opts...)
+}
+
 type oosBucketVersioningArgs struct {
 	// The name of the bucket for which you want to enable or disable the versioning.
 	Bucket string `pulumi:"bucket"`

@@ -22,10 +22,11 @@ __all__ = ['RouteTableArgs', 'RouteTable']
 class RouteTableArgs:
     def __init__(__self__, *,
                  net_id: pulumi.Input[_builtins.str],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['RouteTableTimeoutsArgs']] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['RouteTableTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a RouteTable resource.
+
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for which you want to create a route table.
         :param pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
@@ -49,39 +50,40 @@ class RouteTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RouteTableTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RouteTableTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RouteTableTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RouteTableTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _RouteTableState:
     def __init__(__self__, *,
-                 link_route_tables: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_propagating_virtual_gateways: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['RouteTableTimeoutsArgs']] = None):
+                 link_route_tables: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_propagating_virtual_gateways: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableRouteArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['RouteTableTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering RouteTable resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]] link_route_tables: One or more associations between the route table and Subnets.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for which you want to create a route table.
         :param pulumi.Input[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]] route_propagating_virtual_gateways: Information about virtual gateways propagating routes.
@@ -108,92 +110,92 @@ class _RouteTableState:
 
     @_builtins.property
     @pulumi.getter(name="linkRouteTables")
-    def link_route_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]]]:
+    def link_route_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]]]:
         """
         One or more associations between the route table and Subnets.
         """
         return pulumi.get(self, "link_route_tables")
 
     @link_route_tables.setter
-    def link_route_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]]]):
+    def link_route_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableLinkRouteTableArgs']]]]):
         pulumi.set(self, "link_route_tables", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net for which you want to create a route table.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routePropagatingVirtualGateways")
-    def route_propagating_virtual_gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]]]:
+    def route_propagating_virtual_gateways(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]]]:
         """
         Information about virtual gateways propagating routes.
         """
         return pulumi.get(self, "route_propagating_virtual_gateways")
 
     @route_propagating_virtual_gateways.setter
-    def route_propagating_virtual_gateways(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]]]):
+    def route_propagating_virtual_gateways(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableRoutePropagatingVirtualGatewayArgs']]]]):
         pulumi.set(self, "route_propagating_virtual_gateways", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route table.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]]]:
+    def routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableRouteArgs']]]]:
         """
         One or more routes in the route table.
         """
         return pulumi.get(self, "routes")
 
     @routes.setter
-    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]]]):
+    def routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableRouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouteTableTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RouteTableTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RouteTableTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RouteTableTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RouteTableTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -203,9 +205,9 @@ class RouteTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RouteTableTimeoutsArgs', 'RouteTableTimeoutsArgsDict']]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict', 'outputs.RouteTableTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RouteTableTimeoutsArgs', 'RouteTableTimeoutsArgsDict', 'outputs.RouteTableTimeouts']]] = None,
                  __props__=None):
         """
         Manages a route table.
@@ -243,10 +245,11 @@ class RouteTable(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for which you want to create a route table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict', 'outputs.RouteTableTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -290,6 +293,7 @@ class RouteTable(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param RouteTableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -305,9 +309,9 @@ class RouteTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RouteTableTimeoutsArgs', 'RouteTableTimeoutsArgsDict']]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict', 'outputs.RouteTableTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RouteTableTimeoutsArgs', 'RouteTableTimeoutsArgsDict', 'outputs.RouteTableTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,14 +341,14 @@ class RouteTable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            link_route_tables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteTableLinkRouteTableArgs', 'RouteTableLinkRouteTableArgsDict']]]]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_propagating_virtual_gateways: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRoutePropagatingVirtualGatewayArgs', 'RouteTableRoutePropagatingVirtualGatewayArgsDict']]]]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRouteArgs', 'RouteTableRouteArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['RouteTableTimeoutsArgs', 'RouteTableTimeoutsArgsDict']]] = None) -> 'RouteTable':
+            link_route_tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableLinkRouteTableArgs', 'RouteTableLinkRouteTableArgsDict', 'outputs.RouteTableLinkRouteTable']]]]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_propagating_virtual_gateways: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableRoutePropagatingVirtualGatewayArgs', 'RouteTableRoutePropagatingVirtualGatewayArgsDict', 'outputs.RouteTableRoutePropagatingVirtualGateway']]]]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableRouteArgs', 'RouteTableRouteArgsDict', 'outputs.RouteTableRoute']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict', 'outputs.RouteTableTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['RouteTableTimeoutsArgs', 'RouteTableTimeoutsArgsDict', 'outputs.RouteTableTimeouts']]] = None) -> 'RouteTable':
         """
         Get an existing RouteTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -352,12 +356,12 @@ class RouteTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableLinkRouteTableArgs', 'RouteTableLinkRouteTableArgsDict']]]] link_route_tables: One or more associations between the route table and Subnets.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableLinkRouteTableArgs', 'RouteTableLinkRouteTableArgsDict', 'outputs.RouteTableLinkRouteTable']]]] link_route_tables: One or more associations between the route table and Subnets.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for which you want to create a route table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRoutePropagatingVirtualGatewayArgs', 'RouteTableRoutePropagatingVirtualGatewayArgsDict']]]] route_propagating_virtual_gateways: Information about virtual gateways propagating routes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRoutePropagatingVirtualGatewayArgs', 'RouteTableRoutePropagatingVirtualGatewayArgsDict', 'outputs.RouteTableRoutePropagatingVirtualGateway']]]] route_propagating_virtual_gateways: Information about virtual gateways propagating routes.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRouteArgs', 'RouteTableRouteArgsDict']]]] routes: One or more routes in the route table.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRouteArgs', 'RouteTableRouteArgsDict', 'outputs.RouteTableRoute']]]] routes: One or more routes in the route table.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict', 'outputs.RouteTableTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -372,6 +376,28 @@ class RouteTable(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return RouteTable(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            link_route_tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableLinkRouteTableArgs', 'RouteTableLinkRouteTableArgsDict', 'outputs.RouteTableLinkRouteTable']]]]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_propagating_virtual_gateways: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableRoutePropagatingVirtualGatewayArgs', 'RouteTableRoutePropagatingVirtualGatewayArgsDict', 'outputs.RouteTableRoutePropagatingVirtualGateway']]]]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableRouteArgs', 'RouteTableRouteArgsDict', 'outputs.RouteTableRoute']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteTableTagArgs', 'RouteTableTagArgsDict', 'outputs.RouteTableTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['RouteTableTimeoutsArgs', 'RouteTableTimeoutsArgsDict', 'outputs.RouteTableTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["linkRouteTables"] = link_route_tables
+        __props__["netId"] = net_id
+        __props__["requestId"] = request_id
+        __props__["routePropagatingVirtualGateways"] = route_propagating_virtual_gateways
+        __props__["routeTableId"] = route_table_id
+        __props__["routes"] = routes
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/routeTable:RouteTable', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="linkRouteTables")

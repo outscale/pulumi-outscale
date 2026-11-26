@@ -81,7 +81,7 @@ class AwaitableGetSubregionsResult(GetSubregionsResult):
             subregions=self.subregions)
 
 
-def get_subregions(filters: Optional[Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict']]] = None,
+def get_subregions(filters: Optional[Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict', 'outputs.GetSubregionsFilterResult']]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubregionsResult:
     """
     Provides information about subregions.
@@ -127,7 +127,7 @@ def get_subregions(filters: Optional[Sequence[Union['GetSubregionsFilterArgs', '
     ```
 
 
-    :param Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict', 'outputs.GetSubregionsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -139,7 +139,7 @@ def get_subregions(filters: Optional[Sequence[Union['GetSubregionsFilterArgs', '
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'),
         subregions=pulumi.get(__ret__, 'subregions'))
-def get_subregions_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict']]]]] = None,
+def get_subregions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict', 'outputs.GetSubregionsFilterResult']]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubregionsResult]:
     """
     Provides information about subregions.
@@ -185,7 +185,7 @@ def get_subregions_output(filters: Optional[pulumi.Input[Optional[Sequence[Union
     ```
 
 
-    :param Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSubregionsFilterArgs', 'GetSubregionsFilterArgsDict', 'outputs.GetSubregionsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

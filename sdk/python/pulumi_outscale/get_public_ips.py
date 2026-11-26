@@ -81,7 +81,7 @@ class AwaitableGetPublicIpsResult(GetPublicIpsResult):
             request_id=self.request_id)
 
 
-def get_public_ips(filters: Optional[Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict']]] = None,
+def get_public_ips(filters: Optional[Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict', 'outputs.GetPublicIpsFilterResult']]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublicIpsResult:
     """
     Provides information about public IPs.
@@ -105,7 +105,7 @@ def get_public_ips(filters: Optional[Sequence[Union['GetPublicIpsFilterArgs', 'G
     ```
 
 
-    :param Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict', 'outputs.GetPublicIpsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -117,7 +117,7 @@ def get_public_ips(filters: Optional[Sequence[Union['GetPublicIpsFilterArgs', 'G
         id=pulumi.get(__ret__, 'id'),
         public_ips=pulumi.get(__ret__, 'public_ips'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_public_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict']]]]] = None,
+def get_public_ips_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict', 'outputs.GetPublicIpsFilterResult']]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPublicIpsResult]:
     """
     Provides information about public IPs.
@@ -141,7 +141,7 @@ def get_public_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union
     ```
 
 
-    :param Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetPublicIpsFilterArgs', 'GetPublicIpsFilterArgsDict', 'outputs.GetPublicIpsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

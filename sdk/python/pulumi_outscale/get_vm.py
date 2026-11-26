@@ -567,7 +567,7 @@ class AwaitableGetVmResult(GetVmResult):
             vm_type=self.vm_type)
 
 
-def get_vm(filters: Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict']]] = None,
+def get_vm(filters: Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict', 'outputs.GetVmFilterResult']]] = None,
            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmResult:
     """
     Provides information about a virtual machine (VM).
@@ -588,7 +588,7 @@ def get_vm(filters: Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsD
     ```
 
 
-    :param Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict', 'outputs.GetVmFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -642,7 +642,7 @@ def get_vm(filters: Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsD
         vm_id=pulumi.get(__ret__, 'vm_id'),
         vm_initiated_shutdown_behavior=pulumi.get(__ret__, 'vm_initiated_shutdown_behavior'),
         vm_type=pulumi.get(__ret__, 'vm_type'))
-def get_vm_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict']]]]] = None,
+def get_vm_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict', 'outputs.GetVmFilterResult']]]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmResult]:
     """
     Provides information about a virtual machine (VM).
@@ -663,7 +663,7 @@ def get_vm_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmF
     ```
 
 
-    :param Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmFilterArgs', 'GetVmFilterArgsDict', 'outputs.GetVmFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

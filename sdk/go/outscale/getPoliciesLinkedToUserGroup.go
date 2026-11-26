@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.GetPoliciesLinkedToUserGroup(ctx, &outscale.GetPoliciesLinkedToUserGroupArgs{
+//				UserGroupName: "user_group_name",
 //				Filters: []outscale.GetPoliciesLinkedToUserGroupFilter{
 //					{
 //						Name: "user_group_ids",
@@ -46,7 +47,6 @@ import (
 //						},
 //					},
 //				},
-//				UserGroupName: "user_group_name",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -83,12 +83,8 @@ type GetPoliciesLinkedToUserGroupResult struct {
 }
 
 func GetPoliciesLinkedToUserGroupOutput(ctx *pulumi.Context, args GetPoliciesLinkedToUserGroupOutputArgs, opts ...pulumi.InvokeOption) GetPoliciesLinkedToUserGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPoliciesLinkedToUserGroupResultOutput, error) {
-			args := v.(GetPoliciesLinkedToUserGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getPoliciesLinkedToUserGroup:getPoliciesLinkedToUserGroup", args, GetPoliciesLinkedToUserGroupResultOutput{}, options).(GetPoliciesLinkedToUserGroupResultOutput), nil
-		}).(GetPoliciesLinkedToUserGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getPoliciesLinkedToUserGroup:getPoliciesLinkedToUserGroup", args, GetPoliciesLinkedToUserGroupResultOutput{}, options).(GetPoliciesLinkedToUserGroupResultOutput)
 }
 
 // A collection of arguments for invoking getPoliciesLinkedToUserGroup.

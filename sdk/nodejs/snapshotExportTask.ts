@@ -34,20 +34,20 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshotExportTask01 = new outscale.SnapshotExportTask("snapshot_export_task01", {
+ *     snapshotId: snapshot01.snapshotId,
  *     osuExports: [{
+ *         diskImageFormat: "qcow2",
+ *         osuBucket: "terraform-bucket",
+ *         osuPrefix: "new-export",
  *         osuApiKeys: [{
  *             apiKeyId: accessKeyId,
  *             secretKey: secretKeyId,
  *         }],
- *         diskImageFormat: "qcow2",
- *         osuBucket: "terraform-bucket",
- *         osuPrefix: "new-export",
  *     }],
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-snapshot-export-task",
  *     }],
- *     snapshotId: snapshot01.snapshotId,
  *     waitForCompletion: false,
  * });
  * ```
@@ -64,6 +64,17 @@ export class SnapshotExportTask extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SnapshotExportTaskState, opts?: pulumi.CustomResourceOptions): SnapshotExportTask {
         return new SnapshotExportTask(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing SnapshotExportTask resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: SnapshotExportTaskState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/snapshotExportTask:SnapshotExportTask", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -166,36 +177,36 @@ export interface SnapshotExportTaskState {
     /**
      * If the snapshot export task fails, an error message appears.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Information about the OOS export task to create.
      */
-    osuExports?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskOsuExport>[]>;
+    osuExports?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskOsuExport>[] | undefined>;
     /**
      * The progress of the snapshot export task, as a percentage.
      */
-    progress?: pulumi.Input<number>;
-    requestId?: pulumi.Input<string>;
+    progress?: pulumi.Input<number | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the snapshot to export.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The state of the snapshot export task (`pending` \| `initializing` \| `preparing` \| `uploading` \| `completed` \| `cancelled` \| `failed`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskTag>[] | undefined>;
     /**
      * The ID of the snapshot export task.
      */
-    taskId?: pulumi.Input<string>;
+    taskId?: pulumi.Input<string | undefined>;
     /**
      * By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -213,9 +224,9 @@ export interface SnapshotExportTaskArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskTag>[] | undefined>;
     /**
      * By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }

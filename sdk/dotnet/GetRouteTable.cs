@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a route table.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\
         /// For more information on this resource actions, see the [RouteTable](https://docs.outscale.com/api#3ds-outscale-api-routetable) API methods.
         /// 
         /// ## Example Usage
@@ -51,7 +51,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a route table.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\
         /// For more information on this resource actions, see the [RouteTable](https://docs.outscale.com/api#3ds-outscale-api-routetable) API methods.
         /// 
         /// ## Example Usage
@@ -88,7 +88,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a route table.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\
         /// For more information on this resource actions, see the [RouteTable](https://docs.outscale.com/api#3ds-outscale-api-routetable) API methods.
         /// 
         /// ## Example Usage

@@ -93,7 +93,7 @@ class AwaitableGetVolumesResult(GetVolumesResult):
             volumes=self.volumes)
 
 
-def get_volumes(filters: Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict']]] = None,
+def get_volumes(filters: Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict', 'outputs.GetVolumesFilterResult']]] = None,
                 request_id: Optional[_builtins.str] = None,
                 volume_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
@@ -125,7 +125,7 @@ def get_volumes(filters: Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVol
     ```
 
 
-    :param Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict', 'outputs.GetVolumesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str volume_id: The ID of the volume.
     """
     __args__ = dict()
@@ -141,9 +141,9 @@ def get_volumes(filters: Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVol
         request_id=pulumi.get(__ret__, 'request_id'),
         volume_id=pulumi.get(__ret__, 'volume_id'),
         volumes=pulumi.get(__ret__, 'volumes'))
-def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict']]]]] = None,
-                       request_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       volume_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_volumes_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict', 'outputs.GetVolumesFilterResult']]]]] = None,
+                       request_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       volume_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
     Provides information about volumes.
@@ -173,7 +173,7 @@ def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     ```
 
 
-    :param Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict', 'outputs.GetVolumesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str volume_id: The ID of the volume.
     """
     __args__ = dict()

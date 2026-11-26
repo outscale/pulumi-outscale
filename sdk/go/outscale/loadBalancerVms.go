@@ -52,6 +52,10 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String("load-balancer-for-backend-vms"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.Sprintf("%va", region),
+//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(80),
@@ -65,10 +69,6 @@ import (
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("outscale_load_balancer01"),
 //					},
-//				},
-//				LoadBalancerName: pulumi.String("load-balancer-for-backend-vms"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.Sprintf("%va", region),
 //				},
 //			})
 //			if err != nil {
@@ -208,6 +208,12 @@ type LoadBalancerVmsState struct {
 
 func (LoadBalancerVmsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerVmsState)(nil)).Elem()
+}
+
+// LoadBalancerVmsExists checks whether an existing LoadBalancerVms resource with the given ID exists.
+func LoadBalancerVmsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerVmsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/loadBalancerVms:LoadBalancerVms", id, state, "", opts...)
 }
 
 type loadBalancerVmsArgs struct {

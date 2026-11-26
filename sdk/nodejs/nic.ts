@@ -52,6 +52,9 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const nic02 = new outscale.Nic("nic02", {
+ *     description: "Terraform nic with private IPs",
+ *     subnetId: subnet01.subnetId,
+ *     securityGroupIds: [securityGroup01.securityGroupId],
  *     privateIps: [
  *         {
  *             isPrimary: true,
@@ -62,9 +65,6 @@ import * as utilities from "./utilities";
  *             privateIp: "10.0.0.5",
  *         },
  *     ],
- *     description: "Terraform nic with private IPs",
- *     subnetId: subnet01.subnetId,
- *     securityGroupIds: [securityGroup01.securityGroupId],
  * });
  * ```
  *
@@ -90,6 +90,17 @@ export class Nic extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NicState, opts?: pulumi.CustomResourceOptions): Nic {
         return new Nic(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing Nic resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NicState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/nic:Nic", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -246,73 +257,73 @@ export interface NicState {
     /**
      * The OUTSCALE account ID of the owner of the NIC.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A description for the NIC.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Net only) If true, the source/destination check is enabled. If false, it is disabled.
      */
-    isSourceDestChecked?: pulumi.Input<boolean>;
+    isSourceDestChecked?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the NIC attachment.
      */
-    linkNics?: pulumi.Input<pulumi.Input<inputs.NicLinkNic>[]>;
+    linkNics?: pulumi.Input<pulumi.Input<inputs.NicLinkNic>[] | undefined>;
     /**
      * Information about the public IP association.
      */
-    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.NicLinkPublicIp>[]>;
+    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.NicLinkPublicIp>[] | undefined>;
     /**
      * The Media Access Control (MAC) address of the NIC.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net for the NIC.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NIC.
      */
-    nicId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
     /**
      * The name of the private DNS.
      */
-    privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string | undefined>;
     /**
      * The private IP of the NIC.
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
      */
-    privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[]>;
-    requestId?: pulumi.Input<string>;
-    requesterManaged?: pulumi.Input<boolean>;
+    privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    requesterManaged?: pulumi.Input<boolean | undefined>;
     /**
      * One or more IDs of security groups for the NIC.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more IDs of security groups for the NIC.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<inputs.NicSecurityGroup>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.NicSecurityGroup>[] | undefined>;
     /**
      * The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Subnet in which you want to create the NIC.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The Subregion in which the NIC is located.
      */
-    subregionName?: pulumi.Input<string>;
+    subregionName?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NicTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NicTag>[] | undefined>;
 }
 
 /**
@@ -322,19 +333,19 @@ export interface NicArgs {
     /**
      * A description for the NIC.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The private IP of the NIC.
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
      */
-    privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIp>[] | undefined>;
     /**
      * One or more IDs of security groups for the NIC.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Subnet in which you want to create the NIC.
      */
@@ -342,5 +353,5 @@ export interface NicArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NicTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NicTag>[] | undefined>;
 }

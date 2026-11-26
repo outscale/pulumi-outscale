@@ -34,11 +34,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const user_1 = new outscale.User("user-1", {
+ *     userName: "User-TF-1",
  *     policies: [{
  *         policyOrn: policy_1.orn,
  *         defaultVersionId: "V1",
  *     }],
- *     userName: "User-TF-1",
  * });
  * ```
  *
@@ -64,6 +64,17 @@ export class User extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserState, opts?: pulumi.CustomResourceOptions): User {
         return new User(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing User resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: UserState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/user:User", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -154,29 +165,29 @@ export interface UserState {
     /**
      * The date and time (UTC) of creation of the EIM user.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) of the last modification of the EIM user.
      */
-    lastModificationDate?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
     /**
      * The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
      */
-    path?: pulumi.Input<string>;
-    policies?: pulumi.Input<pulumi.Input<inputs.UserPolicy>[]>;
-    timeouts?: pulumi.Input<inputs.UserTimeouts>;
+    path?: pulumi.Input<string | undefined>;
+    policies?: pulumi.Input<pulumi.Input<inputs.UserPolicy>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.UserTimeouts | undefined>;
     /**
      * The email address of the EIM user.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * The ID of the EIM user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The name of the EIM user. This user name must contain between 1 and 64 alphanumeric characters and/or pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), dashes (`-`), or underscores (`_`).
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,13 +197,13 @@ export interface UserArgs {
     /**
      * The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
      */
-    path?: pulumi.Input<string>;
-    policies?: pulumi.Input<pulumi.Input<inputs.UserPolicy>[]>;
-    timeouts?: pulumi.Input<inputs.UserTimeouts>;
+    path?: pulumi.Input<string | undefined>;
+    policies?: pulumi.Input<pulumi.Input<inputs.UserPolicy>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.UserTimeouts | undefined>;
     /**
      * The email address of the EIM user.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the EIM user. This user name must contain between 1 and 64 alphanumeric characters and/or pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), dashes (`-`), or underscores (`_`).
      */

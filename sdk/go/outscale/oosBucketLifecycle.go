@@ -47,6 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewOosBucketLifecycle(ctx, "lifecycle01", &outscale.OosBucketLifecycleArgs{
+//				Bucket: bucket01.ID(),
 //				Rules: outscale.OosBucketLifecycleRuleArray{
 //					&outscale.OosBucketLifecycleRuleArgs{
 //						Id:     pulumi.String("expire"),
@@ -57,7 +58,6 @@ import (
 //						Filter: &outscale.OosBucketLifecycleRuleFilterArgs{},
 //					},
 //				},
-//				Bucket: bucket01.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				versioning01,
 //			}))
@@ -96,6 +96,7 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewOosBucketLifecycle(ctx, "lifecycle02", &outscale.OosBucketLifecycleArgs{
+//				Bucket: bucket02.ID(),
 //				Rules: outscale.OosBucketLifecycleRuleArray{
 //					&outscale.OosBucketLifecycleRuleArgs{
 //						Id:     pulumi.String("expire"),
@@ -113,7 +114,6 @@ import (
 //						},
 //					},
 //				},
-//				Bucket: bucket02.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				versioning02,
 //			}))
@@ -187,6 +187,12 @@ type OosBucketLifecycleState struct {
 
 func (OosBucketLifecycleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosBucketLifecycleState)(nil)).Elem()
+}
+
+// OosBucketLifecycleExists checks whether an existing OosBucketLifecycle resource with the given ID exists.
+func OosBucketLifecycleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosBucketLifecycleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosBucketLifecycle:OosBucketLifecycle", id, state, "", opts...)
 }
 
 type oosBucketLifecycleArgs struct {

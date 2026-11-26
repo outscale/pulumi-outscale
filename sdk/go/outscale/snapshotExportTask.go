@@ -67,17 +67,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewSnapshotExportTask(ctx, "snapshot_export_task01", &outscale.SnapshotExportTaskArgs{
+//				SnapshotId: pulumi.Any(snapshot01.SnapshotId),
 //				OsuExports: outscale.SnapshotExportTaskOsuExportArray{
 //					&outscale.SnapshotExportTaskOsuExportArgs{
+//						DiskImageFormat: pulumi.String("qcow2"),
+//						OsuBucket:       pulumi.String("terraform-bucket"),
+//						OsuPrefix:       pulumi.String("new-export"),
 //						OsuApiKeys: outscale.SnapshotExportTaskOsuExportOsuApiKeyArray{
 //							&outscale.SnapshotExportTaskOsuExportOsuApiKeyArgs{
 //								ApiKeyId:  pulumi.Any(accessKeyId),
 //								SecretKey: pulumi.Any(secretKeyId),
 //							},
 //						},
-//						DiskImageFormat: pulumi.String("qcow2"),
-//						OsuBucket:       pulumi.String("terraform-bucket"),
-//						OsuPrefix:       pulumi.String("new-export"),
 //					},
 //				},
 //				Tags: outscale.SnapshotExportTaskTagArray{
@@ -86,7 +87,6 @@ import (
 //						Value: pulumi.String("terraform-snapshot-export-task"),
 //					},
 //				},
-//				SnapshotId:        pulumi.Any(snapshot01.SnapshotId),
 //				WaitForCompletion: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -196,6 +196,12 @@ type SnapshotExportTaskState struct {
 
 func (SnapshotExportTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotExportTaskState)(nil)).Elem()
+}
+
+// SnapshotExportTaskExists checks whether an existing SnapshotExportTask resource with the given ID exists.
+func SnapshotExportTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnapshotExportTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/snapshotExportTask:SnapshotExportTask", id, state, "", opts...)
 }
 
 type snapshotExportTaskArgs struct {

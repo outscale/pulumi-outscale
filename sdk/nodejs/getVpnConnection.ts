@@ -142,13 +142,13 @@ export interface GetVpnConnectionOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVpnConnectionFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVpnConnectionFilterArgs>[] | undefined>;
     /**
      * If false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
      */
-    staticRoutesOnly?: pulumi.Input<boolean>;
+    staticRoutesOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPN connection.
      */
-    vpnConnectionId?: pulumi.Input<string>;
+    vpnConnectionId?: pulumi.Input<string | undefined>;
 }

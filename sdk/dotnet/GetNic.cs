@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a network interface card (NIC).
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).\
         /// For more information on this resource actions, see the [Nic](https://docs.outscale.com/api#3ds-outscale-api-nic) API methods.
         /// 
         /// ## Example Usage
@@ -51,7 +51,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a network interface card (NIC).
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).\
         /// For more information on this resource actions, see the [Nic](https://docs.outscale.com/api#3ds-outscale-api-nic) API methods.
         /// 
         /// ## Example Usage
@@ -88,7 +88,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a network interface card (NIC).
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).\
         /// For more information on this resource actions, see the [Nic](https://docs.outscale.com/api#3ds-outscale-api-nic) API methods.
         /// 
         /// ## Example Usage

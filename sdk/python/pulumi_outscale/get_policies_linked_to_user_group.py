@@ -78,7 +78,7 @@ class AwaitableGetPoliciesLinkedToUserGroupResult(GetPoliciesLinkedToUserGroupRe
             user_group_name=self.user_group_name)
 
 
-def get_policies_linked_to_user_group(filters: Optional[Sequence[Union['GetPoliciesLinkedToUserGroupFilterArgs', 'GetPoliciesLinkedToUserGroupFilterArgsDict']]] = None,
+def get_policies_linked_to_user_group(filters: Optional[Sequence[Union['GetPoliciesLinkedToUserGroupFilterArgs', 'GetPoliciesLinkedToUserGroupFilterArgsDict', 'outputs.GetPoliciesLinkedToUserGroupFilterResult']]] = None,
                                       user_group_name: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoliciesLinkedToUserGroupResult:
     """
@@ -93,7 +93,8 @@ def get_policies_linked_to_user_group(filters: Optional[Sequence[Union['GetPolic
     import pulumi
     import pulumi_outscale as outscale
 
-    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(filters=[
+    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(user_group_name="user_group_name",
+        filters=[
             {
                 "name": "user_group_ids",
                 "values": [
@@ -105,8 +106,7 @@ def get_policies_linked_to_user_group(filters: Optional[Sequence[Union['GetPolic
                 "name": "path_prefix",
                 "values": ["/test/"],
             },
-        ],
-        user_group_name="user_group_name")
+        ])
     ```
 
 
@@ -123,8 +123,8 @@ def get_policies_linked_to_user_group(filters: Optional[Sequence[Union['GetPolic
         id=pulumi.get(__ret__, 'id'),
         policies=pulumi.get(__ret__, 'policies'),
         user_group_name=pulumi.get(__ret__, 'user_group_name'))
-def get_policies_linked_to_user_group_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPoliciesLinkedToUserGroupFilterArgs', 'GetPoliciesLinkedToUserGroupFilterArgsDict']]]]] = None,
-                                             user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_policies_linked_to_user_group_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetPoliciesLinkedToUserGroupFilterArgs', 'GetPoliciesLinkedToUserGroupFilterArgsDict', 'outputs.GetPoliciesLinkedToUserGroupFilterResult']]]]] = None,
+                                             user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesLinkedToUserGroupResult]:
     """
     Provides information about a link policy to user group.
@@ -138,7 +138,8 @@ def get_policies_linked_to_user_group_output(filters: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_outscale as outscale
 
-    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(filters=[
+    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(user_group_name="user_group_name",
+        filters=[
             {
                 "name": "user_group_ids",
                 "values": [
@@ -150,8 +151,7 @@ def get_policies_linked_to_user_group_output(filters: Optional[pulumi.Input[Opti
                 "name": "path_prefix",
                 "values": ["/test/"],
             },
-        ],
-        user_group_name="user_group_name")
+        ])
     ```
 
 

@@ -165,6 +165,12 @@ func (InternetServiceLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*internetServiceLinkState)(nil)).Elem()
 }
 
+// InternetServiceLinkExists checks whether an existing InternetServiceLink resource with the given ID exists.
+func InternetServiceLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InternetServiceLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/internetServiceLink:InternetServiceLink", id, state, "", opts...)
+}
+
 type internetServiceLinkArgs struct {
 	// The ID of the internet service you want to attach.
 	InternetServiceId string `pulumi:"internetServiceId"`

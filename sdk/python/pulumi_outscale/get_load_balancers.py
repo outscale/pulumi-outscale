@@ -90,7 +90,7 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
             request_id=self.request_id)
 
 
-def get_load_balancers(filters: Optional[Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict']]] = None,
+def get_load_balancers(filters: Optional[Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict', 'outputs.GetLoadBalancersFilterResult']]] = None,
                        load_balancer_names: Optional[Sequence[_builtins.str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
     """
@@ -115,7 +115,7 @@ def get_load_balancers(filters: Optional[Sequence[Union['GetLoadBalancersFilterA
     ```
 
 
-    :param Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict', 'outputs.GetLoadBalancersFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] load_balancer_names: The name of the load balancer.
     """
     __args__ = dict()
@@ -130,8 +130,8 @@ def get_load_balancers(filters: Optional[Sequence[Union['GetLoadBalancersFilterA
         load_balancer_names=pulumi.get(__ret__, 'load_balancer_names'),
         load_balancers=pulumi.get(__ret__, 'load_balancers'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_load_balancers_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict']]]]] = None,
-                              load_balancer_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_load_balancers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict', 'outputs.GetLoadBalancersFilterResult']]]]] = None,
+                              load_balancer_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
     Provides information about load balancers.
@@ -155,7 +155,7 @@ def get_load_balancers_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     ```
 
 
-    :param Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetLoadBalancersFilterArgs', 'GetLoadBalancersFilterArgsDict', 'outputs.GetLoadBalancersFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] load_balancer_names: The name of the load balancer.
     """
     __args__ = dict()

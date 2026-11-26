@@ -129,7 +129,7 @@ class AwaitableGetKeypairResult(GetKeypairResult):
             tags=self.tags)
 
 
-def get_keypair(filters: Optional[Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict']]] = None,
+def get_keypair(filters: Optional[Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict', 'outputs.GetKeypairFilterResult']]] = None,
                 keypair_name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeypairResult:
     """
@@ -151,7 +151,7 @@ def get_keypair(filters: Optional[Sequence[Union['GetKeypairFilterArgs', 'GetKey
     ```
 
 
-    :param Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict', 'outputs.GetKeypairFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str keypair_name: The name of the keypair.
     """
     __args__ = dict()
@@ -169,8 +169,8 @@ def get_keypair(filters: Optional[Sequence[Union['GetKeypairFilterArgs', 'GetKey
         keypair_type=pulumi.get(__ret__, 'keypair_type'),
         request_id=pulumi.get(__ret__, 'request_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_keypair_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict']]]]] = None,
-                       keypair_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_keypair_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict', 'outputs.GetKeypairFilterResult']]]]] = None,
+                       keypair_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeypairResult]:
     """
     Provides information about a keypair.
@@ -191,7 +191,7 @@ def get_keypair_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     ```
 
 
-    :param Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetKeypairFilterArgs', 'GetKeypairFilterArgsDict', 'outputs.GetKeypairFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str keypair_name: The name of the keypair.
     """
     __args__ = dict()

@@ -328,6 +328,12 @@ func (OosObjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosObjectState)(nil)).Elem()
 }
 
+// OosObjectExists checks whether an existing OosObject resource with the given ID exists.
+func OosObjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosObjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosObject:OosObject", id, state, "", opts...)
+}
+
 type oosObjectArgs struct {
 	// The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
 	Acl *string `pulumi:"acl"`

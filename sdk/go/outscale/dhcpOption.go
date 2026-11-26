@@ -59,12 +59,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewDhcpOption(ctx, "dhcp_option_02", &outscale.DhcpOptionArgs{
-//				Tags: outscale.DhcpOptionTagArray{
-//					&outscale.DhcpOptionTagArgs{
-//						Key:   pulumi.String("Name"),
-//						Value: pulumi.String("DHCP01"),
-//					},
-//				},
 //				DomainName: pulumi.String("MyCompany.com"),
 //				DomainNameServers: pulumi.StringArray{
 //					pulumi.String("111.111.11.111"),
@@ -73,6 +67,12 @@ import (
 //				NtpServers: pulumi.StringArray{
 //					pulumi.String("111.1.1.1"),
 //					pulumi.String("222.2.2.2"),
+//				},
+//				Tags: outscale.DhcpOptionTagArray{
+//					&outscale.DhcpOptionTagArgs{
+//						Key:   pulumi.String("Name"),
+//						Value: pulumi.String("DHCP01"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -183,6 +183,12 @@ type DhcpOptionState struct {
 
 func (DhcpOptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dhcpOptionState)(nil)).Elem()
+}
+
+// DhcpOptionExists checks whether an existing DhcpOption resource with the given ID exists.
+func DhcpOptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DhcpOptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/dhcpOption:DhcpOption", id, state, "", opts...)
 }
 
 type dhcpOptionArgs struct {

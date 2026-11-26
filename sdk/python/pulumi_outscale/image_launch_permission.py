@@ -22,10 +22,11 @@ __all__ = ['ImageLaunchPermissionArgs', 'ImageLaunchPermission']
 class ImageLaunchPermissionArgs:
     def __init__(__self__, *,
                  image_id: pulumi.Input[_builtins.str],
-                 permission_additions: Optional[pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs']] = None,
-                 permission_removals: Optional[pulumi.Input['ImageLaunchPermissionPermissionRemovalsArgs']] = None):
+                 permission_additions: pulumi.Input[Optional['ImageLaunchPermissionPermissionAdditionsArgs']] = None,
+                 permission_removals: pulumi.Input[Optional['ImageLaunchPermissionPermissionRemovalsArgs']] = None):
         """
         The set of arguments for constructing a ImageLaunchPermission resource.
+
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI you want to modify.
         :param pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs'] permission_additions: Information about the users to whom you want to give permissions for the resource.
         :param pulumi.Input['ImageLaunchPermissionPermissionRemovalsArgs'] permission_removals: Information about the users from whom you want to remove permissions for the resource.
@@ -50,40 +51,41 @@ class ImageLaunchPermissionArgs:
 
     @_builtins.property
     @pulumi.getter(name="permissionAdditions")
-    def permission_additions(self) -> Optional[pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs']]:
+    def permission_additions(self) -> pulumi.Input[Optional['ImageLaunchPermissionPermissionAdditionsArgs']]:
         """
         Information about the users to whom you want to give permissions for the resource.
         """
         return pulumi.get(self, "permission_additions")
 
     @permission_additions.setter
-    def permission_additions(self, value: Optional[pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs']]):
+    def permission_additions(self, value: pulumi.Input[Optional['ImageLaunchPermissionPermissionAdditionsArgs']]):
         pulumi.set(self, "permission_additions", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionRemovals")
-    def permission_removals(self) -> Optional[pulumi.Input['ImageLaunchPermissionPermissionRemovalsArgs']]:
+    def permission_removals(self) -> pulumi.Input[Optional['ImageLaunchPermissionPermissionRemovalsArgs']]:
         """
         Information about the users from whom you want to remove permissions for the resource.
         """
         return pulumi.get(self, "permission_removals")
 
     @permission_removals.setter
-    def permission_removals(self, value: Optional[pulumi.Input['ImageLaunchPermissionPermissionRemovalsArgs']]):
+    def permission_removals(self, value: pulumi.Input[Optional['ImageLaunchPermissionPermissionRemovalsArgs']]):
         pulumi.set(self, "permission_removals", value)
 
 
 @pulumi.input_type
 class _ImageLaunchPermissionState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission_additions: Optional[pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs']] = None,
-                 permission_removals: Optional[pulumi.Input['ImageLaunchPermissionPermissionRemovalsArgs']] = None,
-                 permissions_to_launches: Optional[pulumi.Input[Sequence[pulumi.Input['ImageLaunchPermissionPermissionsToLaunchArgs']]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission_additions: pulumi.Input[Optional['ImageLaunchPermissionPermissionAdditionsArgs']] = None,
+                 permission_removals: pulumi.Input[Optional['ImageLaunchPermissionPermissionRemovalsArgs']] = None,
+                 permissions_to_launches: pulumi.Input[Optional[Sequence[pulumi.Input['ImageLaunchPermissionPermissionsToLaunchArgs']]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageLaunchPermission resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the OMI.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI you want to modify.
         :param pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs'] permission_additions: Information about the users to whom you want to give permissions for the resource.
@@ -105,71 +107,71 @@ class _ImageLaunchPermissionState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the OMI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the OMI you want to modify.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionAdditions")
-    def permission_additions(self) -> Optional[pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs']]:
+    def permission_additions(self) -> pulumi.Input[Optional['ImageLaunchPermissionPermissionAdditionsArgs']]:
         """
         Information about the users to whom you want to give permissions for the resource.
         """
         return pulumi.get(self, "permission_additions")
 
     @permission_additions.setter
-    def permission_additions(self, value: Optional[pulumi.Input['ImageLaunchPermissionPermissionAdditionsArgs']]):
+    def permission_additions(self, value: pulumi.Input[Optional['ImageLaunchPermissionPermissionAdditionsArgs']]):
         pulumi.set(self, "permission_additions", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionRemovals")
-    def permission_removals(self) -> Optional[pulumi.Input['ImageLaunchPermissionPermissionRemovalsArgs']]:
+    def permission_removals(self) -> pulumi.Input[Optional['ImageLaunchPermissionPermissionRemovalsArgs']]:
         """
         Information about the users from whom you want to remove permissions for the resource.
         """
         return pulumi.get(self, "permission_removals")
 
     @permission_removals.setter
-    def permission_removals(self, value: Optional[pulumi.Input['ImageLaunchPermissionPermissionRemovalsArgs']]):
+    def permission_removals(self, value: pulumi.Input[Optional['ImageLaunchPermissionPermissionRemovalsArgs']]):
         pulumi.set(self, "permission_removals", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsToLaunches")
-    def permissions_to_launches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageLaunchPermissionPermissionsToLaunchArgs']]]]:
+    def permissions_to_launches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageLaunchPermissionPermissionsToLaunchArgs']]]]:
         """
         Permissions for the resource.
         """
         return pulumi.get(self, "permissions_to_launches")
 
     @permissions_to_launches.setter
-    def permissions_to_launches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageLaunchPermissionPermissionsToLaunchArgs']]]]):
+    def permissions_to_launches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageLaunchPermissionPermissionsToLaunchArgs']]]]):
         pulumi.set(self, "permissions_to_launches", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
 
@@ -179,9 +181,9 @@ class ImageLaunchPermission(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission_additions: Optional[pulumi.Input[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict']]] = None,
-                 permission_removals: Optional[pulumi.Input[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict']]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission_additions: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict', 'outputs.ImageLaunchPermissionPermissionAdditions']]] = None,
+                 permission_removals: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict', 'outputs.ImageLaunchPermissionPermissionRemovals']]] = None,
                  __props__=None):
         """
         Manages an image launch permission.
@@ -198,10 +200,10 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image01 = outscale.ImageLaunchPermission("image01",
+            image_id="ami-12345678",
             permission_additions={
                 "account_ids": ["012345678910"],
-            },
-            image_id="ami-12345678")
+            })
         ```
 
         ### Remove permissions
@@ -211,17 +213,18 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image02 = outscale.ImageLaunchPermission("image02",
+            image_id="ami-12345678",
             permission_removals={
                 "account_ids": ["012345678910"],
-            },
-            image_id="ami-12345678")
+            })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI you want to modify.
-        :param pulumi.Input[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict']] permission_additions: Information about the users to whom you want to give permissions for the resource.
-        :param pulumi.Input[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict']] permission_removals: Information about the users from whom you want to remove permissions for the resource.
+        :param pulumi.Input[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict', 'outputs.ImageLaunchPermissionPermissionAdditions']] permission_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict', 'outputs.ImageLaunchPermissionPermissionRemovals']] permission_removals: Information about the users from whom you want to remove permissions for the resource.
         """
         ...
     @overload
@@ -244,10 +247,10 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image01 = outscale.ImageLaunchPermission("image01",
+            image_id="ami-12345678",
             permission_additions={
                 "account_ids": ["012345678910"],
-            },
-            image_id="ami-12345678")
+            })
         ```
 
         ### Remove permissions
@@ -257,11 +260,12 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image02 = outscale.ImageLaunchPermission("image02",
+            image_id="ami-12345678",
             permission_removals={
                 "account_ids": ["012345678910"],
-            },
-            image_id="ami-12345678")
+            })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageLaunchPermissionArgs args: The arguments to use to populate this resource's properties.
@@ -278,9 +282,9 @@ class ImageLaunchPermission(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission_additions: Optional[pulumi.Input[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict']]] = None,
-                 permission_removals: Optional[pulumi.Input[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict']]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission_additions: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict', 'outputs.ImageLaunchPermissionPermissionAdditions']]] = None,
+                 permission_removals: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict', 'outputs.ImageLaunchPermissionPermissionRemovals']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,12 +312,12 @@ class ImageLaunchPermission(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            permission_additions: Optional[pulumi.Input[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict']]] = None,
-            permission_removals: Optional[pulumi.Input[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict']]] = None,
-            permissions_to_launches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageLaunchPermissionPermissionsToLaunchArgs', 'ImageLaunchPermissionPermissionsToLaunchArgsDict']]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageLaunchPermission':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_additions: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict', 'outputs.ImageLaunchPermissionPermissionAdditions']]] = None,
+            permission_removals: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict', 'outputs.ImageLaunchPermissionPermissionRemovals']]] = None,
+            permissions_to_launches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageLaunchPermissionPermissionsToLaunchArgs', 'ImageLaunchPermissionPermissionsToLaunchArgsDict', 'outputs.ImageLaunchPermissionPermissionsToLaunch']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ImageLaunchPermission':
         """
         Get an existing ImageLaunchPermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -323,9 +327,9 @@ class ImageLaunchPermission(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the OMI.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI you want to modify.
-        :param pulumi.Input[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict']] permission_additions: Information about the users to whom you want to give permissions for the resource.
-        :param pulumi.Input[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict']] permission_removals: Information about the users from whom you want to remove permissions for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageLaunchPermissionPermissionsToLaunchArgs', 'ImageLaunchPermissionPermissionsToLaunchArgsDict']]]] permissions_to_launches: Permissions for the resource.
+        :param pulumi.Input[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict', 'outputs.ImageLaunchPermissionPermissionAdditions']] permission_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict', 'outputs.ImageLaunchPermissionPermissionRemovals']] permission_removals: Information about the users from whom you want to remove permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageLaunchPermissionPermissionsToLaunchArgs', 'ImageLaunchPermissionPermissionsToLaunchArgsDict', 'outputs.ImageLaunchPermissionPermissionsToLaunch']]]] permissions_to_launches: Permissions for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,6 +342,24 @@ class ImageLaunchPermission(pulumi.CustomResource):
         __props__.__dict__["permissions_to_launches"] = permissions_to_launches
         __props__.__dict__["request_id"] = request_id
         return ImageLaunchPermission(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_additions: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionAdditionsArgs', 'ImageLaunchPermissionPermissionAdditionsArgsDict', 'outputs.ImageLaunchPermissionPermissionAdditions']]] = None,
+            permission_removals: pulumi.Input[Optional[Union['ImageLaunchPermissionPermissionRemovalsArgs', 'ImageLaunchPermissionPermissionRemovalsArgsDict', 'outputs.ImageLaunchPermissionPermissionRemovals']]] = None,
+            permissions_to_launches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageLaunchPermissionPermissionsToLaunchArgs', 'ImageLaunchPermissionPermissionsToLaunchArgsDict', 'outputs.ImageLaunchPermissionPermissionsToLaunch']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["imageId"] = image_id
+        __props__["permissionAdditions"] = permission_additions
+        __props__["permissionRemovals"] = permission_removals
+        __props__["permissionsToLaunches"] = permissions_to_launches
+        __props__["requestId"] = request_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/imageLaunchPermission:ImageLaunchPermission', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

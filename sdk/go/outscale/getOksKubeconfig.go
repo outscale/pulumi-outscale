@@ -81,12 +81,8 @@ type GetOksKubeconfigResult struct {
 }
 
 func GetOksKubeconfigOutput(ctx *pulumi.Context, args GetOksKubeconfigOutputArgs, opts ...pulumi.InvokeOption) GetOksKubeconfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOksKubeconfigResultOutput, error) {
-			args := v.(GetOksKubeconfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getOksKubeconfig:getOksKubeconfig", args, GetOksKubeconfigResultOutput{}, options).(GetOksKubeconfigResultOutput), nil
-		}).(GetOksKubeconfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getOksKubeconfig:getOksKubeconfig", args, GetOksKubeconfigResultOutput{}, options).(GetOksKubeconfigResultOutput)
 }
 
 // A collection of arguments for invoking getOksKubeconfig.

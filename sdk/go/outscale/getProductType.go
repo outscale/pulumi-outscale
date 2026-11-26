@@ -79,12 +79,8 @@ type GetProductTypeResult struct {
 }
 
 func GetProductTypeOutput(ctx *pulumi.Context, args GetProductTypeOutputArgs, opts ...pulumi.InvokeOption) GetProductTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProductTypeResultOutput, error) {
-			args := v.(GetProductTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getProductType:getProductType", args, GetProductTypeResultOutput{}, options).(GetProductTypeResultOutput), nil
-		}).(GetProductTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getProductType:getProductType", args, GetProductTypeResultOutput{}, options).(GetProductTypeResultOutput)
 }
 
 // A collection of arguments for invoking getProductType.

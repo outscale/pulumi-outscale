@@ -127,7 +127,7 @@ class AwaitableGetVmStateResult(GetVmStateResult):
 
 
 def get_vm_state(all_vms: Optional[_builtins.bool] = None,
-                 filters: Optional[Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict']]] = None,
+                 filters: Optional[Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict', 'outputs.GetVmStateFilterResult']]] = None,
                  vm_id: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmStateResult:
     """
@@ -142,16 +142,16 @@ def get_vm_state(all_vms: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_outscale as outscale
 
-    vm_state01 = outscale.get_vm_state(filters=[{
+    vm_state01 = outscale.get_vm_state(all_vms=True,
+        filters=[{
             "name": "vm_ids",
             "values": ["i-12345678"],
-        }],
-        all_vms=True)
+        }])
     ```
 
 
     :param _builtins.bool all_vms: If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
-    :param Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict', 'outputs.GetVmStateFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str vm_id: The ID of the VM.
     """
     __args__ = dict()
@@ -170,9 +170,9 @@ def get_vm_state(all_vms: Optional[_builtins.bool] = None,
         subregion_name=pulumi.get(__ret__, 'subregion_name'),
         vm_id=pulumi.get(__ret__, 'vm_id'),
         vm_state=pulumi.get(__ret__, 'vm_state'))
-def get_vm_state_output(all_vms: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict']]]]] = None,
-                        vm_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_vm_state_output(all_vms: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict', 'outputs.GetVmStateFilterResult']]]]] = None,
+                        vm_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmStateResult]:
     """
     Provides information about a VM state.
@@ -186,16 +186,16 @@ def get_vm_state_output(all_vms: Optional[pulumi.Input[Optional[_builtins.bool]]
     import pulumi
     import pulumi_outscale as outscale
 
-    vm_state01 = outscale.get_vm_state(filters=[{
+    vm_state01 = outscale.get_vm_state(all_vms=True,
+        filters=[{
             "name": "vm_ids",
             "values": ["i-12345678"],
-        }],
-        all_vms=True)
+        }])
     ```
 
 
     :param _builtins.bool all_vms: If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
-    :param Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmStateFilterArgs', 'GetVmStateFilterArgsDict', 'outputs.GetVmStateFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str vm_id: The ID of the VM.
     """
     __args__ = dict()

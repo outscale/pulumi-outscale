@@ -29,6 +29,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var image01 = new Outscale.ImageLaunchPermission("image01", new()
     ///     {
+    ///         ImageId = "ami-12345678",
     ///         PermissionAdditions = new Outscale.Inputs.ImageLaunchPermissionPermissionAdditionsArgs
     ///         {
     ///             AccountIds = new[]
@@ -36,7 +37,6 @@ namespace Pulumi.Outscale
     ///                 "012345678910",
     ///             },
     ///         },
-    ///         ImageId = "ami-12345678",
     ///     });
     /// 
     /// });
@@ -54,6 +54,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var image02 = new Outscale.ImageLaunchPermission("image02", new()
     ///     {
+    ///         ImageId = "ami-12345678",
     ///         PermissionRemovals = new Outscale.Inputs.ImageLaunchPermissionPermissionRemovalsArgs
     ///         {
     ///             AccountIds = new[]
@@ -61,7 +62,6 @@ namespace Pulumi.Outscale
     ///                 "012345678910",
     ///             },
     ///         },
-    ///         ImageId = "ami-12345678",
     ///     });
     /// 
     /// });

@@ -148,6 +148,12 @@ func (FlexibleGpuState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flexibleGpuState)(nil)).Elem()
 }
 
+// FlexibleGpuExists checks whether an existing FlexibleGpu resource with the given ID exists.
+func FlexibleGpuExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlexibleGpuState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/flexibleGpu:FlexibleGpu", id, state, "", opts...)
+}
+
 type flexibleGpuArgs struct {
 	// If true, the fGPU is deleted when the VM is terminated.
 	DeleteOnVmDeletion *bool `pulumi:"deleteOnVmDeletion"`

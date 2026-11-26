@@ -147,6 +147,12 @@ func (PublicIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpState)(nil)).Elem()
 }
 
+// PublicIpExists checks whether an existing PublicIp resource with the given ID exists.
+func PublicIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/publicIp:PublicIp", id, state, "", opts...)
+}
+
 type publicIpArgs struct {
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     []PublicIpTag     `pulumi:"tags"`

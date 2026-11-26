@@ -64,6 +64,17 @@ export class RouteTableLink extends pulumi.CustomResource {
         return new RouteTableLink(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RouteTableLink resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RouteTableLinkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/routeTableLink:RouteTableLink", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/routeTableLink:RouteTableLink';
 
@@ -146,22 +157,22 @@ export interface RouteTableLinkState {
     /**
      * The ID of the association between the route table and the Subnet.
      */
-    linkRouteTableId?: pulumi.Input<string>;
+    linkRouteTableId?: pulumi.Input<string | undefined>;
     /**
      * If true, the route table is the main one.
      */
-    main?: pulumi.Input<boolean>;
-    netId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    main?: pulumi.Input<boolean | undefined>;
+    netId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table.
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net.
      */
-    subnetId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.RouteTableLinkTimeouts>;
+    subnetId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.RouteTableLinkTimeouts | undefined>;
 }
 
 /**
@@ -176,5 +187,5 @@ export interface RouteTableLinkArgs {
      * The ID of the Net.
      */
     subnetId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.RouteTableLinkTimeouts>;
+    timeouts?: pulumi.Input<inputs.RouteTableLinkTimeouts | undefined>;
 }

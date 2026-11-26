@@ -70,12 +70,8 @@ type GetUserGroupsPerUserResult struct {
 }
 
 func GetUserGroupsPerUserOutput(ctx *pulumi.Context, args GetUserGroupsPerUserOutputArgs, opts ...pulumi.InvokeOption) GetUserGroupsPerUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserGroupsPerUserResultOutput, error) {
-			args := v.(GetUserGroupsPerUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getUserGroupsPerUser:getUserGroupsPerUser", args, GetUserGroupsPerUserResultOutput{}, options).(GetUserGroupsPerUserResultOutput), nil
-		}).(GetUserGroupsPerUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getUserGroupsPerUser:getUserGroupsPerUser", args, GetUserGroupsPerUserResultOutput{}, options).(GetUserGroupsPerUserResultOutput)
 }
 
 // A collection of arguments for invoking getUserGroupsPerUser.

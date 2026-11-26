@@ -66,12 +66,8 @@ type GetPoliciesLinkedToUserResult struct {
 }
 
 func GetPoliciesLinkedToUserOutput(ctx *pulumi.Context, args GetPoliciesLinkedToUserOutputArgs, opts ...pulumi.InvokeOption) GetPoliciesLinkedToUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPoliciesLinkedToUserResultOutput, error) {
-			args := v.(GetPoliciesLinkedToUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getPoliciesLinkedToUser:getPoliciesLinkedToUser", args, GetPoliciesLinkedToUserResultOutput{}, options).(GetPoliciesLinkedToUserResultOutput), nil
-		}).(GetPoliciesLinkedToUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getPoliciesLinkedToUser:getPoliciesLinkedToUser", args, GetPoliciesLinkedToUserResultOutput{}, options).(GetPoliciesLinkedToUserResultOutput)
 }
 
 // A collection of arguments for invoking getPoliciesLinkedToUser.

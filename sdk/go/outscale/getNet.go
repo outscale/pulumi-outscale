@@ -87,12 +87,8 @@ type LookupNetResult struct {
 }
 
 func LookupNetOutput(ctx *pulumi.Context, args LookupNetOutputArgs, opts ...pulumi.InvokeOption) LookupNetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetResultOutput, error) {
-			args := v.(LookupNetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getNet:getNet", args, LookupNetResultOutput{}, options).(LookupNetResultOutput), nil
-		}).(LookupNetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getNet:getNet", args, LookupNetResultOutput{}, options).(LookupNetResultOutput)
 }
 
 // A collection of arguments for invoking getNet.

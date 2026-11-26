@@ -59,10 +59,8 @@ type GetRegionsResult struct {
 }
 
 func GetRegionsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetRegionsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("outscale:index/getRegions:getRegions", nil, GetRegionsResultOutput{}, options).(GetRegionsResultOutput), nil
-	}).(GetRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getRegions:getRegions", nil, GetRegionsResultOutput{}, options).(GetRegionsResultOutput)
 }
 
 // A collection of values returned by getRegions.

@@ -248,6 +248,12 @@ func (SnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotState)(nil)).Elem()
 }
 
+// SnapshotExists checks whether an existing Snapshot resource with the given ID exists.
+func SnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/snapshot:Snapshot", id, state, "", opts...)
+}
+
 type snapshotArgs struct {
 	// A description for the snapshot.
 	Description *string `pulumi:"description"`

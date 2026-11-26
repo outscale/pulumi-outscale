@@ -89,12 +89,8 @@ type LookupSnapshotExportTaskResult struct {
 }
 
 func LookupSnapshotExportTaskOutput(ctx *pulumi.Context, args LookupSnapshotExportTaskOutputArgs, opts ...pulumi.InvokeOption) LookupSnapshotExportTaskResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSnapshotExportTaskResultOutput, error) {
-			args := v.(LookupSnapshotExportTaskArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getSnapshotExportTask:getSnapshotExportTask", args, LookupSnapshotExportTaskResultOutput{}, options).(LookupSnapshotExportTaskResultOutput), nil
-		}).(LookupSnapshotExportTaskResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getSnapshotExportTask:getSnapshotExportTask", args, LookupSnapshotExportTaskResultOutput{}, options).(LookupSnapshotExportTaskResultOutput)
 }
 
 // A collection of arguments for invoking getSnapshotExportTask.

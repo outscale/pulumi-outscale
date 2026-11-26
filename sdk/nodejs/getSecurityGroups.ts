@@ -120,7 +120,7 @@ export interface GetSecurityGroupsOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSecurityGroupsFilterArgs>[]>;
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    securityGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSecurityGroupsFilterArgs>[] | undefined>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    securityGroupNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

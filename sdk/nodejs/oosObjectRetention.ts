@@ -51,6 +51,17 @@ export class OosObjectRetention extends pulumi.CustomResource {
         return new OosObjectRetention(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OosObjectRetention resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosObjectRetentionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosObjectRetention:OosObjectRetention", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oosObjectRetention:OosObjectRetention';
 
@@ -136,24 +147,24 @@ export interface OosObjectRetentionState {
     /**
      * The name of the bucket you want to apply retention to. The bucket must have object lock enabled.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The name of the object you want to lock.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * (Default: `COMPLIANCE`) The retention mode for the object. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting the object until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The date, in ISO 8601 format, until which the object will be locked. For example, if set to `2050-01-01T00:00:00Z`, the object will remain locked until the very start of January 1, 2050, at midnight UTC.<br />Keep in mind that in COMPLIANCE mode:<br />- You cannot bypass the retention period until its expiration. This means you will be billed for the entire retention period you set.<br />- The retention period cannot be earlier than the default object lock of the bucket.
      */
-    retainUntilDate?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosObjectRetentionTimeouts>;
+    retainUntilDate?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OosObjectRetentionTimeouts | undefined>;
     /**
      * The version ID of the object.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,14 +182,14 @@ export interface OosObjectRetentionArgs {
     /**
      * (Default: `COMPLIANCE`) The retention mode for the object. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting the object until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The date, in ISO 8601 format, until which the object will be locked. For example, if set to `2050-01-01T00:00:00Z`, the object will remain locked until the very start of January 1, 2050, at midnight UTC.<br />Keep in mind that in COMPLIANCE mode:<br />- You cannot bypass the retention period until its expiration. This means you will be billed for the entire retention period you set.<br />- The retention period cannot be earlier than the default object lock of the bucket.
      */
     retainUntilDate: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosObjectRetentionTimeouts>;
+    timeouts?: pulumi.Input<inputs.OosObjectRetentionTimeouts | undefined>;
     /**
      * The version ID of the object.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }

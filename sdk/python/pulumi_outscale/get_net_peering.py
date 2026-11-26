@@ -129,7 +129,7 @@ class AwaitableGetNetPeeringResult(GetNetPeeringResult):
             tags=self.tags)
 
 
-def get_net_peering(filters: Optional[Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict']]] = None,
+def get_net_peering(filters: Optional[Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict', 'outputs.GetNetPeeringFilterResult']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetPeeringResult:
     """
     Provides information about a Net peering.
@@ -150,7 +150,7 @@ def get_net_peering(filters: Optional[Sequence[Union['GetNetPeeringFilterArgs', 
     ```
 
 
-    :param Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict', 'outputs.GetNetPeeringFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -166,7 +166,7 @@ def get_net_peering(filters: Optional[Sequence[Union['GetNetPeeringFilterArgs', 
         source_nets=pulumi.get(__ret__, 'source_nets'),
         states=pulumi.get(__ret__, 'states'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_net_peering_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict']]]]] = None,
+def get_net_peering_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict', 'outputs.GetNetPeeringFilterResult']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetPeeringResult]:
     """
     Provides information about a Net peering.
@@ -187,7 +187,7 @@ def get_net_peering_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
     ```
 
 
-    :param Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNetPeeringFilterArgs', 'GetNetPeeringFilterArgsDict', 'outputs.GetNetPeeringFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

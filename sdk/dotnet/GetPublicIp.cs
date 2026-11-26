@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a public IP.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).\
         /// For more information on this resource actions, see the [PublicIp](https://docs.outscale.com/api#3ds-outscale-api-publicip) API methods.
         /// 
         /// ## Example Usage
@@ -51,7 +51,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a public IP.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).\
         /// For more information on this resource actions, see the [PublicIp](https://docs.outscale.com/api#3ds-outscale-api-publicip) API methods.
         /// 
         /// ## Example Usage
@@ -88,7 +88,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a public IP.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).\
         /// For more information on this resource actions, see the [PublicIp](https://docs.outscale.com/api#3ds-outscale-api-publicip) API methods.
         /// 
         /// ## Example Usage

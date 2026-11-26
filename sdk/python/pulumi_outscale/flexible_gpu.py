@@ -22,12 +22,13 @@ __all__ = ['FlexibleGpuArgs', 'FlexibleGpu']
 class FlexibleGpuArgs:
     def __init__(__self__, *,
                  model_name: pulumi.Input[_builtins.str],
-                 delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['FlexibleGpuTimeoutsArgs']] = None):
+                 delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['FlexibleGpuTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FlexibleGpu resource.
+
         :param pulumi.Input[_builtins.str] model_name: The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
         :param pulumi.Input[_builtins.str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
@@ -57,63 +58,64 @@ class FlexibleGpuArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")
-    def delete_on_vm_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_vm_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the fGPU is deleted when the VM is terminated.
         """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
-    def delete_on_vm_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_vm_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_vm_deletion", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionName")
-    def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
-    def subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['FlexibleGpuTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['FlexibleGpuTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['FlexibleGpuTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['FlexibleGpuTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _FlexibleGpuState:
     def __init__(__self__, *,
-                 delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 flexible_gpu_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['FlexibleGpuTimeoutsArgs']] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 flexible_gpu_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['FlexibleGpuTimeoutsArgs']] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlexibleGpu resources.
+
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the fGPU is deleted when the VM is terminated.
         :param pulumi.Input[_builtins.str] flexible_gpu_id: The ID of the fGPU.
         :param pulumi.Input[_builtins.str] generation: The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
@@ -141,95 +143,95 @@ class _FlexibleGpuState:
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")
-    def delete_on_vm_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_vm_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the fGPU is deleted when the VM is terminated.
         """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
-    def delete_on_vm_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_vm_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_vm_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="flexibleGpuId")
-    def flexible_gpu_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flexible_gpu_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the fGPU.
         """
         return pulumi.get(self, "flexible_gpu_id")
 
     @flexible_gpu_id.setter
-    def flexible_gpu_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flexible_gpu_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flexible_gpu_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter(name="modelName")
-    def model_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
         """
         return pulumi.get(self, "model_name")
 
     @model_name.setter
-    def model_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the fGPU (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionName")
-    def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
         """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
-    def subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['FlexibleGpuTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['FlexibleGpuTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['FlexibleGpuTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['FlexibleGpuTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM the fGPU is attached to, if any.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -239,11 +241,11 @@ class FlexibleGpu(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['FlexibleGpuTimeoutsArgs', 'FlexibleGpuTimeoutsArgsDict']]] = None,
+                 delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlexibleGpuTimeoutsArgs', 'FlexibleGpuTimeoutsArgsDict', 'outputs.FlexibleGpuTimeouts']]] = None,
                  __props__=None):
         """
         Manages a flexible GPU.
@@ -274,6 +276,7 @@ class FlexibleGpu(pulumi.CustomResource):
         $ pulumi import outscale:index/flexibleGpu:FlexibleGpu imported_fgpu fgpu-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,6 +321,7 @@ class FlexibleGpu(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param FlexibleGpuArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,11 +337,11 @@ class FlexibleGpu(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['FlexibleGpuTimeoutsArgs', 'FlexibleGpuTimeoutsArgsDict']]] = None,
+                 delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlexibleGpuTimeoutsArgs', 'FlexibleGpuTimeoutsArgsDict', 'outputs.FlexibleGpuTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,14 +371,14 @@ class FlexibleGpu(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-            flexible_gpu_id: Optional[pulumi.Input[_builtins.str]] = None,
-            generation: Optional[pulumi.Input[_builtins.str]] = None,
-            model_name: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['FlexibleGpuTimeoutsArgs', 'FlexibleGpuTimeoutsArgsDict']]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'FlexibleGpu':
+            delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            flexible_gpu_id: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlexibleGpuTimeoutsArgs', 'FlexibleGpuTimeoutsArgsDict', 'outputs.FlexibleGpuTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'FlexibleGpu':
         """
         Get an existing FlexibleGpu resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -403,6 +407,28 @@ class FlexibleGpu(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vm_id"] = vm_id
         return FlexibleGpu(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            flexible_gpu_id: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlexibleGpuTimeoutsArgs', 'FlexibleGpuTimeoutsArgsDict', 'outputs.FlexibleGpuTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteOnVmDeletion"] = delete_on_vm_deletion
+        __props__["flexibleGpuId"] = flexible_gpu_id
+        __props__["generation"] = generation
+        __props__["modelName"] = model_name
+        __props__["state"] = state
+        __props__["subregionName"] = subregion_name
+        __props__["timeouts"] = timeouts
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/flexibleGpu:FlexibleGpu', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")

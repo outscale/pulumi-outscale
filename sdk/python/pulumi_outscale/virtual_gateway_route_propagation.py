@@ -24,9 +24,10 @@ class VirtualGatewayRoutePropagationArgs:
                  enable: pulumi.Input[_builtins.bool],
                  route_table_id: pulumi.Input[_builtins.str],
                  virtual_gateway_id: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['VirtualGatewayRoutePropagationTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['VirtualGatewayRoutePropagationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a VirtualGatewayRoutePropagation resource.
+
         :param pulumi.Input[_builtins.bool] enable: If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table.
         :param pulumi.Input[_builtins.str] virtual_gateway_id: The ID of the virtual gateway.
@@ -75,24 +76,25 @@ class VirtualGatewayRoutePropagationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VirtualGatewayRoutePropagationTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VirtualGatewayRoutePropagationTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VirtualGatewayRoutePropagationTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VirtualGatewayRoutePropagationTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _VirtualGatewayRoutePropagationState:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['VirtualGatewayRoutePropagationTimeoutsArgs']] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['VirtualGatewayRoutePropagationTimeoutsArgs']] = None,
+                 virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualGatewayRoutePropagation resources.
+
         :param pulumi.Input[_builtins.bool] enable: If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table.
         :param pulumi.Input[_builtins.str] virtual_gateway_id: The ID of the virtual gateway.
@@ -110,56 +112,56 @@ class _VirtualGatewayRoutePropagationState:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route table.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VirtualGatewayRoutePropagationTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VirtualGatewayRoutePropagationTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VirtualGatewayRoutePropagationTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VirtualGatewayRoutePropagationTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualGatewayId")
-    def virtual_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual gateway.
         """
         return pulumi.get(self, "virtual_gateway_id")
 
     @virtual_gateway_id.setter
-    def virtual_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_gateway_id", value)
 
 
@@ -169,10 +171,10 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VirtualGatewayRoutePropagationTimeoutsArgs', 'VirtualGatewayRoutePropagationTimeoutsArgsDict']]] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VirtualGatewayRoutePropagationTimeoutsArgs', 'VirtualGatewayRoutePropagationTimeoutsArgsDict', 'outputs.VirtualGatewayRoutePropagationTimeouts']]] = None,
+                 virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a virtual gateway route propagation.
@@ -208,6 +210,7 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
             route_table_id=route_table01["routeTableId"],
             opts = pulumi.ResourceOptions(depends_on=[virtual_gateway_link01]))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -256,6 +259,7 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[virtual_gateway_link01]))
         ```
 
+
         :param str resource_name: The name of the resource.
         :param VirtualGatewayRoutePropagationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -271,10 +275,10 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VirtualGatewayRoutePropagationTimeoutsArgs', 'VirtualGatewayRoutePropagationTimeoutsArgsDict']]] = None,
-                 virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VirtualGatewayRoutePropagationTimeoutsArgs', 'VirtualGatewayRoutePropagationTimeoutsArgsDict', 'outputs.VirtualGatewayRoutePropagationTimeouts']]] = None,
+                 virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -305,11 +309,11 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['VirtualGatewayRoutePropagationTimeoutsArgs', 'VirtualGatewayRoutePropagationTimeoutsArgsDict']]] = None,
-            virtual_gateway_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualGatewayRoutePropagation':
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VirtualGatewayRoutePropagationTimeoutsArgs', 'VirtualGatewayRoutePropagationTimeoutsArgsDict', 'outputs.VirtualGatewayRoutePropagationTimeouts']]] = None,
+            virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualGatewayRoutePropagation':
         """
         Get an existing VirtualGatewayRoutePropagation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -331,6 +335,22 @@ class VirtualGatewayRoutePropagation(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["virtual_gateway_id"] = virtual_gateway_id
         return VirtualGatewayRoutePropagation(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VirtualGatewayRoutePropagationTimeoutsArgs', 'VirtualGatewayRoutePropagationTimeoutsArgsDict', 'outputs.VirtualGatewayRoutePropagationTimeouts']]] = None,
+            virtual_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enable"] = enable
+        __props__["requestId"] = request_id
+        __props__["routeTableId"] = route_table_id
+        __props__["timeouts"] = timeouts
+        __props__["virtualGatewayId"] = virtual_gateway_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/virtualGatewayRoutePropagation:VirtualGatewayRoutePropagation', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

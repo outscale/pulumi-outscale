@@ -82,12 +82,8 @@ type GetNicsResult struct {
 }
 
 func GetNicsOutput(ctx *pulumi.Context, args GetNicsOutputArgs, opts ...pulumi.InvokeOption) GetNicsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNicsResultOutput, error) {
-			args := v.(GetNicsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getNics:getNics", args, GetNicsResultOutput{}, options).(GetNicsResultOutput), nil
-		}).(GetNicsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getNics:getNics", args, GetNicsResultOutput{}, options).(GetNicsResultOutput)
 }
 
 // A collection of arguments for invoking getNics.

@@ -81,7 +81,7 @@ class AwaitableGetVmTypesResult(GetVmTypesResult):
             vm_types=self.vm_types)
 
 
-def get_vm_types(filters: Optional[Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict']]] = None,
+def get_vm_types(filters: Optional[Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict', 'outputs.GetVmTypesFilterResult']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmTypesResult:
     """
     Provides information about VM types.
@@ -122,7 +122,7 @@ def get_vm_types(filters: Optional[Sequence[Union['GetVmTypesFilterArgs', 'GetVm
     ```
 
 
-    :param Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict', 'outputs.GetVmTypesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -134,7 +134,7 @@ def get_vm_types(filters: Optional[Sequence[Union['GetVmTypesFilterArgs', 'GetVm
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'),
         vm_types=pulumi.get(__ret__, 'vm_types'))
-def get_vm_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict']]]]] = None,
+def get_vm_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict', 'outputs.GetVmTypesFilterResult']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmTypesResult]:
     """
     Provides information about VM types.
@@ -175,7 +175,7 @@ def get_vm_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     ```
 
 
-    :param Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmTypesFilterArgs', 'GetVmTypesFilterArgsDict', 'outputs.GetVmTypesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.GetVmState(ctx, &outscale.GetVmStateArgs{
+//				AllVms: pulumi.BoolRef(true),
 //				Filters: []outscale.GetVmStateFilter{
 //					{
 //						Name: "vm_ids",
@@ -39,7 +40,6 @@ import (
 //						},
 //					},
 //				},
-//				AllVms: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -87,12 +87,8 @@ type GetVmStateResult struct {
 }
 
 func GetVmStateOutput(ctx *pulumi.Context, args GetVmStateOutputArgs, opts ...pulumi.InvokeOption) GetVmStateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVmStateResultOutput, error) {
-			args := v.(GetVmStateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getVmState:getVmState", args, GetVmStateResultOutput{}, options).(GetVmStateResultOutput), nil
-		}).(GetVmStateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getVmState:getVmState", args, GetVmStateResultOutput{}, options).(GetVmStateResultOutput)
 }
 
 // A collection of arguments for invoking getVmState.

@@ -15,25 +15,143 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'Api',
     'Endpoints',
+    'Oks',
+    'Oos',
 ]
+
+@pulumi.output_type
+class Api(dict):
+    def __init__(__self__, *,
+                 endpoint: Optional[_builtins.str] = None,
+                 insecure: Optional[_builtins.bool] = None,
+                 region: Optional[_builtins.str] = None,
+                 x509_cert_path: Optional[_builtins.str] = None,
+                 x509_key_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool insecure: TLS insecure connection
+        :param _builtins.str x509_cert_path: Path to the x509 certificate
+        :param _builtins.str x509_key_path: Path to the x509 key
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if x509_cert_path is not None:
+            pulumi.set(__self__, "x509_cert_path", x509_cert_path)
+        if x509_key_path is not None:
+            pulumi.set(__self__, "x509_key_path", x509_key_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def insecure(self) -> Optional[_builtins.bool]:
+        """
+        TLS insecure connection
+        """
+        return pulumi.get(self, "insecure")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="x509CertPath")
+    @_utilities.deprecated("""'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
+    def x509_cert_path(self) -> Optional[_builtins.str]:
+        """
+        Path to the x509 certificate
+        """
+        return pulumi.get(self, "x509_cert_path")
+
+    @_builtins.property
+    @pulumi.getter(name="x509KeyPath")
+    @_utilities.deprecated("""'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
+    def x509_key_path(self) -> Optional[_builtins.str]:
+        """
+        Path to the x509 key
+        """
+        return pulumi.get(self, "x509_key_path")
+
 
 @pulumi.output_type
 class Endpoints(dict):
     def __init__(__self__, *,
-                 api: Optional[_builtins.str] = None):
+                 api: Optional[_builtins.str] = None,
+                 oks: Optional[_builtins.str] = None):
         """
-        :param _builtins.str api: Use this to override the default service endpoint URL
+        :param _builtins.str api: The Endpoint for Outscale API operations.
+        :param _builtins.str oks: The Endpoint for OKS API operations.
         """
         if api is not None:
             pulumi.set(__self__, "api", api)
+        if oks is not None:
+            pulumi.set(__self__, "oks", oks)
 
     @_builtins.property
     @pulumi.getter
     def api(self) -> Optional[_builtins.str]:
         """
-        Use this to override the default service endpoint URL
+        The Endpoint for Outscale API operations.
         """
         return pulumi.get(self, "api")
+
+    @_builtins.property
+    @pulumi.getter
+    def oks(self) -> Optional[_builtins.str]:
+        """
+        The Endpoint for OKS API operations.
+        """
+        return pulumi.get(self, "oks")
+
+
+@pulumi.output_type
+class Oks(dict):
+    def __init__(__self__, *,
+                 endpoint: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class Oos(dict):
+    def __init__(__self__, *,
+                 endpoint: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "region")
 
 

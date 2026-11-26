@@ -23,9 +23,10 @@ class VpnConnectionRouteInitArgs:
     def __init__(__self__, *,
                  destination_ip_range: pulumi.Input[_builtins.str],
                  vpn_connection_id: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['VpnConnectionRouteTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['VpnConnectionRouteTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a VpnConnectionRoute resource.
+
         :param pulumi.Input[_builtins.str] destination_ip_range: The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
         :param pulumi.Input[_builtins.str] vpn_connection_id: The ID of the target VPN connection of the static route.
         """
@@ -60,23 +61,24 @@ class VpnConnectionRouteInitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VpnConnectionRouteTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VpnConnectionRouteTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VpnConnectionRouteTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VpnConnectionRouteTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _VpnConnectionRouteState:
     def __init__(__self__, *,
-                 destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['VpnConnectionRouteTimeoutsArgs']] = None,
-                 vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['VpnConnectionRouteTimeoutsArgs']] = None,
+                 vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpnConnectionRoute resources.
+
         :param pulumi.Input[_builtins.str] destination_ip_range: The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
         :param pulumi.Input[_builtins.str] vpn_connection_id: The ID of the target VPN connection of the static route.
         """
@@ -91,44 +93,44 @@ class _VpnConnectionRouteState:
 
     @_builtins.property
     @pulumi.getter(name="destinationIpRange")
-    def destination_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
         """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
-    def destination_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VpnConnectionRouteTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VpnConnectionRouteTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VpnConnectionRouteTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VpnConnectionRouteTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnConnectionId")
-    def vpn_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target VPN connection of the static route.
         """
         return pulumi.get(self, "vpn_connection_id")
 
     @vpn_connection_id.setter
-    def vpn_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_connection_id", value)
 
 
@@ -138,9 +140,9 @@ class VpnConnectionRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VpnConnectionRouteTimeoutsArgs', 'VpnConnectionRouteTimeoutsArgsDict']]] = None,
-                 vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpnConnectionRouteTimeoutsArgs', 'VpnConnectionRouteTimeoutsArgsDict', 'outputs.VpnConnectionRouteTimeouts']]] = None,
+                 vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a VPN connection route.
@@ -188,6 +190,7 @@ class VpnConnectionRoute(pulumi.CustomResource):
         $ pulumi import outscale:index/vpnConnectionRoute:VpnConnectionRoute ImportedRoute vpn-12345678_10.0.0.0/0
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -247,6 +250,7 @@ class VpnConnectionRoute(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param VpnConnectionRouteInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,9 +266,9 @@ class VpnConnectionRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VpnConnectionRouteTimeoutsArgs', 'VpnConnectionRouteTimeoutsArgsDict']]] = None,
-                 vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpnConnectionRouteTimeoutsArgs', 'VpnConnectionRouteTimeoutsArgsDict', 'outputs.VpnConnectionRouteTimeouts']]] = None,
+                 vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,10 +296,10 @@ class VpnConnectionRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['VpnConnectionRouteTimeoutsArgs', 'VpnConnectionRouteTimeoutsArgsDict']]] = None,
-            vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpnConnectionRoute':
+            destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpnConnectionRouteTimeoutsArgs', 'VpnConnectionRouteTimeoutsArgsDict', 'outputs.VpnConnectionRouteTimeouts']]] = None,
+            vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpnConnectionRoute':
         """
         Get an existing VpnConnectionRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -315,6 +319,20 @@ class VpnConnectionRoute(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vpn_connection_id"] = vpn_connection_id
         return VpnConnectionRoute(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpnConnectionRouteTimeoutsArgs', 'VpnConnectionRouteTimeoutsArgsDict', 'outputs.VpnConnectionRouteTimeouts']]] = None,
+            vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["destinationIpRange"] = destination_ip_range
+        __props__["requestId"] = request_id
+        __props__["timeouts"] = timeouts
+        __props__["vpnConnectionId"] = vpn_connection_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/vpnConnectionRoute:VpnConnectionRoute', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="destinationIpRange")

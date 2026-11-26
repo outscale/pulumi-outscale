@@ -177,6 +177,12 @@ func (RouteTableLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTableLinkState)(nil)).Elem()
 }
 
+// RouteTableLinkExists checks whether an existing RouteTableLink resource with the given ID exists.
+func RouteTableLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouteTableLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/routeTableLink:RouteTableLink", id, state, "", opts...)
+}
+
 type routeTableLinkArgs struct {
 	// The ID of the route table.
 	RouteTableId string `pulumi:"routeTableId"`

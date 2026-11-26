@@ -38,6 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewOosBucketCors(ctx, "cors01", &outscale.OosBucketCorsArgs{
+//				Bucket: bucket01.ID(),
 //				Rules: outscale.OosBucketCorsRuleArray{
 //					&outscale.OosBucketCorsRuleArgs{
 //						AllowedHeaders: pulumi.StringArray{
@@ -69,7 +70,6 @@ import (
 //						MaxAgeSeconds: pulumi.Int(1200),
 //					},
 //				},
-//				Bucket: bucket01.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -142,6 +142,12 @@ type OosBucketCorsState struct {
 
 func (OosBucketCorsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosBucketCorsState)(nil)).Elem()
+}
+
+// OosBucketCorsExists checks whether an existing OosBucketCors resource with the given ID exists.
+func OosBucketCorsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosBucketCorsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosBucketCors:OosBucketCors", id, state, "", opts...)
 }
 
 type oosBucketCorsArgs struct {

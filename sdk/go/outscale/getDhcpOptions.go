@@ -82,12 +82,8 @@ type GetDhcpOptionsResult struct {
 }
 
 func GetDhcpOptionsOutput(ctx *pulumi.Context, args GetDhcpOptionsOutputArgs, opts ...pulumi.InvokeOption) GetDhcpOptionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDhcpOptionsResultOutput, error) {
-			args := v.(GetDhcpOptionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getDhcpOptions:getDhcpOptions", args, GetDhcpOptionsResultOutput{}, options).(GetDhcpOptionsResultOutput), nil
-		}).(GetDhcpOptionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getDhcpOptions:getDhcpOptions", args, GetDhcpOptionsResultOutput{}, options).(GetDhcpOptionsResultOutput)
 }
 
 // A collection of arguments for invoking getDhcpOptions.

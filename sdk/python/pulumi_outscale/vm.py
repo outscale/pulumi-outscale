@@ -22,35 +22,36 @@ __all__ = ['VmArgs', 'Vm']
 class VmArgs:
     def __init__(__self__, *,
                  image_id: pulumi.Input[_builtins.str],
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bsu_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 get_admin_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nics: Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]] = None,
-                 performance: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_nics: Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shutdown_behavior_configuration: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]] = None,
-                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bsu_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 get_admin_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nics: pulumi.Input[Optional[Sequence[pulumi.Input['VmNicArgs']]]] = None,
+                 performance: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_nics: pulumi.Input[Optional[Sequence[pulumi.Input['VmPrimaryNicArgs']]]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secure_boot_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_group_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_behavior_configuration: pulumi.Input[Optional['VmShutdownBehaviorConfigurationArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['VmTagArgs']]]] = None,
+                 tpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_initiated_shutdown_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vm resource.
+
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
         :param pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]] block_device_mappings: One or more block device mappings.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
@@ -153,88 +154,88 @@ class VmArgs:
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]:
         """
         One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="bootMode")
-    def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The boot mode of the VM. Possible values: `uefi` | `legacy`.
         """
         return pulumi.get(self, "boot_mode")
 
     @boot_mode.setter
-    def boot_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="bsuOptimized")
-    def bsu_optimized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bsu_optimized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "bsu_optimized")
 
     @bsu_optimized.setter
-    def bsu_optimized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bsu_optimized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bsu_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, you cannot delete the VM unless you change this parameter back to false.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="getAdminPassword")
-    def get_admin_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def get_admin_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
         """
         return pulumi.get(self, "get_admin_password")
 
     @get_admin_password.setter
-    def get_admin_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def get_admin_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "get_admin_password", value)
 
     @_builtins.property
     @pulumi.getter(name="isSourceDestChecked")
-    def is_source_dest_checked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_source_dest_checked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         """
         return pulumi.get(self, "is_source_dest_checked")
 
     @is_source_dest_checked.setter
-    def is_source_dest_checked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_source_dest_checked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_source_dest_checked", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairName")
-    def keypair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the keypair.
         """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
-    def keypair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairNameWo")
-    def keypair_name_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_name_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
@@ -242,293 +243,294 @@ class VmArgs:
         return pulumi.get(self, "keypair_name_wo")
 
     @keypair_name_wo.setter
-    def keypair_name_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_name_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_name_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="nestedVirtualization")
-    def nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nested_virtualization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         """
         return pulumi.get(self, "nested_virtualization")
 
     @nested_virtualization.setter
-    def nested_virtualization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nested_virtualization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nested_virtualization", value)
 
     @_builtins.property
     @pulumi.getter
-    def nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]:
+    def nics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmNicArgs']]]]:
         """
         One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "nics")
 
     @nics.setter
-    def nics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]):
+    def nics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmNicArgs']]]]):
         pulumi.set(self, "nics", value)
 
     @_builtins.property
     @pulumi.getter
-    def performance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         """
         return pulumi.get(self, "performance")
 
     @performance.setter
-    def performance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance", value)
 
     @_builtins.property
     @pulumi.getter(name="placementSubregionName")
-    def placement_subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Subregion where the VM is placed.
         """
         return pulumi.get(self, "placement_subregion_name")
 
     @placement_subregion_name.setter
-    def placement_subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_subregion_name", value)
 
     @_builtins.property
     @pulumi.getter(name="placementTenancy")
-    def placement_tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_tenancy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenancy of the VM (`default` | `dedicated`).
         """
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
-    def placement_tenancy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_tenancy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_tenancy", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryNics")
-    def primary_nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]:
+    def primary_nics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]:
         """
         The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "primary_nics")
 
     @primary_nics.setter
-    def primary_nics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]):
+    def primary_nics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]):
         pulumi.set(self, "primary_nics", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="secureBootAction")
-    def secure_boot_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secure_boot_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         """
         return pulumi.get(self, "secure_boot_action")
 
     @secure_boot_action.setter
-    def secure_boot_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secure_boot_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secure_boot_action", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupNames")
-    def security_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         """
         return pulumi.get(self, "security_group_names")
 
     @security_group_names.setter
-    def security_group_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_names", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownBehaviorConfiguration")
-    def shutdown_behavior_configuration(self) -> Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]:
+    def shutdown_behavior_configuration(self) -> pulumi.Input[Optional['VmShutdownBehaviorConfigurationArgs']]:
         """
         Information about the actions performed by the orchestrator when the VM shuts down.
         """
         return pulumi.get(self, "shutdown_behavior_configuration")
 
     @shutdown_behavior_configuration.setter
-    def shutdown_behavior_configuration(self, value: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]):
+    def shutdown_behavior_configuration(self, value: pulumi.Input[Optional['VmShutdownBehaviorConfigurationArgs']]):
         pulumi.set(self, "shutdown_behavior_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Subnet in which you want to create the VM.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tpmEnabled")
-    def tpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tpm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         """
         return pulumi.get(self, "tpm_enabled")
 
     @tpm_enabled.setter
-    def tpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tpm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tpm_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
     @_utilities.deprecated("""Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""")
-    def vm_initiated_shutdown_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_initiated_shutdown_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
     @vm_initiated_shutdown_behavior.setter
-    def vm_initiated_shutdown_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_initiated_shutdown_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_initiated_shutdown_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="vmType")
-    def vm_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
         """
         return pulumi.get(self, "vm_type")
 
     @vm_type.setter
-    def vm_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_type", value)
 
 
 @pulumi.input_type
 class _VmState:
     def __init__(__self__, *,
-                 actions_on_next_boots: Optional[pulumi.Input[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]]] = None,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]] = None,
-                 block_device_mappings_createds: Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bsu_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 get_admin_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hypervisor: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nics: Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]] = None,
-                 os_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_nics: Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]] = None,
-                 private_dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 product_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 public_dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]]] = None,
-                 shutdown_behavior_configuration: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]] = None,
-                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 actions_on_next_boots: pulumi.Input[Optional[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]]] = None,
+                 admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]] = None,
+                 block_device_mappings_createds: pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bsu_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 get_admin_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hypervisor: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nics: pulumi.Input[Optional[Sequence[pulumi.Input['VmNicArgs']]]] = None,
+                 os_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_nics: pulumi.Input[Optional[Sequence[pulumi.Input['VmPrimaryNicArgs']]]] = None,
+                 private_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 product_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 public_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_boot_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_group_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['VmSecurityGroupArgs']]]] = None,
+                 shutdown_behavior_configuration: pulumi.Input[Optional['VmShutdownBehaviorConfigurationArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['VmTagArgs']]]] = None,
+                 tpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_initiated_shutdown_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vm resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]] actions_on_next_boots: The action to perform on the next boot of the VM.
         :param pulumi.Input[_builtins.str] admin_password: (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `get_admin_password` is false or not specified, the VM resource is created without the `admin_password` attribute. Once `admin_password` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `get_admin_password` is true, the VM resource itself is not considered created until the `admin_password` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
         :param pulumi.Input[_builtins.str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
@@ -682,184 +684,184 @@ class _VmState:
 
     @_builtins.property
     @pulumi.getter(name="actionsOnNextBoots")
-    def actions_on_next_boots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]]]:
+    def actions_on_next_boots(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]]]:
         """
         The action to perform on the next boot of the VM.
         """
         return pulumi.get(self, "actions_on_next_boots")
 
     @actions_on_next_boots.setter
-    def actions_on_next_boots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]]]):
+    def actions_on_next_boots(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmActionsOnNextBootArgs']]]]):
         pulumi.set(self, "actions_on_next_boots", value)
 
     @_builtins.property
     @pulumi.getter(name="adminPassword")
-    def admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `get_admin_password` is false or not specified, the VM resource is created without the `admin_password` attribute. Once `admin_password` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `get_admin_password` is true, the VM resource itself is not considered created until the `admin_password` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
         """
         return pulumi.get(self, "admin_password")
 
     @admin_password.setter
-    def admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The architecture of the VM (`i386` \\| `x86_64`).
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]:
         """
         One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappingsCreateds")
-    def block_device_mappings_createds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]]:
+    def block_device_mappings_createds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]]:
         """
         The block device mapping of the VM.
         """
         return pulumi.get(self, "block_device_mappings_createds")
 
     @block_device_mappings_createds.setter
-    def block_device_mappings_createds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]]):
+    def block_device_mappings_createds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmBlockDeviceMappingsCreatedArgs']]]]):
         pulumi.set(self, "block_device_mappings_createds", value)
 
     @_builtins.property
     @pulumi.getter(name="bootMode")
-    def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The boot mode of the VM. Possible values: `uefi` | `legacy`.
         """
         return pulumi.get(self, "boot_mode")
 
     @boot_mode.setter
-    def boot_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="bsuOptimized")
-    def bsu_optimized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bsu_optimized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "bsu_optimized")
 
     @bsu_optimized.setter
-    def bsu_optimized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bsu_optimized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bsu_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="clientToken")
-    def client_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier which enables you to manage the idempotency.
         """
         return pulumi.get(self, "client_token")
 
     @client_token.setter
-    def client_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_token", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) at which the VM was created.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, you cannot delete the VM unless you change this parameter back to false.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="getAdminPassword")
-    def get_admin_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def get_admin_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
         """
         return pulumi.get(self, "get_admin_password")
 
     @get_admin_password.setter
-    def get_admin_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def get_admin_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "get_admin_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def hypervisor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hypervisor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hypervisor type of the VMs (`ovm` \\| `xen`).
         """
         return pulumi.get(self, "hypervisor")
 
     @hypervisor.setter
-    def hypervisor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hypervisor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hypervisor", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isSourceDestChecked")
-    def is_source_dest_checked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_source_dest_checked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         """
         return pulumi.get(self, "is_source_dest_checked")
 
     @is_source_dest_checked.setter
-    def is_source_dest_checked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_source_dest_checked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_source_dest_checked", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairName")
-    def keypair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the keypair.
         """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
-    def keypair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairNameWo")
-    def keypair_name_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_name_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
@@ -867,401 +869,401 @@ class _VmState:
         return pulumi.get(self, "keypair_name_wo")
 
     @keypair_name_wo.setter
-    def keypair_name_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_name_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_name_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="launchNumber")
-    def launch_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def launch_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
         """
         return pulumi.get(self, "launch_number")
 
     @launch_number.setter
-    def launch_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def launch_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "launch_number", value)
 
     @_builtins.property
     @pulumi.getter(name="nestedVirtualization")
-    def nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nested_virtualization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         """
         return pulumi.get(self, "nested_virtualization")
 
     @nested_virtualization.setter
-    def nested_virtualization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nested_virtualization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nested_virtualization", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net for the NIC.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]:
+    def nics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmNicArgs']]]]:
         """
         One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "nics")
 
     @nics.setter
-    def nics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmNicArgs']]]]):
+    def nics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmNicArgs']]]]):
         pulumi.set(self, "nics", value)
 
     @_builtins.property
     @pulumi.getter(name="osFamily")
-    def os_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the operating system (OS) of the VM.
         """
         return pulumi.get(self, "os_family")
 
     @os_family.setter
-    def os_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_family", value)
 
     @_builtins.property
     @pulumi.getter
-    def performance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         """
         return pulumi.get(self, "performance")
 
     @performance.setter
-    def performance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance", value)
 
     @_builtins.property
     @pulumi.getter(name="placementSubregionName")
-    def placement_subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Subregion where the VM is placed.
         """
         return pulumi.get(self, "placement_subregion_name")
 
     @placement_subregion_name.setter
-    def placement_subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_subregion_name", value)
 
     @_builtins.property
     @pulumi.getter(name="placementTenancy")
-    def placement_tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_tenancy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenancy of the VM (`default` | `dedicated`).
         """
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
-    def placement_tenancy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_tenancy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_tenancy", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryNics")
-    def primary_nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]:
+    def primary_nics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]:
         """
         The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         """
         return pulumi.get(self, "primary_nics")
 
     @primary_nics.setter
-    def primary_nics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]):
+    def primary_nics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmPrimaryNicArgs']]]]):
         pulumi.set(self, "primary_nics", value)
 
     @_builtins.property
     @pulumi.getter(name="privateDnsName")
-    def private_dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the private DNS.
         """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
-    def private_dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary private IP of the VM.
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="productCodes")
-    def product_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def product_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The product codes associated with the OMI used to create the VM.
         """
         return pulumi.get(self, "product_codes")
 
     @product_codes.setter
-    def product_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def product_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "product_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="publicDnsName")
-    def public_dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the public DNS.
         """
         return pulumi.get(self, "public_dns_name")
 
     @public_dns_name.setter
-    def public_dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public IP of the VM.
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationId")
-    def reservation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservation ID of the VM.
         """
         return pulumi.get(self, "reservation_id")
 
     @reservation_id.setter
-    def reservation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDeviceName")
-    def root_device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the root device for the VM (for example, `/dev/sda1`).
         """
         return pulumi.get(self, "root_device_name")
 
     @root_device_name.setter
-    def root_device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_device_name", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDeviceType")
-    def root_device_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_device_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of root device used by the VM (always `bsu`).
         """
         return pulumi.get(self, "root_device_type")
 
     @root_device_type.setter
-    def root_device_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_device_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_device_type", value)
 
     @_builtins.property
     @pulumi.getter(name="secureBootAction")
-    def secure_boot_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secure_boot_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         """
         return pulumi.get(self, "secure_boot_action")
 
     @secure_boot_action.setter
-    def secure_boot_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secure_boot_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secure_boot_action", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupNames")
-    def security_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         """
         return pulumi.get(self, "security_group_names")
 
     @security_group_names.setter
-    def security_group_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_names", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmSecurityGroupArgs']]]]:
         """
         One or more security groups associated with the VM.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmSecurityGroupArgs']]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmSecurityGroupArgs']]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="shutdownBehaviorConfiguration")
-    def shutdown_behavior_configuration(self) -> Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]:
+    def shutdown_behavior_configuration(self) -> pulumi.Input[Optional['VmShutdownBehaviorConfigurationArgs']]:
         """
         Information about the actions performed by the orchestrator when the VM shuts down.
         """
         return pulumi.get(self, "shutdown_behavior_configuration")
 
     @shutdown_behavior_configuration.setter
-    def shutdown_behavior_configuration(self, value: Optional[pulumi.Input['VmShutdownBehaviorConfigurationArgs']]):
+    def shutdown_behavior_configuration(self, value: pulumi.Input[Optional['VmShutdownBehaviorConfigurationArgs']]):
         pulumi.set(self, "shutdown_behavior_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateReason")
-    def state_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         """
         return pulumi.get(self, "state_reason")
 
     @state_reason.setter
-    def state_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Subnet in which you want to create the VM.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tpmEnabled")
-    def tpm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tpm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         """
         return pulumi.get(self, "tpm_enabled")
 
     @tpm_enabled.setter
-    def tpm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tpm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tpm_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vmInitiatedShutdownBehavior")
     @_utilities.deprecated("""Configure `shutdown_behavior_configuration` instead. This attribute will be removed in the next major version of the provider.""")
-    def vm_initiated_shutdown_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_initiated_shutdown_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdown_behavior_configuration` and will be removed in the next major version of the provider.
         """
         return pulumi.get(self, "vm_initiated_shutdown_behavior")
 
     @vm_initiated_shutdown_behavior.setter
-    def vm_initiated_shutdown_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_initiated_shutdown_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_initiated_shutdown_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="vmType")
-    def vm_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
         """
         return pulumi.get(self, "vm_type")
 
     @vm_type.setter
-    def vm_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_type", value)
 
 
@@ -1271,34 +1273,34 @@ class Vm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bsu_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 get_admin_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]]] = None,
-                 performance: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shutdown_behavior_configuration: Optional[pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
-                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict', 'outputs.VmBlockDeviceMapping']]]]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bsu_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 get_admin_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict', 'outputs.VmNic']]]]] = None,
+                 performance: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict', 'outputs.VmPrimaryNic']]]]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secure_boot_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_group_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_behavior_configuration: pulumi.Input[Optional[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict', 'outputs.VmShutdownBehaviorConfiguration']]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict', 'outputs.VmTag']]]]] = None,
+                 tpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_initiated_shutdown_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a virtual machine (VM).
@@ -1320,16 +1322,16 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
-            tags=[{
-                "key": "name",
-                "value": "terraform-public-vm",
-            }],
             image_id=image_id,
             vm_type="tinav5.c1r1p2",
             keypair_name=keypair01.keypair_name,
             security_group_ids=[security_group01.security_group_id],
             placement_subregion_name="eu-west-2a",
             placement_tenancy="default",
+            tags=[{
+                "key": "name",
+                "value": "terraform-public-vm",
+            }],
             user_data=std.base64encode(input="    <CONFIGURATION>\\n")["result"])
         ```
 
@@ -1348,29 +1350,29 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
             block_device_mappings=[
                 {
+                    "device_name": "/dev/sdb",
                     "bsu": {
                         "volume_size": 15,
                         "volume_type": "gp2",
                         "snapshot_id": snapshot01.snapshot_id,
                     },
-                    "device_name": "/dev/sdb",
                 },
                 {
+                    "device_name": "/dev/sdc",
                     "bsu": {
                         "volume_size": 22,
                         "volume_type": "io1",
                         "iops": 150,
                         "delete_on_vm_deletion": True,
                     },
-                    "device_name": "/dev/sdc",
                 },
-            ],
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            security_group_ids=[security_group01.security_group_id])
+            ])
         ```
 
         ### Create a VM in a Net with a network
@@ -1380,29 +1382,29 @@ class Vm(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-for-vm",
-            }],
-            ip_range="10.0.0.0/16")
+            }])
         subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b",
             tags=[{
                 "key": "name",
                 "value": "terraform-subnet-for-vm",
-            }],
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2b")
+            }])
         internet_service01 = outscale.InternetService("internet_service01")
         internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
             internet_service_id=internet_service01.internet_service_id,
             net_id=net01.net_id)
         route_table01 = outscale.RouteTable("route_table01",
+            net_id=net01.net_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-route-table-for-vm",
-            }],
-            net_id=net01.net_id)
+            }])
         route_table_link01 = outscale.RouteTableLink("route_table_link01",
             route_table_id=route_table01.route_table_id,
             subnet_id=subnet01.subnet_id)
@@ -1474,6 +1476,9 @@ class Vm(pulumi.CustomResource):
             subregion_name="eu-west-2a")
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "delete_on_vm_deletion": True,
@@ -1485,10 +1490,7 @@ class Vm(pulumi.CustomResource):
                     "subnet_id": subnet02.subnet_id,
                     "device_number": 1,
                 },
-            ],
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name)
+            ])
         ```
 
         Example with existing NICs attached at VM creation:
@@ -1510,6 +1512,9 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "nic_id": nic01.nic_id,
@@ -1519,10 +1524,7 @@ class Vm(pulumi.CustomResource):
                     "nic_id": nic02.nic_id,
                     "device_number": 1,
                 },
-            ],
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name)
+            ])
         ```
 
         ### Method 2: Define the primary NIC and then attach secondary NICs separately
@@ -1554,13 +1556,13 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
             primary_nics=[{
                 "nic_id": nic01.nic_id,
                 "device_number": 0,
-            }],
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name)
+            }])
         nic_link01 = outscale.NicLink("nic_link01",
             device_number=1,
             vm_id=vm01.vm_id,
@@ -1577,9 +1579,10 @@ class Vm(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict', 'outputs.VmBlockDeviceMapping']]]] block_device_mappings: One or more block device mappings.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.bool] deletion_protection: If true, you cannot delete the VM unless you change this parameter back to false.
         :param pulumi.Input[_builtins.bool] get_admin_password: (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `admin_password` attribute.
@@ -1589,19 +1592,19 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] keypair_name_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict', 'outputs.VmNic']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict', 'outputs.VmPrimaryNic']]]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
-        :param pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
+        :param pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict', 'outputs.VmShutdownBehaviorConfiguration']] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict', 'outputs.VmTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
@@ -1634,16 +1637,16 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
-            tags=[{
-                "key": "name",
-                "value": "terraform-public-vm",
-            }],
             image_id=image_id,
             vm_type="tinav5.c1r1p2",
             keypair_name=keypair01.keypair_name,
             security_group_ids=[security_group01.security_group_id],
             placement_subregion_name="eu-west-2a",
             placement_tenancy="default",
+            tags=[{
+                "key": "name",
+                "value": "terraform-public-vm",
+            }],
             user_data=std.base64encode(input="    <CONFIGURATION>\\n")["result"])
         ```
 
@@ -1662,29 +1665,29 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id],
             block_device_mappings=[
                 {
+                    "device_name": "/dev/sdb",
                     "bsu": {
                         "volume_size": 15,
                         "volume_type": "gp2",
                         "snapshot_id": snapshot01.snapshot_id,
                     },
-                    "device_name": "/dev/sdb",
                 },
                 {
+                    "device_name": "/dev/sdc",
                     "bsu": {
                         "volume_size": 22,
                         "volume_type": "io1",
                         "iops": 150,
                         "delete_on_vm_deletion": True,
                     },
-                    "device_name": "/dev/sdc",
                 },
-            ],
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            security_group_ids=[security_group01.security_group_id])
+            ])
         ```
 
         ### Create a VM in a Net with a network
@@ -1694,29 +1697,29 @@ class Vm(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net01 = outscale.Net("net01",
+            ip_range="10.0.0.0/16",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-for-vm",
-            }],
-            ip_range="10.0.0.0/16")
+            }])
         subnet01 = outscale.Subnet("subnet01",
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b",
             tags=[{
                 "key": "name",
                 "value": "terraform-subnet-for-vm",
-            }],
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2b")
+            }])
         internet_service01 = outscale.InternetService("internet_service01")
         internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
             internet_service_id=internet_service01.internet_service_id,
             net_id=net01.net_id)
         route_table01 = outscale.RouteTable("route_table01",
+            net_id=net01.net_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-route-table-for-vm",
-            }],
-            net_id=net01.net_id)
+            }])
         route_table_link01 = outscale.RouteTableLink("route_table_link01",
             route_table_id=route_table01.route_table_id,
             subnet_id=subnet01.subnet_id)
@@ -1788,6 +1791,9 @@ class Vm(pulumi.CustomResource):
             subregion_name="eu-west-2a")
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "delete_on_vm_deletion": True,
@@ -1799,10 +1805,7 @@ class Vm(pulumi.CustomResource):
                     "subnet_id": subnet02.subnet_id,
                     "device_number": 1,
                 },
-            ],
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name)
+            ])
         ```
 
         Example with existing NICs attached at VM creation:
@@ -1824,6 +1827,9 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "nic_id": nic01.nic_id,
@@ -1833,10 +1839,7 @@ class Vm(pulumi.CustomResource):
                     "nic_id": nic02.nic_id,
                     "device_number": 1,
                 },
-            ],
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name)
+            ])
         ```
 
         ### Method 2: Define the primary NIC and then attach secondary NICs separately
@@ -1868,13 +1871,13 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name,
             primary_nics=[{
                 "nic_id": nic01.nic_id,
                 "device_number": 0,
-            }],
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name)
+            }])
         nic_link01 = outscale.NicLink("nic_link01",
             device_number=1,
             vm_id=vm01.vm_id,
@@ -1891,6 +1894,7 @@ class Vm(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param VmArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1906,34 +1910,34 @@ class Vm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bsu_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 get_admin_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]]] = None,
-                 performance: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shutdown_behavior_configuration: Optional[pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
-                 tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict', 'outputs.VmBlockDeviceMapping']]]]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bsu_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 get_admin_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict', 'outputs.VmNic']]]]] = None,
+                 performance: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict', 'outputs.VmPrimaryNic']]]]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secure_boot_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_group_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shutdown_behavior_configuration: pulumi.Input[Optional[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict', 'outputs.VmShutdownBehaviorConfiguration']]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict', 'outputs.VmTag']]]]] = None,
+                 tpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_initiated_shutdown_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2006,55 +2010,55 @@ class Vm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions_on_next_boots: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmActionsOnNextBootArgs', 'VmActionsOnNextBootArgsDict']]]]] = None,
-            admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-            architecture: Optional[pulumi.Input[_builtins.str]] = None,
-            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]]] = None,
-            block_device_mappings_createds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingsCreatedArgs', 'VmBlockDeviceMappingsCreatedArgsDict']]]]] = None,
-            boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            bsu_optimized: Optional[pulumi.Input[_builtins.bool]] = None,
-            client_token: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            get_admin_password: Optional[pulumi.Input[_builtins.bool]] = None,
-            hypervisor: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
-            keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair_name_wo: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_number: Optional[pulumi.Input[_builtins.int]] = None,
-            nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]]] = None,
-            os_family: Optional[pulumi.Input[_builtins.str]] = None,
-            performance: Optional[pulumi.Input[_builtins.str]] = None,
-            placement_subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-            placement_tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]]] = None,
-            private_dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            product_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            public_dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            root_device_name: Optional[pulumi.Input[_builtins.str]] = None,
-            root_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-            secure_boot_action: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict']]]]] = None,
-            shutdown_behavior_configuration: Optional[pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]]] = None,
-            tpm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_initiated_shutdown_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vm':
+            actions_on_next_boots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmActionsOnNextBootArgs', 'VmActionsOnNextBootArgsDict', 'outputs.VmActionsOnNextBoot']]]]] = None,
+            admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict', 'outputs.VmBlockDeviceMapping']]]]] = None,
+            block_device_mappings_createds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmBlockDeviceMappingsCreatedArgs', 'VmBlockDeviceMappingsCreatedArgsDict', 'outputs.VmBlockDeviceMappingsCreated']]]]] = None,
+            boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            bsu_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+            client_token: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            get_admin_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            hypervisor: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+            keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_name_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_number: pulumi.Input[Optional[_builtins.int]] = None,
+            nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict', 'outputs.VmNic']]]]] = None,
+            os_family: pulumi.Input[Optional[_builtins.str]] = None,
+            performance: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict', 'outputs.VmPrimaryNic']]]]] = None,
+            private_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            product_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            public_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+            secure_boot_action: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_group_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict', 'outputs.VmSecurityGroup']]]]] = None,
+            shutdown_behavior_configuration: pulumi.Input[Optional[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict', 'outputs.VmShutdownBehaviorConfiguration']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict', 'outputs.VmTag']]]]] = None,
+            tpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_initiated_shutdown_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vm':
         """
         Get an existing Vm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2062,11 +2066,11 @@ class Vm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmActionsOnNextBootArgs', 'VmActionsOnNextBootArgsDict']]]] actions_on_next_boots: The action to perform on the next boot of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmActionsOnNextBootArgs', 'VmActionsOnNextBootArgsDict', 'outputs.VmActionsOnNextBoot']]]] actions_on_next_boots: The action to perform on the next boot of the VM.
         :param pulumi.Input[_builtins.str] admin_password: (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `get_admin_password` is false or not specified, the VM resource is created without the `admin_password` attribute. Once `admin_password` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `get_admin_password` is true, the VM resource itself is not considered created until the `admin_password` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
         :param pulumi.Input[_builtins.str] architecture: The architecture of the VM (`i386` \\| `x86_64`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict']]]] block_device_mappings: One or more block device mappings.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingsCreatedArgs', 'VmBlockDeviceMappingsCreatedArgsDict']]]] block_device_mappings_createds: The block device mapping of the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict', 'outputs.VmBlockDeviceMapping']]]] block_device_mappings: One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmBlockDeviceMappingsCreatedArgs', 'VmBlockDeviceMappingsCreatedArgsDict', 'outputs.VmBlockDeviceMappingsCreated']]]] block_device_mappings_createds: The block device mapping of the VM.
         :param pulumi.Input[_builtins.str] boot_mode: The boot mode of the VM. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] client_token: A unique identifier which enables you to manage the idempotency.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the VM was created.
@@ -2081,12 +2085,12 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] launch_number: The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
         :param pulumi.Input[_builtins.bool] nested_virtualization: (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict', 'outputs.VmNic']]]] nics: One or more NICs. If you specify this parameter, you must not specify the `subnet_id` and `subregion_name` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] os_family: Indicates the operating system (OS) of the VM.
         :param pulumi.Input[_builtins.str] performance: The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] placement_subregion_name: The name of the Subregion where the VM is placed.
         :param pulumi.Input[_builtins.str] placement_tenancy: The tenancy of the VM (`default` | `dedicated`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict']]]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict', 'outputs.VmPrimaryNic']]]] primary_nics: The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The primary private IP of the VM.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_ips: One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnet_id` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
@@ -2099,12 +2103,12 @@ class Vm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secure_boot_action: One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_names: One or more names of security groups for the VMs. You must specify at least one of the following parameters: `security_group_ids` or `security_group_names`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict']]]] security_groups: One or more security groups associated with the VM.
-        :param pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict']] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict', 'outputs.VmSecurityGroup']]]] security_groups: One or more security groups associated with the VM.
+        :param pulumi.Input[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict', 'outputs.VmShutdownBehaviorConfiguration']] shutdown_behavior_configuration: Information about the actions performed by the orchestrator when the VM shuts down.
         :param pulumi.Input[_builtins.str] state: The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vm_initiated_shutdown_behavior` argument.
         :param pulumi.Input[_builtins.str] state_reason: The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the VM.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict', 'outputs.VmTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_enabled: If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpm_enabled` varies depending on the source OMI of the VM.<br />If the `tpm_mandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpm_enabled` to false will cause the creation request to fail.<br />If the `tpm_mandatory` attribute of the source OMI is false, only setting `tpm_enabled` to true will create and attach a vTPM to the VM.
         :param pulumi.Input[_builtins.str] user_data: Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM.
@@ -2165,6 +2169,110 @@ class Vm(pulumi.CustomResource):
         __props__.__dict__["vm_initiated_shutdown_behavior"] = vm_initiated_shutdown_behavior
         __props__.__dict__["vm_type"] = vm_type
         return Vm(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions_on_next_boots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmActionsOnNextBootArgs', 'VmActionsOnNextBootArgsDict', 'outputs.VmActionsOnNextBoot']]]]] = None,
+            admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmBlockDeviceMappingArgs', 'VmBlockDeviceMappingArgsDict', 'outputs.VmBlockDeviceMapping']]]]] = None,
+            block_device_mappings_createds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmBlockDeviceMappingsCreatedArgs', 'VmBlockDeviceMappingsCreatedArgsDict', 'outputs.VmBlockDeviceMappingsCreated']]]]] = None,
+            boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            bsu_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+            client_token: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            get_admin_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            hypervisor: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+            keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_name_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_number: pulumi.Input[Optional[_builtins.int]] = None,
+            nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmNicArgs', 'VmNicArgsDict', 'outputs.VmNic']]]]] = None,
+            os_family: pulumi.Input[Optional[_builtins.str]] = None,
+            performance: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmPrimaryNicArgs', 'VmPrimaryNicArgsDict', 'outputs.VmPrimaryNic']]]]] = None,
+            private_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            product_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            public_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+            secure_boot_action: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_group_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmSecurityGroupArgs', 'VmSecurityGroupArgsDict', 'outputs.VmSecurityGroup']]]]] = None,
+            shutdown_behavior_configuration: pulumi.Input[Optional[Union['VmShutdownBehaviorConfigurationArgs', 'VmShutdownBehaviorConfigurationArgsDict', 'outputs.VmShutdownBehaviorConfiguration']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmTagArgs', 'VmTagArgsDict', 'outputs.VmTag']]]]] = None,
+            tpm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_initiated_shutdown_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionsOnNextBoots"] = actions_on_next_boots
+        __props__["adminPassword"] = admin_password
+        __props__["architecture"] = architecture
+        __props__["blockDeviceMappings"] = block_device_mappings
+        __props__["blockDeviceMappingsCreateds"] = block_device_mappings_createds
+        __props__["bootMode"] = boot_mode
+        __props__["bsuOptimized"] = bsu_optimized
+        __props__["clientToken"] = client_token
+        __props__["creationDate"] = creation_date
+        __props__["deletionProtection"] = deletion_protection
+        __props__["getAdminPassword"] = get_admin_password
+        __props__["hypervisor"] = hypervisor
+        __props__["imageId"] = image_id
+        __props__["isSourceDestChecked"] = is_source_dest_checked
+        __props__["keypairName"] = keypair_name
+        __props__["keypairNameWo"] = keypair_name_wo
+        __props__["launchNumber"] = launch_number
+        __props__["nestedVirtualization"] = nested_virtualization
+        __props__["netId"] = net_id
+        __props__["nics"] = nics
+        __props__["osFamily"] = os_family
+        __props__["performance"] = performance
+        __props__["placementSubregionName"] = placement_subregion_name
+        __props__["placementTenancy"] = placement_tenancy
+        __props__["primaryNics"] = primary_nics
+        __props__["privateDnsName"] = private_dns_name
+        __props__["privateIp"] = private_ip
+        __props__["privateIps"] = private_ips
+        __props__["productCodes"] = product_codes
+        __props__["publicDnsName"] = public_dns_name
+        __props__["publicIp"] = public_ip
+        __props__["requestId"] = request_id
+        __props__["reservationId"] = reservation_id
+        __props__["rootDeviceName"] = root_device_name
+        __props__["rootDeviceType"] = root_device_type
+        __props__["secureBootAction"] = secure_boot_action
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["securityGroupNames"] = security_group_names
+        __props__["securityGroups"] = security_groups
+        __props__["shutdownBehaviorConfiguration"] = shutdown_behavior_configuration
+        __props__["state"] = state
+        __props__["stateReason"] = state_reason
+        __props__["subnetId"] = subnet_id
+        __props__["tags"] = tags
+        __props__["tpmEnabled"] = tpm_enabled
+        __props__["userData"] = user_data
+        __props__["vmId"] = vm_id
+        __props__["vmInitiatedShutdownBehavior"] = vm_initiated_shutdown_behavior
+        __props__["vmType"] = vm_type
+        return pulumi.runtime.exists_resource(None, 'outscale:index/vm:Vm', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="actionsOnNextBoots")

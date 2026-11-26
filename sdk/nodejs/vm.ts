@@ -27,16 +27,16 @@ import * as utilities from "./utilities";
  *     securityGroupName: "vm_security_group",
  * });
  * const vm01 = new outscale.Vm("vm01", {
- *     tags: [{
- *         key: "name",
- *         value: "terraform-public-vm",
- *     }],
  *     imageId: imageId,
  *     vmType: "tinav5.c1r1p2",
  *     keypairName: keypair01.keypairName,
  *     securityGroupIds: [securityGroup01.securityGroupId],
  *     placementSubregionName: "eu-west-2a",
  *     placementTenancy: "default",
+ *     tags: [{
+ *         key: "name",
+ *         value: "terraform-public-vm",
+ *     }],
  *     userData: std.base64encode({
  *         input: "    <CONFIGURATION>\n",
  *     }).result,
@@ -60,29 +60,29 @@ import * as utilities from "./utilities";
  *     securityGroupName: "vm_security_group",
  * });
  * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: imageId,
+ *     vmType: "tinav5.c1r1p2",
+ *     keypairName: keypair01.keypairName,
+ *     securityGroupIds: [securityGroup01.securityGroupId],
  *     blockDeviceMappings: [
  *         {
+ *             deviceName: "/dev/sdb",
  *             bsu: {
  *                 volumeSize: 15,
  *                 volumeType: "gp2",
  *                 snapshotId: snapshot01.snapshotId,
  *             },
- *             deviceName: "/dev/sdb",
  *         },
  *         {
+ *             deviceName: "/dev/sdc",
  *             bsu: {
  *                 volumeSize: 22,
  *                 volumeType: "io1",
  *                 iops: 150,
  *                 deleteOnVmDeletion: true,
  *             },
- *             deviceName: "/dev/sdc",
  *         },
  *     ],
- *     imageId: imageId,
- *     vmType: "tinav5.c1r1p2",
- *     keypairName: keypair01.keypairName,
- *     securityGroupIds: [securityGroup01.securityGroupId],
  * });
  * ```
  *
@@ -93,20 +93,20 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const net01 = new outscale.Net("net01", {
+ *     ipRange: "10.0.0.0/16",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-net-for-vm",
  *     }],
- *     ipRange: "10.0.0.0/16",
  * });
  * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/24",
+ *     subregionName: "eu-west-2b",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-subnet-for-vm",
  *     }],
- *     netId: net01.netId,
- *     ipRange: "10.0.0.0/24",
- *     subregionName: "eu-west-2b",
  * });
  * const internetService01 = new outscale.InternetService("internet_service01", {});
  * const internetServiceLink01 = new outscale.InternetServiceLink("internet_service_link01", {
@@ -114,11 +114,11 @@ import * as utilities from "./utilities";
  *     netId: net01.netId,
  * });
  * const routeTable01 = new outscale.RouteTable("route_table01", {
+ *     netId: net01.netId,
  *     tags: [{
  *         key: "name",
  *         value: "terraform-route-table-for-vm",
  *     }],
- *     netId: net01.netId,
  * });
  * const routeTableLink01 = new outscale.RouteTableLink("route_table_link01", {
  *     routeTableId: routeTable01.routeTableId,
@@ -199,6 +199,9 @@ import * as utilities from "./utilities";
  * });
  * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
  * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
  *     nics: [
  *         {
  *             deleteOnVmDeletion: true,
@@ -211,9 +214,6 @@ import * as utilities from "./utilities";
  *             deviceNumber: 1,
  *         },
  *     ],
- *     imageId: imageId,
- *     vmType: "tinav7.c1r1p2",
- *     keypairName: keypair01.keypairName,
  * });
  * ```
  *
@@ -238,6 +238,9 @@ import * as utilities from "./utilities";
  * const nic02 = new outscale.Nic("nic02", {subnetId: subnet02.subnetId});
  * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
  * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
  *     nics: [
  *         {
  *             nicId: nic01.nicId,
@@ -248,9 +251,6 @@ import * as utilities from "./utilities";
  *             deviceNumber: 1,
  *         },
  *     ],
- *     imageId: imageId,
- *     vmType: "tinav7.c1r1p2",
- *     keypairName: keypair01.keypairName,
  * });
  * ```
  *
@@ -285,13 +285,13 @@ import * as utilities from "./utilities";
  * const nic02 = new outscale.Nic("nic02", {subnetId: subnet02.subnetId});
  * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
  * const vm01 = new outscale.Vm("vm01", {
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
  *     primaryNics: [{
  *         nicId: nic01.nicId,
  *         deviceNumber: 0,
  *     }],
- *     imageId: imageId,
- *     vmType: "tinav7.c1r1p2",
- *     keypairName: keypair01.keypairName,
  * });
  * const nicLink01 = new outscale.NicLink("nic_link01", {
  *     deviceNumber: 1,
@@ -322,6 +322,17 @@ export class Vm extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VmState, opts?: pulumi.CustomResourceOptions): Vm {
         return new Vm(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing Vm resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VmState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/vm:Vm", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -663,196 +674,196 @@ export interface VmState {
     /**
      * The action to perform on the next boot of the VM.
      */
-    actionsOnNextBoots?: pulumi.Input<pulumi.Input<inputs.VmActionsOnNextBoot>[]>;
+    actionsOnNextBoots?: pulumi.Input<pulumi.Input<inputs.VmActionsOnNextBoot>[] | undefined>;
     /**
      * (Windows VM only) The administrator password of the VM. This password is encrypted with the keypair you specified when launching the VM and encoded in Base64. You need to wait about 10 minutes after launching the VM to be able to retrieve this password.<br />If `getAdminPassword` is false or not specified, the VM resource is created without the `adminPassword` attribute. Once `adminPassword` is available, it will appear in the Terraform state after the next **refresh** or **apply** command.<br />If `getAdminPassword` is true, the VM resource itself is not considered created until the `adminPassword` attribute is available.<br />Note also that after the first reboot of the VM, this attribute can no longer be retrieved. For more information on how to use this password to connect to the VM, see [Accessing a Windows VM](https://docs.outscale.com/en/userguide/Accessing-a-Windows-VM.html).
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * The architecture of the VM (`i386` \| `x8664`).
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * One or more block device mappings.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMapping>[]>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMapping>[] | undefined>;
     /**
      * The block device mapping of the VM.
      */
-    blockDeviceMappingsCreateds?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingsCreated>[]>;
+    blockDeviceMappingsCreateds?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingsCreated>[] | undefined>;
     /**
      * The boot mode of the VM. Possible values: `uefi` | `legacy`.
      */
-    bootMode?: pulumi.Input<string>;
-    bsuOptimized?: pulumi.Input<boolean>;
+    bootMode?: pulumi.Input<string | undefined>;
+    bsuOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * A unique identifier which enables you to manage the idempotency.
      */
-    clientToken?: pulumi.Input<string>;
+    clientToken?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) at which the VM was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * If true, you cannot delete the VM unless you change this parameter back to false.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `adminPassword` attribute.
      */
-    getAdminPassword?: pulumi.Input<boolean>;
+    getAdminPassword?: pulumi.Input<boolean | undefined>;
     /**
      * The hypervisor type of the VMs (`ovm` \| `xen`).
      */
-    hypervisor?: pulumi.Input<string>;
+    hypervisor?: pulumi.Input<string | undefined>;
     /**
      * The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * (Net only) If true, the source/destination check is enabled. If false, it is disabled.
      */
-    isSourceDestChecked?: pulumi.Input<boolean>;
+    isSourceDestChecked?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the keypair.
      */
-    keypairName?: pulumi.Input<string>;
+    keypairName?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
      */
-    keypairNameWo?: pulumi.Input<string>;
+    keypairNameWo?: pulumi.Input<string | undefined>;
     /**
      * The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).
      */
-    launchNumber?: pulumi.Input<number>;
+    launchNumber?: pulumi.Input<number | undefined>;
     /**
      * (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
      */
-    nestedVirtualization?: pulumi.Input<boolean>;
+    nestedVirtualization?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Net for the NIC.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
      */
-    nics?: pulumi.Input<pulumi.Input<inputs.VmNic>[]>;
+    nics?: pulumi.Input<pulumi.Input<inputs.VmNic>[] | undefined>;
     /**
      * Indicates the operating system (OS) of the VM.
      */
-    osFamily?: pulumi.Input<string>;
+    osFamily?: pulumi.Input<string | undefined>;
     /**
      * The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
      */
-    performance?: pulumi.Input<string>;
+    performance?: pulumi.Input<string | undefined>;
     /**
      * The name of the Subregion where the VM is placed.
      */
-    placementSubregionName?: pulumi.Input<string>;
+    placementSubregionName?: pulumi.Input<string | undefined>;
     /**
      * The tenancy of the VM (`default` | `dedicated`).
      */
-    placementTenancy?: pulumi.Input<string>;
+    placementTenancy?: pulumi.Input<string | undefined>;
     /**
      * The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
      */
-    primaryNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNic>[]>;
+    primaryNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNic>[] | undefined>;
     /**
      * The name of the private DNS.
      */
-    privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string | undefined>;
     /**
      * The primary private IP of the VM.
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The product codes associated with the OMI used to create the VM.
      */
-    productCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    productCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the public DNS.
      */
-    publicDnsName?: pulumi.Input<string>;
+    publicDnsName?: pulumi.Input<string | undefined>;
     /**
      * The public IP of the VM.
      */
-    publicIp?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The reservation ID of the VM.
      */
-    reservationId?: pulumi.Input<string>;
+    reservationId?: pulumi.Input<string | undefined>;
     /**
      * The name of the root device for the VM (for example, `/dev/sda1`).
      */
-    rootDeviceName?: pulumi.Input<string>;
+    rootDeviceName?: pulumi.Input<string | undefined>;
     /**
      * The type of root device used by the VM (always `bsu`).
      */
-    rootDeviceType?: pulumi.Input<string>;
+    rootDeviceType?: pulumi.Input<string | undefined>;
     /**
      * One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
      */
-    secureBootAction?: pulumi.Input<string>;
+    secureBootAction?: pulumi.Input<string | undefined>;
     /**
      * One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more names of security groups for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
-    securityGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more security groups associated with the VM.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<inputs.VmSecurityGroup>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.VmSecurityGroup>[] | undefined>;
     /**
      * Information about the actions performed by the orchestrator when the VM shuts down.
      */
-    shutdownBehaviorConfiguration?: pulumi.Input<inputs.VmShutdownBehaviorConfiguration>;
+    shutdownBehaviorConfiguration?: pulumi.Input<inputs.VmShutdownBehaviorConfiguration | undefined>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The reason explaining the current state of the VM. For more information, see [Creating VMs > VM State Reference](https://docs.outscale.com/en/userguide/Creating-VMs.html#_vm_state_reference_statereason_2).
      */
-    stateReason?: pulumi.Input<string>;
+    stateReason?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Subnet in which you want to create the VM.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VmTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VmTag>[] | undefined>;
     /**
      * If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
      */
-    tpmEnabled?: pulumi.Input<boolean>;
+    tpmEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VM.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
     /**
      * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
      *
      * @deprecated Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
      */
-    vmInitiatedShutdownBehavior?: pulumi.Input<string>;
+    vmInitiatedShutdownBehavior?: pulumi.Input<string | undefined>;
     /**
      * The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
      */
-    vmType?: pulumi.Input<string>;
+    vmType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -862,20 +873,20 @@ export interface VmArgs {
     /**
      * One or more block device mappings.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMapping>[]>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMapping>[] | undefined>;
     /**
      * The boot mode of the VM. Possible values: `uefi` | `legacy`.
      */
-    bootMode?: pulumi.Input<string>;
-    bsuOptimized?: pulumi.Input<boolean>;
+    bootMode?: pulumi.Input<string | undefined>;
+    bsuOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * If true, you cannot delete the VM unless you change this parameter back to false.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * (Windows VM only) If true, waits for the administrator password of the VM to become available in order to retrieve the VM. The password is exported to the `adminPassword` attribute.
      */
-    getAdminPassword?: pulumi.Input<boolean>;
+    getAdminPassword?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](https://docs.outscale.com/api#readimages) method.
      */
@@ -883,92 +894,92 @@ export interface VmArgs {
     /**
      * (Net only) If true, the source/destination check is enabled. If false, it is disabled.
      */
-    isSourceDestChecked?: pulumi.Input<boolean>;
+    isSourceDestChecked?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the keypair.
      */
-    keypairName?: pulumi.Input<string>;
+    keypairName?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The name of the keypair. This write-only parameter is required to use the ephemeral keypair resource.
      */
-    keypairNameWo?: pulumi.Input<string>;
+    keypairNameWo?: pulumi.Input<string | undefined>;
     /**
      * (dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.
      */
-    nestedVirtualization?: pulumi.Input<boolean>;
+    nestedVirtualization?: pulumi.Input<boolean | undefined>;
     /**
      * One or more NICs. If you specify this parameter, you must not specify the `subnetId` and `subregionName` parameters. For more information on handling NICs with VMs, see the NIC Management section below.
      */
-    nics?: pulumi.Input<pulumi.Input<inputs.VmNic>[]>;
+    nics?: pulumi.Input<pulumi.Input<inputs.VmNic>[] | undefined>;
     /**
      * The performance of the VM (`medium` | `high` | `highest`). Updating this parameter will trigger a stop/start of the VM.
      */
-    performance?: pulumi.Input<string>;
+    performance?: pulumi.Input<string | undefined>;
     /**
      * The name of the Subregion where the VM is placed.
      */
-    placementSubregionName?: pulumi.Input<string>;
+    placementSubregionName?: pulumi.Input<string | undefined>;
     /**
      * The tenancy of the VM (`default` | `dedicated`).
      */
-    placementTenancy?: pulumi.Input<string>;
+    placementTenancy?: pulumi.Input<string | undefined>;
     /**
      * The primary network interface of the VM. For more information on handling NICs with VMs, see the NIC Management section below.
      */
-    primaryNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNic>[]>;
+    primaryNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNic>[] | undefined>;
     /**
      * One or more private IPs of the VM. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One action to perform on the next boot of the VM (`enable` | `disable` | `setup-mode` |`none`).<br /> For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
      */
-    secureBootAction?: pulumi.Input<string>;
+    secureBootAction?: pulumi.Input<string | undefined>;
     /**
      * One or more IDs of security group for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more names of security groups for the VMs. You must specify at least one of the following parameters: `securityGroupIds` or `securityGroupNames`.
      */
-    securityGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Information about the actions performed by the orchestrator when the VM shuts down.
      */
-    shutdownBehaviorConfiguration?: pulumi.Input<inputs.VmShutdownBehaviorConfiguration>;
+    shutdownBehaviorConfiguration?: pulumi.Input<inputs.VmShutdownBehaviorConfiguration | undefined>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Subnet in which you want to create the VM.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VmTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VmTag>[] | undefined>;
     /**
      * If true, a virtual Trusted Platform Module (vTPM) is enabled on the VM. If false, it is not.<br />The default behavior for `tpmEnabled` varies depending on the source OMI of the VM.<br />If the `tpmMandatory` attribute of the source OMI is true, a vTPM has to be attached to the VM and it will be created by default. Setting `tpmEnabled` to false will cause the creation request to fail.<br />If the `tpmMandatory` attribute of the source OMI is false, only setting `tpmEnabled` to true will create and attach a vTPM to the VM.
      */
-    tpmEnabled?: pulumi.Input<boolean>;
+    tpmEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Data or script used to add a specific configuration to the VM. It must be Base64-encoded, either directly or using the base64encode Terraform function. For multiline strings, use heredoc syntax. Updating this parameter will trigger a stop/start of the VM.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VM.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
     /**
      * The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `shutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
      *
      * @deprecated Configure `shutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.
      */
-    vmInitiatedShutdownBehavior?: pulumi.Input<string>;
+    vmInitiatedShutdownBehavior?: pulumi.Input<string | undefined>;
     /**
      * The type of VM (`t2.small` by default). Updating this parameter will trigger a stop/start of the VM.<br /> For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html).
      */
-    vmType?: pulumi.Input<string>;
+    vmType?: pulumi.Input<string | undefined>;
 }

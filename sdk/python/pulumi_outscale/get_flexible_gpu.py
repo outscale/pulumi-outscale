@@ -153,7 +153,7 @@ class AwaitableGetFlexibleGpuResult(GetFlexibleGpuResult):
             vm_id=self.vm_id)
 
 
-def get_flexible_gpu(filters: Optional[Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict']]] = None,
+def get_flexible_gpu(filters: Optional[Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict', 'outputs.GetFlexibleGpuFilterResult']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlexibleGpuResult:
     """
     Provides information about a flexible GPU.
@@ -174,7 +174,7 @@ def get_flexible_gpu(filters: Optional[Sequence[Union['GetFlexibleGpuFilterArgs'
     ```
 
 
-    :param Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict', 'outputs.GetFlexibleGpuFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -192,7 +192,7 @@ def get_flexible_gpu(filters: Optional[Sequence[Union['GetFlexibleGpuFilterArgs'
         state=pulumi.get(__ret__, 'state'),
         subregion_name=pulumi.get(__ret__, 'subregion_name'),
         vm_id=pulumi.get(__ret__, 'vm_id'))
-def get_flexible_gpu_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict']]]]] = None,
+def get_flexible_gpu_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict', 'outputs.GetFlexibleGpuFilterResult']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlexibleGpuResult]:
     """
     Provides information about a flexible GPU.
@@ -213,7 +213,7 @@ def get_flexible_gpu_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
     ```
 
 
-    :param Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetFlexibleGpuFilterArgs', 'GetFlexibleGpuFilterArgsDict', 'outputs.GetFlexibleGpuFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

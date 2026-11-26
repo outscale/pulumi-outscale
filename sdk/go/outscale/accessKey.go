@@ -185,6 +185,12 @@ func (AccessKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessKeyState)(nil)).Elem()
 }
 
+// AccessKeyExists checks whether an existing AccessKey resource with the given ID exists.
+func AccessKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/accessKey:AccessKey", id, state, "", opts...)
+}
+
 type accessKeyArgs struct {
 	// The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
 	ExpirationDate *string `pulumi:"expirationDate"`

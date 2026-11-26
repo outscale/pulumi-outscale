@@ -69,6 +69,17 @@ export class VolumeLink extends pulumi.CustomResource {
         return new VolumeLink(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing VolumeLink resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VolumeLinkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/volumeLink:VolumeLink", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/volumeLink:VolumeLink';
 
@@ -160,26 +171,26 @@ export interface VolumeLinkState {
     /**
      * If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
      */
-    deviceName?: pulumi.Input<string>;
-    forceUnlink?: pulumi.Input<boolean>;
-    requestId?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
+    forceUnlink?: pulumi.Input<boolean | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VolumeLinkTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.VolumeLinkTimeouts | undefined>;
     /**
      * The ID of the VM you want to attach the volume to.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the volume you want to attach.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,8 +201,8 @@ export interface VolumeLinkArgs {
      * The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
      */
     deviceName: pulumi.Input<string>;
-    forceUnlink?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.VolumeLinkTimeouts>;
+    forceUnlink?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.VolumeLinkTimeouts | undefined>;
     /**
      * The ID of the VM you want to attach the volume to.
      */

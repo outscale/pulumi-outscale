@@ -220,6 +220,12 @@ func (NetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*netState)(nil)).Elem()
 }
 
+// NetExists checks whether an existing Net resource with the given ID exists.
+func NetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/net:Net", id, state, "", opts...)
+}
+
 type netArgs struct {
 	// The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
 	IpRange string `pulumi:"ipRange"`

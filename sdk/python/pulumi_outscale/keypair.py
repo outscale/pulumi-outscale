@@ -22,11 +22,12 @@ __all__ = ['KeypairArgs', 'Keypair']
 class KeypairArgs:
     def __init__(__self__, *,
                  keypair_name: pulumi.Input[_builtins.str],
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['KeypairTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['KeypairTimeoutsArgs']] = None):
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['KeypairTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['KeypairTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Keypair resource.
+
         :param pulumi.Input[_builtins.str] keypair_name: A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
         :param pulumi.Input[_builtins.str] public_key: The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input['KeypairTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
@@ -53,52 +54,53 @@ class KeypairArgs:
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeypairTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KeypairTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeypairTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KeypairTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['KeypairTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['KeypairTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['KeypairTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['KeypairTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _KeypairState:
     def __init__(__self__, *,
-                 keypair_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['KeypairTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['KeypairTimeoutsArgs']] = None):
+                 keypair_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['KeypairTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['KeypairTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Keypair resources.
+
         :param pulumi.Input[_builtins.str] keypair_fingerprint: The MD5 public key fingerprint, as specified in section 4 of RFC 4716.
         :param pulumi.Input[_builtins.str] keypair_id: The ID of the keypair.
         :param pulumi.Input[_builtins.str] keypair_name: A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
@@ -128,104 +130,104 @@ class _KeypairState:
 
     @_builtins.property
     @pulumi.getter(name="keypairFingerprint")
-    def keypair_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MD5 public key fingerprint, as specified in section 4 of RFC 4716.
         """
         return pulumi.get(self, "keypair_fingerprint")
 
     @keypair_fingerprint.setter
-    def keypair_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairId")
-    def keypair_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the keypair.
         """
         return pulumi.get(self, "keypair_id")
 
     @keypair_id.setter
-    def keypair_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairName")
-    def keypair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
         """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
-    def keypair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairType")
-    def keypair_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the keypair (`ssh-rsa`, `ssh-ed25519`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`, or `ecdsa-sha2-nistp521`).
         """
         return pulumi.get(self, "keypair_type")
 
     @keypair_type.setter
-    def keypair_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_type", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key, returned only if you are creating a keypair (not if you are importing). When you save this private key in a .rsa file, make sure you replace the `\\n` escape sequences with real line breaks.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeypairTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KeypairTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeypairTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KeypairTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['KeypairTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['KeypairTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['KeypairTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['KeypairTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -235,10 +237,10 @@ class Keypair(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['KeypairTimeoutsArgs', 'KeypairTimeoutsArgsDict']]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict', 'outputs.KeypairTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KeypairTimeoutsArgs', 'KeypairTimeoutsArgsDict', 'outputs.KeypairTimeouts']]] = None,
                  __props__=None):
         """
         Manages a keypair.
@@ -282,11 +284,12 @@ class Keypair(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] keypair_name: A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
         :param pulumi.Input[_builtins.str] public_key: The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict', 'outputs.KeypairTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -336,6 +339,7 @@ class Keypair(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param KeypairArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -351,10 +355,10 @@ class Keypair(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['KeypairTimeoutsArgs', 'KeypairTimeoutsArgsDict']]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict', 'outputs.KeypairTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KeypairTimeoutsArgs', 'KeypairTimeoutsArgsDict', 'outputs.KeypairTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,15 +391,15 @@ class Keypair(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            keypair_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair_id: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair_type: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            public_key: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['KeypairTimeoutsArgs', 'KeypairTimeoutsArgsDict']]] = None) -> 'Keypair':
+            keypair_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_type: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict', 'outputs.KeypairTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['KeypairTimeoutsArgs', 'KeypairTimeoutsArgsDict', 'outputs.KeypairTimeouts']]] = None) -> 'Keypair':
         """
         Get an existing Keypair resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -409,7 +413,7 @@ class Keypair(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] keypair_type: The type of the keypair (`ssh-rsa`, `ssh-ed25519`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`, or `ecdsa-sha2-nistp521`).
         :param pulumi.Input[_builtins.str] private_key: The private key, returned only if you are creating a keypair (not if you are importing). When you save this private key in a .rsa file, make sure you replace the `\\n` escape sequences with real line breaks.
         :param pulumi.Input[_builtins.str] public_key: The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict', 'outputs.KeypairTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -425,6 +429,30 @@ class Keypair(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return Keypair(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            keypair_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_type: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeypairTagArgs', 'KeypairTagArgsDict', 'outputs.KeypairTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['KeypairTimeoutsArgs', 'KeypairTimeoutsArgsDict', 'outputs.KeypairTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["keypairFingerprint"] = keypair_fingerprint
+        __props__["keypairId"] = keypair_id
+        __props__["keypairName"] = keypair_name
+        __props__["keypairType"] = keypair_type
+        __props__["privateKey"] = private_key
+        __props__["publicKey"] = public_key
+        __props__["requestId"] = request_id
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/keypair:Keypair', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="keypairFingerprint")

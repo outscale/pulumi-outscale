@@ -113,10 +113,10 @@ export interface GetUserGroupOutputArgs {
     /**
      * The path to the group. If not specified, it is set to a slash (`/`).
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The name of the group.
      */
     userGroupName: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.GetUserGroupUserArgs>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GetUserGroupUserArgs>[] | undefined>;
 }

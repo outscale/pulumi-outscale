@@ -68,6 +68,17 @@ export class NicPrivateIp extends pulumi.CustomResource {
         return new NicPrivateIp(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing NicPrivateIp resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NicPrivateIpState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/nicPrivateIp:NicPrivateIp", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/nicPrivateIp:NicPrivateIp';
 
@@ -144,21 +155,21 @@ export interface NicPrivateIpState {
     /**
      * If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
      */
-    allowRelink?: pulumi.Input<boolean>;
+    allowRelink?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the NIC.
      */
-    nicId?: pulumi.Input<string>;
-    primaryPrivateIp?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
+    primaryPrivateIp?: pulumi.Input<string | undefined>;
     /**
      * The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
-    requestId?: pulumi.Input<string>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The number of secondary private IPs to assign to the NIC.
      */
-    secondaryPrivateIpCount?: pulumi.Input<number>;
+    secondaryPrivateIpCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -168,7 +179,7 @@ export interface NicPrivateIpArgs {
     /**
      * If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
      */
-    allowRelink?: pulumi.Input<boolean>;
+    allowRelink?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the NIC.
      */
@@ -176,9 +187,9 @@ export interface NicPrivateIpArgs {
     /**
      * The secondary private IP or IPs you want to assign to the NIC. These IPs must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, they cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of secondary private IPs to assign to the NIC.
      */
-    secondaryPrivateIpCount?: pulumi.Input<number>;
+    secondaryPrivateIpCount?: pulumi.Input<number | undefined>;
 }

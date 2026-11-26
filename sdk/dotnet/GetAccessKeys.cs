@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about access keys.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
         /// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
         /// 
         /// ## Example Usage
@@ -60,6 +60,7 @@ namespace Pulumi.Outscale
         /// {
         ///     var accessKeys = Outscale.GetAccessKeys.Invoke(new()
         ///     {
+        ///         UserName = "user_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetAccessKeysFilterInputArgs
@@ -80,7 +81,6 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
-        ///         UserName = "user_name",
         ///     });
         /// 
         /// });
@@ -92,7 +92,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about access keys.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
         /// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
         /// 
         /// ## Example Usage
@@ -138,6 +138,7 @@ namespace Pulumi.Outscale
         /// {
         ///     var accessKeys = Outscale.GetAccessKeys.Invoke(new()
         ///     {
+        ///         UserName = "user_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetAccessKeysFilterInputArgs
@@ -158,7 +159,6 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
-        ///         UserName = "user_name",
         ///     });
         /// 
         /// });
@@ -170,7 +170,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about access keys.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
         /// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
         /// 
         /// ## Example Usage
@@ -216,6 +216,7 @@ namespace Pulumi.Outscale
         /// {
         ///     var accessKeys = Outscale.GetAccessKeys.Invoke(new()
         ///     {
+        ///         UserName = "user_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetAccessKeysFilterInputArgs
@@ -236,7 +237,6 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
-        ///         UserName = "user_name",
         ///     });
         /// 
         /// });

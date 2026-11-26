@@ -23,11 +23,12 @@ class NetAccessPointArgs:
     def __init__(__self__, *,
                  net_id: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['NetAccessPointTimeoutsArgs']] = None):
+                 route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['NetAccessPointTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['NetAccessPointTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a NetAccessPoint resource.
+
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
         :param pulumi.Input[_builtins.str] service_name: The name of the service (in the format `com.outscale.region.service`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_table_ids: One or more IDs of route tables to use for the connection.
@@ -68,51 +69,52 @@ class NetAccessPointArgs:
 
     @_builtins.property
     @pulumi.getter(name="routeTableIds")
-    def route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_table_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of route tables to use for the connection.
         """
         return pulumi.get(self, "route_table_ids")
 
     @route_table_ids.setter
-    def route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_table_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_table_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['NetAccessPointTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['NetAccessPointTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['NetAccessPointTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['NetAccessPointTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _NetAccessPointState:
     def __init__(__self__, *,
-                 net_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['NetAccessPointTimeoutsArgs']] = None):
+                 net_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['NetAccessPointTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['NetAccessPointTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering NetAccessPoint resources.
+
         :param pulumi.Input[_builtins.str] net_access_point_id: The ID of the Net access point.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_table_ids: One or more IDs of route tables to use for the connection.
@@ -139,92 +141,92 @@ class _NetAccessPointState:
 
     @_builtins.property
     @pulumi.getter(name="netAccessPointId")
-    def net_access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net access point.
         """
         return pulumi.get(self, "net_access_point_id")
 
     @net_access_point_id.setter
-    def net_access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableIds")
-    def route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_table_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of route tables to use for the connection.
         """
         return pulumi.get(self, "route_table_ids")
 
     @route_table_ids.setter
-    def route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_table_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_table_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service (in the format `com.outscale.region.service`).
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetAccessPointTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['NetAccessPointTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['NetAccessPointTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['NetAccessPointTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['NetAccessPointTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -234,11 +236,11 @@ class NetAccessPoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['NetAccessPointTimeoutsArgs', 'NetAccessPointTimeoutsArgsDict']]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict', 'outputs.NetAccessPointTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['NetAccessPointTimeoutsArgs', 'NetAccessPointTimeoutsArgsDict', 'outputs.NetAccessPointTimeouts']]] = None,
                  __props__=None):
         """
         Manages a Net access point.
@@ -265,13 +267,13 @@ class NetAccessPoint(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net_access_point01 = outscale.NetAccessPoint("net_access_point01",
+            net_id=net01["netId"],
+            route_table_ids=[route_table01["routeTableId"]],
+            service_name="com.outscale.eu-west-2.api",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-access-point",
-            }],
-            net_id=net01["netId"],
-            route_table_ids=[route_table01["routeTableId"]],
-            service_name="com.outscale.eu-west-2.api")
+            }])
         ```
 
         ## Import
@@ -284,12 +286,13 @@ class NetAccessPoint(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_table_ids: One or more IDs of route tables to use for the connection.
         :param pulumi.Input[_builtins.str] service_name: The name of the service (in the format `com.outscale.region.service`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict', 'outputs.NetAccessPointTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -322,13 +325,13 @@ class NetAccessPoint(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net_access_point01 = outscale.NetAccessPoint("net_access_point01",
+            net_id=net01["netId"],
+            route_table_ids=[route_table01["routeTableId"]],
+            service_name="com.outscale.eu-west-2.api",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-access-point",
-            }],
-            net_id=net01["netId"],
-            route_table_ids=[route_table01["routeTableId"]],
-            service_name="com.outscale.eu-west-2.api")
+            }])
         ```
 
         ## Import
@@ -340,6 +343,7 @@ class NetAccessPoint(pulumi.CustomResource):
         $ pulumi import outscale:index/netAccessPoint:NetAccessPoint ImportedNetAccessPoint vpce-87654321
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetAccessPointArgs args: The arguments to use to populate this resource's properties.
@@ -356,11 +360,11 @@ class NetAccessPoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['NetAccessPointTimeoutsArgs', 'NetAccessPointTimeoutsArgsDict']]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict', 'outputs.NetAccessPointTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['NetAccessPointTimeoutsArgs', 'NetAccessPointTimeoutsArgsDict', 'outputs.NetAccessPointTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,14 +396,14 @@ class NetAccessPoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            net_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['NetAccessPointTimeoutsArgs', 'NetAccessPointTimeoutsArgsDict']]] = None) -> 'NetAccessPoint':
+            net_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict', 'outputs.NetAccessPointTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['NetAccessPointTimeoutsArgs', 'NetAccessPointTimeoutsArgsDict', 'outputs.NetAccessPointTimeouts']]] = None) -> 'NetAccessPoint':
         """
         Get an existing NetAccessPoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -412,7 +416,7 @@ class NetAccessPoint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_table_ids: One or more IDs of route tables to use for the connection.
         :param pulumi.Input[_builtins.str] service_name: The name of the service (in the format `com.outscale.region.service`).
         :param pulumi.Input[_builtins.str] state: The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict', 'outputs.NetAccessPointTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -427,6 +431,28 @@ class NetAccessPoint(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return NetAccessPoint(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            net_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetAccessPointTagArgs', 'NetAccessPointTagArgsDict', 'outputs.NetAccessPointTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['NetAccessPointTimeoutsArgs', 'NetAccessPointTimeoutsArgsDict', 'outputs.NetAccessPointTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["netAccessPointId"] = net_access_point_id
+        __props__["netId"] = net_id
+        __props__["requestId"] = request_id
+        __props__["routeTableIds"] = route_table_ids
+        __props__["serviceName"] = service_name
+        __props__["state"] = state
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/netAccessPoint:NetAccessPoint', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="netAccessPointId")

@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a security group.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\
         /// For more information on this resource actions, see the [SecurityGroup](https://docs.outscale.com/api#3ds-outscale-api-securitygroup) API methods.
         /// 
         /// ## Example Usage
@@ -51,7 +51,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a security group.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\
         /// For more information on this resource actions, see the [SecurityGroup](https://docs.outscale.com/api#3ds-outscale-api-securitygroup) API methods.
         /// 
         /// ## Example Usage
@@ -88,7 +88,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a security group.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Security-Groups.html).\
         /// For more information on this resource actions, see the [SecurityGroup](https://docs.outscale.com/api#3ds-outscale-api-securitygroup) API methods.
         /// 
         /// ## Example Usage

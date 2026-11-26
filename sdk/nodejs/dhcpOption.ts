@@ -30,10 +30,6 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const dhcpOption02 = new outscale.DhcpOption("dhcp_option_02", {
- *     tags: [{
- *         key: "Name",
- *         value: "DHCP01",
- *     }],
  *     domainName: "MyCompany.com",
  *     domainNameServers: [
  *         "111.111.11.111",
@@ -43,6 +39,10 @@ import * as utilities from "./utilities";
  *         "111.1.1.1",
  *         "222.2.2.2",
  *     ],
+ *     tags: [{
+ *         key: "Name",
+ *         value: "DHCP01",
+ *     }],
  * });
  * ```
  *
@@ -68,6 +68,17 @@ export class DhcpOption extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DhcpOptionState, opts?: pulumi.CustomResourceOptions): DhcpOption {
         return new DhcpOption(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing DhcpOption resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DhcpOptionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/dhcpOption:DhcpOption", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -161,33 +172,33 @@ export interface DhcpOptionState {
     /**
      * If true, the DHCP options set is a default one. If false, it is not.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the DHCP options set.
      */
-    dhcpOptionsSetId?: pulumi.Input<string>;
+    dhcpOptionsSetId?: pulumi.Input<string | undefined>;
     /**
      * Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    domainNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNameServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPs of the log servers. You must specify at least one of the following parameters: `domainName`, `domainNameServers`, `logServers`, or `ntpServers`.
      */
-    logServers?: pulumi.Input<pulumi.Input<string>[]>;
+    logServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
-    requestId?: pulumi.Input<string>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.DhcpOptionTag>[]>;
-    timeouts?: pulumi.Input<inputs.DhcpOptionTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.DhcpOptionTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.DhcpOptionTimeouts | undefined>;
 }
 
 /**
@@ -197,22 +208,22 @@ export interface DhcpOptionArgs {
     /**
      * Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    domainNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNameServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPs of the log servers. You must specify at least one of the following parameters: `domainName`, `domainNameServers`, `logServers`, or `ntpServers`.
      */
-    logServers?: pulumi.Input<pulumi.Input<string>[]>;
+    logServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
      */
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.DhcpOptionTag>[]>;
-    timeouts?: pulumi.Input<inputs.DhcpOptionTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.DhcpOptionTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.DhcpOptionTimeouts | undefined>;
 }

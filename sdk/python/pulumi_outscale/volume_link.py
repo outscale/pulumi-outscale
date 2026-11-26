@@ -24,10 +24,11 @@ class VolumeLinkArgs:
                  device_name: pulumi.Input[_builtins.str],
                  vm_id: pulumi.Input[_builtins.str],
                  volume_id: pulumi.Input[_builtins.str],
-                 force_unlink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['VolumeLinkTimeoutsArgs']] = None):
+                 force_unlink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['VolumeLinkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a VolumeLink resource.
+
         :param pulumi.Input[_builtins.str] device_name: The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM you want to attach the volume to.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the volume you want to attach.
@@ -78,36 +79,37 @@ class VolumeLinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="forceUnlink")
-    def force_unlink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_unlink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "force_unlink")
 
     @force_unlink.setter
-    def force_unlink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_unlink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_unlink", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VolumeLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VolumeLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VolumeLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VolumeLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _VolumeLinkState:
     def __init__(__self__, *,
-                 delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_unlink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['VolumeLinkTimeoutsArgs']] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_unlink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['VolumeLinkTimeoutsArgs']] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeLink resources.
+
         :param pulumi.Input[_builtins.bool] delete_on_vm_deletion: If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
         :param pulumi.Input[_builtins.str] device_name: The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
         :param pulumi.Input[_builtins.str] state: The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
@@ -133,89 +135,89 @@ class _VolumeLinkState:
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")
-    def delete_on_vm_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_vm_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
         """
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
-    def delete_on_vm_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_vm_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_vm_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
         """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_name", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUnlink")
-    def force_unlink(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_unlink(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "force_unlink")
 
     @force_unlink.setter
-    def force_unlink(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_unlink(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_unlink", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the attachment of the volume (`attaching` | `detaching` | `attached` | `detached`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VolumeLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VolumeLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VolumeLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VolumeLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM you want to attach the volume to.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the volume you want to attach.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
 
@@ -225,11 +227,11 @@ class VolumeLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_unlink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VolumeLinkTimeoutsArgs', 'VolumeLinkTimeoutsArgsDict']]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_unlink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VolumeLinkTimeoutsArgs', 'VolumeLinkTimeoutsArgsDict', 'outputs.VolumeLinkTimeouts']]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a volume link.
@@ -276,6 +278,7 @@ class VolumeLink(pulumi.CustomResource):
         $ pulumi import outscale:index/volumeLink:VolumeLink ImportedVolumeLink vol-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -335,6 +338,7 @@ class VolumeLink(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param VolumeLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -350,11 +354,11 @@ class VolumeLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_unlink: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VolumeLinkTimeoutsArgs', 'VolumeLinkTimeoutsArgsDict']]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_unlink: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VolumeLinkTimeoutsArgs', 'VolumeLinkTimeoutsArgsDict', 'outputs.VolumeLinkTimeouts']]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,14 +392,14 @@ class VolumeLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-            device_name: Optional[pulumi.Input[_builtins.str]] = None,
-            force_unlink: Optional[pulumi.Input[_builtins.bool]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['VolumeLinkTimeoutsArgs', 'VolumeLinkTimeoutsArgsDict']]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VolumeLink':
+            delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            device_name: pulumi.Input[Optional[_builtins.str]] = None,
+            force_unlink: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VolumeLinkTimeoutsArgs', 'VolumeLinkTimeoutsArgsDict', 'outputs.VolumeLinkTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VolumeLink':
         """
         Get an existing VolumeLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -422,6 +426,28 @@ class VolumeLink(pulumi.CustomResource):
         __props__.__dict__["vm_id"] = vm_id
         __props__.__dict__["volume_id"] = volume_id
         return VolumeLink(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            device_name: pulumi.Input[Optional[_builtins.str]] = None,
+            force_unlink: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VolumeLinkTimeoutsArgs', 'VolumeLinkTimeoutsArgsDict', 'outputs.VolumeLinkTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteOnVmDeletion"] = delete_on_vm_deletion
+        __props__["deviceName"] = device_name
+        __props__["forceUnlink"] = force_unlink
+        __props__["requestId"] = request_id
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        __props__["vmId"] = vm_id
+        __props__["volumeId"] = volume_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/volumeLink:VolumeLink', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")

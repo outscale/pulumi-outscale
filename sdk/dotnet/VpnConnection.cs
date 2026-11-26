@@ -54,6 +54,10 @@ namespace Pulumi.Outscale
     /// {
     ///     var vpnConnection01 = new Outscale.VpnConnection("vpn_connection01", new()
     ///     {
+    ///         ClientGatewayId = clientGateway01.ClientGatewayId,
+    ///         VirtualGatewayId = virtualGateway01.VirtualGatewayId,
+    ///         ConnectionType = "ipsec.1",
+    ///         StaticRoutesOnly = true,
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.VpnConnectionTagArgs
@@ -62,10 +66,6 @@ namespace Pulumi.Outscale
     ///                 Value = "vpn01",
     ///             },
     ///         },
-    ///         ClientGatewayId = clientGateway01.ClientGatewayId,
-    ///         VirtualGatewayId = virtualGateway01.VirtualGatewayId,
-    ///         ConnectionType = "ipsec.1",
-    ///         StaticRoutesOnly = true,
     ///     });
     /// 
     /// });

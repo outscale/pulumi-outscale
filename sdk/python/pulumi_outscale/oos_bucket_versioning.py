@@ -23,9 +23,10 @@ class OosBucketVersioningArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  status: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['OosBucketVersioningTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['OosBucketVersioningTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OosBucketVersioning resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which you want to enable or disable the versioning.
         :param pulumi.Input[_builtins.str] status: The versioning state you want to apply to your bucket (`Enabled` | `Suspended`).
         """
@@ -60,22 +61,23 @@ class OosBucketVersioningArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketVersioningTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketVersioningTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketVersioningTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketVersioningTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OosBucketVersioningState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketVersioningTimeoutsArgs']] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketVersioningTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OosBucketVersioning resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which you want to enable or disable the versioning.
         :param pulumi.Input[_builtins.str] status: The versioning state you want to apply to your bucket (`Enabled` | `Suspended`).
         """
@@ -88,35 +90,35 @@ class _OosBucketVersioningState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket for which you want to enable or disable the versioning.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The versioning state you want to apply to your bucket (`Enabled` | `Suspended`).
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketVersioningTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketVersioningTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketVersioningTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketVersioningTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -126,9 +128,9 @@ class OosBucketVersioning(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketVersioningTimeoutsArgs', 'OosBucketVersioningTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketVersioningTimeoutsArgs', 'OosBucketVersioningTimeoutsArgsDict', 'outputs.OosBucketVersioningTimeouts']]] = None,
                  __props__=None):
         """
         Manages a bucket versioning configuration.
@@ -151,6 +153,7 @@ class OosBucketVersioning(pulumi.CustomResource):
             bucket=bucket01.id,
             status="Enabled")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -185,6 +188,7 @@ class OosBucketVersioning(pulumi.CustomResource):
             status="Enabled")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OosBucketVersioningArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -200,9 +204,9 @@ class OosBucketVersioning(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketVersioningTimeoutsArgs', 'OosBucketVersioningTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketVersioningTimeoutsArgs', 'OosBucketVersioningTimeoutsArgsDict', 'outputs.OosBucketVersioningTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,9 +233,9 @@ class OosBucketVersioning(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosBucketVersioningTimeoutsArgs', 'OosBucketVersioningTimeoutsArgsDict']]] = None) -> 'OosBucketVersioning':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketVersioningTimeoutsArgs', 'OosBucketVersioningTimeoutsArgsDict', 'outputs.OosBucketVersioningTimeouts']]] = None) -> 'OosBucketVersioning':
         """
         Get an existing OosBucketVersioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -250,6 +254,18 @@ class OosBucketVersioning(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["timeouts"] = timeouts
         return OosBucketVersioning(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketVersioningTimeoutsArgs', 'OosBucketVersioningTimeoutsArgsDict', 'outputs.OosBucketVersioningTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["status"] = status
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosBucketVersioning:OosBucketVersioning', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

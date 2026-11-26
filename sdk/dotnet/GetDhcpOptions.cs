@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about DHCP options.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
         /// For more information on this resource actions, see the [DhcpOption](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption) API methods.
         /// 
         /// ## Example Usage
@@ -60,7 +60,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about DHCP options.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
         /// For more information on this resource actions, see the [DhcpOption](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption) API methods.
         /// 
         /// ## Example Usage
@@ -106,7 +106,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about DHCP options.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-DHCP-Options.html).\
         /// For more information on this resource actions, see the [DhcpOption](https://docs.outscale.com/api#3ds-outscale-api-dhcpoption) API methods.
         /// 
         /// ## Example Usage

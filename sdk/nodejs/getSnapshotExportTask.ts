@@ -119,9 +119,9 @@ export function getSnapshotExportTaskOutput(args?: GetSnapshotExportTaskOutputAr
  * A collection of arguments for invoking getSnapshotExportTask.
  */
 export interface GetSnapshotExportTaskOutputArgs {
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSnapshotExportTaskFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSnapshotExportTaskFilterArgs>[] | undefined>;
 }

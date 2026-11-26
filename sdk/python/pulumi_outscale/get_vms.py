@@ -81,7 +81,7 @@ class AwaitableGetVmsResult(GetVmsResult):
             vms=self.vms)
 
 
-def get_vms(filters: Optional[Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict']]] = None,
+def get_vms(filters: Optional[Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict', 'outputs.GetVmsFilterResult']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmsResult:
     """
     Provides information about virtual machines (VMs).
@@ -111,7 +111,7 @@ def get_vms(filters: Optional[Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterAr
     ```
 
 
-    :param Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict', 'outputs.GetVmsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -123,7 +123,7 @@ def get_vms(filters: Optional[Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterAr
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'),
         vms=pulumi.get(__ret__, 'vms'))
-def get_vms_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict']]]]] = None,
+def get_vms_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict', 'outputs.GetVmsFilterResult']]]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmsResult]:
     """
     Provides information about virtual machines (VMs).
@@ -153,7 +153,7 @@ def get_vms_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVm
     ```
 
 
-    :param Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVmsFilterArgs', 'GetVmsFilterArgsDict', 'outputs.GetVmsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

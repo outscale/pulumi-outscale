@@ -51,6 +51,17 @@ export class FlexibleGpu extends pulumi.CustomResource {
         return new FlexibleGpu(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing FlexibleGpu resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: FlexibleGpuState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/flexibleGpu:FlexibleGpu", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/flexibleGpu:FlexibleGpu';
 
@@ -142,32 +153,32 @@ export interface FlexibleGpuState {
     /**
      * If true, the fGPU is deleted when the VM is terminated.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the fGPU.
      */
-    flexibleGpuId?: pulumi.Input<string>;
+    flexibleGpuId?: pulumi.Input<string | undefined>;
     /**
      * The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
      */
-    generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string | undefined>;
     /**
      * The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * The state of the fGPU (`allocated` \| `attaching` \| `attached` \| `detaching`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
      */
-    subregionName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.FlexibleGpuTimeouts>;
+    subregionName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlexibleGpuTimeouts | undefined>;
     /**
      * The ID of the VM the fGPU is attached to, if any.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,11 +188,11 @@ export interface FlexibleGpuArgs {
     /**
      * If true, the fGPU is deleted when the VM is terminated.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The processor generation that the fGPU must be compatible with. If not specified, the oldest possible processor generation is selected (as provided by [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) for the specified model of fGPU).
      */
-    generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string | undefined>;
     /**
      * The model of fGPU you want to allocate. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
      */
@@ -189,6 +200,6 @@ export interface FlexibleGpuArgs {
     /**
      * The Subregion in which you want to create the fGPU. If not specified, the provider tries to create the fGPU in each available Subregion (in alphabetical order) until one succeeds. If no Subregion has sufficient capacity, the resource creation fails with an appropriate error.
      */
-    subregionName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.FlexibleGpuTimeouts>;
+    subregionName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlexibleGpuTimeouts | undefined>;
 }

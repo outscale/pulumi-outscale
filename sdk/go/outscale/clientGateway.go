@@ -32,15 +32,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewClientGateway(ctx, "client_gateway01", &outscale.ClientGatewayArgs{
+//				BgpAsn:         pulumi.Int(65000),
+//				PublicIp:       pulumi.String("111.11.11.111"),
+//				ConnectionType: pulumi.String("ipsec.1"),
 //				Tags: outscale.ClientGatewayTagArray{
 //					&outscale.ClientGatewayTagArgs{
 //						Key:   pulumi.String("Name"),
 //						Value: pulumi.String("client_gateway_01"),
 //					},
 //				},
-//				BgpAsn:         pulumi.Int(65000),
-//				PublicIp:       pulumi.String("111.11.11.111"),
-//				ConnectionType: pulumi.String("ipsec.1"),
 //			})
 //			if err != nil {
 //				return err
@@ -159,6 +159,12 @@ type ClientGatewayState struct {
 
 func (ClientGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientGatewayState)(nil)).Elem()
+}
+
+// ClientGatewayExists checks whether an existing ClientGateway resource with the given ID exists.
+func ClientGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/clientGateway:ClientGateway", id, state, "", opts...)
 }
 
 type clientGatewayArgs struct {

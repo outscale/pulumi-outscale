@@ -72,6 +72,17 @@ export class Snapshot extends pulumi.CustomResource {
         return new Snapshot(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Snapshot resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: SnapshotState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/snapshot:Snapshot", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/snapshot:Snapshot';
 
@@ -211,65 +222,65 @@ export interface SnapshotState {
     /**
      * The account alias of the owner of the snapshot.
      */
-    accountAlias?: pulumi.Input<string>;
+    accountAlias?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the snapshot.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) at which the snapshot was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * A description for the snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
      */
-    fileLocation?: pulumi.Input<string>;
+    fileLocation?: pulumi.Input<string | undefined>;
     /**
      * Permissions for the resource.
      */
-    permissionsToCreateVolumes?: pulumi.Input<pulumi.Input<inputs.SnapshotPermissionsToCreateVolume>[]>;
+    permissionsToCreateVolumes?: pulumi.Input<pulumi.Input<inputs.SnapshotPermissionsToCreateVolume>[] | undefined>;
     /**
      * The progress of the snapshot, as a percentage.
      */
-    progress?: pulumi.Input<number>;
-    requestId?: pulumi.Input<string>;
+    progress?: pulumi.Input<number | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the snapshot.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
      */
-    snapshotSize?: pulumi.Input<number>;
+    snapshotSize?: pulumi.Input<number | undefined>;
     /**
      * **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
      */
-    sourceRegionName?: pulumi.Input<string>;
+    sourceRegionName?: pulumi.Input<string | undefined>;
     /**
      * **(when copying a snapshot)** The ID of the snapshot you want to copy.
      */
-    sourceSnapshotId?: pulumi.Input<string>;
+    sourceSnapshotId?: pulumi.Input<string | undefined>;
     /**
      * The state of the snapshot (`in-queue` \| `pending` \| `completed` \| `error` \| `deleting`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[]>;
-    timeouts?: pulumi.Input<inputs.SnapshotTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.SnapshotTimeouts | undefined>;
     /**
      * **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
     /**
      * The size of the volume used to create the snapshot, in gibibytes (GiB).
      */
-    volumeSize?: pulumi.Input<number>;
+    volumeSize?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -279,30 +290,30 @@ export interface SnapshotArgs {
     /**
      * A description for the snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
      */
-    fileLocation?: pulumi.Input<string>;
+    fileLocation?: pulumi.Input<string | undefined>;
     /**
      * **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
      */
-    snapshotSize?: pulumi.Input<number>;
+    snapshotSize?: pulumi.Input<number | undefined>;
     /**
      * **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
      */
-    sourceRegionName?: pulumi.Input<string>;
+    sourceRegionName?: pulumi.Input<string | undefined>;
     /**
      * **(when copying a snapshot)** The ID of the snapshot you want to copy.
      */
-    sourceSnapshotId?: pulumi.Input<string>;
+    sourceSnapshotId?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[]>;
-    timeouts?: pulumi.Input<inputs.SnapshotTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SnapshotTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.SnapshotTimeouts | undefined>;
     /**
      * **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }

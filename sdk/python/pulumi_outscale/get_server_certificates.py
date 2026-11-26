@@ -81,7 +81,7 @@ class AwaitableGetServerCertificatesResult(GetServerCertificatesResult):
             server_certificates=self.server_certificates)
 
 
-def get_server_certificates(filters: Optional[Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict']]] = None,
+def get_server_certificates(filters: Optional[Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict', 'outputs.GetServerCertificatesFilterResult']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerCertificatesResult:
     """
     Provides information about server certificates.
@@ -116,7 +116,7 @@ def get_server_certificates(filters: Optional[Sequence[Union['GetServerCertifica
     ```
 
 
-    :param Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict', 'outputs.GetServerCertificatesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -128,7 +128,7 @@ def get_server_certificates(filters: Optional[Sequence[Union['GetServerCertifica
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'),
         server_certificates=pulumi.get(__ret__, 'server_certificates'))
-def get_server_certificates_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict']]]]] = None,
+def get_server_certificates_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict', 'outputs.GetServerCertificatesFilterResult']]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerCertificatesResult]:
     """
     Provides information about server certificates.
@@ -163,7 +163,7 @@ def get_server_certificates_output(filters: Optional[pulumi.Input[Optional[Seque
     ```
 
 
-    :param Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetServerCertificatesFilterArgs', 'GetServerCertificatesFilterArgsDict', 'outputs.GetServerCertificatesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

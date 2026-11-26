@@ -86,12 +86,8 @@ type GetVirtualGatewaysResult struct {
 }
 
 func GetVirtualGatewaysOutput(ctx *pulumi.Context, args GetVirtualGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetVirtualGatewaysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVirtualGatewaysResultOutput, error) {
-			args := v.(GetVirtualGatewaysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getVirtualGateways:getVirtualGateways", args, GetVirtualGatewaysResultOutput{}, options).(GetVirtualGatewaysResultOutput), nil
-		}).(GetVirtualGatewaysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getVirtualGateways:getVirtualGateways", args, GetVirtualGatewaysResultOutput{}, options).(GetVirtualGatewaysResultOutput)
 }
 
 // A collection of arguments for invoking getVirtualGateways.

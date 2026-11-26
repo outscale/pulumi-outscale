@@ -91,7 +91,7 @@ class AwaitableGetImageExportTasksResult(GetImageExportTasksResult):
 
 
 def get_image_export_tasks(dry_run: Optional[_builtins.bool] = None,
-                           filters: Optional[Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict']]] = None,
+                           filters: Optional[Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict', 'outputs.GetImageExportTasksFilterResult']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageExportTasksResult:
     """
     Provides information about image export tasks.
@@ -115,7 +115,7 @@ def get_image_export_tasks(dry_run: Optional[_builtins.bool] = None,
     ```
 
 
-    :param Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict', 'outputs.GetImageExportTasksFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run
@@ -129,8 +129,8 @@ def get_image_export_tasks(dry_run: Optional[_builtins.bool] = None,
         id=pulumi.get(__ret__, 'id'),
         image_export_tasks=pulumi.get(__ret__, 'image_export_tasks'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_image_export_tasks_output(dry_run: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict']]]]] = None,
+def get_image_export_tasks_output(dry_run: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict', 'outputs.GetImageExportTasksFilterResult']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageExportTasksResult]:
     """
     Provides information about image export tasks.
@@ -154,7 +154,7 @@ def get_image_export_tasks_output(dry_run: Optional[pulumi.Input[Optional[_built
     ```
 
 
-    :param Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetImageExportTasksFilterArgs', 'GetImageExportTasksFilterArgsDict', 'outputs.GetImageExportTasksFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run

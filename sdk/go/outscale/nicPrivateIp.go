@@ -192,6 +192,12 @@ func (NicPrivateIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nicPrivateIpState)(nil)).Elem()
 }
 
+// NicPrivateIpExists checks whether an existing NicPrivateIp resource with the given ID exists.
+func NicPrivateIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NicPrivateIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/nicPrivateIp:NicPrivateIp", id, state, "", opts...)
+}
+
 type nicPrivateIpArgs struct {
 	// If true, allows an IP that is already assigned to another NIC in the same Subnet to be assigned to the NIC you specified.
 	AllowRelink *bool `pulumi:"allowRelink"`

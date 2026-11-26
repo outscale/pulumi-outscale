@@ -67,6 +67,17 @@ export class AccessKey extends pulumi.CustomResource {
         return new AccessKey(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing AccessKey resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: AccessKeyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/accessKey:AccessKey", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/accessKey:AccessKey';
 
@@ -163,34 +174,34 @@ export interface AccessKeyState {
     /**
      * The ID of the access key.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) at which the access key was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) at which the access key was last modified.
      */
-    lastModificationDate?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The secret key that enables you to send requests.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * The state for the access key (`ACTIVE` | `INACTIVE`).
      */
-    state?: pulumi.Input<string>;
-    tag?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.AccessKeyTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.AccessKeyTimeouts | undefined>;
     /**
      * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,15 +211,15 @@ export interface AccessKeyArgs {
     /**
      * The date and time, or the date, at which you want the access key to expire, in ISO 8601 format (for example, `2020-06-14T00:00:00.000Z`, or `2020-06-14`).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The state for the access key (`ACTIVE` | `INACTIVE`).
      */
-    state?: pulumi.Input<string>;
-    tag?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.AccessKeyTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.AccessKeyTimeouts | undefined>;
     /**
      * The name of the EIM user that owns the key to be created. If you do not specify a user name, this action creates an access key for the user who sends the request (which can be the root user).
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

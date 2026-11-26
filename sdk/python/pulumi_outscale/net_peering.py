@@ -23,12 +23,13 @@ class NetPeeringArgs:
     def __init__(__self__, *,
                  accepter_net_id: pulumi.Input[_builtins.str],
                  source_net_id: pulumi.Input[_builtins.str],
-                 accepter_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_net_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['NetPeeringTimeoutsArgs']] = None):
+                 accepter_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_net_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['NetPeeringTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a NetPeering resource.
+
         :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
                If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         :param pulumi.Input[_builtins.str] source_net_id: The ID of the Net you send the peering request from.
@@ -74,7 +75,7 @@ class NetPeeringArgs:
 
     @_builtins.property
     @pulumi.getter(name="accepterOwnerId")
-    def accepter_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accepter_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
         This parameter is required if the Net you want to connect with does not belong to you.
@@ -82,57 +83,58 @@ class NetPeeringArgs:
         return pulumi.get(self, "accepter_owner_id")
 
     @accepter_owner_id.setter
-    def accepter_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accepter_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accepter_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNetAccountId")
-    def source_net_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_net_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_net_account_id")
 
     @source_net_account_id.setter
-    def source_net_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_net_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_net_account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['NetPeeringTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['NetPeeringTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['NetPeeringTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['NetPeeringTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _NetPeeringState:
     def __init__(__self__, *,
-                 accepter_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accepter_nets: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]]] = None,
-                 accepter_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_net_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_nets: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringSourceNetArgs']]]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringStateArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['NetPeeringTimeoutsArgs']] = None):
+                 accepter_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accepter_nets: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]]] = None,
+                 accepter_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_net_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_nets: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringSourceNetArgs']]]] = None,
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringStateArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['NetPeeringTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering NetPeering resources.
+
         :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
                If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
         :param pulumi.Input[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]] accepter_nets: Information about the accepter Net.
@@ -172,7 +174,7 @@ class _NetPeeringState:
 
     @_builtins.property
     @pulumi.getter(name="accepterNetId")
-    def accepter_net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accepter_net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net you want to connect with.<br />
         If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
@@ -180,24 +182,24 @@ class _NetPeeringState:
         return pulumi.get(self, "accepter_net_id")
 
     @accepter_net_id.setter
-    def accepter_net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accepter_net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accepter_net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accepterNets")
-    def accepter_nets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]]]:
+    def accepter_nets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]]]:
         """
         Information about the accepter Net.
         """
         return pulumi.get(self, "accepter_nets")
 
     @accepter_nets.setter
-    def accepter_nets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]]]):
+    def accepter_nets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringAccepterNetArgs']]]]):
         pulumi.set(self, "accepter_nets", value)
 
     @_builtins.property
     @pulumi.getter(name="accepterOwnerId")
-    def accepter_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accepter_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
         This parameter is required if the Net you want to connect with does not belong to you.
@@ -205,106 +207,106 @@ class _NetPeeringState:
         return pulumi.get(self, "accepter_owner_id")
 
     @accepter_owner_id.setter
-    def accepter_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accepter_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accepter_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationDate")
-    def expiration_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) at which the Net peerings expire.
         """
         return pulumi.get(self, "expiration_date")
 
     @expiration_date.setter
-    def expiration_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_date", value)
 
     @_builtins.property
     @pulumi.getter(name="netPeeringId")
-    def net_peering_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_peering_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net peering.
         """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
-    def net_peering_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_peering_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_peering_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNetAccountId")
-    def source_net_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_net_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_net_account_id")
 
     @source_net_account_id.setter
-    def source_net_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_net_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_net_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNetId")
-    def source_net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net you send the peering request from.
         """
         return pulumi.get(self, "source_net_id")
 
     @source_net_id.setter
-    def source_net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNets")
-    def source_nets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringSourceNetArgs']]]]:
+    def source_nets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringSourceNetArgs']]]]:
         """
         Information about the source Net.
         """
         return pulumi.get(self, "source_nets")
 
     @source_nets.setter
-    def source_nets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringSourceNetArgs']]]]):
+    def source_nets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringSourceNetArgs']]]]):
         pulumi.set(self, "source_nets", value)
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringStateArgs']]]]:
         """
         Information about the state of the Net peering.
         """
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringStateArgs']]]]):
         pulumi.set(self, "states", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetPeeringTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetPeeringTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['NetPeeringTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['NetPeeringTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['NetPeeringTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['NetPeeringTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -314,12 +316,12 @@ class NetPeering(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accepter_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accepter_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_net_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['NetPeeringTimeoutsArgs', 'NetPeeringTimeoutsArgsDict']]] = None,
+                 accepter_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accepter_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_net_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict', 'outputs.NetPeeringTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['NetPeeringTimeoutsArgs', 'NetPeeringTimeoutsArgsDict', 'outputs.NetPeeringTimeouts']]] = None,
                  __props__=None):
         """
         Manages a Net peering.
@@ -360,6 +362,7 @@ class NetPeering(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
@@ -367,7 +370,7 @@ class NetPeering(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] accepter_owner_id: The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
                This parameter is required if the Net you want to connect with does not belong to you.
         :param pulumi.Input[_builtins.str] source_net_id: The ID of the Net you send the peering request from.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict', 'outputs.NetPeeringTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -414,6 +417,7 @@ class NetPeering(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param NetPeeringArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -429,12 +433,12 @@ class NetPeering(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accepter_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accepter_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_net_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['NetPeeringTimeoutsArgs', 'NetPeeringTimeoutsArgsDict']]] = None,
+                 accepter_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accepter_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_net_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict', 'outputs.NetPeeringTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['NetPeeringTimeoutsArgs', 'NetPeeringTimeoutsArgsDict', 'outputs.NetPeeringTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -470,18 +474,18 @@ class NetPeering(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accepter_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            accepter_nets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringAccepterNetArgs', 'NetPeeringAccepterNetArgsDict']]]]] = None,
-            accepter_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-            net_peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_net_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_nets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringSourceNetArgs', 'NetPeeringSourceNetArgsDict']]]]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringStateArgs', 'NetPeeringStateArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['NetPeeringTimeoutsArgs', 'NetPeeringTimeoutsArgsDict']]] = None) -> 'NetPeering':
+            accepter_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accepter_nets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringAccepterNetArgs', 'NetPeeringAccepterNetArgsDict', 'outputs.NetPeeringAccepterNet']]]]] = None,
+            accepter_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_net_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_nets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringSourceNetArgs', 'NetPeeringSourceNetArgsDict', 'outputs.NetPeeringSourceNet']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringStateArgs', 'NetPeeringStateArgsDict', 'outputs.NetPeeringState']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict', 'outputs.NetPeeringTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['NetPeeringTimeoutsArgs', 'NetPeeringTimeoutsArgsDict', 'outputs.NetPeeringTimeouts']]] = None) -> 'NetPeering':
         """
         Get an existing NetPeering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -491,15 +495,15 @@ class NetPeering(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accepter_net_id: The ID of the Net you want to connect with.<br />
                If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringAccepterNetArgs', 'NetPeeringAccepterNetArgsDict']]]] accepter_nets: Information about the accepter Net.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringAccepterNetArgs', 'NetPeeringAccepterNetArgsDict', 'outputs.NetPeeringAccepterNet']]]] accepter_nets: Information about the accepter Net.
         :param pulumi.Input[_builtins.str] accepter_owner_id: The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
                This parameter is required if the Net you want to connect with does not belong to you.
         :param pulumi.Input[_builtins.str] expiration_date: The date and time (UTC) at which the Net peerings expire.
         :param pulumi.Input[_builtins.str] net_peering_id: The ID of the Net peering.
         :param pulumi.Input[_builtins.str] source_net_id: The ID of the Net you send the peering request from.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringSourceNetArgs', 'NetPeeringSourceNetArgsDict']]]] source_nets: Information about the source Net.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringStateArgs', 'NetPeeringStateArgsDict']]]] states: Information about the state of the Net peering.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringSourceNetArgs', 'NetPeeringSourceNetArgsDict', 'outputs.NetPeeringSourceNet']]]] source_nets: Information about the source Net.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringStateArgs', 'NetPeeringStateArgsDict', 'outputs.NetPeeringState']]]] states: Information about the state of the Net peering.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict', 'outputs.NetPeeringTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -518,6 +522,36 @@ class NetPeering(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return NetPeering(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accepter_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accepter_nets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringAccepterNetArgs', 'NetPeeringAccepterNetArgsDict', 'outputs.NetPeeringAccepterNet']]]]] = None,
+            accepter_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_net_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_nets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringSourceNetArgs', 'NetPeeringSourceNetArgsDict', 'outputs.NetPeeringSourceNet']]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringStateArgs', 'NetPeeringStateArgsDict', 'outputs.NetPeeringState']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetPeeringTagArgs', 'NetPeeringTagArgsDict', 'outputs.NetPeeringTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['NetPeeringTimeoutsArgs', 'NetPeeringTimeoutsArgsDict', 'outputs.NetPeeringTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accepterNetId"] = accepter_net_id
+        __props__["accepterNets"] = accepter_nets
+        __props__["accepterOwnerId"] = accepter_owner_id
+        __props__["expirationDate"] = expiration_date
+        __props__["netPeeringId"] = net_peering_id
+        __props__["requestId"] = request_id
+        __props__["sourceNetAccountId"] = source_net_account_id
+        __props__["sourceNetId"] = source_net_id
+        __props__["sourceNets"] = source_nets
+        __props__["states"] = states
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/netPeering:NetPeering', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="accepterNetId")

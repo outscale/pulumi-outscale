@@ -331,6 +331,12 @@ func (OksClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oksClusterState)(nil)).Elem()
 }
 
+// OksClusterExists checks whether an existing OksCluster resource with the given ID exists.
+func OksClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OksClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oksCluster:OksCluster", id, state, "", opts...)
+}
+
 type oksClusterArgs struct {
 	// If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
 	AdminLbu *bool `pulumi:"adminLbu"`

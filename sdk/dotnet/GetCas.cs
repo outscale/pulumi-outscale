@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about Certificate Authorities (CAs).
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
         /// For more information on this resource actions, see the [Ca](https://docs.outscale.com/api#3ds-outscale-api-ca) API methods.
         /// 
         /// ## Example Usage
@@ -52,7 +52,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about Certificate Authorities (CAs).
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
         /// For more information on this resource actions, see the [Ca](https://docs.outscale.com/api#3ds-outscale-api-ca) API methods.
         /// 
         /// ## Example Usage
@@ -90,7 +90,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about Certificate Authorities (CAs).
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\
         /// For more information on this resource actions, see the [Ca](https://docs.outscale.com/api#3ds-outscale-api-ca) API methods.
         /// 
         /// ## Example Usage

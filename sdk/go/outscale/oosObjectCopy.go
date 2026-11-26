@@ -320,6 +320,12 @@ func (OosObjectCopyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosObjectCopyState)(nil)).Elem()
 }
 
+// OosObjectCopyExists checks whether an existing OosObjectCopy resource with the given ID exists.
+func OosObjectCopyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosObjectCopyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosObjectCopy:OosObjectCopy", id, state, "", opts...)
+}
+
 type oosObjectCopyArgs struct {
 	// The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
 	Acl *string `pulumi:"acl"`

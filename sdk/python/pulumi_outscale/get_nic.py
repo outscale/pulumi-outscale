@@ -282,7 +282,7 @@ class AwaitableGetNicResult(GetNicResult):
             tags=self.tags)
 
 
-def get_nic(filters: Optional[Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict']]] = None,
+def get_nic(filters: Optional[Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict', 'outputs.GetNicFilterResult']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNicResult:
     """
     Provides information about a network interface card (NIC).
@@ -303,7 +303,7 @@ def get_nic(filters: Optional[Sequence[Union['GetNicFilterArgs', 'GetNicFilterAr
     ```
 
 
-    :param Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict', 'outputs.GetNicFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -332,7 +332,7 @@ def get_nic(filters: Optional[Sequence[Union['GetNicFilterArgs', 'GetNicFilterAr
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         subregion_name=pulumi.get(__ret__, 'subregion_name'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_nic_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict']]]]] = None,
+def get_nic_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict', 'outputs.GetNicFilterResult']]]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNicResult]:
     """
     Provides information about a network interface card (NIC).
@@ -353,7 +353,7 @@ def get_nic_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNi
     ```
 
 
-    :param Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNicFilterArgs', 'GetNicFilterArgsDict', 'outputs.GetNicFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

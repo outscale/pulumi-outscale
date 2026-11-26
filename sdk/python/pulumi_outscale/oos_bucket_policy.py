@@ -23,9 +23,10 @@ class OosBucketPolicyArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  policy: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['OosBucketPolicyTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['OosBucketPolicyTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OosBucketPolicy resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to apply the policy.
         :param pulumi.Input[_builtins.str] policy: The bucket policy, encoded as a JSON string (use the jsonencode function to format it).
                * `Version` - (Required) The version of the policy language (use `2012-10-17`).
@@ -72,22 +73,23 @@ class OosBucketPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketPolicyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketPolicyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OosBucketPolicyState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketPolicyTimeoutsArgs']] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketPolicyTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OosBucketPolicy resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to apply the policy.
         :param pulumi.Input[_builtins.str] policy: The bucket policy, encoded as a JSON string (use the jsonencode function to format it).
                * `Version` - (Required) The version of the policy language (use `2012-10-17`).
@@ -106,19 +108,19 @@ class _OosBucketPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket to which you want to apply the policy.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket policy, encoded as a JSON string (use the jsonencode function to format it).
         * `Version` - (Required) The version of the policy language (use `2012-10-17`).
@@ -131,16 +133,16 @@ class _OosBucketPolicyState:
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketPolicyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketPolicyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -150,9 +152,9 @@ class OosBucketPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketPolicyTimeoutsArgs', 'OosBucketPolicyTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketPolicyTimeoutsArgs', 'OosBucketPolicyTimeoutsArgsDict', 'outputs.OosBucketPolicyTimeouts']]] = None,
                  __props__=None):
         """
         Manages a bucket policy.
@@ -182,6 +184,7 @@ class OosBucketPolicy(pulumi.CustomResource):
                 }],
             }))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,6 +232,7 @@ class OosBucketPolicy(pulumi.CustomResource):
             }))
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OosBucketPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -244,9 +248,9 @@ class OosBucketPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketPolicyTimeoutsArgs', 'OosBucketPolicyTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketPolicyTimeoutsArgs', 'OosBucketPolicyTimeoutsArgsDict', 'outputs.OosBucketPolicyTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -273,9 +277,9 @@ class OosBucketPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosBucketPolicyTimeoutsArgs', 'OosBucketPolicyTimeoutsArgsDict']]] = None) -> 'OosBucketPolicy':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketPolicyTimeoutsArgs', 'OosBucketPolicyTimeoutsArgsDict', 'outputs.OosBucketPolicyTimeouts']]] = None) -> 'OosBucketPolicy':
         """
         Get an existing OosBucketPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -300,6 +304,18 @@ class OosBucketPolicy(pulumi.CustomResource):
         __props__.__dict__["policy"] = policy
         __props__.__dict__["timeouts"] = timeouts
         return OosBucketPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketPolicyTimeoutsArgs', 'OosBucketPolicyTimeoutsArgsDict', 'outputs.OosBucketPolicyTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["policy"] = policy
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosBucketPolicy:OosBucketPolicy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

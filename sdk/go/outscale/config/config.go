@@ -11,7 +11,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The Access Key ID for API operations
+// The Access Key ID for API operations.
 func GetAccessKeyId(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "outscale:accessKeyId")
 	if err == nil {
@@ -23,13 +23,36 @@ func GetAccessKeyId(ctx *pulumi.Context) string {
 	}
 	return value
 }
+func GetApi(ctx *pulumi.Context) string {
+	return config.Get(ctx, "outscale:api")
+}
+
+// Path to the configuration file in which you have defined your credentials.
+func GetConfigFile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "outscale:configFile")
+}
+
+// Deprecated: 'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
 func GetEndpoints(ctx *pulumi.Context) string {
 	return config.Get(ctx, "outscale:endpoints")
 }
 
-// tls insecure connection
+// TLS insecure connection for IaaS API operations.
+//
+// Deprecated: 'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.
 func GetInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "outscale:insecure")
+}
+func GetOks(ctx *pulumi.Context) string {
+	return config.Get(ctx, "outscale:oks")
+}
+func GetOos(ctx *pulumi.Context) string {
+	return config.Get(ctx, "outscale:oos")
+}
+
+// Name of your profile in which you define your credencial
+func GetProfile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "outscale:profile")
 }
 
 // The Region for API operations.
@@ -45,6 +68,11 @@ func GetRegion(ctx *pulumi.Context) string {
 	return value
 }
 
+// Sanitize sensitive data in the logs. Defaults to true.
+func GetSanitize(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "outscale:sanitize")
+}
+
 // The Secret Key ID for API operations.
 func GetSecretKeyId(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "outscale:secretKeyId")
@@ -58,12 +86,16 @@ func GetSecretKeyId(ctx *pulumi.Context) string {
 	return value
 }
 
-// The path to your x509 cert
+// Path to the x509 certificate for IaaS API operations.
+//
+// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
 func GetX509CertPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "outscale:x509CertPath")
 }
 
-// The path to your x509 key
+// Path to the x509 key for IaaS API operations.
+//
+// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
 func GetX509KeyPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "outscale:x509KeyPath")
 }

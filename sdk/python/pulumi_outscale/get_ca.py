@@ -114,7 +114,7 @@ class AwaitableGetCaResult(GetCaResult):
             request_id=self.request_id)
 
 
-def get_ca(filters: Optional[Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict']]] = None,
+def get_ca(filters: Optional[Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict', 'outputs.GetCaFilterResult']]] = None,
            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCaResult:
     """
     Provides information about a Certificate Authority (CA).
@@ -135,7 +135,7 @@ def get_ca(filters: Optional[Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsD
     ```
 
 
-    :param Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict', 'outputs.GetCaFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -150,7 +150,7 @@ def get_ca(filters: Optional[Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsD
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_ca_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict']]]]] = None,
+def get_ca_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict', 'outputs.GetCaFilterResult']]]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCaResult]:
     """
     Provides information about a Certificate Authority (CA).
@@ -171,7 +171,7 @@ def get_ca_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetCaF
     ```
 
 
-    :param Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetCaFilterArgs', 'GetCaFilterArgsDict', 'outputs.GetCaFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

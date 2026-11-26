@@ -123,10 +123,10 @@ export interface GetVmStatesOutputArgs {
     /**
      * If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
      */
-    allVms?: pulumi.Input<boolean>;
+    allVms?: pulumi.Input<boolean | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVmStatesFilterArgs>[]>;
-    vmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVmStatesFilterArgs>[] | undefined>;
+    vmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

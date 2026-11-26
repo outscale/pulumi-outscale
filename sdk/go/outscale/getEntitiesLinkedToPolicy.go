@@ -74,12 +74,8 @@ type GetEntitiesLinkedToPolicyResult struct {
 }
 
 func GetEntitiesLinkedToPolicyOutput(ctx *pulumi.Context, args GetEntitiesLinkedToPolicyOutputArgs, opts ...pulumi.InvokeOption) GetEntitiesLinkedToPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEntitiesLinkedToPolicyResultOutput, error) {
-			args := v.(GetEntitiesLinkedToPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getEntitiesLinkedToPolicy:getEntitiesLinkedToPolicy", args, GetEntitiesLinkedToPolicyResultOutput{}, options).(GetEntitiesLinkedToPolicyResultOutput), nil
-		}).(GetEntitiesLinkedToPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getEntitiesLinkedToPolicy:getEntitiesLinkedToPolicy", args, GetEntitiesLinkedToPolicyResultOutput{}, options).(GetEntitiesLinkedToPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getEntitiesLinkedToPolicy.

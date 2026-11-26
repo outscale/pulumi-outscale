@@ -147,6 +147,12 @@ func (OosPresignedUrlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosPresignedUrlState)(nil)).Elem()
 }
 
+// OosPresignedUrlExists checks whether an existing OosPresignedUrl resource with the given ID exists.
+func OosPresignedUrlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosPresignedUrlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosPresignedUrl:OosPresignedUrl", id, state, "", opts...)
+}
+
 type oosPresignedUrlArgs struct {
 	// The bucket for which the URL applies.
 	Bucket string `pulumi:"bucket"`

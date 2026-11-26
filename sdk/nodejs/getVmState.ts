@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const vmState01 = outscale.getVmState({
+ *     allVms: true,
  *     filters: [{
  *         name: "vm_ids",
  *         values: ["i-12345678"],
  *     }],
- *     allVms: true,
  * });
  * ```
  */
@@ -96,11 +96,11 @@ export interface GetVmStateResult {
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const vmState01 = outscale.getVmState({
+ *     allVms: true,
  *     filters: [{
  *         name: "vm_ids",
  *         values: ["i-12345678"],
  *     }],
- *     allVms: true,
  * });
  * ```
  */
@@ -121,13 +121,13 @@ export interface GetVmStateOutputArgs {
     /**
      * If true, includes the status of all VMs. By default or if set to false, only includes the status of running VMs.
      */
-    allVms?: pulumi.Input<boolean>;
+    allVms?: pulumi.Input<boolean | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVmStateFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVmStateFilterArgs>[] | undefined>;
     /**
      * The ID of the VM.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }

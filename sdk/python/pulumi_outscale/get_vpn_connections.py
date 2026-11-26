@@ -90,7 +90,7 @@ class AwaitableGetVpnConnectionsResult(GetVpnConnectionsResult):
             vpn_connections=self.vpn_connections)
 
 
-def get_vpn_connections(filters: Optional[Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict']]] = None,
+def get_vpn_connections(filters: Optional[Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict', 'outputs.GetVpnConnectionsFilterResult']]] = None,
                         vpn_connection_ids: Optional[Sequence[_builtins.str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnConnectionsResult:
     """
@@ -121,7 +121,7 @@ def get_vpn_connections(filters: Optional[Sequence[Union['GetVpnConnectionsFilte
     ```
 
 
-    :param Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict', 'outputs.GetVpnConnectionsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -135,8 +135,8 @@ def get_vpn_connections(filters: Optional[Sequence[Union['GetVpnConnectionsFilte
         request_id=pulumi.get(__ret__, 'request_id'),
         vpn_connection_ids=pulumi.get(__ret__, 'vpn_connection_ids'),
         vpn_connections=pulumi.get(__ret__, 'vpn_connections'))
-def get_vpn_connections_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict']]]]] = None,
-                               vpn_connection_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_vpn_connections_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict', 'outputs.GetVpnConnectionsFilterResult']]]]] = None,
+                               vpn_connection_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnConnectionsResult]:
     """
     Provides information about VPN connections.
@@ -166,7 +166,7 @@ def get_vpn_connections_output(filters: Optional[pulumi.Input[Optional[Sequence[
     ```
 
 
-    :param Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVpnConnectionsFilterArgs', 'GetVpnConnectionsFilterArgsDict', 'outputs.GetVpnConnectionsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

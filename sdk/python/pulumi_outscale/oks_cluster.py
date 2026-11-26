@@ -26,21 +26,22 @@ class OksClusterArgs:
                  cidr_service: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 admin_lbu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admission_flags: Optional[pulumi.Input['OksClusterAdmissionFlagsArgs']] = None,
-                 auto_maintenances: Optional[pulumi.Input['OksClusterAutoMaintenancesArgs']] = None,
-                 cluster_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_planes: Optional[pulumi.Input[_builtins.str]] = None,
-                 cp_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cp_subregions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_api_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 quirks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OksClusterTimeoutsArgs']] = None):
+                 admin_lbu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admission_flags: pulumi.Input[Optional['OksClusterAdmissionFlagsArgs']] = None,
+                 auto_maintenances: pulumi.Input[Optional['OksClusterAutoMaintenancesArgs']] = None,
+                 cluster_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_planes: pulumi.Input[Optional[_builtins.str]] = None,
+                 cp_multi_az: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cp_subregions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_api_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 quirks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OksClusterTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OksCluster resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] admin_whitelists: The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.
         :param pulumi.Input[_builtins.str] cidr_pods: The CIDR block for Kubernetes pods' network.
         :param pulumi.Input[_builtins.str] cidr_service: The CIDR block for the Kubernetes services' network.
@@ -153,186 +154,187 @@ class OksClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminLbu")
-    def admin_lbu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_lbu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
         """
         return pulumi.get(self, "admin_lbu")
 
     @admin_lbu.setter
-    def admin_lbu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_lbu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_lbu", value)
 
     @_builtins.property
     @pulumi.getter(name="admissionFlags")
-    def admission_flags(self) -> Optional[pulumi.Input['OksClusterAdmissionFlagsArgs']]:
+    def admission_flags(self) -> pulumi.Input[Optional['OksClusterAdmissionFlagsArgs']]:
         """
         The configuration for Kubernetes admission controllers.
         """
         return pulumi.get(self, "admission_flags")
 
     @admission_flags.setter
-    def admission_flags(self, value: Optional[pulumi.Input['OksClusterAdmissionFlagsArgs']]):
+    def admission_flags(self, value: pulumi.Input[Optional['OksClusterAdmissionFlagsArgs']]):
         pulumi.set(self, "admission_flags", value)
 
     @_builtins.property
     @pulumi.getter(name="autoMaintenances")
-    def auto_maintenances(self) -> Optional[pulumi.Input['OksClusterAutoMaintenancesArgs']]:
+    def auto_maintenances(self) -> pulumi.Input[Optional['OksClusterAutoMaintenancesArgs']]:
         """
         The configurations for automated maintenance windows.
         """
         return pulumi.get(self, "auto_maintenances")
 
     @auto_maintenances.setter
-    def auto_maintenances(self, value: Optional[pulumi.Input['OksClusterAutoMaintenancesArgs']]):
+    def auto_maintenances(self, value: pulumi.Input[Optional['OksClusterAutoMaintenancesArgs']]):
         pulumi.set(self, "auto_maintenances", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterDns")
-    def cluster_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP for the cluster's DNS service.
         """
         return pulumi.get(self, "cluster_dns")
 
     @cluster_dns.setter
-    def cluster_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlanes")
-    def control_planes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_planes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of control plane deployment for the cluster. For more information, see [About OKS > Control Planes](https://docs.outscale.com/en/userguide/About-OKS.html#_control_planes). By default, `cp.3.masters.small`.
         """
         return pulumi.get(self, "control_planes")
 
     @control_planes.setter
-    def control_planes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_planes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_planes", value)
 
     @_builtins.property
     @pulumi.getter(name="cpMultiAz")
-    def cp_multi_az(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cp_multi_az(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, multi-Subregion deployment is enabled for the control plane. If false, it is disabled. By default, false.
         """
         return pulumi.get(self, "cp_multi_az")
 
     @cp_multi_az.setter
-    def cp_multi_az(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cp_multi_az(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cp_multi_az", value)
 
     @_builtins.property
     @pulumi.getter(name="cpSubregions")
-    def cp_subregions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cp_subregions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of Subregions where control plane components are deployed.
         """
         return pulumi.get(self, "cp_subregions")
 
     @cp_subregions.setter
-    def cp_subregions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cp_subregions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cp_subregions", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableApiTermination")
-    def disable_api_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_api_termination(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
         """
         return pulumi.get(self, "disable_api_termination")
 
     @disable_api_termination.setter
-    def disable_api_termination(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_api_termination(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_api_termination", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def quirks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def quirks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of special configurations or behaviors for the cluster.
         """
         return pulumi.get(self, "quirks")
 
     @quirks.setter
-    def quirks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def quirks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "quirks", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key/value combinations of the tags associated with the cluster's metadata.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OksClusterTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OksClusterTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OksClusterTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OksClusterTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OksClusterState:
     def __init__(__self__, *,
-                 admin_lbu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 admission_flags: Optional[pulumi.Input['OksClusterAdmissionFlagsArgs']] = None,
-                 auto_maintenances: Optional[pulumi.Input['OksClusterAutoMaintenancesArgs']] = None,
-                 cidr_pods: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 cni: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_planes: Optional[pulumi.Input[_builtins.str]] = None,
-                 cp_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cp_subregions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_api_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubeconfig_attributes: Optional[pulumi.Input['OksClusterKubeconfigAttributesArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 quirks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input['OksClusterStatusesArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OksClusterTimeoutsArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_lbu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 admission_flags: pulumi.Input[Optional['OksClusterAdmissionFlagsArgs']] = None,
+                 auto_maintenances: pulumi.Input[Optional['OksClusterAutoMaintenancesArgs']] = None,
+                 cidr_pods: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 cni: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_planes: pulumi.Input[Optional[_builtins.str]] = None,
+                 cp_multi_az: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cp_subregions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_api_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubeconfig_attributes: pulumi.Input[Optional['OksClusterKubeconfigAttributesArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 quirks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional['OksClusterStatusesArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OksClusterTimeoutsArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OksCluster resources.
+
         :param pulumi.Input[_builtins.bool] admin_lbu: If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] admin_whitelists: The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.
         :param pulumi.Input['OksClusterAdmissionFlagsArgs'] admission_flags: The configuration for Kubernetes admission controllers.
@@ -405,275 +407,275 @@ class _OksClusterState:
 
     @_builtins.property
     @pulumi.getter(name="adminLbu")
-    def admin_lbu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_lbu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
         """
         return pulumi.get(self, "admin_lbu")
 
     @admin_lbu.setter
-    def admin_lbu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_lbu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_lbu", value)
 
     @_builtins.property
     @pulumi.getter(name="adminWhitelists")
-    def admin_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def admin_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.
         """
         return pulumi.get(self, "admin_whitelists")
 
     @admin_whitelists.setter
-    def admin_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def admin_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "admin_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="admissionFlags")
-    def admission_flags(self) -> Optional[pulumi.Input['OksClusterAdmissionFlagsArgs']]:
+    def admission_flags(self) -> pulumi.Input[Optional['OksClusterAdmissionFlagsArgs']]:
         """
         The configuration for Kubernetes admission controllers.
         """
         return pulumi.get(self, "admission_flags")
 
     @admission_flags.setter
-    def admission_flags(self, value: Optional[pulumi.Input['OksClusterAdmissionFlagsArgs']]):
+    def admission_flags(self, value: pulumi.Input[Optional['OksClusterAdmissionFlagsArgs']]):
         pulumi.set(self, "admission_flags", value)
 
     @_builtins.property
     @pulumi.getter(name="autoMaintenances")
-    def auto_maintenances(self) -> Optional[pulumi.Input['OksClusterAutoMaintenancesArgs']]:
+    def auto_maintenances(self) -> pulumi.Input[Optional['OksClusterAutoMaintenancesArgs']]:
         """
         The configurations for automated maintenance windows.
         """
         return pulumi.get(self, "auto_maintenances")
 
     @auto_maintenances.setter
-    def auto_maintenances(self, value: Optional[pulumi.Input['OksClusterAutoMaintenancesArgs']]):
+    def auto_maintenances(self, value: pulumi.Input[Optional['OksClusterAutoMaintenancesArgs']]):
         pulumi.set(self, "auto_maintenances", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrPods")
-    def cidr_pods(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_pods(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block for Kubernetes pods' network.
         """
         return pulumi.get(self, "cidr_pods")
 
     @cidr_pods.setter
-    def cidr_pods(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_pods(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_pods", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrService")
-    def cidr_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block for the Kubernetes services' network.
         """
         return pulumi.get(self, "cidr_service")
 
     @cidr_service.setter
-    def cidr_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_service", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterDns")
-    def cluster_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP for the cluster's DNS service.
         """
         return pulumi.get(self, "cluster_dns")
 
     @cluster_dns.setter
-    def cluster_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def cni(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cni(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Container Network Interface (CNI) used in the cluster.
         """
         return pulumi.get(self, "cni")
 
     @cni.setter
-    def cni(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cni(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cni", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlanes")
-    def control_planes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_planes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of control plane deployment for the cluster. For more information, see [About OKS > Control Planes](https://docs.outscale.com/en/userguide/About-OKS.html#_control_planes). By default, `cp.3.masters.small`.
         """
         return pulumi.get(self, "control_planes")
 
     @control_planes.setter
-    def control_planes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_planes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_planes", value)
 
     @_builtins.property
     @pulumi.getter(name="cpMultiAz")
-    def cp_multi_az(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cp_multi_az(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, multi-Subregion deployment is enabled for the control plane. If false, it is disabled. By default, false.
         """
         return pulumi.get(self, "cp_multi_az")
 
     @cp_multi_az.setter
-    def cp_multi_az(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cp_multi_az(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cp_multi_az", value)
 
     @_builtins.property
     @pulumi.getter(name="cpSubregions")
-    def cp_subregions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cp_subregions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of Subregions where control plane components are deployed.
         """
         return pulumi.get(self, "cp_subregions")
 
     @cp_subregions.setter
-    def cp_subregions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cp_subregions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cp_subregions", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableApiTermination")
-    def disable_api_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_api_termination(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
         """
         return pulumi.get(self, "disable_api_termination")
 
     @disable_api_termination.setter
-    def disable_api_termination(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_api_termination(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_api_termination", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubeconfig(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubeconfig(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Sensitive value) A file containing access configuration to the cluster.
         """
         return pulumi.get(self, "kubeconfig")
 
     @kubeconfig.setter
-    def kubeconfig(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubeconfig(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubeconfig", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeconfigAttributes")
-    def kubeconfig_attributes(self) -> Optional[pulumi.Input['OksClusterKubeconfigAttributesArgs']]:
+    def kubeconfig_attributes(self) -> pulumi.Input[Optional['OksClusterKubeconfigAttributesArgs']]:
         """
         (Sensitive value) Access configuration to the cluster.
         """
         return pulumi.get(self, "kubeconfig_attributes")
 
     @kubeconfig_attributes.setter
-    def kubeconfig_attributes(self, value: Optional[pulumi.Input['OksClusterKubeconfigAttributesArgs']]):
+    def kubeconfig_attributes(self, value: pulumi.Input[Optional['OksClusterKubeconfigAttributesArgs']]):
         pulumi.set(self, "kubeconfig_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which you want to create a cluster.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def quirks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def quirks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of special configurations or behaviors for the cluster.
         """
         return pulumi.get(self, "quirks")
 
     @quirks.setter
-    def quirks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def quirks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "quirks", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the API request.
         """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input['OksClusterStatusesArgs']]:
+    def statuses(self) -> pulumi.Input[Optional['OksClusterStatusesArgs']]:
         """
         The status information of the cluster.
         """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input['OksClusterStatusesArgs']]):
+    def statuses(self, value: pulumi.Input[Optional['OksClusterStatusesArgs']]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key/value combinations of the tags associated with the cluster's metadata.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OksClusterTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OksClusterTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OksClusterTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OksClusterTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes version to be deployed for the cluster. For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -683,24 +685,24 @@ class OksCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_lbu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 admission_flags: Optional[pulumi.Input[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict']]] = None,
-                 auto_maintenances: Optional[pulumi.Input[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict']]] = None,
-                 cidr_pods: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_planes: Optional[pulumi.Input[_builtins.str]] = None,
-                 cp_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cp_subregions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_api_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 quirks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OksClusterTimeoutsArgs', 'OksClusterTimeoutsArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_lbu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 admission_flags: pulumi.Input[Optional[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict', 'outputs.OksClusterAdmissionFlags']]] = None,
+                 auto_maintenances: pulumi.Input[Optional[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict', 'outputs.OksClusterAutoMaintenances']]] = None,
+                 cidr_pods: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_planes: pulumi.Input[Optional[_builtins.str]] = None,
+                 cp_multi_az: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cp_subregions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_api_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 quirks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OksClusterTimeoutsArgs', 'OksClusterTimeoutsArgsDict', 'outputs.OksClusterTimeouts']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a cluster.
@@ -772,12 +774,13 @@ class OksCluster(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_lbu: If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] admin_whitelists: The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.
-        :param pulumi.Input[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict']] admission_flags: The configuration for Kubernetes admission controllers.
-        :param pulumi.Input[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict']] auto_maintenances: The configurations for automated maintenance windows.
+        :param pulumi.Input[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict', 'outputs.OksClusterAdmissionFlags']] admission_flags: The configuration for Kubernetes admission controllers.
+        :param pulumi.Input[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict', 'outputs.OksClusterAutoMaintenances']] auto_maintenances: The configurations for automated maintenance windows.
         :param pulumi.Input[_builtins.str] cidr_pods: The CIDR block for Kubernetes pods' network.
         :param pulumi.Input[_builtins.str] cidr_service: The CIDR block for the Kubernetes services' network.
         :param pulumi.Input[_builtins.str] cluster_dns: The IP for the cluster's DNS service.
@@ -868,6 +871,7 @@ class OksCluster(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OksClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -883,24 +887,24 @@ class OksCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_lbu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 admission_flags: Optional[pulumi.Input[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict']]] = None,
-                 auto_maintenances: Optional[pulumi.Input[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict']]] = None,
-                 cidr_pods: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_planes: Optional[pulumi.Input[_builtins.str]] = None,
-                 cp_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cp_subregions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_api_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 quirks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OksClusterTimeoutsArgs', 'OksClusterTimeoutsArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_lbu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 admission_flags: pulumi.Input[Optional[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict', 'outputs.OksClusterAdmissionFlags']]] = None,
+                 auto_maintenances: pulumi.Input[Optional[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict', 'outputs.OksClusterAutoMaintenances']]] = None,
+                 cidr_pods: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_planes: pulumi.Input[Optional[_builtins.str]] = None,
+                 cp_multi_az: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cp_subregions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_api_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 quirks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OksClusterTimeoutsArgs', 'OksClusterTimeoutsArgsDict', 'outputs.OksClusterTimeouts']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -955,29 +959,29 @@ class OksCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_lbu: Optional[pulumi.Input[_builtins.bool]] = None,
-            admin_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            admission_flags: Optional[pulumi.Input[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict']]] = None,
-            auto_maintenances: Optional[pulumi.Input[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict']]] = None,
-            cidr_pods: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_service: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_dns: Optional[pulumi.Input[_builtins.str]] = None,
-            cni: Optional[pulumi.Input[_builtins.str]] = None,
-            control_planes: Optional[pulumi.Input[_builtins.str]] = None,
-            cp_multi_az: Optional[pulumi.Input[_builtins.bool]] = None,
-            cp_subregions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_api_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-            kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
-            kubeconfig_attributes: Optional[pulumi.Input[Union['OksClusterKubeconfigAttributesArgs', 'OksClusterKubeconfigAttributesArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            quirks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            statuses: Optional[pulumi.Input[Union['OksClusterStatusesArgs', 'OksClusterStatusesArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['OksClusterTimeoutsArgs', 'OksClusterTimeoutsArgsDict']]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'OksCluster':
+            admin_lbu: pulumi.Input[Optional[_builtins.bool]] = None,
+            admin_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            admission_flags: pulumi.Input[Optional[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict', 'outputs.OksClusterAdmissionFlags']]] = None,
+            auto_maintenances: pulumi.Input[Optional[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict', 'outputs.OksClusterAutoMaintenances']]] = None,
+            cidr_pods: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_service: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            cni: pulumi.Input[Optional[_builtins.str]] = None,
+            control_planes: pulumi.Input[Optional[_builtins.str]] = None,
+            cp_multi_az: pulumi.Input[Optional[_builtins.bool]] = None,
+            cp_subregions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_api_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+            kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig_attributes: pulumi.Input[Optional[Union['OksClusterKubeconfigAttributesArgs', 'OksClusterKubeconfigAttributesArgsDict', 'outputs.OksClusterKubeconfigAttributes']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            quirks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Union['OksClusterStatusesArgs', 'OksClusterStatusesArgsDict', 'outputs.OksClusterStatuses']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OksClusterTimeoutsArgs', 'OksClusterTimeoutsArgsDict', 'outputs.OksClusterTimeouts']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'OksCluster':
         """
         Get an existing OksCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -987,8 +991,8 @@ class OksCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_lbu: If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] admin_whitelists: The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.
-        :param pulumi.Input[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict']] admission_flags: The configuration for Kubernetes admission controllers.
-        :param pulumi.Input[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict']] auto_maintenances: The configurations for automated maintenance windows.
+        :param pulumi.Input[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict', 'outputs.OksClusterAdmissionFlags']] admission_flags: The configuration for Kubernetes admission controllers.
+        :param pulumi.Input[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict', 'outputs.OksClusterAutoMaintenances']] auto_maintenances: The configurations for automated maintenance windows.
         :param pulumi.Input[_builtins.str] cidr_pods: The CIDR block for Kubernetes pods' network.
         :param pulumi.Input[_builtins.str] cidr_service: The CIDR block for the Kubernetes services' network.
         :param pulumi.Input[_builtins.str] cluster_dns: The IP for the cluster's DNS service.
@@ -999,12 +1003,12 @@ class OksCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description of the cluster.
         :param pulumi.Input[_builtins.bool] disable_api_termination: If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
         :param pulumi.Input[_builtins.str] kubeconfig: (Sensitive value) A file containing access configuration to the cluster.
-        :param pulumi.Input[Union['OksClusterKubeconfigAttributesArgs', 'OksClusterKubeconfigAttributesArgsDict']] kubeconfig_attributes: (Sensitive value) Access configuration to the cluster.
+        :param pulumi.Input[Union['OksClusterKubeconfigAttributesArgs', 'OksClusterKubeconfigAttributesArgsDict', 'outputs.OksClusterKubeconfigAttributes']] kubeconfig_attributes: (Sensitive value) Access configuration to the cluster.
         :param pulumi.Input[_builtins.str] name: A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project in which you want to create a cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] quirks: The list of special configurations or behaviors for the cluster.
         :param pulumi.Input[_builtins.str] request_id: The ID of the API request.
-        :param pulumi.Input[Union['OksClusterStatusesArgs', 'OksClusterStatusesArgsDict']] statuses: The status information of the cluster.
+        :param pulumi.Input[Union['OksClusterStatusesArgs', 'OksClusterStatusesArgsDict', 'outputs.OksClusterStatuses']] statuses: The status information of the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value combinations of the tags associated with the cluster's metadata.
         :param pulumi.Input[_builtins.str] version: The Kubernetes version to be deployed for the cluster. For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
         """
@@ -1036,6 +1040,58 @@ class OksCluster(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["version"] = version
         return OksCluster(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_lbu: pulumi.Input[Optional[_builtins.bool]] = None,
+            admin_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            admission_flags: pulumi.Input[Optional[Union['OksClusterAdmissionFlagsArgs', 'OksClusterAdmissionFlagsArgsDict', 'outputs.OksClusterAdmissionFlags']]] = None,
+            auto_maintenances: pulumi.Input[Optional[Union['OksClusterAutoMaintenancesArgs', 'OksClusterAutoMaintenancesArgsDict', 'outputs.OksClusterAutoMaintenances']]] = None,
+            cidr_pods: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_service: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            cni: pulumi.Input[Optional[_builtins.str]] = None,
+            control_planes: pulumi.Input[Optional[_builtins.str]] = None,
+            cp_multi_az: pulumi.Input[Optional[_builtins.bool]] = None,
+            cp_subregions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_api_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+            kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig_attributes: pulumi.Input[Optional[Union['OksClusterKubeconfigAttributesArgs', 'OksClusterKubeconfigAttributesArgsDict', 'outputs.OksClusterKubeconfigAttributes']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            quirks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Union['OksClusterStatusesArgs', 'OksClusterStatusesArgsDict', 'outputs.OksClusterStatuses']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OksClusterTimeoutsArgs', 'OksClusterTimeoutsArgsDict', 'outputs.OksClusterTimeouts']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminLbu"] = admin_lbu
+        __props__["adminWhitelists"] = admin_whitelists
+        __props__["admissionFlags"] = admission_flags
+        __props__["autoMaintenances"] = auto_maintenances
+        __props__["cidrPods"] = cidr_pods
+        __props__["cidrService"] = cidr_service
+        __props__["clusterDns"] = cluster_dns
+        __props__["cni"] = cni
+        __props__["controlPlanes"] = control_planes
+        __props__["cpMultiAz"] = cp_multi_az
+        __props__["cpSubregions"] = cp_subregions
+        __props__["description"] = description
+        __props__["disableApiTermination"] = disable_api_termination
+        __props__["kubeconfig"] = kubeconfig
+        __props__["kubeconfigAttributes"] = kubeconfig_attributes
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["quirks"] = quirks
+        __props__["requestId"] = request_id
+        __props__["statuses"] = statuses
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oksCluster:OksCluster', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="adminLbu")

@@ -116,9 +116,9 @@ export interface GetKeypairOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetKeypairFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetKeypairFilterArgs>[] | undefined>;
     /**
      * The name of the keypair.
      */
-    keypairName?: pulumi.Input<string>;
+    keypairName?: pulumi.Input<string | undefined>;
 }

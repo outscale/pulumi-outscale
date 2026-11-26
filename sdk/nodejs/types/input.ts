@@ -9,72 +9,72 @@ export interface AccessKeyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ApiAccessPolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ApiAccessRuleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface CaTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientGatewayTag {
@@ -85,26 +85,26 @@ export interface ClientGatewayTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientGatewayTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface DhcpOptionTag {
@@ -115,64 +115,64 @@ export interface DhcpOptionTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface DhcpOptionTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface FlexibleGpuLinkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface FlexibleGpuTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAccessKeyFilter {
@@ -324,15 +324,15 @@ export interface GetImageBlockDeviceMappingArgs {
     /**
      * Information about the BSU volume to create.
      */
-    bsus?: pulumi.Input<pulumi.Input<inputs.GetImageBlockDeviceMappingBsusArgs>[]>;
+    bsus?: pulumi.Input<pulumi.Input<inputs.GetImageBlockDeviceMappingBsusArgs>[] | undefined>;
     /**
      * The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
      */
-    deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual device (`ephemeralN`).
      */
-    virtualDeviceName?: pulumi.Input<string>;
+    virtualDeviceName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetImageBlockDeviceMappingBsus {
@@ -365,26 +365,26 @@ export interface GetImageBlockDeviceMappingBsusArgs {
     /**
      * By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
      */
-    iops?: pulumi.Input<number>;
+    iops?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot used to create the volume.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The size of the volume, in gibibytes (GiB).<br />
      * If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
      * If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
      */
-    volumeSize?: pulumi.Input<number>;
+    volumeSize?: pulumi.Input<number | undefined>;
     /**
      * The type of the volume (`standard` \| `io1` \| `gp2`). If not specified in the request, a `standard` volume is created.<br />
      * For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 export interface GetImageExportTaskFilter {
@@ -490,19 +490,19 @@ export interface GetLoadBalancerAccessLogArgs {
     /**
      * If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osuBucketName` parameter is required.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OOS bucket for the access logs.
      */
-    osuBucketName?: pulumi.Input<string>;
+    osuBucketName?: pulumi.Input<string | undefined>;
     /**
      * The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
      */
-    osuBucketPrefix?: pulumi.Input<string>;
+    osuBucketPrefix?: pulumi.Input<string | undefined>;
     /**
      * The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
      */
-    publicationInterval?: pulumi.Input<number>;
+    publicationInterval?: pulumi.Input<number | undefined>;
 }
 
 export interface GetLoadBalancerFilter {
@@ -550,31 +550,31 @@ export interface GetLoadBalancerHealthCheckArgs {
     /**
      * The number of seconds between two requests (between `5` and `600` both included).
      */
-    checkInterval?: pulumi.Input<number>;
+    checkInterval?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The port number (between `1` and `65535`, both included).
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The protocol for the URL of the VM (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive failed requests before considering the VM as unhealthy (between `2` and `10` both included).
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface GetLoadBalancerListener {
@@ -608,27 +608,27 @@ export interface GetLoadBalancerListenerArgs {
     /**
      * The port on which the backend VM is listening (between `1` and `65535`, both included).
      */
-    backendPort?: pulumi.Input<number>;
+    backendPort?: pulumi.Input<number | undefined>;
     /**
      * The protocol for routing traffic to backend VMs (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    backendProtocol?: pulumi.Input<string>;
+    backendProtocol?: pulumi.Input<string | undefined>;
     /**
      * The port on which the load balancer is listening (between `1` and `65535`, both included).
      */
-    loadBalancerPort?: pulumi.Input<number>;
+    loadBalancerPort?: pulumi.Input<number | undefined>;
     /**
      * The routing protocol (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    loadBalancerProtocol?: pulumi.Input<string>;
+    loadBalancerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The names of the policies. If there are no policies enabled, the list is empty.
      */
-    policyNames?: pulumi.Input<pulumi.Input<string>[]>;
+    policyNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
      */
-    serverCertificateId?: pulumi.Input<string>;
+    serverCertificateId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetLoadBalancerListenerRuleFilter {
@@ -1098,27 +1098,27 @@ export interface GetUserGroupUserArgs {
     /**
      * The date and time (UTC) of creation of the EIM user.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) of the last modification of the EIM user.
      */
-    lastModificationDate?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
     /**
      * The path to the group. If not specified, it is set to a slash (`/`).
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The email address of the EIM user.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * The ID of the EIM user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The name of the EIM user.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUserGroupsFilter {
@@ -1261,41 +1261,41 @@ export interface ImageBlockDeviceMapping {
     /**
      * Information about the BSU volume to create.
      */
-    bsus?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMappingBsus>[]>;
+    bsus?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMappingBsus>[] | undefined>;
     /**
      * The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
      */
-    deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual device (`ephemeralN`).
      */
-    virtualDeviceName?: pulumi.Input<string>;
+    virtualDeviceName?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageBlockDeviceMappingBsus {
     /**
      * By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
      */
-    iops?: pulumi.Input<number>;
+    iops?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot used to create the volume.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The size of the volume, in gibibytes (GiB).<br />
      * If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br />
      * If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.
      */
-    volumeSize?: pulumi.Input<number>;
+    volumeSize?: pulumi.Input<number | undefined>;
     /**
      * The type of the volume (`standard` \| `io1` \| `gp2`). If not specified in the request, a `standard` volume is created.<br />
      * For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageExportTaskOsuExport {
@@ -1306,7 +1306,7 @@ export interface ImageExportTaskOsuExport {
     /**
      * Information about the OOS API key.
      */
-    osuApiKeys?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskOsuExportOsuApiKey>[]>;
+    osuApiKeys?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskOsuExportOsuApiKey>[] | undefined>;
     /**
      * The name of the OOS bucket where you want to export the object.
      */
@@ -1314,11 +1314,11 @@ export interface ImageExportTaskOsuExport {
     /**
      * The URL of the manifest file.
      */
-    osuManifestUrl?: pulumi.Input<string>;
+    osuManifestUrl?: pulumi.Input<string | undefined>;
     /**
      * The prefix for the key of the OOS object.
      */
-    osuPrefix?: pulumi.Input<string>;
+    osuPrefix?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageExportTaskOsuExportOsuApiKey {
@@ -1336,81 +1336,81 @@ export interface ImageExportTaskTag {
     /**
      * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageLaunchPermissionPermissionAdditions {
     /**
      * The OUTSCALE account ID of one or more users to whom you want to give permissions.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: pulumi.Input<string>;
+    globalPermission?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageLaunchPermissionPermissionRemovals {
     /**
      * The OUTSCALE account ID of one or more users from whom you want to remove permissions.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: pulumi.Input<string>;
+    globalPermission?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageLaunchPermissionPermissionsToLaunch {
     /**
      * One or more OUTSCALE account IDs that the permission is associated with.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A global permission for all accounts.<br />
      * (Request) Set this parameter to true to make the resource public (if the parent parameter is `additions`) or to make the resource private (if the parent parameter is `removals`).<br />
      * (Response) If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: pulumi.Input<string>;
+    globalPermission?: pulumi.Input<string | undefined>;
 }
 
 export interface ImagePermissionsToLaunch {
     /**
      * One or more OUTSCALE account IDs that the permission is associated with.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A global permission for all accounts.<br />
      * (Request) Set this parameter to true to make the resource public (if the parent parameter is `Additions`) or to make the resource private (if the parent parameter is `Removals`).<br />
      * (Response) If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: pulumi.Input<boolean>;
+    globalPermission?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ImageStateComment {
     /**
      * The code of the change of state.
      */
-    stateCode?: pulumi.Input<string>;
+    stateCode?: pulumi.Input<string | undefined>;
     /**
      * A message explaining the change of state.
      */
-    stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageTag {
     /**
      * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface InternetServiceLinkTag {
@@ -1428,19 +1428,19 @@ export interface InternetServiceLinkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface InternetServiceTag {
@@ -1451,26 +1451,26 @@ export interface InternetServiceTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface InternetServiceTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface KeypairTag {
@@ -1481,101 +1481,101 @@ export interface KeypairTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface KeypairTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerAccessLog {
     /**
      * If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osuBucketName` parameter is required.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OOS bucket for the access logs.
      */
-    osuBucketName?: pulumi.Input<string>;
+    osuBucketName?: pulumi.Input<string | undefined>;
     /**
      * The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
      */
-    osuBucketPrefix?: pulumi.Input<string>;
+    osuBucketPrefix?: pulumi.Input<string | undefined>;
     /**
      * The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
      */
-    publicationInterval?: pulumi.Input<number>;
+    publicationInterval?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadBalancerApplicationStickyCookiePolicy {
     /**
      * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
-    cookieName?: pulumi.Input<string>;
+    cookieName?: pulumi.Input<string | undefined>;
     /**
      * The name of the stickiness policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerAttributesAccessLog {
     /**
      * If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osuBucketName` parameter is required.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OOS bucket for the access logs.
      */
-    osuBucketName?: pulumi.Input<string>;
+    osuBucketName?: pulumi.Input<string | undefined>;
     /**
      * The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
      */
-    osuBucketPrefix?: pulumi.Input<string>;
+    osuBucketPrefix?: pulumi.Input<string | undefined>;
     /**
      * The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
      */
-    publicationInterval?: pulumi.Input<number>;
+    publicationInterval?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadBalancerAttributesApplicationStickyCookiePolicy {
     /**
      * The name of the application cookie used for stickiness, between 1 and 255 characters.
      */
-    cookieName?: pulumi.Input<string>;
+    cookieName?: pulumi.Input<string | undefined>;
     /**
      * The name of the stickiness policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerAttributesHealthCheck {
     /**
      * The number of seconds between two requests (between `5` and `600` both included).
      */
-    checkInterval?: pulumi.Input<number>;
+    checkInterval?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The port number (between `1` and `65535`, both included).
      */
@@ -1587,98 +1587,98 @@ export interface LoadBalancerAttributesHealthCheck {
     /**
      * The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive failed requests before considering the VM as unhealthy (between `2` and `10` both included).
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadBalancerAttributesListener {
     /**
      * The port on which the backend VM is listening (between `1` and `65535`, both included).
      */
-    backendPort?: pulumi.Input<number>;
+    backendPort?: pulumi.Input<number | undefined>;
     /**
      * The protocol for routing traffic to backend VMs (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    backendProtocol?: pulumi.Input<string>;
+    backendProtocol?: pulumi.Input<string | undefined>;
     /**
      * The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.
      */
-    loadBalancerPort?: pulumi.Input<number>;
+    loadBalancerPort?: pulumi.Input<number | undefined>;
     /**
      * The routing protocol (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    loadBalancerProtocol?: pulumi.Input<string>;
+    loadBalancerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy you want to enable for the listener.
      */
-    policyNames?: pulumi.Input<pulumi.Input<string>[]>;
+    policyNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `loadBalancerPort` parameter.
      */
-    serverCertificateId?: pulumi.Input<string>;
+    serverCertificateId?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerAttributesLoadBalancerStickyCookiePolicy {
     /**
      * The name of the stickiness policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerAttributesSourceSecurityGroup {
     /**
      * The OUTSCALE account ID of the owner of the security group.
      */
-    securityGroupAccountId?: pulumi.Input<string>;
+    securityGroupAccountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerAttributesTag {
     /**
      * The key of the tag, between 1 and 128 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerHealthCheck {
     /**
      * The number of seconds between two requests (between `5` and `600` both included).
      */
-    checkInterval?: pulumi.Input<number>;
+    checkInterval?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The port number (between `1` and `65535`, both included).
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The protocol for the URL of the VM (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive failed requests before considering the VM as unhealthy (between `2` and `10` both included).
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadBalancerListener {
@@ -1701,12 +1701,12 @@ export interface LoadBalancerListener {
     /**
      * The names of the policies. If there are no policies enabled, the list is empty.
      */
-    policyNames?: pulumi.Input<pulumi.Input<string>[]>;
+    policyNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).<br/>
      * This parameter is required for `HTTPS` and `SSL` protocols.
      */
-    serverCertificateId?: pulumi.Input<string>;
+    serverCertificateId?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerListenerRuleListener {
@@ -1724,19 +1724,19 @@ export interface LoadBalancerListenerRuleListenerRule {
     /**
      * The type of action for the rule (always `forward`).
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * A host-name pattern for the rule, with a maximum length of 128 characters. This host-name pattern supports maximum three wildcards, and must not contain any special characters except `-.?`.
      */
-    hostNamePattern?: pulumi.Input<string>;
+    hostNamePattern?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener.
      */
-    listenerId?: pulumi.Input<number>;
+    listenerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the listener rule.
      */
-    listenerRuleId?: pulumi.Input<number>;
+    listenerRuleId?: pulumi.Input<number | undefined>;
     /**
      * A human-readable name for the listener rule.
      */
@@ -1744,7 +1744,7 @@ export interface LoadBalancerListenerRuleListenerRule {
     /**
      * A path pattern for the rule, with a maximum length of 128 characters. This path pattern supports maximum three wildcards, and must not contain any special characters except `_-.$/~&quot;'@:+?`.
      */
-    pathPattern?: pulumi.Input<string>;
+    pathPattern?: pulumi.Input<string | undefined>;
     /**
      * The priority level of the listener rule, between `1` and `19999` both included. Each rule must have a unique priority level. Otherwise, an error is returned.
      */
@@ -1755,132 +1755,132 @@ export interface LoadBalancerListenerRuleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerLoadBalancerStickyCookiePolicy {
     /**
      * The name of the stickiness policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerPolicyAccessLog {
     /**
      * If true, access logs are enabled for your load balancer. If false, they are not. If you set this to true in your request, the `osuBucketName` parameter is required.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OOS bucket for the access logs.
      */
-    osuBucketName?: pulumi.Input<string>;
+    osuBucketName?: pulumi.Input<string | undefined>;
     /**
      * The path to the folder of the access logs in your OOS bucket (by default, the `root` level of your bucket).
      */
-    osuBucketPrefix?: pulumi.Input<string>;
+    osuBucketPrefix?: pulumi.Input<string | undefined>;
     /**
      * The time interval for the publication of access logs in the OOS bucket, in minutes. This value can be either `5` or `60` (by default, `60`).
      */
-    publicationInterval?: pulumi.Input<number>;
+    publicationInterval?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadBalancerPolicyApplicationStickyCookiePolicy {
     /**
      * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
-    cookieName?: pulumi.Input<string>;
+    cookieName?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerPolicyHealthCheck {
     /**
      * The number of seconds between two requests (between `5` and `600` both included).
      */
-    checkInterval?: pulumi.Input<number>;
+    checkInterval?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive successful requests before considering the VM as healthy (between `2` and `10` both included).
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * If you use the HTTP or HTTPS protocols, the request URL path. Always starts with a slash (`/`).
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The port number (between `1` and `65535`, both included).
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The protocol for the URL of the VM (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive failed requests before considering the VM as unhealthy (between `2` and `10` both included).
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadBalancerPolicyListener {
     /**
      * The port on which the backend VM is listening (between `1` and `65535`, both included).
      */
-    backendPort?: pulumi.Input<number>;
+    backendPort?: pulumi.Input<number | undefined>;
     /**
      * The protocol for routing traffic to backend VMs (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    backendProtocol?: pulumi.Input<string>;
+    backendProtocol?: pulumi.Input<string | undefined>;
     /**
      * The port on which the load balancer is listening (between `1` and `65535`, both included).
      */
-    loadBalancerPort?: pulumi.Input<number>;
+    loadBalancerPort?: pulumi.Input<number | undefined>;
     /**
      * The routing protocol (`HTTP` \| `HTTPS` \| `TCP` \| `SSL`).
      */
-    loadBalancerProtocol?: pulumi.Input<string>;
+    loadBalancerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The names of the policies. If there are no policies enabled, the list is empty.
      */
-    policyNames?: pulumi.Input<pulumi.Input<string>[]>;
+    policyNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The OUTSCALE Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > OUTSCALE Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).
      */
-    serverCertificateId?: pulumi.Input<string>;
+    serverCertificateId?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerPolicyLoadBalancerStickyCookiePolicy {
     /**
      * The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerPolicySourceSecurityGroup {
     /**
      * The OUTSCALE account ID of the owner of the security group.
      */
-    securityGroupAccountId?: pulumi.Input<string>;
+    securityGroupAccountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerPolicyTag {
@@ -1898,26 +1898,26 @@ export interface LoadBalancerPolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerSourceSecurityGroup {
     /**
      * The OUTSCALE account ID of the owner of the security group.
      */
-    securityGroupAccountId?: pulumi.Input<string>;
+    securityGroupAccountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerTag {
@@ -1928,64 +1928,64 @@ export interface LoadBalancerTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadBalancerVmsTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface MainRouteTableLinkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface NatServicePublicIp {
@@ -2008,26 +2008,26 @@ export interface NatServiceTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface NatServiceTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface NetAccessPointTag {
@@ -2038,26 +2038,26 @@ export interface NetAccessPointTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface NetAccessPointTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface NetAttributesTag {
@@ -2075,19 +2075,19 @@ export interface NetAttributesTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface NetPeeringAcceptationAccepterNet {
@@ -2146,19 +2146,19 @@ export interface NetPeeringAcceptationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface NetPeeringAccepterNet {
@@ -2210,26 +2210,26 @@ export interface NetPeeringTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface NetPeeringTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface NetTag {
@@ -2240,335 +2240,335 @@ export interface NetTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface NetTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface NicLinkNic {
     /**
      * If true, the NIC is deleted when the VM is terminated.
      */
-    deleteOnVmDeletion?: pulumi.Input<string>;
+    deleteOnVmDeletion?: pulumi.Input<string | undefined>;
     /**
      * The device index for the NIC attachment (between `0` and `7`, both included).
      */
-    deviceNumber?: pulumi.Input<number>;
+    deviceNumber?: pulumi.Input<number | undefined>;
     /**
      * The ID of the NIC to attach.
      */
-    linkNicId?: pulumi.Input<string>;
+    linkNicId?: pulumi.Input<string | undefined>;
     /**
      * The state of the NIC (`available` \| `attaching` \| `in-use` \| `detaching`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the VM.
      */
-    vmAccountId?: pulumi.Input<string>;
+    vmAccountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VM.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }
 
 export interface NicLinkPublicIp {
     /**
      * (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
      */
-    linkPublicIpId?: pulumi.Input<string>;
+    linkPublicIpId?: pulumi.Input<string | undefined>;
     /**
      * The name of the public DNS.
      */
-    publicDnsName?: pulumi.Input<string>;
+    publicDnsName?: pulumi.Input<string | undefined>;
     /**
      * The public IP associated with the NIC.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the public IP.
      */
-    publicIpAccountId?: pulumi.Input<string>;
+    publicIpAccountId?: pulumi.Input<string | undefined>;
     /**
      * The allocation ID of the public IP.
      */
-    publicIpId?: pulumi.Input<string>;
+    publicIpId?: pulumi.Input<string | undefined>;
 }
 
 export interface NicPrivateIp {
     /**
      * If true, the IP is the primary private IP of the NIC.
      */
-    isPrimary?: pulumi.Input<boolean>;
+    isPrimary?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the public IP association.
      */
-    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIpLinkPublicIp>[]>;
+    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.NicPrivateIpLinkPublicIp>[] | undefined>;
     /**
      * The name of the private DNS.
      */
-    privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string | undefined>;
     /**
      * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
 }
 
 export interface NicPrivateIpLinkPublicIp {
     /**
      * (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
      */
-    linkPublicIpId?: pulumi.Input<string>;
+    linkPublicIpId?: pulumi.Input<string | undefined>;
     /**
      * The name of the public DNS.
      */
-    publicDnsName?: pulumi.Input<string>;
+    publicDnsName?: pulumi.Input<string | undefined>;
     /**
      * The public IP associated with the NIC.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the public IP.
      */
-    publicIpAccountId?: pulumi.Input<string>;
+    publicIpAccountId?: pulumi.Input<string | undefined>;
     /**
      * The allocation ID of the public IP.
      */
-    publicIpId?: pulumi.Input<string>;
+    publicIpId?: pulumi.Input<string | undefined>;
 }
 
 export interface NicSecurityGroup {
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface NicTag {
     /**
      * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface OksClusterAdmissionFlags {
     /**
      * The list of admission plugins that are currently applied to the cluster.
      */
-    appliedAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[]>;
+    appliedAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of Kubernetes admission plugins to disable.
      */
-    disableAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[]>;
+    disableAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of Kubernetes admission plugins that are disabled.
      */
-    disableAdmissionPluginsActuals?: pulumi.Input<pulumi.Input<string>[]>;
+    disableAdmissionPluginsActuals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of Kubernetes admission plugins to enable.
      */
-    enableAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[]>;
+    enableAdmissionPlugins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of Kubernetes admission plugins that are enabled.
      */
-    enableAdmissionPluginsActuals?: pulumi.Input<pulumi.Input<string>[]>;
+    enableAdmissionPluginsActuals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OksClusterAutoMaintenances {
     /**
      * The maintenance window configuration for minor Kubernetes upgrades.
      */
-    minorUpgradeMaintenance?: pulumi.Input<inputs.OksClusterAutoMaintenancesMinorUpgradeMaintenance>;
+    minorUpgradeMaintenance?: pulumi.Input<inputs.OksClusterAutoMaintenancesMinorUpgradeMaintenance | undefined>;
     /**
      * The maintenance window configuration for minor Kubernetes upgrades.
      */
-    minorUpgradeMaintenanceActual?: pulumi.Input<inputs.OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual>;
+    minorUpgradeMaintenanceActual?: pulumi.Input<inputs.OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual | undefined>;
     /**
      * The maintenance window configuration for patch Kubernetes upgrades.
      */
-    patchUpgradeMaintenance?: pulumi.Input<inputs.OksClusterAutoMaintenancesPatchUpgradeMaintenance>;
+    patchUpgradeMaintenance?: pulumi.Input<inputs.OksClusterAutoMaintenancesPatchUpgradeMaintenance | undefined>;
     /**
      * The maintenance window configuration for minor Kubernetes upgrades.
      */
-    patchUpgradeMaintenanceActual?: pulumi.Input<inputs.OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual>;
+    patchUpgradeMaintenanceActual?: pulumi.Input<inputs.OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual | undefined>;
 }
 
 export interface OksClusterAutoMaintenancesMinorUpgradeMaintenance {
     /**
      * The duration of the maintenance window, in hours. By default, `0`.
      */
-    durationHours?: pulumi.Input<number>;
+    durationHours?: pulumi.Input<number | undefined>;
     /**
      * If true, a maintenance window is enabled. By default, true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The starting time of the maintenance window, in hours. By default, `12`.
      */
-    startHour?: pulumi.Input<number>;
+    startHour?: pulumi.Input<number | undefined>;
     /**
      * The timezone for the maintenance window. By default, `UTC`.
      */
-    tz?: pulumi.Input<string>;
+    tz?: pulumi.Input<string | undefined>;
     /**
      * The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
      */
-    weekDay?: pulumi.Input<string>;
+    weekDay?: pulumi.Input<string | undefined>;
 }
 
 export interface OksClusterAutoMaintenancesMinorUpgradeMaintenanceActual {
-    durationHours?: pulumi.Input<number>;
-    enabled?: pulumi.Input<boolean>;
-    startHour?: pulumi.Input<number>;
-    tz?: pulumi.Input<string>;
-    weekDay?: pulumi.Input<string>;
+    durationHours?: pulumi.Input<number | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    startHour?: pulumi.Input<number | undefined>;
+    tz?: pulumi.Input<string | undefined>;
+    weekDay?: pulumi.Input<string | undefined>;
 }
 
 export interface OksClusterAutoMaintenancesPatchUpgradeMaintenance {
     /**
      * The duration of the maintenance window, in hours. By default, `0`.
      */
-    durationHours?: pulumi.Input<number>;
+    durationHours?: pulumi.Input<number | undefined>;
     /**
      * If true, a maintenance window is enabled. By default, true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The starting time of the maintenance window, in hours. By default, `12`.
      */
-    startHour?: pulumi.Input<number>;
+    startHour?: pulumi.Input<number | undefined>;
     /**
      * The timezone for the maintenance window. By default, `UTC`.
      */
-    tz?: pulumi.Input<string>;
+    tz?: pulumi.Input<string | undefined>;
     /**
      * The weekday on which the maintenance window begins (`Mon` \| `Tue` \| `Wed` \| `Thu` \| `Fri` \| `Sat` \| `Sun`). By default, `Tue`.
      */
-    weekDay?: pulumi.Input<string>;
+    weekDay?: pulumi.Input<string | undefined>;
 }
 
 export interface OksClusterAutoMaintenancesPatchUpgradeMaintenanceActual {
-    durationHours?: pulumi.Input<number>;
-    enabled?: pulumi.Input<boolean>;
-    startHour?: pulumi.Input<number>;
-    tz?: pulumi.Input<string>;
-    weekDay?: pulumi.Input<string>;
+    durationHours?: pulumi.Input<number | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    startHour?: pulumi.Input<number | undefined>;
+    tz?: pulumi.Input<string | undefined>;
+    weekDay?: pulumi.Input<string | undefined>;
 }
 
 export interface OksClusterKubeconfigAttributes {
     /**
      * The client certificate for accessing the cluster.
      */
-    clientCertificate?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string | undefined>;
     /**
      * The private key matching the client certificate.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * The Certificate Authority (CA) associated with the cluster.
      */
-    clusterCaCertificate?: pulumi.Input<string>;
+    clusterCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The URL of the Kubernetes API server of the cluster.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
 }
 
 export interface OksClusterStatuses {
     /**
      * Any available version of Kubernetes for upgrade (if applicable). For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
      */
-    availableUpgrade?: pulumi.Input<string>;
+    availableUpgrade?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the cluster was created (date-time).
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the cluster was deleted (if applicable) (date-time).
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * The status of the cluster.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the cluster was last updated (date-time).
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface OksClusterTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OksManifestFieldManager {
     /**
      * (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
      */
-    forceConflicts?: pulumi.Input<boolean>;
+    forceConflicts?: pulumi.Input<boolean | undefined>;
     /**
      * (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface OksManifestTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OksManifestWaitFor {
@@ -2581,26 +2581,26 @@ export interface OksManifestWaitFor {
     /**
      * A custom timeout for the `waitFor` checks. If not specified, falls back to the CRUD operation default timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 export interface OksProjectTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketCorsRule {
@@ -2619,7 +2619,7 @@ export interface OosBucketCorsRule {
     /**
      * One or more headers in the response that you want to make accessible.
      */
-    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The duration in seconds that the preflight response for the specified source can be cached.
      */
@@ -2630,127 +2630,127 @@ export interface OosBucketCorsTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketEncryptionTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketGrant {
     /**
      * Users to whom you grant `full-control` permission.
      */
-    fullControl?: pulumi.Input<inputs.OosBucketGrantFullControl>;
+    fullControl?: pulumi.Input<inputs.OosBucketGrantFullControl | undefined>;
     /**
      * Users to whom you grant `read` permission.
      */
-    read?: pulumi.Input<inputs.OosBucketGrantRead>;
+    read?: pulumi.Input<inputs.OosBucketGrantRead | undefined>;
     /**
      * Users to whom you grant `readAcp` permission.
      */
-    readAcp?: pulumi.Input<inputs.OosBucketGrantReadAcp>;
+    readAcp?: pulumi.Input<inputs.OosBucketGrantReadAcp | undefined>;
     /**
      * Users to whom you grant `write` permission.
      */
-    write?: pulumi.Input<inputs.OosBucketGrantWrite>;
+    write?: pulumi.Input<inputs.OosBucketGrantWrite | undefined>;
     /**
      * Users to whom you grant `writeAcp` permission.
      */
-    writeAcp?: pulumi.Input<inputs.OosBucketGrantWriteAcp>;
+    writeAcp?: pulumi.Input<inputs.OosBucketGrantWriteAcp | undefined>;
 }
 
 export interface OosBucketGrantFullControl {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosBucketGrantRead {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosBucketGrantReadAcp {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosBucketGrantWrite {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosBucketGrantWriteAcp {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosBucketLifecycleRule {
     /**
      * Specifies when an incomplete multipart upload is aborted.
      */
-    abortIncompleteMultipartUpload?: pulumi.Input<inputs.OosBucketLifecycleRuleAbortIncompleteMultipartUpload>;
+    abortIncompleteMultipartUpload?: pulumi.Input<inputs.OosBucketLifecycleRuleAbortIncompleteMultipartUpload | undefined>;
     /**
      * Specifies the expiration date for the objects.
      */
-    expiration?: pulumi.Input<inputs.OosBucketLifecycleRuleExpiration>;
+    expiration?: pulumi.Input<inputs.OosBucketLifecycleRuleExpiration | undefined>;
     /**
      * Specifies the objects the rule applies to, using `and`, `prefix`, `tags` keys. See the Object filtering section below for examples of usage.
      */
@@ -2758,11 +2758,11 @@ export interface OosBucketLifecycleRule {
     /**
      * A unique name for the rule. If omitted, the provider generates a unique name for it.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * If specified, the noncurrent versions of your objects are automatically deleted once they reach the duration specified in their lifecycle.
      */
-    noncurrentVersionExpiration?: pulumi.Input<inputs.OosBucketLifecycleRuleNoncurrentVersionExpiration>;
+    noncurrentVersionExpiration?: pulumi.Input<inputs.OosBucketLifecycleRuleNoncurrentVersionExpiration | undefined>;
     /**
      * If `Enabled`, the rule is applied. If `Disabled`, the rule is not applied.
      */
@@ -2773,27 +2773,27 @@ export interface OosBucketLifecycleRuleAbortIncompleteMultipartUpload {
     /**
      * The number of days after which an incomplete multipart upload is aborted.
      */
-    daysAfterInitiation?: pulumi.Input<number>;
+    daysAfterInitiation?: pulumi.Input<number | undefined>;
 }
 
 export interface OosBucketLifecycleRuleExpiration {
     /**
      * The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
      */
-    date?: pulumi.Input<string>;
+    date?: pulumi.Input<string | undefined>;
     /**
      * The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
      */
-    expiredObjectDeleteMarker?: pulumi.Input<boolean>;
+    expiredObjectDeleteMarker?: pulumi.Input<boolean | undefined>;
 }
 
 export interface OosBucketLifecycleRuleFilter {
-    and?: pulumi.Input<inputs.OosBucketLifecycleRuleFilterAnd>;
-    prefix?: pulumi.Input<string>;
+    and?: pulumi.Input<inputs.OosBucketLifecycleRuleFilterAnd | undefined>;
+    prefix?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketLifecycleRuleFilterAnd {
@@ -2812,177 +2812,177 @@ export interface OosBucketLifecycleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketObjectLock {
     /**
      * The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
      */
-    defaultRetention?: pulumi.Input<inputs.OosBucketObjectLockDefaultRetention>;
+    defaultRetention?: pulumi.Input<inputs.OosBucketObjectLockDefaultRetention | undefined>;
     /**
      * (Default: `false`) Whether object lock is enabled on the bucket.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface OosBucketObjectLockDefaultRetention {
     /**
      * The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The years after which your objects will no longer be protected.
      */
-    years?: pulumi.Input<number>;
+    years?: pulumi.Input<number | undefined>;
 }
 
 export interface OosBucketPermissions {
     /**
      * Information about a granted permission for the bucket.
      */
-    grants?: pulumi.Input<pulumi.Input<inputs.OosBucketPermissionsGrant>[]>;
+    grants?: pulumi.Input<pulumi.Input<inputs.OosBucketPermissionsGrant>[] | undefined>;
     /**
      * Information about the owner of the bucket.
      */
-    owner?: pulumi.Input<inputs.OosBucketPermissionsOwner>;
+    owner?: pulumi.Input<inputs.OosBucketPermissionsOwner | undefined>;
 }
 
 export interface OosBucketPermissionsGrant {
     /**
      * A grantee.
      */
-    grantee?: pulumi.Input<inputs.OosBucketPermissionsGrantGrantee>;
+    grantee?: pulumi.Input<inputs.OosBucketPermissionsGrantGrantee | undefined>;
     /**
      * The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketPermissionsGrantGrantee {
     /**
      * The OUTSCALE account ID of the owner of the bucket.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the grantee.
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * The S3 user ID of the owner of the bucket.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The grantee group (`AllUsers` | `AuthenticatedUsers`).
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketPermissionsOwner {
     /**
      * The OUTSCALE account ID of the owner of the bucket.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The S3 user ID of the owner of the bucket.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketPolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosBucketVersioningTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectCopyCopySource {
     /**
      * Copies the object only if its ETag matches the ETag you specify.
      */
-    ifMatch?: pulumi.Input<string>;
+    ifMatch?: pulumi.Input<string | undefined>;
     /**
      * Copies the object only if it has been modified after the date and time you specify, in UTC format.
      */
-    ifModifiedSince?: pulumi.Input<string>;
+    ifModifiedSince?: pulumi.Input<string | undefined>;
     /**
      * Copies the object only if its ETag does not match the ETag you specify.
      */
-    ifNoneMatch?: pulumi.Input<string>;
+    ifNoneMatch?: pulumi.Input<string | undefined>;
     /**
      * Copies the object only if it has not been modified since the date and time you specify, in UTC format.
      */
-    ifUnmodifiedSince?: pulumi.Input<string>;
+    ifUnmodifiedSince?: pulumi.Input<string | undefined>;
     /**
      * The path in OOS to the source object you want to copy.
      */
@@ -2990,365 +2990,400 @@ export interface OosObjectCopyCopySource {
     /**
      * The version ID of the object.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectCopyGrant {
     /**
      * Users to whom you grant `full-control` permission.
      */
-    fullControl?: pulumi.Input<inputs.OosObjectCopyGrantFullControl>;
+    fullControl?: pulumi.Input<inputs.OosObjectCopyGrantFullControl | undefined>;
     /**
      * Users to whom you grant `read` permission.
      */
-    read?: pulumi.Input<inputs.OosObjectCopyGrantRead>;
+    read?: pulumi.Input<inputs.OosObjectCopyGrantRead | undefined>;
     /**
      * Users to whom you grant `readAcp` permission.
      */
-    readAcp?: pulumi.Input<inputs.OosObjectCopyGrantReadAcp>;
+    readAcp?: pulumi.Input<inputs.OosObjectCopyGrantReadAcp | undefined>;
     /**
      * Users to whom you grant `write` permission.
      */
-    write?: pulumi.Input<inputs.OosObjectCopyGrantWrite>;
+    write?: pulumi.Input<inputs.OosObjectCopyGrantWrite | undefined>;
     /**
      * Users to whom you grant `writeAcp` permission.
      */
-    writeAcp?: pulumi.Input<inputs.OosObjectCopyGrantWriteAcp>;
+    writeAcp?: pulumi.Input<inputs.OosObjectCopyGrantWriteAcp | undefined>;
 }
 
 export interface OosObjectCopyGrantFullControl {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectCopyGrantRead {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectCopyGrantReadAcp {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectCopyGrantWrite {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectCopyGrantWriteAcp {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectCopyPermissions {
     /**
      * Information about a granted permission for the object.
      */
-    grants?: pulumi.Input<pulumi.Input<inputs.OosObjectCopyPermissionsGrant>[]>;
+    grants?: pulumi.Input<pulumi.Input<inputs.OosObjectCopyPermissionsGrant>[] | undefined>;
     /**
      * Information about the owner of the object.
      */
-    owner?: pulumi.Input<inputs.OosObjectCopyPermissionsOwner>;
+    owner?: pulumi.Input<inputs.OosObjectCopyPermissionsOwner | undefined>;
 }
 
 export interface OosObjectCopyPermissionsGrant {
     /**
      * A grantee.
      */
-    grantee?: pulumi.Input<inputs.OosObjectCopyPermissionsGrantGrantee>;
+    grantee?: pulumi.Input<inputs.OosObjectCopyPermissionsGrantGrantee | undefined>;
     /**
      * The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectCopyPermissionsGrantGrantee {
     /**
      * The OUTSCALE account ID of the owner of the object.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the grantee.
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * The S3 user ID of the owner of the object.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The grantee group (`AllUsers` | `AuthenticatedUsers`).
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectCopyPermissionsOwner {
     /**
      * The OUTSCALE account ID of the owner of the object.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The S3 user ID of the owner of the object.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectCopyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectGrant {
     /**
      * Users to whom you grant `full-control` permission.
      */
-    fullControl?: pulumi.Input<inputs.OosObjectGrantFullControl>;
+    fullControl?: pulumi.Input<inputs.OosObjectGrantFullControl | undefined>;
     /**
      * Users to whom you grant `read` permission.
      */
-    read?: pulumi.Input<inputs.OosObjectGrantRead>;
+    read?: pulumi.Input<inputs.OosObjectGrantRead | undefined>;
     /**
      * Users to whom you grant `readAcp` permission.
      */
-    readAcp?: pulumi.Input<inputs.OosObjectGrantReadAcp>;
+    readAcp?: pulumi.Input<inputs.OosObjectGrantReadAcp | undefined>;
     /**
      * Users to whom you grant `write` permission.
      */
-    write?: pulumi.Input<inputs.OosObjectGrantWrite>;
+    write?: pulumi.Input<inputs.OosObjectGrantWrite | undefined>;
     /**
      * Users to whom you grant `writeAcp` permission.
      */
-    writeAcp?: pulumi.Input<inputs.OosObjectGrantWriteAcp>;
+    writeAcp?: pulumi.Input<inputs.OosObjectGrantWriteAcp | undefined>;
 }
 
 export interface OosObjectGrantFullControl {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectGrantRead {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectGrantReadAcp {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectGrantWrite {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectGrantWriteAcp {
     /**
      * One or more user email addresses.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OosObjectPermissions {
     /**
      * Information about a granted permission for the object.
      */
-    grants?: pulumi.Input<pulumi.Input<inputs.OosObjectPermissionsGrant>[]>;
+    grants?: pulumi.Input<pulumi.Input<inputs.OosObjectPermissionsGrant>[] | undefined>;
     /**
      * Information about the owner of the object.
      */
-    owner?: pulumi.Input<inputs.OosObjectPermissionsOwner>;
+    owner?: pulumi.Input<inputs.OosObjectPermissionsOwner | undefined>;
 }
 
 export interface OosObjectPermissionsGrant {
     /**
      * A grantee.
      */
-    grantee?: pulumi.Input<inputs.OosObjectPermissionsGrantGrantee>;
+    grantee?: pulumi.Input<inputs.OosObjectPermissionsGrantGrantee | undefined>;
     /**
      * The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectPermissionsGrantGrantee {
     /**
      * The OUTSCALE account ID of the owner of the object.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the grantee.
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * The S3 user ID of the owner of the object.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The grantee group (`AllUsers` | `AuthenticatedUsers`).
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectPermissionsOwner {
     /**
      * The OUTSCALE account ID of the owner of the object.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The S3 user ID of the owner of the object.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectRetentionTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface OosObjectTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface PolicyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface PolicyVersionTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface ProviderApi {
+    endpoint?: pulumi.Input<string | undefined>;
+    /**
+     * TLS insecure connection
+     */
+    insecure?: pulumi.Input<boolean | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    /**
+     * Path to the x509 certificate
+     *
+     * @deprecated 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+     */
+    x509CertPath?: pulumi.Input<string | undefined>;
+    /**
+     * Path to the x509 key
+     *
+     * @deprecated 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+     */
+    x509KeyPath?: pulumi.Input<string | undefined>;
 }
 
 export interface ProviderEndpoint {
     /**
-     * Use this to override the default service endpoint URL
+     * The Endpoint for Outscale API operations.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
+    /**
+     * The Endpoint for OKS API operations.
+     */
+    oks?: pulumi.Input<string | undefined>;
+}
+
+export interface ProviderOks {
+    endpoint?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+}
+
+export interface ProviderOos {
+    endpoint?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface PublicIpLinkTag {
@@ -3360,15 +3395,15 @@ export interface PublicIpLinkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface PublicIpTag {
@@ -3379,26 +3414,26 @@ export interface PublicIpTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PublicIpTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface RouteTableLinkRouteTable {
@@ -3428,19 +3463,19 @@ export interface RouteTableLinkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface RouteTableRoute {
@@ -3505,45 +3540,45 @@ export interface RouteTableTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface RouteTableTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface RouteTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface SecurityGroupInboundRule {
@@ -3638,61 +3673,61 @@ export interface SecurityGroupRuleRule {
     /**
      * The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.
      */
-    fromPortRange?: pulumi.Input<number>;
+    fromPortRange?: pulumi.Input<number | undefined>;
     /**
      * The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/24`).
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Information about one or more source or destination security groups.
      */
-    securityGroupsMembers?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRuleRuleSecurityGroupsMember>[]>;
+    securityGroupsMembers?: pulumi.Input<pulumi.Input<inputs.SecurityGroupRuleRuleSecurityGroupsMember>[] | undefined>;
     /**
      * One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](https://docs.outscale.com/api#readnetaccesspointservices).
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The end of the port range for the TCP and UDP protocols, or an ICMP code number.
      */
-    toPortRange?: pulumi.Input<number>;
+    toPortRange?: pulumi.Input<number | undefined>;
 }
 
 export interface SecurityGroupRuleRuleSecurityGroupsMember {
     /**
      * The OUTSCALE account ID that owns the source or destination security group.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a source or destination security group that you want to link to the security group of the rule.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of a source or destination security group that you want to link to the security group of the rule.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface SecurityGroupRuleTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface SecurityGroupTag {
@@ -3703,82 +3738,82 @@ export interface SecurityGroupTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SecurityGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ServerCertificateTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface SnapshotAttributesPermissionsToCreateVolumeAdditions {
     /**
      * The OUTSCALE account ID of one or more users to whom you want to give permissions.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: pulumi.Input<boolean>;
+    globalPermission?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SnapshotAttributesPermissionsToCreateVolumeRemovals {
     /**
      * The OUTSCALE account ID of one or more users from whom you want to remove permissions.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If true, the resource is public. If false, the resource is private.
      */
-    globalPermission?: pulumi.Input<boolean>;
+    globalPermission?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SnapshotAttributesTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface SnapshotExportTaskOsuExport {
@@ -3789,7 +3824,7 @@ export interface SnapshotExportTaskOsuExport {
     /**
      * Information about the OOS API key.
      */
-    osuApiKeys?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskOsuExportOsuApiKey>[]>;
+    osuApiKeys?: pulumi.Input<pulumi.Input<inputs.SnapshotExportTaskOsuExportOsuApiKey>[] | undefined>;
     /**
      * The name of the OOS bucket where you want to export the object.
      */
@@ -3797,7 +3832,7 @@ export interface SnapshotExportTaskOsuExport {
     /**
      * The prefix for the key of the OOS object.
      */
-    osuPrefix?: pulumi.Input<string>;
+    osuPrefix?: pulumi.Input<string | undefined>;
 }
 
 export interface SnapshotExportTaskOsuExportOsuApiKey {
@@ -3815,11 +3850,11 @@ export interface SnapshotExportTaskTag {
     /**
      * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SnapshotPermissionsToCreateVolume {
@@ -3843,26 +3878,26 @@ export interface SnapshotTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SnapshotTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface SubnetTag {
@@ -3873,43 +3908,43 @@ export interface SubnetTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SubnetTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface UserGroupPolicy {
     /**
      * The date and time (UTC) of creation of the user group.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The ID of a policy version that you want to make the default one (the active one).
      */
-    defaultVersionId?: pulumi.Input<string>;
+    defaultVersionId?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) of the last modification of the user group.
      */
-    lastModificationDate?: pulumi.Input<string>;
-    policyId?: pulumi.Input<string>;
-    policyName?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
+    policyName?: pulumi.Input<string | undefined>;
     policyOrn: pulumi.Input<string>;
 }
 
@@ -3917,35 +3952,35 @@ export interface UserGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface UserGroupUser {
     /**
      * The date and time (UTC) of creation of the user group.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) of the last modification of the user group.
      */
-    lastModificationDate?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
     /**
      * The path to the group. If not specified, it is set to a slash (`/`).
      */
-    path?: pulumi.Input<string>;
-    userId?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
+    userId?: pulumi.Input<string | undefined>;
     userName: pulumi.Input<string>;
 }
 
@@ -3953,17 +3988,17 @@ export interface UserPolicy {
     /**
      * The date and time (UTC) of creation of the EIM user.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The ID of a policy version that you want to make the default one (the active one).
      */
-    defaultVersionId?: pulumi.Input<string>;
+    defaultVersionId?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) of the last modification of the EIM user.
      */
-    lastModificationDate?: pulumi.Input<string>;
-    policyId?: pulumi.Input<string>;
-    policyName?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
+    policyName?: pulumi.Input<string | undefined>;
     policyOrn: pulumi.Input<string>;
 }
 
@@ -3971,75 +4006,75 @@ export interface UserTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualGatewayLinkNetToVirtualGatewayLink {
     /**
      * The ID of the Net to which you want to attach the virtual gateway.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The state of the attachment (`attaching` \| `attached` \| `detaching` \| `detached`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualGatewayLinkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualGatewayNetToVirtualGatewayLink {
     /**
      * The ID of the Net to which the virtual gateway is attached.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualGatewayRoutePropagationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualGatewayTag {
@@ -4050,141 +4085,141 @@ export interface VirtualGatewayTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface VirtualGatewayTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface VmActionsOnNextBoot {
     /**
      * One action to perform on the next boot of the VM. For more information, see [About Secure Boot](https://docs.outscale.com/en/userguide/About-Secure-Boot.html#_secure_boot_actions).
      */
-    secureBoot?: pulumi.Input<string>;
+    secureBoot?: pulumi.Input<string | undefined>;
 }
 
 export interface VmBlockDeviceMapping {
     /**
      * Information about the BSU volume to create.
      */
-    bsu?: pulumi.Input<inputs.VmBlockDeviceMappingBsu>;
+    bsu?: pulumi.Input<inputs.VmBlockDeviceMappingBsu | undefined>;
     /**
      * The name of the device.
      */
-    deviceName?: pulumi.Input<string>;
-    noDevice?: pulumi.Input<string>;
-    virtualDeviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
+    noDevice?: pulumi.Input<string | undefined>;
+    virtualDeviceName?: pulumi.Input<string | undefined>;
 }
 
 export interface VmBlockDeviceMappingBsu {
     /**
      * By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
      */
-    iops?: pulumi.Input<number>;
+    iops?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot used to create the volume.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * One or more tags associated with the VM.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingBsuTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingBsuTag>[] | undefined>;
     /**
      * The size of the volume, in gibibytes (GiB).
      */
-    volumeSize?: pulumi.Input<number>;
-    volumeType?: pulumi.Input<string>;
+    volumeSize?: pulumi.Input<number | undefined>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 export interface VmBlockDeviceMappingBsuTag {
     /**
      * The key of the tag with a minimum of 1 character.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface VmBlockDeviceMappingsCreated {
     /**
      * Information about the created BSU volume.
      */
-    bsus?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingsCreatedBsus>[]>;
+    bsus?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingsCreatedBsus>[] | undefined>;
     /**
      * The name of the device.
      */
-    deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
 }
 
 export interface VmBlockDeviceMappingsCreatedBsus {
     /**
      * If true, the NIC is deleted when the VM is terminated.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The date and time (UTC) at which the volume was attached to the VM, in ISO 8601 date-time format.
      */
-    linkDate?: pulumi.Input<string>;
+    linkDate?: pulumi.Input<string | undefined>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingsCreatedBsusTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VmBlockDeviceMappingsCreatedBsusTag>[] | undefined>;
     /**
      * The ID of the volume.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }
 
 export interface VmBlockDeviceMappingsCreatedBsusTag {
     /**
      * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface VmNic {
     /**
      * The OUTSCALE account ID of the owner of the NIC.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the NIC, if you are creating a NIC when creating the VM.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.
      */
@@ -4192,149 +4227,149 @@ export interface VmNic {
     /**
      * (Net only) If true, the source/destination check is enabled. If false, it is disabled.
      */
-    isSourceDestChecked?: pulumi.Input<boolean>;
+    isSourceDestChecked?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the network interface card (NIC).
      */
-    linkNics?: pulumi.Input<pulumi.Input<inputs.VmNicLinkNic>[]>;
+    linkNics?: pulumi.Input<pulumi.Input<inputs.VmNicLinkNic>[] | undefined>;
     /**
      * Information about the public IP associated with the NIC.
      */
-    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmNicLinkPublicIp>[]>;
+    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmNicLinkPublicIp>[] | undefined>;
     /**
      * The Media Access Control (MAC) address of the NIC.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net for the NIC.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NIC, if you are attaching an existing NIC when creating a VM.
      */
-    nicId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
     /**
      * The name of the private DNS.
      */
-    privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string | undefined>;
     /**
      * One or more private IPs to assign to the NIC, if you create a NIC when creating a VM. Only one private IP can be the primary private IP.
      */
-    privateIps?: pulumi.Input<pulumi.Input<inputs.VmNicPrivateIp>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<inputs.VmNicPrivateIp>[] | undefined>;
     /**
      * The number of secondary private IPs, if you create a NIC when creating a VM. This parameter cannot be specified if you specified more than one private IP in the `privateIps` parameter.
      */
-    secondaryPrivateIpCount?: pulumi.Input<number>;
+    secondaryPrivateIpCount?: pulumi.Input<number | undefined>;
     /**
      * One or more IDs of security groups for the NIC, if you create a NIC when creating a VM.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more security groups associated with the VM.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<inputs.VmNicSecurityGroup>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.VmNicSecurityGroup>[] | undefined>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Subnet for the NIC, if you create a NIC when creating a VM. This parameter is required if you create a NIC when creating the VM.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 export interface VmNicLinkNic {
     /**
      * If true, the NIC is deleted when the VM is terminated.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The device index for the NIC attachment (between `0` and `7`, both included).
      */
-    deviceNumber?: pulumi.Input<string>;
+    deviceNumber?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NIC to attach.
      */
-    linkNicId?: pulumi.Input<string>;
+    linkNicId?: pulumi.Input<string | undefined>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface VmNicLinkPublicIp {
     /**
      * The name of the public DNS.
      */
-    publicDnsName?: pulumi.Input<string>;
+    publicDnsName?: pulumi.Input<string | undefined>;
     /**
      * The public IP of the VM.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the public IP.
      */
-    publicIpAccountId?: pulumi.Input<string>;
+    publicIpAccountId?: pulumi.Input<string | undefined>;
 }
 
 export interface VmNicPrivateIp {
     /**
      * If true, the IP is the primary private IP of the NIC.
      */
-    isPrimary?: pulumi.Input<boolean>;
+    isPrimary?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the public IP associated with the NIC.
      */
-    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmNicPrivateIpLinkPublicIp>[]>;
+    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmNicPrivateIpLinkPublicIp>[] | undefined>;
     /**
      * The name of the private DNS.
      */
-    privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string | undefined>;
     /**
      * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
 }
 
 export interface VmNicPrivateIpLinkPublicIp {
     /**
      * The name of the public DNS.
      */
-    publicDnsName?: pulumi.Input<string>;
+    publicDnsName?: pulumi.Input<string | undefined>;
     /**
      * The public IP of the VM.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the public IP.
      */
-    publicIpAccountId?: pulumi.Input<string>;
+    publicIpAccountId?: pulumi.Input<string | undefined>;
 }
 
 export interface VmNicSecurityGroup {
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface VmPrimaryNic {
     /**
      * The OUTSCALE account ID of the owner of the NIC.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](https://docs.outscale.com/api#updatenic).
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the NIC, if you are creating a NIC when creating the VM.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The index of the VM device for the NIC attachment (must be `0`). This parameter is required if you create a NIC when creating the VM.
      */
@@ -4342,186 +4377,186 @@ export interface VmPrimaryNic {
     /**
      * (Net only) If true, the source/destination check is enabled. If false, it is disabled.
      */
-    isSourceDestChecked?: pulumi.Input<boolean>;
+    isSourceDestChecked?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the network interface card (NIC).
      */
-    linkNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicLinkNic>[]>;
+    linkNics?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicLinkNic>[] | undefined>;
     /**
      * Information about the public IP associated with the NIC.
      */
-    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicLinkPublicIp>[]>;
+    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicLinkPublicIp>[] | undefined>;
     /**
      * The Media Access Control (MAC) address of the NIC.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net for the NIC.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NIC, if you are attaching an existing NIC when creating a VM.
      */
-    nicId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
     /**
      * The name of the private DNS.
      */
-    privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string | undefined>;
     /**
      * One or more private IPs to assign to the NIC, if you create a NIC when creating a VM. Only one private IP can be the primary private IP.
      */
-    privateIps?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicPrivateIp>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicPrivateIp>[] | undefined>;
     /**
      * The number of secondary private IPs, if you create a NIC when creating a VM. This parameter cannot be specified if you specified more than one private IP in the `privateIps` parameter.
      */
-    secondaryPrivateIpCount?: pulumi.Input<number>;
+    secondaryPrivateIpCount?: pulumi.Input<number | undefined>;
     /**
      * One or more IDs of security groups for the NIC, if you create a NIC when creating a VM.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more security groups associated with the VM.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicSecurityGroup>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicSecurityGroup>[] | undefined>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Subnet for the NIC, if you create a NIC when creating a VM. This parameter is required if you create a NIC when creating the VM.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 export interface VmPrimaryNicLinkNic {
     /**
      * If true, the NIC is deleted when the VM is terminated.
      */
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The device index for the NIC attachment (between `0` and `7`, both included).
      */
-    deviceNumber?: pulumi.Input<string>;
+    deviceNumber?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NIC to attach.
      */
-    linkNicId?: pulumi.Input<string>;
+    linkNicId?: pulumi.Input<string | undefined>;
     /**
      * The state of the VM (`running` | `stopped`). If set to `stopped`, the VM is stopped regardless of the value of the `vmInitiatedShutdownBehavior` argument.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface VmPrimaryNicLinkPublicIp {
     /**
      * The name of the public DNS.
      */
-    publicDnsName?: pulumi.Input<string>;
+    publicDnsName?: pulumi.Input<string | undefined>;
     /**
      * The public IP of the VM.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the public IP.
      */
-    publicIpAccountId?: pulumi.Input<string>;
+    publicIpAccountId?: pulumi.Input<string | undefined>;
 }
 
 export interface VmPrimaryNicPrivateIp {
     /**
      * If true, the IP is the primary private IP of the NIC.
      */
-    isPrimary?: pulumi.Input<boolean>;
+    isPrimary?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the public IP associated with the NIC.
      */
-    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicPrivateIpLinkPublicIp>[]>;
+    linkPublicIps?: pulumi.Input<pulumi.Input<inputs.VmPrimaryNicPrivateIpLinkPublicIp>[] | undefined>;
     /**
      * The name of the private DNS.
      */
-    privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string | undefined>;
     /**
      * A private IP for the NIC. This IP must be within the IP range of the Subnet that you specify with the `subnetId` attribute. However, it cannot be one of the first four IPs (ending in `.0`, `.1`, `.2`, `.3`) or the last IP (ending in `.255`) of the Subnet, as these are reserved by 3DS OUTSCALE. For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
 }
 
 export interface VmPrimaryNicPrivateIpLinkPublicIp {
     /**
      * The name of the public DNS.
      */
-    publicDnsName?: pulumi.Input<string>;
+    publicDnsName?: pulumi.Input<string | undefined>;
     /**
      * The public IP of the VM.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the public IP.
      */
-    publicIpAccountId?: pulumi.Input<string>;
+    publicIpAccountId?: pulumi.Input<string | undefined>;
 }
 
 export interface VmPrimaryNicSecurityGroup {
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface VmSecurityGroup {
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface VmShutdownBehaviorConfiguration {
     /**
      * The action performed by the orchestrator when the VM is shut down from the guest operating system. By default, `stop`. Possible values: `stop` | `terminate`.
      */
-    guestAction?: pulumi.Input<string>;
+    guestAction?: pulumi.Input<string | undefined>;
     /**
      * The action performed by the orchestrator when the VM is shut down due to a host infrastructure failure. By default, `restart`. Possible values: `restart` | `stop`.
      */
-    hostAction?: pulumi.Input<string>;
+    hostAction?: pulumi.Input<string | undefined>;
 }
 
 export interface VmTag {
     /**
      * The key of the tag, between 1 and 255 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface VolumeLinkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface VolumeLinkedVolume {
@@ -4555,56 +4590,56 @@ export interface VolumeTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface VolumeTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface VpnConnectionRoute {
     /**
      * The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
      */
-    destinationIpRange?: pulumi.Input<string>;
+    destinationIpRange?: pulumi.Input<string | undefined>;
     /**
      * The type of route (always `static`).
      */
-    routeType?: pulumi.Input<string>;
+    routeType?: pulumi.Input<string | undefined>;
     /**
      * The state of the IPSEC tunnel (`UP` \| `DOWN`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface VpnConnectionRouteTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface VpnConnectionTag {
@@ -4615,49 +4650,49 @@ export interface VpnConnectionTag {
     /**
      * The value of the tag, between 0 and 255 characters.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface VpnConnectionTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface VpnConnectionVgwTelemetry {
     /**
      * The number of routes accepted through BGP (Border Gateway Protocol) route exchanges.
      */
-    acceptedRouteCount?: pulumi.Input<number>;
+    acceptedRouteCount?: pulumi.Input<number | undefined>;
     /**
      * The date and time (UTC) of the latest state update.
      */
-    lastStateChangeDate?: pulumi.Input<string>;
+    lastStateChangeDate?: pulumi.Input<string | undefined>;
     /**
      * The IP on the OUTSCALE side of the tunnel.
      */
-    outsideIpAddress?: pulumi.Input<string>;
+    outsideIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The state of the IPSEC tunnel (`UP` \| `DOWN`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A description of the current state of the tunnel.
      */
-    stateDescription?: pulumi.Input<string>;
+    stateDescription?: pulumi.Input<string | undefined>;
 }
 export namespace config {
 }

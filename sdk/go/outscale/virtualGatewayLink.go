@@ -161,6 +161,12 @@ func (VirtualGatewayLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualGatewayLinkState)(nil)).Elem()
 }
 
+// VirtualGatewayLinkExists checks whether an existing VirtualGatewayLink resource with the given ID exists.
+func VirtualGatewayLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualGatewayLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/virtualGatewayLink:VirtualGatewayLink", id, state, "", opts...)
+}
+
 type virtualGatewayLinkArgs struct {
 	// The ID of the Net to which you want to attach the virtual gateway.
 	NetId    string                      `pulumi:"netId"`

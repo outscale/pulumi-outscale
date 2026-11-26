@@ -77,12 +77,8 @@ type LookupNetAttributesResult struct {
 }
 
 func LookupNetAttributesOutput(ctx *pulumi.Context, args LookupNetAttributesOutputArgs, opts ...pulumi.InvokeOption) LookupNetAttributesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetAttributesResultOutput, error) {
-			args := v.(LookupNetAttributesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getNetAttributes:getNetAttributes", args, LookupNetAttributesResultOutput{}, options).(LookupNetAttributesResultOutput), nil
-		}).(LookupNetAttributesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getNetAttributes:getNetAttributes", args, LookupNetAttributesResultOutput{}, options).(LookupNetAttributesResultOutput)
 }
 
 // A collection of arguments for invoking getNetAttributes.

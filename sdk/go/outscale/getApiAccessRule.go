@@ -83,12 +83,8 @@ type LookupApiAccessRuleResult struct {
 }
 
 func LookupApiAccessRuleOutput(ctx *pulumi.Context, args LookupApiAccessRuleOutputArgs, opts ...pulumi.InvokeOption) LookupApiAccessRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApiAccessRuleResultOutput, error) {
-			args := v.(LookupApiAccessRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getApiAccessRule:getApiAccessRule", args, LookupApiAccessRuleResultOutput{}, options).(LookupApiAccessRuleResultOutput), nil
-		}).(LookupApiAccessRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getApiAccessRule:getApiAccessRule", args, LookupApiAccessRuleResultOutput{}, options).(LookupApiAccessRuleResultOutput)
 }
 
 // A collection of arguments for invoking getApiAccessRule.

@@ -128,17 +128,17 @@ export interface GetVirtualGatewayOutputArgs {
     /**
      * The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVirtualGatewayFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVirtualGatewayFilterArgs>[] | undefined>;
     /**
      * The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual gateway.
      */
-    virtualGatewayId?: pulumi.Input<string>;
+    virtualGatewayId?: pulumi.Input<string | undefined>;
 }

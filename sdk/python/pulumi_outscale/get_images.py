@@ -112,7 +112,7 @@ class AwaitableGetImagesResult(GetImagesResult):
 
 
 def get_images(account_ids: Optional[Sequence[_builtins.str]] = None,
-               filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]] = None,
+               filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']]] = None,
                image_ids: Optional[Sequence[_builtins.str]] = None,
                permissions: Optional[Sequence[_builtins.str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
@@ -145,7 +145,7 @@ def get_images(account_ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
-    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['accountIds'] = account_ids
@@ -163,10 +163,10 @@ def get_images(account_ids: Optional[Sequence[_builtins.str]] = None,
         images=pulumi.get(__ret__, 'images'),
         permissions=pulumi.get(__ret__, 'permissions'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_images_output(account_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
-                      image_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      permissions: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_images_output(account_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']]]]] = None,
+                      image_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      permissions: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     Provides information about images.
@@ -197,7 +197,7 @@ def get_images_output(account_ids: Optional[pulumi.Input[Optional[Sequence[_buil
 
 
     :param Sequence[_builtins.str] account_ids: One or more OUTSCALE account IDs that the permission is associated with.
-    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['accountIds'] = account_ids

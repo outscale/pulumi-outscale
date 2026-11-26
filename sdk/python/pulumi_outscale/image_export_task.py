@@ -23,10 +23,11 @@ class ImageExportTaskArgs:
     def __init__(__self__, *,
                  image_id: pulumi.Input[_builtins.str],
                  osu_exports: pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]] = None,
-                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]] = None,
+                 wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageExportTask resource.
+
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI to export.
         :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
         :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
@@ -65,43 +66,44 @@ class ImageExportTaskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForCompletion")
-    def wait_for_completion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_completion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
         return pulumi.get(self, "wait_for_completion")
 
     @wait_for_completion.setter
-    def wait_for_completion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_completion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_completion", value)
 
 
 @pulumi.input_type
 class _ImageExportTaskState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 osu_exports: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]] = None,
-                 progress: Optional[pulumi.Input[_builtins.int]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]] = None,
-                 task_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 osu_exports: pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]] = None,
+                 progress: pulumi.Input[Optional[_builtins.int]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]] = None,
+                 task_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ImageExportTask resources.
+
         :param pulumi.Input[_builtins.str] comment: If the OMI export task fails, an error message appears.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI to export.
         :param pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]] osu_exports: Information about the OOS export task to create.
@@ -132,107 +134,107 @@ class _ImageExportTaskState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the OMI export task fails, an error message appears.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the OMI to export.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="osuExports")
-    def osu_exports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]]:
+    def osu_exports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]]:
         """
         Information about the OOS export task to create.
         """
         return pulumi.get(self, "osu_exports")
 
     @osu_exports.setter
-    def osu_exports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]]):
+    def osu_exports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskOsuExportArgs']]]]):
         pulumi.set(self, "osu_exports", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The progress of the OMI export task, as a percentage.
         """
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the OMI export task (`pending/queued` \\| `pending` \\| `completed` \\| `failed` \\| `cancelled`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageExportTaskTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="taskId")
-    def task_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the OMI export task.
         """
         return pulumi.get(self, "task_id")
 
     @task_id.setter
-    def task_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForCompletion")
-    def wait_for_completion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_completion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
         return pulumi.get(self, "wait_for_completion")
 
     @wait_for_completion.setter
-    def wait_for_completion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_completion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_completion", value)
 
 
@@ -242,10 +244,10 @@ class ImageExportTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 osu_exports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict']]]]] = None,
-                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 osu_exports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict', 'outputs.ImageExportTaskOsuExport']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict', 'outputs.ImageExportTaskTag']]]]] = None,
+                 wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages an image export task.
@@ -273,28 +275,29 @@ class ImageExportTask(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image_export_task01 = outscale.ImageExportTask("image_export_task01",
+            image_id=image01["imageId"],
             osu_exports=[{
+                "disk_image_format": "qcow2",
+                "osu_bucket": "terraform-bucket",
+                "osu_prefix": "new-export",
                 "osu_api_keys": [{
                     "api_key_id": access_key_id,
                     "secret_key": secret_key_id,
                 }],
-                "disk_image_format": "qcow2",
-                "osu_bucket": "terraform-bucket",
-                "osu_prefix": "new-export",
             }],
             tags=[{
                 "key": "Name",
                 "value": "terraform-snapshot-export-task",
             }],
-            image_id=image01["imageId"],
             wait_for_completion=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI to export.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict']]]] osu_exports: Information about the OOS export task to create.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict', 'outputs.ImageExportTaskOsuExport']]]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict', 'outputs.ImageExportTaskTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] wait_for_completion: By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
         ...
@@ -329,22 +332,23 @@ class ImageExportTask(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image_export_task01 = outscale.ImageExportTask("image_export_task01",
+            image_id=image01["imageId"],
             osu_exports=[{
+                "disk_image_format": "qcow2",
+                "osu_bucket": "terraform-bucket",
+                "osu_prefix": "new-export",
                 "osu_api_keys": [{
                     "api_key_id": access_key_id,
                     "secret_key": secret_key_id,
                 }],
-                "disk_image_format": "qcow2",
-                "osu_bucket": "terraform-bucket",
-                "osu_prefix": "new-export",
             }],
             tags=[{
                 "key": "Name",
                 "value": "terraform-snapshot-export-task",
             }],
-            image_id=image01["imageId"],
             wait_for_completion=False)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageExportTaskArgs args: The arguments to use to populate this resource's properties.
@@ -361,10 +365,10 @@ class ImageExportTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 osu_exports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict']]]]] = None,
-                 wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 osu_exports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict', 'outputs.ImageExportTaskOsuExport']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict', 'outputs.ImageExportTaskTag']]]]] = None,
+                 wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -397,15 +401,15 @@ class ImageExportTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            osu_exports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict']]]]] = None,
-            progress: Optional[pulumi.Input[_builtins.int]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict']]]]] = None,
-            task_id: Optional[pulumi.Input[_builtins.str]] = None,
-            wait_for_completion: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ImageExportTask':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            osu_exports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict', 'outputs.ImageExportTaskOsuExport']]]]] = None,
+            progress: pulumi.Input[Optional[_builtins.int]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict', 'outputs.ImageExportTaskTag']]]]] = None,
+            task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ImageExportTask':
         """
         Get an existing ImageExportTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -415,10 +419,10 @@ class ImageExportTask(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: If the OMI export task fails, an error message appears.
         :param pulumi.Input[_builtins.str] image_id: The ID of the OMI to export.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict']]]] osu_exports: Information about the OOS export task to create.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict', 'outputs.ImageExportTaskOsuExport']]]] osu_exports: Information about the OOS export task to create.
         :param pulumi.Input[_builtins.int] progress: The progress of the OMI export task, as a percentage.
         :param pulumi.Input[_builtins.str] state: The state of the OMI export task (`pending/queued` \\| `pending` \\| `completed` \\| `failed` \\| `cancelled`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict', 'outputs.ImageExportTaskTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] task_id: The ID of the OMI export task.
         :param pulumi.Input[_builtins.bool] wait_for_completion: By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
         """
@@ -436,6 +440,30 @@ class ImageExportTask(pulumi.CustomResource):
         __props__.__dict__["task_id"] = task_id
         __props__.__dict__["wait_for_completion"] = wait_for_completion
         return ImageExportTask(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            osu_exports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskOsuExportArgs', 'ImageExportTaskOsuExportArgsDict', 'outputs.ImageExportTaskOsuExport']]]]] = None,
+            progress: pulumi.Input[Optional[_builtins.int]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageExportTaskTagArgs', 'ImageExportTaskTagArgsDict', 'outputs.ImageExportTaskTag']]]]] = None,
+            task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["imageId"] = image_id
+        __props__["osuExports"] = osu_exports
+        __props__["progress"] = progress
+        __props__["requestId"] = request_id
+        __props__["state"] = state
+        __props__["tags"] = tags
+        __props__["taskId"] = task_id
+        __props__["waitForCompletion"] = wait_for_completion
+        return pulumi.runtime.exists_resource(None, 'outscale:index/imageExportTask:ImageExportTask', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

@@ -45,6 +45,17 @@ export class InternetService extends pulumi.CustomResource {
         return new InternetService(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing InternetService resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: InternetServiceState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/internetService:InternetService", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/internetService:InternetService';
 
@@ -118,21 +129,21 @@ export interface InternetServiceState {
     /**
      * The ID of the internet service.
      */
-    internetServiceId?: pulumi.Input<string>;
+    internetServiceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net attached to the internet service.
      */
-    netId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the attachment of the internet service to the Net (always `available`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceTag>[]>;
-    timeouts?: pulumi.Input<inputs.InternetServiceTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.InternetServiceTimeouts | undefined>;
 }
 
 /**
@@ -142,6 +153,6 @@ export interface InternetServiceArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceTag>[]>;
-    timeouts?: pulumi.Input<inputs.InternetServiceTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.InternetServiceTimeouts | undefined>;
 }

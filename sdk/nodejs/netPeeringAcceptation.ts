@@ -35,6 +35,17 @@ export class NetPeeringAcceptation extends pulumi.CustomResource {
         return new NetPeeringAcceptation(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing NetPeeringAcceptation resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NetPeeringAcceptationState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/netPeeringAcceptation:NetPeeringAcceptation", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/netPeeringAcceptation:NetPeeringAcceptation';
 
@@ -132,36 +143,36 @@ export class NetPeeringAcceptation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetPeeringAcceptation resources.
  */
 export interface NetPeeringAcceptationState {
-    accepterNetId?: pulumi.Input<string>;
+    accepterNetId?: pulumi.Input<string | undefined>;
     /**
      * Information about the accepter Net.
      */
-    accepterNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationAccepterNet>[]>;
-    accepterOwnerId?: pulumi.Input<string>;
+    accepterNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationAccepterNet>[] | undefined>;
+    accepterOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) at which the Net peerings expire.
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net peering you want to accept.
      */
-    netPeeringId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
-    sourceNetAccountId?: pulumi.Input<string>;
-    sourceNetId?: pulumi.Input<string>;
+    netPeeringId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    sourceNetAccountId?: pulumi.Input<string | undefined>;
+    sourceNetId?: pulumi.Input<string | undefined>;
     /**
      * Information about the source Net.
      */
-    sourceNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationSourceNet>[]>;
+    sourceNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationSourceNet>[] | undefined>;
     /**
      * Information about the state of the Net peering.
      */
-    states?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationState>[] | undefined>;
     /**
      * One or more tags associated with the Net peering.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationTag>[]>;
-    timeouts?: pulumi.Input<inputs.NetPeeringAcceptationTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringAcceptationTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.NetPeeringAcceptationTimeouts | undefined>;
 }
 
 /**
@@ -172,5 +183,5 @@ export interface NetPeeringAcceptationArgs {
      * The ID of the Net peering you want to accept.
      */
     netPeeringId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.NetPeeringAcceptationTimeouts>;
+    timeouts?: pulumi.Input<inputs.NetPeeringAcceptationTimeouts | undefined>;
 }

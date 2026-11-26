@@ -41,14 +41,6 @@ namespace Pulumi.Outscale
     /// 
     ///     var vm01 = new Outscale.Vm("vm01", new()
     ///     {
-    ///         Tags = new[]
-    ///         {
-    ///             new Outscale.Inputs.VmTagArgs
-    ///             {
-    ///                 Key = "name",
-    ///                 Value = "terraform-public-vm",
-    ///             },
-    ///         },
     ///         ImageId = imageId,
     ///         VmType = "tinav5.c1r1p2",
     ///         KeypairName = keypair01.KeypairName,
@@ -58,6 +50,14 @@ namespace Pulumi.Outscale
     ///         },
     ///         PlacementSubregionName = "eu-west-2a",
     ///         PlacementTenancy = "default",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.VmTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-public-vm",
+    ///             },
+    ///         },
     ///         UserData = Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"    &lt;CONFIGURATION&gt;
@@ -102,20 +102,28 @@ namespace Pulumi.Outscale
     /// 
     ///     var vm01 = new Outscale.Vm("vm01", new()
     ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav5.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             securityGroup01.SecurityGroupId,
+    ///         },
     ///         BlockDeviceMappings = new[]
     ///         {
     ///             new Outscale.Inputs.VmBlockDeviceMappingArgs
     ///             {
+    ///                 DeviceName = "/dev/sdb",
     ///                 Bsu = new Outscale.Inputs.VmBlockDeviceMappingBsuArgs
     ///                 {
     ///                     VolumeSize = 15,
     ///                     VolumeType = "gp2",
     ///                     SnapshotId = snapshot01.SnapshotId,
     ///                 },
-    ///                 DeviceName = "/dev/sdb",
     ///             },
     ///             new Outscale.Inputs.VmBlockDeviceMappingArgs
     ///             {
+    ///                 DeviceName = "/dev/sdc",
     ///                 Bsu = new Outscale.Inputs.VmBlockDeviceMappingBsuArgs
     ///                 {
     ///                     VolumeSize = 22,
@@ -123,15 +131,7 @@ namespace Pulumi.Outscale
     ///                     Iops = 150,
     ///                     DeleteOnVmDeletion = true,
     ///                 },
-    ///                 DeviceName = "/dev/sdc",
     ///             },
-    ///         },
-    ///         ImageId = imageId,
-    ///         VmType = "tinav5.c1r1p2",
-    ///         KeypairName = keypair01.KeypairName,
-    ///         SecurityGroupIds = new[]
-    ///         {
-    ///             securityGroup01.SecurityGroupId,
     ///         },
     ///     });
     /// 
@@ -150,6 +150,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var net01 = new Outscale.Net("net01", new()
     ///     {
+    ///         IpRange = "10.0.0.0/16",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.NetTagArgs
@@ -158,11 +159,13 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-net-for-vm",
     ///             },
     ///         },
-    ///         IpRange = "10.0.0.0/16",
     ///     });
     /// 
     ///     var subnet01 = new Outscale.Subnet("subnet01", new()
     ///     {
+    ///         NetId = net01.NetId,
+    ///         IpRange = "10.0.0.0/24",
+    ///         SubregionName = "eu-west-2b",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.SubnetTagArgs
@@ -171,9 +174,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-subnet-for-vm",
     ///             },
     ///         },
-    ///         NetId = net01.NetId,
-    ///         IpRange = "10.0.0.0/24",
-    ///         SubregionName = "eu-west-2b",
     ///     });
     /// 
     ///     var internetService01 = new Outscale.InternetService("internet_service01");
@@ -186,6 +186,7 @@ namespace Pulumi.Outscale
     /// 
     ///     var routeTable01 = new Outscale.RouteTable("route_table01", new()
     ///     {
+    ///         NetId = net01.NetId,
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.RouteTableTagArgs
@@ -194,7 +195,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-route-table-for-vm",
     ///             },
     ///         },
-    ///         NetId = net01.NetId,
     ///     });
     /// 
     ///     var routeTableLink01 = new Outscale.RouteTableLink("route_table_link01", new()
@@ -325,6 +325,9 @@ namespace Pulumi.Outscale
     /// 
     ///     var vm01 = new Outscale.Vm("vm01", new()
     ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav7.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
     ///         Nics = new[]
     ///         {
     ///             new Outscale.Inputs.VmNicArgs
@@ -340,9 +343,6 @@ namespace Pulumi.Outscale
     ///                 DeviceNumber = 1,
     ///             },
     ///         },
-    ///         ImageId = imageId,
-    ///         VmType = "tinav7.c1r1p2",
-    ///         KeypairName = keypair01.KeypairName,
     ///     });
     /// 
     /// });
@@ -394,6 +394,9 @@ namespace Pulumi.Outscale
     /// 
     ///     var vm01 = new Outscale.Vm("vm01", new()
     ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav7.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
     ///         Nics = new[]
     ///         {
     ///             new Outscale.Inputs.VmNicArgs
@@ -407,9 +410,6 @@ namespace Pulumi.Outscale
     ///                 DeviceNumber = 1,
     ///             },
     ///         },
-    ///         ImageId = imageId,
-    ///         VmType = "tinav7.c1r1p2",
-    ///         KeypairName = keypair01.KeypairName,
     ///     });
     /// 
     /// });
@@ -471,6 +471,9 @@ namespace Pulumi.Outscale
     /// 
     ///     var vm01 = new Outscale.Vm("vm01", new()
     ///     {
+    ///         ImageId = imageId,
+    ///         VmType = "tinav7.c1r1p2",
+    ///         KeypairName = keypair01.KeypairName,
     ///         PrimaryNics = new[]
     ///         {
     ///             new Outscale.Inputs.VmPrimaryNicArgs
@@ -479,9 +482,6 @@ namespace Pulumi.Outscale
     ///                 DeviceNumber = 0,
     ///             },
     ///         },
-    ///         ImageId = imageId,
-    ///         VmType = "tinav7.c1r1p2",
-    ///         KeypairName = keypair01.KeypairName,
     ///     });
     /// 
     ///     var nicLink01 = new Outscale.NicLink("nic_link01", new()
@@ -788,6 +788,7 @@ namespace Pulumi.Outscale
         /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `ShutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
         /// </summary>
         [Output("vmInitiatedShutdownBehavior")]
+        [Obsolete(@"Configure `ShutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.")]
         public Output<string> VmInitiatedShutdownBehavior { get; private set; } = null!;
 
         /// <summary>
@@ -1057,6 +1058,7 @@ namespace Pulumi.Outscale
         /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `ShutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
         /// </summary>
         [Input("vmInitiatedShutdownBehavior")]
+        [Obsolete(@"Configure `ShutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.")]
         public Input<string>? VmInitiatedShutdownBehavior { get; set; }
 
         /// <summary>
@@ -1440,6 +1442,7 @@ namespace Pulumi.Outscale
         /// The VM behavior when you stop it. By default or if set to `Stop`, the VM stops. If set to `Restart`, the VM stops then automatically restarts. If set to `Terminate`, the VM stops and is terminated. Important: This argument is deprecated in favor of `ShutdownBehaviorConfiguration` and will be removed in the next major version of the provider.
         /// </summary>
         [Input("vmInitiatedShutdownBehavior")]
+        [Obsolete(@"Configure `ShutdownBehaviorConfiguration` instead. This attribute will be removed in the next major version of the provider.")]
         public Input<string>? VmInitiatedShutdownBehavior { get; set; }
 
         /// <summary>

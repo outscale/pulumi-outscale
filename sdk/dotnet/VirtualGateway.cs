@@ -27,6 +27,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var virtualGateway01 = new Outscale.VirtualGateway("virtual_gateway01", new()
     ///     {
+    ///         ConnectionType = "ipsec.1",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.VirtualGatewayTagArgs
@@ -35,7 +36,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-virtual-gateway",
     ///             },
     ///         },
-    ///         ConnectionType = "ipsec.1",
     ///     });
     /// 
     /// });

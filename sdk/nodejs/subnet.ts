@@ -59,6 +59,17 @@ export class Subnet extends pulumi.CustomResource {
         return new Subnet(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Subnet resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: SubnetState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/subnet:Subnet", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/subnet:Subnet';
 
@@ -163,38 +174,38 @@ export interface SubnetState {
     /**
      * The number of available IPs in the Subnets.
      */
-    availableIpsCount?: pulumi.Input<number>;
+    availableIpsCount?: pulumi.Input<number | undefined>;
     /**
      * The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
      * The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
      */
-    mapPublicIpOnLaunch?: pulumi.Input<boolean>;
+    mapPublicIpOnLaunch?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Net for which you want to create a Subnet.
      */
-    netId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the Subnet (`pending` \| `available` \| `deleted`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Subnet.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Subregion in which you want to create the Subnet.
      */
-    subregionName?: pulumi.Input<string>;
+    subregionName?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SubnetTag>[]>;
-    timeouts?: pulumi.Input<inputs.SubnetTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SubnetTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.SubnetTimeouts | undefined>;
 }
 
 /**
@@ -209,7 +220,7 @@ export interface SubnetArgs {
     /**
      * If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
      */
-    mapPublicIpOnLaunch?: pulumi.Input<boolean>;
+    mapPublicIpOnLaunch?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Net for which you want to create a Subnet.
      */
@@ -217,10 +228,10 @@ export interface SubnetArgs {
     /**
      * The name of the Subregion in which you want to create the Subnet.
      */
-    subregionName?: pulumi.Input<string>;
+    subregionName?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SubnetTag>[]>;
-    timeouts?: pulumi.Input<inputs.SubnetTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SubnetTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.SubnetTimeouts | undefined>;
 }

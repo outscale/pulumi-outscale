@@ -153,7 +153,7 @@ class AwaitableGetDhcpOptionResult(GetDhcpOptionResult):
             tags=self.tags)
 
 
-def get_dhcp_option(filters: Optional[Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict']]] = None,
+def get_dhcp_option(filters: Optional[Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict', 'outputs.GetDhcpOptionFilterResult']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDhcpOptionResult:
     """
     Provides information about a DHCP option.
@@ -174,7 +174,7 @@ def get_dhcp_option(filters: Optional[Sequence[Union['GetDhcpOptionFilterArgs', 
     ```
 
 
-    :param Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict', 'outputs.GetDhcpOptionFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -192,7 +192,7 @@ def get_dhcp_option(filters: Optional[Sequence[Union['GetDhcpOptionFilterArgs', 
         ntp_servers=pulumi.get(__ret__, 'ntp_servers'),
         request_id=pulumi.get(__ret__, 'request_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_dhcp_option_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict']]]]] = None,
+def get_dhcp_option_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict', 'outputs.GetDhcpOptionFilterResult']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDhcpOptionResult]:
     """
     Provides information about a DHCP option.
@@ -213,7 +213,7 @@ def get_dhcp_option_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
     ```
 
 
-    :param Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetDhcpOptionFilterArgs', 'GetDhcpOptionFilterArgsDict', 'outputs.GetDhcpOptionFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

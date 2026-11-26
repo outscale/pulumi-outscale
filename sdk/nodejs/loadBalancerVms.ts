@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  *     keypairName: keypairName,
  * });
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
+ *     loadBalancerName: "load-balancer-for-backend-vms",
+ *     subregionNames: [`${region}a`],
  *     listeners: [{
  *         backendPort: 80,
  *         backendProtocol: "TCP",
@@ -43,8 +45,6 @@ import * as utilities from "./utilities";
  *         key: "name",
  *         value: "outscale_load_balancer01",
  *     }],
- *     loadBalancerName: "load-balancer-for-backend-vms",
- *     subregionNames: [`${region}a`],
  * });
  * ```
  *
@@ -90,6 +90,17 @@ export class LoadBalancerVms extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoadBalancerVmsState, opts?: pulumi.CustomResourceOptions): LoadBalancerVms {
         return new LoadBalancerVms(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing LoadBalancerVms resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: LoadBalancerVmsState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/loadBalancerVms:LoadBalancerVms", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -157,33 +168,33 @@ export class LoadBalancerVms extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerVms resources.
  */
 export interface LoadBalancerVmsState {
-    backendIps?: pulumi.Input<pulumi.Input<string>[]>;
+    backendIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more IDs of backend VMs.<br />
      * Specifying the same ID several times has no effect as each backend VM has equal weight.
      */
-    backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    backendVmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the load balancer.
      */
-    loadBalancerName?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.LoadBalancerVmsTimeouts>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerVmsTimeouts | undefined>;
 }
 
 /**
  * The set of arguments for constructing a LoadBalancerVms resource.
  */
 export interface LoadBalancerVmsArgs {
-    backendIps?: pulumi.Input<pulumi.Input<string>[]>;
+    backendIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more IDs of backend VMs.<br />
      * Specifying the same ID several times has no effect as each backend VM has equal weight.
      */
-    backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    backendVmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the load balancer.
      */
     loadBalancerName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.LoadBalancerVmsTimeouts>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerVmsTimeouts | undefined>;
 }

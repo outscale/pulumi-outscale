@@ -43,6 +43,17 @@ export class OosBucketVersioning extends pulumi.CustomResource {
         return new OosBucketVersioning(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OosBucketVersioning resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosBucketVersioningState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosBucketVersioning:OosBucketVersioning", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oosBucketVersioning:OosBucketVersioning';
 
@@ -107,12 +118,12 @@ export interface OosBucketVersioningState {
     /**
      * The name of the bucket for which you want to enable or disable the versioning.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The versioning state you want to apply to your bucket (`Enabled` | `Suspended`).
      */
-    status?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosBucketVersioningTimeouts>;
+    status?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketVersioningTimeouts | undefined>;
 }
 
 /**
@@ -127,5 +138,5 @@ export interface OosBucketVersioningArgs {
      * The versioning state you want to apply to your bucket (`Enabled` | `Suspended`).
      */
     status: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosBucketVersioningTimeouts>;
+    timeouts?: pulumi.Input<inputs.OosBucketVersioningTimeouts | undefined>;
 }

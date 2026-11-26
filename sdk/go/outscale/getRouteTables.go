@@ -86,12 +86,8 @@ type GetRouteTablesResult struct {
 }
 
 func GetRouteTablesOutput(ctx *pulumi.Context, args GetRouteTablesOutputArgs, opts ...pulumi.InvokeOption) GetRouteTablesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRouteTablesResultOutput, error) {
-			args := v.(GetRouteTablesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getRouteTables:getRouteTables", args, GetRouteTablesResultOutput{}, options).(GetRouteTablesResultOutput), nil
-		}).(GetRouteTablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getRouteTables:getRouteTables", args, GetRouteTablesResultOutput{}, options).(GetRouteTablesResultOutput)
 }
 
 // A collection of arguments for invoking getRouteTables.

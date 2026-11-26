@@ -68,16 +68,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewVpnConnection(ctx, "vpn_connection01", &outscale.VpnConnectionArgs{
+//				ClientGatewayId:  pulumi.Any(clientGateway01.ClientGatewayId),
+//				VirtualGatewayId: pulumi.Any(virtualGateway01.VirtualGatewayId),
+//				ConnectionType:   pulumi.String("ipsec.1"),
+//				StaticRoutesOnly: pulumi.Bool(true),
 //				Tags: outscale.VpnConnectionTagArray{
 //					&outscale.VpnConnectionTagArgs{
 //						Key:   pulumi.String("Name"),
 //						Value: pulumi.String("vpn01"),
 //					},
 //				},
-//				ClientGatewayId:  pulumi.Any(clientGateway01.ClientGatewayId),
-//				VirtualGatewayId: pulumi.Any(virtualGateway01.VirtualGatewayId),
-//				ConnectionType:   pulumi.String("ipsec.1"),
-//				StaticRoutesOnly: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -214,6 +214,12 @@ type VpnConnectionState struct {
 
 func (VpnConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnConnectionState)(nil)).Elem()
+}
+
+// VpnConnectionExists checks whether an existing VpnConnection resource with the given ID exists.
+func VpnConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpnConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/vpnConnection:VpnConnection", id, state, "", opts...)
 }
 
 type vpnConnectionArgs struct {

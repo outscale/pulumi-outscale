@@ -237,15 +237,15 @@ export interface GetImageOutputArgs {
     /**
      * One or more block device mappings.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.GetImageBlockDeviceMappingArgs>[]>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.GetImageBlockDeviceMappingArgs>[] | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetImageFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetImageFilterArgs>[] | undefined>;
     /**
      * The ID of the OMI.
      */
-    imageId?: pulumi.Input<string>;
-    mostRecent?: pulumi.Input<boolean>;
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    imageId?: pulumi.Input<string | undefined>;
+    mostRecent?: pulumi.Input<boolean | undefined>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

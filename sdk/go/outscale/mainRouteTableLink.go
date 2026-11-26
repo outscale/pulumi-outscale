@@ -175,6 +175,12 @@ func (MainRouteTableLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mainRouteTableLinkState)(nil)).Elem()
 }
 
+// MainRouteTableLinkExists checks whether an existing MainRouteTableLink resource with the given ID exists.
+func MainRouteTableLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MainRouteTableLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/mainRouteTableLink:MainRouteTableLink", id, state, "", opts...)
+}
+
 type mainRouteTableLinkArgs struct {
 	// The ID of the Net.
 	NetId string `pulumi:"netId"`

@@ -65,6 +65,17 @@ export class Volume extends pulumi.CustomResource {
         return new Volume(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Volume resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VolumeState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/volume:Volume", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/volume:Volume';
 
@@ -184,50 +195,50 @@ export interface VolumeState {
     /**
      * The date and time (UTC) at which the volume was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
      */
-    iops?: pulumi.Input<number>;
+    iops?: pulumi.Input<number | undefined>;
     /**
      * Information about your volume attachment.
      */
-    linkedVolumes?: pulumi.Input<pulumi.Input<inputs.VolumeLinkedVolume>[]>;
-    requestId?: pulumi.Input<string>;
+    linkedVolumes?: pulumi.Input<pulumi.Input<inputs.VolumeLinkedVolume>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshotId` unspecified).
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot from which you want to create the volume.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The state of the volume (`creating` \| `available` \| `in-use` \| `deleting` \| `error`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The Subregion in which you want to create the volume.
      */
-    subregionName?: pulumi.Input<string>;
+    subregionName?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VolumeTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VolumeTag>[] | undefined>;
     /**
      * Whether you want to create a snapshot before the volume deletion.
      */
-    terminationSnapshotName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
+    terminationSnapshotName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.VolumeTimeouts | undefined>;
     /**
      * The ID of the volume.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
     /**
      * The type of volume you want to create (`io1` \| `gp2` \| `standard`). If not specified, a `standard` volume is created.<br />
      * For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,15 +248,15 @@ export interface VolumeArgs {
     /**
      * The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
      */
-    iops?: pulumi.Input<number>;
+    iops?: pulumi.Input<number | undefined>;
     /**
      * The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshotId` unspecified).
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot from which you want to create the volume.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The Subregion in which you want to create the volume.
      */
@@ -253,15 +264,15 @@ export interface VolumeArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VolumeTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VolumeTag>[] | undefined>;
     /**
      * Whether you want to create a snapshot before the volume deletion.
      */
-    terminationSnapshotName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
+    terminationSnapshotName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.VolumeTimeouts | undefined>;
     /**
      * The type of volume you want to create (`io1` \| `gp2` \| `standard`). If not specified, a `standard` volume is created.<br />
      * For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }

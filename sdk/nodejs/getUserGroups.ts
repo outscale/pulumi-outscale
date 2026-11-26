@@ -105,5 +105,5 @@ export function getUserGroupsOutput(args?: GetUserGroupsOutputArgs, opts?: pulum
  * A collection of arguments for invoking getUserGroups.
  */
 export interface GetUserGroupsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetUserGroupsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetUserGroupsFilterArgs>[] | undefined>;
 }

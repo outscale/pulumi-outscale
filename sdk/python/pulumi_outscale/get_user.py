@@ -132,7 +132,7 @@ class AwaitableGetUserResult(GetUserResult):
             user_name=self.user_name)
 
 
-def get_user(filters: Optional[Sequence[Union['GetUserFilterArgs', 'GetUserFilterArgsDict']]] = None,
+def get_user(filters: Optional[Sequence[Union['GetUserFilterArgs', 'GetUserFilterArgsDict', 'outputs.GetUserFilterResult']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Provides information about a user.
@@ -166,7 +166,7 @@ def get_user(filters: Optional[Sequence[Union['GetUserFilterArgs', 'GetUserFilte
         user_email=pulumi.get(__ret__, 'user_email'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
-def get_user_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetUserFilterArgs', 'GetUserFilterArgsDict']]]]] = None,
+def get_user_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetUserFilterArgs', 'GetUserFilterArgsDict', 'outputs.GetUserFilterResult']]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Provides information about a user.

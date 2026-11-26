@@ -184,6 +184,12 @@ func (ApiAccessRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiAccessRuleState)(nil)).Elem()
 }
 
+// ApiAccessRuleExists checks whether an existing ApiAccessRule resource with the given ID exists.
+func ApiAccessRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiAccessRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/apiAccessRule:ApiAccessRule", id, state, "", opts...)
+}
+
 type apiAccessRuleArgs struct {
 	// One or more IDs of Client Certificate Authorities (CAs).
 	CaIds []string `pulumi:"caIds"`

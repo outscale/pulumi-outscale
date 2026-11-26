@@ -47,6 +47,17 @@ export class OosPresignedUrl extends pulumi.CustomResource {
         return new OosPresignedUrl(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OosPresignedUrl resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosPresignedUrlState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosPresignedUrl:OosPresignedUrl", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oosPresignedUrl:OosPresignedUrl';
 
@@ -131,27 +142,27 @@ export interface OosPresignedUrlState {
     /**
      * The bucket for which the URL applies.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * (Default: `15m`) How long the generated URL remains valid, expressed as a Go duration string such as `"15m"` or `"1h"`.
      */
-    expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
     /**
      * The expiration timestamp calculated by the provider, in RFC 3339 format. Once the URL has expired, the provider plans replacement of this resource on the next pulumi preview or apply.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The object key for the signed request. Required when `method` is `GET` or `PUT`.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * (Default: `GET`) The HTTP method authorized by the URL: `GET`, `PUT`, `HEAD`, or `DELETE`.
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * (Sensitive value) The generated pre-signed URL.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,13 +176,13 @@ export interface OosPresignedUrlArgs {
     /**
      * (Default: `15m`) How long the generated URL remains valid, expressed as a Go duration string such as `"15m"` or `"1h"`.
      */
-    expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
     /**
      * The object key for the signed request. Required when `method` is `GET` or `PUT`.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * (Default: `GET`) The HTTP method authorized by the URL: `GET`, `PUT`, `HEAD`, or `DELETE`.
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
 }

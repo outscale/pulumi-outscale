@@ -21,21 +21,22 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]] = None,
-                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 root_device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]] = None,
-                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]] = None,
+                 boot_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ImageTagArgs']]]] = None,
+                 tpm_mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
         :param pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
@@ -80,67 +81,67 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
         """
         **(required when registering from a snapshot)** One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="bootModes")
-    def boot_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def boot_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         """
         return pulumi.get(self, "boot_modes")
 
     @boot_modes.setter
-    def boot_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def boot_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "boot_modes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the new OMI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileLocation")
-    def file_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
-    def file_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_location", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the new OMI.<br />
         Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
@@ -148,124 +149,125 @@ class ImageArgs:
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="noReboot")
-    def no_reboot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_reboot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         """
         return pulumi.get(self, "no_reboot")
 
     @no_reboot.setter
-    def no_reboot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_reboot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_reboot", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDeviceName")
-    def root_device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when registering from a snapshot)** The name of the root device for the new OMI.
         """
         return pulumi.get(self, "root_device_name")
 
     @root_device_name.setter
-    def root_device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_device_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceImageId")
-    def source_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when copying an OMI)** The ID of the OMI you want to copy.
         """
         return pulumi.get(self, "source_image_id")
 
     @source_image_id.setter
-    def source_image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionName")
-    def source_region_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_region_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
-    def source_region_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_region_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_region_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tpmMandatory")
-    def tpm_mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tpm_mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         """
         return pulumi.get(self, "tpm_mandatory")
 
     @tpm_mandatory.setter
-    def tpm_mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tpm_mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tpm_mandatory", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 account_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]] = None,
-                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permissions_to_launches: Optional[pulumi.Input[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]]] = None,
-                 product_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_comments: Optional[pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]] = None,
-                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]] = None,
+                 boot_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permissions_to_launches: pulumi.Input[Optional[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]]] = None,
+                 product_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_comments: pulumi.Input[Optional[Sequence[pulumi.Input['ImageStateCommentArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ImageTagArgs']]]] = None,
+                 tpm_mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.str] account_alias: The account alias of the owner of the OMI.
         :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the OMI.
         :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
@@ -344,115 +346,115 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter(name="accountAlias")
-    def account_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account alias of the owner of the OMI.
         """
         return pulumi.get(self, "account_alias")
 
     @account_alias.setter
-    def account_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the OMI.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDeviceMappings")
-    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
+    def block_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]:
         """
         **(required when registering from a snapshot)** One or more block device mappings.
         """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
-    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]):
+    def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="bootModes")
-    def boot_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def boot_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         """
         return pulumi.get(self, "boot_modes")
 
     @boot_modes.setter
-    def boot_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def boot_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "boot_modes", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) at which the OMI was created.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the new OMI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileLocation")
-    def file_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
-    def file_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_location", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the OMI.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the new OMI.<br />
         Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
@@ -460,181 +462,181 @@ class _ImageState:
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageType")
-    def image_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the OMI.
         """
         return pulumi.get(self, "image_type")
 
     @image_type.setter
-    def image_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter(name="noReboot")
-    def no_reboot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_reboot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
         """
         return pulumi.get(self, "no_reboot")
 
     @no_reboot.setter
-    def no_reboot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_reboot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_reboot", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsToLaunches")
-    def permissions_to_launches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]]]:
+    def permissions_to_launches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]]]:
         """
         Permissions for the resource.
         """
         return pulumi.get(self, "permissions_to_launches")
 
     @permissions_to_launches.setter
-    def permissions_to_launches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]]]):
+    def permissions_to_launches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImagePermissionsToLaunchArgs']]]]):
         pulumi.set(self, "permissions_to_launches", value)
 
     @_builtins.property
     @pulumi.getter(name="productCodes")
-    def product_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def product_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The product codes associated with the OMI.
         """
         return pulumi.get(self, "product_codes")
 
     @product_codes.setter
-    def product_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def product_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "product_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDeviceName")
-    def root_device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when registering from a snapshot)** The name of the root device for the new OMI.
         """
         return pulumi.get(self, "root_device_name")
 
     @root_device_name.setter
-    def root_device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_device_name", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDeviceType")
-    def root_device_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_device_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of root device used by the OMI (always `bsu`).
         """
         return pulumi.get(self, "root_device_type")
 
     @root_device_type.setter
-    def root_device_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_device_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_device_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceImageId")
-    def source_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when copying an OMI)** The ID of the OMI you want to copy.
         """
         return pulumi.get(self, "source_image_id")
 
     @source_image_id.setter
-    def source_image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionName")
-    def source_region_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_region_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
-    def source_region_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_region_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_region_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the OMI (`pending` \\| `available` \\| `failed`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateComments")
-    def state_comments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]]]:
+    def state_comments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageStateCommentArgs']]]]:
         """
         Information about the change of state.
         """
         return pulumi.get(self, "state_comments")
 
     @state_comments.setter
-    def state_comments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageStateCommentArgs']]]]):
+    def state_comments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageStateCommentArgs']]]]):
         pulumi.set(self, "state_comments", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tpmMandatory")
-    def tpm_mandatory(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tpm_mandatory(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         """
         return pulumi.get(self, "tpm_mandatory")
 
     @tpm_mandatory.setter
-    def tpm_mandatory(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tpm_mandatory(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tpm_mandatory", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -644,19 +646,19 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]]] = None,
-                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 root_device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]]] = None,
-                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict', 'outputs.ImageBlockDeviceMapping']]]]] = None,
+                 boot_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict', 'outputs.ImageTag']]]]] = None,
+                 tpm_mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an image.
@@ -711,7 +713,9 @@ class Image(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image04 = outscale.Image("image04",
+            image_name="terraform-omi-bsu",
             block_device_mappings=[{
+                "device_name": "/dev/sda1",
                 "bsus": [{
                     "snapshot_id": "snap-12345678",
                     "volume_size": 120,
@@ -719,9 +723,7 @@ class Image(pulumi.CustomResource):
                     "iops": 150,
                     "delete_on_vm_deletion": True,
                 }],
-                "device_name": "/dev/sda1",
             }],
-            image_name="terraform-omi-bsu",
             root_device_name="/dev/sda1",
             description="Terraform OMI with BSU")
         ```
@@ -736,10 +738,11 @@ class Image(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict', 'outputs.ImageBlockDeviceMapping']]]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
         :param pulumi.Input[_builtins.str] file_location: **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
@@ -749,7 +752,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] root_device_name: **(required when registering from a snapshot)** The name of the root device for the new OMI.
         :param pulumi.Input[_builtins.str] source_image_id: **(required when copying an OMI)** The ID of the OMI you want to copy.
         :param pulumi.Input[_builtins.str] source_region_name: **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict', 'outputs.ImageTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         :param pulumi.Input[_builtins.str] vm_id: **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
@@ -812,7 +815,9 @@ class Image(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image04 = outscale.Image("image04",
+            image_name="terraform-omi-bsu",
             block_device_mappings=[{
+                "device_name": "/dev/sda1",
                 "bsus": [{
                     "snapshot_id": "snap-12345678",
                     "volume_size": 120,
@@ -820,9 +825,7 @@ class Image(pulumi.CustomResource):
                     "iops": 150,
                     "delete_on_vm_deletion": True,
                 }],
-                "device_name": "/dev/sda1",
             }],
-            image_name="terraform-omi-bsu",
             root_device_name="/dev/sda1",
             description="Terraform OMI with BSU")
         ```
@@ -836,6 +839,7 @@ class Image(pulumi.CustomResource):
         $ pulumi import outscale:index/image:Image ImportedImage ami-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.
@@ -852,19 +856,19 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]]] = None,
-                 boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 root_device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]]] = None,
-                 tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict', 'outputs.ImageBlockDeviceMapping']]]]] = None,
+                 boot_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict', 'outputs.ImageTag']]]]] = None,
+                 tpm_mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -909,31 +913,31 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            architecture: Optional[pulumi.Input[_builtins.str]] = None,
-            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]]] = None,
-            boot_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_location: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            image_type: Optional[pulumi.Input[_builtins.str]] = None,
-            is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            no_reboot: Optional[pulumi.Input[_builtins.bool]] = None,
-            permissions_to_launches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImagePermissionsToLaunchArgs', 'ImagePermissionsToLaunchArgsDict']]]]] = None,
-            product_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            root_device_name: Optional[pulumi.Input[_builtins.str]] = None,
-            root_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_comments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]]] = None,
-            tpm_mandatory: Optional[pulumi.Input[_builtins.bool]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Image':
+            account_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict', 'outputs.ImageBlockDeviceMapping']]]]] = None,
+            boot_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_location: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+            permissions_to_launches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImagePermissionsToLaunchArgs', 'ImagePermissionsToLaunchArgsDict', 'outputs.ImagePermissionsToLaunch']]]]] = None,
+            product_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_comments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict', 'outputs.ImageStateComment']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict', 'outputs.ImageTag']]]]] = None,
+            tpm_mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -944,7 +948,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_alias: The account alias of the owner of the OMI.
         :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the OMI.
         :param pulumi.Input[_builtins.str] architecture: **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x86_64`). By default, set to `x86_64`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict']]]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict', 'outputs.ImageBlockDeviceMapping']]]] block_device_mappings: **(required when registering from a snapshot)** One or more block device mappings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_modes: The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the OMI was created.
         :param pulumi.Input[_builtins.str] description: A description for the new OMI.
@@ -954,15 +958,15 @@ class Image(pulumi.CustomResource):
                Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
         :param pulumi.Input[_builtins.str] image_type: The type of the OMI.
         :param pulumi.Input[_builtins.bool] no_reboot: **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImagePermissionsToLaunchArgs', 'ImagePermissionsToLaunchArgsDict']]]] permissions_to_launches: Permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImagePermissionsToLaunchArgs', 'ImagePermissionsToLaunchArgsDict', 'outputs.ImagePermissionsToLaunch']]]] permissions_to_launches: Permissions for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] product_codes: The product codes associated with the OMI.
         :param pulumi.Input[_builtins.str] root_device_name: **(required when registering from a snapshot)** The name of the root device for the new OMI.
         :param pulumi.Input[_builtins.str] root_device_type: The type of root device used by the OMI (always `bsu`).
         :param pulumi.Input[_builtins.str] source_image_id: **(required when copying an OMI)** The ID of the OMI you want to copy.
         :param pulumi.Input[_builtins.str] source_region_name: **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
         :param pulumi.Input[_builtins.str] state: The state of the OMI (`pending` \\| `available` \\| `failed`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict']]]] state_comments: Information about the change of state.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict', 'outputs.ImageStateComment']]]] state_comments: Information about the change of state.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict', 'outputs.ImageTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.bool] tpm_mandatory: By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
         :param pulumi.Input[_builtins.str] vm_id: **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
         """
@@ -996,6 +1000,62 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["tpm_mandatory"] = tpm_mandatory
         __props__.__dict__["vm_id"] = vm_id
         return Image(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageBlockDeviceMappingArgs', 'ImageBlockDeviceMappingArgsDict', 'outputs.ImageBlockDeviceMapping']]]]] = None,
+            boot_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_location: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+            permissions_to_launches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImagePermissionsToLaunchArgs', 'ImagePermissionsToLaunchArgsDict', 'outputs.ImagePermissionsToLaunch']]]]] = None,
+            product_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_name: pulumi.Input[Optional[_builtins.str]] = None,
+            root_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_comments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageStateCommentArgs', 'ImageStateCommentArgsDict', 'outputs.ImageStateComment']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageTagArgs', 'ImageTagArgsDict', 'outputs.ImageTag']]]]] = None,
+            tpm_mandatory: pulumi.Input[Optional[_builtins.bool]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountAlias"] = account_alias
+        __props__["accountId"] = account_id
+        __props__["architecture"] = architecture
+        __props__["blockDeviceMappings"] = block_device_mappings
+        __props__["bootModes"] = boot_modes
+        __props__["creationDate"] = creation_date
+        __props__["description"] = description
+        __props__["fileLocation"] = file_location
+        __props__["imageId"] = image_id
+        __props__["imageName"] = image_name
+        __props__["imageType"] = image_type
+        __props__["isPublic"] = is_public
+        __props__["noReboot"] = no_reboot
+        __props__["permissionsToLaunches"] = permissions_to_launches
+        __props__["productCodes"] = product_codes
+        __props__["requestId"] = request_id
+        __props__["rootDeviceName"] = root_device_name
+        __props__["rootDeviceType"] = root_device_type
+        __props__["sourceImageId"] = source_image_id
+        __props__["sourceRegionName"] = source_region_name
+        __props__["state"] = state
+        __props__["stateComments"] = state_comments
+        __props__["tags"] = tags
+        __props__["tpmMandatory"] = tpm_mandatory
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/image:Image', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="accountAlias")

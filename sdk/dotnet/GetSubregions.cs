@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about subregions.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).\
         /// For more information on this resource actions, see the [ReadSubregions](https://docs.outscale.com/api#readsubregions) API method.
         /// 
         /// ## Example Usage
@@ -96,7 +96,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about subregions.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).\
         /// For more information on this resource actions, see the [ReadSubregions](https://docs.outscale.com/api#readsubregions) API method.
         /// 
         /// ## Example Usage
@@ -178,7 +178,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about subregions.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Regions-and-Subregions.html).\
         /// For more information on this resource actions, see the [ReadSubregions](https://docs.outscale.com/api#readsubregions) API method.
         /// 
         /// ## Example Usage

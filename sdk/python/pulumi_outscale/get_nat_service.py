@@ -141,7 +141,7 @@ class AwaitableGetNatServiceResult(GetNatServiceResult):
             tags=self.tags)
 
 
-def get_nat_service(filters: Optional[Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict']]] = None,
+def get_nat_service(filters: Optional[Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict', 'outputs.GetNatServiceFilterResult']]] = None,
                     nat_service_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNatServiceResult:
     """
@@ -163,7 +163,7 @@ def get_nat_service(filters: Optional[Sequence[Union['GetNatServiceFilterArgs', 
     ```
 
 
-    :param Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict', 'outputs.GetNatServiceFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str nat_service_id: The ID of the NAT service.
     """
     __args__ = dict()
@@ -182,8 +182,8 @@ def get_nat_service(filters: Optional[Sequence[Union['GetNatServiceFilterArgs', 
         state=pulumi.get(__ret__, 'state'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_nat_service_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict']]]]] = None,
-                           nat_service_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_nat_service_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict', 'outputs.GetNatServiceFilterResult']]]]] = None,
+                           nat_service_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNatServiceResult]:
     """
     Provides information about a NAT service.
@@ -204,7 +204,7 @@ def get_nat_service_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
     ```
 
 
-    :param Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNatServiceFilterArgs', 'GetNatServiceFilterArgsDict', 'outputs.GetNatServiceFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str nat_service_id: The ID of the NAT service.
     """
     __args__ = dict()

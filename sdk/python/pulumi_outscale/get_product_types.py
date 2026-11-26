@@ -81,7 +81,7 @@ class AwaitableGetProductTypesResult(GetProductTypesResult):
             request_id=self.request_id)
 
 
-def get_product_types(filters: Optional[Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict']]] = None,
+def get_product_types(filters: Optional[Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict', 'outputs.GetProductTypesFilterResult']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProductTypesResult:
     """
     Provides information about product types.
@@ -114,7 +114,7 @@ def get_product_types(filters: Optional[Sequence[Union['GetProductTypesFilterArg
     ```
 
 
-    :param Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict', 'outputs.GetProductTypesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -126,7 +126,7 @@ def get_product_types(filters: Optional[Sequence[Union['GetProductTypesFilterArg
         id=pulumi.get(__ret__, 'id'),
         product_types=pulumi.get(__ret__, 'product_types'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_product_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict']]]]] = None,
+def get_product_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict', 'outputs.GetProductTypesFilterResult']]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductTypesResult]:
     """
     Provides information about product types.
@@ -159,7 +159,7 @@ def get_product_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Un
     ```
 
 
-    :param Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetProductTypesFilterArgs', 'GetProductTypesFilterArgsDict', 'outputs.GetProductTypesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

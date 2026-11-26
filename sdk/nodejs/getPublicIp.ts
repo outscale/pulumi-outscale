@@ -134,13 +134,13 @@ export interface GetPublicIpOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetPublicIpFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetPublicIpFilterArgs>[] | undefined>;
     /**
      * The public IP.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The allocation ID of the public IP.
      */
-    publicIpId?: pulumi.Input<string>;
+    publicIpId?: pulumi.Input<string | undefined>;
 }

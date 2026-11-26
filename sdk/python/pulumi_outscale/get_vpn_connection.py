@@ -189,7 +189,7 @@ class AwaitableGetVpnConnectionResult(GetVpnConnectionResult):
             vpn_connection_id=self.vpn_connection_id)
 
 
-def get_vpn_connection(filters: Optional[Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict']]] = None,
+def get_vpn_connection(filters: Optional[Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict', 'outputs.GetVpnConnectionFilterResult']]] = None,
                        static_routes_only: Optional[_builtins.bool] = None,
                        vpn_connection_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnConnectionResult:
@@ -212,7 +212,7 @@ def get_vpn_connection(filters: Optional[Sequence[Union['GetVpnConnectionFilterA
     ```
 
 
-    :param Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict', 'outputs.GetVpnConnectionFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.bool static_routes_only: If false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
     :param _builtins.str vpn_connection_id: The ID of the VPN connection.
     """
@@ -237,9 +237,9 @@ def get_vpn_connection(filters: Optional[Sequence[Union['GetVpnConnectionFilterA
         vgw_telemetries=pulumi.get(__ret__, 'vgw_telemetries'),
         virtual_gateway_id=pulumi.get(__ret__, 'virtual_gateway_id'),
         vpn_connection_id=pulumi.get(__ret__, 'vpn_connection_id'))
-def get_vpn_connection_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict']]]]] = None,
-                              static_routes_only: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              vpn_connection_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_vpn_connection_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict', 'outputs.GetVpnConnectionFilterResult']]]]] = None,
+                              static_routes_only: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              vpn_connection_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnConnectionResult]:
     """
     Provides information about a VPN connection.
@@ -260,7 +260,7 @@ def get_vpn_connection_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     ```
 
 
-    :param Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVpnConnectionFilterArgs', 'GetVpnConnectionFilterArgsDict', 'outputs.GetVpnConnectionFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.bool static_routes_only: If false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
     :param _builtins.str vpn_connection_id: The ID of the VPN connection.
     """

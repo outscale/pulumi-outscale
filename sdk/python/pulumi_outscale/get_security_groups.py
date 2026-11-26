@@ -99,7 +99,7 @@ class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
             security_groups=self.security_groups)
 
 
-def get_security_groups(filters: Optional[Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict']]] = None,
+def get_security_groups(filters: Optional[Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict', 'outputs.GetSecurityGroupsFilterResult']]] = None,
                         security_group_ids: Optional[Sequence[_builtins.str]] = None,
                         security_group_names: Optional[Sequence[_builtins.str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityGroupsResult:
@@ -131,7 +131,7 @@ def get_security_groups(filters: Optional[Sequence[Union['GetSecurityGroupsFilte
     ```
 
 
-    :param Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict', 'outputs.GetSecurityGroupsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -147,9 +147,9 @@ def get_security_groups(filters: Optional[Sequence[Union['GetSecurityGroupsFilte
         security_group_ids=pulumi.get(__ret__, 'security_group_ids'),
         security_group_names=pulumi.get(__ret__, 'security_group_names'),
         security_groups=pulumi.get(__ret__, 'security_groups'))
-def get_security_groups_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict']]]]] = None,
-                               security_group_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               security_group_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_security_groups_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict', 'outputs.GetSecurityGroupsFilterResult']]]]] = None,
+                               security_group_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               security_group_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupsResult]:
     """
     Provides information about security groups.
@@ -179,7 +179,7 @@ def get_security_groups_output(filters: Optional[pulumi.Input[Optional[Sequence[
     ```
 
 
-    :param Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSecurityGroupsFilterArgs', 'GetSecurityGroupsFilterArgsDict', 'outputs.GetSecurityGroupsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

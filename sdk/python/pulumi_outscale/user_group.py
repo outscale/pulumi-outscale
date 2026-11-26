@@ -22,12 +22,13 @@ __all__ = ['UserGroupArgs', 'UserGroup']
 class UserGroupArgs:
     def __init__(__self__, *,
                  user_group_name: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['UserGroupTimeoutsArgs']] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['UserGroupTimeoutsArgs']] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupUserArgs']]]] = None):
         """
         The set of arguments for constructing a UserGroup resource.
+
         :param pulumi.Input[_builtins.str] user_group_name: The name of the group.
         :param pulumi.Input[_builtins.str] path: The path to the group. If not specified, it is set to a slash (`/`).
         """
@@ -55,58 +56,59 @@ class UserGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the group. If not specified, it is set to a slash (`/`).
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['UserGroupTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['UserGroupTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['UserGroupTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['UserGroupTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
 class _UserGroupState:
     def __init__(__self__, *,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 orn: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['UserGroupTimeoutsArgs']] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]] = None):
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 orn: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['UserGroupTimeoutsArgs']] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering UserGroup resources.
+
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) of creation of the user group.
         :param pulumi.Input[_builtins.str] last_modification_date: The date and time (UTC) of the last modification of the user group.
         :param pulumi.Input[_builtins.str] orn: The Outscale Resource Name (ORN) of the user group. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
@@ -135,101 +137,101 @@ class _UserGroupState:
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) of creation of the user group.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModificationDate")
-    def last_modification_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modification_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) of the last modification of the user group.
         """
         return pulumi.get(self, "last_modification_date")
 
     @last_modification_date.setter
-    def last_modification_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modification_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modification_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def orn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def orn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Outscale Resource Name (ORN) of the user group. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
         """
         return pulumi.get(self, "orn")
 
     @orn.setter
-    def orn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def orn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "orn", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the group. If not specified, it is set to a slash (`/`).
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['UserGroupTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['UserGroupTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['UserGroupTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['UserGroupTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupId")
-    def user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user group.
         """
         return pulumi.get(self, "user_group_id")
 
     @user_group_id.setter
-    def user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupName")
-    def user_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the group.
         """
         return pulumi.get(self, "user_group_name")
 
     @user_group_name.setter
-    def user_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
@@ -239,11 +241,11 @@ class UserGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict']]] = None,
-                 user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict']]]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict', 'outputs.UserGroupTimeouts']]] = None,
+                 user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict', 'outputs.UserGroupUser']]]]] = None,
                  __props__=None):
         """
         Manages a user group.
@@ -271,11 +273,11 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
+            user_group_name="Group-TF-test-1",
             policies=[{
                 "policy_orn": policy_2["orn"],
                 "default_version_id": "V2",
-            }],
-            user_group_name="Group-TF-test-1")
+            }])
         ```
 
         ### Add a user to a user group
@@ -285,6 +287,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
+            user_group_name="Group-TF-test-1",
             users=[
                 {
                     "user_name": "user-name-1",
@@ -293,8 +296,7 @@ class UserGroup(pulumi.CustomResource):
                 {
                     "user_name": "user-name-2",
                 },
-            ],
-            user_group_name="Group-TF-test-1")
+            ])
         ```
 
         ### Create a user group, and add a user and a policy to it
@@ -304,10 +306,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
-            policies=[{
-                "policy_orn": policy_2["orn"],
-                "version_id": "V2",
-            }],
+            user_group_name="Group-TF-test-1",
             users=[
                 {
                     "user_name": "user-name-1",
@@ -317,7 +316,10 @@ class UserGroup(pulumi.CustomResource):
                     "user_name": "user-name-2",
                 },
             ],
-            user_group_name="Group-TF-test-1")
+            policies=[{
+                "policy_orn": policy_2["orn"],
+                "version_id": "V2",
+            }])
         ```
 
         ## Import
@@ -329,6 +331,7 @@ class UserGroup(pulumi.CustomResource):
         $ pulumi import outscale:index/userGroup:UserGroup group1 user_group_id
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -367,11 +370,11 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
+            user_group_name="Group-TF-test-1",
             policies=[{
                 "policy_orn": policy_2["orn"],
                 "default_version_id": "V2",
-            }],
-            user_group_name="Group-TF-test-1")
+            }])
         ```
 
         ### Add a user to a user group
@@ -381,6 +384,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
+            user_group_name="Group-TF-test-1",
             users=[
                 {
                     "user_name": "user-name-1",
@@ -389,8 +393,7 @@ class UserGroup(pulumi.CustomResource):
                 {
                     "user_name": "user-name-2",
                 },
-            ],
-            user_group_name="Group-TF-test-1")
+            ])
         ```
 
         ### Create a user group, and add a user and a policy to it
@@ -400,10 +403,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
-            policies=[{
-                "policy_orn": policy_2["orn"],
-                "version_id": "V2",
-            }],
+            user_group_name="Group-TF-test-1",
             users=[
                 {
                     "user_name": "user-name-1",
@@ -413,7 +413,10 @@ class UserGroup(pulumi.CustomResource):
                     "user_name": "user-name-2",
                 },
             ],
-            user_group_name="Group-TF-test-1")
+            policies=[{
+                "policy_orn": policy_2["orn"],
+                "version_id": "V2",
+            }])
         ```
 
         ## Import
@@ -425,6 +428,7 @@ class UserGroup(pulumi.CustomResource):
         $ pulumi import outscale:index/userGroup:UserGroup group1 user_group_id
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserGroupArgs args: The arguments to use to populate this resource's properties.
@@ -441,11 +445,11 @@ class UserGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict']]] = None,
-                 user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict']]]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict', 'outputs.UserGroupTimeouts']]] = None,
+                 user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict', 'outputs.UserGroupUser']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -476,15 +480,15 @@ class UserGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
-            orn: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict']]] = None,
-            user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict']]]]] = None) -> 'UserGroup':
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+            orn: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict', 'outputs.UserGroupTimeouts']]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict', 'outputs.UserGroupUser']]]]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -513,6 +517,30 @@ class UserGroup(pulumi.CustomResource):
         __props__.__dict__["user_group_name"] = user_group_name
         __props__.__dict__["users"] = users
         return UserGroup(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+            orn: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['UserGroupTimeoutsArgs', 'UserGroupTimeoutsArgsDict', 'outputs.UserGroupTimeouts']]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupUserArgs', 'UserGroupUserArgsDict', 'outputs.UserGroupUser']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationDate"] = creation_date
+        __props__["lastModificationDate"] = last_modification_date
+        __props__["orn"] = orn
+        __props__["path"] = path
+        __props__["policies"] = policies
+        __props__["timeouts"] = timeouts
+        __props__["userGroupId"] = user_group_id
+        __props__["userGroupName"] = user_group_name
+        __props__["users"] = users
+        return pulumi.runtime.exists_resource(None, 'outscale:index/userGroup:UserGroup', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="creationDate")

@@ -236,6 +236,12 @@ func (OksManifestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oksManifestState)(nil)).Elem()
 }
 
+// OksManifestExists checks whether an existing OksManifest resource with the given ID exists.
+func OksManifestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OksManifestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oksManifest:OksManifest", id, state, "", opts...)
+}
+
 type oksManifestArgs struct {
 	// The ID of the cluster on which you want to apply the manifest.
 	ClusterId string `pulumi:"clusterId"`

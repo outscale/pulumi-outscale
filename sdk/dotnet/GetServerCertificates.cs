@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about server certificates.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
         /// For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
         /// 
         /// ## Example Usage
@@ -69,7 +69,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about server certificates.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
         /// For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
         /// 
         /// ## Example Usage
@@ -124,7 +124,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about server certificates.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
         /// For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
         /// 
         /// ## Example Usage

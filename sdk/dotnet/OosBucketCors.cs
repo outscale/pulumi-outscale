@@ -31,6 +31,7 @@ namespace Pulumi.Outscale
     /// 
     ///     var cors01 = new Outscale.OosBucketCors("cors01", new()
     ///     {
+    ///         Bucket = bucket01.Id,
     ///         Rules = new[]
     ///         {
     ///             new Outscale.Inputs.OosBucketCorsRuleArgs
@@ -72,7 +73,6 @@ namespace Pulumi.Outscale
     ///                 MaxAgeSeconds = 1200,
     ///             },
     ///         },
-    ///         Bucket = bucket01.Id,
     ///     });
     /// 
     /// });

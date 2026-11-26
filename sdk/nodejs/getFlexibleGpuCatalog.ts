@@ -78,5 +78,5 @@ export function getFlexibleGpuCatalogOutput(args?: GetFlexibleGpuCatalogOutputAr
  * A collection of arguments for invoking getFlexibleGpuCatalog.
  */
 export interface GetFlexibleGpuCatalogOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetFlexibleGpuCatalogFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetFlexibleGpuCatalogFilterArgs>[] | undefined>;
 }

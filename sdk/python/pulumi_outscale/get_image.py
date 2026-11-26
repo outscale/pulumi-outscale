@@ -336,8 +336,8 @@ class AwaitableGetImageResult(GetImageResult):
             tpm_mandatory=self.tpm_mandatory)
 
 
-def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']]] = None,
-              filters: Optional[Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']]] = None,
+def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict', 'outputs.GetImageBlockDeviceMappingResult']]] = None,
+              filters: Optional[Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict', 'outputs.GetImageFilterResult']]] = None,
               image_id: Optional[_builtins.str] = None,
               most_recent: Optional[_builtins.bool] = None,
               permissions: Optional[Sequence[_builtins.str]] = None,
@@ -382,8 +382,8 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
     ```
 
 
-    :param Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']] block_device_mappings: One or more block device mappings.
-    :param Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict', 'outputs.GetImageBlockDeviceMappingResult']] block_device_mappings: One or more block device mappings.
+    :param Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict', 'outputs.GetImageFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str image_id: The ID of the OMI.
     """
     __args__ = dict()
@@ -422,11 +422,11 @@ def get_image(block_device_mappings: Optional[Sequence[Union['GetImageBlockDevic
         state_comments=pulumi.get(__ret__, 'state_comments'),
         tags=pulumi.get(__ret__, 'tags'),
         tpm_mandatory=pulumi.get(__ret__, 'tpm_mandatory'))
-def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']]]]] = None,
-                     filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']]]]] = None,
-                     image_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     permissions: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_image_output(block_device_mappings: pulumi.Input[Optional[Optional[Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict', 'outputs.GetImageBlockDeviceMappingResult']]]]] = None,
+                     filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict', 'outputs.GetImageFilterResult']]]]] = None,
+                     image_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     permissions: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Provides information about an image.
@@ -468,8 +468,8 @@ def get_image_output(block_device_mappings: Optional[pulumi.Input[Optional[Seque
     ```
 
 
-    :param Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict']] block_device_mappings: One or more block device mappings.
-    :param Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetImageBlockDeviceMappingArgs', 'GetImageBlockDeviceMappingArgsDict', 'outputs.GetImageBlockDeviceMappingResult']] block_device_mappings: One or more block device mappings.
+    :param Sequence[Union['GetImageFilterArgs', 'GetImageFilterArgsDict', 'outputs.GetImageFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str image_id: The ID of the OMI.
     """
     __args__ = dict()

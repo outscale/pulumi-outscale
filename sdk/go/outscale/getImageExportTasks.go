@@ -78,12 +78,8 @@ type GetImageExportTasksResult struct {
 }
 
 func GetImageExportTasksOutput(ctx *pulumi.Context, args GetImageExportTasksOutputArgs, opts ...pulumi.InvokeOption) GetImageExportTasksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetImageExportTasksResultOutput, error) {
-			args := v.(GetImageExportTasksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getImageExportTasks:getImageExportTasks", args, GetImageExportTasksResultOutput{}, options).(GetImageExportTasksResultOutput), nil
-		}).(GetImageExportTasksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getImageExportTasks:getImageExportTasks", args, GetImageExportTasksResultOutput{}, options).(GetImageExportTasksResultOutput)
 }
 
 // A collection of arguments for invoking getImageExportTasks.
