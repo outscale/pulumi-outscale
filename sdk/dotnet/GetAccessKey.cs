@@ -59,7 +59,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var accessKey01 = Outscale.GetAccessKey.Invoke(new()
         ///     {
-        ///         UserName = "user_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetAccessKeyFilterInputArgs
@@ -79,6 +78,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         UserName = "user_name",
         ///     });
         /// 
         /// });
@@ -135,7 +135,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var accessKey01 = Outscale.GetAccessKey.Invoke(new()
         ///     {
-        ///         UserName = "user_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetAccessKeyFilterInputArgs
@@ -155,6 +154,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         UserName = "user_name",
         ///     });
         /// 
         /// });
@@ -211,7 +211,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var accessKey01 = Outscale.GetAccessKey.Invoke(new()
         ///     {
-        ///         UserName = "user_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetAccessKeyFilterInputArgs
@@ -231,6 +230,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         UserName = "user_name",
         ///     });
         /// 
         /// });

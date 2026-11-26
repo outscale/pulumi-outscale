@@ -33,20 +33,20 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const imageExportTask01 = new outscale.ImageExportTask("image_export_task01", {
- *     imageId: image01.imageId,
  *     osuExports: [{
- *         diskImageFormat: "qcow2",
- *         osuBucket: "terraform-bucket",
- *         osuPrefix: "new-export",
  *         osuApiKeys: [{
  *             apiKeyId: accessKeyId,
  *             secretKey: secretKeyId,
  *         }],
+ *         diskImageFormat: "qcow2",
+ *         osuBucket: "terraform-bucket",
+ *         osuPrefix: "new-export",
  *     }],
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-snapshot-export-task",
  *     }],
+ *     imageId: image01.imageId,
  *     waitForCompletion: false,
  * });
  * ```

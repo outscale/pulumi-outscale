@@ -52,7 +52,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var unique = new Outscale.ApiAccessPolicy("unique", new()
     ///     {
-    ///         MaxAccessKeyExpirationSeconds = 3153600000,
+    ///         MaxAccessKeyExpirationSeconds = (int)3153600000,
     ///         RequireTrustedEnv = true,
     ///     });
     /// 

@@ -53,17 +53,17 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const securityGroupRule02 = new outscale.SecurityGroupRule("security_group_rule02", {
- *     flow: "Inbound",
- *     securityGroupId: securityGroup01.securityGroupId,
  *     rules: [{
- *         fromPortRange: 22,
- *         toPortRange: 22,
- *         ipProtocol: "tcp",
  *         securityGroupsMembers: [{
  *             accountId: "012345678910",
  *             securityGroupName: "terraform-security-group-test-02",
  *         }],
+ *         fromPortRange: 22,
+ *         toPortRange: 22,
+ *         ipProtocol: "tcp",
  *     }],
+ *     flow: "Inbound",
+ *     securityGroupId: securityGroup01.securityGroupId,
  * });
  * ```
  *

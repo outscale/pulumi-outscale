@@ -77,15 +77,10 @@ namespace Pulumi.Outscale
     /// {
     ///     var securityGroupRule02 = new Outscale.SecurityGroupRule("security_group_rule02", new()
     ///     {
-    ///         Flow = "Inbound",
-    ///         SecurityGroupId = securityGroup01.SecurityGroupId,
     ///         Rules = new[]
     ///         {
     ///             new Outscale.Inputs.SecurityGroupRuleRuleArgs
     ///             {
-    ///                 FromPortRange = 22,
-    ///                 ToPortRange = 22,
-    ///                 IpProtocol = "tcp",
     ///                 SecurityGroupsMembers = new[]
     ///                 {
     ///                     new Outscale.Inputs.SecurityGroupRuleRuleSecurityGroupsMemberArgs
@@ -94,8 +89,13 @@ namespace Pulumi.Outscale
     ///                         SecurityGroupName = "terraform-security-group-test-02",
     ///                     },
     ///                 },
+    ///                 FromPortRange = 22,
+    ///                 ToPortRange = 22,
+    ///                 IpProtocol = "tcp",
     ///             },
     ///         },
+    ///         Flow = "Inbound",
+    ///         SecurityGroupId = securityGroup01.SecurityGroupId,
     ///     });
     /// 
     /// });

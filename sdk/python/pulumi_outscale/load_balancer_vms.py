@@ -197,8 +197,6 @@ class LoadBalancerVms(pulumi.CustomResource):
             vm_type=vm_type,
             keypair_name=keypair_name)
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="load-balancer-for-backend-vms",
-            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
@@ -208,7 +206,9 @@ class LoadBalancerVms(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "outscale_load_balancer01",
-            }])
+            }],
+            load_balancer_name="load-balancer-for-backend-vms",
+            subregion_names=[f"{region}a"])
         ```
 
         ### Register VMs with a load balancer
@@ -276,8 +276,6 @@ class LoadBalancerVms(pulumi.CustomResource):
             vm_type=vm_type,
             keypair_name=keypair_name)
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="load-balancer-for-backend-vms",
-            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
@@ -287,7 +285,9 @@ class LoadBalancerVms(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "outscale_load_balancer01",
-            }])
+            }],
+            load_balancer_name="load-balancer-for-backend-vms",
+            subregion_names=[f"{region}a"])
         ```
 
         ### Register VMs with a load balancer

@@ -29,7 +29,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var managedPoliciesLinkedToUserGroup = Outscale.GetPoliciesLinkedToUserGroup.Invoke(new()
         ///     {
-        ///         UserGroupName = "user_group_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetPoliciesLinkedToUserGroupFilterInputArgs
@@ -50,6 +49,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         UserGroupName = "user_group_name",
         ///     });
         /// 
         /// });
@@ -76,7 +76,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var managedPoliciesLinkedToUserGroup = Outscale.GetPoliciesLinkedToUserGroup.Invoke(new()
         ///     {
-        ///         UserGroupName = "user_group_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetPoliciesLinkedToUserGroupFilterInputArgs
@@ -97,6 +96,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         UserGroupName = "user_group_name",
         ///     });
         /// 
         /// });
@@ -123,7 +123,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var managedPoliciesLinkedToUserGroup = Outscale.GetPoliciesLinkedToUserGroup.Invoke(new()
         ///     {
-        ///         UserGroupName = "user_group_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetPoliciesLinkedToUserGroupFilterInputArgs
@@ -144,6 +143,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         UserGroupName = "user_group_name",
         ///     });
         /// 
         /// });

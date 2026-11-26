@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       invokeFile, err := std.File(ctx, map[string]interface{}{
+//	       invokeFile, err := std.File(ctx, map[string]string{
 //	           "input": "policy.json",
 //	       }, nil)
 //	       if err != nil {
@@ -41,7 +41,7 @@ import (
 //	       _, err = outscale.NewPolicy(ctx, "policy-1", &outscale.PolicyArgs{
 //	           PolicyName:  pulumi.String("terraform-policy-1"),
 //	           Description: pulumi.String("test-terraform"),
-//	           Document:    invokeFile.Result,
+//	           Document:    invokeFile.Result.(pulumi.String),
 //	           Path:        pulumi.String("/"),
 //	       })
 //	       if err != nil {

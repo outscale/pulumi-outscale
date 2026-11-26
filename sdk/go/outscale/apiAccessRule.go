@@ -63,14 +63,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//			invokeFile, err := std.File(ctx, map[string]string{
 //				"input": "<PATH>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			ca01, err := outscale.NewCa(ctx, "ca01", &outscale.CaArgs{
-//				CaPem:       invokeFile.Result,
+//				CaPem:       invokeFile.Result.(pulumi.String),
 //				Description: pulumi.String("Terraform CA"),
 //			})
 //			if err != nil {

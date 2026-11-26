@@ -30,6 +30,10 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const dhcpOption02 = new outscale.DhcpOption("dhcp_option_02", {
+ *     tags: [{
+ *         key: "Name",
+ *         value: "DHCP01",
+ *     }],
  *     domainName: "MyCompany.com",
  *     domainNameServers: [
  *         "111.111.11.111",
@@ -39,10 +43,6 @@ import * as utilities from "./utilities";
  *         "111.1.1.1",
  *         "222.2.2.2",
  *     ],
- *     tags: [{
- *         key: "Name",
- *         value: "DHCP01",
- *     }],
  * });
  * ```
  *

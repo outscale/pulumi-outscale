@@ -35,14 +35,14 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const vpnConnection01 = new outscale.VpnConnection("vpn_connection01", {
- *     clientGatewayId: clientGateway01.clientGatewayId,
- *     virtualGatewayId: virtualGateway01.virtualGatewayId,
- *     connectionType: "ipsec.1",
- *     staticRoutesOnly: true,
  *     tags: [{
  *         key: "Name",
  *         value: "vpn01",
  *     }],
+ *     clientGatewayId: clientGateway01.clientGatewayId,
+ *     virtualGatewayId: virtualGateway01.virtualGatewayId,
+ *     connectionType: "ipsec.1",
+ *     staticRoutesOnly: true,
  * });
  * ```
  *

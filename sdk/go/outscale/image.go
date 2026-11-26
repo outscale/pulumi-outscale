@@ -119,10 +119,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewImage(ctx, "image04", &outscale.ImageArgs{
-//				ImageName: pulumi.String("terraform-omi-bsu"),
 //				BlockDeviceMappings: outscale.ImageBlockDeviceMappingArray{
 //					&outscale.ImageBlockDeviceMappingArgs{
-//						DeviceName: pulumi.String("/dev/sda1"),
 //						Bsus: outscale.ImageBlockDeviceMappingBsusArray{
 //							&outscale.ImageBlockDeviceMappingBsusArgs{
 //								SnapshotId:         pulumi.String("snap-12345678"),
@@ -132,8 +130,10 @@ import (
 //								DeleteOnVmDeletion: pulumi.Bool(true),
 //							},
 //						},
+//						DeviceName: pulumi.String("/dev/sda1"),
 //					},
 //				},
+//				ImageName:      pulumi.String("terraform-omi-bsu"),
 //				RootDeviceName: pulumi.String("/dev/sda1"),
 //				Description:    pulumi.String("Terraform OMI with BSU"),
 //			})

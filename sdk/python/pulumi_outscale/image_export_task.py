@@ -273,20 +273,20 @@ class ImageExportTask(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image_export_task01 = outscale.ImageExportTask("image_export_task01",
-            image_id=image01["imageId"],
             osu_exports=[{
-                "disk_image_format": "qcow2",
-                "osu_bucket": "terraform-bucket",
-                "osu_prefix": "new-export",
                 "osu_api_keys": [{
                     "api_key_id": access_key_id,
                     "secret_key": secret_key_id,
                 }],
+                "disk_image_format": "qcow2",
+                "osu_bucket": "terraform-bucket",
+                "osu_prefix": "new-export",
             }],
             tags=[{
                 "key": "Name",
                 "value": "terraform-snapshot-export-task",
             }],
+            image_id=image01["imageId"],
             wait_for_completion=False)
         ```
 
@@ -329,20 +329,20 @@ class ImageExportTask(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image_export_task01 = outscale.ImageExportTask("image_export_task01",
-            image_id=image01["imageId"],
             osu_exports=[{
-                "disk_image_format": "qcow2",
-                "osu_bucket": "terraform-bucket",
-                "osu_prefix": "new-export",
                 "osu_api_keys": [{
                     "api_key_id": access_key_id,
                     "secret_key": secret_key_id,
                 }],
+                "disk_image_format": "qcow2",
+                "osu_bucket": "terraform-bucket",
+                "osu_prefix": "new-export",
             }],
             tags=[{
                 "key": "Name",
                 "value": "terraform-snapshot-export-task",
             }],
+            image_id=image01["imageId"],
             wait_for_completion=False)
         ```
 

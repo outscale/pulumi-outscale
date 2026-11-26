@@ -32,19 +32,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//			invokeFile, err := std.File(ctx, map[string]string{
 //				"input": "<PATH>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile1, err := std.File(ctx, map[string]interface{}{
+//			invokeFile1, err := std.File(ctx, map[string]string{
 //				"input": "<PATH>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile2, err := std.File(ctx, map[string]interface{}{
+//			invokeFile2, err := std.File(ctx, map[string]string{
 //				"input": "<PATH>",
 //			}, nil)
 //			if err != nil {
@@ -52,9 +52,9 @@ import (
 //			}
 //			_, err = outscale.NewServerCertificate(ctx, "server_certificate_01", &outscale.ServerCertificateArgs{
 //				Name:       pulumi.String("terraform-server-certificate"),
-//				Body:       invokeFile.Result,
-//				Chain:      invokeFile1.Result,
-//				PrivateKey: invokeFile2.Result,
+//				Body:       invokeFile.Result.(pulumi.String),
+//				Chain:      invokeFile1.Result.(pulumi.String),
+//				PrivateKey: invokeFile2.Result.(pulumi.String),
 //				Path:       pulumi.String("<PATH>"),
 //			})
 //			if err != nil {

@@ -33,11 +33,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const group_1 = new outscale.UserGroup("group-1", {
- *     userGroupName: "Group-TF-test-1",
  *     policies: [{
  *         policyOrn: policy_2.orn,
  *         defaultVersionId: "V2",
  *     }],
+ *     userGroupName: "Group-TF-test-1",
  * });
  * ```
  *
@@ -48,7 +48,6 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const group_1 = new outscale.UserGroup("group-1", {
- *     userGroupName: "Group-TF-test-1",
  *     users: [
  *         {
  *             userName: "user-name-1",
@@ -58,6 +57,7 @@ import * as utilities from "./utilities";
  *             userName: "user-name-2",
  *         },
  *     ],
+ *     userGroupName: "Group-TF-test-1",
  * });
  * ```
  *
@@ -68,7 +68,10 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const group_1 = new outscale.UserGroup("group-1", {
- *     userGroupName: "Group-TF-test-1",
+ *     policies: [{
+ *         policyOrn: policy_2.orn,
+ *         versionId: "V2",
+ *     }],
  *     users: [
  *         {
  *             userName: "user-name-1",
@@ -78,10 +81,7 @@ import * as utilities from "./utilities";
  *             userName: "user-name-2",
  *         },
  *     ],
- *     policies: [{
- *         policyOrn: policy_2.orn,
- *         versionId: "V2",
- *     }],
+ *     userGroupName: "Group-TF-test-1",
  * });
  * ```
  *

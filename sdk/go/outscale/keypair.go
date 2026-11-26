@@ -60,7 +60,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//			invokeFile, err := std.File(ctx, map[string]string{
 //				"input": "<PATH>",
 //			}, nil)
 //			if err != nil {
@@ -68,7 +68,7 @@ import (
 //			}
 //			_, err = outscale.NewKeypair(ctx, "keypair02", &outscale.KeypairArgs{
 //				KeypairName: pulumi.String("terraform-keypair-import-file"),
-//				PublicKey:   invokeFile.Result,
+//				PublicKey:   invokeFile.Result.(pulumi.String),
 //			})
 //			if err != nil {
 //				return err

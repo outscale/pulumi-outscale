@@ -348,14 +348,14 @@ class VpnConnection(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         vpn_connection01 = outscale.VpnConnection("vpn_connection01",
-            client_gateway_id=client_gateway01["clientGatewayId"],
-            virtual_gateway_id=virtual_gateway01["virtualGatewayId"],
-            connection_type="ipsec.1",
-            static_routes_only=True,
             tags=[{
                 "key": "Name",
                 "value": "vpn01",
-            }])
+            }],
+            client_gateway_id=client_gateway01["clientGatewayId"],
+            virtual_gateway_id=virtual_gateway01["virtualGatewayId"],
+            connection_type="ipsec.1",
+            static_routes_only=True)
         ```
 
         ## Import
@@ -410,14 +410,14 @@ class VpnConnection(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         vpn_connection01 = outscale.VpnConnection("vpn_connection01",
-            client_gateway_id=client_gateway01["clientGatewayId"],
-            virtual_gateway_id=virtual_gateway01["virtualGatewayId"],
-            connection_type="ipsec.1",
-            static_routes_only=True,
             tags=[{
                 "key": "Name",
                 "value": "vpn01",
-            }])
+            }],
+            client_gateway_id=client_gateway01["clientGatewayId"],
+            virtual_gateway_id=virtual_gateway01["virtualGatewayId"],
+            connection_type="ipsec.1",
+            static_routes_only=True)
         ```
 
         ## Import

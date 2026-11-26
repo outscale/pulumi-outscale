@@ -32,13 +32,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewVirtualGateway(ctx, "virtual_gateway01", &outscale.VirtualGatewayArgs{
-//				ConnectionType: pulumi.String("ipsec.1"),
 //				Tags: outscale.VirtualGatewayTagArray{
 //					&outscale.VirtualGatewayTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-virtual-gateway"),
 //					},
 //				},
+//				ConnectionType: pulumi.String("ipsec.1"),
 //			})
 //			if err != nil {
 //				return err

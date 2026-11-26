@@ -66,7 +66,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.GetAccessKey(ctx, &outscale.LookupAccessKeyArgs{
-//				UserName: pulumi.StringRef("user_name"),
 //				Filters: []outscale.GetAccessKeyFilter{
 //					{
 //						Name: "access_key_ids",
@@ -81,6 +80,7 @@ import (
 //						},
 //					},
 //				},
+//				UserName: pulumi.StringRef("user_name"),
 //			}, nil)
 //			if err != nil {
 //				return err

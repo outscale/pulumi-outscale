@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//			invokeFile, err := std.File(ctx, map[string]string{
 //				"input": "policy.json",
 //			}, nil)
 //			if err != nil {
@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = outscale.NewPolicyVersion(ctx, "Policy2-version-02", &outscale.PolicyVersionArgs{
 //				PolicyOrn:    pulumi.Any(policy_2.Orn),
-//				Document:     invokeFile.Result,
+//				Document:     invokeFile.Result.(pulumi.String),
 //				SetAsDefault: pulumi.Bool(true),
 //			})
 //			if err != nil {

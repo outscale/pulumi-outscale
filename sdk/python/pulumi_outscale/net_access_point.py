@@ -265,13 +265,13 @@ class NetAccessPoint(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net_access_point01 = outscale.NetAccessPoint("net_access_point01",
-            net_id=net01["netId"],
-            route_table_ids=[route_table01["routeTableId"]],
-            service_name="com.outscale.eu-west-2.api",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-access-point",
-            }])
+            }],
+            net_id=net01["netId"],
+            route_table_ids=[route_table01["routeTableId"]],
+            service_name="com.outscale.eu-west-2.api")
         ```
 
         ## Import
@@ -322,13 +322,13 @@ class NetAccessPoint(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net_access_point01 = outscale.NetAccessPoint("net_access_point01",
-            net_id=net01["netId"],
-            route_table_ids=[route_table01["routeTableId"]],
-            service_name="com.outscale.eu-west-2.api",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-access-point",
-            }])
+            }],
+            net_id=net01["netId"],
+            route_table_ids=[route_table01["routeTableId"]],
+            service_name="com.outscale.eu-west-2.api")
         ```
 
         ## Import

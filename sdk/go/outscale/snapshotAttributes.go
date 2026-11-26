@@ -41,13 +41,13 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewSnapshot(ctx, "snapshot01", &outscale.SnapshotArgs{
-//				VolumeId: volume01.VolumeId,
 //				Tags: outscale.SnapshotTagArray{
 //					&outscale.SnapshotTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-snapshot-test"),
 //					},
 //				},
+//				VolumeId: volume01.VolumeId,
 //			})
 //			if err != nil {
 //				return err
@@ -73,12 +73,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewSnapshotAttributes(ctx, "snapshot_attributes01", &outscale.SnapshotAttributesArgs{
-//				SnapshotId: pulumi.Any(snapshot01.SnapshotId),
 //				PermissionsToCreateVolumeAdditions: &outscale.SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs{
 //					AccountIds: pulumi.StringArray{
 //						pulumi.String("012345678910"),
 //					},
 //				},
+//				SnapshotId: pulumi.Any(snapshot01.SnapshotId),
 //			})
 //			if err != nil {
 //				return err
@@ -104,12 +104,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewSnapshotAttributes(ctx, "snapshot_attributes02", &outscale.SnapshotAttributesArgs{
-//				SnapshotId: pulumi.Any(snapshot01.SnapshotId),
 //				PermissionsToCreateVolumeRemovals: &outscale.SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs{
 //					AccountIds: pulumi.StringArray{
 //						pulumi.String("012345678910"),
 //					},
 //				},
+//				SnapshotId: pulumi.Any(snapshot01.SnapshotId),
 //			})
 //			if err != nil {
 //				return err

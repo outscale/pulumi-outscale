@@ -66,17 +66,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewNetAccessPoint(ctx, "net_access_point01", &outscale.NetAccessPointArgs{
-//				NetId: pulumi.Any(net01.NetId),
-//				RouteTableIds: pulumi.StringArray{
-//					routeTable01.RouteTableId,
-//				},
-//				ServiceName: pulumi.String("com.outscale.eu-west-2.api"),
 //				Tags: outscale.NetAccessPointTagArray{
 //					&outscale.NetAccessPointTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-net-access-point"),
 //					},
 //				},
+//				NetId: pulumi.Any(net01.NetId),
+//				RouteTableIds: pulumi.StringArray{
+//					routeTable01.RouteTableId,
+//				},
+//				ServiceName: pulumi.String("com.outscale.eu-west-2.api"),
 //			})
 //			if err != nil {
 //				return err

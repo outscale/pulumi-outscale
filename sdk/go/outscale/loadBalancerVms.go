@@ -52,10 +52,6 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("load-balancer-for-backend-vms"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.Sprintf("%va", region),
-//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(80),
@@ -69,6 +65,10 @@ import (
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("outscale_load_balancer01"),
 //					},
+//				},
+//				LoadBalancerName: pulumi.String("load-balancer-for-backend-vms"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.Sprintf("%va", region),
 //				},
 //			})
 //			if err != nil {

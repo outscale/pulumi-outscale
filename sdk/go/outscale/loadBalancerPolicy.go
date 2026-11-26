@@ -34,10 +34,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("terraform-lb-for-browser-policy"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.String("eu-west-2a"),
-//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(8080),
@@ -45,6 +41,10 @@ import (
 //						LoadBalancerPort:     pulumi.Int(8080),
 //						LoadBalancerProtocol: pulumi.String("HTTP"),
 //					},
+//				},
+//				LoadBalancerName: pulumi.String("terraform-lb-for-browser-policy"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.String("eu-west-2a"),
 //				},
 //			})
 //			if err != nil {
@@ -79,10 +79,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			loadBalancer02, err := outscale.NewLoadBalancer(ctx, "load_balancer02", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("terraform-lb-for-app-policy"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.Sprintf("%vb", region),
-//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						LoadBalancerPort:     pulumi.Int(80),
@@ -90,6 +86,10 @@ import (
 //						BackendPort:          pulumi.Int(80),
 //						BackendProtocol:      pulumi.String("TCP"),
 //					},
+//				},
+//				LoadBalancerName: pulumi.String("terraform-lb-for-app-policy"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.Sprintf("%vb", region),
 //				},
 //			})
 //			if err != nil {

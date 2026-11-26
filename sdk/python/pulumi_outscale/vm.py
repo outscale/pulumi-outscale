@@ -1320,16 +1320,16 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
+            tags=[{
+                "key": "name",
+                "value": "terraform-public-vm",
+            }],
             image_id=image_id,
             vm_type="tinav5.c1r1p2",
             keypair_name=keypair01.keypair_name,
             security_group_ids=[security_group01.security_group_id],
             placement_subregion_name="eu-west-2a",
             placement_tenancy="default",
-            tags=[{
-                "key": "name",
-                "value": "terraform-public-vm",
-            }],
             user_data=std.base64encode(input="    <CONFIGURATION>\\n")["result"])
         ```
 
@@ -1348,29 +1348,29 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            security_group_ids=[security_group01.security_group_id],
             block_device_mappings=[
                 {
-                    "device_name": "/dev/sdb",
                     "bsu": {
                         "volume_size": 15,
                         "volume_type": "gp2",
                         "snapshot_id": snapshot01.snapshot_id,
                     },
+                    "device_name": "/dev/sdb",
                 },
                 {
-                    "device_name": "/dev/sdc",
                     "bsu": {
                         "volume_size": 22,
                         "volume_type": "io1",
                         "iops": 150,
                         "delete_on_vm_deletion": True,
                     },
+                    "device_name": "/dev/sdc",
                 },
-            ])
+            ],
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id])
         ```
 
         ### Create a VM in a Net with a network
@@ -1380,29 +1380,29 @@ class Vm(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net01 = outscale.Net("net01",
-            ip_range="10.0.0.0/16",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-for-vm",
-            }])
+            }],
+            ip_range="10.0.0.0/16")
         subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2b",
             tags=[{
                 "key": "name",
                 "value": "terraform-subnet-for-vm",
-            }])
+            }],
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b")
         internet_service01 = outscale.InternetService("internet_service01")
         internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
             internet_service_id=internet_service01.internet_service_id,
             net_id=net01.net_id)
         route_table01 = outscale.RouteTable("route_table01",
-            net_id=net01.net_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-route-table-for-vm",
-            }])
+            }],
+            net_id=net01.net_id)
         route_table_link01 = outscale.RouteTableLink("route_table_link01",
             route_table_id=route_table01.route_table_id,
             subnet_id=subnet01.subnet_id)
@@ -1474,9 +1474,6 @@ class Vm(pulumi.CustomResource):
             subregion_name="eu-west-2a")
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "delete_on_vm_deletion": True,
@@ -1488,7 +1485,10 @@ class Vm(pulumi.CustomResource):
                     "subnet_id": subnet02.subnet_id,
                     "device_number": 1,
                 },
-            ])
+            ],
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name)
         ```
 
         Example with existing NICs attached at VM creation:
@@ -1510,9 +1510,6 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "nic_id": nic01.nic_id,
@@ -1522,7 +1519,10 @@ class Vm(pulumi.CustomResource):
                     "nic_id": nic02.nic_id,
                     "device_number": 1,
                 },
-            ])
+            ],
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name)
         ```
 
         ### Method 2: Define the primary NIC and then attach secondary NICs separately
@@ -1554,13 +1554,13 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name,
             primary_nics=[{
                 "nic_id": nic01.nic_id,
                 "device_number": 0,
-            }])
+            }],
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name)
         nic_link01 = outscale.NicLink("nic_link01",
             device_number=1,
             vm_id=vm01.vm_id,
@@ -1634,16 +1634,16 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
+            tags=[{
+                "key": "name",
+                "value": "terraform-public-vm",
+            }],
             image_id=image_id,
             vm_type="tinav5.c1r1p2",
             keypair_name=keypair01.keypair_name,
             security_group_ids=[security_group01.security_group_id],
             placement_subregion_name="eu-west-2a",
             placement_tenancy="default",
-            tags=[{
-                "key": "name",
-                "value": "terraform-public-vm",
-            }],
             user_data=std.base64encode(input="    <CONFIGURATION>\\n")["result"])
         ```
 
@@ -1662,29 +1662,29 @@ class Vm(pulumi.CustomResource):
             description="vm security group",
             security_group_name="vm_security_group")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav5.c1r1p2",
-            keypair_name=keypair01.keypair_name,
-            security_group_ids=[security_group01.security_group_id],
             block_device_mappings=[
                 {
-                    "device_name": "/dev/sdb",
                     "bsu": {
                         "volume_size": 15,
                         "volume_type": "gp2",
                         "snapshot_id": snapshot01.snapshot_id,
                     },
+                    "device_name": "/dev/sdb",
                 },
                 {
-                    "device_name": "/dev/sdc",
                     "bsu": {
                         "volume_size": 22,
                         "volume_type": "io1",
                         "iops": 150,
                         "delete_on_vm_deletion": True,
                     },
+                    "device_name": "/dev/sdc",
                 },
-            ])
+            ],
+            image_id=image_id,
+            vm_type="tinav5.c1r1p2",
+            keypair_name=keypair01.keypair_name,
+            security_group_ids=[security_group01.security_group_id])
         ```
 
         ### Create a VM in a Net with a network
@@ -1694,29 +1694,29 @@ class Vm(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         net01 = outscale.Net("net01",
-            ip_range="10.0.0.0/16",
             tags=[{
                 "key": "name",
                 "value": "terraform-net-for-vm",
-            }])
+            }],
+            ip_range="10.0.0.0/16")
         subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
-            subregion_name="eu-west-2b",
             tags=[{
                 "key": "name",
                 "value": "terraform-subnet-for-vm",
-            }])
+            }],
+            net_id=net01.net_id,
+            ip_range="10.0.0.0/24",
+            subregion_name="eu-west-2b")
         internet_service01 = outscale.InternetService("internet_service01")
         internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
             internet_service_id=internet_service01.internet_service_id,
             net_id=net01.net_id)
         route_table01 = outscale.RouteTable("route_table01",
-            net_id=net01.net_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-route-table-for-vm",
-            }])
+            }],
+            net_id=net01.net_id)
         route_table_link01 = outscale.RouteTableLink("route_table_link01",
             route_table_id=route_table01.route_table_id,
             subnet_id=subnet01.subnet_id)
@@ -1788,9 +1788,6 @@ class Vm(pulumi.CustomResource):
             subregion_name="eu-west-2a")
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "delete_on_vm_deletion": True,
@@ -1802,7 +1799,10 @@ class Vm(pulumi.CustomResource):
                     "subnet_id": subnet02.subnet_id,
                     "device_number": 1,
                 },
-            ])
+            ],
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name)
         ```
 
         Example with existing NICs attached at VM creation:
@@ -1824,9 +1824,6 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name,
             nics=[
                 {
                     "nic_id": nic01.nic_id,
@@ -1836,7 +1833,10 @@ class Vm(pulumi.CustomResource):
                     "nic_id": nic02.nic_id,
                     "device_number": 1,
                 },
-            ])
+            ],
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name)
         ```
 
         ### Method 2: Define the primary NIC and then attach secondary NICs separately
@@ -1868,13 +1868,13 @@ class Vm(pulumi.CustomResource):
         nic02 = outscale.Nic("nic02", subnet_id=subnet02.subnet_id)
         keypair01 = outscale.Keypair("keypair01", keypair_name="terraform-keypair-for-vm")
         vm01 = outscale.Vm("vm01",
-            image_id=image_id,
-            vm_type="tinav7.c1r1p2",
-            keypair_name=keypair01.keypair_name,
             primary_nics=[{
                 "nic_id": nic01.nic_id,
                 "device_number": 0,
-            }])
+            }],
+            image_id=image_id,
+            vm_type="tinav7.c1r1p2",
+            keypair_name=keypair01.keypair_name)
         nic_link01 = outscale.NicLink("nic_link01",
             device_number=1,
             vm_id=vm01.vm_id,

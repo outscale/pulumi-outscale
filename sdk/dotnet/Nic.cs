@@ -83,12 +83,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var nic02 = new Outscale.Nic("nic02", new()
     ///     {
-    ///         Description = "Terraform nic with private IPs",
-    ///         SubnetId = subnet01.SubnetId,
-    ///         SecurityGroupIds = new[]
-    ///         {
-    ///             securityGroup01.SecurityGroupId,
-    ///         },
     ///         PrivateIps = new[]
     ///         {
     ///             new Outscale.Inputs.NicPrivateIpArgs
@@ -101,6 +95,12 @@ namespace Pulumi.Outscale
     ///                 IsPrimary = false,
     ///                 PrivateIp = "10.0.0.5",
     ///             },
+    ///         },
+    ///         Description = "Terraform nic with private IPs",
+    ///         SubnetId = subnet01.SubnetId,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             securityGroup01.SecurityGroupId,
     ///         },
     ///     });
     /// 

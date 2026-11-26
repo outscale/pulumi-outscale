@@ -447,8 +447,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-load-balancer",
-            subregion_names=["eu-west-2a"],
             listeners=[
                 {
                     "backend_port": 80,
@@ -479,7 +477,9 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                     "key": "platform",
                     "value": "eu-west-2",
                 },
-            ])
+            ],
+            load_balancer_name="terraform-load-balancer",
+            subregion_names=["eu-west-2a"])
         ```
 
         ### Update health check
@@ -489,7 +489,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         attributes01 = outscale.LoadBalancerAttributes("attributes01",
-            load_balancer_name=load_balancer01["id"],
             health_check={
                 "healthy_threshold": 10,
                 "check_interval": 30,
@@ -498,7 +497,8 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                 "protocol": "HTTPS",
                 "timeout": 5,
                 "unhealthy_threshold": 5,
-            })
+            },
+            load_balancer_name=load_balancer01["id"])
         ```
 
         ### Update access log
@@ -508,13 +508,13 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         attributes02 = outscale.LoadBalancerAttributes("attributes02",
-            load_balancer_name=load_balancer01["id"],
             access_log={
                 "publication_interval": 5,
                 "is_enabled": True,
                 "osu_bucket_name": "terraform-access-logs",
                 "osu_bucket_prefix": "access-logs-01234",
-            })
+            },
+            load_balancer_name=load_balancer01["id"])
         ```
 
         ### Update policies
@@ -571,8 +571,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-load-balancer",
-            subregion_names=["eu-west-2a"],
             listeners=[
                 {
                     "backend_port": 80,
@@ -603,7 +601,9 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                     "key": "platform",
                     "value": "eu-west-2",
                 },
-            ])
+            ],
+            load_balancer_name="terraform-load-balancer",
+            subregion_names=["eu-west-2a"])
         ```
 
         ### Update health check
@@ -613,7 +613,6 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         attributes01 = outscale.LoadBalancerAttributes("attributes01",
-            load_balancer_name=load_balancer01["id"],
             health_check={
                 "healthy_threshold": 10,
                 "check_interval": 30,
@@ -622,7 +621,8 @@ class LoadBalancerAttributes(pulumi.CustomResource):
                 "protocol": "HTTPS",
                 "timeout": 5,
                 "unhealthy_threshold": 5,
-            })
+            },
+            load_balancer_name=load_balancer01["id"])
         ```
 
         ### Update access log
@@ -632,13 +632,13 @@ class LoadBalancerAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         attributes02 = outscale.LoadBalancerAttributes("attributes02",
-            load_balancer_name=load_balancer01["id"],
             access_log={
                 "publication_interval": 5,
                 "is_enabled": True,
                 "osu_bucket_name": "terraform-access-logs",
                 "osu_bucket_prefix": "access-logs-01234",
-            })
+            },
+            load_balancer_name=load_balancer01["id"])
         ```
 
         ### Update policies

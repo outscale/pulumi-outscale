@@ -204,11 +204,11 @@ class VirtualGateway(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         virtual_gateway01 = outscale.VirtualGateway("virtual_gateway01",
-            connection_type="ipsec.1",
             tags=[{
                 "key": "name",
                 "value": "terraform-virtual-gateway",
-            }])
+            }],
+            connection_type="ipsec.1")
         ```
 
         ## Import
@@ -245,11 +245,11 @@ class VirtualGateway(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         virtual_gateway01 = outscale.VirtualGateway("virtual_gateway01",
-            connection_type="ipsec.1",
             tags=[{
                 "key": "name",
                 "value": "terraform-virtual-gateway",
-            }])
+            }],
+            connection_type="ipsec.1")
         ```
 
         ## Import

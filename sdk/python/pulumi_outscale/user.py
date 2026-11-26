@@ -264,11 +264,11 @@ class User(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         user_1 = outscale.User("user-1",
-            user_name="User-TF-1",
             policies=[{
                 "policy_orn": policy_1["orn"],
                 "default_version_id": "V1",
-            }])
+            }],
+            user_name="User-TF-1")
         ```
 
         ## Import
@@ -320,11 +320,11 @@ class User(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         user_1 = outscale.User("user-1",
-            user_name="User-TF-1",
             policies=[{
                 "policy_orn": policy_1["orn"],
                 "default_version_id": "V1",
-            }])
+            }],
+            user_name="User-TF-1")
         ```
 
         ## Import

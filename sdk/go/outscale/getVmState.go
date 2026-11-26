@@ -31,7 +31,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.GetVmState(ctx, &outscale.GetVmStateArgs{
-//				AllVms: pulumi.BoolRef(true),
 //				Filters: []outscale.GetVmStateFilter{
 //					{
 //						Name: "vm_ids",
@@ -40,6 +39,7 @@ import (
 //						},
 //					},
 //				},
+//				AllVms: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err

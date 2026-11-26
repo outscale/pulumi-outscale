@@ -29,11 +29,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var loadBalancer01 = new Outscale.LoadBalancer("load_balancer01", new()
     ///     {
-    ///         LoadBalancerName = "terraform-load-balancer",
-    ///         SubregionNames = new[]
-    ///         {
-    ///             "eu-west-2a",
-    ///         },
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -72,6 +67,11 @@ namespace Pulumi.Outscale
     ///                 Value = "eu-west-2",
     ///             },
     ///         },
+    ///         LoadBalancerName = "terraform-load-balancer",
+    ///         SubregionNames = new[]
+    ///         {
+    ///             "eu-west-2a",
+    ///         },
     ///     });
     /// 
     /// });
@@ -89,7 +89,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var attributes01 = new Outscale.LoadBalancerAttributes("attributes01", new()
     ///     {
-    ///         LoadBalancerName = loadBalancer01.Id,
     ///         HealthCheck = new Outscale.Inputs.LoadBalancerAttributesHealthCheckArgs
     ///         {
     ///             HealthyThreshold = 10,
@@ -100,6 +99,7 @@ namespace Pulumi.Outscale
     ///             Timeout = 5,
     ///             UnhealthyThreshold = 5,
     ///         },
+    ///         LoadBalancerName = loadBalancer01.Id,
     ///     });
     /// 
     /// });
@@ -117,7 +117,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var attributes02 = new Outscale.LoadBalancerAttributes("attributes02", new()
     ///     {
-    ///         LoadBalancerName = loadBalancer01.Id,
     ///         AccessLog = new Outscale.Inputs.LoadBalancerAttributesAccessLogArgs
     ///         {
     ///             PublicationInterval = 5,
@@ -125,6 +124,7 @@ namespace Pulumi.Outscale
     ///             OsuBucketName = "terraform-access-logs",
     ///             OsuBucketPrefix = "access-logs-01234",
     ///         },
+    ///         LoadBalancerName = loadBalancer01.Id,
     ///     });
     /// 
     /// });

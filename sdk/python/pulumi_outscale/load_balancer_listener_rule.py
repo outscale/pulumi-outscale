@@ -193,8 +193,6 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
             vm_type=vm_type,
             keypair_name=keypair_name)
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-public-load-balancer",
-            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
@@ -204,7 +202,9 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "terraform-public-load-balancer",
-            }])
+            }],
+            load_balancer_name="terraform-public-load-balancer",
+            subregion_names=[f"{region}a"])
         outscale_load_balancer_vms01 = outscale.LoadBalancerVms("outscale_load_balancer_vms01",
             load_balancer_name=load_balancer01.id,
             backend_vm_ids=[vm01.vm_id])
@@ -281,8 +281,6 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
             vm_type=vm_type,
             keypair_name=keypair_name)
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-public-load-balancer",
-            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
@@ -292,7 +290,9 @@ class LoadBalancerListenerRule(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "terraform-public-load-balancer",
-            }])
+            }],
+            load_balancer_name="terraform-public-load-balancer",
+            subregion_names=[f"{region}a"])
         outscale_load_balancer_vms01 = outscale.LoadBalancerVms("outscale_load_balancer_vms01",
             load_balancer_name=load_balancer01.id,
             backend_vm_ids=[vm01.vm_id])

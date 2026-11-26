@@ -62,13 +62,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewUser(ctx, "user-1", &outscale.UserArgs{
-//				UserName: pulumi.String("User-TF-1"),
 //				Policies: outscale.UserPolicyArray{
 //					&outscale.UserPolicyArgs{
 //						PolicyOrn:        pulumi.Any(policy_1.Orn),
 //						DefaultVersionId: pulumi.String("V1"),
 //					},
 //				},
+//				UserName: pulumi.String("User-TF-1"),
 //			})
 //			if err != nil {
 //				return err

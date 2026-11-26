@@ -31,13 +31,13 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const netAccessPoint01 = new outscale.NetAccessPoint("net_access_point01", {
- *     netId: net01.netId,
- *     routeTableIds: [routeTable01.routeTableId],
- *     serviceName: "com.outscale.eu-west-2.api",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-net-access-point",
  *     }],
+ *     netId: net01.netId,
+ *     routeTableIds: [routeTable01.routeTableId],
+ *     serviceName: "com.outscale.eu-west-2.api",
  * });
  * ```
  *

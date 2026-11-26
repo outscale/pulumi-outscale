@@ -47,13 +47,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			invokeBase64encode, err := std.Base64encode(ctx, map[string]interface{}{
+//			invokeBase64encode, err := std.Base64encode(ctx, map[string]string{
 //				"input": "    <CONFIGURATION>\n",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
+//				Tags: outscale.VmTagArray{
+//					&outscale.VmTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-public-vm"),
+//					},
+//				},
 //				ImageId:     pulumi.Any(imageId),
 //				VmType:      pulumi.String("tinav5.c1r1p2"),
 //				KeypairName: keypair01.KeypairName,
@@ -62,13 +68,7 @@ import (
 //				},
 //				PlacementSubregionName: pulumi.String("eu-west-2a"),
 //				PlacementTenancy:       pulumi.String("default"),
-//				Tags: outscale.VmTagArray{
-//					&outscale.VmTagArgs{
-//						Key:   pulumi.String("name"),
-//						Value: pulumi.String("terraform-public-vm"),
-//					},
-//				},
-//				UserData: invokeBase64encode.Result,
+//				UserData:               invokeBase64encode.Result.(pulumi.String),
 //			})
 //			if err != nil {
 //				return err
@@ -120,30 +120,30 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
-//				ImageId:     pulumi.Any(imageId),
-//				VmType:      pulumi.String("tinav5.c1r1p2"),
-//				KeypairName: keypair01.KeypairName,
-//				SecurityGroupIds: pulumi.StringArray{
-//					securityGroup01.SecurityGroupId,
-//				},
 //				BlockDeviceMappings: outscale.VmBlockDeviceMappingArray{
 //					&outscale.VmBlockDeviceMappingArgs{
-//						DeviceName: pulumi.String("/dev/sdb"),
 //						Bsu: &outscale.VmBlockDeviceMappingBsuArgs{
 //							VolumeSize: pulumi.Int(15),
 //							VolumeType: pulumi.String("gp2"),
 //							SnapshotId: snapshot01.SnapshotId,
 //						},
+//						DeviceName: pulumi.String("/dev/sdb"),
 //					},
 //					&outscale.VmBlockDeviceMappingArgs{
-//						DeviceName: pulumi.String("/dev/sdc"),
 //						Bsu: &outscale.VmBlockDeviceMappingBsuArgs{
 //							VolumeSize:         pulumi.Int(22),
 //							VolumeType:         pulumi.String("io1"),
 //							Iops:               pulumi.Int(150),
 //							DeleteOnVmDeletion: pulumi.Bool(true),
 //						},
+//						DeviceName: pulumi.String("/dev/sdc"),
 //					},
+//				},
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav5.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroup01.SecurityGroupId,
 //				},
 //			})
 //			if err != nil {
@@ -170,27 +170,27 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			net01, err := outscale.NewNet(ctx, "net01", &outscale.NetArgs{
-//				IpRange: pulumi.String("10.0.0.0/16"),
 //				Tags: outscale.NetTagArray{
 //					&outscale.NetTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-net-for-vm"),
 //					},
 //				},
+//				IpRange: pulumi.String("10.0.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
-//				NetId:         net01.NetId,
-//				IpRange:       pulumi.String("10.0.0.0/24"),
-//				SubregionName: pulumi.String("eu-west-2b"),
 //				Tags: outscale.SubnetTagArray{
 //					&outscale.SubnetTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-subnet-for-vm"),
 //					},
 //				},
+//				NetId:         net01.NetId,
+//				IpRange:       pulumi.String("10.0.0.0/24"),
+//				SubregionName: pulumi.String("eu-west-2b"),
 //			})
 //			if err != nil {
 //				return err
@@ -207,13 +207,13 @@ import (
 //				return err
 //			}
 //			routeTable01, err := outscale.NewRouteTable(ctx, "route_table01", &outscale.RouteTableArgs{
-//				NetId: net01.NetId,
 //				Tags: outscale.RouteTableTagArray{
 //					&outscale.RouteTableTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-route-table-for-vm"),
 //					},
 //				},
+//				NetId: net01.NetId,
 //			})
 //			if err != nil {
 //				return err
@@ -369,9 +369,6 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
-//				ImageId:     pulumi.Any(imageId),
-//				VmType:      pulumi.String("tinav7.c1r1p2"),
-//				KeypairName: keypair01.KeypairName,
 //				Nics: outscale.VmNicArray{
 //					&outscale.VmNicArgs{
 //						DeleteOnVmDeletion: pulumi.Bool(true),
@@ -384,6 +381,9 @@ import (
 //						DeviceNumber:       pulumi.Int(1),
 //					},
 //				},
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav7.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
 //			})
 //			if err != nil {
 //				return err
@@ -449,9 +449,6 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
-//				ImageId:     pulumi.Any(imageId),
-//				VmType:      pulumi.String("tinav7.c1r1p2"),
-//				KeypairName: keypair01.KeypairName,
 //				Nics: outscale.VmNicArray{
 //					&outscale.VmNicArgs{
 //						NicId:        nic01.NicId,
@@ -462,6 +459,9 @@ import (
 //						DeviceNumber: pulumi.Int(1),
 //					},
 //				},
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav7.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
 //			})
 //			if err != nil {
 //				return err
@@ -537,15 +537,15 @@ import (
 //				return err
 //			}
 //			vm01, err := outscale.NewVm(ctx, "vm01", &outscale.VmArgs{
-//				ImageId:     pulumi.Any(imageId),
-//				VmType:      pulumi.String("tinav7.c1r1p2"),
-//				KeypairName: keypair01.KeypairName,
 //				PrimaryNics: outscale.VmPrimaryNicArray{
 //					&outscale.VmPrimaryNicArgs{
 //						NicId:        nic01.NicId,
 //						DeviceNumber: pulumi.Int(0),
 //					},
 //				},
+//				ImageId:     pulumi.Any(imageId),
+//				VmType:      pulumi.String("tinav7.c1r1p2"),
+//				KeypairName: keypair01.KeypairName,
 //			})
 //			if err != nil {
 //				return err

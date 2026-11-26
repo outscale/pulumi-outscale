@@ -25,11 +25,11 @@ import * as utilities from "./utilities";
  *     size: 40,
  * });
  * const snapshot01 = new outscale.Snapshot("snapshot01", {
- *     volumeId: volume01.volumeId,
  *     tags: [{
  *         key: "name",
  *         value: "terraform-snapshot-test",
  *     }],
+ *     volumeId: volume01.volumeId,
  * });
  * ```
  *
@@ -40,10 +40,10 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshotAttributes01 = new outscale.SnapshotAttributes("snapshot_attributes01", {
- *     snapshotId: snapshot01.snapshotId,
  *     permissionsToCreateVolumeAdditions: {
  *         accountIds: ["012345678910"],
  *     },
+ *     snapshotId: snapshot01.snapshotId,
  * });
  * ```
  *
@@ -54,10 +54,10 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const snapshotAttributes02 = new outscale.SnapshotAttributes("snapshot_attributes02", {
- *     snapshotId: snapshot01.snapshotId,
  *     permissionsToCreateVolumeRemovals: {
  *         accountIds: ["012345678910"],
  *     },
+ *     snapshotId: snapshot01.snapshotId,
  * });
  * ```
  */

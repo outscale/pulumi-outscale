@@ -142,11 +142,11 @@ def get_vm_state(all_vms: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_outscale as outscale
 
-    vm_state01 = outscale.get_vm_state(all_vms=True,
-        filters=[{
+    vm_state01 = outscale.get_vm_state(filters=[{
             "name": "vm_ids",
             "values": ["i-12345678"],
-        }])
+        }],
+        all_vms=True)
     ```
 
 
@@ -186,11 +186,11 @@ def get_vm_state_output(all_vms: Optional[pulumi.Input[Optional[_builtins.bool]]
     import pulumi
     import pulumi_outscale as outscale
 
-    vm_state01 = outscale.get_vm_state(all_vms=True,
-        filters=[{
+    vm_state01 = outscale.get_vm_state(filters=[{
             "name": "vm_ids",
             "values": ["i-12345678"],
-        }])
+        }],
+        all_vms=True)
     ```
 
 

@@ -481,9 +481,6 @@ class Nic(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         nic02 = outscale.Nic("nic02",
-            description="Terraform nic with private IPs",
-            subnet_id=subnet01["subnetId"],
-            security_group_ids=[security_group01["securityGroupId"]],
             private_ips=[
                 {
                     "is_primary": True,
@@ -493,7 +490,10 @@ class Nic(pulumi.CustomResource):
                     "is_primary": False,
                     "private_ip": "10.0.0.5",
                 },
-            ])
+            ],
+            description="Terraform nic with private IPs",
+            subnet_id=subnet01["subnetId"],
+            security_group_ids=[security_group01["securityGroupId"]])
         ```
 
         ## Import
@@ -564,9 +564,6 @@ class Nic(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         nic02 = outscale.Nic("nic02",
-            description="Terraform nic with private IPs",
-            subnet_id=subnet01["subnetId"],
-            security_group_ids=[security_group01["securityGroupId"]],
             private_ips=[
                 {
                     "is_primary": True,
@@ -576,7 +573,10 @@ class Nic(pulumi.CustomResource):
                     "is_primary": False,
                     "private_ip": "10.0.0.5",
                 },
-            ])
+            ],
+            description="Terraform nic with private IPs",
+            subnet_id=subnet01["subnetId"],
+            security_group_ids=[security_group01["securityGroupId"]])
         ```
 
         ## Import
