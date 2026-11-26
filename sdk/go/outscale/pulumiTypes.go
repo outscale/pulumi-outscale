@@ -22339,9 +22339,232 @@ func (o PolicyVersionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ProviderApi struct {
+	Endpoint *string `pulumi:"endpoint"`
+	// TLS insecure connection
+	Insecure *bool   `pulumi:"insecure"`
+	Region   *string `pulumi:"region"`
+	// Path to the x509 certificate
+	//
+	// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509CertPath *string `pulumi:"x509CertPath"`
+	// Path to the x509 key
+	//
+	// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509KeyPath *string `pulumi:"x509KeyPath"`
+}
+
+// ProviderApiInput is an input type that accepts ProviderApiArgs and ProviderApiOutput values.
+// You can construct a concrete instance of `ProviderApiInput` via:
+//
+//	ProviderApiArgs{...}
+type ProviderApiInput interface {
+	pulumi.Input
+
+	ToProviderApiOutput() ProviderApiOutput
+	ToProviderApiOutputWithContext(context.Context) ProviderApiOutput
+}
+
+type ProviderApiArgs struct {
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// TLS insecure connection
+	Insecure pulumi.BoolPtrInput   `pulumi:"insecure"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+	// Path to the x509 certificate
+	//
+	// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509CertPath pulumi.StringPtrInput `pulumi:"x509CertPath"`
+	// Path to the x509 key
+	//
+	// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509KeyPath pulumi.StringPtrInput `pulumi:"x509KeyPath"`
+}
+
+func (ProviderApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderApi)(nil)).Elem()
+}
+
+func (i ProviderApiArgs) ToProviderApiOutput() ProviderApiOutput {
+	return i.ToProviderApiOutputWithContext(context.Background())
+}
+
+func (i ProviderApiArgs) ToProviderApiOutputWithContext(ctx context.Context) ProviderApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderApiOutput)
+}
+
+func (i ProviderApiArgs) ToProviderApiPtrOutput() ProviderApiPtrOutput {
+	return i.ToProviderApiPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderApiArgs) ToProviderApiPtrOutputWithContext(ctx context.Context) ProviderApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderApiOutput).ToProviderApiPtrOutputWithContext(ctx)
+}
+
+// ProviderApiPtrInput is an input type that accepts ProviderApiArgs, ProviderApiPtr and ProviderApiPtrOutput values.
+// You can construct a concrete instance of `ProviderApiPtrInput` via:
+//
+//	        ProviderApiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderApiPtrInput interface {
+	pulumi.Input
+
+	ToProviderApiPtrOutput() ProviderApiPtrOutput
+	ToProviderApiPtrOutputWithContext(context.Context) ProviderApiPtrOutput
+}
+
+type providerApiPtrType ProviderApiArgs
+
+func ProviderApiPtr(v *ProviderApiArgs) ProviderApiPtrInput {
+	return (*providerApiPtrType)(v)
+}
+
+func (*providerApiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderApi)(nil)).Elem()
+}
+
+func (i *providerApiPtrType) ToProviderApiPtrOutput() ProviderApiPtrOutput {
+	return i.ToProviderApiPtrOutputWithContext(context.Background())
+}
+
+func (i *providerApiPtrType) ToProviderApiPtrOutputWithContext(ctx context.Context) ProviderApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderApiPtrOutput)
+}
+
+type ProviderApiOutput struct{ *pulumi.OutputState }
+
+func (ProviderApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderApi)(nil)).Elem()
+}
+
+func (o ProviderApiOutput) ToProviderApiOutput() ProviderApiOutput {
+	return o
+}
+
+func (o ProviderApiOutput) ToProviderApiOutputWithContext(ctx context.Context) ProviderApiOutput {
+	return o
+}
+
+func (o ProviderApiOutput) ToProviderApiPtrOutput() ProviderApiPtrOutput {
+	return o.ToProviderApiPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderApiOutput) ToProviderApiPtrOutputWithContext(ctx context.Context) ProviderApiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderApi) *ProviderApi {
+		return &v
+	}).(ProviderApiPtrOutput)
+}
+
+func (o ProviderApiOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderApi) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// TLS insecure connection
+func (o ProviderApiOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderApi) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o ProviderApiOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderApi) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Path to the x509 certificate
+//
+// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+func (o ProviderApiOutput) X509CertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderApi) *string { return v.X509CertPath }).(pulumi.StringPtrOutput)
+}
+
+// Path to the x509 key
+//
+// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+func (o ProviderApiOutput) X509KeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderApi) *string { return v.X509KeyPath }).(pulumi.StringPtrOutput)
+}
+
+type ProviderApiPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderApi)(nil)).Elem()
+}
+
+func (o ProviderApiPtrOutput) ToProviderApiPtrOutput() ProviderApiPtrOutput {
+	return o
+}
+
+func (o ProviderApiPtrOutput) ToProviderApiPtrOutputWithContext(ctx context.Context) ProviderApiPtrOutput {
+	return o
+}
+
+func (o ProviderApiPtrOutput) Elem() ProviderApiOutput {
+	return o.ApplyT(func(v *ProviderApi) ProviderApi {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderApi
+		return ret
+	}).(ProviderApiOutput)
+}
+
+func (o ProviderApiPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// TLS insecure connection
+func (o ProviderApiPtrOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderApi) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Insecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ProviderApiPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the x509 certificate
+//
+// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+func (o ProviderApiPtrOutput) X509CertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.X509CertPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the x509 key
+//
+// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+func (o ProviderApiPtrOutput) X509KeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.X509KeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
 type ProviderEndpoint struct {
-	// Use this to override the default service endpoint URL
+	// The Endpoint for Outscale API operations.
 	Api *string `pulumi:"api"`
+	// The Endpoint for OKS API operations.
+	Oks *string `pulumi:"oks"`
 }
 
 // ProviderEndpointInput is an input type that accepts ProviderEndpointArgs and ProviderEndpointOutput values.
@@ -22356,8 +22579,10 @@ type ProviderEndpointInput interface {
 }
 
 type ProviderEndpointArgs struct {
-	// Use this to override the default service endpoint URL
+	// The Endpoint for Outscale API operations.
 	Api pulumi.StringPtrInput `pulumi:"api"`
+	// The Endpoint for OKS API operations.
+	Oks pulumi.StringPtrInput `pulumi:"oks"`
 }
 
 func (ProviderEndpointArgs) ElementType() reflect.Type {
@@ -22411,9 +22636,14 @@ func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.
 	return o
 }
 
-// Use this to override the default service endpoint URL
+// The Endpoint for Outscale API operations.
 func (o ProviderEndpointOutput) Api() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint for OKS API operations.
+func (o ProviderEndpointOutput) Oks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Oks }).(pulumi.StringPtrOutput)
 }
 
 type ProviderEndpointArrayOutput struct{ *pulumi.OutputState }
@@ -22434,6 +22664,302 @@ func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderEndpoint {
 		return vs[0].([]ProviderEndpoint)[vs[1].(int)]
 	}).(ProviderEndpointOutput)
+}
+
+type ProviderOks struct {
+	Endpoint *string `pulumi:"endpoint"`
+	Region   *string `pulumi:"region"`
+}
+
+// ProviderOksInput is an input type that accepts ProviderOksArgs and ProviderOksOutput values.
+// You can construct a concrete instance of `ProviderOksInput` via:
+//
+//	ProviderOksArgs{...}
+type ProviderOksInput interface {
+	pulumi.Input
+
+	ToProviderOksOutput() ProviderOksOutput
+	ToProviderOksOutputWithContext(context.Context) ProviderOksOutput
+}
+
+type ProviderOksArgs struct {
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (ProviderOksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderOks)(nil)).Elem()
+}
+
+func (i ProviderOksArgs) ToProviderOksOutput() ProviderOksOutput {
+	return i.ToProviderOksOutputWithContext(context.Background())
+}
+
+func (i ProviderOksArgs) ToProviderOksOutputWithContext(ctx context.Context) ProviderOksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderOksOutput)
+}
+
+func (i ProviderOksArgs) ToProviderOksPtrOutput() ProviderOksPtrOutput {
+	return i.ToProviderOksPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderOksArgs) ToProviderOksPtrOutputWithContext(ctx context.Context) ProviderOksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderOksOutput).ToProviderOksPtrOutputWithContext(ctx)
+}
+
+// ProviderOksPtrInput is an input type that accepts ProviderOksArgs, ProviderOksPtr and ProviderOksPtrOutput values.
+// You can construct a concrete instance of `ProviderOksPtrInput` via:
+//
+//	        ProviderOksArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderOksPtrInput interface {
+	pulumi.Input
+
+	ToProviderOksPtrOutput() ProviderOksPtrOutput
+	ToProviderOksPtrOutputWithContext(context.Context) ProviderOksPtrOutput
+}
+
+type providerOksPtrType ProviderOksArgs
+
+func ProviderOksPtr(v *ProviderOksArgs) ProviderOksPtrInput {
+	return (*providerOksPtrType)(v)
+}
+
+func (*providerOksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderOks)(nil)).Elem()
+}
+
+func (i *providerOksPtrType) ToProviderOksPtrOutput() ProviderOksPtrOutput {
+	return i.ToProviderOksPtrOutputWithContext(context.Background())
+}
+
+func (i *providerOksPtrType) ToProviderOksPtrOutputWithContext(ctx context.Context) ProviderOksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderOksPtrOutput)
+}
+
+type ProviderOksOutput struct{ *pulumi.OutputState }
+
+func (ProviderOksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderOks)(nil)).Elem()
+}
+
+func (o ProviderOksOutput) ToProviderOksOutput() ProviderOksOutput {
+	return o
+}
+
+func (o ProviderOksOutput) ToProviderOksOutputWithContext(ctx context.Context) ProviderOksOutput {
+	return o
+}
+
+func (o ProviderOksOutput) ToProviderOksPtrOutput() ProviderOksPtrOutput {
+	return o.ToProviderOksPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOksOutput) ToProviderOksPtrOutputWithContext(ctx context.Context) ProviderOksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderOks) *ProviderOks {
+		return &v
+	}).(ProviderOksPtrOutput)
+}
+
+func (o ProviderOksOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderOks) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOksOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderOks) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type ProviderOksPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderOksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderOks)(nil)).Elem()
+}
+
+func (o ProviderOksPtrOutput) ToProviderOksPtrOutput() ProviderOksPtrOutput {
+	return o
+}
+
+func (o ProviderOksPtrOutput) ToProviderOksPtrOutputWithContext(ctx context.Context) ProviderOksPtrOutput {
+	return o
+}
+
+func (o ProviderOksPtrOutput) Elem() ProviderOksOutput {
+	return o.ApplyT(func(v *ProviderOks) ProviderOks {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderOks
+		return ret
+	}).(ProviderOksOutput)
+}
+
+func (o ProviderOksPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderOks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOksPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderOks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProviderOos struct {
+	Endpoint *string `pulumi:"endpoint"`
+	Region   *string `pulumi:"region"`
+}
+
+// ProviderOosInput is an input type that accepts ProviderOosArgs and ProviderOosOutput values.
+// You can construct a concrete instance of `ProviderOosInput` via:
+//
+//	ProviderOosArgs{...}
+type ProviderOosInput interface {
+	pulumi.Input
+
+	ToProviderOosOutput() ProviderOosOutput
+	ToProviderOosOutputWithContext(context.Context) ProviderOosOutput
+}
+
+type ProviderOosArgs struct {
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (ProviderOosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderOos)(nil)).Elem()
+}
+
+func (i ProviderOosArgs) ToProviderOosOutput() ProviderOosOutput {
+	return i.ToProviderOosOutputWithContext(context.Background())
+}
+
+func (i ProviderOosArgs) ToProviderOosOutputWithContext(ctx context.Context) ProviderOosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderOosOutput)
+}
+
+func (i ProviderOosArgs) ToProviderOosPtrOutput() ProviderOosPtrOutput {
+	return i.ToProviderOosPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderOosArgs) ToProviderOosPtrOutputWithContext(ctx context.Context) ProviderOosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderOosOutput).ToProviderOosPtrOutputWithContext(ctx)
+}
+
+// ProviderOosPtrInput is an input type that accepts ProviderOosArgs, ProviderOosPtr and ProviderOosPtrOutput values.
+// You can construct a concrete instance of `ProviderOosPtrInput` via:
+//
+//	        ProviderOosArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderOosPtrInput interface {
+	pulumi.Input
+
+	ToProviderOosPtrOutput() ProviderOosPtrOutput
+	ToProviderOosPtrOutputWithContext(context.Context) ProviderOosPtrOutput
+}
+
+type providerOosPtrType ProviderOosArgs
+
+func ProviderOosPtr(v *ProviderOosArgs) ProviderOosPtrInput {
+	return (*providerOosPtrType)(v)
+}
+
+func (*providerOosPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderOos)(nil)).Elem()
+}
+
+func (i *providerOosPtrType) ToProviderOosPtrOutput() ProviderOosPtrOutput {
+	return i.ToProviderOosPtrOutputWithContext(context.Background())
+}
+
+func (i *providerOosPtrType) ToProviderOosPtrOutputWithContext(ctx context.Context) ProviderOosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderOosPtrOutput)
+}
+
+type ProviderOosOutput struct{ *pulumi.OutputState }
+
+func (ProviderOosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderOos)(nil)).Elem()
+}
+
+func (o ProviderOosOutput) ToProviderOosOutput() ProviderOosOutput {
+	return o
+}
+
+func (o ProviderOosOutput) ToProviderOosOutputWithContext(ctx context.Context) ProviderOosOutput {
+	return o
+}
+
+func (o ProviderOosOutput) ToProviderOosPtrOutput() ProviderOosPtrOutput {
+	return o.ToProviderOosPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOosOutput) ToProviderOosPtrOutputWithContext(ctx context.Context) ProviderOosPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderOos) *ProviderOos {
+		return &v
+	}).(ProviderOosPtrOutput)
+}
+
+func (o ProviderOosOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderOos) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOosOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderOos) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type ProviderOosPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderOosPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderOos)(nil)).Elem()
+}
+
+func (o ProviderOosPtrOutput) ToProviderOosPtrOutput() ProviderOosPtrOutput {
+	return o
+}
+
+func (o ProviderOosPtrOutput) ToProviderOosPtrOutputWithContext(ctx context.Context) ProviderOosPtrOutput {
+	return o
+}
+
+func (o ProviderOosPtrOutput) Elem() ProviderOosOutput {
+	return o.ApplyT(func(v *ProviderOos) ProviderOos {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderOos
+		return ret
+	}).(ProviderOosOutput)
+}
+
+func (o ProviderOosPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderOos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOosPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderOos) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
 }
 
 type PublicIpLinkTag struct {
@@ -66760,8 +67286,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutsPtrInput)(nil)).Elem(), PolicyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyVersionTimeoutsInput)(nil)).Elem(), PolicyVersionTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyVersionTimeoutsPtrInput)(nil)).Elem(), PolicyVersionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderApiInput)(nil)).Elem(), ProviderApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderApiPtrInput)(nil)).Elem(), ProviderApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderOksInput)(nil)).Elem(), ProviderOksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderOksPtrInput)(nil)).Elem(), ProviderOksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderOosInput)(nil)).Elem(), ProviderOosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderOosPtrInput)(nil)).Elem(), ProviderOosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTagInput)(nil)).Elem(), PublicIpLinkTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTagArrayInput)(nil)).Elem(), PublicIpLinkTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicIpLinkTimeoutsInput)(nil)).Elem(), PublicIpLinkTimeoutsArgs{})
@@ -67752,8 +68284,14 @@ func init() {
 	pulumi.RegisterOutputType(PolicyTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PolicyVersionTimeoutsOutput{})
 	pulumi.RegisterOutputType(PolicyVersionTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(ProviderApiOutput{})
+	pulumi.RegisterOutputType(ProviderApiPtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ProviderOksOutput{})
+	pulumi.RegisterOutputType(ProviderOksPtrOutput{})
+	pulumi.RegisterOutputType(ProviderOosOutput{})
+	pulumi.RegisterOutputType(ProviderOosPtrOutput{})
 	pulumi.RegisterOutputType(PublicIpLinkTagOutput{})
 	pulumi.RegisterOutputType(PublicIpLinkTagArrayOutput{})
 	pulumi.RegisterOutputType(PublicIpLinkTimeoutsOutput{})

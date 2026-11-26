@@ -60,6 +60,17 @@ export class VirtualGatewayLink extends pulumi.CustomResource {
         return new VirtualGatewayLink(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing VirtualGatewayLink resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VirtualGatewayLinkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/virtualGatewayLink:VirtualGatewayLink", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/virtualGatewayLink:VirtualGatewayLink';
 
@@ -133,17 +144,17 @@ export interface VirtualGatewayLinkState {
     /**
      * The ID of the Net to which you want to attach the virtual gateway.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The Net to which the virtual gateway is attached.
      */
-    netToVirtualGatewayLinks?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayLinkNetToVirtualGatewayLink>[]>;
-    requestId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VirtualGatewayLinkTimeouts>;
+    netToVirtualGatewayLinks?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayLinkNetToVirtualGatewayLink>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayLinkTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */
-    virtualGatewayId?: pulumi.Input<string>;
+    virtualGatewayId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,7 +165,7 @@ export interface VirtualGatewayLinkArgs {
      * The ID of the Net to which you want to attach the virtual gateway.
      */
     netId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VirtualGatewayLinkTimeouts>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayLinkTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */

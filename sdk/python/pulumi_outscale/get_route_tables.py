@@ -93,7 +93,7 @@ class AwaitableGetRouteTablesResult(GetRouteTablesResult):
             route_tables=self.route_tables)
 
 
-def get_route_tables(filters: Optional[Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict']]] = None,
+def get_route_tables(filters: Optional[Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict', 'outputs.GetRouteTablesFilterResult']]] = None,
                      route_table_ids: Optional[Sequence[_builtins.str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTablesResult:
     """
@@ -124,7 +124,7 @@ def get_route_tables(filters: Optional[Sequence[Union['GetRouteTablesFilterArgs'
     ```
 
 
-    :param Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict', 'outputs.GetRouteTablesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] route_table_ids: The ID of the route table.
     """
     __args__ = dict()
@@ -139,8 +139,8 @@ def get_route_tables(filters: Optional[Sequence[Union['GetRouteTablesFilterArgs'
         request_id=pulumi.get(__ret__, 'request_id'),
         route_table_ids=pulumi.get(__ret__, 'route_table_ids'),
         route_tables=pulumi.get(__ret__, 'route_tables'))
-def get_route_tables_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict']]]]] = None,
-                            route_table_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_route_tables_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict', 'outputs.GetRouteTablesFilterResult']]]]] = None,
+                            route_table_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteTablesResult]:
     """
     Provides information about route tables.
@@ -170,7 +170,7 @@ def get_route_tables_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
     ```
 
 
-    :param Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetRouteTablesFilterArgs', 'GetRouteTablesFilterArgsDict', 'outputs.GetRouteTablesFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] route_table_ids: The ID of the route table.
     """
     __args__ = dict()

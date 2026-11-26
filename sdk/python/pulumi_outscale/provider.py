@@ -20,122 +20,223 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_key_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api: pulumi.Input[Optional['ProviderApiArgs']] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oks: pulumi.Input[Optional['ProviderOksArgs']] = None,
+                 oos: pulumi.Input[Optional['ProviderOosArgs']] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sanitize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_key_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] access_key_id: The Access Key ID for API operations
-        :param pulumi.Input[_builtins.bool] insecure: tls insecure connection
+
+        :param pulumi.Input[_builtins.str] access_key_id: The Access Key ID for API operations.
+        :param pulumi.Input[_builtins.str] config_file: Path to the configuration file in which you have defined your credentials.
+        :param pulumi.Input[_builtins.bool] insecure: TLS insecure connection for IaaS API operations.
+        :param pulumi.Input[_builtins.str] profile: Name of your profile in which you define your credencial
         :param pulumi.Input[_builtins.str] region: The Region for API operations.
+        :param pulumi.Input[_builtins.bool] sanitize: Sanitize sensitive data in the logs. Defaults to true.
         :param pulumi.Input[_builtins.str] secret_key_id: The Secret Key ID for API operations.
-        :param pulumi.Input[_builtins.str] x509_cert_path: The path to your x509 cert
-        :param pulumi.Input[_builtins.str] x509_key_path: The path to your x509 key
+        :param pulumi.Input[_builtins.str] x509_cert_path: Path to the x509 certificate for IaaS API operations.
+        :param pulumi.Input[_builtins.str] x509_key_path: Path to the x509 key for IaaS API operations.
         """
         if access_key_id is None:
             access_key_id = _utilities.get_env('OUTSCALE_ACCESSKEYID')
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if config_file is not None:
+            pulumi.set(__self__, "config_file", config_file)
+        if endpoints is not None:
+            warnings.warn("""'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""endpoints is deprecated: 'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.""")
         if endpoints is not None:
             pulumi.set(__self__, "endpoints", endpoints)
         if insecure is not None:
+            warnings.warn("""'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""insecure is deprecated: 'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.""")
+        if insecure is not None:
             pulumi.set(__self__, "insecure", insecure)
+        if oks is not None:
+            pulumi.set(__self__, "oks", oks)
+        if oos is not None:
+            pulumi.set(__self__, "oos", oos)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
         if region is None:
             region = _utilities.get_env('OUTSCALE_REGION')
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if sanitize is not None:
+            pulumi.set(__self__, "sanitize", sanitize)
         if secret_key_id is None:
             secret_key_id = _utilities.get_env('OUTSCALE_SECRETKEYID')
         if secret_key_id is not None:
             pulumi.set(__self__, "secret_key_id", secret_key_id)
         if x509_cert_path is not None:
+            warnings.warn("""'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""x509_cert_path is deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
+        if x509_cert_path is not None:
             pulumi.set(__self__, "x509_cert_path", x509_cert_path)
+        if x509_key_path is not None:
+            warnings.warn("""'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""x509_key_path is deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
         if x509_key_path is not None:
             pulumi.set(__self__, "x509_key_path", x509_key_path)
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Access Key ID for API operations
+        The Access Key ID for API operations.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]]:
+    def api(self) -> pulumi.Input[Optional['ProviderApiArgs']]:
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: pulumi.Input[Optional['ProviderApiArgs']]):
+        pulumi.set(self, "api", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configFile")
+    def config_file(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path to the configuration file in which you have defined your credentials.
+        """
+        return pulumi.get(self, "config_file")
+
+    @config_file.setter
+    def config_file(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "config_file", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.""")
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProviderEndpointArgs']]]]:
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    @_utilities.deprecated("""'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.""")
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        tls insecure connection
+        TLS insecure connection for IaaS API operations.
         """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oks(self) -> pulumi.Input[Optional['ProviderOksArgs']]:
+        return pulumi.get(self, "oks")
+
+    @oks.setter
+    def oks(self, value: pulumi.Input[Optional['ProviderOksArgs']]):
+        pulumi.set(self, "oks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oos(self) -> pulumi.Input[Optional['ProviderOosArgs']]:
+        return pulumi.get(self, "oos")
+
+    @oos.setter
+    def oos(self, value: pulumi.Input[Optional['ProviderOosArgs']]):
+        pulumi.set(self, "oos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of your profile in which you define your credencial
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "profile", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region for API operations.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sanitize(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Sanitize sensitive data in the logs. Defaults to true.
+        """
+        return pulumi.get(self, "sanitize")
+
+    @sanitize.setter
+    def sanitize(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "sanitize", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretKeyId")
-    def secret_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Secret Key ID for API operations.
         """
         return pulumi.get(self, "secret_key_id")
 
     @secret_key_id.setter
-    def secret_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="x509CertPath")
-    def x509_cert_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @_utilities.deprecated("""'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
+    def x509_cert_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The path to your x509 cert
+        Path to the x509 certificate for IaaS API operations.
         """
         return pulumi.get(self, "x509_cert_path")
 
     @x509_cert_path.setter
-    def x509_cert_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x509_cert_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x509_cert_path", value)
 
     @_builtins.property
     @pulumi.getter(name="x509KeyPath")
-    def x509_key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @_utilities.deprecated("""'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
+    def x509_key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The path to your x509 key
+        Path to the x509 key for IaaS API operations.
         """
         return pulumi.get(self, "x509_key_path")
 
     @x509_key_path.setter
-    def x509_key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x509_key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x509_key_path", value)
 
 
@@ -145,13 +246,19 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_key_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[Union['ProviderApiArgs', 'ProviderApiArgsDict']]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oks: pulumi.Input[Optional[Union['ProviderOksArgs', 'ProviderOksArgsDict']]] = None,
+                 oos: pulumi.Input[Optional[Union['ProviderOosArgs', 'ProviderOosArgsDict']]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sanitize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the outscale package. By default, resources use package-wide configuration
@@ -159,14 +266,18 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_key_id: The Access Key ID for API operations
-        :param pulumi.Input[_builtins.bool] insecure: tls insecure connection
+        :param pulumi.Input[_builtins.str] access_key_id: The Access Key ID for API operations.
+        :param pulumi.Input[_builtins.str] config_file: Path to the configuration file in which you have defined your credentials.
+        :param pulumi.Input[_builtins.bool] insecure: TLS insecure connection for IaaS API operations.
+        :param pulumi.Input[_builtins.str] profile: Name of your profile in which you define your credencial
         :param pulumi.Input[_builtins.str] region: The Region for API operations.
+        :param pulumi.Input[_builtins.bool] sanitize: Sanitize sensitive data in the logs. Defaults to true.
         :param pulumi.Input[_builtins.str] secret_key_id: The Secret Key ID for API operations.
-        :param pulumi.Input[_builtins.str] x509_cert_path: The path to your x509 cert
-        :param pulumi.Input[_builtins.str] x509_key_path: The path to your x509 key
+        :param pulumi.Input[_builtins.str] x509_cert_path: Path to the x509 certificate for IaaS API operations.
+        :param pulumi.Input[_builtins.str] x509_key_path: Path to the x509 key for IaaS API operations.
         """
         ...
     @overload
@@ -179,6 +290,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
@@ -195,13 +307,19 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 x509_key_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[Union['ProviderApiArgs', 'ProviderApiArgsDict']]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oks: pulumi.Input[Optional[Union['ProviderOksArgs', 'ProviderOksArgsDict']]] = None,
+                 oos: pulumi.Input[Optional[Union['ProviderOosArgs', 'ProviderOosArgsDict']]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sanitize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 x509_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -214,11 +332,17 @@ class Provider(pulumi.ProviderResource):
             if access_key_id is None:
                 access_key_id = _utilities.get_env('OUTSCALE_ACCESSKEYID')
             __props__.__dict__["access_key_id"] = access_key_id
+            __props__.__dict__["api"] = pulumi.Output.from_input(api).apply(pulumi.runtime.to_json) if api is not None else None
+            __props__.__dict__["config_file"] = config_file
             __props__.__dict__["endpoints"] = pulumi.Output.from_input(endpoints).apply(pulumi.runtime.to_json) if endpoints is not None else None
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
+            __props__.__dict__["oks"] = pulumi.Output.from_input(oks).apply(pulumi.runtime.to_json) if oks is not None else None
+            __props__.__dict__["oos"] = pulumi.Output.from_input(oos).apply(pulumi.runtime.to_json) if oos is not None else None
+            __props__.__dict__["profile"] = profile
             if region is None:
                 region = _utilities.get_env('OUTSCALE_REGION')
             __props__.__dict__["region"] = region
+            __props__.__dict__["sanitize"] = pulumi.Output.from_input(sanitize).apply(pulumi.runtime.to_json) if sanitize is not None else None
             if secret_key_id is None:
                 secret_key_id = _utilities.get_env('OUTSCALE_SECRETKEYID')
             __props__.__dict__["secret_key_id"] = secret_key_id
@@ -234,9 +358,25 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Access Key ID for API operations
+        The Access Key ID for API operations.
         """
         return pulumi.get(self, "access_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="configFile")
+    def config_file(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Path to the configuration file in which you have defined your credentials.
+        """
+        return pulumi.get(self, "config_file")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Name of your profile in which you define your credencial
+        """
+        return pulumi.get(self, "profile")
 
     @_builtins.property
     @pulumi.getter
@@ -256,17 +396,19 @@ class Provider(pulumi.ProviderResource):
 
     @_builtins.property
     @pulumi.getter(name="x509CertPath")
+    @_utilities.deprecated("""'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
     def x509_cert_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The path to your x509 cert
+        Path to the x509 certificate for IaaS API operations.
         """
         return pulumi.get(self, "x509_cert_path")
 
     @_builtins.property
     @pulumi.getter(name="x509KeyPath")
+    @_utilities.deprecated("""'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.""")
     def x509_key_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The path to your x509 key
+        Path to the x509 key for IaaS API operations.
         """
         return pulumi.get(self, "x509_key_path")
 

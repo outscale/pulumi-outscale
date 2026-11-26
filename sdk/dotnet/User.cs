@@ -49,6 +49,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var user_1 = new Outscale.User("user-1", new()
     ///     {
+    ///         UserName = "User-TF-1",
     ///         Policies = new[]
     ///         {
     ///             new Outscale.Inputs.UserPolicyArgs
@@ -57,7 +58,6 @@ namespace Pulumi.Outscale
     ///                 DefaultVersionId = "V1",
     ///             },
     ///         },
-    ///         UserName = "User-TF-1",
     ///     });
     /// 
     /// });

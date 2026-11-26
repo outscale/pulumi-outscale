@@ -91,7 +91,7 @@ class AwaitableGetSnapshotExportTasksResult(GetSnapshotExportTasksResult):
 
 
 def get_snapshot_export_tasks(dry_run: Optional[_builtins.bool] = None,
-                              filters: Optional[Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict']]] = None,
+                              filters: Optional[Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict', 'outputs.GetSnapshotExportTasksFilterResult']]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotExportTasksResult:
     """
     Provides information about snapshot export tasks.
@@ -115,7 +115,7 @@ def get_snapshot_export_tasks(dry_run: Optional[_builtins.bool] = None,
     ```
 
 
-    :param Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict', 'outputs.GetSnapshotExportTasksFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run
@@ -129,8 +129,8 @@ def get_snapshot_export_tasks(dry_run: Optional[_builtins.bool] = None,
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'),
         snapshot_export_tasks=pulumi.get(__ret__, 'snapshot_export_tasks'))
-def get_snapshot_export_tasks_output(dry_run: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                     filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict']]]]] = None,
+def get_snapshot_export_tasks_output(dry_run: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                     filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict', 'outputs.GetSnapshotExportTasksFilterResult']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotExportTasksResult]:
     """
     Provides information about snapshot export tasks.
@@ -154,7 +154,7 @@ def get_snapshot_export_tasks_output(dry_run: Optional[pulumi.Input[Optional[_bu
     ```
 
 
-    :param Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSnapshotExportTasksFilterArgs', 'GetSnapshotExportTasksFilterArgsDict', 'outputs.GetSnapshotExportTasksFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['dryRun'] = dry_run

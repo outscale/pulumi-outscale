@@ -69,6 +69,17 @@ export class OosBucket extends pulumi.CustomResource {
         return new OosBucket(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OosBucket resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosBucketState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosBucket:OosBucket", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oosBucket:OosBucket';
 
@@ -163,36 +174,36 @@ export interface OosBucketState {
     /**
      * The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The date and time of creation of the bucket (for example, `2010-10-01 12:34:56.78 +0000 UTC`).
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
      */
-    grant?: pulumi.Input<inputs.OosBucketGrant>;
+    grant?: pulumi.Input<inputs.OosBucketGrant | undefined>;
     /**
      * Specifies the location of the bucket.
      */
-    locationName?: pulumi.Input<string>;
+    locationName?: pulumi.Input<string | undefined>;
     /**
      * The bucket name. If omitted, the provider generates a unique name prefixed with `bucket-`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Object lock configuration for the bucket.
      */
-    objectLock?: pulumi.Input<inputs.OosBucketObjectLock>;
+    objectLock?: pulumi.Input<inputs.OosBucketObjectLock | undefined>;
     /**
      * Permissions and owner information for the bucket.
      */
-    permissions?: pulumi.Input<inputs.OosBucketPermissions>;
-    timeouts?: pulumi.Input<inputs.OosBucketTimeouts>;
+    permissions?: pulumi.Input<inputs.OosBucketPermissions | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketTimeouts | undefined>;
 }
 
 /**
@@ -202,22 +213,22 @@ export interface OosBucketArgs {
     /**
      * The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
      */
-    grant?: pulumi.Input<inputs.OosBucketGrant>;
+    grant?: pulumi.Input<inputs.OosBucketGrant | undefined>;
     /**
      * The bucket name. If omitted, the provider generates a unique name prefixed with `bucket-`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Object lock configuration for the bucket.
      */
-    objectLock?: pulumi.Input<inputs.OosBucketObjectLock>;
-    timeouts?: pulumi.Input<inputs.OosBucketTimeouts>;
+    objectLock?: pulumi.Input<inputs.OosBucketObjectLock | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketTimeouts | undefined>;
 }

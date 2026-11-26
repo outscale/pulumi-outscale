@@ -85,6 +85,17 @@ export class OosObject extends pulumi.CustomResource {
         return new OosObject(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OosObject resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosObjectState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosObject:OosObject", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oosObject:OosObject';
 
@@ -283,102 +294,102 @@ export interface OosObjectState {
     /**
      * The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The bucket in which you want to upload the object.<br />If encryption is enabled on a bucket, the new objects uploaded will automatically be encrypted based on the encryption configuration of the bucket. Encryption does not apply retroactively. For more information, see Enabling or Disabling Bucket Encryption.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * How you want the object to be handled in terms of caching (`max-age` | `max-stale` | `min-fresh` | `no-cache` | `no-store` | `no-transform` | `only-if-cached` | `stale-if-error`).
      */
-    cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string | undefined>;
     /**
      * The object contents supplied directly as a non-empty UTF-8 string.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The object contents encoded as a non-empty Base64 string.
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * How you want the object to be displayed when accessed via a browser:<br />- `inline`: When possible, prompts the browser to display the content within the browser window itself. This is useful for images, PDFs, and other media types that browsers can easily render.<br />-`attachment`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally.<br />- `attachment; filename=<NAME_OF_DOWNLOADED_FILE>`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally with the specified filename.
      */
-    contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string | undefined>;
     /**
      * The encoding format of the object (`gzip` | `compress` | `deflate` | `identity` | `br`).
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * The language the content of the object is in, in language code (ISO 639 format).
      */
-    contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string | undefined>;
     /**
      * The size of the object, in bytes.
      */
-    contentLength?: pulumi.Input<number>;
+    contentLength?: pulumi.Input<number | undefined>;
     /**
      * The MIME (Multipurpose Internet Mail Extensions) type of the object.<br />An inaccurately set or absent content-type option can cause objects to be misinterpreted or mishandled by browsers. As a result, you may encounter difficulties accessing or viewing your objects using your preferred browser.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The server-side encryption algorithm to use. (`AES256` | `aws:kms`). Encryption must be enabled on the bucket first via an `oosBucketEncryption` resource.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * The ETag of the object.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Information about the lifecycle rule applied to the object, if there is one.
      * * `expiry-date` - The date and time at which the object is set to expire.
      * * `rule-id` - The name given to the lifecycle rule.
      */
-    expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
     /**
      * The date and time, in UTC format, at which you consider the object can no longer be cached, and is considered stale.
      */
-    expires?: pulumi.Input<string>;
+    expires?: pulumi.Input<string | undefined>;
     /**
      * (Default: `false`) Whether Terraform permanently deletes all versions and delete markers for this object key when destroying the resource. This includes versions not created by this resource and does not bypass an unexpired object lock.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
      */
-    grant?: pulumi.Input<inputs.OosObjectGrant>;
+    grant?: pulumi.Input<inputs.OosObjectGrant | undefined>;
     /**
      * Whether the version of the object is the latest or not (`true` | `false`).
      */
-    isLatest?: pulumi.Input<boolean>;
+    isLatest?: pulumi.Input<boolean | undefined>;
     /**
      * The name you want to give to your object in the bucket.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the object was uploaded or copied into the bucket.
      */
-    lastModified?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<string | undefined>;
     /**
      * A map of additional metadata entries you can freely specify.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Permissions and owner information for the object.
      */
-    permissions?: pulumi.Input<inputs.OosObjectPermissions>;
+    permissions?: pulumi.Input<inputs.OosObjectPermissions | undefined>;
     /**
      * The path to a local file whose contents are uploaded as the object. When using this argument, the provider automatically handles large files with [multipart upload](https://docs.outscale.com/en/userguide/Using-Multipart-Upload.html).
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Tags you want to have on the object.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.OosObjectTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.OosObjectTimeouts | undefined>;
     /**
      * The version ID of the object.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -388,7 +399,7 @@ export interface OosObjectArgs {
     /**
      * The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The bucket in which you want to upload the object.<br />If encryption is enabled on a bucket, the new objects uploaded will automatically be encrypted based on the encryption configuration of the bucket. Encryption does not apply retroactively. For more information, see Enabling or Disabling Bucket Encryption.
      */
@@ -396,47 +407,47 @@ export interface OosObjectArgs {
     /**
      * How you want the object to be handled in terms of caching (`max-age` | `max-stale` | `min-fresh` | `no-cache` | `no-store` | `no-transform` | `only-if-cached` | `stale-if-error`).
      */
-    cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string | undefined>;
     /**
      * The object contents supplied directly as a non-empty UTF-8 string.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The object contents encoded as a non-empty Base64 string.
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * How you want the object to be displayed when accessed via a browser:<br />- `inline`: When possible, prompts the browser to display the content within the browser window itself. This is useful for images, PDFs, and other media types that browsers can easily render.<br />-`attachment`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally.<br />- `attachment; filename=<NAME_OF_DOWNLOADED_FILE>`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally with the specified filename.
      */
-    contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string | undefined>;
     /**
      * The encoding format of the object (`gzip` | `compress` | `deflate` | `identity` | `br`).
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * The language the content of the object is in, in language code (ISO 639 format).
      */
-    contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string | undefined>;
     /**
      * The MIME (Multipurpose Internet Mail Extensions) type of the object.<br />An inaccurately set or absent content-type option can cause objects to be misinterpreted or mishandled by browsers. As a result, you may encounter difficulties accessing or viewing your objects using your preferred browser.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The server-side encryption algorithm to use. (`AES256` | `aws:kms`). Encryption must be enabled on the bucket first via an `oosBucketEncryption` resource.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * The date and time, in UTC format, at which you consider the object can no longer be cached, and is considered stale.
      */
-    expires?: pulumi.Input<string>;
+    expires?: pulumi.Input<string | undefined>;
     /**
      * (Default: `false`) Whether Terraform permanently deletes all versions and delete markers for this object key when destroying the resource. This includes versions not created by this resource and does not bypass an unexpired object lock.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
      */
-    grant?: pulumi.Input<inputs.OosObjectGrant>;
+    grant?: pulumi.Input<inputs.OosObjectGrant | undefined>;
     /**
      * The name you want to give to your object in the bucket.
      */
@@ -444,14 +455,14 @@ export interface OosObjectArgs {
     /**
      * A map of additional metadata entries you can freely specify.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The path to a local file whose contents are uploaded as the object. When using this argument, the provider automatically handles large files with [multipart upload](https://docs.outscale.com/en/userguide/Using-Multipart-Upload.html).
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Tags you want to have on the object.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.OosObjectTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.OosObjectTimeouts | undefined>;
 }

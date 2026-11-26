@@ -150,6 +150,12 @@ func (OosObjectRetentionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosObjectRetentionState)(nil)).Elem()
 }
 
+// OosObjectRetentionExists checks whether an existing OosObjectRetention resource with the given ID exists.
+func OosObjectRetentionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosObjectRetentionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosObjectRetention:OosObjectRetention", id, state, "", opts...)
+}
+
 type oosObjectRetentionArgs struct {
 	// The name of the bucket you want to apply retention to. The bucket must have object lock enabled.
 	Bucket string `pulumi:"bucket"`

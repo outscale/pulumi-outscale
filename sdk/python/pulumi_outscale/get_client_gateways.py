@@ -91,7 +91,7 @@ class AwaitableGetClientGatewaysResult(GetClientGatewaysResult):
 
 
 def get_client_gateways(client_gateway_ids: Optional[Sequence[_builtins.str]] = None,
-                        filters: Optional[Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict']]] = None,
+                        filters: Optional[Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict', 'outputs.GetClientGatewaysFilterResult']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientGatewaysResult:
     """
     Provides information about client gateways.
@@ -121,7 +121,7 @@ def get_client_gateways(client_gateway_ids: Optional[Sequence[_builtins.str]] = 
     ```
 
 
-    :param Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict', 'outputs.GetClientGatewaysFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['clientGatewayIds'] = client_gateway_ids
@@ -135,8 +135,8 @@ def get_client_gateways(client_gateway_ids: Optional[Sequence[_builtins.str]] = 
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_client_gateways_output(client_gateway_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               filters: Optional[pulumi.Input[Optional[Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict']]]]] = None,
+def get_client_gateways_output(client_gateway_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               filters: pulumi.Input[Optional[Optional[Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict', 'outputs.GetClientGatewaysFilterResult']]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientGatewaysResult]:
     """
     Provides information about client gateways.
@@ -166,7 +166,7 @@ def get_client_gateways_output(client_gateway_ids: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetClientGatewaysFilterArgs', 'GetClientGatewaysFilterArgsDict', 'outputs.GetClientGatewaysFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['clientGatewayIds'] = client_gateway_ids

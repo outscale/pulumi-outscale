@@ -30,10 +30,8 @@ type GetPublicCatalogResult struct {
 }
 
 func GetPublicCatalogOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPublicCatalogResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetPublicCatalogResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("outscale:index/getPublicCatalog:getPublicCatalog", nil, GetPublicCatalogResultOutput{}, options).(GetPublicCatalogResultOutput), nil
-	}).(GetPublicCatalogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getPublicCatalog:getPublicCatalog", nil, GetPublicCatalogResultOutput{}, options).(GetPublicCatalogResultOutput)
 }
 
 // A collection of values returned by getPublicCatalog.

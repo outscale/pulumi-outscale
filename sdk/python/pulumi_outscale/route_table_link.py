@@ -23,9 +23,10 @@ class RouteTableLinkArgs:
     def __init__(__self__, *,
                  route_table_id: pulumi.Input[_builtins.str],
                  subnet_id: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['RouteTableLinkTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['RouteTableLinkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a RouteTableLink resource.
+
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Net.
         """
@@ -60,26 +61,27 @@ class RouteTableLinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RouteTableLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RouteTableLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RouteTableLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RouteTableLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _RouteTableLinkState:
     def __init__(__self__, *,
-                 link_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 main: Optional[pulumi.Input[_builtins.bool]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['RouteTableLinkTimeoutsArgs']] = None):
+                 link_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 main: pulumi.Input[Optional[_builtins.bool]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['RouteTableLinkTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering RouteTableLink resources.
+
         :param pulumi.Input[_builtins.str] link_route_table_id: The ID of the association between the route table and the Subnet.
         :param pulumi.Input[_builtins.bool] main: If true, the route table is the main one.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table.
@@ -102,77 +104,77 @@ class _RouteTableLinkState:
 
     @_builtins.property
     @pulumi.getter(name="linkRouteTableId")
-    def link_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the association between the route table and the Subnet.
         """
         return pulumi.get(self, "link_route_table_id")
 
     @link_route_table_id.setter
-    def link_route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_route_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def main(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def main(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the route table is the main one.
         """
         return pulumi.get(self, "main")
 
     @main.setter
-    def main(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def main(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "main", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route table.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RouteTableLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RouteTableLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RouteTableLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RouteTableLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -182,9 +184,9 @@ class RouteTableLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RouteTableLinkTimeoutsArgs', 'RouteTableLinkTimeoutsArgsDict']]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RouteTableLinkTimeoutsArgs', 'RouteTableLinkTimeoutsArgsDict', 'outputs.RouteTableLinkTimeouts']]] = None,
                  __props__=None):
         """
         Manages a route table link.
@@ -227,6 +229,7 @@ class RouteTableLink(pulumi.CustomResource):
         $ pulumi import outscale:index/routeTableLink:RouteTableLink ImportedRouteTableLink rtb-12345678_rtbassoc-87654321
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,6 +284,7 @@ class RouteTableLink(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param RouteTableLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -296,9 +300,9 @@ class RouteTableLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RouteTableLinkTimeoutsArgs', 'RouteTableLinkTimeoutsArgsDict']]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RouteTableLinkTimeoutsArgs', 'RouteTableLinkTimeoutsArgsDict', 'outputs.RouteTableLinkTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,13 +333,13 @@ class RouteTableLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            link_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            main: Optional[pulumi.Input[_builtins.bool]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['RouteTableLinkTimeoutsArgs', 'RouteTableLinkTimeoutsArgsDict']]] = None) -> 'RouteTableLink':
+            link_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            main: pulumi.Input[Optional[_builtins.bool]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RouteTableLinkTimeoutsArgs', 'RouteTableLinkTimeoutsArgsDict', 'outputs.RouteTableLinkTimeouts']]] = None) -> 'RouteTableLink':
         """
         Get an existing RouteTableLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -360,6 +364,26 @@ class RouteTableLink(pulumi.CustomResource):
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["timeouts"] = timeouts
         return RouteTableLink(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            link_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            main: pulumi.Input[Optional[_builtins.bool]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RouteTableLinkTimeoutsArgs', 'RouteTableLinkTimeoutsArgsDict', 'outputs.RouteTableLinkTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["linkRouteTableId"] = link_route_table_id
+        __props__["main"] = main
+        __props__["netId"] = net_id
+        __props__["requestId"] = request_id
+        __props__["routeTableId"] = route_table_id
+        __props__["subnetId"] = subnet_id
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/routeTableLink:RouteTableLink', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="linkRouteTableId")

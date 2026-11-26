@@ -139,10 +139,10 @@ export interface GetVolumeOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVolumeFilterArgs>[]>;
-    requestId?: pulumi.Input<string>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVolumeFilterArgs>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the volume.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }

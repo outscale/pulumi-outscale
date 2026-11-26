@@ -19,10 +19,22 @@ namespace Pulumi.Outscale
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The Access Key ID for API operations
+        /// The Access Key ID for API operations.
         /// </summary>
         [Output("accessKeyId")]
         public Output<string?> AccessKeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// Path to the configuration file in which you have defined your credentials.
+        /// </summary>
+        [Output("configFile")]
+        public Output<string?> ConfigFile { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of your profile in which you define your credencial
+        /// </summary>
+        [Output("profile")]
+        public Output<string?> Profile { get; private set; } = null!;
 
         /// <summary>
         /// The Region for API operations.
@@ -37,15 +49,17 @@ namespace Pulumi.Outscale
         public Output<string?> SecretKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The path to your x509 cert
+        /// Path to the x509 certificate for IaaS API operations.
         /// </summary>
         [Output("x509CertPath")]
+        [Obsolete(@"'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
         public Output<string?> X509CertPath { get; private set; } = null!;
 
         /// <summary>
-        /// The path to your x509 key
+        /// Path to the x509 key for IaaS API operations.
         /// </summary>
         [Output("x509KeyPath")]
+        [Obsolete(@"'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
         public Output<string?> X509KeyPath { get; private set; } = null!;
 
 
@@ -83,13 +97,23 @@ namespace Pulumi.Outscale
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access Key ID for API operations
+        /// The Access Key ID for API operations.
         /// </summary>
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
 
+        [Input("api", json: true)]
+        public Input<Inputs.ProviderApiArgs>? Api { get; set; }
+
+        /// <summary>
+        /// Path to the configuration file in which you have defined your credentials.
+        /// </summary>
+        [Input("configFile")]
+        public Input<string>? ConfigFile { get; set; }
+
         [Input("endpoints", json: true)]
         private InputList<Inputs.ProviderEndpointArgs>? _endpoints;
+        [Obsolete(@"'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.")]
         public InputList<Inputs.ProviderEndpointArgs> Endpoints
         {
             get => _endpoints ?? (_endpoints = new InputList<Inputs.ProviderEndpointArgs>());
@@ -97,10 +121,23 @@ namespace Pulumi.Outscale
         }
 
         /// <summary>
-        /// tls insecure connection
+        /// TLS insecure connection for IaaS API operations.
         /// </summary>
         [Input("insecure", json: true)]
+        [Obsolete(@"'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.")]
         public Input<bool>? Insecure { get; set; }
+
+        [Input("oks", json: true)]
+        public Input<Inputs.ProviderOksArgs>? Oks { get; set; }
+
+        [Input("oos", json: true)]
+        public Input<Inputs.ProviderOosArgs>? Oos { get; set; }
+
+        /// <summary>
+        /// Name of your profile in which you define your credencial
+        /// </summary>
+        [Input("profile")]
+        public Input<string>? Profile { get; set; }
 
         /// <summary>
         /// The Region for API operations.
@@ -109,21 +146,29 @@ namespace Pulumi.Outscale
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Sanitize sensitive data in the logs. Defaults to true.
+        /// </summary>
+        [Input("sanitize", json: true)]
+        public Input<bool>? Sanitize { get; set; }
+
+        /// <summary>
         /// The Secret Key ID for API operations.
         /// </summary>
         [Input("secretKeyId")]
         public Input<string>? SecretKeyId { get; set; }
 
         /// <summary>
-        /// The path to your x509 cert
+        /// Path to the x509 certificate for IaaS API operations.
         /// </summary>
         [Input("x509CertPath")]
+        [Obsolete(@"'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
         public Input<string>? X509CertPath { get; set; }
 
         /// <summary>
-        /// The path to your x509 key
+        /// Path to the x509 key for IaaS API operations.
         /// </summary>
         [Input("x509KeyPath")]
+        [Obsolete(@"'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
         public Input<string>? X509KeyPath { get; set; }
 
         public ProviderArgs()

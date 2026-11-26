@@ -110,6 +110,17 @@ export class OksManifest extends pulumi.CustomResource {
         return new OksManifest(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OksManifest resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OksManifestState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oksManifest:OksManifest", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oksManifest:OksManifest';
 
@@ -204,32 +215,32 @@ export interface OksManifestState {
     /**
      * The ID of the cluster on which you want to apply the manifest.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Server-side apply field manager options:
      */
-    fieldManager?: pulumi.Input<inputs.OksManifestFieldManager>;
+    fieldManager?: pulumi.Input<inputs.OksManifestFieldManager | undefined>;
     /**
      * The Kubernetes YAML manifest.
      */
-    manifest?: pulumi.Input<string>;
+    manifest?: pulumi.Input<string | undefined>;
     /**
      * The applied Kubernetes object returned as YAML.
      */
-    object?: pulumi.Input<string>;
+    object?: pulumi.Input<string | undefined>;
     /**
      * If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
      */
-    skipDelete?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.OksManifestTimeouts>;
+    skipDelete?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.OksManifestTimeouts | undefined>;
     /**
      * : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
     /**
      * Wait until the fields in the Kubernetes object match the expected values after apply:
      */
-    waitFor?: pulumi.Input<inputs.OksManifestWaitFor>;
+    waitFor?: pulumi.Input<inputs.OksManifestWaitFor | undefined>;
 }
 
 /**
@@ -243,7 +254,7 @@ export interface OksManifestArgs {
     /**
      * Server-side apply field manager options:
      */
-    fieldManager?: pulumi.Input<inputs.OksManifestFieldManager>;
+    fieldManager?: pulumi.Input<inputs.OksManifestFieldManager | undefined>;
     /**
      * The Kubernetes YAML manifest.
      */
@@ -251,14 +262,14 @@ export interface OksManifestArgs {
     /**
      * If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
      */
-    skipDelete?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.OksManifestTimeouts>;
+    skipDelete?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.OksManifestTimeouts | undefined>;
     /**
      * : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
     /**
      * Wait until the fields in the Kubernetes object match the expected values after apply:
      */
-    waitFor?: pulumi.Input<inputs.OksManifestWaitFor>;
+    waitFor?: pulumi.Input<inputs.OksManifestWaitFor | undefined>;
 }

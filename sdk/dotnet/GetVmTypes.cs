@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about VM types.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).\
         /// For more information on this resource actions, see the [ReadVmTypes](https://docs.outscale.com/api#readvmtypes) API method.
         /// 
         /// ## Example Usage
@@ -93,7 +93,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about VM types.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).\
         /// For more information on this resource actions, see the [ReadVmTypes](https://docs.outscale.com/api#readvmtypes) API method.
         /// 
         /// ## Example Usage
@@ -172,7 +172,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about VM types.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).\
         /// For more information on this resource actions, see the [ReadVmTypes](https://docs.outscale.com/api#readvmtypes) API method.
         /// 
         /// ## Example Usage

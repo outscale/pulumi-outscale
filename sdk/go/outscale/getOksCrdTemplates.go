@@ -56,10 +56,8 @@ type GetOksCrdTemplatesResult struct {
 }
 
 func GetOksCrdTemplatesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetOksCrdTemplatesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetOksCrdTemplatesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("outscale:index/getOksCrdTemplates:getOksCrdTemplates", nil, GetOksCrdTemplatesResultOutput{}, options).(GetOksCrdTemplatesResultOutput), nil
-	}).(GetOksCrdTemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getOksCrdTemplates:getOksCrdTemplates", nil, GetOksCrdTemplatesResultOutput{}, options).(GetOksCrdTemplatesResultOutput)
 }
 
 // A collection of values returned by getOksCrdTemplates.

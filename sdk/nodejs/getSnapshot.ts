@@ -146,13 +146,13 @@ export interface GetSnapshotOutputArgs {
     /**
      * The OUTSCALE account ID of the owner of the snapshot.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSnapshotFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSnapshotFilterArgs>[] | undefined>;
     /**
      * The ID of the snapshot.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
 }

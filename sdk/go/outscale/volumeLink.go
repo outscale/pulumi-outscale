@@ -186,6 +186,12 @@ func (VolumeLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeLinkState)(nil)).Elem()
 }
 
+// VolumeLinkExists checks whether an existing VolumeLink resource with the given ID exists.
+func VolumeLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/volumeLink:VolumeLink", id, state, "", opts...)
+}
+
 type volumeLinkArgs struct {
 	// The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).
 	DeviceName  string              `pulumi:"deviceName"`

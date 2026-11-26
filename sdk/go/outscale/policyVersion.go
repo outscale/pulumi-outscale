@@ -148,6 +148,12 @@ func (PolicyVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyVersionState)(nil)).Elem()
 }
 
+// PolicyVersionExists checks whether an existing PolicyVersion resource with the given ID exists.
+func PolicyVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/policyVersion:PolicyVersion", id, state, "", opts...)
+}
+
 type policyVersionArgs struct {
 	// The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
 	Document string `pulumi:"document"`

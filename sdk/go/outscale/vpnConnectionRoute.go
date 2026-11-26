@@ -166,6 +166,12 @@ func (VpnConnectionRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnConnectionRouteState)(nil)).Elem()
 }
 
+// VpnConnectionRouteExists checks whether an existing VpnConnectionRoute resource with the given ID exists.
+func VpnConnectionRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpnConnectionRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/vpnConnectionRoute:VpnConnectionRoute", id, state, "", opts...)
+}
+
 type vpnConnectionRouteArgs struct {
 	// The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
 	DestinationIpRange string                      `pulumi:"destinationIpRange"`

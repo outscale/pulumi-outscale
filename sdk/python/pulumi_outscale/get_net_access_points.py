@@ -81,7 +81,7 @@ class AwaitableGetNetAccessPointsResult(GetNetAccessPointsResult):
             request_id=self.request_id)
 
 
-def get_net_access_points(filters: Optional[Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict']]] = None,
+def get_net_access_points(filters: Optional[Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict', 'outputs.GetNetAccessPointsFilterResult']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetAccessPointsResult:
     """
     Provides information about Net access points.
@@ -125,7 +125,7 @@ def get_net_access_points(filters: Optional[Sequence[Union['GetNetAccessPointsFi
     ```
 
 
-    :param Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict', 'outputs.GetNetAccessPointsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -137,7 +137,7 @@ def get_net_access_points(filters: Optional[Sequence[Union['GetNetAccessPointsFi
         id=pulumi.get(__ret__, 'id'),
         net_access_points=pulumi.get(__ret__, 'net_access_points'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_net_access_points_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict']]]]] = None,
+def get_net_access_points_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict', 'outputs.GetNetAccessPointsFilterResult']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetAccessPointsResult]:
     """
     Provides information about Net access points.
@@ -181,7 +181,7 @@ def get_net_access_points_output(filters: Optional[pulumi.Input[Optional[Sequenc
     ```
 
 
-    :param Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNetAccessPointsFilterArgs', 'GetNetAccessPointsFilterArgsDict', 'outputs.GetNetAccessPointsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

@@ -97,7 +97,7 @@ def get_policies_linked_to_user(user_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         policies=pulumi.get(__ret__, 'policies'),
         user_name=pulumi.get(__ret__, 'user_name'))
-def get_policies_linked_to_user_output(user_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_policies_linked_to_user_output(user_name: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesLinkedToUserResult]:
     """
     Provides information about a link policy to user.

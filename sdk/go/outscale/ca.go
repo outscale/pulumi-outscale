@@ -137,6 +137,12 @@ func (CaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*caState)(nil)).Elem()
 }
 
+// CaExists checks whether an existing Ca resource with the given ID exists.
+func CaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/ca:Ca", id, state, "", opts...)
+}
+
 type caArgs struct {
 	// The CA in PEM format.
 	CaPem string `pulumi:"caPem"`

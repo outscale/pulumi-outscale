@@ -64,10 +64,8 @@ type GetOksQuotasResult struct {
 }
 
 func GetOksQuotasOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetOksQuotasResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetOksQuotasResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("outscale:index/getOksQuotas:getOksQuotas", nil, GetOksQuotasResultOutput{}, options).(GetOksQuotasResultOutput), nil
-	}).(GetOksQuotasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getOksQuotas:getOksQuotas", nil, GetOksQuotasResultOutput{}, options).(GetOksQuotasResultOutput)
 }
 
 // A collection of values returned by getOksQuotas.

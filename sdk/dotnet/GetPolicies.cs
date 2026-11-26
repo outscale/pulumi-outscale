@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about policies.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
         /// For more information on this resource actions, see the [Policy](https://docs.outscale.com/api.html#3ds-outscale-api-policy) API methods.
         /// 
         /// ## Example Usage
@@ -67,7 +67,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about policies.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
         /// For more information on this resource actions, see the [Policy](https://docs.outscale.com/api.html#3ds-outscale-api-policy) API methods.
         /// 
         /// ## Example Usage
@@ -120,7 +120,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about policies.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
         /// For more information on this resource actions, see the [Policy](https://docs.outscale.com/api.html#3ds-outscale-api-policy) API methods.
         /// 
         /// ## Example Usage

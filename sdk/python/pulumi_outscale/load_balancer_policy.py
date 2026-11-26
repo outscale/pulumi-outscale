@@ -24,16 +24,17 @@ class LoadBalancerPolicyArgs:
                  load_balancer_name: pulumi.Input[_builtins.str],
                  policy_name: pulumi.Input[_builtins.str],
                  policy_type: pulumi.Input[_builtins.str],
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cookie_expiration_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['LoadBalancerPolicyTimeoutsArgs']] = None):
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cookie_expiration_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cookie_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subregion_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['LoadBalancerPolicyTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a LoadBalancerPolicy resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer for which you want to create a policy.
         :param pulumi.Input[_builtins.str] policy_name: The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
         :param pulumi.Input[_builtins.str] policy_type: The type of stickiness policy you want to create: `app` or `load_balancer`.
@@ -104,40 +105,40 @@ class LoadBalancerPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendVmIds")
-    def backend_vm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backend_vm_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of backend VMs for the load balancer.
         """
         return pulumi.get(self, "backend_vm_ids")
 
     @backend_vm_ids.setter
-    def backend_vm_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backend_vm_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backend_vm_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieExpirationPeriod")
-    def cookie_expiration_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cookie_expiration_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cookie_expiration_period")
 
     @cookie_expiration_period.setter
-    def cookie_expiration_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cookie_expiration_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cookie_expiration_period", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieName")
-    def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
-    def cookie_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of load balancer. Valid only for load balancers in a Net.<br />
         If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
@@ -146,83 +147,84 @@ class LoadBalancerPolicyArgs:
         return pulumi.get(self, "load_balancer_type")
 
     @load_balancer_type.setter
-    def load_balancer_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the Subnet in which the load balancer was created.
         """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
-    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionNames")
-    def subregion_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subregion_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the Subregion in which the load balancer was created.
         """
         return pulumi.get(self, "subregion_names")
 
     @subregion_names.setter
-    def subregion_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subregion_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subregion_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerPolicyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['LoadBalancerPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerPolicyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['LoadBalancerPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _LoadBalancerPolicyState:
     def __init__(__self__, *,
-                 access_logs: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]]] = None,
-                 application_sticky_cookie_policies: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]]] = None,
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cookie_expiration_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_checks: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyHealthCheckArgs']]]] = None,
-                 listeners: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyListenerArgs']]]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_sticky_cookie_policies: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs']]]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secured_cookies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicySourceSecurityGroupArgs']]]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['LoadBalancerPolicyTimeoutsArgs']] = None):
+                 access_logs: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]]] = None,
+                 application_sticky_cookie_policies: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]]] = None,
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cookie_expiration_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cookie_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_checks: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyHealthCheckArgs']]]] = None,
+                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyListenerArgs']]]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_sticky_cookie_policies: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs']]]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secured_cookies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicySourceSecurityGroupArgs']]]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subregion_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['LoadBalancerPolicyTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering LoadBalancerPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]] access_logs: Information about access logs.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
@@ -294,124 +296,124 @@ class _LoadBalancerPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="accessLogs")
-    def access_logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]]]:
+    def access_logs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]]]:
         """
         Information about access logs.
         """
         return pulumi.get(self, "access_logs")
 
     @access_logs.setter
-    def access_logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]]]):
+    def access_logs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyAccessLogArgs']]]]):
         pulumi.set(self, "access_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationStickyCookiePolicies")
-    def application_sticky_cookie_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]]]:
+    def application_sticky_cookie_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]]]:
         """
         The stickiness policies defined for the load balancer.
         """
         return pulumi.get(self, "application_sticky_cookie_policies")
 
     @application_sticky_cookie_policies.setter
-    def application_sticky_cookie_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]]]):
+    def application_sticky_cookie_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyApplicationStickyCookiePolicyArgs']]]]):
         pulumi.set(self, "application_sticky_cookie_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="backendVmIds")
-    def backend_vm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backend_vm_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of backend VMs for the load balancer.
         """
         return pulumi.get(self, "backend_vm_ids")
 
     @backend_vm_ids.setter
-    def backend_vm_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backend_vm_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backend_vm_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieExpirationPeriod")
-    def cookie_expiration_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cookie_expiration_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cookie_expiration_period")
 
     @cookie_expiration_period.setter
-    def cookie_expiration_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cookie_expiration_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cookie_expiration_period", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieName")
-    def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         """
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
-    def cookie_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS name of the load balancer.
         """
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
-    def dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="healthChecks")
-    def health_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyHealthCheckArgs']]]]:
+    def health_checks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyHealthCheckArgs']]]]:
         """
         Information about the health check configuration.
         """
         return pulumi.get(self, "health_checks")
 
     @health_checks.setter
-    def health_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyHealthCheckArgs']]]]):
+    def health_checks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyHealthCheckArgs']]]]):
         pulumi.set(self, "health_checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def listeners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyListenerArgs']]]]:
+    def listeners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyListenerArgs']]]]:
         """
         The listeners for the load balancer.
         """
         return pulumi.get(self, "listeners")
 
     @listeners.setter
-    def listeners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyListenerArgs']]]]):
+    def listeners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyListenerArgs']]]]):
         pulumi.set(self, "listeners", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the load balancer for which you want to create a policy.
         """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
-    def load_balancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerStickyCookiePolicies")
-    def load_balancer_sticky_cookie_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs']]]]:
+    def load_balancer_sticky_cookie_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs']]]]:
         """
         The policies defined for the load balancer.
         """
         return pulumi.get(self, "load_balancer_sticky_cookie_policies")
 
     @load_balancer_sticky_cookie_policies.setter
-    def load_balancer_sticky_cookie_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs']]]]):
+    def load_balancer_sticky_cookie_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs']]]]):
         pulumi.set(self, "load_balancer_sticky_cookie_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of load balancer. Valid only for load balancers in a Net.<br />
         If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
@@ -420,87 +422,87 @@ class _LoadBalancerPolicyState:
         return pulumi.get(self, "load_balancer_type")
 
     @load_balancer_type.setter
-    def load_balancer_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_type", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net for the load balancer.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of stickiness policy you want to create: `app` or `load_balancer`.
         """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securedCookies")
-    def secured_cookies(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secured_cookies(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "secured_cookies")
 
     @secured_cookies.setter
-    def secured_cookies(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secured_cookies(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secured_cookies", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSecurityGroups")
-    def source_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicySourceSecurityGroupArgs']]]]:
+    def source_security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicySourceSecurityGroupArgs']]]]:
         """
         Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
         To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
@@ -508,52 +510,52 @@ class _LoadBalancerPolicyState:
         return pulumi.get(self, "source_security_groups")
 
     @source_security_groups.setter
-    def source_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicySourceSecurityGroupArgs']]]]):
+    def source_security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicySourceSecurityGroupArgs']]]]):
         pulumi.set(self, "source_security_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the Subnet in which the load balancer was created.
         """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
-    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionNames")
-    def subregion_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subregion_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the Subregion in which the load balancer was created.
         """
         return pulumi.get(self, "subregion_names")
 
     @subregion_names.setter
-    def subregion_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subregion_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subregion_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]]:
         """
         One or more tags associated with the load balancer.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPolicyTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerPolicyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['LoadBalancerPolicyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerPolicyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['LoadBalancerPolicyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -563,17 +565,17 @@ class LoadBalancerPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cookie_expiration_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['LoadBalancerPolicyTimeoutsArgs', 'LoadBalancerPolicyTimeoutsArgsDict']]] = None,
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cookie_expiration_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cookie_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subregion_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['LoadBalancerPolicyTimeoutsArgs', 'LoadBalancerPolicyTimeoutsArgsDict', 'outputs.LoadBalancerPolicyTimeouts']]] = None,
                  __props__=None):
         """
         Manages a load balancer policy.
@@ -590,14 +592,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
+            load_balancer_name="terraform-lb-for-browser-policy",
+            subregion_names=["eu-west-2a"],
             listeners=[{
                 "backend_port": 8080,
                 "backend_protocol": "HTTP",
                 "load_balancer_port": 8080,
                 "load_balancer_protocol": "HTTP",
-            }],
-            load_balancer_name="terraform-lb-for-browser-policy",
-            subregion_names=["eu-west-2a"])
+            }])
         load_balancer_policy01 = outscale.LoadBalancerPolicy("load_balancer_policy01",
             load_balancer_name="terraform-lb-for-browser-policy",
             policy_name="terraform-lb-browser-policy",
@@ -611,14 +613,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer02 = outscale.LoadBalancer("load_balancer02",
+            load_balancer_name="terraform-lb-for-app-policy",
+            subregion_names=[f"{region}b"],
             listeners=[{
                 "load_balancer_port": 80,
                 "load_balancer_protocol": "TCP",
                 "backend_port": 80,
                 "backend_protocol": "TCP",
-            }],
-            load_balancer_name="terraform-lb-for-app-policy",
-            subregion_names=[f"{region}b"])
+            }])
         load_balancer_policy02 = outscale.LoadBalancerPolicy("load_balancer_policy02",
             load_balancer_name=load_balancer02.load_balancer_name,
             policy_name="terraform-lb-app-policy",
@@ -626,6 +628,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
             cookie_name="cookie01",
             opts = pulumi.ResourceOptions(depends_on=[load_balancer02]))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -662,14 +665,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
+            load_balancer_name="terraform-lb-for-browser-policy",
+            subregion_names=["eu-west-2a"],
             listeners=[{
                 "backend_port": 8080,
                 "backend_protocol": "HTTP",
                 "load_balancer_port": 8080,
                 "load_balancer_protocol": "HTTP",
-            }],
-            load_balancer_name="terraform-lb-for-browser-policy",
-            subregion_names=["eu-west-2a"])
+            }])
         load_balancer_policy01 = outscale.LoadBalancerPolicy("load_balancer_policy01",
             load_balancer_name="terraform-lb-for-browser-policy",
             policy_name="terraform-lb-browser-policy",
@@ -683,14 +686,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer02 = outscale.LoadBalancer("load_balancer02",
+            load_balancer_name="terraform-lb-for-app-policy",
+            subregion_names=[f"{region}b"],
             listeners=[{
                 "load_balancer_port": 80,
                 "load_balancer_protocol": "TCP",
                 "backend_port": 80,
                 "backend_protocol": "TCP",
-            }],
-            load_balancer_name="terraform-lb-for-app-policy",
-            subregion_names=[f"{region}b"])
+            }])
         load_balancer_policy02 = outscale.LoadBalancerPolicy("load_balancer_policy02",
             load_balancer_name=load_balancer02.load_balancer_name,
             policy_name="terraform-lb-app-policy",
@@ -698,6 +701,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
             cookie_name="cookie01",
             opts = pulumi.ResourceOptions(depends_on=[load_balancer02]))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerPolicyArgs args: The arguments to use to populate this resource's properties.
@@ -714,17 +718,17 @@ class LoadBalancerPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cookie_expiration_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['LoadBalancerPolicyTimeoutsArgs', 'LoadBalancerPolicyTimeoutsArgsDict']]] = None,
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cookie_expiration_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cookie_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subregion_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['LoadBalancerPolicyTimeoutsArgs', 'LoadBalancerPolicyTimeoutsArgsDict', 'outputs.LoadBalancerPolicyTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -773,29 +777,29 @@ class LoadBalancerPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyAccessLogArgs', 'LoadBalancerPolicyAccessLogArgsDict']]]]] = None,
-            application_sticky_cookie_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyApplicationStickyCookiePolicyArgs', 'LoadBalancerPolicyApplicationStickyCookiePolicyArgsDict']]]]] = None,
-            backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cookie_expiration_period: Optional[pulumi.Input[_builtins.int]] = None,
-            cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-            health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyHealthCheckArgs', 'LoadBalancerPolicyHealthCheckArgsDict']]]]] = None,
-            listeners: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyListenerArgs', 'LoadBalancerPolicyListenerArgsDict']]]]] = None,
-            load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_sticky_cookie_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs', 'LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgsDict']]]]] = None,
-            load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secured_cookies: Optional[pulumi.Input[_builtins.bool]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicySourceSecurityGroupArgs', 'LoadBalancerPolicySourceSecurityGroupArgsDict']]]]] = None,
-            subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subregion_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['LoadBalancerPolicyTimeoutsArgs', 'LoadBalancerPolicyTimeoutsArgsDict']]] = None) -> 'LoadBalancerPolicy':
+            access_logs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyAccessLogArgs', 'LoadBalancerPolicyAccessLogArgsDict', 'outputs.LoadBalancerPolicyAccessLog']]]]] = None,
+            application_sticky_cookie_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyApplicationStickyCookiePolicyArgs', 'LoadBalancerPolicyApplicationStickyCookiePolicyArgsDict', 'outputs.LoadBalancerPolicyApplicationStickyCookiePolicy']]]]] = None,
+            backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cookie_expiration_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cookie_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            health_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyHealthCheckArgs', 'LoadBalancerPolicyHealthCheckArgsDict', 'outputs.LoadBalancerPolicyHealthCheck']]]]] = None,
+            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyListenerArgs', 'LoadBalancerPolicyListenerArgsDict', 'outputs.LoadBalancerPolicyListener']]]]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_sticky_cookie_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs', 'LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgsDict', 'outputs.LoadBalancerPolicyLoadBalancerStickyCookiePolicy']]]]] = None,
+            load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secured_cookies: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicySourceSecurityGroupArgs', 'LoadBalancerPolicySourceSecurityGroupArgsDict', 'outputs.LoadBalancerPolicySourceSecurityGroup']]]]] = None,
+            subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subregion_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict', 'outputs.LoadBalancerPolicyTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['LoadBalancerPolicyTimeoutsArgs', 'LoadBalancerPolicyTimeoutsArgsDict', 'outputs.LoadBalancerPolicyTimeouts']]] = None) -> 'LoadBalancerPolicy':
         """
         Get an existing LoadBalancerPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -803,15 +807,15 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyAccessLogArgs', 'LoadBalancerPolicyAccessLogArgsDict']]]] access_logs: Information about access logs.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyApplicationStickyCookiePolicyArgs', 'LoadBalancerPolicyApplicationStickyCookiePolicyArgsDict']]]] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyAccessLogArgs', 'LoadBalancerPolicyAccessLogArgsDict', 'outputs.LoadBalancerPolicyAccessLog']]]] access_logs: Information about access logs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyApplicationStickyCookiePolicyArgs', 'LoadBalancerPolicyApplicationStickyCookiePolicyArgsDict', 'outputs.LoadBalancerPolicyApplicationStickyCookiePolicy']]]] application_sticky_cookie_policies: The stickiness policies defined for the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs for the load balancer.
         :param pulumi.Input[_builtins.str] cookie_name: The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the load balancer.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyHealthCheckArgs', 'LoadBalancerPolicyHealthCheckArgsDict']]]] health_checks: Information about the health check configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyListenerArgs', 'LoadBalancerPolicyListenerArgsDict']]]] listeners: The listeners for the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyHealthCheckArgs', 'LoadBalancerPolicyHealthCheckArgsDict', 'outputs.LoadBalancerPolicyHealthCheck']]]] health_checks: Information about the health check configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyListenerArgs', 'LoadBalancerPolicyListenerArgsDict', 'outputs.LoadBalancerPolicyListener']]]] listeners: The listeners for the load balancer.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer for which you want to create a policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs', 'LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgsDict']]]] load_balancer_sticky_cookie_policies: The policies defined for the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs', 'LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgsDict', 'outputs.LoadBalancerPolicyLoadBalancerStickyCookiePolicy']]]] load_balancer_sticky_cookie_policies: The policies defined for the load balancer.
         :param pulumi.Input[_builtins.str] load_balancer_type: The type of load balancer. Valid only for load balancers in a Net.<br />
                If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
                If `load_balancer_type` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
@@ -819,11 +823,11 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_name: The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
         :param pulumi.Input[_builtins.str] policy_type: The type of stickiness policy you want to create: `app` or `load_balancer`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicySourceSecurityGroupArgs', 'LoadBalancerPolicySourceSecurityGroupArgsDict']]]] source_security_groups: Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicySourceSecurityGroupArgs', 'LoadBalancerPolicySourceSecurityGroupArgsDict', 'outputs.LoadBalancerPolicySourceSecurityGroup']]]] source_security_groups: Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
                To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: The ID of the Subnet in which the load balancer was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subregion_names: The ID of the Subregion in which the load balancer was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict']]]] tags: One or more tags associated with the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict', 'outputs.LoadBalancerPolicyTag']]]] tags: One or more tags associated with the load balancer.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -853,6 +857,58 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return LoadBalancerPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_logs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyAccessLogArgs', 'LoadBalancerPolicyAccessLogArgsDict', 'outputs.LoadBalancerPolicyAccessLog']]]]] = None,
+            application_sticky_cookie_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyApplicationStickyCookiePolicyArgs', 'LoadBalancerPolicyApplicationStickyCookiePolicyArgsDict', 'outputs.LoadBalancerPolicyApplicationStickyCookiePolicy']]]]] = None,
+            backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cookie_expiration_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cookie_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            health_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyHealthCheckArgs', 'LoadBalancerPolicyHealthCheckArgsDict', 'outputs.LoadBalancerPolicyHealthCheck']]]]] = None,
+            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyListenerArgs', 'LoadBalancerPolicyListenerArgsDict', 'outputs.LoadBalancerPolicyListener']]]]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_sticky_cookie_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgs', 'LoadBalancerPolicyLoadBalancerStickyCookiePolicyArgsDict', 'outputs.LoadBalancerPolicyLoadBalancerStickyCookiePolicy']]]]] = None,
+            load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secured_cookies: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicySourceSecurityGroupArgs', 'LoadBalancerPolicySourceSecurityGroupArgsDict', 'outputs.LoadBalancerPolicySourceSecurityGroup']]]]] = None,
+            subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subregion_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPolicyTagArgs', 'LoadBalancerPolicyTagArgsDict', 'outputs.LoadBalancerPolicyTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['LoadBalancerPolicyTimeoutsArgs', 'LoadBalancerPolicyTimeoutsArgsDict', 'outputs.LoadBalancerPolicyTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLogs"] = access_logs
+        __props__["applicationStickyCookiePolicies"] = application_sticky_cookie_policies
+        __props__["backendVmIds"] = backend_vm_ids
+        __props__["cookieExpirationPeriod"] = cookie_expiration_period
+        __props__["cookieName"] = cookie_name
+        __props__["dnsName"] = dns_name
+        __props__["healthChecks"] = health_checks
+        __props__["listeners"] = listeners
+        __props__["loadBalancerName"] = load_balancer_name
+        __props__["loadBalancerStickyCookiePolicies"] = load_balancer_sticky_cookie_policies
+        __props__["loadBalancerType"] = load_balancer_type
+        __props__["netId"] = net_id
+        __props__["policyName"] = policy_name
+        __props__["policyType"] = policy_type
+        __props__["publicIp"] = public_ip
+        __props__["requestId"] = request_id
+        __props__["securedCookies"] = secured_cookies
+        __props__["securityGroups"] = security_groups
+        __props__["sourceSecurityGroups"] = source_security_groups
+        __props__["subnets"] = subnets
+        __props__["subregionNames"] = subregion_names
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/loadBalancerPolicy:LoadBalancerPolicy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="accessLogs")

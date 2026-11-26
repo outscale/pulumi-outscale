@@ -68,6 +68,17 @@ export class ApiAccessPolicy extends pulumi.CustomResource {
         return new ApiAccessPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ApiAccessPolicy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ApiAccessPolicyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/apiAccessPolicy:ApiAccessPolicy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/apiAccessPolicy:ApiAccessPolicy';
 
@@ -145,21 +156,21 @@ export interface ApiAccessPolicyState {
     /**
      * The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
      */
-    maxAccessKeyExpirationSeconds?: pulumi.Input<number>;
+    maxAccessKeyExpirationSeconds?: pulumi.Input<number | undefined>;
     /**
      * The ID of the API request.
      */
-    requestId?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
      */
-    requireTrustedEnv?: pulumi.Input<boolean>;
+    requireTrustedEnv?: pulumi.Input<boolean | undefined>;
     /**
      * (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
      * This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
      */
-    requireTrustedEnvSecureMode?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.ApiAccessPolicyTimeouts>;
+    requireTrustedEnvSecureMode?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.ApiAccessPolicyTimeouts | undefined>;
 }
 
 /**
@@ -178,6 +189,6 @@ export interface ApiAccessPolicyArgs {
      * (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
      * This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
      */
-    requireTrustedEnvSecureMode?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.ApiAccessPolicyTimeouts>;
+    requireTrustedEnvSecureMode?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.ApiAccessPolicyTimeouts | undefined>;
 }

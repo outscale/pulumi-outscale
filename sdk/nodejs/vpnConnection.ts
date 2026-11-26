@@ -35,14 +35,14 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const vpnConnection01 = new outscale.VpnConnection("vpn_connection01", {
- *     tags: [{
- *         key: "Name",
- *         value: "vpn01",
- *     }],
  *     clientGatewayId: clientGateway01.clientGatewayId,
  *     virtualGatewayId: virtualGateway01.virtualGatewayId,
  *     connectionType: "ipsec.1",
  *     staticRoutesOnly: true,
+ *     tags: [{
+ *         key: "Name",
+ *         value: "vpn01",
+ *     }],
  * });
  * ```
  *
@@ -68,6 +68,17 @@ export class VpnConnection extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VpnConnectionState, opts?: pulumi.CustomResourceOptions): VpnConnection {
         return new VpnConnection(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing VpnConnection resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VpnConnectionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/vpnConnection:VpnConnection", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -188,45 +199,45 @@ export interface VpnConnectionState {
     /**
      * Example configuration for the client gateway.
      */
-    clientGatewayConfiguration?: pulumi.Input<string>;
+    clientGatewayConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The ID of the client gateway.
      */
-    clientGatewayId?: pulumi.Input<string>;
+    clientGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The type of VPN connection (always `ipsec.1`).
      */
-    connectionType?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * Information about one or more static routes associated with the VPN connection, if any.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.VpnConnectionRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.VpnConnectionRoute>[] | undefined>;
     /**
      * The state of the IPSEC tunnel (`UP` \| `DOWN`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
      */
-    staticRoutesOnly?: pulumi.Input<boolean>;
+    staticRoutesOnly?: pulumi.Input<boolean | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VpnConnectionTag>[]>;
-    timeouts?: pulumi.Input<inputs.VpnConnectionTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VpnConnectionTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionTimeouts | undefined>;
     /**
      * Information about the current state of one or more of the VPN tunnels.
      */
-    vgwTelemetries?: pulumi.Input<pulumi.Input<inputs.VpnConnectionVgwTelemetry>[]>;
+    vgwTelemetries?: pulumi.Input<pulumi.Input<inputs.VpnConnectionVgwTelemetry>[] | undefined>;
     /**
      * The ID of the virtual gateway.
      */
-    virtualGatewayId?: pulumi.Input<string>;
+    virtualGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPN connection.
      */
-    vpnConnectionId?: pulumi.Input<string>;
+    vpnConnectionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,12 +255,12 @@ export interface VpnConnectionArgs {
     /**
      * By default or if false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](https://docs.outscale.com/api#createvpnconnectionroute) and [DeleteVpnConnectionRoute](https://docs.outscale.com/api#deletevpnconnectionroute).
      */
-    staticRoutesOnly?: pulumi.Input<boolean>;
+    staticRoutesOnly?: pulumi.Input<boolean | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VpnConnectionTag>[]>;
-    timeouts?: pulumi.Input<inputs.VpnConnectionTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VpnConnectionTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */

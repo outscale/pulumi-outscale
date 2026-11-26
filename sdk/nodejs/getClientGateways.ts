@@ -113,9 +113,9 @@ export function getClientGatewaysOutput(args?: GetClientGatewaysOutputArgs, opts
  * A collection of arguments for invoking getClientGateways.
  */
 export interface GetClientGatewaysOutputArgs {
-    clientGatewayIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientGatewayIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetClientGatewaysFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetClientGatewaysFilterArgs>[] | undefined>;
 }

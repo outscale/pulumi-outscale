@@ -229,6 +229,12 @@ func (NatServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*natServiceState)(nil)).Elem()
 }
 
+// NatServiceExists checks whether an existing NatService resource with the given ID exists.
+func NatServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NatServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/natService:NatService", id, state, "", opts...)
+}
+
 type natServiceArgs struct {
 	// The allocation ID of the public IP to associate with the NAT service.<br />
 	// If the public IP is already associated with another resource, you must first disassociate it.

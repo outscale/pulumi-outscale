@@ -87,12 +87,8 @@ type LookupDhcpOptionResult struct {
 }
 
 func LookupDhcpOptionOutput(ctx *pulumi.Context, args LookupDhcpOptionOutputArgs, opts ...pulumi.InvokeOption) LookupDhcpOptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDhcpOptionResultOutput, error) {
-			args := v.(LookupDhcpOptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getDhcpOption:getDhcpOption", args, LookupDhcpOptionResultOutput{}, options).(LookupDhcpOptionResultOutput), nil
-		}).(LookupDhcpOptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getDhcpOption:getDhcpOption", args, LookupDhcpOptionResultOutput{}, options).(LookupDhcpOptionResultOutput)
 }
 
 // A collection of arguments for invoking getDhcpOption.

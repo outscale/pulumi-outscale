@@ -22,10 +22,11 @@ __all__ = ['OosBucketEncryptionArgs', 'OosBucketEncryption']
 class OosBucketEncryptionArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketEncryptionTimeoutsArgs']] = None):
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketEncryptionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OosBucketEncryption resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which you want to enable encryption.
         :param pulumi.Input[_builtins.str] encryption_type: (Default: `AES256`) The server-side encryption algorithm to use:<br />- `AES256` is the default encryption algorithm. This encryption algorithm uses symmetric encryption and a 256-bit key. It is currently fully supported and recommended for use.<br />- `aws:kms` currently corresponds to `AES256` and is used only if a custom cryptographic key is used. Since the cryptographic key for your OUTSCALE account is provided and managed by 3DS OUTSCALE, we recommend using `AES256` for the time being.
         """
@@ -49,35 +50,36 @@ class OosBucketEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Default: `AES256`) The server-side encryption algorithm to use:<br />- `AES256` is the default encryption algorithm. This encryption algorithm uses symmetric encryption and a 256-bit key. It is currently fully supported and recommended for use.<br />- `aws:kms` currently corresponds to `AES256` and is used only if a custom cryptographic key is used. Since the cryptographic key for your OUTSCALE account is provided and managed by 3DS OUTSCALE, we recommend using `AES256` for the time being.
         """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketEncryptionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketEncryptionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketEncryptionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketEncryptionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OosBucketEncryptionState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_key_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketEncryptionTimeoutsArgs']] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_key_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketEncryptionTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OosBucketEncryption resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket for which you want to enable encryption.
         :param pulumi.Input[_builtins.bool] bucket_key_enabled: Whether the cryptographic key is used per bucket (`true`) or per account (always `false`). 3DS OUTSCALE provides a default main cryptographic key for your account to encrypt your data.
         :param pulumi.Input[_builtins.str] encryption_type: (Default: `AES256`) The server-side encryption algorithm to use:<br />- `AES256` is the default encryption algorithm. This encryption algorithm uses symmetric encryption and a 256-bit key. It is currently fully supported and recommended for use.<br />- `aws:kms` currently corresponds to `AES256` and is used only if a custom cryptographic key is used. Since the cryptographic key for your OUTSCALE account is provided and managed by 3DS OUTSCALE, we recommend using `AES256` for the time being.
@@ -93,47 +95,47 @@ class _OosBucketEncryptionState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket for which you want to enable encryption.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketKeyEnabled")
-    def bucket_key_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bucket_key_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the cryptographic key is used per bucket (`true`) or per account (always `false`). 3DS OUTSCALE provides a default main cryptographic key for your account to encrypt your data.
         """
         return pulumi.get(self, "bucket_key_enabled")
 
     @bucket_key_enabled.setter
-    def bucket_key_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bucket_key_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bucket_key_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Default: `AES256`) The server-side encryption algorithm to use:<br />- `AES256` is the default encryption algorithm. This encryption algorithm uses symmetric encryption and a 256-bit key. It is currently fully supported and recommended for use.<br />- `aws:kms` currently corresponds to `AES256` and is used only if a custom cryptographic key is used. Since the cryptographic key for your OUTSCALE account is provided and managed by 3DS OUTSCALE, we recommend using `AES256` for the time being.
         """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketEncryptionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketEncryptionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketEncryptionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketEncryptionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -143,9 +145,9 @@ class OosBucketEncryption(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketEncryptionTimeoutsArgs', 'OosBucketEncryptionTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketEncryptionTimeoutsArgs', 'OosBucketEncryptionTimeoutsArgsDict', 'outputs.OosBucketEncryptionTimeouts']]] = None,
                  __props__=None):
         """
         Manages a bucket encryption configuration.
@@ -166,6 +168,7 @@ class OosBucketEncryption(pulumi.CustomResource):
             bucket=bucket01.id,
             encryption_type="AES256")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -198,6 +201,7 @@ class OosBucketEncryption(pulumi.CustomResource):
             encryption_type="AES256")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OosBucketEncryptionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -213,9 +217,9 @@ class OosBucketEncryption(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketEncryptionTimeoutsArgs', 'OosBucketEncryptionTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketEncryptionTimeoutsArgs', 'OosBucketEncryptionTimeoutsArgsDict', 'outputs.OosBucketEncryptionTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -241,10 +245,10 @@ class OosBucketEncryption(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_key_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosBucketEncryptionTimeoutsArgs', 'OosBucketEncryptionTimeoutsArgsDict']]] = None) -> 'OosBucketEncryption':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_key_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketEncryptionTimeoutsArgs', 'OosBucketEncryptionTimeoutsArgsDict', 'outputs.OosBucketEncryptionTimeouts']]] = None) -> 'OosBucketEncryption':
         """
         Get an existing OosBucketEncryption resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -265,6 +269,20 @@ class OosBucketEncryption(pulumi.CustomResource):
         __props__.__dict__["encryption_type"] = encryption_type
         __props__.__dict__["timeouts"] = timeouts
         return OosBucketEncryption(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_key_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketEncryptionTimeoutsArgs', 'OosBucketEncryptionTimeoutsArgsDict', 'outputs.OosBucketEncryptionTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["bucketKeyEnabled"] = bucket_key_enabled
+        __props__["encryptionType"] = encryption_type
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosBucketEncryption:OosBucketEncryption', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

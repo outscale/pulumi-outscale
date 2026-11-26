@@ -106,12 +106,8 @@ type GetQuotaResult struct {
 }
 
 func GetQuotaOutput(ctx *pulumi.Context, args GetQuotaOutputArgs, opts ...pulumi.InvokeOption) GetQuotaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetQuotaResultOutput, error) {
-			args := v.(GetQuotaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getQuota:getQuota", args, GetQuotaResultOutput{}, options).(GetQuotaResultOutput), nil
-		}).(GetQuotaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getQuota:getQuota", args, GetQuotaResultOutput{}, options).(GetQuotaResultOutput)
 }
 
 // A collection of arguments for invoking getQuota.

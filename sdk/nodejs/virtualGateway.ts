@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const virtualGateway01 = new outscale.VirtualGateway("virtual_gateway01", {
+ *     connectionType: "ipsec.1",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-virtual-gateway",
  *     }],
- *     connectionType: "ipsec.1",
  * });
  * ```
  *
@@ -49,6 +49,17 @@ export class VirtualGateway extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: VirtualGatewayState, opts?: pulumi.CustomResourceOptions): VirtualGateway {
         return new VirtualGateway(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing VirtualGateway resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VirtualGatewayState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/virtualGateway:VirtualGateway", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -133,25 +144,25 @@ export interface VirtualGatewayState {
     /**
      * The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * The Net to which the virtual gateway is attached.
      */
-    netToVirtualGatewayLinks?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayNetToVirtualGatewayLink>[]>;
-    requestId?: pulumi.Input<string>;
+    netToVirtualGatewayLinks?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayNetToVirtualGatewayLink>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the virtual gateway (`pending` \| `available` \| `deleting` \| `deleted`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayTag>[]>;
-    timeouts?: pulumi.Input<inputs.VirtualGatewayTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */
-    virtualGatewayId?: pulumi.Input<string>;
+    virtualGatewayId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,6 +176,6 @@ export interface VirtualGatewayArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayTag>[]>;
-    timeouts?: pulumi.Input<inputs.VirtualGatewayTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.VirtualGatewayTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayTimeouts | undefined>;
 }

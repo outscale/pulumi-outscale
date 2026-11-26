@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const managedPoliciesLinkedToUserGroup = outscale.getPoliciesLinkedToUserGroup({
+ *     userGroupName: "user_group_name",
  *     filters: [
  *         {
  *             name: "user_group_ids",
@@ -32,7 +33,6 @@ import * as utilities from "./utilities";
  *             values: ["/test/"],
  *         },
  *     ],
- *     userGroupName: "user_group_name",
  * });
  * ```
  */
@@ -80,6 +80,7 @@ export interface GetPoliciesLinkedToUserGroupResult {
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const managedPoliciesLinkedToUserGroup = outscale.getPoliciesLinkedToUserGroup({
+ *     userGroupName: "user_group_name",
  *     filters: [
  *         {
  *             name: "user_group_ids",
@@ -93,7 +94,6 @@ export interface GetPoliciesLinkedToUserGroupResult {
  *             values: ["/test/"],
  *         },
  *     ],
- *     userGroupName: "user_group_name",
  * });
  * ```
  */
@@ -109,7 +109,7 @@ export function getPoliciesLinkedToUserGroupOutput(args: GetPoliciesLinkedToUser
  * A collection of arguments for invoking getPoliciesLinkedToUserGroup.
  */
 export interface GetPoliciesLinkedToUserGroupOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetPoliciesLinkedToUserGroupFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetPoliciesLinkedToUserGroupFilterArgs>[] | undefined>;
     /**
      * The name of the group.
      */

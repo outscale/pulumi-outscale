@@ -22,10 +22,11 @@ __all__ = ['OosBucketLifecycleArgs', 'OosBucketLifecycle']
 class OosBucketLifecycleArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketLifecycleTimeoutsArgs']] = None):
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketLifecycleTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OosBucketLifecycle resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to add the lifecycle configuration.
         :param pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]] rules: A rule in the lifecycle configuration.
         """
@@ -49,34 +50,35 @@ class OosBucketLifecycleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]:
         """
         A rule in the lifecycle configuration.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketLifecycleTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketLifecycleTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketLifecycleTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketLifecycleTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OosBucketLifecycleState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketLifecycleTimeoutsArgs']] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketLifecycleTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OosBucketLifecycle resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to add the lifecycle configuration.
         :param pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]] rules: A rule in the lifecycle configuration.
         """
@@ -89,35 +91,35 @@ class _OosBucketLifecycleState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket to which you want to add the lifecycle configuration.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]:
         """
         A rule in the lifecycle configuration.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketLifecycleTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketLifecycleTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketLifecycleTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketLifecycleTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -127,9 +129,9 @@ class OosBucketLifecycle(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketLifecycleTimeoutsArgs', 'OosBucketLifecycleTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict', 'outputs.OosBucketLifecycleRule']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketLifecycleTimeoutsArgs', 'OosBucketLifecycleTimeoutsArgsDict', 'outputs.OosBucketLifecycleTimeouts']]] = None,
                  __props__=None):
         """
         Manages a bucket lifecycle configuration.
@@ -152,6 +154,7 @@ class OosBucketLifecycle(pulumi.CustomResource):
             bucket=bucket01.id,
             status="Enabled")
         lifecycle01 = outscale.OosBucketLifecycle("lifecycle01",
+            bucket=bucket01.id,
             rules=[{
                 "id": "expire",
                 "status": "Enabled",
@@ -160,7 +163,6 @@ class OosBucketLifecycle(pulumi.CustomResource):
                 },
                 "filter": {},
             }],
-            bucket=bucket01.id,
             opts = pulumi.ResourceOptions(depends_on=[versioning01]))
         ```
 
@@ -175,6 +177,7 @@ class OosBucketLifecycle(pulumi.CustomResource):
             bucket=bucket02.id,
             status="Enabled")
         lifecycle02 = outscale.OosBucketLifecycle("lifecycle02",
+            bucket=bucket02.id,
             rules=[{
                 "id": "expire",
                 "status": "Enabled",
@@ -190,16 +193,16 @@ class OosBucketLifecycle(pulumi.CustomResource):
                     },
                 },
             }],
-            bucket=bucket02.id,
             opts = pulumi.ResourceOptions(depends_on=[versioning02]))
         ```
 
         For more examples of `filter` usage, see the Object filtering section below.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to add the lifecycle configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict']]]] rules: A rule in the lifecycle configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict', 'outputs.OosBucketLifecycleRule']]]] rules: A rule in the lifecycle configuration.
         """
         ...
     @overload
@@ -228,6 +231,7 @@ class OosBucketLifecycle(pulumi.CustomResource):
             bucket=bucket01.id,
             status="Enabled")
         lifecycle01 = outscale.OosBucketLifecycle("lifecycle01",
+            bucket=bucket01.id,
             rules=[{
                 "id": "expire",
                 "status": "Enabled",
@@ -236,7 +240,6 @@ class OosBucketLifecycle(pulumi.CustomResource):
                 },
                 "filter": {},
             }],
-            bucket=bucket01.id,
             opts = pulumi.ResourceOptions(depends_on=[versioning01]))
         ```
 
@@ -251,6 +254,7 @@ class OosBucketLifecycle(pulumi.CustomResource):
             bucket=bucket02.id,
             status="Enabled")
         lifecycle02 = outscale.OosBucketLifecycle("lifecycle02",
+            bucket=bucket02.id,
             rules=[{
                 "id": "expire",
                 "status": "Enabled",
@@ -266,11 +270,11 @@ class OosBucketLifecycle(pulumi.CustomResource):
                     },
                 },
             }],
-            bucket=bucket02.id,
             opts = pulumi.ResourceOptions(depends_on=[versioning02]))
         ```
 
         For more examples of `filter` usage, see the Object filtering section below.
+
 
         :param str resource_name: The name of the resource.
         :param OosBucketLifecycleArgs args: The arguments to use to populate this resource's properties.
@@ -287,9 +291,9 @@ class OosBucketLifecycle(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketLifecycleTimeoutsArgs', 'OosBucketLifecycleTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict', 'outputs.OosBucketLifecycleRule']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketLifecycleTimeoutsArgs', 'OosBucketLifecycleTimeoutsArgsDict', 'outputs.OosBucketLifecycleTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -314,9 +318,9 @@ class OosBucketLifecycle(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosBucketLifecycleTimeoutsArgs', 'OosBucketLifecycleTimeoutsArgsDict']]] = None) -> 'OosBucketLifecycle':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict', 'outputs.OosBucketLifecycleRule']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketLifecycleTimeoutsArgs', 'OosBucketLifecycleTimeoutsArgsDict', 'outputs.OosBucketLifecycleTimeouts']]] = None) -> 'OosBucketLifecycle':
         """
         Get an existing OosBucketLifecycle resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -325,7 +329,7 @@ class OosBucketLifecycle(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to add the lifecycle configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict']]]] rules: A rule in the lifecycle configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict', 'outputs.OosBucketLifecycleRule']]]] rules: A rule in the lifecycle configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -335,6 +339,18 @@ class OosBucketLifecycle(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         __props__.__dict__["timeouts"] = timeouts
         return OosBucketLifecycle(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketLifecycleRuleArgs', 'OosBucketLifecycleRuleArgsDict', 'outputs.OosBucketLifecycleRule']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketLifecycleTimeoutsArgs', 'OosBucketLifecycleTimeoutsArgsDict', 'outputs.OosBucketLifecycleTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["rules"] = rules
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosBucketLifecycle:OosBucketLifecycle', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

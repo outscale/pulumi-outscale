@@ -21,13 +21,14 @@ __all__ = ['ApiAccessRuleArgs', 'ApiAccessRule']
 @pulumi.input_type
 class ApiAccessRuleArgs:
     def __init__(__self__, *,
-                 ca_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['ApiAccessRuleTimeoutsArgs']] = None):
+                 ca_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['ApiAccessRuleTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ApiAccessRule resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_ids: One or more IDs of Client Certificate Authorities (CAs).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cns: One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
         :param pulumi.Input[_builtins.str] description: A description for the API access rule.
@@ -46,74 +47,75 @@ class ApiAccessRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="caIds")
-    def ca_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ca_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of Client Certificate Authorities (CAs).
         """
         return pulumi.get(self, "ca_ids")
 
     @ca_ids.setter
-    def ca_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ca_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ca_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def cns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
         """
         return pulumi.get(self, "cns")
 
     @cns.setter
-    def cns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cns", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the API access rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
         """
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
-    def ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ApiAccessRuleTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ApiAccessRuleTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ApiAccessRuleTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ApiAccessRuleTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _ApiAccessRuleState:
     def __init__(__self__, *,
-                 api_access_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['ApiAccessRuleTimeoutsArgs']] = None):
+                 api_access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ApiAccessRuleTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ApiAccessRule resources.
+
         :param pulumi.Input[_builtins.str] api_access_rule_id: The ID of the API access rule.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_ids: One or more IDs of Client Certificate Authorities (CAs).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cns: One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
@@ -137,80 +139,80 @@ class _ApiAccessRuleState:
 
     @_builtins.property
     @pulumi.getter(name="apiAccessRuleId")
-    def api_access_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_access_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the API access rule.
         """
         return pulumi.get(self, "api_access_rule_id")
 
     @api_access_rule_id.setter
-    def api_access_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_access_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_access_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="caIds")
-    def ca_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ca_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of Client Certificate Authorities (CAs).
         """
         return pulumi.get(self, "ca_ids")
 
     @ca_ids.setter
-    def ca_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ca_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ca_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def cns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `ca_ids` parameter.
         """
         return pulumi.get(self, "cns")
 
     @cns.setter
-    def cns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cns", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the API access rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
         """
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
-    def ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ApiAccessRuleTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ApiAccessRuleTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ApiAccessRuleTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ApiAccessRuleTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -220,11 +222,11 @@ class ApiAccessRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ApiAccessRuleTimeoutsArgs', 'ApiAccessRuleTimeoutsArgsDict']]] = None,
+                 ca_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ApiAccessRuleTimeoutsArgs', 'ApiAccessRuleTimeoutsArgsDict', 'outputs.ApiAccessRuleTimeouts']]] = None,
                  __props__=None):
         """
         Manages an API access rule.
@@ -276,6 +278,7 @@ class ApiAccessRule(pulumi.CustomResource):
         $ pulumi import outscale:index/apiAccessRule:ApiAccessRule ImportedAPIAccessRule "aar-12345678"
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -341,6 +344,7 @@ class ApiAccessRule(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param ApiAccessRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -356,11 +360,11 @@ class ApiAccessRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ApiAccessRuleTimeoutsArgs', 'ApiAccessRuleTimeoutsArgsDict']]] = None,
+                 ca_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ApiAccessRuleTimeoutsArgs', 'ApiAccessRuleTimeoutsArgsDict', 'outputs.ApiAccessRuleTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,13 +391,13 @@ class ApiAccessRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_access_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ca_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['ApiAccessRuleTimeoutsArgs', 'ApiAccessRuleTimeoutsArgsDict']]] = None) -> 'ApiAccessRule':
+            api_access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ApiAccessRuleTimeoutsArgs', 'ApiAccessRuleTimeoutsArgsDict', 'outputs.ApiAccessRuleTimeouts']]] = None) -> 'ApiAccessRule':
         """
         Get an existing ApiAccessRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -419,6 +423,26 @@ class ApiAccessRule(pulumi.CustomResource):
         __props__.__dict__["request_id"] = request_id
         __props__.__dict__["timeouts"] = timeouts
         return ApiAccessRule(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ApiAccessRuleTimeoutsArgs', 'ApiAccessRuleTimeoutsArgsDict', 'outputs.ApiAccessRuleTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiAccessRuleId"] = api_access_rule_id
+        __props__["caIds"] = ca_ids
+        __props__["cns"] = cns
+        __props__["description"] = description
+        __props__["ipRanges"] = ip_ranges
+        __props__["requestId"] = request_id
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/apiAccessRule:ApiAccessRule', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="apiAccessRuleId")

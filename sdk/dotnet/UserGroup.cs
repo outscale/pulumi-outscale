@@ -48,6 +48,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var group_1 = new Outscale.UserGroup("group-1", new()
     ///     {
+    ///         UserGroupName = "Group-TF-test-1",
     ///         Policies = new[]
     ///         {
     ///             new Outscale.Inputs.UserGroupPolicyArgs
@@ -56,7 +57,6 @@ namespace Pulumi.Outscale
     ///                 DefaultVersionId = "V2",
     ///             },
     ///         },
-    ///         UserGroupName = "Group-TF-test-1",
     ///     });
     /// 
     /// });
@@ -74,6 +74,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var group_1 = new Outscale.UserGroup("group-1", new()
     ///     {
+    ///         UserGroupName = "Group-TF-test-1",
     ///         Users = new[]
     ///         {
     ///             new Outscale.Inputs.UserGroupUserArgs
@@ -86,7 +87,6 @@ namespace Pulumi.Outscale
     ///                 UserName = "user-name-2",
     ///             },
     ///         },
-    ///         UserGroupName = "Group-TF-test-1",
     ///     });
     /// 
     /// });
@@ -104,14 +104,7 @@ namespace Pulumi.Outscale
     /// {
     ///     var group_1 = new Outscale.UserGroup("group-1", new()
     ///     {
-    ///         Policies = new[]
-    ///         {
-    ///             new Outscale.Inputs.UserGroupPolicyArgs
-    ///             {
-    ///                 PolicyOrn = policy_2.Orn,
-    ///                 VersionId = "V2",
-    ///             },
-    ///         },
+    ///         UserGroupName = "Group-TF-test-1",
     ///         Users = new[]
     ///         {
     ///             new Outscale.Inputs.UserGroupUserArgs
@@ -124,7 +117,14 @@ namespace Pulumi.Outscale
     ///                 UserName = "user-name-2",
     ///             },
     ///         },
-    ///         UserGroupName = "Group-TF-test-1",
+    ///         Policies = new[]
+    ///         {
+    ///             new Outscale.Inputs.UserGroupPolicyArgs
+    ///             {
+    ///                 PolicyOrn = policy_2.Orn,
+    ///                 VersionId = "V2",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

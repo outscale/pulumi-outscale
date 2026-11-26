@@ -76,6 +76,17 @@ export class ApiAccessRule extends pulumi.CustomResource {
         return new ApiAccessRule(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ApiAccessRule resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ApiAccessRuleState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/apiAccessRule:ApiAccessRule", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/apiAccessRule:ApiAccessRule';
 
@@ -155,25 +166,25 @@ export interface ApiAccessRuleState {
     /**
      * The ID of the API access rule.
      */
-    apiAccessRuleId?: pulumi.Input<string>;
+    apiAccessRuleId?: pulumi.Input<string | undefined>;
     /**
      * One or more IDs of Client Certificate Authorities (CAs).
      */
-    caIds?: pulumi.Input<pulumi.Input<string>[]>;
+    caIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
      */
-    cns?: pulumi.Input<pulumi.Input<string>[]>;
+    cns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description for the API access rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    requestId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ApiAccessRuleTimeouts>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ApiAccessRuleTimeouts | undefined>;
 }
 
 /**
@@ -183,18 +194,18 @@ export interface ApiAccessRuleArgs {
     /**
      * One or more IDs of Client Certificate Authorities (CAs).
      */
-    caIds?: pulumi.Input<pulumi.Input<string>[]>;
+    caIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more Client Certificate Common Names (CNs). If this parameter is specified, you must also specify the `caIds` parameter.
      */
-    cns?: pulumi.Input<pulumi.Input<string>[]>;
+    cns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description for the API access rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * One or more IPs or CIDR blocks (for example, `192.0.2.0/16`).
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.ApiAccessRuleTimeouts>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.ApiAccessRuleTimeouts | undefined>;
 }

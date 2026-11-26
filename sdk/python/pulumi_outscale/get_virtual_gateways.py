@@ -93,7 +93,7 @@ class AwaitableGetVirtualGatewaysResult(GetVirtualGatewaysResult):
             virtual_gateways=self.virtual_gateways)
 
 
-def get_virtual_gateways(filters: Optional[Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict']]] = None,
+def get_virtual_gateways(filters: Optional[Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict', 'outputs.GetVirtualGatewaysFilterResult']]] = None,
                          virtual_gateway_ids: Optional[Sequence[_builtins.str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualGatewaysResult:
     """
@@ -124,7 +124,7 @@ def get_virtual_gateways(filters: Optional[Sequence[Union['GetVirtualGatewaysFil
     ```
 
 
-    :param Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict', 'outputs.GetVirtualGatewaysFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] virtual_gateway_ids: The ID of the virtual gateway.
     """
     __args__ = dict()
@@ -139,8 +139,8 @@ def get_virtual_gateways(filters: Optional[Sequence[Union['GetVirtualGatewaysFil
         request_id=pulumi.get(__ret__, 'request_id'),
         virtual_gateway_ids=pulumi.get(__ret__, 'virtual_gateway_ids'),
         virtual_gateways=pulumi.get(__ret__, 'virtual_gateways'))
-def get_virtual_gateways_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict']]]]] = None,
-                                virtual_gateway_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_virtual_gateways_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict', 'outputs.GetVirtualGatewaysFilterResult']]]]] = None,
+                                virtual_gateway_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualGatewaysResult]:
     """
     Provides information about virtual gateways.
@@ -170,7 +170,7 @@ def get_virtual_gateways_output(filters: Optional[pulumi.Input[Optional[Sequence
     ```
 
 
-    :param Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVirtualGatewaysFilterArgs', 'GetVirtualGatewaysFilterArgsDict', 'outputs.GetVirtualGatewaysFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] virtual_gateway_ids: The ID of the virtual gateway.
     """
     __args__ = dict()

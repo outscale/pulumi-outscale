@@ -80,12 +80,8 @@ type LookupCaResult struct {
 }
 
 func LookupCaOutput(ctx *pulumi.Context, args LookupCaOutputArgs, opts ...pulumi.InvokeOption) LookupCaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCaResultOutput, error) {
-			args := v.(LookupCaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getCa:getCa", args, LookupCaResultOutput{}, options).(LookupCaResultOutput), nil
-		}).(LookupCaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getCa:getCa", args, LookupCaResultOutput{}, options).(LookupCaResultOutput)
 }
 
 // A collection of arguments for invoking getCa.

@@ -87,12 +87,8 @@ type LookupClientGatewayResult struct {
 }
 
 func LookupClientGatewayOutput(ctx *pulumi.Context, args LookupClientGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupClientGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClientGatewayResultOutput, error) {
-			args := v.(LookupClientGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getClientGateway:getClientGateway", args, LookupClientGatewayResultOutput{}, options).(LookupClientGatewayResultOutput), nil
-		}).(LookupClientGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getClientGateway:getClientGateway", args, LookupClientGatewayResultOutput{}, options).(LookupClientGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getClientGateway.

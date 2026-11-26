@@ -34,6 +34,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String("terraform-lb-for-browser-policy"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.String("eu-west-2a"),
+//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(8080),
@@ -41,10 +45,6 @@ import (
 //						LoadBalancerPort:     pulumi.Int(8080),
 //						LoadBalancerProtocol: pulumi.String("HTTP"),
 //					},
-//				},
-//				LoadBalancerName: pulumi.String("terraform-lb-for-browser-policy"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.String("eu-west-2a"),
 //				},
 //			})
 //			if err != nil {
@@ -79,6 +79,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			loadBalancer02, err := outscale.NewLoadBalancer(ctx, "load_balancer02", &outscale.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String("terraform-lb-for-app-policy"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.Sprintf("%vb", region),
+//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						LoadBalancerPort:     pulumi.Int(80),
@@ -86,10 +90,6 @@ import (
 //						BackendPort:          pulumi.Int(80),
 //						BackendProtocol:      pulumi.String("TCP"),
 //					},
-//				},
-//				LoadBalancerName: pulumi.String("terraform-lb-for-app-policy"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.Sprintf("%vb", region),
 //				},
 //			})
 //			if err != nil {
@@ -294,6 +294,12 @@ type LoadBalancerPolicyState struct {
 
 func (LoadBalancerPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerPolicyState)(nil)).Elem()
+}
+
+// LoadBalancerPolicyExists checks whether an existing LoadBalancerPolicy resource with the given ID exists.
+func LoadBalancerPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/loadBalancerPolicy:LoadBalancerPolicy", id, state, "", opts...)
 }
 
 type loadBalancerPolicyArgs struct {

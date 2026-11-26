@@ -123,6 +123,12 @@ func (InternetServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*internetServiceState)(nil)).Elem()
 }
 
+// InternetServiceExists checks whether an existing InternetService resource with the given ID exists.
+func InternetServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InternetServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/internetService:InternetService", id, state, "", opts...)
+}
+
 type internetServiceArgs struct {
 	// A tag to add to this resource. You can specify this argument several times.
 	Tags     []InternetServiceTag     `pulumi:"tags"`

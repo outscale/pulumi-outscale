@@ -130,11 +130,11 @@ export interface GetImagesOutputArgs {
     /**
      * One or more OUTSCALE account IDs that the permission is associated with.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
-    imageIds?: pulumi.Input<pulumi.Input<string>[]>;
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[] | undefined>;
+    imageIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -13,9 +13,105 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type Api struct {
+	Endpoint *string `pulumi:"endpoint"`
+	// TLS insecure connection
+	Insecure *bool   `pulumi:"insecure"`
+	Region   *string `pulumi:"region"`
+	// Path to the x509 certificate
+	//
+	// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509CertPath *string `pulumi:"x509CertPath"`
+	// Path to the x509 key
+	//
+	// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509KeyPath *string `pulumi:"x509KeyPath"`
+}
+
+// ApiInput is an input type that accepts ApiArgs and ApiOutput values.
+// You can construct a concrete instance of `ApiInput` via:
+//
+//	ApiArgs{...}
+type ApiInput interface {
+	pulumi.Input
+
+	ToApiOutput() ApiOutput
+	ToApiOutputWithContext(context.Context) ApiOutput
+}
+
+type ApiArgs struct {
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// TLS insecure connection
+	Insecure pulumi.BoolPtrInput   `pulumi:"insecure"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+	// Path to the x509 certificate
+	//
+	// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509CertPath pulumi.StringPtrInput `pulumi:"x509CertPath"`
+	// Path to the x509 key
+	//
+	// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+	X509KeyPath pulumi.StringPtrInput `pulumi:"x509KeyPath"`
+}
+
+func (ApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Api)(nil)).Elem()
+}
+
+func (i ApiArgs) ToApiOutput() ApiOutput {
+	return i.ToApiOutputWithContext(context.Background())
+}
+
+func (i ApiArgs) ToApiOutputWithContext(ctx context.Context) ApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOutput)
+}
+
+type ApiOutput struct{ *pulumi.OutputState }
+
+func (ApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Api)(nil)).Elem()
+}
+
+func (o ApiOutput) ToApiOutput() ApiOutput {
+	return o
+}
+
+func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
+	return o
+}
+
+func (o ApiOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Api) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// TLS insecure connection
+func (o ApiOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Api) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+func (o ApiOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Api) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Path to the x509 certificate
+//
+// Deprecated: 'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.
+func (o ApiOutput) X509CertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Api) *string { return v.X509CertPath }).(pulumi.StringPtrOutput)
+}
+
+// Path to the x509 key
+//
+// Deprecated: 'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.
+func (o ApiOutput) X509KeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Api) *string { return v.X509KeyPath }).(pulumi.StringPtrOutput)
+}
+
 type Endpoints struct {
-	// Use this to override the default service endpoint URL
+	// The Endpoint for Outscale API operations.
 	Api *string `pulumi:"api"`
+	// The Endpoint for OKS API operations.
+	Oks *string `pulumi:"oks"`
 }
 
 // EndpointsInput is an input type that accepts EndpointsArgs and EndpointsOutput values.
@@ -30,8 +126,10 @@ type EndpointsInput interface {
 }
 
 type EndpointsArgs struct {
-	// Use this to override the default service endpoint URL
+	// The Endpoint for Outscale API operations.
 	Api pulumi.StringPtrInput `pulumi:"api"`
+	// The Endpoint for OKS API operations.
+	Oks pulumi.StringPtrInput `pulumi:"oks"`
 }
 
 func (EndpointsArgs) ElementType() reflect.Type {
@@ -85,9 +183,14 @@ func (o EndpointsOutput) ToEndpointsOutputWithContext(ctx context.Context) Endpo
 	return o
 }
 
-// Use this to override the default service endpoint URL
+// The Endpoint for Outscale API operations.
 func (o EndpointsOutput) Api() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint for OKS API operations.
+func (o EndpointsOutput) Oks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Oks }).(pulumi.StringPtrOutput)
 }
 
 type EndpointsArrayOutput struct{ *pulumi.OutputState }
@@ -110,9 +213,125 @@ func (o EndpointsArrayOutput) Index(i pulumi.IntInput) EndpointsOutput {
 	}).(EndpointsOutput)
 }
 
+type Oks struct {
+	Endpoint *string `pulumi:"endpoint"`
+	Region   *string `pulumi:"region"`
+}
+
+// OksInput is an input type that accepts OksArgs and OksOutput values.
+// You can construct a concrete instance of `OksInput` via:
+//
+//	OksArgs{...}
+type OksInput interface {
+	pulumi.Input
+
+	ToOksOutput() OksOutput
+	ToOksOutputWithContext(context.Context) OksOutput
+}
+
+type OksArgs struct {
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (OksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oks)(nil)).Elem()
+}
+
+func (i OksArgs) ToOksOutput() OksOutput {
+	return i.ToOksOutputWithContext(context.Background())
+}
+
+func (i OksArgs) ToOksOutputWithContext(ctx context.Context) OksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksOutput)
+}
+
+type OksOutput struct{ *pulumi.OutputState }
+
+func (OksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oks)(nil)).Elem()
+}
+
+func (o OksOutput) ToOksOutput() OksOutput {
+	return o
+}
+
+func (o OksOutput) ToOksOutputWithContext(ctx context.Context) OksOutput {
+	return o
+}
+
+func (o OksOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oks) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o OksOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oks) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type Oos struct {
+	Endpoint *string `pulumi:"endpoint"`
+	Region   *string `pulumi:"region"`
+}
+
+// OosInput is an input type that accepts OosArgs and OosOutput values.
+// You can construct a concrete instance of `OosInput` via:
+//
+//	OosArgs{...}
+type OosInput interface {
+	pulumi.Input
+
+	ToOosOutput() OosOutput
+	ToOosOutputWithContext(context.Context) OosOutput
+}
+
+type OosArgs struct {
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	Region   pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (OosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oos)(nil)).Elem()
+}
+
+func (i OosArgs) ToOosOutput() OosOutput {
+	return i.ToOosOutputWithContext(context.Background())
+}
+
+func (i OosArgs) ToOosOutputWithContext(ctx context.Context) OosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosOutput)
+}
+
+type OosOutput struct{ *pulumi.OutputState }
+
+func (OosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oos)(nil)).Elem()
+}
+
+func (o OosOutput) ToOosOutput() OosOutput {
+	return o
+}
+
+func (o OosOutput) ToOosOutputWithContext(ctx context.Context) OosOutput {
+	return o
+}
+
+func (o OosOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oos) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o OosOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oos) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiInput)(nil)).Elem(), ApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsInput)(nil)).Elem(), EndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsArrayInput)(nil)).Elem(), EndpointsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksInput)(nil)).Elem(), OksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosInput)(nil)).Elem(), OosArgs{})
+	pulumi.RegisterOutputType(ApiOutput{})
 	pulumi.RegisterOutputType(EndpointsOutput{})
 	pulumi.RegisterOutputType(EndpointsArrayOutput{})
+	pulumi.RegisterOutputType(OksOutput{})
+	pulumi.RegisterOutputType(OosOutput{})
 }

@@ -74,6 +74,17 @@ export class FlexibleGpuLink extends pulumi.CustomResource {
         return new FlexibleGpuLink(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing FlexibleGpuLink resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: FlexibleGpuLinkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/flexibleGpuLink:FlexibleGpuLink", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/flexibleGpuLink:FlexibleGpuLink';
 
@@ -141,13 +152,13 @@ export interface FlexibleGpuLinkState {
     /**
      * (Required) The ID of one or more fGPUs you want to attach.
      */
-    flexibleGpuIds?: pulumi.Input<pulumi.Input<string>[]>;
-    requestId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.FlexibleGpuLinkTimeouts>;
+    flexibleGpuIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlexibleGpuLinkTimeouts | undefined>;
     /**
      * The ID of the VM you want to attach the fGPU to.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,7 +169,7 @@ export interface FlexibleGpuLinkArgs {
      * (Required) The ID of one or more fGPUs you want to attach.
      */
     flexibleGpuIds: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.FlexibleGpuLinkTimeouts>;
+    timeouts?: pulumi.Input<inputs.FlexibleGpuLinkTimeouts | undefined>;
     /**
      * The ID of the VM you want to attach the fGPU to.
      */

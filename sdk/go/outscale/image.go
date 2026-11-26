@@ -119,8 +119,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewImage(ctx, "image04", &outscale.ImageArgs{
+//				ImageName: pulumi.String("terraform-omi-bsu"),
 //				BlockDeviceMappings: outscale.ImageBlockDeviceMappingArray{
 //					&outscale.ImageBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/sda1"),
 //						Bsus: outscale.ImageBlockDeviceMappingBsusArray{
 //							&outscale.ImageBlockDeviceMappingBsusArgs{
 //								SnapshotId:         pulumi.String("snap-12345678"),
@@ -130,10 +132,8 @@ import (
 //								DeleteOnVmDeletion: pulumi.Bool(true),
 //							},
 //						},
-//						DeviceName: pulumi.String("/dev/sda1"),
 //					},
 //				},
-//				ImageName:      pulumi.String("terraform-omi-bsu"),
 //				RootDeviceName: pulumi.String("/dev/sda1"),
 //				Description:    pulumi.String("Terraform OMI with BSU"),
 //			})
@@ -344,6 +344,12 @@ type ImageState struct {
 
 func (ImageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageState)(nil)).Elem()
+}
+
+// ImageExists checks whether an existing Image resource with the given ID exists.
+func ImageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/image:Image", id, state, "", opts...)
 }
 
 type imageArgs struct {

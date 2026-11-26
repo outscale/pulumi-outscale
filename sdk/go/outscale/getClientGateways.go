@@ -84,12 +84,8 @@ type GetClientGatewaysResult struct {
 }
 
 func GetClientGatewaysOutput(ctx *pulumi.Context, args GetClientGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetClientGatewaysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetClientGatewaysResultOutput, error) {
-			args := v.(GetClientGatewaysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getClientGateways:getClientGateways", args, GetClientGatewaysResultOutput{}, options).(GetClientGatewaysResultOutput), nil
-		}).(GetClientGatewaysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getClientGateways:getClientGateways", args, GetClientGatewaysResultOutput{}, options).(GetClientGatewaysResultOutput)
 }
 
 // A collection of arguments for invoking getClientGateways.

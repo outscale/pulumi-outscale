@@ -82,12 +82,8 @@ type GetVmsResult struct {
 }
 
 func GetVmsOutput(ctx *pulumi.Context, args GetVmsOutputArgs, opts ...pulumi.InvokeOption) GetVmsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVmsResultOutput, error) {
-			args := v.(GetVmsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getVms:getVms", args, GetVmsResultOutput{}, options).(GetVmsResultOutput), nil
-		}).(GetVmsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getVms:getVms", args, GetVmsResultOutput{}, options).(GetVmsResultOutput)
 }
 
 // A collection of arguments for invoking getVms.

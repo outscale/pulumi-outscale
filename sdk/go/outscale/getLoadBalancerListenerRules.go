@@ -76,12 +76,8 @@ type GetLoadBalancerListenerRulesResult struct {
 }
 
 func GetLoadBalancerListenerRulesOutput(ctx *pulumi.Context, args GetLoadBalancerListenerRulesOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerListenerRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLoadBalancerListenerRulesResultOutput, error) {
-			args := v.(GetLoadBalancerListenerRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getLoadBalancerListenerRules:getLoadBalancerListenerRules", args, GetLoadBalancerListenerRulesResultOutput{}, options).(GetLoadBalancerListenerRulesResultOutput), nil
-		}).(GetLoadBalancerListenerRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getLoadBalancerListenerRules:getLoadBalancerListenerRules", args, GetLoadBalancerListenerRulesResultOutput{}, options).(GetLoadBalancerListenerRulesResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancerListenerRules.

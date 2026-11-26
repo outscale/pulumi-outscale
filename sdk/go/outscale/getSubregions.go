@@ -134,12 +134,8 @@ type GetSubregionsResult struct {
 }
 
 func GetSubregionsOutput(ctx *pulumi.Context, args GetSubregionsOutputArgs, opts ...pulumi.InvokeOption) GetSubregionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSubregionsResultOutput, error) {
-			args := v.(GetSubregionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getSubregions:getSubregions", args, GetSubregionsResultOutput{}, options).(GetSubregionsResultOutput), nil
-		}).(GetSubregionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getSubregions:getSubregions", args, GetSubregionsResultOutput{}, options).(GetSubregionsResultOutput)
 }
 
 // A collection of arguments for invoking getSubregions.

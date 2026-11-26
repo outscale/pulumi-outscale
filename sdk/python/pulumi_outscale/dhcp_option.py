@@ -21,14 +21,15 @@ __all__ = ['DhcpOptionArgs', 'DhcpOption']
 @pulumi.input_type
 class DhcpOptionArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['DhcpOptionTimeoutsArgs']] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['DhcpOptionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a DhcpOption resource.
+
         :param pulumi.Input[_builtins.str] domain_name: Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_name_servers: The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_servers: The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
@@ -50,88 +51,89 @@ class DhcpOptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNameServers")
-    def domain_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_name_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         """
         return pulumi.get(self, "domain_name_servers")
 
     @domain_name_servers.setter
-    def domain_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_name_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_name_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="logServers")
-    def log_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
         """
         return pulumi.get(self, "log_servers")
 
     @log_servers.setter
-    def log_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['DhcpOptionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['DhcpOptionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['DhcpOptionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['DhcpOptionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _DhcpOptionState:
     def __init__(__self__, *,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['DhcpOptionTimeoutsArgs']] = None):
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['DhcpOptionTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering DhcpOption resources.
+
         :param pulumi.Input[_builtins.bool] default: If true, the DHCP options set is a default one. If false, it is not.
         :param pulumi.Input[_builtins.str] dhcp_options_set_id: The ID of the DHCP options set.
         :param pulumi.Input[_builtins.str] domain_name: Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
@@ -161,104 +163,104 @@ class _DhcpOptionState:
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the DHCP options set is a default one. If false, it is not.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetId")
-    def dhcp_options_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_options_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the DHCP options set.
         """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @dhcp_options_set_id.setter
-    def dhcp_options_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_options_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_options_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNameServers")
-    def domain_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_name_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         """
         return pulumi.get(self, "domain_name_servers")
 
     @domain_name_servers.setter
-    def domain_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_name_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_name_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="logServers")
-    def log_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
         """
         return pulumi.get(self, "log_servers")
 
     @log_servers.setter
-    def log_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['DhcpOptionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['DhcpOptionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['DhcpOptionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['DhcpOptionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -268,12 +270,12 @@ class DhcpOption(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['DhcpOptionTimeoutsArgs', 'DhcpOptionTimeoutsArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict', 'outputs.DhcpOptionTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DhcpOptionTimeoutsArgs', 'DhcpOptionTimeoutsArgsDict', 'outputs.DhcpOptionTimeouts']]] = None,
                  __props__=None):
         """
         Manages a DHCP option.
@@ -299,10 +301,6 @@ class DhcpOption(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         dhcp_option02 = outscale.DhcpOption("dhcp_option_02",
-            tags=[{
-                "key": "Name",
-                "value": "DHCP01",
-            }],
             domain_name="MyCompany.com",
             domain_name_servers=[
                 "111.111.11.111",
@@ -311,7 +309,11 @@ class DhcpOption(pulumi.CustomResource):
             ntp_servers=[
                 "111.1.1.1",
                 "222.2.2.2",
-            ])
+            ],
+            tags=[{
+                "key": "Name",
+                "value": "DHCP01",
+            }])
         ```
 
         ## Import
@@ -324,13 +326,14 @@ class DhcpOption(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Specify a domain name (for example, MyCompany.com). You can specify only one domain name. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_name_servers: The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_servers: The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict', 'outputs.DhcpOptionTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -362,10 +365,6 @@ class DhcpOption(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         dhcp_option02 = outscale.DhcpOption("dhcp_option_02",
-            tags=[{
-                "key": "Name",
-                "value": "DHCP01",
-            }],
             domain_name="MyCompany.com",
             domain_name_servers=[
                 "111.111.11.111",
@@ -374,7 +373,11 @@ class DhcpOption(pulumi.CustomResource):
             ntp_servers=[
                 "111.1.1.1",
                 "222.2.2.2",
-            ])
+            ],
+            tags=[{
+                "key": "Name",
+                "value": "DHCP01",
+            }])
         ```
 
         ## Import
@@ -386,6 +389,7 @@ class DhcpOption(pulumi.CustomResource):
         $ pulumi import outscale:index/dhcpOption:DhcpOption ImportedDhcpSet dopt-87654321
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DhcpOptionArgs args: The arguments to use to populate this resource's properties.
@@ -402,12 +406,12 @@ class DhcpOption(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['DhcpOptionTimeoutsArgs', 'DhcpOptionTimeoutsArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict', 'outputs.DhcpOptionTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DhcpOptionTimeoutsArgs', 'DhcpOptionTimeoutsArgsDict', 'outputs.DhcpOptionTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -436,15 +440,15 @@ class DhcpOption(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            log_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['DhcpOptionTimeoutsArgs', 'DhcpOptionTimeoutsArgsDict']]] = None) -> 'DhcpOption':
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict', 'outputs.DhcpOptionTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['DhcpOptionTimeoutsArgs', 'DhcpOptionTimeoutsArgsDict', 'outputs.DhcpOptionTimeouts']]] = None) -> 'DhcpOption':
         """
         Get an existing DhcpOption resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -458,7 +462,7 @@ class DhcpOption(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_name_servers: The IPs of domain name servers. If no IPs are specified, the `OutscaleProvidedDNS` value is set by default. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_servers: The IPs of the log servers. You must specify at least one of the following parameters: `domain_name`, `domain_name_servers`, `log_servers`, or `ntp_servers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: `DomainName`, `DomainNameServers`, or `NtpServers`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict', 'outputs.DhcpOptionTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -474,6 +478,30 @@ class DhcpOption(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return DhcpOption(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionTagArgs', 'DhcpOptionTagArgsDict', 'outputs.DhcpOptionTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['DhcpOptionTimeoutsArgs', 'DhcpOptionTimeoutsArgsDict', 'outputs.DhcpOptionTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["default"] = default
+        __props__["dhcpOptionsSetId"] = dhcp_options_set_id
+        __props__["domainName"] = domain_name
+        __props__["domainNameServers"] = domain_name_servers
+        __props__["logServers"] = log_servers
+        __props__["ntpServers"] = ntp_servers
+        __props__["requestId"] = request_id
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/dhcpOption:DhcpOption', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

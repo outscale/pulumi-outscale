@@ -23,12 +23,13 @@ class SubnetArgs:
     def __init__(__self__, *,
                  ip_range: pulumi.Input[_builtins.str],
                  net_id: pulumi.Input[_builtins.str],
-                 map_public_ip_on_launch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['SubnetTimeoutsArgs']] = None):
+                 map_public_ip_on_launch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['SubnetTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Subnet resource.
+
         :param pulumi.Input[_builtins.str] ip_range: The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
                The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for which you want to create a Subnet.
@@ -74,65 +75,66 @@ class SubnetArgs:
 
     @_builtins.property
     @pulumi.getter(name="mapPublicIpOnLaunch")
-    def map_public_ip_on_launch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def map_public_ip_on_launch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
         """
         return pulumi.get(self, "map_public_ip_on_launch")
 
     @map_public_ip_on_launch.setter
-    def map_public_ip_on_launch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def map_public_ip_on_launch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "map_public_ip_on_launch", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionName")
-    def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Subregion in which you want to create the Subnet.
         """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
-    def subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubnetTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['SubnetTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['SubnetTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['SubnetTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['SubnetTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _SubnetState:
     def __init__(__self__, *,
-                 available_ips_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_public_ip_on_launch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['SubnetTimeoutsArgs']] = None):
+                 available_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_public_ip_on_launch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['SubnetTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
+
         :param pulumi.Input[_builtins.int] available_ips_count: The number of available IPs in the Subnets.
         :param pulumi.Input[_builtins.str] ip_range: The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
                The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
@@ -166,19 +168,19 @@ class _SubnetState:
 
     @_builtins.property
     @pulumi.getter(name="availableIpsCount")
-    def available_ips_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def available_ips_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of available IPs in the Subnets.
         """
         return pulumi.get(self, "available_ips_count")
 
     @available_ips_count.setter
-    def available_ips_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def available_ips_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "available_ips_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
         The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About Nets](https://docs.outscale.com/en/userguide/About-Nets.html).
@@ -186,97 +188,97 @@ class _SubnetState:
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
-    def ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="mapPublicIpOnLaunch")
-    def map_public_ip_on_launch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def map_public_ip_on_launch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
         """
         return pulumi.get(self, "map_public_ip_on_launch")
 
     @map_public_ip_on_launch.setter
-    def map_public_ip_on_launch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def map_public_ip_on_launch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "map_public_ip_on_launch", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net for which you want to create a Subnet.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the Subnet (`pending` \\| `available` \\| `deleted`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Subnet.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionName")
-    def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Subregion in which you want to create the Subnet.
         """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
-    def subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubnetTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['SubnetTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['SubnetTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['SubnetTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['SubnetTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -286,12 +288,12 @@ class Subnet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_public_ip_on_launch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['SubnetTimeoutsArgs', 'SubnetTimeoutsArgsDict']]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_public_ip_on_launch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict', 'outputs.SubnetTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SubnetTimeoutsArgs', 'SubnetTimeoutsArgsDict', 'outputs.SubnetTimeouts']]] = None,
                  __props__=None):
         """
         Manages a Subnet.
@@ -331,6 +333,7 @@ class Subnet(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip_range: The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br />
@@ -338,7 +341,7 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] map_public_ip_on_launch: If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for which you want to create a Subnet.
         :param pulumi.Input[_builtins.str] subregion_name: The name of the Subregion in which you want to create the Subnet.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict', 'outputs.SubnetTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -384,6 +387,7 @@ class Subnet(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param SubnetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -399,12 +403,12 @@ class Subnet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_public_ip_on_launch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['SubnetTimeoutsArgs', 'SubnetTimeoutsArgsDict']]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_public_ip_on_launch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict', 'outputs.SubnetTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SubnetTimeoutsArgs', 'SubnetTimeoutsArgsDict', 'outputs.SubnetTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,16 +442,16 @@ class Subnet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            available_ips_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            map_public_ip_on_launch: Optional[pulumi.Input[_builtins.bool]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['SubnetTimeoutsArgs', 'SubnetTimeoutsArgsDict']]] = None) -> 'Subnet':
+            available_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            map_public_ip_on_launch: pulumi.Input[Optional[_builtins.bool]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict', 'outputs.SubnetTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['SubnetTimeoutsArgs', 'SubnetTimeoutsArgsDict', 'outputs.SubnetTimeouts']]] = None) -> 'Subnet':
         """
         Get an existing Subnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -463,7 +467,7 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The state of the Subnet (`pending` \\| `available` \\| `deleted`).
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet.
         :param pulumi.Input[_builtins.str] subregion_name: The name of the Subregion in which you want to create the Subnet.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict', 'outputs.SubnetTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -480,6 +484,32 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return Subnet(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            available_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            map_public_ip_on_launch: pulumi.Input[Optional[_builtins.bool]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetTagArgs', 'SubnetTagArgsDict', 'outputs.SubnetTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['SubnetTimeoutsArgs', 'SubnetTimeoutsArgsDict', 'outputs.SubnetTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availableIpsCount"] = available_ips_count
+        __props__["ipRange"] = ip_range
+        __props__["mapPublicIpOnLaunch"] = map_public_ip_on_launch
+        __props__["netId"] = net_id
+        __props__["requestId"] = request_id
+        __props__["state"] = state
+        __props__["subnetId"] = subnet_id
+        __props__["subregionName"] = subregion_name
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/subnet:Subnet', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="availableIpsCount")

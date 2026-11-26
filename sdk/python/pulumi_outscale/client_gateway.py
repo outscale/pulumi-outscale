@@ -24,10 +24,11 @@ class ClientGatewayArgs:
                  bgp_asn: pulumi.Input[_builtins.int],
                  connection_type: pulumi.Input[_builtins.str],
                  public_ip: pulumi.Input[_builtins.str],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['ClientGatewayTimeoutsArgs']] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ClientGatewayTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['ClientGatewayTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ClientGateway resource.
+
         :param pulumi.Input[_builtins.int] bgp_asn: The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. <br/>
                This number must be between `1` and `4294967295`, except `50624`, `53306`, and `132418`. <br/>
                If you do not have an ASN, you can choose one between `64512` and `65534` (both included), or between `4200000000` and `4294967295` (both included).
@@ -83,39 +84,40 @@ class ClientGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ClientGatewayTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ClientGatewayTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ClientGatewayTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ClientGatewayTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _ClientGatewayState:
     def __init__(__self__, *,
-                 bgp_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['ClientGatewayTimeoutsArgs']] = None):
+                 bgp_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ClientGatewayTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['ClientGatewayTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ClientGateway resources.
+
         :param pulumi.Input[_builtins.int] bgp_asn: The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. <br/>
                This number must be between `1` and `4294967295`, except `50624`, `53306`, and `132418`. <br/>
                If you do not have an ASN, you can choose one between `64512` and `65534` (both included), or between `4200000000` and `4294967295` (both included).
@@ -144,7 +146,7 @@ class _ClientGatewayState:
 
     @_builtins.property
     @pulumi.getter(name="bgpAsn")
-    def bgp_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bgp_asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. <br/>
         This number must be between `1` and `4294967295`, except `50624`, `53306`, and `132418`. <br/>
@@ -153,85 +155,85 @@ class _ClientGatewayState:
         return pulumi.get(self, "bgp_asn")
 
     @bgp_asn.setter
-    def bgp_asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bgp_asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bgp_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="clientGatewayId")
-    def client_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the client gateway.
         """
         return pulumi.get(self, "client_gateway_id")
 
     @client_gateway_id.setter
-    def client_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The communication protocol used to establish tunnel with your client gateway (always `ipsec.1`).
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public fixed IPv4 address of your client gateway.
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClientGatewayTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ClientGatewayTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ClientGatewayTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ClientGatewayTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ClientGatewayTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -241,11 +243,11 @@ class ClientGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ClientGatewayTimeoutsArgs', 'ClientGatewayTimeoutsArgsDict']]] = None,
+                 bgp_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict', 'outputs.ClientGatewayTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClientGatewayTimeoutsArgs', 'ClientGatewayTimeoutsArgsDict', 'outputs.ClientGatewayTimeouts']]] = None,
                  __props__=None):
         """
         Manages a client gateway.
@@ -260,13 +262,13 @@ class ClientGateway(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         client_gateway01 = outscale.ClientGateway("client_gateway01",
+            bgp_asn=65000,
+            public_ip="111.11.11.111",
+            connection_type="ipsec.1",
             tags=[{
                 "key": "Name",
                 "value": "client_gateway_01",
-            }],
-            bgp_asn=65000,
-            public_ip="111.11.11.111",
-            connection_type="ipsec.1")
+            }])
         ```
 
         ## Import
@@ -279,6 +281,7 @@ class ClientGateway(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] bgp_asn: The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. <br/>
@@ -286,7 +289,7 @@ class ClientGateway(pulumi.CustomResource):
                If you do not have an ASN, you can choose one between `64512` and `65534` (both included), or between `4200000000` and `4294967295` (both included).
         :param pulumi.Input[_builtins.str] connection_type: The communication protocol used to establish tunnel with your client gateway (always `ipsec.1`).
         :param pulumi.Input[_builtins.str] public_ip: The public fixed IPv4 address of your client gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict', 'outputs.ClientGatewayTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -307,13 +310,13 @@ class ClientGateway(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         client_gateway01 = outscale.ClientGateway("client_gateway01",
+            bgp_asn=65000,
+            public_ip="111.11.11.111",
+            connection_type="ipsec.1",
             tags=[{
                 "key": "Name",
                 "value": "client_gateway_01",
-            }],
-            bgp_asn=65000,
-            public_ip="111.11.11.111",
-            connection_type="ipsec.1")
+            }])
         ```
 
         ## Import
@@ -325,6 +328,7 @@ class ClientGateway(pulumi.CustomResource):
         $ pulumi import outscale:index/clientGateway:ClientGateway ImportedClientGateway cgw-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientGatewayArgs args: The arguments to use to populate this resource's properties.
@@ -341,11 +345,11 @@ class ClientGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ClientGatewayTimeoutsArgs', 'ClientGatewayTimeoutsArgsDict']]] = None,
+                 bgp_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict', 'outputs.ClientGatewayTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClientGatewayTimeoutsArgs', 'ClientGatewayTimeoutsArgsDict', 'outputs.ClientGatewayTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -379,14 +383,14 @@ class ClientGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bgp_asn: Optional[pulumi.Input[_builtins.int]] = None,
-            client_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['ClientGatewayTimeoutsArgs', 'ClientGatewayTimeoutsArgsDict']]] = None) -> 'ClientGateway':
+            bgp_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            client_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict', 'outputs.ClientGatewayTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['ClientGatewayTimeoutsArgs', 'ClientGatewayTimeoutsArgsDict', 'outputs.ClientGatewayTimeouts']]] = None) -> 'ClientGateway':
         """
         Get an existing ClientGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -401,7 +405,7 @@ class ClientGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] connection_type: The communication protocol used to establish tunnel with your client gateway (always `ipsec.1`).
         :param pulumi.Input[_builtins.str] public_ip: The public fixed IPv4 address of your client gateway.
         :param pulumi.Input[_builtins.str] state: The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict', 'outputs.ClientGatewayTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -416,6 +420,28 @@ class ClientGateway(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return ClientGateway(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bgp_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            client_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClientGatewayTagArgs', 'ClientGatewayTagArgsDict', 'outputs.ClientGatewayTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['ClientGatewayTimeoutsArgs', 'ClientGatewayTimeoutsArgsDict', 'outputs.ClientGatewayTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bgpAsn"] = bgp_asn
+        __props__["clientGatewayId"] = client_gateway_id
+        __props__["connectionType"] = connection_type
+        __props__["publicIp"] = public_ip
+        __props__["requestId"] = request_id
+        __props__["state"] = state
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/clientGateway:ClientGateway', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="bgpAsn")

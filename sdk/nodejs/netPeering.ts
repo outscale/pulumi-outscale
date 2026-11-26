@@ -60,6 +60,17 @@ export class NetPeering extends pulumi.CustomResource {
         return new NetPeering(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing NetPeering resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NetPeeringState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/netPeering:NetPeering", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/netPeering:NetPeering';
 
@@ -175,43 +186,43 @@ export interface NetPeeringState {
      * The ID of the Net you want to connect with.<br />
      * If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.
      */
-    accepterNetId?: pulumi.Input<string>;
+    accepterNetId?: pulumi.Input<string | undefined>;
     /**
      * Information about the accepter Net.
      */
-    accepterNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringAccepterNet>[]>;
+    accepterNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringAccepterNet>[] | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
      * This parameter is required if the Net you want to connect with does not belong to you.
      */
-    accepterOwnerId?: pulumi.Input<string>;
+    accepterOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) at which the Net peerings expire.
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net peering.
      */
-    netPeeringId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
-    sourceNetAccountId?: pulumi.Input<string>;
+    netPeeringId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    sourceNetAccountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net you send the peering request from.
      */
-    sourceNetId?: pulumi.Input<string>;
+    sourceNetId?: pulumi.Input<string | undefined>;
     /**
      * Information about the source Net.
      */
-    sourceNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringSourceNet>[]>;
+    sourceNets?: pulumi.Input<pulumi.Input<inputs.NetPeeringSourceNet>[] | undefined>;
     /**
      * Information about the state of the Net peering.
      */
-    states?: pulumi.Input<pulumi.Input<inputs.NetPeeringState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.NetPeeringState>[] | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringTag>[]>;
-    timeouts?: pulumi.Input<inputs.NetPeeringTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.NetPeeringTimeouts | undefined>;
 }
 
 /**
@@ -227,8 +238,8 @@ export interface NetPeeringArgs {
      * The OUTSCALE account ID of the owner of the Net you want to connect with. By default, the account ID of the owner of the Net from which the peering request is sent.<br />
      * This parameter is required if the Net you want to connect with does not belong to you.
      */
-    accepterOwnerId?: pulumi.Input<string>;
-    sourceNetAccountId?: pulumi.Input<string>;
+    accepterOwnerId?: pulumi.Input<string | undefined>;
+    sourceNetAccountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net you send the peering request from.
      */
@@ -236,6 +247,6 @@ export interface NetPeeringArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringTag>[]>;
-    timeouts?: pulumi.Input<inputs.NetPeeringTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NetPeeringTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.NetPeeringTimeouts | undefined>;
 }

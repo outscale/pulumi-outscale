@@ -81,12 +81,8 @@ type LookupInternetServiceResult struct {
 }
 
 func LookupInternetServiceOutput(ctx *pulumi.Context, args LookupInternetServiceOutputArgs, opts ...pulumi.InvokeOption) LookupInternetServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInternetServiceResultOutput, error) {
-			args := v.(LookupInternetServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getInternetService:getInternetService", args, LookupInternetServiceResultOutput{}, options).(LookupInternetServiceResultOutput), nil
-		}).(LookupInternetServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getInternetService:getInternetService", args, LookupInternetServiceResultOutput{}, options).(LookupInternetServiceResultOutput)
 }
 
 // A collection of arguments for invoking getInternetService.

@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about VM states.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).\
         /// For more information on this resource actions, see the [ReadVmsState](https://docs.outscale.com/api#readvmsstate) API method.
         /// 
         /// ## Example Usage
@@ -60,7 +60,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about VM states.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).\
         /// For more information on this resource actions, see the [ReadVmsState](https://docs.outscale.com/api#readvmsstate) API method.
         /// 
         /// ## Example Usage
@@ -106,7 +106,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about VM states.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VM-Lifecycle.html).\
         /// For more information on this resource actions, see the [ReadVmsState](https://docs.outscale.com/api#readvmsstate) API method.
         /// 
         /// ## Example Usage

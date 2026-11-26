@@ -93,7 +93,7 @@ class AwaitableGetNetsResult(GetNetsResult):
             request_id=self.request_id)
 
 
-def get_nets(filters: Optional[Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict']]] = None,
+def get_nets(filters: Optional[Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict', 'outputs.GetNetsFilterResult']]] = None,
              net_ids: Optional[Sequence[_builtins.str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetsResult:
     """
@@ -124,7 +124,7 @@ def get_nets(filters: Optional[Sequence[Union['GetNetsFilterArgs', 'GetNetsFilte
     ```
 
 
-    :param Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict', 'outputs.GetNetsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] net_ids: The ID of the Net.
     """
     __args__ = dict()
@@ -139,8 +139,8 @@ def get_nets(filters: Optional[Sequence[Union['GetNetsFilterArgs', 'GetNetsFilte
         net_ids=pulumi.get(__ret__, 'net_ids'),
         nets=pulumi.get(__ret__, 'nets'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_nets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict']]]]] = None,
-                    net_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_nets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict', 'outputs.GetNetsFilterResult']]]]] = None,
+                    net_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetsResult]:
     """
     Provides information about Nets.
@@ -170,7 +170,7 @@ def get_nets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetN
     ```
 
 
-    :param Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetNetsFilterArgs', 'GetNetsFilterArgsDict', 'outputs.GetNetsFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param Sequence[_builtins.str] net_ids: The ID of the Net.
     """
     __args__ = dict()

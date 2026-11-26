@@ -96,7 +96,7 @@ class AwaitableGetTagResult(GetTagResult):
             value=self.value)
 
 
-def get_tag(filters: Optional[Sequence[Union['GetTagFilterArgs', 'GetTagFilterArgsDict']]] = None,
+def get_tag(filters: Optional[Sequence[Union['GetTagFilterArgs', 'GetTagFilterArgsDict', 'outputs.GetTagFilterResult']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
     Use this data source to access information about an existing resource.
@@ -113,7 +113,7 @@ def get_tag(filters: Optional[Sequence[Union['GetTagFilterArgs', 'GetTagFilterAr
         resource_id=pulumi.get(__ret__, 'resource_id'),
         resource_type=pulumi.get(__ret__, 'resource_type'),
         value=pulumi.get(__ret__, 'value'))
-def get_tag_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetTagFilterArgs', 'GetTagFilterArgsDict']]]]] = None,
+def get_tag_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetTagFilterArgs', 'GetTagFilterArgsDict', 'outputs.GetTagFilterResult']]]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
     Use this data source to access information about an existing resource.

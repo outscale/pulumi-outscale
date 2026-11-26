@@ -162,7 +162,7 @@ class AwaitableGetQuotaResult(GetQuotaResult):
             used_value=self.used_value)
 
 
-def get_quota(filters: Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict']]] = None,
+def get_quota(filters: Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict', 'outputs.GetQuotaFilterResult']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotaResult:
     """
     Provides information about a quota.
@@ -197,7 +197,7 @@ def get_quota(filters: Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFi
     ```
 
 
-    :param Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict', 'outputs.GetQuotaFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -216,7 +216,7 @@ def get_quota(filters: Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFi
         request_id=pulumi.get(__ret__, 'request_id'),
         short_description=pulumi.get(__ret__, 'short_description'),
         used_value=pulumi.get(__ret__, 'used_value'))
-def get_quota_output(filters: Optional[pulumi.Input[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict']]]] = None,
+def get_quota_output(filters: pulumi.Input[Optional[Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict', 'outputs.GetQuotaFilterResult']]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotaResult]:
     """
     Provides information about a quota.
@@ -251,7 +251,7 @@ def get_quota_output(filters: Optional[pulumi.Input[Sequence[Union['GetQuotaFilt
     ```
 
 
-    :param Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetQuotaFilterArgs', 'GetQuotaFilterArgsDict', 'outputs.GetQuotaFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     """
     __args__ = dict()
     __args__['filters'] = filters

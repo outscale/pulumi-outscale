@@ -23,13 +23,14 @@ class OksManifestArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
                  manifest: pulumi.Input[_builtins.str],
-                 field_manager: Optional[pulumi.Input['OksManifestFieldManagerArgs']] = None,
-                 skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['OksManifestTimeoutsArgs']] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for: Optional[pulumi.Input['OksManifestWaitForArgs']] = None):
+                 field_manager: pulumi.Input[Optional['OksManifestFieldManagerArgs']] = None,
+                 skip_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['OksManifestTimeoutsArgs']] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for: pulumi.Input[Optional['OksManifestWaitForArgs']] = None):
         """
         The set of arguments for constructing a OksManifest resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
         :param pulumi.Input['OksManifestFieldManagerArgs'] field_manager: Server-side apply field manager options:
@@ -76,75 +77,76 @@ class OksManifestArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldManager")
-    def field_manager(self) -> Optional[pulumi.Input['OksManifestFieldManagerArgs']]:
+    def field_manager(self) -> pulumi.Input[Optional['OksManifestFieldManagerArgs']]:
         """
         Server-side apply field manager options:
         """
         return pulumi.get(self, "field_manager")
 
     @field_manager.setter
-    def field_manager(self, value: Optional[pulumi.Input['OksManifestFieldManagerArgs']]):
+    def field_manager(self, value: pulumi.Input[Optional['OksManifestFieldManagerArgs']]):
         pulumi.set(self, "field_manager", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDelete")
-    def skip_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
         """
         return pulumi.get(self, "skip_delete")
 
     @skip_delete.setter
-    def skip_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OksManifestTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OksManifestTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OksManifestTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OksManifestTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
         """
         return pulumi.get(self, "wait")
 
     @wait.setter
-    def wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait", value)
 
     @_builtins.property
     @pulumi.getter(name="waitFor")
-    def wait_for(self) -> Optional[pulumi.Input['OksManifestWaitForArgs']]:
+    def wait_for(self) -> pulumi.Input[Optional['OksManifestWaitForArgs']]:
         """
         Wait until the fields in the Kubernetes object match the expected values after apply:
         """
         return pulumi.get(self, "wait_for")
 
     @wait_for.setter
-    def wait_for(self, value: Optional[pulumi.Input['OksManifestWaitForArgs']]):
+    def wait_for(self, value: pulumi.Input[Optional['OksManifestWaitForArgs']]):
         pulumi.set(self, "wait_for", value)
 
 
 @pulumi.input_type
 class _OksManifestState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_manager: Optional[pulumi.Input['OksManifestFieldManagerArgs']] = None,
-                 manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['OksManifestTimeoutsArgs']] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for: Optional[pulumi.Input['OksManifestWaitForArgs']] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_manager: pulumi.Input[Optional['OksManifestFieldManagerArgs']] = None,
+                 manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['OksManifestTimeoutsArgs']] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for: pulumi.Input[Optional['OksManifestWaitForArgs']] = None):
         """
         Input properties used for looking up and filtering OksManifest resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
         :param pulumi.Input['OksManifestFieldManagerArgs'] field_manager: Server-side apply field manager options:
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
@@ -172,95 +174,95 @@ class _OksManifestState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster on which you want to apply the manifest.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldManager")
-    def field_manager(self) -> Optional[pulumi.Input['OksManifestFieldManagerArgs']]:
+    def field_manager(self) -> pulumi.Input[Optional['OksManifestFieldManagerArgs']]:
         """
         Server-side apply field manager options:
         """
         return pulumi.get(self, "field_manager")
 
     @field_manager.setter
-    def field_manager(self, value: Optional[pulumi.Input['OksManifestFieldManagerArgs']]):
+    def field_manager(self, value: pulumi.Input[Optional['OksManifestFieldManagerArgs']]):
         pulumi.set(self, "field_manager", value)
 
     @_builtins.property
     @pulumi.getter
-    def manifest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manifest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes YAML manifest.
         """
         return pulumi.get(self, "manifest")
 
     @manifest.setter
-    def manifest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manifest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manifest", value)
 
     @_builtins.property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The applied Kubernetes object returned as YAML.
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDelete")
-    def skip_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
         """
         return pulumi.get(self, "skip_delete")
 
     @skip_delete.setter
-    def skip_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OksManifestTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OksManifestTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OksManifestTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OksManifestTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
         """
         return pulumi.get(self, "wait")
 
     @wait.setter
-    def wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait", value)
 
     @_builtins.property
     @pulumi.getter(name="waitFor")
-    def wait_for(self) -> Optional[pulumi.Input['OksManifestWaitForArgs']]:
+    def wait_for(self) -> pulumi.Input[Optional['OksManifestWaitForArgs']]:
         """
         Wait until the fields in the Kubernetes object match the expected values after apply:
         """
         return pulumi.get(self, "wait_for")
 
     @wait_for.setter
-    def wait_for(self, value: Optional[pulumi.Input['OksManifestWaitForArgs']]):
+    def wait_for(self, value: pulumi.Input[Optional['OksManifestWaitForArgs']]):
         pulumi.set(self, "wait_for", value)
 
 
@@ -270,13 +272,13 @@ class OksManifest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_manager: Optional[pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']]] = None,
-                 manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict']]] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for: Optional[pulumi.Input[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_manager: pulumi.Input[Optional[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict', 'outputs.OksManifestFieldManager']]] = None,
+                 manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict', 'outputs.OksManifestTimeouts']]] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for: pulumi.Input[Optional[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict', 'outputs.OksManifestWaitFor']]] = None,
                  __props__=None):
         """
         Applies a generic Kubernetes manifest on an OKS cluster using the cluster's kubeconfig.
@@ -365,14 +367,15 @@ class OksManifest(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
-        :param pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']] field_manager: Server-side apply field manager options:
+        :param pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict', 'outputs.OksManifestFieldManager']] field_manager: Server-side apply field manager options:
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
         :param pulumi.Input[_builtins.bool] skip_delete: If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
         :param pulumi.Input[_builtins.bool] wait: : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
-        :param pulumi.Input[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict']] wait_for: Wait until the fields in the Kubernetes object match the expected values after apply:
+        :param pulumi.Input[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict', 'outputs.OksManifestWaitFor']] wait_for: Wait until the fields in the Kubernetes object match the expected values after apply:
         """
         ...
     @overload
@@ -467,6 +470,7 @@ class OksManifest(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OksManifestArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -482,13 +486,13 @@ class OksManifest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_manager: Optional[pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']]] = None,
-                 manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict']]] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for: Optional[pulumi.Input[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_manager: pulumi.Input[Optional[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict', 'outputs.OksManifestFieldManager']]] = None,
+                 manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict', 'outputs.OksManifestTimeouts']]] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for: pulumi.Input[Optional[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict', 'outputs.OksManifestWaitFor']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -520,14 +524,14 @@ class OksManifest(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            field_manager: Optional[pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']]] = None,
-            manifest: Optional[pulumi.Input[_builtins.str]] = None,
-            object: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            timeouts: Optional[pulumi.Input[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict']]] = None,
-            wait: Optional[pulumi.Input[_builtins.bool]] = None,
-            wait_for: Optional[pulumi.Input[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict']]] = None) -> 'OksManifest':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            field_manager: pulumi.Input[Optional[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict', 'outputs.OksManifestFieldManager']]] = None,
+            manifest: pulumi.Input[Optional[_builtins.str]] = None,
+            object: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict', 'outputs.OksManifestTimeouts']]] = None,
+            wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            wait_for: pulumi.Input[Optional[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict', 'outputs.OksManifestWaitFor']]] = None) -> 'OksManifest':
         """
         Get an existing OksManifest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -536,12 +540,12 @@ class OksManifest(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster on which you want to apply the manifest.
-        :param pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict']] field_manager: Server-side apply field manager options:
+        :param pulumi.Input[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict', 'outputs.OksManifestFieldManager']] field_manager: Server-side apply field manager options:
         :param pulumi.Input[_builtins.str] manifest: The Kubernetes YAML manifest.
         :param pulumi.Input[_builtins.str] object: The applied Kubernetes object returned as YAML.
         :param pulumi.Input[_builtins.bool] skip_delete: If set to true, Terraform removes only the manifest resource from the state during delete, without deleting the Kubernetes object from the cluster. By default, false.
         :param pulumi.Input[_builtins.bool] wait: : If set to true, Terraform waits for the Kubernetes object to be deleted during destroy. By default, false.
-        :param pulumi.Input[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict']] wait_for: Wait until the fields in the Kubernetes object match the expected values after apply:
+        :param pulumi.Input[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict', 'outputs.OksManifestWaitFor']] wait_for: Wait until the fields in the Kubernetes object match the expected values after apply:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -556,6 +560,28 @@ class OksManifest(pulumi.CustomResource):
         __props__.__dict__["wait"] = wait
         __props__.__dict__["wait_for"] = wait_for
         return OksManifest(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            field_manager: pulumi.Input[Optional[Union['OksManifestFieldManagerArgs', 'OksManifestFieldManagerArgsDict', 'outputs.OksManifestFieldManager']]] = None,
+            manifest: pulumi.Input[Optional[_builtins.str]] = None,
+            object: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['OksManifestTimeoutsArgs', 'OksManifestTimeoutsArgsDict', 'outputs.OksManifestTimeouts']]] = None,
+            wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            wait_for: pulumi.Input[Optional[Union['OksManifestWaitForArgs', 'OksManifestWaitForArgsDict', 'outputs.OksManifestWaitFor']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["fieldManager"] = field_manager
+        __props__["manifest"] = manifest
+        __props__["object"] = object
+        __props__["skipDelete"] = skip_delete
+        __props__["timeouts"] = timeouts
+        __props__["wait"] = wait
+        __props__["waitFor"] = wait_for
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oksManifest:OksManifest', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="clusterId")

@@ -41,6 +41,17 @@ export class OosBucketEncryption extends pulumi.CustomResource {
         return new OosBucketEncryption(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OosBucketEncryption resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosBucketEncryptionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosBucketEncryption:OosBucketEncryption", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oosBucketEncryption:OosBucketEncryption';
 
@@ -108,16 +119,16 @@ export interface OosBucketEncryptionState {
     /**
      * The name of the bucket for which you want to enable encryption.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Whether the cryptographic key is used per bucket (`true`) or per account (always `false`). 3DS OUTSCALE provides a default main cryptographic key for your account to encrypt your data.
      */
-    bucketKeyEnabled?: pulumi.Input<boolean>;
+    bucketKeyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * (Default: `AES256`) The server-side encryption algorithm to use:<br />- `AES256` is the default encryption algorithm. This encryption algorithm uses symmetric encryption and a 256-bit key. It is currently fully supported and recommended for use.<br />- `aws:kms` currently corresponds to `AES256` and is used only if a custom cryptographic key is used. Since the cryptographic key for your OUTSCALE account is provided and managed by 3DS OUTSCALE, we recommend using `AES256` for the time being.
      */
-    encryptionType?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosBucketEncryptionTimeouts>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketEncryptionTimeouts | undefined>;
 }
 
 /**
@@ -131,6 +142,6 @@ export interface OosBucketEncryptionArgs {
     /**
      * (Default: `AES256`) The server-side encryption algorithm to use:<br />- `AES256` is the default encryption algorithm. This encryption algorithm uses symmetric encryption and a 256-bit key. It is currently fully supported and recommended for use.<br />- `aws:kms` currently corresponds to `AES256` and is used only if a custom cryptographic key is used. Since the cryptographic key for your OUTSCALE account is provided and managed by 3DS OUTSCALE, we recommend using `AES256` for the time being.
      */
-    encryptionType?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosBucketEncryptionTimeouts>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketEncryptionTimeouts | undefined>;
 }

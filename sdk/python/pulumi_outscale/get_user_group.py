@@ -131,7 +131,7 @@ class AwaitableGetUserGroupResult(GetUserGroupResult):
 
 def get_user_group(path: Optional[_builtins.str] = None,
                    user_group_name: Optional[_builtins.str] = None,
-                   users: Optional[Sequence[Union['GetUserGroupUserArgs', 'GetUserGroupUserArgsDict']]] = None,
+                   users: Optional[Sequence[Union['GetUserGroupUserArgs', 'GetUserGroupUserArgsDict', 'outputs.GetUserGroupUserResult']]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserGroupResult:
     """
     Provides information about a user group.
@@ -169,9 +169,9 @@ def get_user_group(path: Optional[_builtins.str] = None,
         user_group_id=pulumi.get(__ret__, 'user_group_id'),
         user_group_name=pulumi.get(__ret__, 'user_group_name'),
         users=pulumi.get(__ret__, 'users'))
-def get_user_group_output(path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                          users: Optional[pulumi.Input[Optional[Sequence[Union['GetUserGroupUserArgs', 'GetUserGroupUserArgsDict']]]]] = None,
+def get_user_group_output(path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                          users: pulumi.Input[Optional[Optional[Sequence[Union['GetUserGroupUserArgs', 'GetUserGroupUserArgsDict', 'outputs.GetUserGroupUserResult']]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupResult]:
     """
     Provides information about a user group.

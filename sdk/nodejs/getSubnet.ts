@@ -128,9 +128,9 @@ export interface GetSubnetOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSubnetFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSubnetFilterArgs>[] | undefined>;
     /**
      * The ID of the Subnet.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }

@@ -22,12 +22,13 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  user_name: pulumi.Input[_builtins.str],
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['UserTimeoutsArgs']] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['UserTimeoutsArgs']] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] user_name: The name of the EIM user. This user name must contain between 1 and 64 alphanumeric characters and/or pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), dashes (`-`), or underscores (`_`).
         :param pulumi.Input[_builtins.str] path: The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
         :param pulumi.Input[_builtins.str] user_email: The email address of the EIM user.
@@ -56,60 +57,61 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserPolicyArgs']]]]:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['UserTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['UserTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['UserTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['UserTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the EIM user.
         """
         return pulumi.get(self, "user_email")
 
     @user_email.setter
-    def user_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_email", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['UserTimeoutsArgs']] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['UserTimeoutsArgs']] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) of creation of the EIM user.
         :param pulumi.Input[_builtins.str] last_modification_date: The date and time (UTC) of the last modification of the EIM user.
         :param pulumi.Input[_builtins.str] path: The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
@@ -136,92 +138,92 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) of creation of the EIM user.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModificationDate")
-    def last_modification_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modification_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) of the last modification of the EIM user.
         """
         return pulumi.get(self, "last_modification_date")
 
     @last_modification_date.setter
-    def last_modification_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modification_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modification_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the EIM user you want to create (by default, `/`). This path name must begin and end with a slash (`/`), and contain between 1 and 512 alphanumeric characters and/or slashes (`/`), or underscores (`_`).
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserPolicyArgs']]]]:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['UserTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['UserTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['UserTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['UserTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the EIM user.
         """
         return pulumi.get(self, "user_email")
 
     @user_email.setter
-    def user_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_email", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EIM user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the EIM user. This user name must contain between 1 and 64 alphanumeric characters and/or pluses (`+`), equals (`=`), commas (`,`), periods (`.`), at signs (`@`), dashes (`-`), or underscores (`_`).
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -231,11 +233,11 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['UserTimeoutsArgs', 'UserTimeoutsArgsDict']]] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict', 'outputs.UserPolicy']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['UserTimeoutsArgs', 'UserTimeoutsArgsDict', 'outputs.UserTimeouts']]] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a user.
@@ -264,11 +266,11 @@ class User(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         user_1 = outscale.User("user-1",
+            user_name="User-TF-1",
             policies=[{
                 "policy_orn": policy_1["orn"],
                 "default_version_id": "V1",
-            }],
-            user_name="User-TF-1")
+            }])
         ```
 
         ## Import
@@ -280,6 +282,7 @@ class User(pulumi.CustomResource):
         $ pulumi import outscale:index/user:User user1 user_id
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -320,11 +323,11 @@ class User(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         user_1 = outscale.User("user-1",
+            user_name="User-TF-1",
             policies=[{
                 "policy_orn": policy_1["orn"],
                 "default_version_id": "V1",
-            }],
-            user_name="User-TF-1")
+            }])
         ```
 
         ## Import
@@ -336,6 +339,7 @@ class User(pulumi.CustomResource):
         $ pulumi import outscale:index/user:User user1 user_id
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
@@ -352,11 +356,11 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['UserTimeoutsArgs', 'UserTimeoutsArgsDict']]] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict', 'outputs.UserPolicy']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['UserTimeoutsArgs', 'UserTimeoutsArgsDict', 'outputs.UserTimeouts']]] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,14 +390,14 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['UserTimeoutsArgs', 'UserTimeoutsArgsDict']]] = None,
-            user_email: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict', 'outputs.UserPolicy']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['UserTimeoutsArgs', 'UserTimeoutsArgsDict', 'outputs.UserTimeouts']]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -421,6 +425,28 @@ class User(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         __props__.__dict__["user_name"] = user_name
         return User(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPolicyArgs', 'UserPolicyArgsDict', 'outputs.UserPolicy']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['UserTimeoutsArgs', 'UserTimeoutsArgsDict', 'outputs.UserTimeouts']]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationDate"] = creation_date
+        __props__["lastModificationDate"] = last_modification_date
+        __props__["path"] = path
+        __props__["policies"] = policies
+        __props__["timeouts"] = timeouts
+        __props__["userEmail"] = user_email
+        __props__["userId"] = user_id
+        __props__["userName"] = user_name
+        return pulumi.runtime.exists_resource(None, 'outscale:index/user:User', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="creationDate")

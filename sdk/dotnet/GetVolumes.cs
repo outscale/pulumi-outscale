@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about volumes.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\
         /// For more information on this resource actions, see the [Volume](https://docs.outscale.com/api#3ds-outscale-api-volume) API methods.
         /// 
         /// ## Example Usage
@@ -60,7 +60,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about volumes.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\
         /// For more information on this resource actions, see the [Volume](https://docs.outscale.com/api#3ds-outscale-api-volume) API methods.
         /// 
         /// ## Example Usage
@@ -106,7 +106,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about volumes.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Volumes.html).\
         /// For more information on this resource actions, see the [Volume](https://docs.outscale.com/api#3ds-outscale-api-volume) API methods.
         /// 
         /// ## Example Usage

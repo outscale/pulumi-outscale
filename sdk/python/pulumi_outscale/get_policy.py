@@ -226,7 +226,7 @@ def get_policy(policy_orn: Optional[_builtins.str] = None,
         policy_name=pulumi.get(__ret__, 'policy_name'),
         policy_orn=pulumi.get(__ret__, 'policy_orn'),
         resources_count=pulumi.get(__ret__, 'resources_count'))
-def get_policy_output(policy_orn: Optional[pulumi.Input[_builtins.str]] = None,
+def get_policy_output(policy_orn: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyResult]:
     """
     Provides information about a policy.

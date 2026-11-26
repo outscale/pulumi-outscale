@@ -100,7 +100,7 @@ class AwaitableGetLoadBalancerVmHealthResult(GetLoadBalancerVmHealthResult):
 
 
 def get_load_balancer_vm_health(backend_vm_ids: Optional[Sequence[_builtins.str]] = None,
-                                filters: Optional[Sequence[Union['GetLoadBalancerVmHealthFilterArgs', 'GetLoadBalancerVmHealthFilterArgsDict']]] = None,
+                                filters: Optional[Sequence[Union['GetLoadBalancerVmHealthFilterArgs', 'GetLoadBalancerVmHealthFilterArgsDict', 'outputs.GetLoadBalancerVmHealthFilterResult']]] = None,
                                 load_balancer_name: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerVmHealthResult:
     """
@@ -140,9 +140,9 @@ def get_load_balancer_vm_health(backend_vm_ids: Optional[Sequence[_builtins.str]
         id=pulumi.get(__ret__, 'id'),
         load_balancer_name=pulumi.get(__ret__, 'load_balancer_name'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_load_balancer_vm_health_output(backend_vm_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerVmHealthFilterArgs', 'GetLoadBalancerVmHealthFilterArgsDict']]]]] = None,
-                                       load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_load_balancer_vm_health_output(backend_vm_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                       filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancerVmHealthFilterArgs', 'GetLoadBalancerVmHealthFilterArgsDict', 'outputs.GetLoadBalancerVmHealthFilterResult']]]]] = None,
+                                       load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerVmHealthResult]:
     """
     Provides information about the health of one or more backend VMs registered with a specific load balancer.

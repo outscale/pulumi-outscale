@@ -24,11 +24,12 @@ class OosObjectRetentionArgs:
                  bucket: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  retain_until_date: pulumi.Input[_builtins.str],
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OosObjectRetentionTimeoutsArgs']] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OosObjectRetentionTimeoutsArgs']] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OosObjectRetention resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket you want to apply retention to. The bucket must have object lock enabled.
         :param pulumi.Input[_builtins.str] key: The name of the object you want to lock.
         :param pulumi.Input[_builtins.str] retain_until_date: The date, in ISO 8601 format, until which the object will be locked. For example, if set to `2050-01-01T00:00:00Z`, the object will remain locked until the very start of January 1, 2050, at midnight UTC.<br />Keep in mind that in COMPLIANCE mode:<br />- You cannot bypass the retention period until its expiration. This means you will be billed for the entire retention period you set.<br />- The retention period cannot be earlier than the default object lock of the bucket.
@@ -83,49 +84,50 @@ class OosObjectRetentionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Default: `COMPLIANCE`) The retention mode for the object. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting the object until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosObjectRetentionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosObjectRetentionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosObjectRetentionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosObjectRetentionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version ID of the object.
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
 
 @pulumi.input_type
 class _OosObjectRetentionState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_until_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OosObjectRetentionTimeoutsArgs']] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_until_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OosObjectRetentionTimeoutsArgs']] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OosObjectRetention resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket you want to apply retention to. The bucket must have object lock enabled.
         :param pulumi.Input[_builtins.str] key: The name of the object you want to lock.
         :param pulumi.Input[_builtins.str] mode: (Default: `COMPLIANCE`) The retention mode for the object. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting the object until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
@@ -147,71 +149,71 @@ class _OosObjectRetentionState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket you want to apply retention to. The bucket must have object lock enabled.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object you want to lock.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Default: `COMPLIANCE`) The retention mode for the object. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting the object until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="retainUntilDate")
-    def retain_until_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retain_until_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date, in ISO 8601 format, until which the object will be locked. For example, if set to `2050-01-01T00:00:00Z`, the object will remain locked until the very start of January 1, 2050, at midnight UTC.<br />Keep in mind that in COMPLIANCE mode:<br />- You cannot bypass the retention period until its expiration. This means you will be billed for the entire retention period you set.<br />- The retention period cannot be earlier than the default object lock of the bucket.
         """
         return pulumi.get(self, "retain_until_date")
 
     @retain_until_date.setter
-    def retain_until_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retain_until_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retain_until_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosObjectRetentionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosObjectRetentionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosObjectRetentionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosObjectRetentionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version ID of the object.
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
 
@@ -221,12 +223,12 @@ class OosObjectRetention(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_until_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosObjectRetentionTimeoutsArgs', 'OosObjectRetentionTimeoutsArgsDict']]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_until_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosObjectRetentionTimeoutsArgs', 'OosObjectRetentionTimeoutsArgsDict', 'outputs.OosObjectRetentionTimeouts']]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an object retention configuration (also known as specific object lock).
@@ -256,6 +258,7 @@ class OosObjectRetention(pulumi.CustomResource):
             mode="COMPLIANCE",
             retain_until_date="YYYY-MM-DDTHH:MM:SSZ")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -300,6 +303,7 @@ class OosObjectRetention(pulumi.CustomResource):
             retain_until_date="YYYY-MM-DDTHH:MM:SSZ")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OosObjectRetentionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -315,12 +319,12 @@ class OosObjectRetention(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_until_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosObjectRetentionTimeoutsArgs', 'OosObjectRetentionTimeoutsArgsDict']]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_until_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosObjectRetentionTimeoutsArgs', 'OosObjectRetentionTimeoutsArgsDict', 'outputs.OosObjectRetentionTimeouts']]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -352,12 +356,12 @@ class OosObjectRetention(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            retain_until_date: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosObjectRetentionTimeoutsArgs', 'OosObjectRetentionTimeoutsArgsDict']]] = None,
-            version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OosObjectRetention':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            retain_until_date: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosObjectRetentionTimeoutsArgs', 'OosObjectRetentionTimeoutsArgsDict', 'outputs.OosObjectRetentionTimeouts']]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OosObjectRetention':
         """
         Get an existing OosObjectRetention resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -382,6 +386,24 @@ class OosObjectRetention(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["version_id"] = version_id
         return OosObjectRetention(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            retain_until_date: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosObjectRetentionTimeoutsArgs', 'OosObjectRetentionTimeoutsArgsDict', 'outputs.OosObjectRetentionTimeouts']]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["key"] = key
+        __props__["mode"] = mode
+        __props__["retainUntilDate"] = retain_until_date
+        __props__["timeouts"] = timeouts
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosObjectRetention:OosObjectRetention', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

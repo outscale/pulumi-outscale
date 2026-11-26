@@ -49,6 +49,6 @@ export function getLoadBalancerTagsOutput(args?: GetLoadBalancerTagsOutputArgs, 
  * A collection of arguments for invoking getLoadBalancerTags.
  */
 export interface GetLoadBalancerTagsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerTagsFilterArgs>[]>;
-    loadBalancerNames?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerTagsFilterArgs>[] | undefined>;
+    loadBalancerNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

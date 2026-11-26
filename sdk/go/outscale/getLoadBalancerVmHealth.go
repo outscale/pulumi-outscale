@@ -77,12 +77,8 @@ type GetLoadBalancerVmHealthResult struct {
 }
 
 func GetLoadBalancerVmHealthOutput(ctx *pulumi.Context, args GetLoadBalancerVmHealthOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancerVmHealthResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLoadBalancerVmHealthResultOutput, error) {
-			args := v.(GetLoadBalancerVmHealthArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getLoadBalancerVmHealth:getLoadBalancerVmHealth", args, GetLoadBalancerVmHealthResultOutput{}, options).(GetLoadBalancerVmHealthResultOutput), nil
-		}).(GetLoadBalancerVmHealthResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getLoadBalancerVmHealth:getLoadBalancerVmHealth", args, GetLoadBalancerVmHealthResultOutput{}, options).(GetLoadBalancerVmHealthResultOutput)
 }
 
 // A collection of arguments for invoking getLoadBalancerVmHealth.

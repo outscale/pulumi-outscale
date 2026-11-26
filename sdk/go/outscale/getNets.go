@@ -86,12 +86,8 @@ type GetNetsResult struct {
 }
 
 func GetNetsOutput(ctx *pulumi.Context, args GetNetsOutputArgs, opts ...pulumi.InvokeOption) GetNetsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetsResultOutput, error) {
-			args := v.(GetNetsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getNets:getNets", args, GetNetsResultOutput{}, options).(GetNetsResultOutput), nil
-		}).(GetNetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getNets:getNets", args, GetNetsResultOutput{}, options).(GetNetsResultOutput)
 }
 
 // A collection of arguments for invoking getNets.

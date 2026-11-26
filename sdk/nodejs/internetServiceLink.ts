@@ -60,6 +60,17 @@ export class InternetServiceLink extends pulumi.CustomResource {
         return new InternetServiceLink(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing InternetServiceLink resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: InternetServiceLinkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/internetServiceLink:InternetServiceLink", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/internetServiceLink:InternetServiceLink';
 
@@ -139,21 +150,21 @@ export interface InternetServiceLinkState {
     /**
      * The ID of the internet service you want to attach.
      */
-    internetServiceId?: pulumi.Input<string>;
+    internetServiceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net to which you want to attach the internet service.
      */
-    netId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the attachment of the internet service to the Net (always `available`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * One or more tags associated with the internet service.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceLinkTag>[]>;
-    timeouts?: pulumi.Input<inputs.InternetServiceLinkTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.InternetServiceLinkTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.InternetServiceLinkTimeouts | undefined>;
 }
 
 /**
@@ -168,5 +179,5 @@ export interface InternetServiceLinkArgs {
      * The ID of the Net to which you want to attach the internet service.
      */
     netId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.InternetServiceLinkTimeouts>;
+    timeouts?: pulumi.Input<inputs.InternetServiceLinkTimeouts | undefined>;
 }

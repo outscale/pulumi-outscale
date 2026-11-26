@@ -85,6 +85,7 @@ namespace Pulumi.Outscale
         /// By default or if set to true, waits for the route to be in the `Active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `Active` state if available, or the `Blackhole` state if not available.
         /// </summary>
         [Output("awaitActiveState")]
+        [Obsolete(@"Route's state is always active. The attribute will be removed in the next major version.")]
         public Output<bool> AwaitActiveState { get; private set; } = null!;
 
         /// <summary>
@@ -215,6 +216,7 @@ namespace Pulumi.Outscale
         /// By default or if set to true, waits for the route to be in the `Active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `Active` state if available, or the `Blackhole` state if not available.
         /// </summary>
         [Input("awaitActiveState")]
+        [Obsolete(@"Route's state is always active. The attribute will be removed in the next major version.")]
         public Input<bool>? AwaitActiveState { get; set; }
 
         /// <summary>
@@ -274,6 +276,7 @@ namespace Pulumi.Outscale
         /// By default or if set to true, waits for the route to be in the `Active` state to declare its successful creation.&lt;br /&gt;If false, the created route is in the `Active` state if available, or the `Blackhole` state if not available.
         /// </summary>
         [Input("awaitActiveState")]
+        [Obsolete(@"Route's state is always active. The attribute will be removed in the next major version.")]
         public Input<bool>? AwaitActiveState { get; set; }
 
         /// <summary>

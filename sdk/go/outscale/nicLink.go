@@ -194,6 +194,12 @@ func (NicLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nicLinkState)(nil)).Elem()
 }
 
+// NicLinkExists checks whether an existing NicLink resource with the given ID exists.
+func NicLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NicLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/nicLink:NicLink", id, state, "", opts...)
+}
+
 type nicLinkArgs struct {
 	// The index of the VM device for the NIC attachment (between `1` and `7`, both included).
 	DeviceNumber int `pulumi:"deviceNumber"`

@@ -39,6 +39,7 @@ namespace Pulumi.Outscale
     /// 
     ///     var lifecycle01 = new Outscale.OosBucketLifecycle("lifecycle01", new()
     ///     {
+    ///         Bucket = bucket01.Id,
     ///         Rules = new[]
     ///         {
     ///             new Outscale.Inputs.OosBucketLifecycleRuleArgs
@@ -52,7 +53,6 @@ namespace Pulumi.Outscale
     ///                 Filter = null,
     ///             },
     ///         },
-    ///         Bucket = bucket01.Id,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -84,6 +84,7 @@ namespace Pulumi.Outscale
     /// 
     ///     var lifecycle02 = new Outscale.OosBucketLifecycle("lifecycle02", new()
     ///     {
+    ///         Bucket = bucket02.Id,
     ///         Rules = new[]
     ///         {
     ///             new Outscale.Inputs.OosBucketLifecycleRuleArgs
@@ -107,7 +108,6 @@ namespace Pulumi.Outscale
     ///                 },
     ///             },
     ///         },
-    ///         Bucket = bucket02.Id,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

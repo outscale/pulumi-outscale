@@ -56,6 +56,17 @@ export class RouteTable extends pulumi.CustomResource {
         return new RouteTable(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RouteTable resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RouteTableState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/routeTable:RouteTable", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/routeTable:RouteTable';
 
@@ -144,29 +155,29 @@ export interface RouteTableState {
     /**
      * One or more associations between the route table and Subnets.
      */
-    linkRouteTables?: pulumi.Input<pulumi.Input<inputs.RouteTableLinkRouteTable>[]>;
+    linkRouteTables?: pulumi.Input<pulumi.Input<inputs.RouteTableLinkRouteTable>[] | undefined>;
     /**
      * The ID of the Net for which you want to create a route table.
      */
-    netId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * Information about virtual gateways propagating routes.
      */
-    routePropagatingVirtualGateways?: pulumi.Input<pulumi.Input<inputs.RouteTableRoutePropagatingVirtualGateway>[]>;
+    routePropagatingVirtualGateways?: pulumi.Input<pulumi.Input<inputs.RouteTableRoutePropagatingVirtualGateway>[] | undefined>;
     /**
      * The ID of the route table.
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
     /**
      * One or more routes in the route table.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.RouteTableRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.RouteTableRoute>[] | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.RouteTableTag>[]>;
-    timeouts?: pulumi.Input<inputs.RouteTableTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.RouteTableTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.RouteTableTimeouts | undefined>;
 }
 
 /**
@@ -180,6 +191,6 @@ export interface RouteTableArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.RouteTableTag>[]>;
-    timeouts?: pulumi.Input<inputs.RouteTableTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.RouteTableTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.RouteTableTimeouts | undefined>;
 }

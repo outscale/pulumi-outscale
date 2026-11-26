@@ -22,11 +22,12 @@ __all__ = ['SnapshotAttributesArgs', 'SnapshotAttributes']
 class SnapshotAttributesArgs:
     def __init__(__self__, *,
                  snapshot_id: pulumi.Input[_builtins.str],
-                 permissions_to_create_volume_additions: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']] = None,
-                 permissions_to_create_volume_removals: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']] = None,
-                 timeouts: Optional[pulumi.Input['SnapshotAttributesTimeoutsArgs']] = None):
+                 permissions_to_create_volume_additions: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']] = None,
+                 permissions_to_create_volume_removals: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']] = None,
+                 timeouts: pulumi.Input[Optional['SnapshotAttributesTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a SnapshotAttributes resource.
+
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot.
         :param pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs'] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
         :param pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs'] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
@@ -53,49 +54,50 @@ class SnapshotAttributesArgs:
 
     @_builtins.property
     @pulumi.getter(name="permissionsToCreateVolumeAdditions")
-    def permissions_to_create_volume_additions(self) -> Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]:
+    def permissions_to_create_volume_additions(self) -> pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]:
         """
         Information about the users to whom you want to give permissions for the resource.
         """
         return pulumi.get(self, "permissions_to_create_volume_additions")
 
     @permissions_to_create_volume_additions.setter
-    def permissions_to_create_volume_additions(self, value: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]):
+    def permissions_to_create_volume_additions(self, value: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]):
         pulumi.set(self, "permissions_to_create_volume_additions", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsToCreateVolumeRemovals")
-    def permissions_to_create_volume_removals(self) -> Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]:
+    def permissions_to_create_volume_removals(self) -> pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]:
         """
         Information about the users from whom you want to remove permissions for the resource.
         """
         return pulumi.get(self, "permissions_to_create_volume_removals")
 
     @permissions_to_create_volume_removals.setter
-    def permissions_to_create_volume_removals(self, value: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]):
+    def permissions_to_create_volume_removals(self, value: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]):
         pulumi.set(self, "permissions_to_create_volume_removals", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['SnapshotAttributesTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['SnapshotAttributesTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['SnapshotAttributesTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['SnapshotAttributesTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _SnapshotAttributesState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions_to_create_volume_additions: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']] = None,
-                 permissions_to_create_volume_removals: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['SnapshotAttributesTimeoutsArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions_to_create_volume_additions: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']] = None,
+                 permissions_to_create_volume_removals: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['SnapshotAttributesTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering SnapshotAttributes resources.
+
         :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the snapshot.
         :param pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs'] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
         :param pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs'] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
@@ -116,68 +118,68 @@ class _SnapshotAttributesState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsToCreateVolumeAdditions")
-    def permissions_to_create_volume_additions(self) -> Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]:
+    def permissions_to_create_volume_additions(self) -> pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]:
         """
         Information about the users to whom you want to give permissions for the resource.
         """
         return pulumi.get(self, "permissions_to_create_volume_additions")
 
     @permissions_to_create_volume_additions.setter
-    def permissions_to_create_volume_additions(self, value: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]):
+    def permissions_to_create_volume_additions(self, value: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs']]):
         pulumi.set(self, "permissions_to_create_volume_additions", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsToCreateVolumeRemovals")
-    def permissions_to_create_volume_removals(self) -> Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]:
+    def permissions_to_create_volume_removals(self) -> pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]:
         """
         Information about the users from whom you want to remove permissions for the resource.
         """
         return pulumi.get(self, "permissions_to_create_volume_removals")
 
     @permissions_to_create_volume_removals.setter
-    def permissions_to_create_volume_removals(self, value: Optional[pulumi.Input['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]):
+    def permissions_to_create_volume_removals(self, value: pulumi.Input[Optional['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs']]):
         pulumi.set(self, "permissions_to_create_volume_removals", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['SnapshotAttributesTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['SnapshotAttributesTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['SnapshotAttributesTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['SnapshotAttributesTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -187,10 +189,10 @@ class SnapshotAttributes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions_to_create_volume_additions: Optional[pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict']]] = None,
-                 permissions_to_create_volume_removals: Optional[pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict']]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['SnapshotAttributesTimeoutsArgs', 'SnapshotAttributesTimeoutsArgsDict']]] = None,
+                 permissions_to_create_volume_additions: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions']]] = None,
+                 permissions_to_create_volume_removals: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals']]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SnapshotAttributesTimeoutsArgs', 'SnapshotAttributesTimeoutsArgsDict', 'outputs.SnapshotAttributesTimeouts']]] = None,
                  __props__=None):
         """
         Manages snapshot attributes.
@@ -210,11 +212,11 @@ class SnapshotAttributes(pulumi.CustomResource):
             subregion_name="eu-west-2a",
             size=40)
         snapshot01 = outscale.Snapshot("snapshot01",
+            volume_id=volume01.volume_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-snapshot-test",
-            }],
-            volume_id=volume01.volume_id)
+            }])
         ```
 
         ### Add permissions
@@ -224,10 +226,10 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes01 = outscale.SnapshotAttributes("snapshot_attributes01",
+            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_additions={
                 "account_ids": ["012345678910"],
-            },
-            snapshot_id=snapshot01["snapshotId"])
+            })
         ```
 
         ### Remove permissions
@@ -237,16 +239,17 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes02 = outscale.SnapshotAttributes("snapshot_attributes02",
+            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_removals={
                 "account_ids": ["012345678910"],
-            },
-            snapshot_id=snapshot01["snapshotId"])
+            })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict']] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
-        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict']] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
+        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions']] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals']] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot.
         """
         ...
@@ -273,11 +276,11 @@ class SnapshotAttributes(pulumi.CustomResource):
             subregion_name="eu-west-2a",
             size=40)
         snapshot01 = outscale.Snapshot("snapshot01",
+            volume_id=volume01.volume_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-snapshot-test",
-            }],
-            volume_id=volume01.volume_id)
+            }])
         ```
 
         ### Add permissions
@@ -287,10 +290,10 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes01 = outscale.SnapshotAttributes("snapshot_attributes01",
+            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_additions={
                 "account_ids": ["012345678910"],
-            },
-            snapshot_id=snapshot01["snapshotId"])
+            })
         ```
 
         ### Remove permissions
@@ -300,11 +303,12 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes02 = outscale.SnapshotAttributes("snapshot_attributes02",
+            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_removals={
                 "account_ids": ["012345678910"],
-            },
-            snapshot_id=snapshot01["snapshotId"])
+            })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SnapshotAttributesArgs args: The arguments to use to populate this resource's properties.
@@ -321,10 +325,10 @@ class SnapshotAttributes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions_to_create_volume_additions: Optional[pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict']]] = None,
-                 permissions_to_create_volume_removals: Optional[pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict']]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['SnapshotAttributesTimeoutsArgs', 'SnapshotAttributesTimeoutsArgsDict']]] = None,
+                 permissions_to_create_volume_additions: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions']]] = None,
+                 permissions_to_create_volume_removals: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals']]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SnapshotAttributesTimeoutsArgs', 'SnapshotAttributesTimeoutsArgsDict', 'outputs.SnapshotAttributesTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -352,12 +356,12 @@ class SnapshotAttributes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions_to_create_volume_additions: Optional[pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict']]] = None,
-            permissions_to_create_volume_removals: Optional[pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict']]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['SnapshotAttributesTimeoutsArgs', 'SnapshotAttributesTimeoutsArgsDict']]] = None) -> 'SnapshotAttributes':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions_to_create_volume_additions: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions']]] = None,
+            permissions_to_create_volume_removals: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals']]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['SnapshotAttributesTimeoutsArgs', 'SnapshotAttributesTimeoutsArgsDict', 'outputs.SnapshotAttributesTimeouts']]] = None) -> 'SnapshotAttributes':
         """
         Get an existing SnapshotAttributes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -366,8 +370,8 @@ class SnapshotAttributes(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the snapshot.
-        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict']] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
-        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict']] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
+        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions']] permissions_to_create_volume_additions: Information about the users to whom you want to give permissions for the resource.
+        :param pulumi.Input[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals']] permissions_to_create_volume_removals: Information about the users from whom you want to remove permissions for the resource.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -381,6 +385,24 @@ class SnapshotAttributes(pulumi.CustomResource):
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["timeouts"] = timeouts
         return SnapshotAttributes(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions_to_create_volume_additions: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs', 'SnapshotAttributesPermissionsToCreateVolumeAdditionsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeAdditions']]] = None,
+            permissions_to_create_volume_removals: pulumi.Input[Optional[Union['SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs', 'SnapshotAttributesPermissionsToCreateVolumeRemovalsArgsDict', 'outputs.SnapshotAttributesPermissionsToCreateVolumeRemovals']]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['SnapshotAttributesTimeoutsArgs', 'SnapshotAttributesTimeoutsArgsDict', 'outputs.SnapshotAttributesTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["permissionsToCreateVolumeAdditions"] = permissions_to_create_volume_additions
+        __props__["permissionsToCreateVolumeRemovals"] = permissions_to_create_volume_removals
+        __props__["requestId"] = request_id
+        __props__["snapshotId"] = snapshot_id
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/snapshotAttributes:SnapshotAttributes', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="accountId")

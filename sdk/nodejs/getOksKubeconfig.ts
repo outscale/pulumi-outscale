@@ -117,15 +117,15 @@ export interface GetOksKubeconfigOutputArgs {
     /**
      * The group of the kubeconfig file.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The time to live (TTL) of the kubeconfig file.
      * * `x-encrypt-nacl` - (Optional) The header to encrypt the kubeconfig file.
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
     /**
      * The user of the kubeconfig file.
      */
-    user?: pulumi.Input<string>;
-    xEncryptNacl?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
+    xEncryptNacl?: pulumi.Input<string | undefined>;
 }

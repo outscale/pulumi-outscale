@@ -87,12 +87,8 @@ type LookupFlexibleGpuResult struct {
 }
 
 func LookupFlexibleGpuOutput(ctx *pulumi.Context, args LookupFlexibleGpuOutputArgs, opts ...pulumi.InvokeOption) LookupFlexibleGpuResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlexibleGpuResultOutput, error) {
-			args := v.(LookupFlexibleGpuArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getFlexibleGpu:getFlexibleGpu", args, LookupFlexibleGpuResultOutput{}, options).(LookupFlexibleGpuResultOutput), nil
-		}).(LookupFlexibleGpuResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getFlexibleGpu:getFlexibleGpu", args, LookupFlexibleGpuResultOutput{}, options).(LookupFlexibleGpuResultOutput)
 }
 
 // A collection of arguments for invoking getFlexibleGpu.

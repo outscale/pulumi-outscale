@@ -122,5 +122,5 @@ export interface GetServerCertificatesOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetServerCertificatesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetServerCertificatesFilterArgs>[] | undefined>;
 }

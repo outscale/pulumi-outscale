@@ -13,10 +13,16 @@ namespace Pulumi.Outscale.Inputs
     public sealed class ProviderEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use this to override the default service endpoint URL
+        /// The Endpoint for Outscale API operations.
         /// </summary>
         [Input("api")]
         public Input<string>? Api { get; set; }
+
+        /// <summary>
+        /// The Endpoint for OKS API operations.
+        /// </summary>
+        [Input("oks")]
+        public Input<string>? Oks { get; set; }
 
         public ProviderEndpointArgs()
         {

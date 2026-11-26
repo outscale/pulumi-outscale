@@ -22,15 +22,16 @@ __all__ = ['VolumeArgs', 'Volume']
 class VolumeArgs:
     def __init__(__self__, *,
                  subregion_name: pulumi.Input[_builtins.str],
-                 iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]] = None,
-                 termination_snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeTagArgs']]]] = None,
+                 termination_snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['VolumeTimeoutsArgs']] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
+
         :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the volume.
         :param pulumi.Input[_builtins.int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         :param pulumi.Input[_builtins.int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
@@ -70,76 +71,76 @@ class VolumeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         """
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iops", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot from which you want to create the volume.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationSnapshotName")
-    def termination_snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def termination_snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether you want to create a snapshot before the volume deletion.
         """
         return pulumi.get(self, "termination_snapshot_name")
 
     @termination_snapshot_name.setter
-    def termination_snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def termination_snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "termination_snapshot_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VolumeTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VolumeTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VolumeTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VolumeTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
         For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
@@ -147,28 +148,29 @@ class VolumeArgs:
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
 @pulumi.input_type
 class _VolumeState:
     def __init__(__self__, *,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 linked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]] = None,
-                 termination_snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 linked_volumes: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeTagArgs']]]] = None,
+                 termination_snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['VolumeTimeoutsArgs']] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the volume was created.
         :param pulumi.Input[_builtins.int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]] linked_volumes: Information about your volume attachment.
@@ -211,145 +213,145 @@ class _VolumeState:
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) at which the volume was created.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         """
         return pulumi.get(self, "iops")
 
     @iops.setter
-    def iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iops", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedVolumes")
-    def linked_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]]]:
+    def linked_volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]]]:
         """
         Information about your volume attachment.
         """
         return pulumi.get(self, "linked_volumes")
 
     @linked_volumes.setter
-    def linked_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]]]):
+    def linked_volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeLinkedVolumeArgs']]]]):
         pulumi.set(self, "linked_volumes", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot from which you want to create the volume.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionName")
-    def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Subregion in which you want to create the volume.
         """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
-    def subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationSnapshotName")
-    def termination_snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def termination_snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether you want to create a snapshot before the volume deletion.
         """
         return pulumi.get(self, "termination_snapshot_name")
 
     @termination_snapshot_name.setter
-    def termination_snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def termination_snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "termination_snapshot_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['VolumeTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['VolumeTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['VolumeTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['VolumeTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the volume.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
         For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
@@ -357,7 +359,7 @@ class _VolumeState:
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
@@ -367,14 +369,14 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict']]]]] = None,
-                 termination_snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict', 'outputs.VolumeTag']]]]] = None,
+                 termination_snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a volume.
@@ -419,13 +421,14 @@ class Volume(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
         :param pulumi.Input[_builtins.int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot from which you want to create the volume.
         :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the volume.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict', 'outputs.VolumeTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] termination_snapshot_name: Whether you want to create a snapshot before the volume deletion.
         :param pulumi.Input[_builtins.str] volume_type: The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
                For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).
@@ -479,6 +482,7 @@ class Volume(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -494,14 +498,14 @@ class Volume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict']]]]] = None,
-                 termination_snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict', 'outputs.VolumeTag']]]]] = None,
+                 termination_snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -536,19 +540,19 @@ class Volume(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            iops: Optional[pulumi.Input[_builtins.int]] = None,
-            linked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeLinkedVolumeArgs', 'VolumeLinkedVolumeArgsDict']]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict']]]]] = None,
-            termination_snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
-            volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Volume':
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            iops: pulumi.Input[Optional[_builtins.int]] = None,
+            linked_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeLinkedVolumeArgs', 'VolumeLinkedVolumeArgsDict', 'outputs.VolumeLinkedVolume']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict', 'outputs.VolumeTag']]]]] = None,
+            termination_snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -558,12 +562,12 @@ class Volume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the volume was created.
         :param pulumi.Input[_builtins.int] iops: The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeLinkedVolumeArgs', 'VolumeLinkedVolumeArgsDict']]]] linked_volumes: Information about your volume attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeLinkedVolumeArgs', 'VolumeLinkedVolumeArgsDict', 'outputs.VolumeLinkedVolume']]]] linked_volumes: Information about your volume attachment.
         :param pulumi.Input[_builtins.int] size: The size of the volume, in gibibytes (GiB). The maximum allowed size for a volume is 14901 GiB. This parameter is required if the volume is not created from a snapshot (`snapshot_id` unspecified).
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot from which you want to create the volume.
         :param pulumi.Input[_builtins.str] state: The state of the volume (`creating` \\| `available` \\| `in-use` \\| `deleting` \\| `error`).
         :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which you want to create the volume.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict', 'outputs.VolumeTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] termination_snapshot_name: Whether you want to create a snapshot before the volume deletion.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the volume.
         :param pulumi.Input[_builtins.str] volume_type: The type of volume you want to create (`io1` \\| `gp2` \\| `standard`). If not specified, a `standard` volume is created.<br />
@@ -587,6 +591,38 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["volume_id"] = volume_id
         __props__.__dict__["volume_type"] = volume_type
         return Volume(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            iops: pulumi.Input[Optional[_builtins.int]] = None,
+            linked_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeLinkedVolumeArgs', 'VolumeLinkedVolumeArgsDict', 'outputs.VolumeLinkedVolume']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeTagArgs', 'VolumeTagArgsDict', 'outputs.VolumeTag']]]]] = None,
+            termination_snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationDate"] = creation_date
+        __props__["iops"] = iops
+        __props__["linkedVolumes"] = linked_volumes
+        __props__["requestId"] = request_id
+        __props__["size"] = size
+        __props__["snapshotId"] = snapshot_id
+        __props__["state"] = state
+        __props__["subregionName"] = subregion_name
+        __props__["tags"] = tags
+        __props__["terminationSnapshotName"] = termination_snapshot_name
+        __props__["timeouts"] = timeouts
+        __props__["volumeId"] = volume_id
+        __props__["volumeType"] = volume_type
+        return pulumi.runtime.exists_resource(None, 'outscale:index/volume:Volume', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="creationDate")

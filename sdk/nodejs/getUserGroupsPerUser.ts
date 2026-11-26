@@ -95,5 +95,5 @@ export interface GetUserGroupsPerUserOutputArgs {
     /**
      * The path to the user (by default, `/`).
      */
-    userPath?: pulumi.Input<string>;
+    userPath?: pulumi.Input<string | undefined>;
 }

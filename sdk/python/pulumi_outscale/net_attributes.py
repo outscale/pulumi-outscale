@@ -23,9 +23,10 @@ class NetAttributesArgs:
     def __init__(__self__, *,
                  dhcp_options_set_id: pulumi.Input[_builtins.str],
                  net_id: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['NetAttributesTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['NetAttributesTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a NetAttributes resource.
+
         :param pulumi.Input[_builtins.str] dhcp_options_set_id: The ID of the DHCP options set (or `default` if you want to associate the default one).
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
         """
@@ -60,27 +61,28 @@ class NetAttributesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['NetAttributesTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['NetAttributesTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['NetAttributesTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['NetAttributesTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _NetAttributesState:
     def __init__(__self__, *,
-                 dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetAttributesTagArgs']]]] = None,
-                 tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['NetAttributesTimeoutsArgs']] = None):
+                 dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['NetAttributesTagArgs']]]] = None,
+                 tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['NetAttributesTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering NetAttributes resources.
+
         :param pulumi.Input[_builtins.str] dhcp_options_set_id: The ID of the DHCP options set (or `default` if you want to associate the default one).
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
@@ -107,92 +109,92 @@ class _NetAttributesState:
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetId")
-    def dhcp_options_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_options_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the DHCP options set (or `default` if you want to associate the default one).
         """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @dhcp_options_set_id.setter
-    def dhcp_options_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_options_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_options_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
         """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
-    def ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the Net (`pending` \\| `available` \\| `deleting`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetAttributesTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetAttributesTagArgs']]]]:
         """
         One or more tags associated with the Net.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetAttributesTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetAttributesTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenancy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VM tenancy in a Net.
         """
         return pulumi.get(self, "tenancy")
 
     @tenancy.setter
-    def tenancy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenancy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenancy", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['NetAttributesTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['NetAttributesTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['NetAttributesTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['NetAttributesTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -202,9 +204,9 @@ class NetAttributes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['NetAttributesTimeoutsArgs', 'NetAttributesTimeoutsArgsDict']]] = None,
+                 dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['NetAttributesTimeoutsArgs', 'NetAttributesTimeoutsArgsDict', 'outputs.NetAttributesTimeouts']]] = None,
                  __props__=None):
         """
         Manages the attributes of a Net.
@@ -243,6 +245,7 @@ class NetAttributes(pulumi.CustomResource):
         $ pulumi import outscale:index/netAttributes:NetAttributes ImportedNet vpc-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -293,6 +296,7 @@ class NetAttributes(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param NetAttributesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -308,9 +312,9 @@ class NetAttributes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['NetAttributesTimeoutsArgs', 'NetAttributesTimeoutsArgsDict']]] = None,
+                 dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['NetAttributesTimeoutsArgs', 'NetAttributesTimeoutsArgsDict', 'outputs.NetAttributesTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,14 +346,14 @@ class NetAttributes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetAttributesTagArgs', 'NetAttributesTagArgsDict']]]]] = None,
-            tenancy: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['NetAttributesTimeoutsArgs', 'NetAttributesTimeoutsArgsDict']]] = None) -> 'NetAttributes':
+            dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetAttributesTagArgs', 'NetAttributesTagArgsDict', 'outputs.NetAttributesTag']]]]] = None,
+            tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['NetAttributesTimeoutsArgs', 'NetAttributesTimeoutsArgsDict', 'outputs.NetAttributesTimeouts']]] = None) -> 'NetAttributes':
         """
         Get an existing NetAttributes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -361,7 +365,7 @@ class NetAttributes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip_range: The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net.
         :param pulumi.Input[_builtins.str] state: The state of the Net (`pending` \\| `available` \\| `deleting`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetAttributesTagArgs', 'NetAttributesTagArgsDict']]]] tags: One or more tags associated with the Net.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetAttributesTagArgs', 'NetAttributesTagArgsDict', 'outputs.NetAttributesTag']]]] tags: One or more tags associated with the Net.
         :param pulumi.Input[_builtins.str] tenancy: The VM tenancy in a Net.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -377,6 +381,28 @@ class NetAttributes(pulumi.CustomResource):
         __props__.__dict__["tenancy"] = tenancy
         __props__.__dict__["timeouts"] = timeouts
         return NetAttributes(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetAttributesTagArgs', 'NetAttributesTagArgsDict', 'outputs.NetAttributesTag']]]]] = None,
+            tenancy: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['NetAttributesTimeoutsArgs', 'NetAttributesTimeoutsArgsDict', 'outputs.NetAttributesTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dhcpOptionsSetId"] = dhcp_options_set_id
+        __props__["ipRange"] = ip_range
+        __props__["netId"] = net_id
+        __props__["requestId"] = request_id
+        __props__["state"] = state
+        __props__["tags"] = tags
+        __props__["tenancy"] = tenancy
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/netAttributes:NetAttributes', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetId")

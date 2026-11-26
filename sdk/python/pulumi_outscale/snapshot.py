@@ -21,16 +21,17 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 @pulumi.input_type
 class SnapshotArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['SnapshotTimeoutsArgs']] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['SnapshotTimeoutsArgs']] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
         :param pulumi.Input[_builtins.str] file_location: **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         :param pulumi.Input[_builtins.int] snapshot_size: **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
@@ -58,120 +59,121 @@ class SnapshotArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the snapshot.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileLocation")
-    def file_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
-    def file_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_location", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotSize")
-    def snapshot_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snapshot_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         """
         return pulumi.get(self, "snapshot_size")
 
     @snapshot_size.setter
-    def snapshot_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snapshot_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snapshot_size", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionName")
-    def source_region_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_region_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
-    def source_region_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_region_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_region_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotId")
-    def source_snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when copying a snapshot)** The ID of the snapshot you want to copy.
         """
         return pulumi.get(self, "source_snapshot_id")
 
     @source_snapshot_id.setter
-    def source_snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['SnapshotTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['SnapshotTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['SnapshotTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['SnapshotTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
 
 @pulumi.input_type
 class _SnapshotState:
     def __init__(__self__, *,
-                 account_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions_to_create_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]]] = None,
-                 progress: Optional[pulumi.Input[_builtins.int]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['SnapshotTimeoutsArgs']] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_size: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions_to_create_volumes: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]]] = None,
+                 progress: pulumi.Input[Optional[_builtins.int]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['SnapshotTimeoutsArgs']] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
+
         :param pulumi.Input[_builtins.str] account_alias: The account alias of the owner of the snapshot.
         :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the snapshot.
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the snapshot was created.
@@ -225,200 +227,200 @@ class _SnapshotState:
 
     @_builtins.property
     @pulumi.getter(name="accountAlias")
-    def account_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account alias of the owner of the snapshot.
         """
         return pulumi.get(self, "account_alias")
 
     @account_alias.setter
-    def account_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the snapshot.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time (UTC) at which the snapshot was created.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the snapshot.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileLocation")
-    def file_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
         """
         return pulumi.get(self, "file_location")
 
     @file_location.setter
-    def file_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_location", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsToCreateVolumes")
-    def permissions_to_create_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]]]:
+    def permissions_to_create_volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]]]:
         """
         Permissions for the resource.
         """
         return pulumi.get(self, "permissions_to_create_volumes")
 
     @permissions_to_create_volumes.setter
-    def permissions_to_create_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]]]):
+    def permissions_to_create_volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotPermissionsToCreateVolumeArgs']]]]):
         pulumi.set(self, "permissions_to_create_volumes", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The progress of the snapshot, as a percentage.
         """
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotSize")
-    def snapshot_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snapshot_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         """
         return pulumi.get(self, "snapshot_size")
 
     @snapshot_size.setter
-    def snapshot_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snapshot_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snapshot_size", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionName")
-    def source_region_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_region_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         """
         return pulumi.get(self, "source_region_name")
 
     @source_region_name.setter
-    def source_region_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_region_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_region_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotId")
-    def source_snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when copying a snapshot)** The ID of the snapshot you want to copy.
         """
         return pulumi.get(self, "source_snapshot_id")
 
     @source_snapshot_id.setter
-    def source_snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnapshotTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['SnapshotTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['SnapshotTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['SnapshotTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['SnapshotTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the volume used to create the snapshot, in gibibytes (GiB).
         """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
-    def volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "volume_size", value)
 
 
@@ -428,14 +430,14 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict', 'outputs.SnapshotTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict', 'outputs.SnapshotTimeouts']]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a snapshot.
@@ -487,6 +489,7 @@ class Snapshot(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
@@ -494,7 +497,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] snapshot_size: **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         :param pulumi.Input[_builtins.str] source_region_name: **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         :param pulumi.Input[_builtins.str] source_snapshot_id: **(when copying a snapshot)** The ID of the snapshot you want to copy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict', 'outputs.SnapshotTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] volume_id: **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
         """
         ...
@@ -553,6 +556,7 @@ class Snapshot(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -568,14 +572,14 @@ class Snapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict', 'outputs.SnapshotTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict', 'outputs.SnapshotTimeouts']]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,23 +616,23 @@ class Snapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_location: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions_to_create_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotPermissionsToCreateVolumeArgs', 'SnapshotPermissionsToCreateVolumeArgsDict']]]]] = None,
-            progress: Optional[pulumi.Input[_builtins.int]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_size: Optional[pulumi.Input[_builtins.int]] = None,
-            source_region_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict']]] = None,
-            volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_size: Optional[pulumi.Input[_builtins.int]] = None) -> 'Snapshot':
+            account_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_location: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions_to_create_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPermissionsToCreateVolumeArgs', 'SnapshotPermissionsToCreateVolumeArgsDict', 'outputs.SnapshotPermissionsToCreateVolume']]]]] = None,
+            progress: pulumi.Input[Optional[_builtins.int]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_size: pulumi.Input[Optional[_builtins.int]] = None,
+            source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict', 'outputs.SnapshotTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict', 'outputs.SnapshotTimeouts']]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_size: pulumi.Input[Optional[_builtins.int]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -641,14 +645,14 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_date: The date and time (UTC) at which the snapshot was created.
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
         :param pulumi.Input[_builtins.str] file_location: **(when importing from a bucket)** The pre-signed URL of the snapshot you want to import. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotPermissionsToCreateVolumeArgs', 'SnapshotPermissionsToCreateVolumeArgsDict']]]] permissions_to_create_volumes: Permissions for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotPermissionsToCreateVolumeArgs', 'SnapshotPermissionsToCreateVolumeArgsDict', 'outputs.SnapshotPermissionsToCreateVolume']]]] permissions_to_create_volumes: Permissions for the resource.
         :param pulumi.Input[_builtins.int] progress: The progress of the snapshot, as a percentage.
         :param pulumi.Input[_builtins.str] snapshot_id: The ID of the snapshot.
         :param pulumi.Input[_builtins.int] snapshot_size: **(when importing from a bucket)** The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.
         :param pulumi.Input[_builtins.str] source_region_name: **(when copying a snapshot)** The name of the source Region, which must be the same as the Region of your account.
         :param pulumi.Input[_builtins.str] source_snapshot_id: **(when copying a snapshot)** The ID of the snapshot you want to copy.
         :param pulumi.Input[_builtins.str] state: The state of the snapshot (`in-queue` \\| `pending` \\| `completed` \\| `error` \\| `deleting`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict', 'outputs.SnapshotTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] volume_id: **(when creating from a volume)** The ID of the volume you want to create a snapshot of.
         :param pulumi.Input[_builtins.int] volume_size: The size of the volume used to create the snapshot, in gibibytes (GiB).
         """
@@ -674,6 +678,46 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["volume_id"] = volume_id
         __props__.__dict__["volume_size"] = volume_size
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_location: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions_to_create_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotPermissionsToCreateVolumeArgs', 'SnapshotPermissionsToCreateVolumeArgsDict', 'outputs.SnapshotPermissionsToCreateVolume']]]]] = None,
+            progress: pulumi.Input[Optional[_builtins.int]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_size: pulumi.Input[Optional[_builtins.int]] = None,
+            source_region_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnapshotTagArgs', 'SnapshotTagArgsDict', 'outputs.SnapshotTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['SnapshotTimeoutsArgs', 'SnapshotTimeoutsArgsDict', 'outputs.SnapshotTimeouts']]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_size: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountAlias"] = account_alias
+        __props__["accountId"] = account_id
+        __props__["creationDate"] = creation_date
+        __props__["description"] = description
+        __props__["fileLocation"] = file_location
+        __props__["permissionsToCreateVolumes"] = permissions_to_create_volumes
+        __props__["progress"] = progress
+        __props__["requestId"] = request_id
+        __props__["snapshotId"] = snapshot_id
+        __props__["snapshotSize"] = snapshot_size
+        __props__["sourceRegionName"] = source_region_name
+        __props__["sourceSnapshotId"] = source_snapshot_id
+        __props__["state"] = state
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["volumeId"] = volume_id
+        __props__["volumeSize"] = volume_size
+        return pulumi.runtime.exists_resource(None, 'outscale:index/snapshot:Snapshot', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="accountAlias")

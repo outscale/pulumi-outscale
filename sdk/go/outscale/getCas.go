@@ -76,12 +76,8 @@ type GetCasResult struct {
 }
 
 func GetCasOutput(ctx *pulumi.Context, args GetCasOutputArgs, opts ...pulumi.InvokeOption) GetCasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCasResultOutput, error) {
-			args := v.(GetCasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getCas:getCas", args, GetCasResultOutput{}, options).(GetCasResultOutput), nil
-		}).(GetCasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getCas:getCas", args, GetCasResultOutput{}, options).(GetCasResultOutput)
 }
 
 // A collection of arguments for invoking getCas.

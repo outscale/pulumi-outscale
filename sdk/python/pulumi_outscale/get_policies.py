@@ -72,7 +72,7 @@ class AwaitableGetPoliciesResult(GetPoliciesResult):
             policies=self.policies)
 
 
-def get_policies(filters: Optional[Sequence[Union['GetPoliciesFilterArgs', 'GetPoliciesFilterArgsDict']]] = None,
+def get_policies(filters: Optional[Sequence[Union['GetPoliciesFilterArgs', 'GetPoliciesFilterArgsDict', 'outputs.GetPoliciesFilterResult']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoliciesResult:
     """
     Provides information about policies.
@@ -111,7 +111,7 @@ def get_policies(filters: Optional[Sequence[Union['GetPoliciesFilterArgs', 'GetP
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_policies_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPoliciesFilterArgs', 'GetPoliciesFilterArgsDict']]]]] = None,
+def get_policies_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetPoliciesFilterArgs', 'GetPoliciesFilterArgsDict', 'outputs.GetPoliciesFilterResult']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesResult]:
     """
     Provides information about policies.

@@ -23,15 +23,16 @@ class RouteArgs:
     def __init__(__self__, *,
                  destination_ip_range: pulumi.Input[_builtins.str],
                  route_table_id: pulumi.Input[_builtins.str],
-                 await_active_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['RouteTimeoutsArgs']] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 await_active_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['RouteTimeoutsArgs']] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Route resource.
+
         :param pulumi.Input[_builtins.str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table for which you want to create a route.
         :param pulumi.Input[_builtins.bool] await_active_state: By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
@@ -88,106 +89,107 @@ class RouteArgs:
     @_builtins.property
     @pulumi.getter(name="awaitActiveState")
     @_utilities.deprecated("""Route's state is always active. The attribute will be removed in the next major version.""")
-    def await_active_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def await_active_state(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
         """
         return pulumi.get(self, "await_active_state")
 
     @await_active_state.setter
-    def await_active_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def await_active_state(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "await_active_state", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an internet service or virtual gateway attached to your Net.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="natServiceId")
-    def nat_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a NAT service.
         """
         return pulumi.get(self, "nat_service_id")
 
     @nat_service_id.setter
-    def nat_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="netPeeringId")
-    def net_peering_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_peering_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a Net peering.
         """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
-    def net_peering_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_peering_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_peering_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a NIC.
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RouteTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RouteTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RouteTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RouteTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _RouteState:
     def __init__(__self__, *,
-                 await_active_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 creation_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['RouteTimeoutsArgs']] = None,
-                 vm_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 await_active_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 creation_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['RouteTimeoutsArgs']] = None,
+                 vm_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Route resources.
+
         :param pulumi.Input[_builtins.bool] await_active_state: By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
         :param pulumi.Input[_builtins.str] creation_method: The method used to create the route.
         :param pulumi.Input[_builtins.str] destination_ip_range: The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
@@ -239,176 +241,176 @@ class _RouteState:
     @_builtins.property
     @pulumi.getter(name="awaitActiveState")
     @_utilities.deprecated("""Route's state is always active. The attribute will be removed in the next major version.""")
-    def await_active_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def await_active_state(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default or if set to true, waits for the route to be in the `active` state to declare its successful creation.<br />If false, the created route is in the `active` state if available, or the `blackhole` state if not available.
         """
         return pulumi.get(self, "await_active_state")
 
     @await_active_state.setter
-    def await_active_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def await_active_state(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "await_active_state", value)
 
     @_builtins.property
     @pulumi.getter(name="creationMethod")
-    def creation_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method used to create the route.
         """
         return pulumi.get(self, "creation_method")
 
     @creation_method.setter
-    def creation_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_method", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationIpRange")
-    def destination_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).
         """
         return pulumi.get(self, "destination_ip_range")
 
     @destination_ip_range.setter
-    def destination_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationServiceId")
-    def destination_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the OUTSCALE service.
         """
         return pulumi.get(self, "destination_service_id")
 
     @destination_service_id.setter
-    def destination_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an internet service or virtual gateway attached to your Net.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="natServiceId")
-    def nat_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a NAT service.
         """
         return pulumi.get(self, "nat_service_id")
 
     @nat_service_id.setter
-    def nat_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="netAccessPointId")
-    def net_access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net access point.
         """
         return pulumi.get(self, "net_access_point_id")
 
     @net_access_point_id.setter
-    def net_access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="netPeeringId")
-    def net_peering_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_peering_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a Net peering.
         """
         return pulumi.get(self, "net_peering_id")
 
     @net_peering_id.setter
-    def net_peering_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_peering_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_peering_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a NIC.
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route table for which you want to create a route.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of a route in the route table (always `active`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RouteTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RouteTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RouteTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RouteTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vmAccountId")
-    def vm_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the VM.
         """
         return pulumi.get(self, "vm_account_id")
 
     @vm_account_id.setter
-    def vm_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a NAT VM in your Net (attached to exactly one NIC).
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -418,15 +420,15 @@ class Route(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 await_active_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RouteTimeoutsArgs', 'RouteTimeoutsArgsDict']]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 await_active_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RouteTimeoutsArgs', 'RouteTimeoutsArgsDict', 'outputs.RouteTimeouts']]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a route.
@@ -471,6 +473,7 @@ class Route(pulumi.CustomResource):
         $ terraform import outscale_routeImportedRoute rtb-12345678_10.0.0.0/0
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -533,6 +536,7 @@ class Route(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param RouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -548,15 +552,15 @@ class Route(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 await_active_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RouteTimeoutsArgs', 'RouteTimeoutsArgsDict']]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 await_active_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RouteTimeoutsArgs', 'RouteTimeoutsArgsDict', 'outputs.RouteTimeouts']]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -595,21 +599,21 @@ class Route(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            await_active_state: Optional[pulumi.Input[_builtins.bool]] = None,
-            creation_method: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            net_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-            net_peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['RouteTimeoutsArgs', 'RouteTimeoutsArgsDict']]] = None,
-            vm_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Route':
+            await_active_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            creation_method: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RouteTimeoutsArgs', 'RouteTimeoutsArgsDict', 'outputs.RouteTimeouts']]] = None,
+            vm_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Route':
         """
         Get an existing Route resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -651,6 +655,42 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["vm_account_id"] = vm_account_id
         __props__.__dict__["vm_id"] = vm_id
         return Route(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            await_active_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            creation_method: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RouteTimeoutsArgs', 'RouteTimeoutsArgsDict', 'outputs.RouteTimeouts']]] = None,
+            vm_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awaitActiveState"] = await_active_state
+        __props__["creationMethod"] = creation_method
+        __props__["destinationIpRange"] = destination_ip_range
+        __props__["destinationServiceId"] = destination_service_id
+        __props__["gatewayId"] = gateway_id
+        __props__["natServiceId"] = nat_service_id
+        __props__["netAccessPointId"] = net_access_point_id
+        __props__["netPeeringId"] = net_peering_id
+        __props__["nicId"] = nic_id
+        __props__["requestId"] = request_id
+        __props__["routeTableId"] = route_table_id
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        __props__["vmAccountId"] = vm_account_id
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/route:Route', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="awaitActiveState")

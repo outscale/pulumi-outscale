@@ -92,6 +92,17 @@ export class OksCluster extends pulumi.CustomResource {
         return new OksCluster(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OksCluster resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OksClusterState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oksCluster:OksCluster", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oksCluster:OksCluster';
 
@@ -287,92 +298,92 @@ export interface OksClusterState {
     /**
      * If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
      */
-    adminLbu?: pulumi.Input<boolean>;
+    adminLbu?: pulumi.Input<boolean | undefined>;
     /**
      * The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.
      */
-    adminWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    adminWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The configuration for Kubernetes admission controllers.
      */
-    admissionFlags?: pulumi.Input<inputs.OksClusterAdmissionFlags>;
+    admissionFlags?: pulumi.Input<inputs.OksClusterAdmissionFlags | undefined>;
     /**
      * The configurations for automated maintenance windows.
      */
-    autoMaintenances?: pulumi.Input<inputs.OksClusterAutoMaintenances>;
+    autoMaintenances?: pulumi.Input<inputs.OksClusterAutoMaintenances | undefined>;
     /**
      * The CIDR block for Kubernetes pods' network.
      */
-    cidrPods?: pulumi.Input<string>;
+    cidrPods?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the Kubernetes services' network.
      */
-    cidrService?: pulumi.Input<string>;
+    cidrService?: pulumi.Input<string | undefined>;
     /**
      * The IP for the cluster's DNS service.
      */
-    clusterDns?: pulumi.Input<string>;
+    clusterDns?: pulumi.Input<string | undefined>;
     /**
      * The Container Network Interface (CNI) used in the cluster.
      */
-    cni?: pulumi.Input<string>;
+    cni?: pulumi.Input<string | undefined>;
     /**
      * The size of control plane deployment for the cluster. For more information, see [About OKS > Control Planes](https://docs.outscale.com/en/userguide/About-OKS.html#_control_planes). By default, `cp.3.masters.small`.
      */
-    controlPlanes?: pulumi.Input<string>;
+    controlPlanes?: pulumi.Input<string | undefined>;
     /**
      * If true, multi-Subregion deployment is enabled for the control plane. If false, it is disabled. By default, false.
      */
-    cpMultiAz?: pulumi.Input<boolean>;
+    cpMultiAz?: pulumi.Input<boolean | undefined>;
     /**
      * The list of Subregions where control plane components are deployed.
      */
-    cpSubregions?: pulumi.Input<pulumi.Input<string>[]>;
+    cpSubregions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description of the cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
      */
-    disableApiTermination?: pulumi.Input<boolean>;
+    disableApiTermination?: pulumi.Input<boolean | undefined>;
     /**
      * (Sensitive value) A file containing access configuration to the cluster.
      */
-    kubeconfig?: pulumi.Input<string>;
+    kubeconfig?: pulumi.Input<string | undefined>;
     /**
      * (Sensitive value) Access configuration to the cluster.
      */
-    kubeconfigAttributes?: pulumi.Input<inputs.OksClusterKubeconfigAttributes>;
+    kubeconfigAttributes?: pulumi.Input<inputs.OksClusterKubeconfigAttributes | undefined>;
     /**
      * A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which you want to create a cluster.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The list of special configurations or behaviors for the cluster.
      */
-    quirks?: pulumi.Input<pulumi.Input<string>[]>;
+    quirks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the API request.
      */
-    requestId?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The status information of the cluster.
      */
-    statuses?: pulumi.Input<inputs.OksClusterStatuses>;
+    statuses?: pulumi.Input<inputs.OksClusterStatuses | undefined>;
     /**
      * The key/value combinations of the tags associated with the cluster's metadata.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.OksClusterTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.OksClusterTimeouts | undefined>;
     /**
      * The Kubernetes version to be deployed for the cluster. For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -382,7 +393,7 @@ export interface OksClusterArgs {
     /**
      * If true, load balancer administration is enabled for cluster management. If false, it is disabled. By default, false.
      */
-    adminLbu?: pulumi.Input<boolean>;
+    adminLbu?: pulumi.Input<boolean | undefined>;
     /**
      * The list of CIDR blocks or IPs allowed to access the cluster via the Kubernetes API.
      */
@@ -390,11 +401,11 @@ export interface OksClusterArgs {
     /**
      * The configuration for Kubernetes admission controllers.
      */
-    admissionFlags?: pulumi.Input<inputs.OksClusterAdmissionFlags>;
+    admissionFlags?: pulumi.Input<inputs.OksClusterAdmissionFlags | undefined>;
     /**
      * The configurations for automated maintenance windows.
      */
-    autoMaintenances?: pulumi.Input<inputs.OksClusterAutoMaintenances>;
+    autoMaintenances?: pulumi.Input<inputs.OksClusterAutoMaintenances | undefined>;
     /**
      * The CIDR block for Kubernetes pods' network.
      */
@@ -406,31 +417,31 @@ export interface OksClusterArgs {
     /**
      * The IP for the cluster's DNS service.
      */
-    clusterDns?: pulumi.Input<string>;
+    clusterDns?: pulumi.Input<string | undefined>;
     /**
      * The size of control plane deployment for the cluster. For more information, see [About OKS > Control Planes](https://docs.outscale.com/en/userguide/About-OKS.html#_control_planes). By default, `cp.3.masters.small`.
      */
-    controlPlanes?: pulumi.Input<string>;
+    controlPlanes?: pulumi.Input<string | undefined>;
     /**
      * If true, multi-Subregion deployment is enabled for the control plane. If false, it is disabled. By default, false.
      */
-    cpMultiAz?: pulumi.Input<boolean>;
+    cpMultiAz?: pulumi.Input<boolean | undefined>;
     /**
      * The list of Subregions where control plane components are deployed.
      */
-    cpSubregions?: pulumi.Input<pulumi.Input<string>[]>;
+    cpSubregions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description of the cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, cluster deletion through the API is disabled. If false, it is enabled. By default, false.
      */
-    disableApiTermination?: pulumi.Input<boolean>;
+    disableApiTermination?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name for the cluster within the project. Between 1 and 40 characters, this name must start with a letter and contain only lowercase letters, numbers, or hyphens.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which you want to create a cluster.
      */
@@ -438,12 +449,12 @@ export interface OksClusterArgs {
     /**
      * The list of special configurations or behaviors for the cluster.
      */
-    quirks?: pulumi.Input<pulumi.Input<string>[]>;
+    quirks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The key/value combinations of the tags associated with the cluster's metadata.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.OksClusterTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.OksClusterTimeouts | undefined>;
     /**
      * The Kubernetes version to be deployed for the cluster. For more information, see [GetKubernetesVersions](https://docs.outscale.com/oks.html#getkubenetesversions).
      */

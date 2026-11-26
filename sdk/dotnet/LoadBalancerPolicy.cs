@@ -29,6 +29,11 @@ namespace Pulumi.Outscale
     /// {
     ///     var loadBalancer01 = new Outscale.LoadBalancer("load_balancer01", new()
     ///     {
+    ///         LoadBalancerName = "terraform-lb-for-browser-policy",
+    ///         SubregionNames = new[]
+    ///         {
+    ///             "eu-west-2a",
+    ///         },
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -38,11 +43,6 @@ namespace Pulumi.Outscale
     ///                 LoadBalancerPort = 8080,
     ///                 LoadBalancerProtocol = "HTTP",
     ///             },
-    ///         },
-    ///         LoadBalancerName = "terraform-lb-for-browser-policy",
-    ///         SubregionNames = new[]
-    ///         {
-    ///             "eu-west-2a",
     ///         },
     ///     });
     /// 
@@ -68,6 +68,11 @@ namespace Pulumi.Outscale
     /// {
     ///     var loadBalancer02 = new Outscale.LoadBalancer("load_balancer02", new()
     ///     {
+    ///         LoadBalancerName = "terraform-lb-for-app-policy",
+    ///         SubregionNames = new[]
+    ///         {
+    ///             $"{region}b",
+    ///         },
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -77,11 +82,6 @@ namespace Pulumi.Outscale
     ///                 BackendPort = 80,
     ///                 BackendProtocol = "TCP",
     ///             },
-    ///         },
-    ///         LoadBalancerName = "terraform-lb-for-app-policy",
-    ///         SubregionNames = new[]
-    ///         {
-    ///             $"{region}b",
     ///         },
     ///     });
     /// 

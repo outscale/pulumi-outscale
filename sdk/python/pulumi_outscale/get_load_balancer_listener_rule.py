@@ -165,7 +165,7 @@ class AwaitableGetLoadBalancerListenerRuleResult(GetLoadBalancerListenerRuleResu
             vm_ids=self.vm_ids)
 
 
-def get_load_balancer_listener_rule(filters: Optional[Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict']]] = None,
+def get_load_balancer_listener_rule(filters: Optional[Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict', 'outputs.GetLoadBalancerListenerRuleFilterResult']]] = None,
                                     listener_rule_name: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerListenerRuleResult:
     """
@@ -187,7 +187,7 @@ def get_load_balancer_listener_rule(filters: Optional[Sequence[Union['GetLoadBal
     ```
 
 
-    :param Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict', 'outputs.GetLoadBalancerListenerRuleFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str listener_rule_name: A human-readable name for the listener rule.
     """
     __args__ = dict()
@@ -208,8 +208,8 @@ def get_load_balancer_listener_rule(filters: Optional[Sequence[Union['GetLoadBal
         priority=pulumi.get(__ret__, 'priority'),
         request_id=pulumi.get(__ret__, 'request_id'),
         vm_ids=pulumi.get(__ret__, 'vm_ids'))
-def get_load_balancer_listener_rule_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict']]]]] = None,
-                                           listener_rule_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_load_balancer_listener_rule_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict', 'outputs.GetLoadBalancerListenerRuleFilterResult']]]]] = None,
+                                           listener_rule_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerListenerRuleResult]:
     """
     Provides information about a load balancer listener rule.
@@ -230,7 +230,7 @@ def get_load_balancer_listener_rule_output(filters: Optional[pulumi.Input[Option
     ```
 
 
-    :param Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetLoadBalancerListenerRuleFilterArgs', 'GetLoadBalancerListenerRuleFilterArgsDict', 'outputs.GetLoadBalancerListenerRuleFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str listener_rule_name: A human-readable name for the listener rule.
     """
     __args__ = dict()

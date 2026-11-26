@@ -44,6 +44,17 @@ export class PolicyVersion extends pulumi.CustomResource {
         return new PolicyVersion(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing PolicyVersion resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: PolicyVersionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/policyVersion:PolicyVersion", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/policyVersion:PolicyVersion';
 
@@ -138,32 +149,32 @@ export interface PolicyVersionState {
     /**
      * The policy document, corresponding to a JSON string that contains the policy. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) at which the version was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * If true, the version is the default one.
      */
-    defaultVersion?: pulumi.Input<boolean>;
+    defaultVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
      */
-    document?: pulumi.Input<string>;
+    document?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
      */
-    policyOrn?: pulumi.Input<string>;
+    policyOrn?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
      */
-    setAsDefault?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.PolicyVersionTimeouts>;
+    setAsDefault?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.PolicyVersionTimeouts | undefined>;
     /**
      * The ID of the version.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,6 +192,6 @@ export interface PolicyVersionArgs {
     /**
      * If set to true, the new policy version is set as the default version, meaning it becomes the active one. Otherwise, the new policy version is not actually active until the `defaultVersionId` is specified in the `outscale.User` or `outscale.UserGroup` resources.
      */
-    setAsDefault?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.PolicyVersionTimeouts>;
+    setAsDefault?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.PolicyVersionTimeouts | undefined>;
 }

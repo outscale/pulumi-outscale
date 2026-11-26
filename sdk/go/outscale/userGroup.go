@@ -61,13 +61,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewUserGroup(ctx, "group-1", &outscale.UserGroupArgs{
+//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //				Policies: outscale.UserGroupPolicyArray{
 //					&outscale.UserGroupPolicyArgs{
 //						PolicyOrn:        pulumi.Any(policy_2.Orn),
 //						DefaultVersionId: pulumi.String("V2"),
 //					},
 //				},
-//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -93,6 +93,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewUserGroup(ctx, "group-1", &outscale.UserGroupArgs{
+//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //				Users: outscale.UserGroupUserArray{
 //					&outscale.UserGroupUserArgs{
 //						UserName: pulumi.String("user-name-1"),
@@ -102,7 +103,6 @@ import (
 //						UserName: pulumi.String("user-name-2"),
 //					},
 //				},
-//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -128,12 +128,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewUserGroup(ctx, "group-1", &outscale.UserGroupArgs{
-//				Policies: outscale.UserGroupPolicyArray{
-//					&outscale.UserGroupPolicyArgs{
-//						PolicyOrn: pulumi.Any(policy_2.Orn),
-//						VersionId: "V2",
-//					},
-//				},
+//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //				Users: outscale.UserGroupUserArray{
 //					&outscale.UserGroupUserArgs{
 //						UserName: pulumi.String("user-name-1"),
@@ -143,7 +138,12 @@ import (
 //						UserName: pulumi.String("user-name-2"),
 //					},
 //				},
-//				UserGroupName: pulumi.String("Group-TF-test-1"),
+//				Policies: outscale.UserGroupPolicyArray{
+//					&outscale.UserGroupPolicyArgs{
+//						PolicyOrn: pulumi.Any(policy_2.Orn),
+//						VersionId: "V2",
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -253,6 +253,12 @@ type UserGroupState struct {
 
 func (UserGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userGroupState)(nil)).Elem()
+}
+
+// UserGroupExists checks whether an existing UserGroup resource with the given ID exists.
+func UserGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/userGroup:UserGroup", id, state, "", opts...)
 }
 
 type userGroupArgs struct {

@@ -21,10 +21,11 @@ __all__ = ['PublicIpArgs', 'PublicIp']
 @pulumi.input_type
 class PublicIpArgs:
     def __init__(__self__, *,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['PublicIpTimeoutsArgs']] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['PublicIpTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a PublicIp resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         if tags is not None:
@@ -34,41 +35,42 @@ class PublicIpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['PublicIpTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['PublicIpTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['PublicIpTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['PublicIpTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _PublicIpState:
     def __init__(__self__, *,
-                 link_public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['PublicIpTimeoutsArgs']] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 link_public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['PublicIpTimeoutsArgs']] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIp resources.
+
         :param pulumi.Input[_builtins.str] link_public_ip_id: (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         :param pulumi.Input[_builtins.str] nic_account_id: The OUTSCALE account ID of the owner of the NIC.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC the public IP is associated with (if any).
@@ -101,116 +103,116 @@ class _PublicIpState:
 
     @_builtins.property
     @pulumi.getter(name="linkPublicIpId")
-    def link_public_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_public_ip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required in a Net) The ID representing the association of the public IP with the VM or the NIC.
         """
         return pulumi.get(self, "link_public_ip_id")
 
     @link_public_ip_id.setter
-    def link_public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_public_ip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_public_ip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicAccountId")
-    def nic_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "nic_account_id")
 
     @nic_account_id.setter
-    def nic_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NIC the public IP is associated with (if any).
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP associated with the public IP.
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public IP.
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpId")
-    def public_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation ID of the public IP.
         """
         return pulumi.get(self, "public_ip_id")
 
     @public_ip_id.setter
-    def public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PublicIpTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PublicIpTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['PublicIpTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['PublicIpTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['PublicIpTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['PublicIpTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM the public IP is associated with (if any).
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -220,8 +222,8 @@ class PublicIp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['PublicIpTimeoutsArgs', 'PublicIpTimeoutsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict', 'outputs.PublicIpTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PublicIpTimeoutsArgs', 'PublicIpTimeoutsArgsDict', 'outputs.PublicIpTimeouts']]] = None,
                  __props__=None):
         """
         Manages a public IP.
@@ -248,9 +250,10 @@ class PublicIp(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict', 'outputs.PublicIpTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -283,6 +286,7 @@ class PublicIp(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param PublicIpArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -298,8 +302,8 @@ class PublicIp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['PublicIpTimeoutsArgs', 'PublicIpTimeoutsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict', 'outputs.PublicIpTag']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PublicIpTimeoutsArgs', 'PublicIpTimeoutsArgsDict', 'outputs.PublicIpTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,16 +333,16 @@ class PublicIp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            link_public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['PublicIpTimeoutsArgs', 'PublicIpTimeoutsArgsDict']]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicIp':
+            link_public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict', 'outputs.PublicIpTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['PublicIpTimeoutsArgs', 'PublicIpTimeoutsArgsDict', 'outputs.PublicIpTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PublicIp':
         """
         Get an existing PublicIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -352,7 +356,7 @@ class PublicIp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_ip: The private IP associated with the public IP.
         :param pulumi.Input[_builtins.str] public_ip: The public IP.
         :param pulumi.Input[_builtins.str] public_ip_id: The allocation ID of the public IP.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict', 'outputs.PublicIpTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM the public IP is associated with (if any).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -370,6 +374,32 @@ class PublicIp(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["vm_id"] = vm_id
         return PublicIp(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            link_public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicIpTagArgs', 'PublicIpTagArgsDict', 'outputs.PublicIpTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['PublicIpTimeoutsArgs', 'PublicIpTimeoutsArgsDict', 'outputs.PublicIpTimeouts']]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["linkPublicIpId"] = link_public_ip_id
+        __props__["nicAccountId"] = nic_account_id
+        __props__["nicId"] = nic_id
+        __props__["privateIp"] = private_ip
+        __props__["publicIp"] = public_ip
+        __props__["publicIpId"] = public_ip_id
+        __props__["requestId"] = request_id
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/publicIp:PublicIp', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="linkPublicIpId")

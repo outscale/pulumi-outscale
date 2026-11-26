@@ -173,6 +173,12 @@ func (OksProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oksProjectState)(nil)).Elem()
 }
 
+// OksProjectExists checks whether an existing OksProject resource with the given ID exists.
+func OksProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OksProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oksProject:OksProject", id, state, "", opts...)
+}
+
 type oksProjectArgs struct {
 	// The CIDR block to associate with the Net of the project.
 	Cidr string `pulumi:"cidr"`

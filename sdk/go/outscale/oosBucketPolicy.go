@@ -153,6 +153,12 @@ func (OosBucketPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosBucketPolicyState)(nil)).Elem()
 }
 
+// OosBucketPolicyExists checks whether an existing OosBucketPolicy resource with the given ID exists.
+func OosBucketPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosBucketPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosBucketPolicy:OosBucketPolicy", id, state, "", opts...)
+}
+
 type oosBucketPolicyArgs struct {
 	// The name of the bucket to which you want to apply the policy.
 	Bucket string `pulumi:"bucket"`

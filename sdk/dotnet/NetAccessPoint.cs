@@ -52,6 +52,12 @@ namespace Pulumi.Outscale
     /// {
     ///     var netAccessPoint01 = new Outscale.NetAccessPoint("net_access_point01", new()
     ///     {
+    ///         NetId = net01.NetId,
+    ///         RouteTableIds = new[]
+    ///         {
+    ///             routeTable01.RouteTableId,
+    ///         },
+    ///         ServiceName = "com.outscale.eu-west-2.api",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.NetAccessPointTagArgs
@@ -60,12 +66,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-net-access-point",
     ///             },
     ///         },
-    ///         NetId = net01.NetId,
-    ///         RouteTableIds = new[]
-    ///         {
-    ///             routeTable01.RouteTableId,
-    ///         },
-    ///         ServiceName = "com.outscale.eu-west-2.api",
     ///     });
     /// 
     /// });

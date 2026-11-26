@@ -206,6 +206,12 @@ func (OosBucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosBucketState)(nil)).Elem()
 }
 
+// OosBucketExists checks whether an existing OosBucket resource with the given ID exists.
+func OosBucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosBucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosBucket:OosBucket", id, state, "", opts...)
+}
+
 type oosBucketArgs struct {
 	// The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
 	Acl *string `pulumi:"acl"`

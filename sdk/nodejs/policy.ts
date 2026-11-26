@@ -53,6 +53,17 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Policy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: PolicyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/policy:Policy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/policy:Policy';
 
@@ -171,48 +182,48 @@ export interface PolicyState {
     /**
      * The date and time (UTC) at which the policy was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * A description for the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
      */
-    document?: pulumi.Input<string>;
+    document?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the policy can be linked to a group or an EIM user.
      */
-    isLinkable?: pulumi.Input<boolean>;
+    isLinkable?: pulumi.Input<boolean | undefined>;
     /**
      * The date and time (UTC) at which the policy was last modified.
      */
-    lastModificationDate?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
      */
-    orn?: pulumi.Input<string>;
+    orn?: pulumi.Input<string | undefined>;
     /**
      * The path of the policy.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The ID of the policy default version.
      */
-    policyDefaultVersionId?: pulumi.Input<string>;
+    policyDefaultVersionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the policy.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The number of resources attached to the policy.
      */
-    resourcesCount?: pulumi.Input<number>;
-    timeouts?: pulumi.Input<inputs.PolicyTimeouts>;
+    resourcesCount?: pulumi.Input<number | undefined>;
+    timeouts?: pulumi.Input<inputs.PolicyTimeouts | undefined>;
 }
 
 /**
@@ -222,7 +233,7 @@ export interface PolicyArgs {
     /**
      * A description for the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The policy document, corresponding to a JSON string that contains the policy. This policy document can contain a maximum of 5120 non-whitespace characters. For more information, see [EIM Reference Information](https://docs.outscale.com/en/userguide/EIM-Reference-Information.html) and [EIM Policy Generator](https://docs.outscale.com/en/userguide/EIM-Policy-Generator.html).
      */
@@ -230,10 +241,10 @@ export interface PolicyArgs {
     /**
      * The path of the policy.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
     policyName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.PolicyTimeouts>;
+    timeouts?: pulumi.Input<inputs.PolicyTimeouts | undefined>;
 }

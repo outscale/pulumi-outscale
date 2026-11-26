@@ -87,7 +87,7 @@ class AwaitableGetLoadBalancerTagsResult(GetLoadBalancerTagsResult):
             tags=self.tags)
 
 
-def get_load_balancer_tags(filters: Optional[Sequence[Union['GetLoadBalancerTagsFilterArgs', 'GetLoadBalancerTagsFilterArgsDict']]] = None,
+def get_load_balancer_tags(filters: Optional[Sequence[Union['GetLoadBalancerTagsFilterArgs', 'GetLoadBalancerTagsFilterArgsDict', 'outputs.GetLoadBalancerTagsFilterResult']]] = None,
                            load_balancer_names: Optional[Sequence[_builtins.str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerTagsResult:
     """
@@ -105,8 +105,8 @@ def get_load_balancer_tags(filters: Optional[Sequence[Union['GetLoadBalancerTags
         load_balancer_names=pulumi.get(__ret__, 'load_balancer_names'),
         request_id=pulumi.get(__ret__, 'request_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_load_balancer_tags_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerTagsFilterArgs', 'GetLoadBalancerTagsFilterArgsDict']]]]] = None,
-                                  load_balancer_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_load_balancer_tags_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancerTagsFilterArgs', 'GetLoadBalancerTagsFilterArgsDict', 'outputs.GetLoadBalancerTagsFilterResult']]]]] = None,
+                                  load_balancer_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerTagsResult]:
     """
     Use this data source to access information about an existing resource.

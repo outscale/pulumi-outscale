@@ -183,6 +183,12 @@ func (ApiAccessPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiAccessPolicyState)(nil)).Elem()
 }
 
+// ApiAccessPolicyExists checks whether an existing ApiAccessPolicy resource with the given ID exists.
+func ApiAccessPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiAccessPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/apiAccessPolicy:ApiAccessPolicy", id, state, "", opts...)
+}
+
 type apiAccessPolicyArgs struct {
 	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
 	MaxAccessKeyExpirationSeconds int `pulumi:"maxAccessKeyExpirationSeconds"`

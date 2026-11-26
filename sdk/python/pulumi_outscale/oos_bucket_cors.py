@@ -23,9 +23,10 @@ class OosBucketCorsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  rules: pulumi.Input[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]],
-                 timeouts: Optional[pulumi.Input['OosBucketCorsTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['OosBucketCorsTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OosBucketCors resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to apply the CORS configuration.
         :param pulumi.Input[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]] rules: A rule in the CORS configuration.
         """
@@ -60,22 +61,23 @@ class OosBucketCorsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketCorsTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketCorsTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketCorsTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketCorsTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OosBucketCorsState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketCorsTimeoutsArgs']] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketCorsTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OosBucketCors resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to apply the CORS configuration.
         :param pulumi.Input[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]] rules: A rule in the CORS configuration.
         """
@@ -88,35 +90,35 @@ class _OosBucketCorsState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket to which you want to apply the CORS configuration.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]]]:
         """
         A rule in the CORS configuration.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OosBucketCorsRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketCorsTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketCorsTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketCorsTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketCorsTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -126,9 +128,9 @@ class OosBucketCors(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketCorsTimeoutsArgs', 'OosBucketCorsTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict', 'outputs.OosBucketCorsRule']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketCorsTimeoutsArgs', 'OosBucketCorsTimeoutsArgsDict', 'outputs.OosBucketCorsTimeouts']]] = None,
                  __props__=None):
         """
         Manages a bucket CORS (cross-origin resource sharing) configuration.
@@ -146,6 +148,7 @@ class OosBucketCors(pulumi.CustomResource):
 
         bucket01 = outscale.OosBucket("bucket01")
         cors01 = outscale.OosBucketCors("cors01",
+            bucket=bucket01.id,
             rules=[
                 {
                     "allowed_headers": [
@@ -166,14 +169,14 @@ class OosBucketCors(pulumi.CustomResource):
                     "allowed_origins": ["https://www.example.org"],
                     "max_age_seconds": 1200,
                 },
-            ],
-            bucket=bucket01.id)
+            ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to apply the CORS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict']]]] rules: A rule in the CORS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict', 'outputs.OosBucketCorsRule']]]] rules: A rule in the CORS configuration.
         """
         ...
     @overload
@@ -197,6 +200,7 @@ class OosBucketCors(pulumi.CustomResource):
 
         bucket01 = outscale.OosBucket("bucket01")
         cors01 = outscale.OosBucketCors("cors01",
+            bucket=bucket01.id,
             rules=[
                 {
                     "allowed_headers": [
@@ -217,9 +221,9 @@ class OosBucketCors(pulumi.CustomResource):
                     "allowed_origins": ["https://www.example.org"],
                     "max_age_seconds": 1200,
                 },
-            ],
-            bucket=bucket01.id)
+            ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OosBucketCorsArgs args: The arguments to use to populate this resource's properties.
@@ -236,9 +240,9 @@ class OosBucketCors(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict']]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketCorsTimeoutsArgs', 'OosBucketCorsTimeoutsArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict', 'outputs.OosBucketCorsRule']]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketCorsTimeoutsArgs', 'OosBucketCorsTimeoutsArgsDict', 'outputs.OosBucketCorsTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -265,9 +269,9 @@ class OosBucketCors(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosBucketCorsTimeoutsArgs', 'OosBucketCorsTimeoutsArgsDict']]] = None) -> 'OosBucketCors':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict', 'outputs.OosBucketCorsRule']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketCorsTimeoutsArgs', 'OosBucketCorsTimeoutsArgsDict', 'outputs.OosBucketCorsTimeouts']]] = None) -> 'OosBucketCors':
         """
         Get an existing OosBucketCors resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -276,7 +280,7 @@ class OosBucketCors(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which you want to apply the CORS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict']]]] rules: A rule in the CORS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict', 'outputs.OosBucketCorsRule']]]] rules: A rule in the CORS configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -286,6 +290,18 @@ class OosBucketCors(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         __props__.__dict__["timeouts"] = timeouts
         return OosBucketCors(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OosBucketCorsRuleArgs', 'OosBucketCorsRuleArgsDict', 'outputs.OosBucketCorsRule']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketCorsTimeoutsArgs', 'OosBucketCorsTimeoutsArgsDict', 'outputs.OosBucketCorsTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bucket"] = bucket
+        __props__["rules"] = rules
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosBucketCors:OosBucketCors', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

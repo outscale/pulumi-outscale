@@ -47,14 +47,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var dhcpOption02 = new Outscale.DhcpOption("dhcp_option_02", new()
     ///     {
-    ///         Tags = new[]
-    ///         {
-    ///             new Outscale.Inputs.DhcpOptionTagArgs
-    ///             {
-    ///                 Key = "Name",
-    ///                 Value = "DHCP01",
-    ///             },
-    ///         },
     ///         DomainName = "MyCompany.com",
     ///         DomainNameServers = new[]
     ///         {
@@ -65,6 +57,14 @@ namespace Pulumi.Outscale
     ///         {
     ///             "111.1.1.1",
     ///             "222.2.2.2",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.DhcpOptionTagArgs
+    ///             {
+    ///                 Key = "Name",
+    ///                 Value = "DHCP01",
+    ///             },
     ///         },
     ///     });
     /// 

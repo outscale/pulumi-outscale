@@ -49,6 +49,17 @@ export class OosBucketPolicy extends pulumi.CustomResource {
         return new OosBucketPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing OosBucketPolicy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosBucketPolicyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosBucketPolicy:OosBucketPolicy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/oosBucketPolicy:OosBucketPolicy';
 
@@ -119,7 +130,7 @@ export interface OosBucketPolicyState {
     /**
      * The name of the bucket to which you want to apply the policy.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The bucket policy, encoded as a JSON string (use the jsonencode function to format it).
      * * `Version` - (Required) The version of the policy language (use `2012-10-17`).
@@ -129,8 +140,8 @@ export interface OosBucketPolicyState {
      * * `Action` or `NotAction` - (Required) One or more operations that can or cannot be performed. For more information on operations you can specify in your policy, see [Bucket Policy Supported Actions List](https://docs.outscale.com/en/userguide/Bucket-Policy-Supported-Actions-List.html).
      * * `Resource` - (Required) Specifies the bucket and objects to which the permissions apply, identified by Amazon Resource Names (ARNs).
      */
-    policy?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosBucketPolicyTimeouts>;
+    policy?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketPolicyTimeouts | undefined>;
 }
 
 /**
@@ -151,5 +162,5 @@ export interface OosBucketPolicyArgs {
      * * `Resource` - (Required) Specifies the bucket and objects to which the permissions apply, identified by Amazon Resource Names (ARNs).
      */
     policy: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OosBucketPolicyTimeouts>;
+    timeouts?: pulumi.Input<inputs.OosBucketPolicyTimeouts | undefined>;
 }

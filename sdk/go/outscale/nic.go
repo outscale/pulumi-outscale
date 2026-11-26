@@ -105,6 +105,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewNic(ctx, "nic02", &outscale.NicArgs{
+//				Description: pulumi.String("Terraform nic with private IPs"),
+//				SubnetId:    pulumi.Any(subnet01.SubnetId),
+//				SecurityGroupIds: pulumi.StringArray{
+//					securityGroup01.SecurityGroupId,
+//				},
 //				PrivateIps: outscale.NicPrivateIpTypeArray{
 //					&outscale.NicPrivateIpTypeArgs{
 //						IsPrimary: pulumi.Bool(true),
@@ -114,11 +119,6 @@ import (
 //						IsPrimary: pulumi.Bool(false),
 //						PrivateIp: pulumi.String("10.0.0.5"),
 //					},
-//				},
-//				Description: pulumi.String("Terraform nic with private IPs"),
-//				SubnetId:    pulumi.Any(subnet01.SubnetId),
-//				SecurityGroupIds: pulumi.StringArray{
-//					securityGroup01.SecurityGroupId,
 //				},
 //			})
 //			if err != nil {
@@ -292,6 +292,12 @@ type NicState struct {
 
 func (NicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nicState)(nil)).Elem()
+}
+
+// NicExists checks whether an existing Nic resource with the given ID exists.
+func NicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/nic:Nic", id, state, "", opts...)
 }
 
 type nicArgs struct {

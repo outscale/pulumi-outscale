@@ -32,13 +32,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewVirtualGateway(ctx, "virtual_gateway01", &outscale.VirtualGatewayArgs{
+//				ConnectionType: pulumi.String("ipsec.1"),
 //				Tags: outscale.VirtualGatewayTagArray{
 //					&outscale.VirtualGatewayTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-virtual-gateway"),
 //					},
 //				},
-//				ConnectionType: pulumi.String("ipsec.1"),
 //			})
 //			if err != nil {
 //				return err
@@ -139,6 +139,12 @@ type VirtualGatewayState struct {
 
 func (VirtualGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*virtualGatewayState)(nil)).Elem()
+}
+
+// VirtualGatewayExists checks whether an existing VirtualGateway resource with the given ID exists.
+func VirtualGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VirtualGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/virtualGateway:VirtualGateway", id, state, "", opts...)
 }
 
 type virtualGatewayArgs struct {

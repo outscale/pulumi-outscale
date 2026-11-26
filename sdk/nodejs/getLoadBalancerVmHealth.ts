@@ -105,8 +105,8 @@ export interface GetLoadBalancerVmHealthOutputArgs {
     /**
      * One or more IDs of backend VMs.
      */
-    backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
-    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerVmHealthFilterArgs>[]>;
+    backendVmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerVmHealthFilterArgs>[] | undefined>;
     /**
      * The name of the load balancer.
      */

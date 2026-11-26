@@ -34,7 +34,7 @@ namespace Pulumi.Outscale
 
         private static readonly __Value<string?> _accessKeyId = new __Value<string?>(() => __config.Get("accessKeyId") ?? Utilities.GetEnv("OUTSCALE_ACCESSKEYID"));
         /// <summary>
-        /// The Access Key ID for API operations
+        /// The Access Key ID for API operations.
         /// </summary>
         public static string? AccessKeyId
         {
@@ -42,7 +42,25 @@ namespace Pulumi.Outscale
             set => _accessKeyId.Set(value);
         }
 
+        private static readonly __Value<Pulumi.Outscale.Config.Types.Api?> _api = new __Value<Pulumi.Outscale.Config.Types.Api?>(() => __config.GetObject<Pulumi.Outscale.Config.Types.Api>("api"));
+        public static Pulumi.Outscale.Config.Types.Api? Api
+        {
+            get => _api.Get();
+            set => _api.Set(value);
+        }
+
+        private static readonly __Value<string?> _configFile = new __Value<string?>(() => __config.Get("configFile"));
+        /// <summary>
+        /// Path to the configuration file in which you have defined your credentials.
+        /// </summary>
+        public static string? ConfigFile
+        {
+            get => _configFile.Get();
+            set => _configFile.Set(value);
+        }
+
         private static readonly __Value<ImmutableArray<Pulumi.Outscale.Config.Types.Endpoints>> _endpoints = new __Value<ImmutableArray<Pulumi.Outscale.Config.Types.Endpoints>>(() => __config.GetObject<ImmutableArray<Pulumi.Outscale.Config.Types.Endpoints>>("endpoints"));
+        [Obsolete(@"'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.")]
         public static ImmutableArray<Pulumi.Outscale.Config.Types.Endpoints> Endpoints
         {
             get => _endpoints.Get();
@@ -51,12 +69,37 @@ namespace Pulumi.Outscale
 
         private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure"));
         /// <summary>
-        /// tls insecure connection
+        /// TLS insecure connection for IaaS API operations.
         /// </summary>
+        [Obsolete(@"'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider.")]
         public static bool? Insecure
         {
             get => _insecure.Get();
             set => _insecure.Set(value);
+        }
+
+        private static readonly __Value<Pulumi.Outscale.Config.Types.Oks?> _oks = new __Value<Pulumi.Outscale.Config.Types.Oks?>(() => __config.GetObject<Pulumi.Outscale.Config.Types.Oks>("oks"));
+        public static Pulumi.Outscale.Config.Types.Oks? Oks
+        {
+            get => _oks.Get();
+            set => _oks.Set(value);
+        }
+
+        private static readonly __Value<Pulumi.Outscale.Config.Types.Oos?> _oos = new __Value<Pulumi.Outscale.Config.Types.Oos?>(() => __config.GetObject<Pulumi.Outscale.Config.Types.Oos>("oos"));
+        public static Pulumi.Outscale.Config.Types.Oos? Oos
+        {
+            get => _oos.Get();
+            set => _oos.Set(value);
+        }
+
+        private static readonly __Value<string?> _profile = new __Value<string?>(() => __config.Get("profile"));
+        /// <summary>
+        /// Name of your profile in which you define your credencial
+        /// </summary>
+        public static string? Profile
+        {
+            get => _profile.Get();
+            set => _profile.Set(value);
         }
 
         private static readonly __Value<string?> _region = new __Value<string?>(() => __config.Get("region") ?? Utilities.GetEnv("OUTSCALE_REGION"));
@@ -67,6 +110,16 @@ namespace Pulumi.Outscale
         {
             get => _region.Get();
             set => _region.Set(value);
+        }
+
+        private static readonly __Value<bool?> _sanitize = new __Value<bool?>(() => __config.GetBoolean("sanitize"));
+        /// <summary>
+        /// Sanitize sensitive data in the logs. Defaults to true.
+        /// </summary>
+        public static bool? Sanitize
+        {
+            get => _sanitize.Get();
+            set => _sanitize.Set(value);
         }
 
         private static readonly __Value<string?> _secretKeyId = new __Value<string?>(() => __config.Get("secretKeyId") ?? Utilities.GetEnv("OUTSCALE_SECRETKEYID"));
@@ -81,8 +134,9 @@ namespace Pulumi.Outscale
 
         private static readonly __Value<string?> _x509CertPath = new __Value<string?>(() => __config.Get("x509CertPath"));
         /// <summary>
-        /// The path to your x509 cert
+        /// Path to the x509 certificate for IaaS API operations.
         /// </summary>
+        [Obsolete(@"'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
         public static string? X509CertPath
         {
             get => _x509CertPath.Get();
@@ -91,8 +145,9 @@ namespace Pulumi.Outscale
 
         private static readonly __Value<string?> _x509KeyPath = new __Value<string?>(() => __config.Get("x509KeyPath"));
         /// <summary>
-        /// The path to your x509 key
+        /// Path to the x509 key for IaaS API operations.
         /// </summary>
+        [Obsolete(@"'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
         public static string? X509KeyPath
         {
             get => _x509KeyPath.Get();
@@ -102,12 +157,48 @@ namespace Pulumi.Outscale
         public static class Types
         {
 
+             public class Api
+             {
+                public string? Endpoint { get; set; } = null!;
+            /// <summary>
+            /// TLS insecure connection
+            /// </summary>
+                public bool? Insecure { get; set; }
+                public string? Region { get; set; } = null!;
+            /// <summary>
+            /// Path to the x509 certificate
+            /// </summary>
+                [Obsolete(@"'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
+                public string? X509CertPath { get; set; } = null!;
+            /// <summary>
+            /// Path to the x509 key
+            /// </summary>
+                [Obsolete(@"'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider.")]
+                public string? X509KeyPath { get; set; } = null!;
+            }
+
              public class Endpoints
              {
             /// <summary>
-            /// Use this to override the default service endpoint URL
+            /// The Endpoint for Outscale API operations.
             /// </summary>
                 public string? Api { get; set; } = null!;
+            /// <summary>
+            /// The Endpoint for OKS API operations.
+            /// </summary>
+                public string? Oks { get; set; } = null!;
+            }
+
+             public class Oks
+             {
+                public string? Endpoint { get; set; } = null!;
+                public string? Region { get; set; } = null!;
+            }
+
+             public class Oos
+             {
+                public string? Endpoint { get; set; } = null!;
+                public string? Region { get; set; } = null!;
             }
         }
     }

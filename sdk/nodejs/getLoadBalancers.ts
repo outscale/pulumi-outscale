@@ -107,9 +107,9 @@ export interface GetLoadBalancersOutputArgs {
     /**
      * A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancersFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancersFilterArgs>[] | undefined>;
     /**
      * The name of the load balancer.
      */
-    loadBalancerNames?: pulumi.Input<pulumi.Input<string>[]>;
+    loadBalancerNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

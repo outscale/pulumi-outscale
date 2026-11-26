@@ -59,6 +59,17 @@ export class NetAttributes extends pulumi.CustomResource {
         return new NetAttributes(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing NetAttributes resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NetAttributesState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/netAttributes:NetAttributes", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/netAttributes:NetAttributes';
 
@@ -150,29 +161,29 @@ export interface NetAttributesState {
     /**
      * The ID of the DHCP options set (or `default` if you want to associate the default one).
      */
-    dhcpOptionsSetId?: pulumi.Input<string>;
+    dhcpOptionsSetId?: pulumi.Input<string | undefined>;
     /**
      * The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net.
      */
-    netId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the Net (`pending` \| `available` \| `deleting`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * One or more tags associated with the Net.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.NetAttributesTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.NetAttributesTag>[] | undefined>;
     /**
      * The VM tenancy in a Net.
      */
-    tenancy?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.NetAttributesTimeouts>;
+    tenancy?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.NetAttributesTimeouts | undefined>;
 }
 
 /**
@@ -187,5 +198,5 @@ export interface NetAttributesArgs {
      * The ID of the Net.
      */
     netId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.NetAttributesTimeouts>;
+    timeouts?: pulumi.Input<inputs.NetAttributesTimeouts | undefined>;
 }

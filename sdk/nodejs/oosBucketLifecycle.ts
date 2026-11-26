@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *     status: "Enabled",
  * });
  * const lifecycle01 = new outscale.OosBucketLifecycle("lifecycle01", {
+ *     bucket: bucket01.id,
  *     rules: [{
  *         id: "expire",
  *         status: "Enabled",
@@ -36,7 +37,6 @@ import * as utilities from "./utilities";
  *         },
  *         filter: {},
  *     }],
- *     bucket: bucket01.id,
  * }, {
  *     dependsOn: [versioning01],
  * });
@@ -54,6 +54,7 @@ import * as utilities from "./utilities";
  *     status: "Enabled",
  * });
  * const lifecycle02 = new outscale.OosBucketLifecycle("lifecycle02", {
+ *     bucket: bucket02.id,
  *     rules: [{
  *         id: "expire",
  *         status: "Enabled",
@@ -69,7 +70,6 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     }],
- *     bucket: bucket02.id,
  * }, {
  *     dependsOn: [versioning02],
  * });
@@ -89,6 +89,17 @@ export class OosBucketLifecycle extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OosBucketLifecycleState, opts?: pulumi.CustomResourceOptions): OosBucketLifecycle {
         return new OosBucketLifecycle(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing OosBucketLifecycle resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosBucketLifecycleState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosBucketLifecycle:OosBucketLifecycle", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -152,12 +163,12 @@ export interface OosBucketLifecycleState {
     /**
      * The name of the bucket to which you want to add the lifecycle configuration.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * A rule in the lifecycle configuration.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.OosBucketLifecycleRule>[]>;
-    timeouts?: pulumi.Input<inputs.OosBucketLifecycleTimeouts>;
+    rules?: pulumi.Input<pulumi.Input<inputs.OosBucketLifecycleRule>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketLifecycleTimeouts | undefined>;
 }
 
 /**
@@ -171,6 +182,6 @@ export interface OosBucketLifecycleArgs {
     /**
      * A rule in the lifecycle configuration.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.OosBucketLifecycleRule>[]>;
-    timeouts?: pulumi.Input<inputs.OosBucketLifecycleTimeouts>;
+    rules?: pulumi.Input<pulumi.Input<inputs.OosBucketLifecycleRule>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketLifecycleTimeouts | undefined>;
 }

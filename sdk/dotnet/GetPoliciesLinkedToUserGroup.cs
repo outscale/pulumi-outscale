@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a link policy to user group.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
         /// For more information on this resource actions, see the [ReadManagedPoliciesLinkedToUserGroup](https://docs.outscale.com/api.html#readmanagedpolicieslinkedtousergroup) API method.
         /// 
         /// ## Example Usage
@@ -29,6 +29,7 @@ namespace Pulumi.Outscale
         /// {
         ///     var managedPoliciesLinkedToUserGroup = Outscale.GetPoliciesLinkedToUserGroup.Invoke(new()
         ///     {
+        ///         UserGroupName = "user_group_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetPoliciesLinkedToUserGroupFilterInputArgs
@@ -49,7 +50,6 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
-        ///         UserGroupName = "user_group_name",
         ///     });
         /// 
         /// });
@@ -61,7 +61,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a link policy to user group.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
         /// For more information on this resource actions, see the [ReadManagedPoliciesLinkedToUserGroup](https://docs.outscale.com/api.html#readmanagedpolicieslinkedtousergroup) API method.
         /// 
         /// ## Example Usage
@@ -76,6 +76,7 @@ namespace Pulumi.Outscale
         /// {
         ///     var managedPoliciesLinkedToUserGroup = Outscale.GetPoliciesLinkedToUserGroup.Invoke(new()
         ///     {
+        ///         UserGroupName = "user_group_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetPoliciesLinkedToUserGroupFilterInputArgs
@@ -96,7 +97,6 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
-        ///         UserGroupName = "user_group_name",
         ///     });
         /// 
         /// });
@@ -108,7 +108,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about a link policy to user group.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\
         /// For more information on this resource actions, see the [ReadManagedPoliciesLinkedToUserGroup](https://docs.outscale.com/api.html#readmanagedpolicieslinkedtousergroup) API method.
         /// 
         /// ## Example Usage
@@ -123,6 +123,7 @@ namespace Pulumi.Outscale
         /// {
         ///     var managedPoliciesLinkedToUserGroup = Outscale.GetPoliciesLinkedToUserGroup.Invoke(new()
         ///     {
+        ///         UserGroupName = "user_group_name",
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetPoliciesLinkedToUserGroupFilterInputArgs
@@ -143,7 +144,6 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
-        ///         UserGroupName = "user_group_name",
         ///     });
         /// 
         /// });

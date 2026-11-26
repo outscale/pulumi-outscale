@@ -117,6 +117,12 @@ func (OosBucketEncryptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oosBucketEncryptionState)(nil)).Elem()
 }
 
+// OosBucketEncryptionExists checks whether an existing OosBucketEncryption resource with the given ID exists.
+func OosBucketEncryptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OosBucketEncryptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/oosBucketEncryption:OosBucketEncryption", id, state, "", opts...)
+}
+
 type oosBucketEncryptionArgs struct {
 	// The name of the bucket for which you want to enable encryption.
 	Bucket string `pulumi:"bucket"`

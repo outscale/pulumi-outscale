@@ -111,8 +111,8 @@ def get_user_groups_per_user(user_name: Optional[_builtins.str] = None,
         user_groups=pulumi.get(__ret__, 'user_groups'),
         user_name=pulumi.get(__ret__, 'user_name'),
         user_path=pulumi.get(__ret__, 'user_path'))
-def get_user_groups_per_user_output(user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                    user_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_groups_per_user_output(user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                    user_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupsPerUserResult]:
     """
     Provides information about  groups that a specified user belongs to.

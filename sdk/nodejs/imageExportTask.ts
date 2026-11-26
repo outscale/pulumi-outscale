@@ -33,20 +33,20 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const imageExportTask01 = new outscale.ImageExportTask("image_export_task01", {
+ *     imageId: image01.imageId,
  *     osuExports: [{
+ *         diskImageFormat: "qcow2",
+ *         osuBucket: "terraform-bucket",
+ *         osuPrefix: "new-export",
  *         osuApiKeys: [{
  *             apiKeyId: accessKeyId,
  *             secretKey: secretKeyId,
  *         }],
- *         diskImageFormat: "qcow2",
- *         osuBucket: "terraform-bucket",
- *         osuPrefix: "new-export",
  *     }],
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-snapshot-export-task",
  *     }],
- *     imageId: image01.imageId,
  *     waitForCompletion: false,
  * });
  * ```
@@ -63,6 +63,17 @@ export class ImageExportTask extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageExportTaskState, opts?: pulumi.CustomResourceOptions): ImageExportTask {
         return new ImageExportTask(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing ImageExportTask resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ImageExportTaskState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/imageExportTask:ImageExportTask", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -165,36 +176,36 @@ export interface ImageExportTaskState {
     /**
      * If the OMI export task fails, an error message appears.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The ID of the OMI to export.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Information about the OOS export task to create.
      */
-    osuExports?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskOsuExport>[]>;
+    osuExports?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskOsuExport>[] | undefined>;
     /**
      * The progress of the OMI export task, as a percentage.
      */
-    progress?: pulumi.Input<number>;
-    requestId?: pulumi.Input<string>;
+    progress?: pulumi.Input<number | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The state of the OMI export task (`pending/queued` \| `pending` \| `completed` \| `failed` \| `cancelled`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskTag>[] | undefined>;
     /**
      * The ID of the OMI export task.
      */
-    taskId?: pulumi.Input<string>;
+    taskId?: pulumi.Input<string | undefined>;
     /**
      * By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -212,9 +223,9 @@ export interface ImageExportTaskArgs {
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ImageExportTaskTag>[] | undefined>;
     /**
      * By default or if set to true, the resource is returned only after the export task is completed. If false, the resource returns immediately without waiting for the export task to complete.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }

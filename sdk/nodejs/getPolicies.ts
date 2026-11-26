@@ -107,5 +107,5 @@ export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getPolicies.
  */
 export interface GetPoliciesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetPoliciesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetPoliciesFilterArgs>[] | undefined>;
 }

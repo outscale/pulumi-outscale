@@ -165,7 +165,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             tags=self.tags)
 
 
-def get_subnet(filters: Optional[Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict']]] = None,
+def get_subnet(filters: Optional[Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict', 'outputs.GetSubnetFilterResult']]] = None,
                subnet_id: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
@@ -187,7 +187,7 @@ def get_subnet(filters: Optional[Sequence[Union['GetSubnetFilterArgs', 'GetSubne
     ```
 
 
-    :param Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict', 'outputs.GetSubnetFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str subnet_id: The ID of the Subnet.
     """
     __args__ = dict()
@@ -208,8 +208,8 @@ def get_subnet(filters: Optional[Sequence[Union['GetSubnetFilterArgs', 'GetSubne
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         subregion_name=pulumi.get(__ret__, 'subregion_name'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_subnet_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict']]]]] = None,
-                      subnet_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_subnet_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict', 'outputs.GetSubnetFilterResult']]]]] = None,
+                      subnet_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetResult]:
     """
     Provides information about a Subnet.
@@ -230,7 +230,7 @@ def get_subnet_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
     ```
 
 
-    :param Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetSubnetFilterArgs', 'GetSubnetFilterArgsDict', 'outputs.GetSubnetFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str subnet_id: The ID of the Subnet.
     """
     __args__ = dict()

@@ -76,6 +76,17 @@ export class SecurityGroup extends pulumi.CustomResource {
         return new SecurityGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing SecurityGroup resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: SecurityGroupState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/securityGroup:SecurityGroup", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/securityGroup:SecurityGroup';
 
@@ -185,44 +196,44 @@ export interface SecurityGroupState {
     /**
      * The OUTSCALE account ID that owns the source or destination security group.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A description for the security group.<br />
      * This description can contain between 1 and 255 characters. Allowed characters are `a-z`, `A-Z`, `0-9`, accented letters, spaces, and `_.-:/()#,@[]+=&;{}!$*`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The inbound rules associated with the security group.
      */
-    inboundRules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupInboundRule>[]>;
+    inboundRules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupInboundRule>[] | undefined>;
     /**
      * The ID of the Net for the security group.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The outbound rules associated with the security group.
      */
-    outboundRules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupOutboundRule>[]>;
+    outboundRules?: pulumi.Input<pulumi.Input<inputs.SecurityGroupOutboundRule>[] | undefined>;
     /**
      * (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
      */
-    removeDefaultOutboundRule?: pulumi.Input<boolean>;
-    requestId?: pulumi.Input<string>;
+    removeDefaultOutboundRule?: pulumi.Input<boolean | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * A name for the security group.<br />
      * This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
      * If not specified, the security group name is randomly generated.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[]>;
-    timeouts?: pulumi.Input<inputs.SecurityGroupTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.SecurityGroupTimeouts | undefined>;
 }
 
 /**
@@ -237,20 +248,20 @@ export interface SecurityGroupArgs {
     /**
      * The ID of the Net for the security group.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * (Net only) By default or if set to false, the security group is created with a default outbound rule allowing all outbound flows. If set to true, the security group is created without a default outbound rule. For an existing security group, setting this parameter to true deletes the security group and creates a new one.
      */
-    removeDefaultOutboundRule?: pulumi.Input<boolean>;
+    removeDefaultOutboundRule?: pulumi.Input<boolean | undefined>;
     /**
      * A name for the security group.<br />
      * This name must be unique and contain between 1 and 255 characters. It must not start with `sg-`. Allowed characters are `a-z`, `A-Z`, `0-9`, spaces, and `_.-:/()#,@[]+=&;{}!$*`.<br />
      * If not specified, the security group name is randomly generated.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[]>;
-    timeouts?: pulumi.Input<inputs.SecurityGroupTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.SecurityGroupTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.SecurityGroupTimeouts | undefined>;
 }

@@ -87,12 +87,8 @@ type GetVmStatesResult struct {
 }
 
 func GetVmStatesOutput(ctx *pulumi.Context, args GetVmStatesOutputArgs, opts ...pulumi.InvokeOption) GetVmStatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVmStatesResultOutput, error) {
-			args := v.(GetVmStatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getVmStates:getVmStates", args, GetVmStatesResultOutput{}, options).(GetVmStatesResultOutput), nil
-		}).(GetVmStatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getVmStates:getVmStates", args, GetVmStatesResultOutput{}, options).(GetVmStatesResultOutput)
 }
 
 // A collection of arguments for invoking getVmStates.

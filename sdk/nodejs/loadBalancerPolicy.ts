@@ -21,14 +21,14 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
+ *     loadBalancerName: "terraform-lb-for-browser-policy",
+ *     subregionNames: ["eu-west-2a"],
  *     listeners: [{
  *         backendPort: 8080,
  *         backendProtocol: "HTTP",
  *         loadBalancerPort: 8080,
  *         loadBalancerProtocol: "HTTP",
  *     }],
- *     loadBalancerName: "terraform-lb-for-browser-policy",
- *     subregionNames: ["eu-west-2a"],
  * });
  * const loadBalancerPolicy01 = new outscale.LoadBalancerPolicy("load_balancer_policy01", {
  *     loadBalancerName: "terraform-lb-for-browser-policy",
@@ -44,14 +44,14 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer02 = new outscale.LoadBalancer("load_balancer02", {
+ *     loadBalancerName: "terraform-lb-for-app-policy",
+ *     subregionNames: [`${region}b`],
  *     listeners: [{
  *         loadBalancerPort: 80,
  *         loadBalancerProtocol: "TCP",
  *         backendPort: 80,
  *         backendProtocol: "TCP",
  *     }],
- *     loadBalancerName: "terraform-lb-for-app-policy",
- *     subregionNames: [`${region}b`],
  * });
  * const loadBalancerPolicy02 = new outscale.LoadBalancerPolicy("load_balancer_policy02", {
  *     loadBalancerName: loadBalancer02.loadBalancerName,
@@ -75,6 +75,17 @@ export class LoadBalancerPolicy extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoadBalancerPolicyState, opts?: pulumi.CustomResourceOptions): LoadBalancerPolicy {
         return new LoadBalancerPolicy(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing LoadBalancerPolicy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: LoadBalancerPolicyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/loadBalancerPolicy:LoadBalancerPolicy", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -255,83 +266,83 @@ export interface LoadBalancerPolicyState {
     /**
      * Information about access logs.
      */
-    accessLogs?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyAccessLog>[]>;
+    accessLogs?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyAccessLog>[] | undefined>;
     /**
      * The stickiness policies defined for the load balancer.
      */
-    applicationStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyApplicationStickyCookiePolicy>[]>;
+    applicationStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyApplicationStickyCookiePolicy>[] | undefined>;
     /**
      * One or more IDs of backend VMs for the load balancer.
      */
-    backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
-    cookieExpirationPeriod?: pulumi.Input<number>;
+    backendVmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    cookieExpirationPeriod?: pulumi.Input<number | undefined>;
     /**
      * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
-    cookieName?: pulumi.Input<string>;
+    cookieName?: pulumi.Input<string | undefined>;
     /**
      * The DNS name of the load balancer.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * Information about the health check configuration.
      */
-    healthChecks?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyHealthCheck>[]>;
+    healthChecks?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyHealthCheck>[] | undefined>;
     /**
      * The listeners for the load balancer.
      */
-    listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyListener>[] | undefined>;
     /**
      * The name of the load balancer for which you want to create a policy.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * The policies defined for the load balancer.
      */
-    loadBalancerStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyLoadBalancerStickyCookiePolicy>[]>;
+    loadBalancerStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyLoadBalancerStickyCookiePolicy>[] | undefined>;
     /**
      * The type of load balancer. Valid only for load balancers in a Net.<br />
      * If `loadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
      * If `loadBalancerType` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
      */
-    loadBalancerType?: pulumi.Input<string>;
+    loadBalancerType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net for the load balancer.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The type of stickiness policy you want to create: `app` or `loadBalancer`.
      */
-    policyType?: pulumi.Input<string>;
-    publicIp?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
-    securedCookies?: pulumi.Input<boolean>;
+    policyType?: pulumi.Input<string | undefined>;
+    publicIp?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    securedCookies?: pulumi.Input<boolean | undefined>;
     /**
      * One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
      * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
      */
-    sourceSecurityGroups?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicySourceSecurityGroup>[]>;
+    sourceSecurityGroups?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicySourceSecurityGroup>[] | undefined>;
     /**
      * The ID of the Subnet in which the load balancer was created.
      */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Subregion in which the load balancer was created.
      */
-    subregionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subregionNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more tags associated with the load balancer.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyTag>[]>;
-    timeouts?: pulumi.Input<inputs.LoadBalancerPolicyTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPolicyTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerPolicyTimeouts | undefined>;
 }
 
 /**
@@ -341,12 +352,12 @@ export interface LoadBalancerPolicyArgs {
     /**
      * One or more IDs of backend VMs for the load balancer.
      */
-    backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
-    cookieExpirationPeriod?: pulumi.Input<number>;
+    backendVmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    cookieExpirationPeriod?: pulumi.Input<number | undefined>;
     /**
      * The name of the application cookie used for stickiness, between 1 and 255 characters. This parameter is required if you create a stickiness policy based on an application-generated cookie.
      */
-    cookieName?: pulumi.Input<string>;
+    cookieName?: pulumi.Input<string | undefined>;
     /**
      * The name of the load balancer for which you want to create a policy.
      */
@@ -356,7 +367,7 @@ export interface LoadBalancerPolicyArgs {
      * If `loadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
      * If `loadBalancerType` is `internal`, the load balancer has a public DNS name that resolves to a private IP.
      */
-    loadBalancerType?: pulumi.Input<string>;
+    loadBalancerType?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (`-`).
      */
@@ -368,14 +379,14 @@ export interface LoadBalancerPolicyArgs {
     /**
      * One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Subnet in which the load balancer was created.
      */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Subregion in which the load balancer was created.
      */
-    subregionNames?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.LoadBalancerPolicyTimeouts>;
+    subregionNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerPolicyTimeouts | undefined>;
 }

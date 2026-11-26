@@ -70,6 +70,17 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
         return new VpnConnectionRoute(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing VpnConnectionRoute resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VpnConnectionRouteState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/vpnConnectionRoute:VpnConnectionRoute", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/vpnConnectionRoute:VpnConnectionRoute';
 
@@ -137,13 +148,13 @@ export interface VpnConnectionRouteState {
     /**
      * The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
      */
-    destinationIpRange?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VpnConnectionRouteTimeouts>;
+    destinationIpRange?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionRouteTimeouts | undefined>;
     /**
      * The ID of the target VPN connection of the static route.
      */
-    vpnConnectionId?: pulumi.Input<string>;
+    vpnConnectionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,7 +165,7 @@ export interface VpnConnectionRouteArgs {
      * The network prefix of the route, in CIDR notation (for example, `10.12.0.0/16`).
      */
     destinationIpRange: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VpnConnectionRouteTimeouts>;
+    timeouts?: pulumi.Input<inputs.VpnConnectionRouteTimeouts | undefined>;
     /**
      * The ID of the target VPN connection of the static route.
      */

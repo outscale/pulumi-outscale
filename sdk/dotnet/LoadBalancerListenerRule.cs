@@ -36,6 +36,11 @@ namespace Pulumi.Outscale
     /// 
     ///     var loadBalancer01 = new Outscale.LoadBalancer("load_balancer01", new()
     ///     {
+    ///         LoadBalancerName = "terraform-public-load-balancer",
+    ///         SubregionNames = new[]
+    ///         {
+    ///             $"{region}a",
+    ///         },
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -53,11 +58,6 @@ namespace Pulumi.Outscale
     ///                 Key = "name",
     ///                 Value = "terraform-public-load-balancer",
     ///             },
-    ///         },
-    ///         LoadBalancerName = "terraform-public-load-balancer",
-    ///         SubregionNames = new[]
-    ///         {
-    ///             $"{region}a",
     ///         },
     ///     });
     /// 

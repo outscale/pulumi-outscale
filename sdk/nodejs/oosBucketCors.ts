@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *
  * const bucket01 = new outscale.OosBucket("bucket01", {});
  * const cors01 = new outscale.OosBucketCors("cors01", {
+ *     bucket: bucket01.id,
  *     rules: [
  *         {
  *             allowedHeaders: [
@@ -43,7 +44,6 @@ import * as utilities from "./utilities";
  *             maxAgeSeconds: 1200,
  *         },
  *     ],
- *     bucket: bucket01.id,
  * });
  * ```
  */
@@ -59,6 +59,17 @@ export class OosBucketCors extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OosBucketCorsState, opts?: pulumi.CustomResourceOptions): OosBucketCors {
         return new OosBucketCors(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing OosBucketCors resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OosBucketCorsState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/oosBucketCors:OosBucketCors", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -125,12 +136,12 @@ export interface OosBucketCorsState {
     /**
      * The name of the bucket to which you want to apply the CORS configuration.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * A rule in the CORS configuration.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.OosBucketCorsRule>[]>;
-    timeouts?: pulumi.Input<inputs.OosBucketCorsTimeouts>;
+    rules?: pulumi.Input<pulumi.Input<inputs.OosBucketCorsRule>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.OosBucketCorsTimeouts | undefined>;
 }
 
 /**
@@ -145,5 +156,5 @@ export interface OosBucketCorsArgs {
      * A rule in the CORS configuration.
      */
     rules: pulumi.Input<pulumi.Input<inputs.OosBucketCorsRule>[]>;
-    timeouts?: pulumi.Input<inputs.OosBucketCorsTimeouts>;
+    timeouts?: pulumi.Input<inputs.OosBucketCorsTimeouts | undefined>;
 }

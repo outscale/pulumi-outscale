@@ -99,7 +99,7 @@ export interface GetEntitiesLinkedToPolicyOutputArgs {
     /**
      * The type of entity linked to the policy (`ACCOUNT` \| `USER` \| `GROUP`) you want to get information about.
      */
-    entitiesTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    entitiesTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The OUTSCALE Resource Name (ORN) of the policy. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
      */

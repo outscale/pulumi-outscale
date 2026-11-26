@@ -29,6 +29,11 @@ namespace Pulumi.Outscale
     /// {
     ///     var loadBalancer01 = new Outscale.LoadBalancer("load_balancer01", new()
     ///     {
+    ///         LoadBalancerName = "terraform-public-load-balancer",
+    ///         SubregionNames = new[]
+    ///         {
+    ///             $"{region}a",
+    ///         },
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -46,11 +51,6 @@ namespace Pulumi.Outscale
     ///                 Key = "name",
     ///                 Value = "terraform-public-load-balancer",
     ///             },
-    ///         },
-    ///         LoadBalancerName = "terraform-public-load-balancer",
-    ///         SubregionNames = new[]
-    ///         {
-    ///             $"{region}a",
     ///         },
     ///     });
     /// 
@@ -74,6 +74,8 @@ namespace Pulumi.Outscale
     /// 
     ///     var subnet01 = new Outscale.Subnet("subnet01", new()
     ///     {
+    ///         NetId = net01.NetId,
+    ///         IpRange = "10.0.0.0/24",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.SubnetTagArgs
@@ -82,12 +84,13 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-subnet-for-internal-load-balancer",
     ///             },
     ///         },
-    ///         NetId = net01.NetId,
-    ///         IpRange = "10.0.0.0/24",
     ///     });
     /// 
     ///     var securityGroup01 = new Outscale.SecurityGroup("security_group01", new()
     ///     {
+    ///         Description = "Terraform security group for internal load balancer",
+    ///         SecurityGroupName = "terraform-security-group-for-internal-load-balancer",
+    ///         NetId = net01.NetId,
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.SecurityGroupTagArgs
@@ -96,13 +99,11 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-security-group-for-internal-load-balancer",
     ///             },
     ///         },
-    ///         Description = "Terraform security group for internal load balancer",
-    ///         SecurityGroupName = "terraform-security-group-for-internal-load-balancer",
-    ///         NetId = net01.NetId,
     ///     });
     /// 
     ///     var loadBalancer02 = new Outscale.LoadBalancer("load_balancer02", new()
     ///     {
+    ///         LoadBalancerName = "terraform-private-load-balancer",
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -113,15 +114,6 @@ namespace Pulumi.Outscale
     ///                 LoadBalancerPort = 80,
     ///             },
     ///         },
-    ///         Tags = new[]
-    ///         {
-    ///             new Outscale.Inputs.LoadBalancerTagArgs
-    ///             {
-    ///                 Key = "name",
-    ///                 Value = "terraform-private-load-balancer",
-    ///             },
-    ///         },
-    ///         LoadBalancerName = "terraform-private-load-balancer",
     ///         Subnets = new[]
     ///         {
     ///             subnet01.SubnetId,
@@ -131,6 +123,14 @@ namespace Pulumi.Outscale
     ///             securityGroup01.SecurityGroupId,
     ///         },
     ///         LoadBalancerType = "internal",
+    ///         Tags = new[]
+    ///         {
+    ///             new Outscale.Inputs.LoadBalancerTagArgs
+    ///             {
+    ///                 Key = "name",
+    ///                 Value = "terraform-private-load-balancer",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -153,6 +153,8 @@ namespace Pulumi.Outscale
     /// 
     ///     var subnet02 = new Outscale.Subnet("subnet02", new()
     ///     {
+    ///         NetId = net02.NetId,
+    ///         IpRange = "10.0.0.0/24",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.SubnetTagArgs
@@ -161,8 +163,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-security-group-for-load-balancer",
     ///             },
     ///         },
-    ///         NetId = net02.NetId,
-    ///         IpRange = "10.0.0.0/24",
     ///     });
     /// 
     ///     var internetService01 = new Outscale.InternetService("internet_service01", new()
@@ -183,6 +183,7 @@ namespace Pulumi.Outscale
     /// 
     ///     var routeTable01 = new Outscale.RouteTable("route_table01", new()
     ///     {
+    ///         NetId = net02.NetId,
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.RouteTableTagArgs
@@ -191,7 +192,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-route-table-for-load-balancer",
     ///             },
     ///         },
-    ///         NetId = net02.NetId,
     ///     });
     /// 
     ///     var route01 = new Outscale.Route("route01", new()
@@ -209,6 +209,7 @@ namespace Pulumi.Outscale
     /// 
     ///     var loadBalancer03 = new Outscale.LoadBalancer("load_balancer03", new()
     ///     {
+    ///         LoadBalancerName = "terraform-internet-private-lb",
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -226,6 +227,12 @@ namespace Pulumi.Outscale
     ///                 LoadBalancerPort = 8080,
     ///             },
     ///         },
+    ///         Subnets = new[]
+    ///         {
+    ///             subnet02.SubnetId,
+    ///         },
+    ///         LoadBalancerType = "internet-facing",
+    ///         PublicIp = "192.0.2.0",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerTagArgs
@@ -234,13 +241,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-internet-private-lb",
     ///             },
     ///         },
-    ///         LoadBalancerName = "terraform-internet-private-lb",
-    ///         Subnets = new[]
-    ///         {
-    ///             subnet02.SubnetId,
-    ///         },
-    ///         LoadBalancerType = "internet-facing",
-    ///         PublicIp = "192.0.2.0",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

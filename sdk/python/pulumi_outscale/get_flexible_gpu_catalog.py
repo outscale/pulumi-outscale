@@ -81,7 +81,7 @@ class AwaitableGetFlexibleGpuCatalogResult(GetFlexibleGpuCatalogResult):
             request_id=self.request_id)
 
 
-def get_flexible_gpu_catalog(filters: Optional[Sequence[Union['GetFlexibleGpuCatalogFilterArgs', 'GetFlexibleGpuCatalogFilterArgsDict']]] = None,
+def get_flexible_gpu_catalog(filters: Optional[Sequence[Union['GetFlexibleGpuCatalogFilterArgs', 'GetFlexibleGpuCatalogFilterArgsDict', 'outputs.GetFlexibleGpuCatalogFilterResult']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlexibleGpuCatalogResult:
     """
     Provides information about the flexible GPU catalog.
@@ -108,7 +108,7 @@ def get_flexible_gpu_catalog(filters: Optional[Sequence[Union['GetFlexibleGpuCat
         flexible_gpu_catalogs=pulumi.get(__ret__, 'flexible_gpu_catalogs'),
         id=pulumi.get(__ret__, 'id'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_flexible_gpu_catalog_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetFlexibleGpuCatalogFilterArgs', 'GetFlexibleGpuCatalogFilterArgsDict']]]]] = None,
+def get_flexible_gpu_catalog_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetFlexibleGpuCatalogFilterArgs', 'GetFlexibleGpuCatalogFilterArgsDict', 'outputs.GetFlexibleGpuCatalogFilterResult']]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlexibleGpuCatalogResult]:
     """
     Provides information about the flexible GPU catalog.

@@ -24,6 +24,7 @@ class NicLinkArgs:
                  vm_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a NicLink resource.
+
         :param pulumi.Input[_builtins.int] device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included).
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC you want to attach.
         :param pulumi.Input[_builtins.str] vm_id: The ID of the VM to which you want to attach the NIC.
@@ -72,16 +73,17 @@ class NicLinkArgs:
 @pulumi.input_type
 class _NicLinkState:
     def __init__(__self__, *,
-                 delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 link_nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 link_nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NicLink resources.
+
         :param pulumi.Input[_builtins.int] device_number: The index of the VM device for the NIC attachment (between `1` and `7`, both included).
         :param pulumi.Input[_builtins.str] link_nic_id: The ID of the NIC attachment.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC you want to attach.
@@ -106,86 +108,86 @@ class _NicLinkState:
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")
-    def delete_on_vm_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_vm_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "delete_on_vm_deletion")
 
     @delete_on_vm_deletion.setter
-    def delete_on_vm_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_vm_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_vm_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceNumber")
-    def device_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def device_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The index of the VM device for the NIC attachment (between `1` and `7`, both included).
         """
         return pulumi.get(self, "device_number")
 
     @device_number.setter
-    def device_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def device_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "device_number", value)
 
     @_builtins.property
     @pulumi.getter(name="linkNicId")
-    def link_nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NIC attachment.
         """
         return pulumi.get(self, "link_nic_id")
 
     @link_nic_id.setter
-    def link_nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NIC you want to attach.
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="vmAccountId")
-    def vm_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vm_account_id")
 
     @vm_account_id.setter
-    def vm_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM to which you want to attach the NIC.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -195,9 +197,9 @@ class NicLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a NIC link.
@@ -247,6 +249,7 @@ class NicLink(pulumi.CustomResource):
         $ pulumi import outscale:index/nicLink:NicLink ImportedNicLink eni-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -309,6 +312,7 @@ class NicLink(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param NicLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -324,9 +328,9 @@ class NicLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -360,14 +364,14 @@ class NicLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_on_vm_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-            device_number: Optional[pulumi.Input[_builtins.int]] = None,
-            link_nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NicLink':
+            delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            device_number: pulumi.Input[Optional[_builtins.int]] = None,
+            link_nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NicLink':
         """
         Get an existing NicLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -393,6 +397,28 @@ class NicLink(pulumi.CustomResource):
         __props__.__dict__["vm_account_id"] = vm_account_id
         __props__.__dict__["vm_id"] = vm_id
         return NicLink(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            delete_on_vm_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            device_number: pulumi.Input[Optional[_builtins.int]] = None,
+            link_nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deleteOnVmDeletion"] = delete_on_vm_deletion
+        __props__["deviceNumber"] = device_number
+        __props__["linkNicId"] = link_nic_id
+        __props__["nicId"] = nic_id
+        __props__["requestId"] = request_id
+        __props__["state"] = state
+        __props__["vmAccountId"] = vm_account_id
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/nicLink:NicLink', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="deleteOnVmDeletion")

@@ -107,5 +107,5 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetUserFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetUserFilterArgs>[] | undefined>;
 }

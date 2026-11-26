@@ -23,9 +23,10 @@ class InternetServiceLinkArgs:
     def __init__(__self__, *,
                  internet_service_id: pulumi.Input[_builtins.str],
                  net_id: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['InternetServiceLinkTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['InternetServiceLinkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a InternetServiceLink resource.
+
         :param pulumi.Input[_builtins.str] internet_service_id: The ID of the internet service you want to attach.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the internet service.
         """
@@ -60,25 +61,26 @@ class InternetServiceLinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['InternetServiceLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['InternetServiceLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['InternetServiceLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['InternetServiceLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _InternetServiceLinkState:
     def __init__(__self__, *,
-                 internet_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]]] = None,
-                 timeouts: Optional[pulumi.Input['InternetServiceLinkTimeoutsArgs']] = None):
+                 internet_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]]] = None,
+                 timeouts: pulumi.Input[Optional['InternetServiceLinkTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering InternetServiceLink resources.
+
         :param pulumi.Input[_builtins.str] internet_service_id: The ID of the internet service you want to attach.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the internet service.
         :param pulumi.Input[_builtins.str] state: The state of the attachment of the internet service to the Net (always `available`).
@@ -99,68 +101,68 @@ class _InternetServiceLinkState:
 
     @_builtins.property
     @pulumi.getter(name="internetServiceId")
-    def internet_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the internet service you want to attach.
         """
         return pulumi.get(self, "internet_service_id")
 
     @internet_service_id.setter
-    def internet_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net to which you want to attach the internet service.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the attachment of the internet service to the Net (always `available`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]]]:
         """
         One or more tags associated with the internet service.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InternetServiceLinkTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['InternetServiceLinkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['InternetServiceLinkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['InternetServiceLinkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['InternetServiceLinkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -170,9 +172,9 @@ class InternetServiceLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 internet_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict']]] = None,
+                 internet_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict', 'outputs.InternetServiceLinkTimeouts']]] = None,
                  __props__=None):
         """
         Manages an internet service link.
@@ -212,6 +214,7 @@ class InternetServiceLink(pulumi.CustomResource):
         $ pulumi import outscale:index/internetServiceLink:InternetServiceLink ImportedInternetServiceLink igw-87654321
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -263,6 +266,7 @@ class InternetServiceLink(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param InternetServiceLinkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -278,9 +282,9 @@ class InternetServiceLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 internet_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict']]] = None,
+                 internet_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict', 'outputs.InternetServiceLinkTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -310,12 +314,12 @@ class InternetServiceLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            internet_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InternetServiceLinkTagArgs', 'InternetServiceLinkTagArgsDict']]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict']]] = None) -> 'InternetServiceLink':
+            internet_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InternetServiceLinkTagArgs', 'InternetServiceLinkTagArgsDict', 'outputs.InternetServiceLinkTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict', 'outputs.InternetServiceLinkTimeouts']]] = None) -> 'InternetServiceLink':
         """
         Get an existing InternetServiceLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -326,7 +330,7 @@ class InternetServiceLink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] internet_service_id: The ID of the internet service you want to attach.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net to which you want to attach the internet service.
         :param pulumi.Input[_builtins.str] state: The state of the attachment of the internet service to the Net (always `available`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InternetServiceLinkTagArgs', 'InternetServiceLinkTagArgsDict']]]] tags: One or more tags associated with the internet service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InternetServiceLinkTagArgs', 'InternetServiceLinkTagArgsDict', 'outputs.InternetServiceLinkTag']]]] tags: One or more tags associated with the internet service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -339,6 +343,24 @@ class InternetServiceLink(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timeouts"] = timeouts
         return InternetServiceLink(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            internet_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InternetServiceLinkTagArgs', 'InternetServiceLinkTagArgsDict', 'outputs.InternetServiceLinkTag']]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['InternetServiceLinkTimeoutsArgs', 'InternetServiceLinkTimeoutsArgsDict', 'outputs.InternetServiceLinkTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["internetServiceId"] = internet_service_id
+        __props__["netId"] = net_id
+        __props__["requestId"] = request_id
+        __props__["state"] = state
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/internetServiceLink:InternetServiceLink', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="internetServiceId")

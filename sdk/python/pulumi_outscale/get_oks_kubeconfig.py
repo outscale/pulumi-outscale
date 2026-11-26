@@ -172,11 +172,11 @@ def get_oks_kubeconfig(cluster_id: Optional[_builtins.str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         user=pulumi.get(__ret__, 'user'),
         x_encrypt_nacl=pulumi.get(__ret__, 'x_encrypt_nacl'))
-def get_oks_kubeconfig_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              group: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              ttl: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              user: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              x_encrypt_nacl: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_oks_kubeconfig_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              group: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              ttl: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              user: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              x_encrypt_nacl: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOksKubeconfigResult]:
     """
     Provides information about a kubeconfig file.

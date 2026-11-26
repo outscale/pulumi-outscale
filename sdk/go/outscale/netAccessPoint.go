@@ -66,17 +66,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewNetAccessPoint(ctx, "net_access_point01", &outscale.NetAccessPointArgs{
+//				NetId: pulumi.Any(net01.NetId),
+//				RouteTableIds: pulumi.StringArray{
+//					routeTable01.RouteTableId,
+//				},
+//				ServiceName: pulumi.String("com.outscale.eu-west-2.api"),
 //				Tags: outscale.NetAccessPointTagArray{
 //					&outscale.NetAccessPointTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-net-access-point"),
 //					},
 //				},
-//				NetId: pulumi.Any(net01.NetId),
-//				RouteTableIds: pulumi.StringArray{
-//					routeTable01.RouteTableId,
-//				},
-//				ServiceName: pulumi.String("com.outscale.eu-west-2.api"),
 //			})
 //			if err != nil {
 //				return err
@@ -186,6 +186,12 @@ type NetAccessPointState struct {
 
 func (NetAccessPointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*netAccessPointState)(nil)).Elem()
+}
+
+// NetAccessPointExists checks whether an existing NetAccessPoint resource with the given ID exists.
+func NetAccessPointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetAccessPointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/netAccessPoint:NetAccessPoint", id, state, "", opts...)
 }
 
 type netAccessPointArgs struct {

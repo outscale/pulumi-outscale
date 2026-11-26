@@ -62,10 +62,8 @@ type LookupApiAccessPolicyResult struct {
 }
 
 func LookupApiAccessPolicyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupApiAccessPolicyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupApiAccessPolicyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("outscale:index/getApiAccessPolicy:getApiAccessPolicy", nil, LookupApiAccessPolicyResultOutput{}, options).(LookupApiAccessPolicyResultOutput), nil
-	}).(LookupApiAccessPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getApiAccessPolicy:getApiAccessPolicy", nil, LookupApiAccessPolicyResultOutput{}, options).(LookupApiAccessPolicyResultOutput)
 }
 
 // A collection of values returned by getApiAccessPolicy.

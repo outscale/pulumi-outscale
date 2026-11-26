@@ -87,12 +87,8 @@ type LookupNatServiceResult struct {
 }
 
 func LookupNatServiceOutput(ctx *pulumi.Context, args LookupNatServiceOutputArgs, opts ...pulumi.InvokeOption) LookupNatServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNatServiceResultOutput, error) {
-			args := v.(LookupNatServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getNatService:getNatService", args, LookupNatServiceResultOutput{}, options).(LookupNatServiceResultOutput), nil
-		}).(LookupNatServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getNatService:getNatService", args, LookupNatServiceResultOutput{}, options).(LookupNatServiceResultOutput)
 }
 
 // A collection of arguments for invoking getNatService.

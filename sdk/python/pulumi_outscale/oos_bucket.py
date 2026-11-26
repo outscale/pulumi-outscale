@@ -21,14 +21,15 @@ __all__ = ['OosBucketArgs', 'OosBucket']
 @pulumi.input_type
 class OosBucketArgs:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input['OosBucketGrantArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input['OosBucketObjectLockArgs']] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketTimeoutsArgs']] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional['OosBucketGrantArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional['OosBucketObjectLockArgs']] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OosBucket resource.
+
         :param pulumi.Input[_builtins.str] acl: The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.bool] force_delete: (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
         :param pulumi.Input['OosBucketGrantArgs'] grant: The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
@@ -50,88 +51,89 @@ class OosBucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def grant(self) -> Optional[pulumi.Input['OosBucketGrantArgs']]:
+    def grant(self) -> pulumi.Input[Optional['OosBucketGrantArgs']]:
         """
         The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "grant")
 
     @grant.setter
-    def grant(self, value: Optional[pulumi.Input['OosBucketGrantArgs']]):
+    def grant(self, value: pulumi.Input[Optional['OosBucketGrantArgs']]):
         pulumi.set(self, "grant", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket name. If omitted, the provider generates a unique name prefixed with `bucket-`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="objectLock")
-    def object_lock(self) -> Optional[pulumi.Input['OosBucketObjectLockArgs']]:
+    def object_lock(self) -> pulumi.Input[Optional['OosBucketObjectLockArgs']]:
         """
         Object lock configuration for the bucket.
         """
         return pulumi.get(self, "object_lock")
 
     @object_lock.setter
-    def object_lock(self, value: Optional[pulumi.Input['OosBucketObjectLockArgs']]):
+    def object_lock(self, value: pulumi.Input[Optional['OosBucketObjectLockArgs']]):
         pulumi.set(self, "object_lock", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OosBucketState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input['OosBucketGrantArgs']] = None,
-                 location_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input['OosBucketObjectLockArgs']] = None,
-                 permissions: Optional[pulumi.Input['OosBucketPermissionsArgs']] = None,
-                 timeouts: Optional[pulumi.Input['OosBucketTimeoutsArgs']] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional['OosBucketGrantArgs']] = None,
+                 location_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional['OosBucketObjectLockArgs']] = None,
+                 permissions: pulumi.Input[Optional['OosBucketPermissionsArgs']] = None,
+                 timeouts: pulumi.Input[Optional['OosBucketTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OosBucket resources.
+
         :param pulumi.Input[_builtins.str] acl: The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.str] creation_date: The date and time of creation of the bucket (for example, `2010-10-01 12:34:56.78 +0000 UTC`).
         :param pulumi.Input[_builtins.bool] force_delete: (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
@@ -162,107 +164,107 @@ class _OosBucketState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time of creation of the bucket (for example, `2010-10-01 12:34:56.78 +0000 UTC`).
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def grant(self) -> Optional[pulumi.Input['OosBucketGrantArgs']]:
+    def grant(self) -> pulumi.Input[Optional['OosBucketGrantArgs']]:
         """
         The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "grant")
 
     @grant.setter
-    def grant(self, value: Optional[pulumi.Input['OosBucketGrantArgs']]):
+    def grant(self, value: pulumi.Input[Optional['OosBucketGrantArgs']]):
         pulumi.set(self, "grant", value)
 
     @_builtins.property
     @pulumi.getter(name="locationName")
-    def location_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the location of the bucket.
         """
         return pulumi.get(self, "location_name")
 
     @location_name.setter
-    def location_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket name. If omitted, the provider generates a unique name prefixed with `bucket-`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="objectLock")
-    def object_lock(self) -> Optional[pulumi.Input['OosBucketObjectLockArgs']]:
+    def object_lock(self) -> pulumi.Input[Optional['OosBucketObjectLockArgs']]:
         """
         Object lock configuration for the bucket.
         """
         return pulumi.get(self, "object_lock")
 
     @object_lock.setter
-    def object_lock(self, value: Optional[pulumi.Input['OosBucketObjectLockArgs']]):
+    def object_lock(self, value: pulumi.Input[Optional['OosBucketObjectLockArgs']]):
         pulumi.set(self, "object_lock", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input['OosBucketPermissionsArgs']]:
+    def permissions(self) -> pulumi.Input[Optional['OosBucketPermissionsArgs']]:
         """
         Permissions and owner information for the bucket.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input['OosBucketPermissionsArgs']]):
+    def permissions(self, value: pulumi.Input[Optional['OosBucketPermissionsArgs']]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosBucketTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosBucketTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosBucketTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosBucketTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -272,12 +274,12 @@ class OosBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict']]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketTimeoutsArgs', 'OosBucketTimeoutsArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict', 'outputs.OosBucketGrant']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict', 'outputs.OosBucketObjectLock']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketTimeoutsArgs', 'OosBucketTimeoutsArgsDict', 'outputs.OosBucketTimeouts']]] = None,
                  __props__=None):
         """
         Manages a bucket.
@@ -328,13 +330,14 @@ class OosBucket(pulumi.CustomResource):
         })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.bool] force_delete: (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
-        :param pulumi.Input[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict']] grant: The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
+        :param pulumi.Input[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict', 'outputs.OosBucketGrant']] grant: The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.str] name: The bucket name. If omitted, the provider generates a unique name prefixed with `bucket-`.
-        :param pulumi.Input[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict']] object_lock: Object lock configuration for the bucket.
+        :param pulumi.Input[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict', 'outputs.OosBucketObjectLock']] object_lock: Object lock configuration for the bucket.
         """
         ...
     @overload
@@ -391,6 +394,7 @@ class OosBucket(pulumi.CustomResource):
         })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OosBucketArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -406,12 +410,12 @@ class OosBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict']]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosBucketTimeoutsArgs', 'OosBucketTimeoutsArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict', 'outputs.OosBucketGrant']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict', 'outputs.OosBucketObjectLock']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosBucketTimeoutsArgs', 'OosBucketTimeoutsArgsDict', 'outputs.OosBucketTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,15 +444,15 @@ class OosBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            grant: Optional[pulumi.Input[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict']]] = None,
-            location_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            object_lock: Optional[pulumi.Input[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict']]] = None,
-            permissions: Optional[pulumi.Input[Union['OosBucketPermissionsArgs', 'OosBucketPermissionsArgsDict']]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosBucketTimeoutsArgs', 'OosBucketTimeoutsArgsDict']]] = None) -> 'OosBucket':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            grant: pulumi.Input[Optional[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict', 'outputs.OosBucketGrant']]] = None,
+            location_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_lock: pulumi.Input[Optional[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict', 'outputs.OosBucketObjectLock']]] = None,
+            permissions: pulumi.Input[Optional[Union['OosBucketPermissionsArgs', 'OosBucketPermissionsArgsDict', 'outputs.OosBucketPermissions']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketTimeoutsArgs', 'OosBucketTimeoutsArgsDict', 'outputs.OosBucketTimeouts']]] = None) -> 'OosBucket':
         """
         Get an existing OosBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -459,11 +463,11 @@ class OosBucket(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl: The permissions you grant for your bucket (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.str] creation_date: The date and time of creation of the bucket (for example, `2010-10-01 12:34:56.78 +0000 UTC`).
         :param pulumi.Input[_builtins.bool] force_delete: (Default: `false`) Whether to empty the bucket before Terraform deletes it. When `true`, all objects, object versions, and delete markers are permanently deleted, including those not managed by Terraform. This does not bypass an unexpired object lock.
-        :param pulumi.Input[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict']] grant: The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
+        :param pulumi.Input[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict', 'outputs.OosBucketGrant']] grant: The permissions you grant for your bucket. The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.str] location_name: Specifies the location of the bucket.
         :param pulumi.Input[_builtins.str] name: The bucket name. If omitted, the provider generates a unique name prefixed with `bucket-`.
-        :param pulumi.Input[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict']] object_lock: Object lock configuration for the bucket.
-        :param pulumi.Input[Union['OosBucketPermissionsArgs', 'OosBucketPermissionsArgsDict']] permissions: Permissions and owner information for the bucket.
+        :param pulumi.Input[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict', 'outputs.OosBucketObjectLock']] object_lock: Object lock configuration for the bucket.
+        :param pulumi.Input[Union['OosBucketPermissionsArgs', 'OosBucketPermissionsArgsDict', 'outputs.OosBucketPermissions']] permissions: Permissions and owner information for the bucket.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -479,6 +483,30 @@ class OosBucket(pulumi.CustomResource):
         __props__.__dict__["permissions"] = permissions
         __props__.__dict__["timeouts"] = timeouts
         return OosBucket(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            grant: pulumi.Input[Optional[Union['OosBucketGrantArgs', 'OosBucketGrantArgsDict', 'outputs.OosBucketGrant']]] = None,
+            location_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_lock: pulumi.Input[Optional[Union['OosBucketObjectLockArgs', 'OosBucketObjectLockArgsDict', 'outputs.OosBucketObjectLock']]] = None,
+            permissions: pulumi.Input[Optional[Union['OosBucketPermissionsArgs', 'OosBucketPermissionsArgsDict', 'outputs.OosBucketPermissions']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosBucketTimeoutsArgs', 'OosBucketTimeoutsArgsDict', 'outputs.OosBucketTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["creationDate"] = creation_date
+        __props__["forceDelete"] = force_delete
+        __props__["grant"] = grant
+        __props__["locationName"] = location_name
+        __props__["name"] = name
+        __props__["objectLock"] = object_lock
+        __props__["permissions"] = permissions
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosBucket:OosBucket', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

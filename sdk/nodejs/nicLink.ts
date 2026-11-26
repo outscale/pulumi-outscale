@@ -70,6 +70,17 @@ export class NicLink extends pulumi.CustomResource {
         return new NicLink(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing NicLink resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: NicLinkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/nicLink:NicLink", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/nicLink:NicLink';
 
@@ -155,26 +166,26 @@ export class NicLink extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NicLink resources.
  */
 export interface NicLinkState {
-    deleteOnVmDeletion?: pulumi.Input<boolean>;
+    deleteOnVmDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The index of the VM device for the NIC attachment (between `1` and `7`, both included).
      */
-    deviceNumber?: pulumi.Input<number>;
+    deviceNumber?: pulumi.Input<number | undefined>;
     /**
      * The ID of the NIC attachment.
      */
-    linkNicId?: pulumi.Input<string>;
+    linkNicId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NIC you want to attach.
      */
-    nicId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
-    state?: pulumi.Input<string>;
-    vmAccountId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    state?: pulumi.Input<string | undefined>;
+    vmAccountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VM to which you want to attach the NIC.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }
 
 /**

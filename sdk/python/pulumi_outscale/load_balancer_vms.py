@@ -22,11 +22,12 @@ __all__ = ['LoadBalancerVmsArgs', 'LoadBalancerVms']
 class LoadBalancerVmsArgs:
     def __init__(__self__, *,
                  load_balancer_name: pulumi.Input[_builtins.str],
-                 backend_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['LoadBalancerVmsTimeoutsArgs']] = None):
+                 backend_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['LoadBalancerVmsTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a LoadBalancerVms resource.
+
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs.<br />
                Specifying the same ID several times has no effect as each backend VM has equal weight.
@@ -53,16 +54,16 @@ class LoadBalancerVmsArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendIps")
-    def backend_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backend_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "backend_ips")
 
     @backend_ips.setter
-    def backend_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backend_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backend_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="backendVmIds")
-    def backend_vm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backend_vm_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of backend VMs.<br />
         Specifying the same ID several times has no effect as each backend VM has equal weight.
@@ -70,29 +71,30 @@ class LoadBalancerVmsArgs:
         return pulumi.get(self, "backend_vm_ids")
 
     @backend_vm_ids.setter
-    def backend_vm_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backend_vm_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backend_vm_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerVmsTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['LoadBalancerVmsTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerVmsTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['LoadBalancerVmsTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _LoadBalancerVmsState:
     def __init__(__self__, *,
-                 backend_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['LoadBalancerVmsTimeoutsArgs']] = None):
+                 backend_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['LoadBalancerVmsTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering LoadBalancerVms resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backend_vm_ids: One or more IDs of backend VMs.<br />
                Specifying the same ID several times has no effect as each backend VM has equal weight.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer.
@@ -110,16 +112,16 @@ class _LoadBalancerVmsState:
 
     @_builtins.property
     @pulumi.getter(name="backendIps")
-    def backend_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backend_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "backend_ips")
 
     @backend_ips.setter
-    def backend_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backend_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backend_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="backendVmIds")
-    def backend_vm_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backend_vm_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of backend VMs.<br />
         Specifying the same ID several times has no effect as each backend VM has equal weight.
@@ -127,37 +129,37 @@ class _LoadBalancerVmsState:
         return pulumi.get(self, "backend_vm_ids")
 
     @backend_vm_ids.setter
-    def backend_vm_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backend_vm_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backend_vm_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the load balancer.
         """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
-    def load_balancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['LoadBalancerVmsTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['LoadBalancerVmsTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['LoadBalancerVmsTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['LoadBalancerVmsTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -167,10 +169,10 @@ class LoadBalancerVms(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['LoadBalancerVmsTimeoutsArgs', 'LoadBalancerVmsTimeoutsArgsDict']]] = None,
+                 backend_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['LoadBalancerVmsTimeoutsArgs', 'LoadBalancerVmsTimeoutsArgsDict', 'outputs.LoadBalancerVmsTimeouts']]] = None,
                  __props__=None):
         """
         Manages load balancer VMs.
@@ -197,6 +199,8 @@ class LoadBalancerVms(pulumi.CustomResource):
             vm_type=vm_type,
             keypair_name=keypair_name)
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
+            load_balancer_name="load-balancer-for-backend-vms",
+            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
@@ -206,9 +210,7 @@ class LoadBalancerVms(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "outscale_load_balancer01",
-            }],
-            load_balancer_name="load-balancer-for-backend-vms",
-            subregion_names=[f"{region}a"])
+            }])
         ```
 
         ### Register VMs with a load balancer
@@ -238,6 +240,7 @@ class LoadBalancerVms(pulumi.CustomResource):
                 outscale_vm02["publicIp"],
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -276,6 +279,8 @@ class LoadBalancerVms(pulumi.CustomResource):
             vm_type=vm_type,
             keypair_name=keypair_name)
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
+            load_balancer_name="load-balancer-for-backend-vms",
+            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
@@ -285,9 +290,7 @@ class LoadBalancerVms(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "outscale_load_balancer01",
-            }],
-            load_balancer_name="load-balancer-for-backend-vms",
-            subregion_names=[f"{region}a"])
+            }])
         ```
 
         ### Register VMs with a load balancer
@@ -318,6 +321,7 @@ class LoadBalancerVms(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param LoadBalancerVmsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,10 +337,10 @@ class LoadBalancerVms(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['LoadBalancerVmsTimeoutsArgs', 'LoadBalancerVmsTimeoutsArgsDict']]] = None,
+                 backend_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['LoadBalancerVmsTimeoutsArgs', 'LoadBalancerVmsTimeoutsArgsDict', 'outputs.LoadBalancerVmsTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -363,11 +367,11 @@ class LoadBalancerVms(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backend_vm_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['LoadBalancerVmsTimeoutsArgs', 'LoadBalancerVmsTimeoutsArgsDict']]] = None) -> 'LoadBalancerVms':
+            backend_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['LoadBalancerVmsTimeoutsArgs', 'LoadBalancerVmsTimeoutsArgsDict', 'outputs.LoadBalancerVmsTimeouts']]] = None) -> 'LoadBalancerVms':
         """
         Get an existing LoadBalancerVms resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -389,6 +393,22 @@ class LoadBalancerVms(pulumi.CustomResource):
         __props__.__dict__["request_id"] = request_id
         __props__.__dict__["timeouts"] = timeouts
         return LoadBalancerVms(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backend_vm_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['LoadBalancerVmsTimeoutsArgs', 'LoadBalancerVmsTimeoutsArgsDict', 'outputs.LoadBalancerVmsTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendIps"] = backend_ips
+        __props__["backendVmIds"] = backend_vm_ids
+        __props__["loadBalancerName"] = load_balancer_name
+        __props__["requestId"] = request_id
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'outscale:index/loadBalancerVms:LoadBalancerVms', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="backendIps")

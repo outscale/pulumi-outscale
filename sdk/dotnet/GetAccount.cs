@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about an account.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\
         /// For more information on this resource actions, see the [Account](https://docs.outscale.com/api#3ds-outscale-api-account) API methods.
         /// 
         /// ## Example Usage
@@ -38,7 +38,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about an account.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\
         /// For more information on this resource actions, see the [Account](https://docs.outscale.com/api#3ds-outscale-api-account) API methods.
         /// 
         /// ## Example Usage
@@ -62,7 +62,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about an account.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\
         /// For more information on this resource actions, see the [Account](https://docs.outscale.com/api#3ds-outscale-api-account) API methods.
         /// 
         /// ## Example Usage

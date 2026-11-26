@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
+ *     loadBalancerName: "terraform-public-load-balancer",
+ *     subregionNames: [`${region}a`],
  *     listeners: [{
  *         backendPort: 8080,
  *         backendProtocol: "HTTP",
@@ -31,8 +33,6 @@ import * as utilities from "./utilities";
  *         key: "name",
  *         value: "terraform-public-load-balancer",
  *     }],
- *     loadBalancerName: "terraform-public-load-balancer",
- *     subregionNames: [`${region}a`],
  * });
  * ```
  *
@@ -44,37 +44,37 @@ import * as utilities from "./utilities";
  *
  * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
  * const subnet01 = new outscale.Subnet("subnet01", {
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/24",
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-subnet-for-internal-load-balancer",
  *     }],
- *     netId: net01.netId,
- *     ipRange: "10.0.0.0/24",
  * });
  * const securityGroup01 = new outscale.SecurityGroup("security_group01", {
+ *     description: "Terraform security group for internal load balancer",
+ *     securityGroupName: "terraform-security-group-for-internal-load-balancer",
+ *     netId: net01.netId,
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-security-group-for-internal-load-balancer",
  *     }],
- *     description: "Terraform security group for internal load balancer",
- *     securityGroupName: "terraform-security-group-for-internal-load-balancer",
- *     netId: net01.netId,
  * });
  * const loadBalancer02 = new outscale.LoadBalancer("load_balancer02", {
+ *     loadBalancerName: "terraform-private-load-balancer",
  *     listeners: [{
  *         backendPort: 80,
  *         backendProtocol: "TCP",
  *         loadBalancerProtocol: "TCP",
  *         loadBalancerPort: 80,
  *     }],
+ *     subnets: [subnet01.subnetId],
+ *     securityGroups: [securityGroup01.securityGroupId],
+ *     loadBalancerType: "internal",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-private-load-balancer",
  *     }],
- *     loadBalancerName: "terraform-private-load-balancer",
- *     subnets: [subnet01.subnetId],
- *     securityGroups: [securityGroup01.securityGroupId],
- *     loadBalancerType: "internal",
  * });
  * ```
  *
@@ -86,12 +86,12 @@ import * as utilities from "./utilities";
  *
  * const net02 = new outscale.Net("net02", {ipRange: "10.0.0.0/16"});
  * const subnet02 = new outscale.Subnet("subnet02", {
+ *     netId: net02.netId,
+ *     ipRange: "10.0.0.0/24",
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-security-group-for-load-balancer",
  *     }],
- *     netId: net02.netId,
- *     ipRange: "10.0.0.0/24",
  * });
  * const internetService01 = new outscale.InternetService("internet_service01", {}, {
  *     dependsOn: [net02],
@@ -101,11 +101,11 @@ import * as utilities from "./utilities";
  *     netId: net02.netId,
  * });
  * const routeTable01 = new outscale.RouteTable("route_table01", {
+ *     netId: net02.netId,
  *     tags: [{
  *         key: "name",
  *         value: "terraform-route-table-for-load-balancer",
  *     }],
- *     netId: net02.netId,
  * });
  * const route01 = new outscale.Route("route01", {
  *     gatewayId: internetService01.id,
@@ -117,6 +117,7 @@ import * as utilities from "./utilities";
  *     subnetId: subnet02.subnetId,
  * });
  * const loadBalancer03 = new outscale.LoadBalancer("load_balancer03", {
+ *     loadBalancerName: "terraform-internet-private-lb",
  *     listeners: [
  *         {
  *             backendPort: 80,
@@ -131,14 +132,13 @@ import * as utilities from "./utilities";
  *             loadBalancerPort: 8080,
  *         },
  *     ],
+ *     subnets: [subnet02.subnetId],
+ *     loadBalancerType: "internet-facing",
+ *     publicIp: "192.0.2.0",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-internet-private-lb",
  *     }],
- *     loadBalancerName: "terraform-internet-private-lb",
- *     subnets: [subnet02.subnetId],
- *     loadBalancerType: "internet-facing",
- *     publicIp: "192.0.2.0",
  * }, {
  *     dependsOn: [
  *         route01,
@@ -169,6 +169,17 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoadBalancerState, opts?: pulumi.CustomResourceOptions): LoadBalancer {
         return new LoadBalancer(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing LoadBalancer resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: LoadBalancerState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/loadBalancer:LoadBalancer", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -338,82 +349,82 @@ export interface LoadBalancerState {
     /**
      * Information about access logs.
      */
-    accessLogs?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAccessLog>[]>;
+    accessLogs?: pulumi.Input<pulumi.Input<inputs.LoadBalancerAccessLog>[] | undefined>;
     /**
      * The stickiness policies defined for the load balancer.
      */
-    applicationStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerApplicationStickyCookiePolicy>[]>;
+    applicationStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerApplicationStickyCookiePolicy>[] | undefined>;
     /**
      * One or more public IPs of backend VMs.
      */
-    backendIps?: pulumi.Input<pulumi.Input<string>[]>;
+    backendIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more IDs of backend VMs for the load balancer.
      */
-    backendVmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    backendVmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The DNS name of the load balancer.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * Information about the health check configuration.
      */
-    healthChecks?: pulumi.Input<pulumi.Input<inputs.LoadBalancerHealthCheck>[]>;
+    healthChecks?: pulumi.Input<pulumi.Input<inputs.LoadBalancerHealthCheck>[] | undefined>;
     /**
      * One or more listeners to create.
      */
-    listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerListener>[] | undefined>;
     /**
      * The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * The policies defined for the load balancer.
      */
-    loadBalancerStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerLoadBalancerStickyCookiePolicy>[]>;
+    loadBalancerStickyCookiePolicies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerLoadBalancerStickyCookiePolicy>[] | undefined>;
     /**
      * The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
      */
-    loadBalancerType?: pulumi.Input<string>;
+    loadBalancerType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Net for the load balancer.
      */
-    netId?: pulumi.Input<string>;
+    netId?: pulumi.Input<string | undefined>;
     /**
      * (internet-facing only) The public IP you want to associate with the load balancer. If not specified, a public IP owned by 3DS OUTSCALE is associated.
      */
-    publicIp?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * Whether secure cookies are enabled for the load balancer.
      */
-    securedCookies?: pulumi.Input<boolean>;
+    securedCookies?: pulumi.Input<boolean | undefined>;
     /**
      * (Net only) One or more IDs of security groups you want to assign to the load balancer. If not specified, the default security group of the Net is assigned to the load balancer.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.<br />
      * To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
      */
-    sourceSecurityGroups?: pulumi.Input<pulumi.Input<inputs.LoadBalancerSourceSecurityGroup>[]>;
+    sourceSecurityGroups?: pulumi.Input<pulumi.Input<inputs.LoadBalancerSourceSecurityGroup>[] | undefined>;
     /**
      * The state of the load balancer (`provisioning` \| `starting` \| `reloading` \| `active` \| `reconfiguring` \| `deleting` \| `deleted`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
      */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
      */
-    subregionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subregionNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerTag>[]>;
-    timeouts?: pulumi.Input<inputs.LoadBalancerTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerTimeouts | undefined>;
 }
 
 /**
@@ -423,7 +434,7 @@ export interface LoadBalancerArgs {
     /**
      * One or more listeners to create.
      */
-    listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.LoadBalancerListener>[] | undefined>;
     /**
      * The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (`-`). This name must not start or end with a dash.
      */
@@ -431,30 +442,30 @@ export interface LoadBalancerArgs {
     /**
      * The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.
      */
-    loadBalancerType?: pulumi.Input<string>;
+    loadBalancerType?: pulumi.Input<string | undefined>;
     /**
      * (internet-facing only) The public IP you want to associate with the load balancer. If not specified, a public IP owned by 3DS OUTSCALE is associated.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * Whether secure cookies are enabled for the load balancer.
      */
-    securedCookies?: pulumi.Input<boolean>;
+    securedCookies?: pulumi.Input<boolean | undefined>;
     /**
      * (Net only) One or more IDs of security groups you want to assign to the load balancer. If not specified, the default security group of the Net is assigned to the load balancer.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.
      */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.
      */
-    subregionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subregionNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerTag>[]>;
-    timeouts?: pulumi.Input<inputs.LoadBalancerTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.LoadBalancerTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.LoadBalancerTimeouts | undefined>;
 }

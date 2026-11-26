@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about Net access point services.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).\
         /// For more information on this resource actions, see the [NetAccessPoint](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint) API methods.
         /// 
         /// ## Example Usage
@@ -97,7 +97,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about Net access point services.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).\
         /// For more information on this resource actions, see the [NetAccessPoint](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint) API methods.
         /// 
         /// ## Example Usage
@@ -180,7 +180,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about Net access point services.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).\
         /// For more information on this resource actions, see the [NetAccessPoint](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint) API methods.
         /// 
         /// ## Example Usage

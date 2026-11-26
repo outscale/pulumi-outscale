@@ -187,6 +187,12 @@ func (PublicIpLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpLinkState)(nil)).Elem()
 }
 
+// PublicIpLinkExists checks whether an existing PublicIpLink resource with the given ID exists.
+func PublicIpLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicIpLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/publicIpLink:PublicIpLink", id, state, "", opts...)
+}
+
 type publicIpLinkArgs struct {
 	// If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
 	AllowRelink *bool `pulumi:"allowRelink"`

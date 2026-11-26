@@ -72,7 +72,7 @@ class AwaitableGetUserGroupsResult(GetUserGroupsResult):
             user_groups=self.user_groups)
 
 
-def get_user_groups(filters: Optional[Sequence[Union['GetUserGroupsFilterArgs', 'GetUserGroupsFilterArgsDict']]] = None,
+def get_user_groups(filters: Optional[Sequence[Union['GetUserGroupsFilterArgs', 'GetUserGroupsFilterArgsDict', 'outputs.GetUserGroupsFilterResult']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserGroupsResult:
     """
     Provides information about user groups.
@@ -110,7 +110,7 @@ def get_user_groups(filters: Optional[Sequence[Union['GetUserGroupsFilterArgs', 
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         user_groups=pulumi.get(__ret__, 'user_groups'))
-def get_user_groups_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetUserGroupsFilterArgs', 'GetUserGroupsFilterArgsDict']]]]] = None,
+def get_user_groups_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetUserGroupsFilterArgs', 'GetUserGroupsFilterArgsDict', 'outputs.GetUserGroupsFilterResult']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupsResult]:
     """
     Provides information about user groups.

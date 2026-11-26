@@ -65,12 +65,8 @@ type GetFlexibleGpuCatalogResult struct {
 }
 
 func GetFlexibleGpuCatalogOutput(ctx *pulumi.Context, args GetFlexibleGpuCatalogOutputArgs, opts ...pulumi.InvokeOption) GetFlexibleGpuCatalogResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFlexibleGpuCatalogResultOutput, error) {
-			args := v.(GetFlexibleGpuCatalogArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getFlexibleGpuCatalog:getFlexibleGpuCatalog", args, GetFlexibleGpuCatalogResultOutput{}, options).(GetFlexibleGpuCatalogResultOutput), nil
-		}).(GetFlexibleGpuCatalogResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getFlexibleGpuCatalog:getFlexibleGpuCatalog", args, GetFlexibleGpuCatalogResultOutput{}, options).(GetFlexibleGpuCatalogResultOutput)
 }
 
 // A collection of arguments for invoking getFlexibleGpuCatalog.

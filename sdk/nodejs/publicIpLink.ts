@@ -65,6 +65,17 @@ export class PublicIpLink extends pulumi.CustomResource {
         return new PublicIpLink(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing PublicIpLink resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: PublicIpLinkState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/publicIpLink:PublicIpLink", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/publicIpLink:PublicIpLink';
 
@@ -162,35 +173,35 @@ export interface PublicIpLinkState {
     /**
      * If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
      */
-    allowRelink?: pulumi.Input<boolean>;
+    allowRelink?: pulumi.Input<boolean | undefined>;
     /**
      * (Net only) The ID representing the association of the public IP with the VM or the NIC.
      */
-    linkPublicIpId?: pulumi.Input<string>;
-    nicAccountId?: pulumi.Input<string>;
+    linkPublicIpId?: pulumi.Input<string | undefined>;
+    nicAccountId?: pulumi.Input<string | undefined>;
     /**
      * (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vmId` parameter instead. You cannot specify both parameters at the same time.
      */
-    nicId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
     /**
      * (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * The public IP. This parameter is required unless you use the `publicIpId` parameter.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
      */
-    publicIpId?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<inputs.PublicIpLinkTag>[]>;
-    timeouts?: pulumi.Input<inputs.PublicIpLinkTimeouts>;
+    publicIpId?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<inputs.PublicIpLinkTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.PublicIpLinkTimeouts | undefined>;
     /**
      * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,26 +211,26 @@ export interface PublicIpLinkArgs {
     /**
      * If true, allows the public IP to be associated with the VM or NIC that you specify even if it is already associated with another VM or NIC. If false, prevents the public IP from being associated with the VM or NIC that you specify if it is already associated with another VM or NIC. (By default, true in the public Cloud, false in a Net.)
      */
-    allowRelink?: pulumi.Input<boolean>;
+    allowRelink?: pulumi.Input<boolean | undefined>;
     /**
      * (Net only) The ID of the NIC. This parameter is required if the VM has more than one NIC attached. Otherwise, you need to specify the `vmId` parameter instead. You cannot specify both parameters at the same time.
      */
-    nicId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
     /**
      * (Net only) The primary or secondary private IP of the specified NIC. By default, the primary private IP.
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * The public IP. This parameter is required unless you use the `publicIpId` parameter.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The allocation ID of the public IP. This parameter is required unless you use the `publicIp` parameter.
      */
-    publicIpId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.PublicIpLinkTimeouts>;
+    publicIpId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.PublicIpLinkTimeouts | undefined>;
     /**
      * The ID of the VM.<br />- In the public Cloud, this parameter is required.<br />- In a Net, this parameter is required if the VM has only one NIC. Otherwise, you need to specify the `nicId` parameter instead. You cannot specify both parameters at the same time.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }

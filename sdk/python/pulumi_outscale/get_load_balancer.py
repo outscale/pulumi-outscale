@@ -297,11 +297,11 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             tags=self.tags)
 
 
-def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict']]] = None,
+def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict', 'outputs.GetLoadBalancerAccessLogResult']]] = None,
                       dns_name: Optional[_builtins.str] = None,
-                      filters: Optional[Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict']]] = None,
-                      health_checks: Optional[Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict']]] = None,
-                      listeners: Optional[Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict']]] = None,
+                      filters: Optional[Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict', 'outputs.GetLoadBalancerFilterResult']]] = None,
+                      health_checks: Optional[Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict', 'outputs.GetLoadBalancerHealthCheckResult']]] = None,
+                      listeners: Optional[Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict', 'outputs.GetLoadBalancerListenerResult']]] = None,
                       load_balancer_name: Optional[_builtins.str] = None,
                       load_balancer_type: Optional[_builtins.str] = None,
                       net_id: Optional[_builtins.str] = None,
@@ -327,11 +327,11 @@ def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAcces
     ```
 
 
-    :param Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict']] access_logs: Information about access logs.
+    :param Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict', 'outputs.GetLoadBalancerAccessLogResult']] access_logs: Information about access logs.
     :param _builtins.str dns_name: The DNS name of the load balancer.
-    :param Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
-    :param Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict']] health_checks: Information about the health check configuration.
-    :param Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict']] listeners: The listeners for the load balancer.
+    :param Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict', 'outputs.GetLoadBalancerFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict', 'outputs.GetLoadBalancerHealthCheckResult']] health_checks: Information about the health check configuration.
+    :param Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict', 'outputs.GetLoadBalancerListenerResult']] listeners: The listeners for the load balancer.
     :param _builtins.str load_balancer_name: The name of the load balancer.
     :param _builtins.str load_balancer_type: The type of load balancer. Valid only for load balancers in a Net.<br />
            If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />
@@ -377,16 +377,16 @@ def get_load_balancer(access_logs: Optional[Sequence[Union['GetLoadBalancerAcces
         subnets=pulumi.get(__ret__, 'subnets'),
         subregion_names=pulumi.get(__ret__, 'subregion_names'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_load_balancer_output(access_logs: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict']]]]] = None,
-                             dns_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict']]]]] = None,
-                             health_checks: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict']]]]] = None,
-                             listeners: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict']]]]] = None,
-                             load_balancer_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             load_balancer_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             net_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             security_groups: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             subnets: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_load_balancer_output(access_logs: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict', 'outputs.GetLoadBalancerAccessLogResult']]]]] = None,
+                             dns_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict', 'outputs.GetLoadBalancerFilterResult']]]]] = None,
+                             health_checks: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict', 'outputs.GetLoadBalancerHealthCheckResult']]]]] = None,
+                             listeners: pulumi.Input[Optional[Optional[Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict', 'outputs.GetLoadBalancerListenerResult']]]]] = None,
+                             load_balancer_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             load_balancer_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             net_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             security_groups: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             subnets: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
     Provides information about a load balancer.
@@ -407,11 +407,11 @@ def get_load_balancer_output(access_logs: Optional[pulumi.Input[Optional[Sequenc
     ```
 
 
-    :param Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict']] access_logs: Information about access logs.
+    :param Sequence[Union['GetLoadBalancerAccessLogArgs', 'GetLoadBalancerAccessLogArgsDict', 'outputs.GetLoadBalancerAccessLogResult']] access_logs: Information about access logs.
     :param _builtins.str dns_name: The DNS name of the load balancer.
-    :param Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
-    :param Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict']] health_checks: Information about the health check configuration.
-    :param Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict']] listeners: The listeners for the load balancer.
+    :param Sequence[Union['GetLoadBalancerFilterArgs', 'GetLoadBalancerFilterArgsDict', 'outputs.GetLoadBalancerFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetLoadBalancerHealthCheckArgs', 'GetLoadBalancerHealthCheckArgsDict', 'outputs.GetLoadBalancerHealthCheckResult']] health_checks: Information about the health check configuration.
+    :param Sequence[Union['GetLoadBalancerListenerArgs', 'GetLoadBalancerListenerArgsDict', 'outputs.GetLoadBalancerListenerResult']] listeners: The listeners for the load balancer.
     :param _builtins.str load_balancer_name: The name of the load balancer.
     :param _builtins.str load_balancer_type: The type of load balancer. Valid only for load balancers in a Net.<br />
            If `load_balancer_type` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br />

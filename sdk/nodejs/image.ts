@@ -62,7 +62,9 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const image04 = new outscale.Image("image04", {
+ *     imageName: "terraform-omi-bsu",
  *     blockDeviceMappings: [{
+ *         deviceName: "/dev/sda1",
  *         bsus: [{
  *             snapshotId: "snap-12345678",
  *             volumeSize: 120,
@@ -70,9 +72,7 @@ import * as utilities from "./utilities";
  *             iops: 150,
  *             deleteOnVmDeletion: true,
  *         }],
- *         deviceName: "/dev/sda1",
  *     }],
- *     imageName: "terraform-omi-bsu",
  *     rootDeviceName: "/dev/sda1",
  *     description: "Terraform OMI with BSU",
  * });
@@ -100,6 +100,17 @@ export class Image extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageState, opts?: pulumi.CustomResourceOptions): Image {
         return new Image(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing Image resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ImageState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/image:Image", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -290,98 +301,98 @@ export interface ImageState {
     /**
      * The account alias of the owner of the OMI.
      */
-    accountAlias?: pulumi.Input<string>;
+    accountAlias?: pulumi.Input<string | undefined>;
     /**
      * The OUTSCALE account ID of the owner of the OMI.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * **(required when registering from a snapshot)** One or more block device mappings.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[]>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[] | undefined>;
     /**
      * The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
      */
-    bootModes?: pulumi.Input<pulumi.Input<string>[]>;
+    bootModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The date and time (UTC) at which the OMI was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * A description for the new OMI.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
      */
-    fileLocation?: pulumi.Input<string>;
+    fileLocation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the OMI.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the new OMI.<br />
      * Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The type of the OMI.
      */
-    imageType?: pulumi.Input<string>;
-    isPublic?: pulumi.Input<boolean>;
+    imageType?: pulumi.Input<string | undefined>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
      */
-    noReboot?: pulumi.Input<boolean>;
+    noReboot?: pulumi.Input<boolean | undefined>;
     /**
      * Permissions for the resource.
      */
-    permissionsToLaunches?: pulumi.Input<pulumi.Input<inputs.ImagePermissionsToLaunch>[]>;
+    permissionsToLaunches?: pulumi.Input<pulumi.Input<inputs.ImagePermissionsToLaunch>[] | undefined>;
     /**
      * The product codes associated with the OMI.
      */
-    productCodes?: pulumi.Input<pulumi.Input<string>[]>;
-    requestId?: pulumi.Input<string>;
+    productCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * **(required when registering from a snapshot)** The name of the root device for the new OMI.
      */
-    rootDeviceName?: pulumi.Input<string>;
+    rootDeviceName?: pulumi.Input<string | undefined>;
     /**
      * The type of root device used by the OMI (always `bsu`).
      */
-    rootDeviceType?: pulumi.Input<string>;
+    rootDeviceType?: pulumi.Input<string | undefined>;
     /**
      * **(required when copying an OMI)** The ID of the OMI you want to copy.
      */
-    sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string | undefined>;
     /**
      * **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
      */
-    sourceRegionName?: pulumi.Input<string>;
+    sourceRegionName?: pulumi.Input<string | undefined>;
     /**
      * The state of the OMI (`pending` \| `available` \| `failed`).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Information about the change of state.
      */
-    stateComments?: pulumi.Input<pulumi.Input<inputs.ImageStateComment>[]>;
+    stateComments?: pulumi.Input<pulumi.Input<inputs.ImageStateComment>[] | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[] | undefined>;
     /**
      * By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
      */
-    tpmMandatory?: pulumi.Input<boolean>;
+    tpmMandatory?: pulumi.Input<boolean | undefined>;
     /**
      * **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -391,54 +402,54 @@ export interface ImageArgs {
     /**
      * **(when registering from a snapshot)** The architecture of the OMI (`i386` or `x8664`). By default, set to `x8664`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * **(required when registering from a snapshot)** One or more block device mappings.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[]>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ImageBlockDeviceMapping>[] | undefined>;
     /**
      * The boot modes compatible with the OMI. Possible values: `uefi` | `legacy`.
      */
-    bootModes?: pulumi.Input<pulumi.Input<string>[]>;
+    bootModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description for the new OMI.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * **(required when registering from a bucket by using a manifest file)** The pre-signed URL of the manifest file for the OMI you want to register. For more information, see [Creating a Pre-signed URL](https://docs.outscale.com/en/userguide/Creating-a-Pre-Signed-URL.html).
      */
-    fileLocation?: pulumi.Input<string>;
+    fileLocation?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the new OMI.<br />
      * Constraints: 3-128 alphanumeric characters, underscores (`_`), spaces (` `), parentheses (`()`), slashes (`/`), periods (`.`), or dashes (`-`).
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * **(when creating from a VM)** If false, the VM shuts down before creating the OMI and then reboots. If true, the VM does not.
      */
-    noReboot?: pulumi.Input<boolean>;
+    noReboot?: pulumi.Input<boolean | undefined>;
     /**
      * **(required when registering from a snapshot)** The name of the root device for the new OMI.
      */
-    rootDeviceName?: pulumi.Input<string>;
+    rootDeviceName?: pulumi.Input<string | undefined>;
     /**
      * **(required when copying an OMI)** The ID of the OMI you want to copy.
      */
-    sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string | undefined>;
     /**
      * **(required when copying an OMI)** The name of the source Region (always the same as the Region of your account).
      */
-    sourceRegionName?: pulumi.Input<string>;
+    sourceRegionName?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ImageTag>[] | undefined>;
     /**
      * By default or if set to false, a virtual Trusted Platform Module (vTPM) is not mandatory on VMs created from this OMI. If true, VMs created from this OMI must have a vTPM enabled.
      */
-    tpmMandatory?: pulumi.Input<boolean>;
+    tpmMandatory?: pulumi.Input<boolean | undefined>;
     /**
      * **(required when creating from a VM)** The ID of the VM from which you want to create the OMI.
      */
-    vmId?: pulumi.Input<string>;
+    vmId?: pulumi.Input<string | undefined>;
 }

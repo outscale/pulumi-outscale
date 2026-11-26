@@ -108,12 +108,8 @@ type LookupNicResult struct {
 }
 
 func LookupNicOutput(ctx *pulumi.Context, args LookupNicOutputArgs, opts ...pulumi.InvokeOption) LookupNicResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNicResultOutput, error) {
-			args := v.(LookupNicArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getNic:getNic", args, LookupNicResultOutput{}, options).(LookupNicResultOutput), nil
-		}).(LookupNicResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getNic:getNic", args, LookupNicResultOutput{}, options).(LookupNicResultOutput)
 }
 
 // A collection of arguments for invoking getNic.

@@ -59,10 +59,8 @@ type GetAccountsResult struct {
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("outscale:index/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput), nil
-	}).(GetAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput)
 }
 
 // A collection of values returned by getAccounts.

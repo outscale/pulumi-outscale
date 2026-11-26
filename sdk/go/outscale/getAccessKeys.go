@@ -67,6 +67,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.GetAccessKeys(ctx, &outscale.GetAccessKeysArgs{
+//				UserName: pulumi.StringRef("user_name"),
 //				Filters: []outscale.GetAccessKeysFilter{
 //					{
 //						Name: "access_key_ids",
@@ -82,7 +83,6 @@ import (
 //						},
 //					},
 //				},
-//				UserName: pulumi.StringRef("user_name"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -126,12 +126,8 @@ type GetAccessKeysResult struct {
 }
 
 func GetAccessKeysOutput(ctx *pulumi.Context, args GetAccessKeysOutputArgs, opts ...pulumi.InvokeOption) GetAccessKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccessKeysResultOutput, error) {
-			args := v.(GetAccessKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getAccessKeys:getAccessKeys", args, GetAccessKeysResultOutput{}, options).(GetAccessKeysResultOutput), nil
-		}).(GetAccessKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getAccessKeys:getAccessKeys", args, GetAccessKeysResultOutput{}, options).(GetAccessKeysResultOutput)
 }
 
 // A collection of arguments for invoking getAccessKeys.

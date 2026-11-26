@@ -33,11 +33,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const group_1 = new outscale.UserGroup("group-1", {
+ *     userGroupName: "Group-TF-test-1",
  *     policies: [{
  *         policyOrn: policy_2.orn,
  *         defaultVersionId: "V2",
  *     }],
- *     userGroupName: "Group-TF-test-1",
  * });
  * ```
  *
@@ -48,6 +48,7 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const group_1 = new outscale.UserGroup("group-1", {
+ *     userGroupName: "Group-TF-test-1",
  *     users: [
  *         {
  *             userName: "user-name-1",
@@ -57,7 +58,6 @@ import * as utilities from "./utilities";
  *             userName: "user-name-2",
  *         },
  *     ],
- *     userGroupName: "Group-TF-test-1",
  * });
  * ```
  *
@@ -68,10 +68,7 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const group_1 = new outscale.UserGroup("group-1", {
- *     policies: [{
- *         policyOrn: policy_2.orn,
- *         versionId: "V2",
- *     }],
+ *     userGroupName: "Group-TF-test-1",
  *     users: [
  *         {
  *             userName: "user-name-1",
@@ -81,7 +78,10 @@ import * as utilities from "./utilities";
  *             userName: "user-name-2",
  *         },
  *     ],
- *     userGroupName: "Group-TF-test-1",
+ *     policies: [{
+ *         policyOrn: policy_2.orn,
+ *         versionId: "V2",
+ *     }],
  * });
  * ```
  *
@@ -107,6 +107,17 @@ export class UserGroup extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserGroupState, opts?: pulumi.CustomResourceOptions): UserGroup {
         return new UserGroup(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing UserGroup resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: UserGroupState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/userGroup:UserGroup", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -200,30 +211,30 @@ export interface UserGroupState {
     /**
      * The date and time (UTC) of creation of the user group.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The date and time (UTC) of the last modification of the user group.
      */
-    lastModificationDate?: pulumi.Input<string>;
+    lastModificationDate?: pulumi.Input<string | undefined>;
     /**
      * The Outscale Resource Name (ORN) of the user group. For more information, see [Resource Identifiers](https://docs.outscale.com/en/userguide/Resource-Identifiers.html).
      */
-    orn?: pulumi.Input<string>;
+    orn?: pulumi.Input<string | undefined>;
     /**
      * The path to the group. If not specified, it is set to a slash (`/`).
      */
-    path?: pulumi.Input<string>;
-    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[]>;
-    timeouts?: pulumi.Input<inputs.UserGroupTimeouts>;
+    path?: pulumi.Input<string | undefined>;
+    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.UserGroupTimeouts | undefined>;
     /**
      * The ID of the user group.
      */
-    userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the group.
      */
-    userGroupName?: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.UserGroupUser>[]>;
+    userGroupName?: pulumi.Input<string | undefined>;
+    users?: pulumi.Input<pulumi.Input<inputs.UserGroupUser>[] | undefined>;
 }
 
 /**
@@ -233,12 +244,12 @@ export interface UserGroupArgs {
     /**
      * The path to the group. If not specified, it is set to a slash (`/`).
      */
-    path?: pulumi.Input<string>;
-    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[]>;
-    timeouts?: pulumi.Input<inputs.UserGroupTimeouts>;
+    path?: pulumi.Input<string | undefined>;
+    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.UserGroupTimeouts | undefined>;
     /**
      * The name of the group.
      */
     userGroupName: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.UserGroupUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.UserGroupUser>[] | undefined>;
 }

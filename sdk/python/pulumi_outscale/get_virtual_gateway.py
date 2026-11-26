@@ -130,7 +130,7 @@ class AwaitableGetVirtualGatewayResult(GetVirtualGatewayResult):
 
 
 def get_virtual_gateway(connection_type: Optional[_builtins.str] = None,
-                        filters: Optional[Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict']]] = None,
+                        filters: Optional[Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict', 'outputs.GetVirtualGatewayFilterResult']]] = None,
                         state: Optional[_builtins.str] = None,
                         virtual_gateway_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVirtualGatewayResult:
@@ -154,7 +154,7 @@ def get_virtual_gateway(connection_type: Optional[_builtins.str] = None,
 
 
     :param _builtins.str connection_type: The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
-    :param Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict', 'outputs.GetVirtualGatewayFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
     :param _builtins.str virtual_gateway_id: The ID of the virtual gateway.
     """
@@ -175,10 +175,10 @@ def get_virtual_gateway(connection_type: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         tags=pulumi.get(__ret__, 'tags'),
         virtual_gateway_id=pulumi.get(__ret__, 'virtual_gateway_id'))
-def get_virtual_gateway_output(connection_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict']]]]] = None,
-                               state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               virtual_gateway_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_virtual_gateway_output(connection_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict', 'outputs.GetVirtualGatewayFilterResult']]]]] = None,
+                               state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               virtual_gateway_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualGatewayResult]:
     """
     Provides information about a virtual gateway.
@@ -200,7 +200,7 @@ def get_virtual_gateway_output(connection_type: Optional[pulumi.Input[Optional[_
 
 
     :param _builtins.str connection_type: The type of VPN connection supported by the virtual gateway (always `ipsec.1`).
-    :param Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
+    :param Sequence[Union['GetVirtualGatewayFilterArgs', 'GetVirtualGatewayFilterArgsDict', 'outputs.GetVirtualGatewayFilterResult']] filters: A combination of a filter name and one or more filter values. You can specify this argument for as many filter names as you need. The filter name can be any of the following:
     :param _builtins.str state: The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).
     :param _builtins.str virtual_gateway_id: The ID of the virtual gateway.
     """

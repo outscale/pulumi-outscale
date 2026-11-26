@@ -167,6 +167,12 @@ func (FlexibleGpuLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flexibleGpuLinkState)(nil)).Elem()
 }
 
+// FlexibleGpuLinkExists checks whether an existing FlexibleGpuLink resource with the given ID exists.
+func FlexibleGpuLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlexibleGpuLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/flexibleGpuLink:FlexibleGpuLink", id, state, "", opts...)
+}
+
 type flexibleGpuLinkArgs struct {
 	// (Required) The ID of one or more fGPUs you want to attach.
 	FlexibleGpuIds []string                 `pulumi:"flexibleGpuIds"`

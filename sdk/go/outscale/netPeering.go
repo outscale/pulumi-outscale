@@ -206,6 +206,12 @@ func (NetPeeringState) ElementType() reflect.Type {
 	return reflect.TypeOf((*netPeeringState)(nil)).Elem()
 }
 
+// NetPeeringExists checks whether an existing NetPeering resource with the given ID exists.
+func NetPeeringExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetPeeringState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("outscale:index/netPeering:NetPeering", id, state, "", opts...)
+}
+
 type netPeeringArgs struct {
 	// The ID of the Net you want to connect with.<br />
 	// If the Net does not belong to you, you must also specify the `AccepterOwnerId` parameter with the OUTSCALE account ID owning the Net you want to connect with.

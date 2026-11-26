@@ -78,12 +78,8 @@ type GetKeypairsResult struct {
 }
 
 func GetKeypairsOutput(ctx *pulumi.Context, args GetKeypairsOutputArgs, opts ...pulumi.InvokeOption) GetKeypairsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKeypairsResultOutput, error) {
-			args := v.(GetKeypairsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("outscale:index/getKeypairs:getKeypairs", args, GetKeypairsResultOutput{}, options).(GetKeypairsResultOutput), nil
-		}).(GetKeypairsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("outscale:index/getKeypairs:getKeypairs", args, GetKeypairsResultOutput{}, options).(GetKeypairsResultOutput)
 }
 
 // A collection of arguments for invoking getKeypairs.

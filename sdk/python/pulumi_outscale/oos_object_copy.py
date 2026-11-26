@@ -24,23 +24,24 @@ class OosObjectCopyArgs:
                  bucket: pulumi.Input[_builtins.str],
                  copy_source: pulumi.Input['OosObjectCopyCopySourceArgs'],
                  key: pulumi.Input[_builtins.str],
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input['OosObjectCopyGrantArgs']] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 tagging_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OosObjectCopyTimeoutsArgs']] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional['OosObjectCopyGrantArgs']] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 tagging_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OosObjectCopyTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OosObjectCopy resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket where you want the object to be copied.
         :param pulumi.Input['OosObjectCopyCopySourceArgs'] copy_source: Information about the source object you want to copy.
         :param pulumi.Input[_builtins.str] key: The name you want to give to your object in the bucket.
@@ -131,212 +132,213 @@ class OosObjectCopyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_control(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How you want the object to be handled in terms of caching (`max-age` | `max-stale` | `min-fresh` | `no-cache` | `no-store` | `no-transform` | `only-if-cached` | `stale-if-error`).
         """
         return pulumi.get(self, "cache_control")
 
     @cache_control.setter
-    def cache_control(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_control(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_control", value)
 
     @_builtins.property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How you want the object to be displayed when accessed via a browser:<br />- `inline`: When possible, prompts the browser to display the content within the browser window itself. This is useful for images, PDFs, and other media types that browsers can easily render.<br />-`attachment`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally.<br />- `attachment; filename=<NAME_OF_DOWNLOADED_FILE>`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally with the specified filename.
         """
         return pulumi.get(self, "content_disposition")
 
     @content_disposition.setter
-    def content_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoding format of the object (`gzip` | `compress` | `deflate` | `identity` | `br`).
         """
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLanguage")
-    def content_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language the content of the object is in, in language code (ISO 639 format).
         """
         return pulumi.get(self, "content_language")
 
     @content_language.setter
-    def content_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_language", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MIME (Multipurpose Internet Mail Extensions) type of the object.<br />An inaccurately set or absent content-type option can cause objects to be misinterpreted or mishandled by browsers. As a result, you may encounter difficulties accessing or viewing your objects using your preferred browser.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server-side encryption algorithm to use. (`AES256` | `aws:kms`). Encryption must be enabled on the bucket first via an `oos_bucket_encryption` resource.
         """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def expires(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time, in UTC format, at which you consider the object can no longer be cached, and is considered stale.
         """
         return pulumi.get(self, "expires")
 
     @expires.setter
-    def expires(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Default: `false`) Whether Terraform permanently deletes all versions and delete markers for the destination object key when destroying the resource. This includes versions not created by this resource and does not bypass an unexpired object lock.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def grant(self) -> Optional[pulumi.Input['OosObjectCopyGrantArgs']]:
+    def grant(self) -> pulumi.Input[Optional['OosObjectCopyGrantArgs']]:
         """
         The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "grant")
 
     @grant.setter
-    def grant(self, value: Optional[pulumi.Input['OosObjectCopyGrantArgs']]):
+    def grant(self, value: pulumi.Input[Optional['OosObjectCopyGrantArgs']]):
         pulumi.set(self, "grant", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of additional metadata entries you can freely specify.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataDirective")
-    def metadata_directive(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_directive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether you want the metadata to be copied from the source objects or replaced with the metadata provided in the `metadata` argument (`COPY` or `REPLACE`).
         """
         return pulumi.get(self, "metadata_directive")
 
     @metadata_directive.setter
-    def metadata_directive(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_directive(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_directive", value)
 
     @_builtins.property
     @pulumi.getter(name="taggingDirective")
-    def tagging_directive(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tagging_directive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether you want the tag set to be copied from the source object or replaced with the tag-set provided in the `tags` argument (`COPY` or `REPLACE`).
         """
         return pulumi.get(self, "tagging_directive")
 
     @tagging_directive.setter
-    def tagging_directive(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tagging_directive(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tagging_directive", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags you want to have on the object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosObjectCopyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosObjectCopyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosObjectCopyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosObjectCopyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OosObjectCopyState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_source: Optional[pulumi.Input['OosObjectCopyCopySourceArgs']] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input['OosObjectCopyGrantArgs']] = None,
-                 is_latest: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input['OosObjectCopyPermissionsArgs']] = None,
-                 tagging_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OosObjectCopyTimeoutsArgs']] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_source: pulumi.Input[Optional['OosObjectCopyCopySourceArgs']] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional['OosObjectCopyGrantArgs']] = None,
+                 is_latest: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional['OosObjectCopyPermissionsArgs']] = None,
+                 tagging_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OosObjectCopyTimeoutsArgs']] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OosObjectCopy resources.
+
         :param pulumi.Input[_builtins.str] acl: The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket where you want the object to be copied.
         :param pulumi.Input[_builtins.str] cache_control: How you want the object to be handled in terms of caching (`max-age` | `max-stale` | `min-fresh` | `no-cache` | `no-store` | `no-transform` | `only-if-cached` | `stale-if-error`).
@@ -417,139 +419,139 @@ class _OosObjectCopyState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket where you want the object to be copied.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheControl")
-    def cache_control(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_control(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How you want the object to be handled in terms of caching (`max-age` | `max-stale` | `min-fresh` | `no-cache` | `no-store` | `no-transform` | `only-if-cached` | `stale-if-error`).
         """
         return pulumi.get(self, "cache_control")
 
     @cache_control.setter
-    def cache_control(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_control(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_control", value)
 
     @_builtins.property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How you want the object to be displayed when accessed via a browser:<br />- `inline`: When possible, prompts the browser to display the content within the browser window itself. This is useful for images, PDFs, and other media types that browsers can easily render.<br />-`attachment`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally.<br />- `attachment; filename=<NAME_OF_DOWNLOADED_FILE>`: Regardless of file type, prompts the browser to download the content instead of displaying it inline. The file is thus saved locally with the specified filename.
         """
         return pulumi.get(self, "content_disposition")
 
     @content_disposition.setter
-    def content_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoding format of the object (`gzip` | `compress` | `deflate` | `identity` | `br`).
         """
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLanguage")
-    def content_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language the content of the object is in, in language code (ISO 639 format).
         """
         return pulumi.get(self, "content_language")
 
     @content_language.setter
-    def content_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_language", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLength")
-    def content_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def content_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the object, in bytes.
         """
         return pulumi.get(self, "content_length")
 
     @content_length.setter
-    def content_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def content_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "content_length", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MIME (Multipurpose Internet Mail Extensions) type of the object.<br />An inaccurately set or absent content-type option can cause objects to be misinterpreted or mishandled by browsers. As a result, you may encounter difficulties accessing or viewing your objects using your preferred browser.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="copySource")
-    def copy_source(self) -> Optional[pulumi.Input['OosObjectCopyCopySourceArgs']]:
+    def copy_source(self) -> pulumi.Input[Optional['OosObjectCopyCopySourceArgs']]:
         """
         Information about the source object you want to copy.
         """
         return pulumi.get(self, "copy_source")
 
     @copy_source.setter
-    def copy_source(self, value: Optional[pulumi.Input['OosObjectCopyCopySourceArgs']]):
+    def copy_source(self, value: pulumi.Input[Optional['OosObjectCopyCopySourceArgs']]):
         pulumi.set(self, "copy_source", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server-side encryption algorithm to use. (`AES256` | `aws:kms`). Encryption must be enabled on the bucket first via an `oos_bucket_encryption` resource.
         """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ETag of the object.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Information about the lifecycle rule applied to the object, if there is one.
         * `expiry-date` - The date and time at which the object is set to expire.
@@ -558,160 +560,160 @@ class _OosObjectCopyState:
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def expires(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time, in UTC format, at which you consider the object can no longer be cached, and is considered stale.
         """
         return pulumi.get(self, "expires")
 
     @expires.setter
-    def expires(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Default: `false`) Whether Terraform permanently deletes all versions and delete markers for the destination object key when destroying the resource. This includes versions not created by this resource and does not bypass an unexpired object lock.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def grant(self) -> Optional[pulumi.Input['OosObjectCopyGrantArgs']]:
+    def grant(self) -> pulumi.Input[Optional['OosObjectCopyGrantArgs']]:
         """
         The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
         """
         return pulumi.get(self, "grant")
 
     @grant.setter
-    def grant(self, value: Optional[pulumi.Input['OosObjectCopyGrantArgs']]):
+    def grant(self, value: pulumi.Input[Optional['OosObjectCopyGrantArgs']]):
         pulumi.set(self, "grant", value)
 
     @_builtins.property
     @pulumi.getter(name="isLatest")
-    def is_latest(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_latest(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the version of the object is the latest or not (`true` | `false`).
         """
         return pulumi.get(self, "is_latest")
 
     @is_latest.setter
-    def is_latest(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_latest(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_latest", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name you want to give to your object in the bucket.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the object was uploaded or copied into the bucket.
         """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of additional metadata entries you can freely specify.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataDirective")
-    def metadata_directive(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_directive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether you want the metadata to be copied from the source objects or replaced with the metadata provided in the `metadata` argument (`COPY` or `REPLACE`).
         """
         return pulumi.get(self, "metadata_directive")
 
     @metadata_directive.setter
-    def metadata_directive(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_directive(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_directive", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input['OosObjectCopyPermissionsArgs']]:
+    def permissions(self) -> pulumi.Input[Optional['OosObjectCopyPermissionsArgs']]:
         """
         Permissions and owner information for the object.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input['OosObjectCopyPermissionsArgs']]):
+    def permissions(self, value: pulumi.Input[Optional['OosObjectCopyPermissionsArgs']]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="taggingDirective")
-    def tagging_directive(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tagging_directive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether you want the tag set to be copied from the source object or replaced with the tag-set provided in the `tags` argument (`COPY` or `REPLACE`).
         """
         return pulumi.get(self, "tagging_directive")
 
     @tagging_directive.setter
-    def tagging_directive(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tagging_directive(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tagging_directive", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags you want to have on the object.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OosObjectCopyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OosObjectCopyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OosObjectCopyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OosObjectCopyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version ID of the object.
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
 
@@ -721,24 +723,24 @@ class OosObjectCopy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_source: Optional[pulumi.Input[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict']]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict']]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 tagging_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosObjectCopyTimeoutsArgs', 'OosObjectCopyTimeoutsArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_source: pulumi.Input[Optional[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict', 'outputs.OosObjectCopyCopySource']]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict', 'outputs.OosObjectCopyGrant']]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 tagging_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosObjectCopyTimeoutsArgs', 'OosObjectCopyTimeoutsArgsDict', 'outputs.OosObjectCopyTimeouts']]] = None,
                  __props__=None):
         """
         Manages an object copy.
@@ -803,6 +805,7 @@ class OosObjectCopy(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The permissions you grant for your object (`private` | `public-read` | `public-read-write` | `authenticated-read`). The `acl` and `grant` arguments are mutually exclusive.
@@ -812,11 +815,11 @@ class OosObjectCopy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_encoding: The encoding format of the object (`gzip` | `compress` | `deflate` | `identity` | `br`).
         :param pulumi.Input[_builtins.str] content_language: The language the content of the object is in, in language code (ISO 639 format).
         :param pulumi.Input[_builtins.str] content_type: The MIME (Multipurpose Internet Mail Extensions) type of the object.<br />An inaccurately set or absent content-type option can cause objects to be misinterpreted or mishandled by browsers. As a result, you may encounter difficulties accessing or viewing your objects using your preferred browser.
-        :param pulumi.Input[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict']] copy_source: Information about the source object you want to copy.
+        :param pulumi.Input[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict', 'outputs.OosObjectCopyCopySource']] copy_source: Information about the source object you want to copy.
         :param pulumi.Input[_builtins.str] encryption_type: The server-side encryption algorithm to use. (`AES256` | `aws:kms`). Encryption must be enabled on the bucket first via an `oos_bucket_encryption` resource.
         :param pulumi.Input[_builtins.str] expires: The date and time, in UTC format, at which you consider the object can no longer be cached, and is considered stale.
         :param pulumi.Input[_builtins.bool] force_delete: (Default: `false`) Whether Terraform permanently deletes all versions and delete markers for the destination object key when destroying the resource. This includes versions not created by this resource and does not bypass an unexpired object lock.
-        :param pulumi.Input[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict']] grant: The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
+        :param pulumi.Input[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict', 'outputs.OosObjectCopyGrant']] grant: The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.str] key: The name you want to give to your object in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of additional metadata entries you can freely specify.
         :param pulumi.Input[_builtins.str] metadata_directive: Whether you want the metadata to be copied from the source objects or replaced with the metadata provided in the `metadata` argument (`COPY` or `REPLACE`).
@@ -892,6 +895,7 @@ class OosObjectCopy(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param OosObjectCopyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -907,24 +911,24 @@ class OosObjectCopy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_source: Optional[pulumi.Input[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict']]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grant: Optional[pulumi.Input[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict']]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 tagging_directive: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OosObjectCopyTimeoutsArgs', 'OosObjectCopyTimeoutsArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_source: pulumi.Input[Optional[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict', 'outputs.OosObjectCopyCopySource']]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grant: pulumi.Input[Optional[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict', 'outputs.OosObjectCopyGrant']]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 tagging_directive: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OosObjectCopyTimeoutsArgs', 'OosObjectCopyTimeoutsArgsDict', 'outputs.OosObjectCopyTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -975,31 +979,31 @@ class OosObjectCopy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            cache_control: Optional[pulumi.Input[_builtins.str]] = None,
-            content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-            content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            content_language: Optional[pulumi.Input[_builtins.str]] = None,
-            content_length: Optional[pulumi.Input[_builtins.int]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            copy_source: Optional[pulumi.Input[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict']]] = None,
-            encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration: Optional[pulumi.Input[_builtins.str]] = None,
-            expires: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            grant: Optional[pulumi.Input[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict']]] = None,
-            is_latest: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            metadata_directive: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions: Optional[pulumi.Input[Union['OosObjectCopyPermissionsArgs', 'OosObjectCopyPermissionsArgsDict']]] = None,
-            tagging_directive: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['OosObjectCopyTimeoutsArgs', 'OosObjectCopyTimeoutsArgsDict']]] = None,
-            version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OosObjectCopy':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_language: pulumi.Input[Optional[_builtins.str]] = None,
+            content_length: pulumi.Input[Optional[_builtins.int]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_source: pulumi.Input[Optional[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict', 'outputs.OosObjectCopyCopySource']]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.str]] = None,
+            expires: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            grant: pulumi.Input[Optional[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict', 'outputs.OosObjectCopyGrant']]] = None,
+            is_latest: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata_directive: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Union['OosObjectCopyPermissionsArgs', 'OosObjectCopyPermissionsArgsDict', 'outputs.OosObjectCopyPermissions']]] = None,
+            tagging_directive: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosObjectCopyTimeoutsArgs', 'OosObjectCopyTimeoutsArgsDict', 'outputs.OosObjectCopyTimeouts']]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OosObjectCopy':
         """
         Get an existing OosObjectCopy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1015,7 +1019,7 @@ class OosObjectCopy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_language: The language the content of the object is in, in language code (ISO 639 format).
         :param pulumi.Input[_builtins.int] content_length: The size of the object, in bytes.
         :param pulumi.Input[_builtins.str] content_type: The MIME (Multipurpose Internet Mail Extensions) type of the object.<br />An inaccurately set or absent content-type option can cause objects to be misinterpreted or mishandled by browsers. As a result, you may encounter difficulties accessing or viewing your objects using your preferred browser.
-        :param pulumi.Input[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict']] copy_source: Information about the source object you want to copy.
+        :param pulumi.Input[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict', 'outputs.OosObjectCopyCopySource']] copy_source: Information about the source object you want to copy.
         :param pulumi.Input[_builtins.str] encryption_type: The server-side encryption algorithm to use. (`AES256` | `aws:kms`). Encryption must be enabled on the bucket first via an `oos_bucket_encryption` resource.
         :param pulumi.Input[_builtins.str] etag: The ETag of the object.
         :param pulumi.Input[_builtins.str] expiration: Information about the lifecycle rule applied to the object, if there is one.
@@ -1023,13 +1027,13 @@ class OosObjectCopy(pulumi.CustomResource):
                * `rule-id` - The name given to the lifecycle rule.
         :param pulumi.Input[_builtins.str] expires: The date and time, in UTC format, at which you consider the object can no longer be cached, and is considered stale.
         :param pulumi.Input[_builtins.bool] force_delete: (Default: `false`) Whether Terraform permanently deletes all versions and delete markers for the destination object key when destroying the resource. This includes versions not created by this resource and does not bypass an unexpired object lock.
-        :param pulumi.Input[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict']] grant: The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
+        :param pulumi.Input[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict', 'outputs.OosObjectCopyGrant']] grant: The permissions you grant for your object. The `acl` and `grant` arguments are mutually exclusive.
         :param pulumi.Input[_builtins.bool] is_latest: Whether the version of the object is the latest or not (`true` | `false`).
         :param pulumi.Input[_builtins.str] key: The name you want to give to your object in the bucket.
         :param pulumi.Input[_builtins.str] last_modified: The date and time when the object was uploaded or copied into the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of additional metadata entries you can freely specify.
         :param pulumi.Input[_builtins.str] metadata_directive: Whether you want the metadata to be copied from the source objects or replaced with the metadata provided in the `metadata` argument (`COPY` or `REPLACE`).
-        :param pulumi.Input[Union['OosObjectCopyPermissionsArgs', 'OosObjectCopyPermissionsArgsDict']] permissions: Permissions and owner information for the object.
+        :param pulumi.Input[Union['OosObjectCopyPermissionsArgs', 'OosObjectCopyPermissionsArgsDict', 'outputs.OosObjectCopyPermissions']] permissions: Permissions and owner information for the object.
         :param pulumi.Input[_builtins.str] tagging_directive: Whether you want the tag set to be copied from the source object or replaced with the tag-set provided in the `tags` argument (`COPY` or `REPLACE`).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags you want to have on the object.
         :param pulumi.Input[_builtins.str] version_id: The version ID of the object.
@@ -1064,6 +1068,62 @@ class OosObjectCopy(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["version_id"] = version_id
         return OosObjectCopy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_language: pulumi.Input[Optional[_builtins.str]] = None,
+            content_length: pulumi.Input[Optional[_builtins.int]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_source: pulumi.Input[Optional[Union['OosObjectCopyCopySourceArgs', 'OosObjectCopyCopySourceArgsDict', 'outputs.OosObjectCopyCopySource']]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.str]] = None,
+            expires: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            grant: pulumi.Input[Optional[Union['OosObjectCopyGrantArgs', 'OosObjectCopyGrantArgsDict', 'outputs.OosObjectCopyGrant']]] = None,
+            is_latest: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata_directive: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Union['OosObjectCopyPermissionsArgs', 'OosObjectCopyPermissionsArgsDict', 'outputs.OosObjectCopyPermissions']]] = None,
+            tagging_directive: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OosObjectCopyTimeoutsArgs', 'OosObjectCopyTimeoutsArgsDict', 'outputs.OosObjectCopyTimeouts']]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["bucket"] = bucket
+        __props__["cacheControl"] = cache_control
+        __props__["contentDisposition"] = content_disposition
+        __props__["contentEncoding"] = content_encoding
+        __props__["contentLanguage"] = content_language
+        __props__["contentLength"] = content_length
+        __props__["contentType"] = content_type
+        __props__["copySource"] = copy_source
+        __props__["encryptionType"] = encryption_type
+        __props__["etag"] = etag
+        __props__["expiration"] = expiration
+        __props__["expires"] = expires
+        __props__["forceDelete"] = force_delete
+        __props__["grant"] = grant
+        __props__["isLatest"] = is_latest
+        __props__["key"] = key
+        __props__["lastModified"] = last_modified
+        __props__["metadata"] = metadata
+        __props__["metadataDirective"] = metadata_directive
+        __props__["permissions"] = permissions
+        __props__["taggingDirective"] = tagging_directive
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'outscale:index/oosObjectCopy:OosObjectCopy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter

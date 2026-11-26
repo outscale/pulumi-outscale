@@ -14,7 +14,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about image export tasks.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
         /// For more information on this resource actions, see the [Image](https://docs.outscale.com/api#3ds-outscale-api-image) API methods.
         /// 
         /// ## Example Usage
@@ -52,7 +52,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about image export tasks.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
         /// For more information on this resource actions, see the [Image](https://docs.outscale.com/api#3ds-outscale-api-image) API methods.
         /// 
         /// ## Example Usage
@@ -90,7 +90,7 @@ namespace Pulumi.Outscale
         /// <summary>
         /// Provides information about image export tasks.
         /// 
-        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).  
+        /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-OMIs.html).\
         /// For more information on this resource actions, see the [Image](https://docs.outscale.com/api#3ds-outscale-api-image) API methods.
         /// 
         /// ## Example Usage

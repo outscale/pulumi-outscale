@@ -22,13 +22,14 @@ __all__ = ['NicArgs', 'Nic']
 class NicArgs:
     def __init__(__self__, *,
                  subnet_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input['NicPrivateIpArgs']]]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['NicTagArgs']]]] = None):
         """
         The set of arguments for constructing a Nic resource.
+
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the NIC.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
@@ -62,89 +63,90 @@ class NicArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the NIC.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP of the NIC.
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NicPrivateIpArgs']]]]:
         """
         Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NicPrivateIpArgs']]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of security groups for the NIC.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NicTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NicTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _NicState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_nics: Optional[pulumi.Input[Sequence[pulumi.Input['NicLinkNicArgs']]]] = None,
-                 link_public_ips: Optional[pulumi.Input[Sequence[pulumi.Input['NicLinkPublicIpArgs']]]] = None,
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]] = None,
-                 request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requester_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['NicSecurityGroupArgs']]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_nics: pulumi.Input[Optional[Sequence[pulumi.Input['NicLinkNicArgs']]]] = None,
+                 link_public_ips: pulumi.Input[Optional[Sequence[pulumi.Input['NicLinkPublicIpArgs']]]] = None,
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input['NicPrivateIpArgs']]]] = None,
+                 request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requester_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['NicSecurityGroupArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['NicTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering Nic resources.
+
         :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the NIC.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
@@ -204,224 +206,224 @@ class _NicState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OUTSCALE account ID of the owner of the NIC.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the NIC.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isSourceDestChecked")
-    def is_source_dest_checked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_source_dest_checked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Net only) If true, the source/destination check is enabled. If false, it is disabled.
         """
         return pulumi.get(self, "is_source_dest_checked")
 
     @is_source_dest_checked.setter
-    def is_source_dest_checked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_source_dest_checked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_source_dest_checked", value)
 
     @_builtins.property
     @pulumi.getter(name="linkNics")
-    def link_nics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicLinkNicArgs']]]]:
+    def link_nics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NicLinkNicArgs']]]]:
         """
         Information about the NIC attachment.
         """
         return pulumi.get(self, "link_nics")
 
     @link_nics.setter
-    def link_nics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NicLinkNicArgs']]]]):
+    def link_nics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NicLinkNicArgs']]]]):
         pulumi.set(self, "link_nics", value)
 
     @_builtins.property
     @pulumi.getter(name="linkPublicIps")
-    def link_public_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicLinkPublicIpArgs']]]]:
+    def link_public_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NicLinkPublicIpArgs']]]]:
         """
         Information about the public IP association.
         """
         return pulumi.get(self, "link_public_ips")
 
     @link_public_ips.setter
-    def link_public_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NicLinkPublicIpArgs']]]]):
+    def link_public_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NicLinkPublicIpArgs']]]]):
         pulumi.set(self, "link_public_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Media Access Control (MAC) address of the NIC.
         """
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
-    def mac_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_address", value)
 
     @_builtins.property
     @pulumi.getter(name="netId")
-    def net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Net for the NIC.
         """
         return pulumi.get(self, "net_id")
 
     @net_id.setter
-    def net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nicId")
-    def nic_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NIC.
         """
         return pulumi.get(self, "nic_id")
 
     @nic_id.setter
-    def nic_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateDnsName")
-    def private_dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the private DNS.
         """
         return pulumi.get(self, "private_dns_name")
 
     @private_dns_name.setter
-    def private_dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP of the NIC.
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NicPrivateIpArgs']]]]:
         """
         Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NicPrivateIpArgs']]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NicPrivateIpArgs']]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="requestId")
-    def request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "request_id")
 
     @request_id.setter
-    def request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requesterManaged")
-    def requester_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def requester_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "requester_managed")
 
     @requester_managed.setter
-    def requester_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def requester_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "requester_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more IDs of security groups for the NIC.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicSecurityGroupArgs']]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NicSecurityGroupArgs']]]]:
         """
         One or more IDs of security groups for the NIC.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NicSecurityGroupArgs']]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NicSecurityGroupArgs']]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Subnet in which you want to create the NIC.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subregionName")
-    def subregion_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subregion_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Subregion in which the NIC is located.
         """
         return pulumi.get(self, "subregion_name")
 
     @subregion_name.setter
-    def subregion_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subregion_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subregion_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NicTagArgs']]]]:
         """
         A tag to add to this resource. You can specify this argument several times.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NicTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NicTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -431,12 +433,12 @@ class Nic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict', 'outputs.NicPrivateIp']]]]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict', 'outputs.NicTag']]]]] = None,
                  __props__=None):
         """
         Manages a network interface card (NIC).
@@ -481,6 +483,9 @@ class Nic(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         nic02 = outscale.Nic("nic02",
+            description="Terraform nic with private IPs",
+            subnet_id=subnet01["subnetId"],
+            security_group_ids=[security_group01["securityGroupId"]],
             private_ips=[
                 {
                     "is_primary": True,
@@ -490,10 +495,7 @@ class Nic(pulumi.CustomResource):
                     "is_primary": False,
                     "private_ip": "10.0.0.5",
                 },
-            ],
-            description="Terraform nic with private IPs",
-            subnet_id=subnet01["subnetId"],
-            security_group_ids=[security_group01["securityGroupId"]])
+            ])
         ```
 
         ## Import
@@ -506,14 +508,15 @@ class Nic(pulumi.CustomResource):
 
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict', 'outputs.NicPrivateIp']]]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security groups for the NIC.
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict', 'outputs.NicTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         ...
     @overload
@@ -564,6 +567,9 @@ class Nic(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         nic02 = outscale.Nic("nic02",
+            description="Terraform nic with private IPs",
+            subnet_id=subnet01["subnetId"],
+            security_group_ids=[security_group01["securityGroupId"]],
             private_ips=[
                 {
                     "is_primary": True,
@@ -573,10 +579,7 @@ class Nic(pulumi.CustomResource):
                     "is_primary": False,
                     "private_ip": "10.0.0.5",
                 },
-            ],
-            description="Terraform nic with private IPs",
-            subnet_id=subnet01["subnetId"],
-            security_group_ids=[security_group01["securityGroupId"]])
+            ])
         ```
 
         ## Import
@@ -588,6 +591,7 @@ class Nic(pulumi.CustomResource):
         $ pulumi import outscale:index/nic:Nic ImportedNic eni-12345678
 
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NicArgs args: The arguments to use to populate this resource's properties.
@@ -604,12 +608,12 @@ class Nic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict', 'outputs.NicPrivateIp']]]]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict', 'outputs.NicTag']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -650,25 +654,25 @@ class Nic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            is_source_dest_checked: Optional[pulumi.Input[_builtins.bool]] = None,
-            link_nics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicLinkNicArgs', 'NicLinkNicArgsDict']]]]] = None,
-            link_public_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicLinkPublicIpArgs', 'NicLinkPublicIpArgsDict']]]]] = None,
-            mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-            net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nic_id: Optional[pulumi.Input[_builtins.str]] = None,
-            private_dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]]] = None,
-            request_id: Optional[pulumi.Input[_builtins.str]] = None,
-            requester_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicSecurityGroupArgs', 'NicSecurityGroupArgsDict']]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            subregion_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict']]]]] = None) -> 'Nic':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+            link_nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicLinkNicArgs', 'NicLinkNicArgsDict', 'outputs.NicLinkNic']]]]] = None,
+            link_public_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicLinkPublicIpArgs', 'NicLinkPublicIpArgsDict', 'outputs.NicLinkPublicIp']]]]] = None,
+            mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict', 'outputs.NicPrivateIp']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            requester_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicSecurityGroupArgs', 'NicSecurityGroupArgsDict', 'outputs.NicSecurityGroup']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict', 'outputs.NicTag']]]]] = None) -> 'Nic':
         """
         Get an existing Nic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -679,20 +683,20 @@ class Nic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The OUTSCALE account ID of the owner of the NIC.
         :param pulumi.Input[_builtins.str] description: A description for the NIC.
         :param pulumi.Input[_builtins.bool] is_source_dest_checked: (Net only) If true, the source/destination check is enabled. If false, it is disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicLinkNicArgs', 'NicLinkNicArgsDict']]]] link_nics: Information about the NIC attachment.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicLinkPublicIpArgs', 'NicLinkPublicIpArgsDict']]]] link_public_ips: Information about the public IP association.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicLinkNicArgs', 'NicLinkNicArgsDict', 'outputs.NicLinkNic']]]] link_nics: Information about the NIC attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicLinkPublicIpArgs', 'NicLinkPublicIpArgsDict', 'outputs.NicLinkPublicIp']]]] link_public_ips: Information about the public IP association.
         :param pulumi.Input[_builtins.str] mac_address: The Media Access Control (MAC) address of the NIC.
         :param pulumi.Input[_builtins.str] net_id: The ID of the Net for the NIC.
         :param pulumi.Input[_builtins.str] nic_id: The ID of the NIC.
         :param pulumi.Input[_builtins.str] private_dns_name: The name of the private DNS.
         :param pulumi.Input[_builtins.str] private_ip: The private IP of the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict']]]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict', 'outputs.NicPrivateIp']]]] private_ips: Information about the private IP or IPs of the NIC. If you do not specify a primary private IP, one is still created, with an IP randomly selected within the IP range of the Subnet.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: One or more IDs of security groups for the NIC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicSecurityGroupArgs', 'NicSecurityGroupArgsDict']]]] security_groups: One or more IDs of security groups for the NIC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicSecurityGroupArgs', 'NicSecurityGroupArgsDict', 'outputs.NicSecurityGroup']]]] security_groups: One or more IDs of security groups for the NIC.
         :param pulumi.Input[_builtins.str] state: The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).
         :param pulumi.Input[_builtins.str] subnet_id: The ID of the Subnet in which you want to create the NIC.
         :param pulumi.Input[_builtins.str] subregion_name: The Subregion in which the NIC is located.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict']]]] tags: A tag to add to this resource. You can specify this argument several times.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict', 'outputs.NicTag']]]] tags: A tag to add to this resource. You can specify this argument several times.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -718,6 +722,50 @@ class Nic(pulumi.CustomResource):
         __props__.__dict__["subregion_name"] = subregion_name
         __props__.__dict__["tags"] = tags
         return Nic(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_source_dest_checked: pulumi.Input[Optional[_builtins.bool]] = None,
+            link_nics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicLinkNicArgs', 'NicLinkNicArgsDict', 'outputs.NicLinkNic']]]]] = None,
+            link_public_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicLinkPublicIpArgs', 'NicLinkPublicIpArgsDict', 'outputs.NicLinkPublicIp']]]]] = None,
+            mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+            net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nic_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicPrivateIpArgs', 'NicPrivateIpArgsDict', 'outputs.NicPrivateIp']]]]] = None,
+            request_id: pulumi.Input[Optional[_builtins.str]] = None,
+            requester_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicSecurityGroupArgs', 'NicSecurityGroupArgsDict', 'outputs.NicSecurityGroup']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subregion_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NicTagArgs', 'NicTagArgsDict', 'outputs.NicTag']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["description"] = description
+        __props__["isSourceDestChecked"] = is_source_dest_checked
+        __props__["linkNics"] = link_nics
+        __props__["linkPublicIps"] = link_public_ips
+        __props__["macAddress"] = mac_address
+        __props__["netId"] = net_id
+        __props__["nicId"] = nic_id
+        __props__["privateDnsName"] = private_dns_name
+        __props__["privateIp"] = private_ip
+        __props__["privateIps"] = private_ips
+        __props__["requestId"] = request_id
+        __props__["requesterManaged"] = requester_managed
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["securityGroups"] = security_groups
+        __props__["state"] = state
+        __props__["subnetId"] = subnet_id
+        __props__["subregionName"] = subregion_name
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'outscale:index/nic:Nic', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="accountId")

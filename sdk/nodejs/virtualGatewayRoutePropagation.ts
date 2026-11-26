@@ -58,6 +58,17 @@ export class VirtualGatewayRoutePropagation extends pulumi.CustomResource {
         return new VirtualGatewayRoutePropagation(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing VirtualGatewayRoutePropagation resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VirtualGatewayRoutePropagationState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/virtualGatewayRoutePropagation:VirtualGatewayRoutePropagation", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/virtualGatewayRoutePropagation:VirtualGatewayRoutePropagation';
 
@@ -134,17 +145,17 @@ export interface VirtualGatewayRoutePropagationState {
     /**
      * If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
      */
-    enable?: pulumi.Input<boolean>;
-    requestId?: pulumi.Input<string>;
+    enable?: pulumi.Input<boolean | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table.
      */
-    routeTableId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VirtualGatewayRoutePropagationTimeouts>;
+    routeTableId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayRoutePropagationTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */
-    virtualGatewayId?: pulumi.Input<string>;
+    virtualGatewayId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,7 +170,7 @@ export interface VirtualGatewayRoutePropagationArgs {
      * The ID of the route table.
      */
     routeTableId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.VirtualGatewayRoutePropagationTimeouts>;
+    timeouts?: pulumi.Input<inputs.VirtualGatewayRoutePropagationTimeouts | undefined>;
     /**
      * The ID of the virtual gateway.
      */

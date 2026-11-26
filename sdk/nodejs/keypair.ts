@@ -66,6 +66,17 @@ export class Keypair extends pulumi.CustomResource {
         return new Keypair(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Keypair resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: KeypairState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("outscale:index/keypair:Keypair", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'outscale:index/keypair:Keypair';
 
@@ -162,33 +173,33 @@ export interface KeypairState {
     /**
      * The MD5 public key fingerprint, as specified in section 4 of RFC 4716.
      */
-    keypairFingerprint?: pulumi.Input<string>;
+    keypairFingerprint?: pulumi.Input<string | undefined>;
     /**
      * The ID of the keypair.
      */
-    keypairId?: pulumi.Input<string>;
+    keypairId?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the keypair, with a maximum length of 255 [ASCII printable characters](https://en.wikipedia.org/wiki/ASCII#Printable_characters).
      */
-    keypairName?: pulumi.Input<string>;
+    keypairName?: pulumi.Input<string | undefined>;
     /**
      * The type of the keypair (`ssh-rsa`, `ssh-ed25519`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`, or `ecdsa-sha2-nistp521`).
      */
-    keypairType?: pulumi.Input<string>;
+    keypairType?: pulumi.Input<string | undefined>;
     /**
      * The private key, returned only if you are creating a keypair (not if you are importing). When you save this private key in a .rsa file, make sure you replace the `\n` escape sequences with real line breaks.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
      */
-    publicKey?: pulumi.Input<string>;
-    requestId?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
+    requestId?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.KeypairTag>[]>;
-    timeouts?: pulumi.Input<inputs.KeypairTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KeypairTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.KeypairTimeouts | undefined>;
 }
 
 /**
@@ -202,10 +213,10 @@ export interface KeypairArgs {
     /**
      * The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * A tag to add to this resource. You can specify this argument several times.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.KeypairTag>[]>;
-    timeouts?: pulumi.Input<inputs.KeypairTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KeypairTag>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.KeypairTimeouts | undefined>;
 }

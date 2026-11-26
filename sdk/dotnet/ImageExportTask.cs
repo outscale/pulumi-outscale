@@ -48,10 +48,14 @@ namespace Pulumi.Outscale
     /// {
     ///     var imageExportTask01 = new Outscale.ImageExportTask("image_export_task01", new()
     ///     {
+    ///         ImageId = image01.ImageId,
     ///         OsuExports = new[]
     ///         {
     ///             new Outscale.Inputs.ImageExportTaskOsuExportArgs
     ///             {
+    ///                 DiskImageFormat = "qcow2",
+    ///                 OsuBucket = "terraform-bucket",
+    ///                 OsuPrefix = "new-export",
     ///                 OsuApiKeys = new[]
     ///                 {
     ///                     new Outscale.Inputs.ImageExportTaskOsuExportOsuApiKeyArgs
@@ -60,9 +64,6 @@ namespace Pulumi.Outscale
     ///                         SecretKey = secretKeyId,
     ///                     },
     ///                 },
-    ///                 DiskImageFormat = "qcow2",
-    ///                 OsuBucket = "terraform-bucket",
-    ///                 OsuPrefix = "new-export",
     ///             },
     ///         },
     ///         Tags = new[]
@@ -73,7 +74,6 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-snapshot-export-task",
     ///             },
     ///         },
-    ///         ImageId = image01.ImageId,
     ///         WaitForCompletion = false,
     ///     });
     /// 

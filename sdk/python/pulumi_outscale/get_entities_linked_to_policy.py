@@ -115,8 +115,8 @@ def get_entities_linked_to_policy(entities_types: Optional[Sequence[_builtins.st
         id=pulumi.get(__ret__, 'id'),
         policy_entities=pulumi.get(__ret__, 'policy_entities'),
         policy_orn=pulumi.get(__ret__, 'policy_orn'))
-def get_entities_linked_to_policy_output(entities_types: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                         policy_orn: Optional[pulumi.Input[_builtins.str]] = None,
+def get_entities_linked_to_policy_output(entities_types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                         policy_orn: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntitiesLinkedToPolicyResult]:
     """
     Provides information about  entities (account, users, or user groups) linked to a specific managed policy.
