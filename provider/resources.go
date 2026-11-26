@@ -25,7 +25,6 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	outscale "github.com/outscale/terraform-provider-outscale/provider"
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
@@ -38,14 +37,6 @@ import (
 
 //go:embed cmd/pulumi-resource-outscale/bridge-metadata.json
 var metadata []byte
-
-var endpointServiceNames []string
-
-func init() {
-	endpointServiceNames = []string{
-		"api",
-	}
-}
 
 // all of the token components used below.
 const (
@@ -82,82 +73,13 @@ func outscaleResource(mod string, res string) tokens.Type {
 	return outscaleType(mod+"/"+fn, res)
 }
 
-func endpointsSchema() *schema.Schema {
-	endpointsAttributes := make(map[string]*schema.Schema)
-
-	for _, endpointServiceName := range endpointServiceNames {
-		endpointsAttributes[endpointServiceName] = &schema.Schema{
-			Type:        schema.TypeString,
-			Optional:    true,
-			Default:     "",
-			Description: "Use this to override the default service endpoint URL",
-		}
-	}
-
-	return &schema.Schema{
-		Type:     schema.TypeSet,
-		Optional: true,
-		Elem: &schema.Resource{
-			Schema: endpointsAttributes,
-		},
-	}
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	ctx := context.Background()
 
 	tfFrameworkProvider := outscale.New(version.Version)
 
-	tfOutscaleSchemaProvider := outscale.Provider()
-	// Instantiate the Terraform provider
-	outscaleSchemaProvider := &schema.Provider{
-		Schema: map[string]*schema.Schema{
-			"access_key_id": {
-				Type:        schema.TypeString,
-				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OUTSCALE_ACCESSKEYID", nil),
-				Description: "The Access Key ID for API operations",
-			},
-			"secret_key_id": {
-				Type:        schema.TypeString,
-				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OUTSCALE_SECRETKEYID", nil),
-				Description: "The Secret Key ID for API operations.",
-			},
-			"region": {
-				Type:        schema.TypeString,
-				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OUTSCALE_REGION", nil),
-				Description: "The Region for API operations.",
-			},
-			"x509_cert_path": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OUTSCALE_X509CERT", nil),
-				Description: "The path to your x509 cert",
-			},
-			"endpoints": endpointsSchema(),
-			"x509_key_path": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OUTSCALE_X509KEY", nil),
-				Description: "The path to your x509 key",
-			},
-			"insecure": {
-				Type:        schema.TypeBool,
-				Optional:    true,
-				Default:     false,
-				Description: "tls insecure connection",
-			},
-		},
-
-		ResourcesMap:   tfOutscaleSchemaProvider.ResourcesMap,
-		DataSourcesMap: tfOutscaleSchemaProvider.DataSourcesMap,
-
-		// Use the upstream provider's ConfigureContextFunc instead of a custom one.
-		ConfigureContextFunc: tfOutscaleSchemaProvider.ConfigureContextFunc,
-	}
+	outscaleSchemaProvider := outscale.Provider()
 
 	// Map the Terraform resources to Pulumi resources.
 	// For example a resource named `outscale_api_access_policy` will be mapped to ApiAccessPolicy

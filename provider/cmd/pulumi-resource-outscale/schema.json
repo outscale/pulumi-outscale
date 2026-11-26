@@ -67,22 +67,41 @@
         "variables": {
             "accessKeyId": {
                 "type": "string",
-                "description": "The Access Key ID for API operations",
+                "description": "The Access Key ID for API operations.",
                 "defaultInfo": {
                     "environment": [
                         "OUTSCALE_ACCESSKEYID"
                     ]
                 }
             },
+            "api": {
+                "$ref": "#/types/outscale:config/api:api"
+            },
+            "configFile": {
+                "type": "string",
+                "description": "Path to the configuration file in which you have defined your credentials."
+            },
             "endpoints": {
                 "type": "array",
                 "items": {
                     "$ref": "#/types/outscale:config/endpoints:endpoints"
-                }
+                },
+                "deprecationMessage": "'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "tls insecure connection"
+                "description": "TLS insecure connection for IaaS API operations.",
+                "deprecationMessage": "'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider."
+            },
+            "oks": {
+                "$ref": "#/types/outscale:config/oks:oks"
+            },
+            "oos": {
+                "$ref": "#/types/outscale:config/oos:oos"
+            },
+            "profile": {
+                "type": "string",
+                "description": "Name of your profile in which you define your credencial"
             },
             "region": {
                 "type": "string",
@@ -92,6 +111,10 @@
                         "OUTSCALE_REGION"
                     ]
                 }
+            },
+            "sanitize": {
+                "type": "boolean",
+                "description": "Sanitize sensitive data in the logs. Defaults to true."
             },
             "secretKeyId": {
                 "type": "string",
@@ -104,25 +127,73 @@
             },
             "x509CertPath": {
                 "type": "string",
-                "description": "The path to your x509 cert"
+                "description": "Path to the x509 certificate for IaaS API operations.",
+                "deprecationMessage": "'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider."
             },
             "x509KeyPath": {
                 "type": "string",
-                "description": "The path to your x509 key"
+                "description": "Path to the x509 key for IaaS API operations.",
+                "deprecationMessage": "'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider."
             }
-        },
-        "defaults": [
-            "accessKeyId",
-            "region",
-            "secretKeyId"
-        ]
+        }
     },
     "types": {
+        "outscale:config/api:api": {
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "TLS insecure connection\n"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "x509CertPath": {
+                    "type": "string",
+                    "description": "Path to the x509 certificate\n",
+                    "deprecationMessage": "'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider."
+                },
+                "x509KeyPath": {
+                    "type": "string",
+                    "description": "Path to the x509 key\n",
+                    "deprecationMessage": "'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider."
+                }
+            },
+            "type": "object"
+        },
         "outscale:config/endpoints:endpoints": {
             "properties": {
                 "api": {
                     "type": "string",
-                    "description": "Use this to override the default service endpoint URL\n"
+                    "description": "The Endpoint for Outscale API operations.\n"
+                },
+                "oks": {
+                    "type": "string",
+                    "description": "The Endpoint for OKS API operations.\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:config/oks:oks": {
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:config/oos:oos": {
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3594,11 +3665,62 @@
             },
             "type": "object"
         },
+        "outscale:index/ProviderApi:ProviderApi": {
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "TLS insecure connection\n"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "x509CertPath": {
+                    "type": "string",
+                    "description": "Path to the x509 certificate\n",
+                    "deprecationMessage": "'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider."
+                },
+                "x509KeyPath": {
+                    "type": "string",
+                    "description": "Path to the x509 key\n",
+                    "deprecationMessage": "'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider."
+                }
+            },
+            "type": "object"
+        },
         "outscale:index/ProviderEndpoint:ProviderEndpoint": {
             "properties": {
                 "api": {
                     "type": "string",
-                    "description": "Use this to override the default service endpoint URL\n"
+                    "description": "The Endpoint for Outscale API operations.\n"
+                },
+                "oks": {
+                    "type": "string",
+                    "description": "The Endpoint for OKS API operations.\n"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/ProviderOks:ProviderOks": {
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "outscale:index/ProviderOos:ProviderOos": {
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -14356,21 +14478,44 @@
         "properties": {
             "accessKeyId": {
                 "type": "string",
-                "description": "The Access Key ID for API operations"
+                "description": "The Access Key ID for API operations."
+            },
+            "api": {
+                "$ref": "#/types/outscale:index/ProviderApi:ProviderApi"
+            },
+            "configFile": {
+                "type": "string",
+                "description": "Path to the configuration file in which you have defined your credentials."
             },
             "endpoints": {
                 "type": "array",
                 "items": {
                     "$ref": "#/types/outscale:index/ProviderEndpoint:ProviderEndpoint"
-                }
+                },
+                "deprecationMessage": "'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "tls insecure connection"
+                "description": "TLS insecure connection for IaaS API operations.",
+                "deprecationMessage": "'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider."
+            },
+            "oks": {
+                "$ref": "#/types/outscale:index/ProviderOks:ProviderOks"
+            },
+            "oos": {
+                "$ref": "#/types/outscale:index/ProviderOos:ProviderOos"
+            },
+            "profile": {
+                "type": "string",
+                "description": "Name of your profile in which you define your credencial"
             },
             "region": {
                 "type": "string",
                 "description": "The Region for API operations."
+            },
+            "sanitize": {
+                "type": "boolean",
+                "description": "Sanitize sensitive data in the logs. Defaults to true."
             },
             "secretKeyId": {
                 "type": "string",
@@ -14378,32 +14523,53 @@
             },
             "x509CertPath": {
                 "type": "string",
-                "description": "The path to your x509 cert"
+                "description": "Path to the x509 certificate for IaaS API operations.",
+                "deprecationMessage": "'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider."
             },
             "x509KeyPath": {
                 "type": "string",
-                "description": "The path to your x509 key"
+                "description": "Path to the x509 key for IaaS API operations.",
+                "deprecationMessage": "'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider."
             }
         },
         "inputProperties": {
             "accessKeyId": {
                 "type": "string",
-                "description": "The Access Key ID for API operations",
+                "description": "The Access Key ID for API operations.",
                 "defaultInfo": {
                     "environment": [
                         "OUTSCALE_ACCESSKEYID"
                     ]
                 }
             },
+            "api": {
+                "$ref": "#/types/outscale:index/ProviderApi:ProviderApi"
+            },
+            "configFile": {
+                "type": "string",
+                "description": "Path to the configuration file in which you have defined your credentials."
+            },
             "endpoints": {
                 "type": "array",
                 "items": {
                     "$ref": "#/types/outscale:index/ProviderEndpoint:ProviderEndpoint"
-                }
+                },
+                "deprecationMessage": "'endpoints' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider."
             },
             "insecure": {
                 "type": "boolean",
-                "description": "tls insecure connection"
+                "description": "TLS insecure connection for IaaS API operations.",
+                "deprecationMessage": "'insecure' attribute is deprecated: use the 'api' or 'oks' block for per-service configuration. It will be removed in the next major version of the provider."
+            },
+            "oks": {
+                "$ref": "#/types/outscale:index/ProviderOks:ProviderOks"
+            },
+            "oos": {
+                "$ref": "#/types/outscale:index/ProviderOos:ProviderOos"
+            },
+            "profile": {
+                "type": "string",
+                "description": "Name of your profile in which you define your credencial"
             },
             "region": {
                 "type": "string",
@@ -14413,6 +14579,10 @@
                         "OUTSCALE_REGION"
                     ]
                 }
+            },
+            "sanitize": {
+                "type": "boolean",
+                "description": "Sanitize sensitive data in the logs. Defaults to true."
             },
             "secretKeyId": {
                 "type": "string",
@@ -14425,11 +14595,13 @@
             },
             "x509CertPath": {
                 "type": "string",
-                "description": "The path to your x509 cert"
+                "description": "Path to the x509 certificate for IaaS API operations.",
+                "deprecationMessage": "'x509_cert_path' attribute is deprecated. It will be removed in the next major version of the provider."
             },
             "x509KeyPath": {
                 "type": "string",
-                "description": "The path to your x509 key"
+                "description": "Path to the x509 key for IaaS API operations.",
+                "deprecationMessage": "'x509_key_path' attribute is deprecated. It will be removed in the next major version of the provider."
             }
         },
         "methods": {
