@@ -55,4 +55,5 @@ license:
         - github.com/outscale/goutils/sdk/ptr
         - github.com/outscale/goutils/sdk/batch
         - github.com/outscale/goutils/sdk/log
+        - github.com/outscale/goutils/sdk/sanitize
 parallel: 1
