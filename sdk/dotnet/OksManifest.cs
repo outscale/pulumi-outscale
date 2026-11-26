@@ -101,6 +101,24 @@ namespace Pulumi.Outscale
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A Kubernetes manifest can be imported using the cluster ID, API version, kind, name, and optionally the namespace, in the format `&lt;cluster_id&gt;,&lt;api_version&gt;,&lt;kind&gt;,&lt;name&gt;[,&lt;namespace&gt;]`. For example:
+    /// 
+    /// ```sh
+    /// 
+    /// $ pulumi import outscale:index/oksManifest:OksManifest nodepool cluster-id,oks.dev/v1beta2,NodePool,pool-1
+    /// 
+    /// ```
+    /// 
+    /// or
+    /// 
+    /// ```sh
+    /// 
+    /// $ pulumi import outscale:index/oksManifest:OksManifest configmap cluster-id,v1,ConfigMap,example,default
+    /// 
+    /// ```
     /// </summary>
     [OutscaleResourceType("outscale:index/oksManifest:OksManifest")]
     public partial class OksManifest : global::Pulumi.CustomResource
@@ -110,6 +128,12 @@ namespace Pulumi.Outscale
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// Server-side apply field manager options:
+        /// </summary>
+        [Output("fieldManager")]
+        public Output<Outputs.OksManifestFieldManager> FieldManager { get; private set; } = null!;
 
         /// <summary>
         /// The Kubernetes YAML manifest.
@@ -197,6 +221,12 @@ namespace Pulumi.Outscale
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// Server-side apply field manager options:
+        /// </summary>
+        [Input("fieldManager")]
+        public Input<Inputs.OksManifestFieldManagerArgs>? FieldManager { get; set; }
+
+        /// <summary>
         /// The Kubernetes YAML manifest.
         /// </summary>
         [Input("manifest", required: true)]
@@ -236,6 +266,12 @@ namespace Pulumi.Outscale
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Server-side apply field manager options:
+        /// </summary>
+        [Input("fieldManager")]
+        public Input<Inputs.OksManifestFieldManagerGetArgs>? FieldManager { get; set; }
 
         /// <summary>
         /// The Kubernetes YAML manifest.

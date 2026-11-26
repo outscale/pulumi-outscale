@@ -293,7 +293,7 @@ class ServerCertificate(pulumi.CustomResource):
         Manages a server certificate.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+        For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
         ## Example Usage
 
@@ -338,7 +338,7 @@ class ServerCertificate(pulumi.CustomResource):
         Manages a server certificate.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+        For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
         ## Example Usage
 
@@ -403,12 +403,14 @@ class ServerCertificate(pulumi.CustomResource):
             __props__.__dict__["path"] = path
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["expiration_date"] = None
             __props__.__dict__["orn"] = None
             __props__.__dict__["request_id"] = None
             __props__.__dict__["upload_date"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServerCertificate, __self__).__init__(
             'outscale:index/serverCertificate:ServerCertificate',
             resource_name,

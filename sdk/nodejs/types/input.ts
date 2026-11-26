@@ -2541,6 +2541,17 @@ export interface OksClusterTimeouts {
     update?: pulumi.Input<string>;
 }
 
+export interface OksManifestFieldManager {
+    /**
+     * (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
+     */
+    forceConflicts?: pulumi.Input<boolean>;
+    /**
+     * (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface OksManifestTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -2574,6 +2585,717 @@ export interface OksManifestWaitFor {
 }
 
 export interface OksProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosBucketCorsRule {
+    /**
+     * The headers specified in the Access-Control-Request-Headers header. These headers are allowed in preflight OPTIONS requests. In response to preflight OPTIONS requests, allowed requested headers are returned.
+     */
+    allowedHeaders: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more HTTP methods (`GET` | `PUT` | `HEAD` | `POST` | `DELETE`) that you allow the origin to execute.
+     */
+    allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more origins you want to be able to access the bucket from.
+     */
+    allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more headers in the response that you want to make accessible.
+     */
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The duration in seconds that the preflight response for the specified source can be cached.
+     */
+    maxAgeSeconds: pulumi.Input<number>;
+}
+
+export interface OosBucketCorsTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosBucketEncryptionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosBucketGrant {
+    /**
+     * Users to whom you grant `full-control` permission.
+     */
+    fullControl?: pulumi.Input<inputs.OosBucketGrantFullControl>;
+    /**
+     * Users to whom you grant `read` permission.
+     */
+    read?: pulumi.Input<inputs.OosBucketGrantRead>;
+    /**
+     * Users to whom you grant `readAcp` permission.
+     */
+    readAcp?: pulumi.Input<inputs.OosBucketGrantReadAcp>;
+    /**
+     * Users to whom you grant `write` permission.
+     */
+    write?: pulumi.Input<inputs.OosBucketGrantWrite>;
+    /**
+     * Users to whom you grant `writeAcp` permission.
+     */
+    writeAcp?: pulumi.Input<inputs.OosBucketGrantWriteAcp>;
+}
+
+export interface OosBucketGrantFullControl {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosBucketGrantRead {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosBucketGrantReadAcp {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosBucketGrantWrite {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosBucketGrantWriteAcp {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosBucketLifecycleRule {
+    /**
+     * Specifies when an incomplete multipart upload is aborted.
+     */
+    abortIncompleteMultipartUpload?: pulumi.Input<inputs.OosBucketLifecycleRuleAbortIncompleteMultipartUpload>;
+    /**
+     * Specifies the expiration date for the objects.
+     */
+    expiration?: pulumi.Input<inputs.OosBucketLifecycleRuleExpiration>;
+    /**
+     * Specifies the objects the rule applies to, using `and`, `prefix`, `tags` keys. See the Object filtering section below for examples of usage.
+     */
+    filter: pulumi.Input<inputs.OosBucketLifecycleRuleFilter>;
+    /**
+     * A unique name for the rule. If omitted, the provider generates a unique name for it.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * If specified, the noncurrent versions of your objects are automatically deleted once they reach the duration specified in their lifecycle.
+     */
+    noncurrentVersionExpiration?: pulumi.Input<inputs.OosBucketLifecycleRuleNoncurrentVersionExpiration>;
+    /**
+     * If `Enabled`, the rule is applied. If `Disabled`, the rule is not applied.
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface OosBucketLifecycleRuleAbortIncompleteMultipartUpload {
+    /**
+     * The number of days after which an incomplete multipart upload is aborted.
+     */
+    daysAfterInitiation?: pulumi.Input<number>;
+}
+
+export interface OosBucketLifecycleRuleExpiration {
+    /**
+     * The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
+     */
+    date?: pulumi.Input<string>;
+    /**
+     * The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
+     */
+    days?: pulumi.Input<number>;
+    /**
+     * If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
+     */
+    expiredObjectDeleteMarker?: pulumi.Input<boolean>;
+}
+
+export interface OosBucketLifecycleRuleFilter {
+    and?: pulumi.Input<inputs.OosBucketLifecycleRuleFilterAnd>;
+    prefix?: pulumi.Input<string>;
+}
+
+export interface OosBucketLifecycleRuleFilterAnd {
+    prefix: pulumi.Input<string>;
+    tags: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface OosBucketLifecycleRuleNoncurrentVersionExpiration {
+    /**
+     * The lifetime, in days, of noncurrent objects.
+     */
+    noncurrentDays: pulumi.Input<number>;
+}
+
+export interface OosBucketLifecycleTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosBucketObjectLock {
+    /**
+     * The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
+     */
+    defaultRetention?: pulumi.Input<inputs.OosBucketObjectLockDefaultRetention>;
+    /**
+     * (Default: `false`) Whether object lock is enabled on the bucket.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface OosBucketObjectLockDefaultRetention {
+    /**
+     * The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
+     */
+    days?: pulumi.Input<number>;
+    /**
+     * (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * The years after which your objects will no longer be protected.
+     */
+    years?: pulumi.Input<number>;
+}
+
+export interface OosBucketPermissions {
+    /**
+     * Information about a granted permission for the bucket.
+     */
+    grants?: pulumi.Input<pulumi.Input<inputs.OosBucketPermissionsGrant>[]>;
+    /**
+     * Information about the owner of the bucket.
+     */
+    owner?: pulumi.Input<inputs.OosBucketPermissionsOwner>;
+}
+
+export interface OosBucketPermissionsGrant {
+    /**
+     * A grantee.
+     */
+    grantee?: pulumi.Input<inputs.OosBucketPermissionsGrantGrantee>;
+    /**
+     * The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+     */
+    permission?: pulumi.Input<string>;
+}
+
+export interface OosBucketPermissionsGrantGrantee {
+    /**
+     * The OUTSCALE account ID of the owner of the bucket.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The email address of the grantee.
+     */
+    emailAddress?: pulumi.Input<string>;
+    /**
+     * The S3 user ID of the owner of the bucket.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The grantee group (`AllUsers` | `AuthenticatedUsers`).
+     */
+    uri?: pulumi.Input<string>;
+}
+
+export interface OosBucketPermissionsOwner {
+    /**
+     * The OUTSCALE account ID of the owner of the bucket.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The S3 user ID of the owner of the bucket.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface OosBucketPolicyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosBucketTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosBucketVersioningTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosObjectCopyCopySource {
+    /**
+     * Copies the object only if its ETag matches the ETag you specify.
+     */
+    ifMatch?: pulumi.Input<string>;
+    /**
+     * Copies the object only if it has been modified after the date and time you specify, in UTC format.
+     */
+    ifModifiedSince?: pulumi.Input<string>;
+    /**
+     * Copies the object only if its ETag does not match the ETag you specify.
+     */
+    ifNoneMatch?: pulumi.Input<string>;
+    /**
+     * Copies the object only if it has not been modified since the date and time you specify, in UTC format.
+     */
+    ifUnmodifiedSince?: pulumi.Input<string>;
+    /**
+     * The path in OOS to the source object you want to copy.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * The version ID of the object.
+     */
+    versionId?: pulumi.Input<string>;
+}
+
+export interface OosObjectCopyGrant {
+    /**
+     * Users to whom you grant `full-control` permission.
+     */
+    fullControl?: pulumi.Input<inputs.OosObjectCopyGrantFullControl>;
+    /**
+     * Users to whom you grant `read` permission.
+     */
+    read?: pulumi.Input<inputs.OosObjectCopyGrantRead>;
+    /**
+     * Users to whom you grant `readAcp` permission.
+     */
+    readAcp?: pulumi.Input<inputs.OosObjectCopyGrantReadAcp>;
+    /**
+     * Users to whom you grant `write` permission.
+     */
+    write?: pulumi.Input<inputs.OosObjectCopyGrantWrite>;
+    /**
+     * Users to whom you grant `writeAcp` permission.
+     */
+    writeAcp?: pulumi.Input<inputs.OosObjectCopyGrantWriteAcp>;
+}
+
+export interface OosObjectCopyGrantFullControl {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectCopyGrantRead {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectCopyGrantReadAcp {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectCopyGrantWrite {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectCopyGrantWriteAcp {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectCopyPermissions {
+    /**
+     * Information about a granted permission for the object.
+     */
+    grants?: pulumi.Input<pulumi.Input<inputs.OosObjectCopyPermissionsGrant>[]>;
+    /**
+     * Information about the owner of the object.
+     */
+    owner?: pulumi.Input<inputs.OosObjectCopyPermissionsOwner>;
+}
+
+export interface OosObjectCopyPermissionsGrant {
+    /**
+     * A grantee.
+     */
+    grantee?: pulumi.Input<inputs.OosObjectCopyPermissionsGrantGrantee>;
+    /**
+     * The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+     */
+    permission?: pulumi.Input<string>;
+}
+
+export interface OosObjectCopyPermissionsGrantGrantee {
+    /**
+     * The OUTSCALE account ID of the owner of the object.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The email address of the grantee.
+     */
+    emailAddress?: pulumi.Input<string>;
+    /**
+     * The S3 user ID of the owner of the object.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The grantee group (`AllUsers` | `AuthenticatedUsers`).
+     */
+    uri?: pulumi.Input<string>;
+}
+
+export interface OosObjectCopyPermissionsOwner {
+    /**
+     * The OUTSCALE account ID of the owner of the object.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The S3 user ID of the owner of the object.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface OosObjectCopyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosObjectGrant {
+    /**
+     * Users to whom you grant `full-control` permission.
+     */
+    fullControl?: pulumi.Input<inputs.OosObjectGrantFullControl>;
+    /**
+     * Users to whom you grant `read` permission.
+     */
+    read?: pulumi.Input<inputs.OosObjectGrantRead>;
+    /**
+     * Users to whom you grant `readAcp` permission.
+     */
+    readAcp?: pulumi.Input<inputs.OosObjectGrantReadAcp>;
+    /**
+     * Users to whom you grant `write` permission.
+     */
+    write?: pulumi.Input<inputs.OosObjectGrantWrite>;
+    /**
+     * Users to whom you grant `writeAcp` permission.
+     */
+    writeAcp?: pulumi.Input<inputs.OosObjectGrantWriteAcp>;
+}
+
+export interface OosObjectGrantFullControl {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectGrantRead {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectGrantReadAcp {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectGrantWrite {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectGrantWriteAcp {
+    /**
+     * One or more user email addresses.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+     */
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OosObjectPermissions {
+    /**
+     * Information about a granted permission for the object.
+     */
+    grants?: pulumi.Input<pulumi.Input<inputs.OosObjectPermissionsGrant>[]>;
+    /**
+     * Information about the owner of the object.
+     */
+    owner?: pulumi.Input<inputs.OosObjectPermissionsOwner>;
+}
+
+export interface OosObjectPermissionsGrant {
+    /**
+     * A grantee.
+     */
+    grantee?: pulumi.Input<inputs.OosObjectPermissionsGrantGrantee>;
+    /**
+     * The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+     */
+    permission?: pulumi.Input<string>;
+}
+
+export interface OosObjectPermissionsGrantGrantee {
+    /**
+     * The OUTSCALE account ID of the owner of the object.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The email address of the grantee.
+     */
+    emailAddress?: pulumi.Input<string>;
+    /**
+     * The S3 user ID of the owner of the object.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * The grantee group (`AllUsers` | `AuthenticatedUsers`).
+     */
+    uri?: pulumi.Input<string>;
+}
+
+export interface OosObjectPermissionsOwner {
+    /**
+     * The OUTSCALE account ID of the owner of the object.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The S3 user ID of the owner of the object.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface OosObjectRetentionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OosObjectTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */

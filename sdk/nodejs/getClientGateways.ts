@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Provides information about client gateways.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Client-Gateways.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+ * For more information on this resource actions, see the [ClientGateway](https://docs.outscale.com/api#3ds-outscale-api-clientgateway) API methods.
  *
  * ## Example Usage
  *
@@ -75,7 +75,7 @@ export interface GetClientGatewaysResult {
  * Provides information about client gateways.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Client-Gateways.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-clientgateway).
+ * For more information on this resource actions, see the [ClientGateway](https://docs.outscale.com/api#3ds-outscale-api-clientgateway) API methods.
  *
  * ## Example Usage
  *

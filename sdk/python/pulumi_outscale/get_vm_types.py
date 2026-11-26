@@ -87,7 +87,7 @@ def get_vm_types(filters: Optional[Sequence[Union['GetVmTypesFilterArgs', 'GetVm
     Provides information about VM types.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmtypes).
+    For more information on this resource actions, see the [ReadVmTypes](https://docs.outscale.com/api#readvmtypes) API method.
 
     ## Example Usage
 
@@ -140,7 +140,7 @@ def get_vm_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     Provides information about VM types.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/VM-Types.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readvmtypes).
+    For more information on this resource actions, see the [ReadVmTypes](https://docs.outscale.com/api#readvmtypes) API method.
 
     ## Example Usage
 

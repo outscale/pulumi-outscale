@@ -13188,6 +13188,162 @@ func (o OksClusterTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type OksManifestFieldManager struct {
+	// (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
+	ForceConflicts *bool `pulumi:"forceConflicts"`
+	// (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
+	Name *string `pulumi:"name"`
+}
+
+// OksManifestFieldManagerInput is an input type that accepts OksManifestFieldManagerArgs and OksManifestFieldManagerOutput values.
+// You can construct a concrete instance of `OksManifestFieldManagerInput` via:
+//
+//	OksManifestFieldManagerArgs{...}
+type OksManifestFieldManagerInput interface {
+	pulumi.Input
+
+	ToOksManifestFieldManagerOutput() OksManifestFieldManagerOutput
+	ToOksManifestFieldManagerOutputWithContext(context.Context) OksManifestFieldManagerOutput
+}
+
+type OksManifestFieldManagerArgs struct {
+	// (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
+	ForceConflicts pulumi.BoolPtrInput `pulumi:"forceConflicts"`
+	// (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (OksManifestFieldManagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksManifestFieldManager)(nil)).Elem()
+}
+
+func (i OksManifestFieldManagerArgs) ToOksManifestFieldManagerOutput() OksManifestFieldManagerOutput {
+	return i.ToOksManifestFieldManagerOutputWithContext(context.Background())
+}
+
+func (i OksManifestFieldManagerArgs) ToOksManifestFieldManagerOutputWithContext(ctx context.Context) OksManifestFieldManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestFieldManagerOutput)
+}
+
+func (i OksManifestFieldManagerArgs) ToOksManifestFieldManagerPtrOutput() OksManifestFieldManagerPtrOutput {
+	return i.ToOksManifestFieldManagerPtrOutputWithContext(context.Background())
+}
+
+func (i OksManifestFieldManagerArgs) ToOksManifestFieldManagerPtrOutputWithContext(ctx context.Context) OksManifestFieldManagerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestFieldManagerOutput).ToOksManifestFieldManagerPtrOutputWithContext(ctx)
+}
+
+// OksManifestFieldManagerPtrInput is an input type that accepts OksManifestFieldManagerArgs, OksManifestFieldManagerPtr and OksManifestFieldManagerPtrOutput values.
+// You can construct a concrete instance of `OksManifestFieldManagerPtrInput` via:
+//
+//	        OksManifestFieldManagerArgs{...}
+//
+//	or:
+//
+//	        nil
+type OksManifestFieldManagerPtrInput interface {
+	pulumi.Input
+
+	ToOksManifestFieldManagerPtrOutput() OksManifestFieldManagerPtrOutput
+	ToOksManifestFieldManagerPtrOutputWithContext(context.Context) OksManifestFieldManagerPtrOutput
+}
+
+type oksManifestFieldManagerPtrType OksManifestFieldManagerArgs
+
+func OksManifestFieldManagerPtr(v *OksManifestFieldManagerArgs) OksManifestFieldManagerPtrInput {
+	return (*oksManifestFieldManagerPtrType)(v)
+}
+
+func (*oksManifestFieldManagerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksManifestFieldManager)(nil)).Elem()
+}
+
+func (i *oksManifestFieldManagerPtrType) ToOksManifestFieldManagerPtrOutput() OksManifestFieldManagerPtrOutput {
+	return i.ToOksManifestFieldManagerPtrOutputWithContext(context.Background())
+}
+
+func (i *oksManifestFieldManagerPtrType) ToOksManifestFieldManagerPtrOutputWithContext(ctx context.Context) OksManifestFieldManagerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OksManifestFieldManagerPtrOutput)
+}
+
+type OksManifestFieldManagerOutput struct{ *pulumi.OutputState }
+
+func (OksManifestFieldManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OksManifestFieldManager)(nil)).Elem()
+}
+
+func (o OksManifestFieldManagerOutput) ToOksManifestFieldManagerOutput() OksManifestFieldManagerOutput {
+	return o
+}
+
+func (o OksManifestFieldManagerOutput) ToOksManifestFieldManagerOutputWithContext(ctx context.Context) OksManifestFieldManagerOutput {
+	return o
+}
+
+func (o OksManifestFieldManagerOutput) ToOksManifestFieldManagerPtrOutput() OksManifestFieldManagerPtrOutput {
+	return o.ToOksManifestFieldManagerPtrOutputWithContext(context.Background())
+}
+
+func (o OksManifestFieldManagerOutput) ToOksManifestFieldManagerPtrOutputWithContext(ctx context.Context) OksManifestFieldManagerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OksManifestFieldManager) *OksManifestFieldManager {
+		return &v
+	}).(OksManifestFieldManagerPtrOutput)
+}
+
+// (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
+func (o OksManifestFieldManagerOutput) ForceConflicts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OksManifestFieldManager) *bool { return v.ForceConflicts }).(pulumi.BoolPtrOutput)
+}
+
+// (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
+func (o OksManifestFieldManagerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OksManifestFieldManager) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type OksManifestFieldManagerPtrOutput struct{ *pulumi.OutputState }
+
+func (OksManifestFieldManagerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OksManifestFieldManager)(nil)).Elem()
+}
+
+func (o OksManifestFieldManagerPtrOutput) ToOksManifestFieldManagerPtrOutput() OksManifestFieldManagerPtrOutput {
+	return o
+}
+
+func (o OksManifestFieldManagerPtrOutput) ToOksManifestFieldManagerPtrOutputWithContext(ctx context.Context) OksManifestFieldManagerPtrOutput {
+	return o
+}
+
+func (o OksManifestFieldManagerPtrOutput) Elem() OksManifestFieldManagerOutput {
+	return o.ApplyT(func(v *OksManifestFieldManager) OksManifestFieldManager {
+		if v != nil {
+			return *v
+		}
+		var ret OksManifestFieldManager
+		return ret
+	}).(OksManifestFieldManagerOutput)
+}
+
+// (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
+func (o OksManifestFieldManagerPtrOutput) ForceConflicts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OksManifestFieldManager) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceConflicts
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
+func (o OksManifestFieldManagerPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OksManifestFieldManager) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type OksManifestTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -13733,6 +13889,8099 @@ func (o OksProjectTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 func (o OksProjectTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OksProjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketCorsRule struct {
+	// The headers specified in the Access-Control-Request-Headers header. These headers are allowed in preflight OPTIONS requests. In response to preflight OPTIONS requests, allowed requested headers are returned.
+	AllowedHeaders []string `pulumi:"allowedHeaders"`
+	// One or more HTTP methods (`GET` | `PUT` | `HEAD` | `POST` | `DELETE`) that you allow the origin to execute.
+	AllowedMethods []string `pulumi:"allowedMethods"`
+	// One or more origins you want to be able to access the bucket from.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// One or more headers in the response that you want to make accessible.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// The duration in seconds that the preflight response for the specified source can be cached.
+	MaxAgeSeconds int `pulumi:"maxAgeSeconds"`
+}
+
+// OosBucketCorsRuleInput is an input type that accepts OosBucketCorsRuleArgs and OosBucketCorsRuleOutput values.
+// You can construct a concrete instance of `OosBucketCorsRuleInput` via:
+//
+//	OosBucketCorsRuleArgs{...}
+type OosBucketCorsRuleInput interface {
+	pulumi.Input
+
+	ToOosBucketCorsRuleOutput() OosBucketCorsRuleOutput
+	ToOosBucketCorsRuleOutputWithContext(context.Context) OosBucketCorsRuleOutput
+}
+
+type OosBucketCorsRuleArgs struct {
+	// The headers specified in the Access-Control-Request-Headers header. These headers are allowed in preflight OPTIONS requests. In response to preflight OPTIONS requests, allowed requested headers are returned.
+	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
+	// One or more HTTP methods (`GET` | `PUT` | `HEAD` | `POST` | `DELETE`) that you allow the origin to execute.
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+	// One or more origins you want to be able to access the bucket from.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// One or more headers in the response that you want to make accessible.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// The duration in seconds that the preflight response for the specified source can be cached.
+	MaxAgeSeconds pulumi.IntInput `pulumi:"maxAgeSeconds"`
+}
+
+func (OosBucketCorsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketCorsRule)(nil)).Elem()
+}
+
+func (i OosBucketCorsRuleArgs) ToOosBucketCorsRuleOutput() OosBucketCorsRuleOutput {
+	return i.ToOosBucketCorsRuleOutputWithContext(context.Background())
+}
+
+func (i OosBucketCorsRuleArgs) ToOosBucketCorsRuleOutputWithContext(ctx context.Context) OosBucketCorsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketCorsRuleOutput)
+}
+
+// OosBucketCorsRuleArrayInput is an input type that accepts OosBucketCorsRuleArray and OosBucketCorsRuleArrayOutput values.
+// You can construct a concrete instance of `OosBucketCorsRuleArrayInput` via:
+//
+//	OosBucketCorsRuleArray{ OosBucketCorsRuleArgs{...} }
+type OosBucketCorsRuleArrayInput interface {
+	pulumi.Input
+
+	ToOosBucketCorsRuleArrayOutput() OosBucketCorsRuleArrayOutput
+	ToOosBucketCorsRuleArrayOutputWithContext(context.Context) OosBucketCorsRuleArrayOutput
+}
+
+type OosBucketCorsRuleArray []OosBucketCorsRuleInput
+
+func (OosBucketCorsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosBucketCorsRule)(nil)).Elem()
+}
+
+func (i OosBucketCorsRuleArray) ToOosBucketCorsRuleArrayOutput() OosBucketCorsRuleArrayOutput {
+	return i.ToOosBucketCorsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i OosBucketCorsRuleArray) ToOosBucketCorsRuleArrayOutputWithContext(ctx context.Context) OosBucketCorsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketCorsRuleArrayOutput)
+}
+
+type OosBucketCorsRuleOutput struct{ *pulumi.OutputState }
+
+func (OosBucketCorsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketCorsRule)(nil)).Elem()
+}
+
+func (o OosBucketCorsRuleOutput) ToOosBucketCorsRuleOutput() OosBucketCorsRuleOutput {
+	return o
+}
+
+func (o OosBucketCorsRuleOutput) ToOosBucketCorsRuleOutputWithContext(ctx context.Context) OosBucketCorsRuleOutput {
+	return o
+}
+
+// The headers specified in the Access-Control-Request-Headers header. These headers are allowed in preflight OPTIONS requests. In response to preflight OPTIONS requests, allowed requested headers are returned.
+func (o OosBucketCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
+}
+
+// One or more HTTP methods (`GET` | `PUT` | `HEAD` | `POST` | `DELETE`) that you allow the origin to execute.
+func (o OosBucketCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+}
+
+// One or more origins you want to be able to access the bucket from.
+func (o OosBucketCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// One or more headers in the response that you want to make accessible.
+func (o OosBucketCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The duration in seconds that the preflight response for the specified source can be cached.
+func (o OosBucketCorsRuleOutput) MaxAgeSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v OosBucketCorsRule) int { return v.MaxAgeSeconds }).(pulumi.IntOutput)
+}
+
+type OosBucketCorsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (OosBucketCorsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosBucketCorsRule)(nil)).Elem()
+}
+
+func (o OosBucketCorsRuleArrayOutput) ToOosBucketCorsRuleArrayOutput() OosBucketCorsRuleArrayOutput {
+	return o
+}
+
+func (o OosBucketCorsRuleArrayOutput) ToOosBucketCorsRuleArrayOutputWithContext(ctx context.Context) OosBucketCorsRuleArrayOutput {
+	return o
+}
+
+func (o OosBucketCorsRuleArrayOutput) Index(i pulumi.IntInput) OosBucketCorsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OosBucketCorsRule {
+		return vs[0].([]OosBucketCorsRule)[vs[1].(int)]
+	}).(OosBucketCorsRuleOutput)
+}
+
+type OosBucketCorsTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosBucketCorsTimeoutsInput is an input type that accepts OosBucketCorsTimeoutsArgs and OosBucketCorsTimeoutsOutput values.
+// You can construct a concrete instance of `OosBucketCorsTimeoutsInput` via:
+//
+//	OosBucketCorsTimeoutsArgs{...}
+type OosBucketCorsTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosBucketCorsTimeoutsOutput() OosBucketCorsTimeoutsOutput
+	ToOosBucketCorsTimeoutsOutputWithContext(context.Context) OosBucketCorsTimeoutsOutput
+}
+
+type OosBucketCorsTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosBucketCorsTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketCorsTimeouts)(nil)).Elem()
+}
+
+func (i OosBucketCorsTimeoutsArgs) ToOosBucketCorsTimeoutsOutput() OosBucketCorsTimeoutsOutput {
+	return i.ToOosBucketCorsTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosBucketCorsTimeoutsArgs) ToOosBucketCorsTimeoutsOutputWithContext(ctx context.Context) OosBucketCorsTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketCorsTimeoutsOutput)
+}
+
+func (i OosBucketCorsTimeoutsArgs) ToOosBucketCorsTimeoutsPtrOutput() OosBucketCorsTimeoutsPtrOutput {
+	return i.ToOosBucketCorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketCorsTimeoutsArgs) ToOosBucketCorsTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketCorsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketCorsTimeoutsOutput).ToOosBucketCorsTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosBucketCorsTimeoutsPtrInput is an input type that accepts OosBucketCorsTimeoutsArgs, OosBucketCorsTimeoutsPtr and OosBucketCorsTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosBucketCorsTimeoutsPtrInput` via:
+//
+//	        OosBucketCorsTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketCorsTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketCorsTimeoutsPtrOutput() OosBucketCorsTimeoutsPtrOutput
+	ToOosBucketCorsTimeoutsPtrOutputWithContext(context.Context) OosBucketCorsTimeoutsPtrOutput
+}
+
+type oosBucketCorsTimeoutsPtrType OosBucketCorsTimeoutsArgs
+
+func OosBucketCorsTimeoutsPtr(v *OosBucketCorsTimeoutsArgs) OosBucketCorsTimeoutsPtrInput {
+	return (*oosBucketCorsTimeoutsPtrType)(v)
+}
+
+func (*oosBucketCorsTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketCorsTimeouts)(nil)).Elem()
+}
+
+func (i *oosBucketCorsTimeoutsPtrType) ToOosBucketCorsTimeoutsPtrOutput() OosBucketCorsTimeoutsPtrOutput {
+	return i.ToOosBucketCorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketCorsTimeoutsPtrType) ToOosBucketCorsTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketCorsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketCorsTimeoutsPtrOutput)
+}
+
+type OosBucketCorsTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosBucketCorsTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketCorsTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketCorsTimeoutsOutput) ToOosBucketCorsTimeoutsOutput() OosBucketCorsTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketCorsTimeoutsOutput) ToOosBucketCorsTimeoutsOutputWithContext(ctx context.Context) OosBucketCorsTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketCorsTimeoutsOutput) ToOosBucketCorsTimeoutsPtrOutput() OosBucketCorsTimeoutsPtrOutput {
+	return o.ToOosBucketCorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketCorsTimeoutsOutput) ToOosBucketCorsTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketCorsTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketCorsTimeouts) *OosBucketCorsTimeouts {
+		return &v
+	}).(OosBucketCorsTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketCorsTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketCorsTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketCorsTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketCorsTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketCorsTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketCorsTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketCorsTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketCorsTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketCorsTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketCorsTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketCorsTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketCorsTimeoutsPtrOutput) ToOosBucketCorsTimeoutsPtrOutput() OosBucketCorsTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketCorsTimeoutsPtrOutput) ToOosBucketCorsTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketCorsTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketCorsTimeoutsPtrOutput) Elem() OosBucketCorsTimeoutsOutput {
+	return o.ApplyT(func(v *OosBucketCorsTimeouts) OosBucketCorsTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketCorsTimeouts
+		return ret
+	}).(OosBucketCorsTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketCorsTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketCorsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketCorsTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketCorsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketCorsTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketCorsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketCorsTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketCorsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketEncryptionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosBucketEncryptionTimeoutsInput is an input type that accepts OosBucketEncryptionTimeoutsArgs and OosBucketEncryptionTimeoutsOutput values.
+// You can construct a concrete instance of `OosBucketEncryptionTimeoutsInput` via:
+//
+//	OosBucketEncryptionTimeoutsArgs{...}
+type OosBucketEncryptionTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosBucketEncryptionTimeoutsOutput() OosBucketEncryptionTimeoutsOutput
+	ToOosBucketEncryptionTimeoutsOutputWithContext(context.Context) OosBucketEncryptionTimeoutsOutput
+}
+
+type OosBucketEncryptionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosBucketEncryptionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketEncryptionTimeouts)(nil)).Elem()
+}
+
+func (i OosBucketEncryptionTimeoutsArgs) ToOosBucketEncryptionTimeoutsOutput() OosBucketEncryptionTimeoutsOutput {
+	return i.ToOosBucketEncryptionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosBucketEncryptionTimeoutsArgs) ToOosBucketEncryptionTimeoutsOutputWithContext(ctx context.Context) OosBucketEncryptionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketEncryptionTimeoutsOutput)
+}
+
+func (i OosBucketEncryptionTimeoutsArgs) ToOosBucketEncryptionTimeoutsPtrOutput() OosBucketEncryptionTimeoutsPtrOutput {
+	return i.ToOosBucketEncryptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketEncryptionTimeoutsArgs) ToOosBucketEncryptionTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketEncryptionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketEncryptionTimeoutsOutput).ToOosBucketEncryptionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosBucketEncryptionTimeoutsPtrInput is an input type that accepts OosBucketEncryptionTimeoutsArgs, OosBucketEncryptionTimeoutsPtr and OosBucketEncryptionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosBucketEncryptionTimeoutsPtrInput` via:
+//
+//	        OosBucketEncryptionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketEncryptionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketEncryptionTimeoutsPtrOutput() OosBucketEncryptionTimeoutsPtrOutput
+	ToOosBucketEncryptionTimeoutsPtrOutputWithContext(context.Context) OosBucketEncryptionTimeoutsPtrOutput
+}
+
+type oosBucketEncryptionTimeoutsPtrType OosBucketEncryptionTimeoutsArgs
+
+func OosBucketEncryptionTimeoutsPtr(v *OosBucketEncryptionTimeoutsArgs) OosBucketEncryptionTimeoutsPtrInput {
+	return (*oosBucketEncryptionTimeoutsPtrType)(v)
+}
+
+func (*oosBucketEncryptionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketEncryptionTimeouts)(nil)).Elem()
+}
+
+func (i *oosBucketEncryptionTimeoutsPtrType) ToOosBucketEncryptionTimeoutsPtrOutput() OosBucketEncryptionTimeoutsPtrOutput {
+	return i.ToOosBucketEncryptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketEncryptionTimeoutsPtrType) ToOosBucketEncryptionTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketEncryptionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketEncryptionTimeoutsPtrOutput)
+}
+
+type OosBucketEncryptionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosBucketEncryptionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketEncryptionTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketEncryptionTimeoutsOutput) ToOosBucketEncryptionTimeoutsOutput() OosBucketEncryptionTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketEncryptionTimeoutsOutput) ToOosBucketEncryptionTimeoutsOutputWithContext(ctx context.Context) OosBucketEncryptionTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketEncryptionTimeoutsOutput) ToOosBucketEncryptionTimeoutsPtrOutput() OosBucketEncryptionTimeoutsPtrOutput {
+	return o.ToOosBucketEncryptionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketEncryptionTimeoutsOutput) ToOosBucketEncryptionTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketEncryptionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketEncryptionTimeouts) *OosBucketEncryptionTimeouts {
+		return &v
+	}).(OosBucketEncryptionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketEncryptionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketEncryptionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketEncryptionTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketEncryptionTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketEncryptionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketEncryptionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketEncryptionTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketEncryptionTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketEncryptionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketEncryptionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketEncryptionTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketEncryptionTimeoutsPtrOutput) ToOosBucketEncryptionTimeoutsPtrOutput() OosBucketEncryptionTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketEncryptionTimeoutsPtrOutput) ToOosBucketEncryptionTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketEncryptionTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketEncryptionTimeoutsPtrOutput) Elem() OosBucketEncryptionTimeoutsOutput {
+	return o.ApplyT(func(v *OosBucketEncryptionTimeouts) OosBucketEncryptionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketEncryptionTimeouts
+		return ret
+	}).(OosBucketEncryptionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketEncryptionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketEncryptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketEncryptionTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketEncryptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketEncryptionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketEncryptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketEncryptionTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketEncryptionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketGrant struct {
+	// Users to whom you grant `full-control` permission.
+	FullControl *OosBucketGrantFullControl `pulumi:"fullControl"`
+	// Users to whom you grant `read` permission.
+	Read *OosBucketGrantRead `pulumi:"read"`
+	// Users to whom you grant `readAcp` permission.
+	ReadAcp *OosBucketGrantReadAcp `pulumi:"readAcp"`
+	// Users to whom you grant `write` permission.
+	Write *OosBucketGrantWrite `pulumi:"write"`
+	// Users to whom you grant `writeAcp` permission.
+	WriteAcp *OosBucketGrantWriteAcp `pulumi:"writeAcp"`
+}
+
+// OosBucketGrantInput is an input type that accepts OosBucketGrantArgs and OosBucketGrantOutput values.
+// You can construct a concrete instance of `OosBucketGrantInput` via:
+//
+//	OosBucketGrantArgs{...}
+type OosBucketGrantInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantOutput() OosBucketGrantOutput
+	ToOosBucketGrantOutputWithContext(context.Context) OosBucketGrantOutput
+}
+
+type OosBucketGrantArgs struct {
+	// Users to whom you grant `full-control` permission.
+	FullControl OosBucketGrantFullControlPtrInput `pulumi:"fullControl"`
+	// Users to whom you grant `read` permission.
+	Read OosBucketGrantReadPtrInput `pulumi:"read"`
+	// Users to whom you grant `readAcp` permission.
+	ReadAcp OosBucketGrantReadAcpPtrInput `pulumi:"readAcp"`
+	// Users to whom you grant `write` permission.
+	Write OosBucketGrantWritePtrInput `pulumi:"write"`
+	// Users to whom you grant `writeAcp` permission.
+	WriteAcp OosBucketGrantWriteAcpPtrInput `pulumi:"writeAcp"`
+}
+
+func (OosBucketGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrant)(nil)).Elem()
+}
+
+func (i OosBucketGrantArgs) ToOosBucketGrantOutput() OosBucketGrantOutput {
+	return i.ToOosBucketGrantOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantArgs) ToOosBucketGrantOutputWithContext(ctx context.Context) OosBucketGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantOutput)
+}
+
+func (i OosBucketGrantArgs) ToOosBucketGrantPtrOutput() OosBucketGrantPtrOutput {
+	return i.ToOosBucketGrantPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantArgs) ToOosBucketGrantPtrOutputWithContext(ctx context.Context) OosBucketGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantOutput).ToOosBucketGrantPtrOutputWithContext(ctx)
+}
+
+// OosBucketGrantPtrInput is an input type that accepts OosBucketGrantArgs, OosBucketGrantPtr and OosBucketGrantPtrOutput values.
+// You can construct a concrete instance of `OosBucketGrantPtrInput` via:
+//
+//	        OosBucketGrantArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketGrantPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantPtrOutput() OosBucketGrantPtrOutput
+	ToOosBucketGrantPtrOutputWithContext(context.Context) OosBucketGrantPtrOutput
+}
+
+type oosBucketGrantPtrType OosBucketGrantArgs
+
+func OosBucketGrantPtr(v *OosBucketGrantArgs) OosBucketGrantPtrInput {
+	return (*oosBucketGrantPtrType)(v)
+}
+
+func (*oosBucketGrantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrant)(nil)).Elem()
+}
+
+func (i *oosBucketGrantPtrType) ToOosBucketGrantPtrOutput() OosBucketGrantPtrOutput {
+	return i.ToOosBucketGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketGrantPtrType) ToOosBucketGrantPtrOutputWithContext(ctx context.Context) OosBucketGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantPtrOutput)
+}
+
+type OosBucketGrantOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrant)(nil)).Elem()
+}
+
+func (o OosBucketGrantOutput) ToOosBucketGrantOutput() OosBucketGrantOutput {
+	return o
+}
+
+func (o OosBucketGrantOutput) ToOosBucketGrantOutputWithContext(ctx context.Context) OosBucketGrantOutput {
+	return o
+}
+
+func (o OosBucketGrantOutput) ToOosBucketGrantPtrOutput() OosBucketGrantPtrOutput {
+	return o.ToOosBucketGrantPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketGrantOutput) ToOosBucketGrantPtrOutputWithContext(ctx context.Context) OosBucketGrantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketGrant) *OosBucketGrant {
+		return &v
+	}).(OosBucketGrantPtrOutput)
+}
+
+// Users to whom you grant `full-control` permission.
+func (o OosBucketGrantOutput) FullControl() OosBucketGrantFullControlPtrOutput {
+	return o.ApplyT(func(v OosBucketGrant) *OosBucketGrantFullControl { return v.FullControl }).(OosBucketGrantFullControlPtrOutput)
+}
+
+// Users to whom you grant `read` permission.
+func (o OosBucketGrantOutput) Read() OosBucketGrantReadPtrOutput {
+	return o.ApplyT(func(v OosBucketGrant) *OosBucketGrantRead { return v.Read }).(OosBucketGrantReadPtrOutput)
+}
+
+// Users to whom you grant `readAcp` permission.
+func (o OosBucketGrantOutput) ReadAcp() OosBucketGrantReadAcpPtrOutput {
+	return o.ApplyT(func(v OosBucketGrant) *OosBucketGrantReadAcp { return v.ReadAcp }).(OosBucketGrantReadAcpPtrOutput)
+}
+
+// Users to whom you grant `write` permission.
+func (o OosBucketGrantOutput) Write() OosBucketGrantWritePtrOutput {
+	return o.ApplyT(func(v OosBucketGrant) *OosBucketGrantWrite { return v.Write }).(OosBucketGrantWritePtrOutput)
+}
+
+// Users to whom you grant `writeAcp` permission.
+func (o OosBucketGrantOutput) WriteAcp() OosBucketGrantWriteAcpPtrOutput {
+	return o.ApplyT(func(v OosBucketGrant) *OosBucketGrantWriteAcp { return v.WriteAcp }).(OosBucketGrantWriteAcpPtrOutput)
+}
+
+type OosBucketGrantPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrant)(nil)).Elem()
+}
+
+func (o OosBucketGrantPtrOutput) ToOosBucketGrantPtrOutput() OosBucketGrantPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantPtrOutput) ToOosBucketGrantPtrOutputWithContext(ctx context.Context) OosBucketGrantPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantPtrOutput) Elem() OosBucketGrantOutput {
+	return o.ApplyT(func(v *OosBucketGrant) OosBucketGrant {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketGrant
+		return ret
+	}).(OosBucketGrantOutput)
+}
+
+// Users to whom you grant `full-control` permission.
+func (o OosBucketGrantPtrOutput) FullControl() OosBucketGrantFullControlPtrOutput {
+	return o.ApplyT(func(v *OosBucketGrant) *OosBucketGrantFullControl {
+		if v == nil {
+			return nil
+		}
+		return v.FullControl
+	}).(OosBucketGrantFullControlPtrOutput)
+}
+
+// Users to whom you grant `read` permission.
+func (o OosBucketGrantPtrOutput) Read() OosBucketGrantReadPtrOutput {
+	return o.ApplyT(func(v *OosBucketGrant) *OosBucketGrantRead {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(OosBucketGrantReadPtrOutput)
+}
+
+// Users to whom you grant `readAcp` permission.
+func (o OosBucketGrantPtrOutput) ReadAcp() OosBucketGrantReadAcpPtrOutput {
+	return o.ApplyT(func(v *OosBucketGrant) *OosBucketGrantReadAcp {
+		if v == nil {
+			return nil
+		}
+		return v.ReadAcp
+	}).(OosBucketGrantReadAcpPtrOutput)
+}
+
+// Users to whom you grant `write` permission.
+func (o OosBucketGrantPtrOutput) Write() OosBucketGrantWritePtrOutput {
+	return o.ApplyT(func(v *OosBucketGrant) *OosBucketGrantWrite {
+		if v == nil {
+			return nil
+		}
+		return v.Write
+	}).(OosBucketGrantWritePtrOutput)
+}
+
+// Users to whom you grant `writeAcp` permission.
+func (o OosBucketGrantPtrOutput) WriteAcp() OosBucketGrantWriteAcpPtrOutput {
+	return o.ApplyT(func(v *OosBucketGrant) *OosBucketGrantWriteAcp {
+		if v == nil {
+			return nil
+		}
+		return v.WriteAcp
+	}).(OosBucketGrantWriteAcpPtrOutput)
+}
+
+type OosBucketGrantFullControl struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosBucketGrantFullControlInput is an input type that accepts OosBucketGrantFullControlArgs and OosBucketGrantFullControlOutput values.
+// You can construct a concrete instance of `OosBucketGrantFullControlInput` via:
+//
+//	OosBucketGrantFullControlArgs{...}
+type OosBucketGrantFullControlInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantFullControlOutput() OosBucketGrantFullControlOutput
+	ToOosBucketGrantFullControlOutputWithContext(context.Context) OosBucketGrantFullControlOutput
+}
+
+type OosBucketGrantFullControlArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosBucketGrantFullControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantFullControl)(nil)).Elem()
+}
+
+func (i OosBucketGrantFullControlArgs) ToOosBucketGrantFullControlOutput() OosBucketGrantFullControlOutput {
+	return i.ToOosBucketGrantFullControlOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantFullControlArgs) ToOosBucketGrantFullControlOutputWithContext(ctx context.Context) OosBucketGrantFullControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantFullControlOutput)
+}
+
+func (i OosBucketGrantFullControlArgs) ToOosBucketGrantFullControlPtrOutput() OosBucketGrantFullControlPtrOutput {
+	return i.ToOosBucketGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantFullControlArgs) ToOosBucketGrantFullControlPtrOutputWithContext(ctx context.Context) OosBucketGrantFullControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantFullControlOutput).ToOosBucketGrantFullControlPtrOutputWithContext(ctx)
+}
+
+// OosBucketGrantFullControlPtrInput is an input type that accepts OosBucketGrantFullControlArgs, OosBucketGrantFullControlPtr and OosBucketGrantFullControlPtrOutput values.
+// You can construct a concrete instance of `OosBucketGrantFullControlPtrInput` via:
+//
+//	        OosBucketGrantFullControlArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketGrantFullControlPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantFullControlPtrOutput() OosBucketGrantFullControlPtrOutput
+	ToOosBucketGrantFullControlPtrOutputWithContext(context.Context) OosBucketGrantFullControlPtrOutput
+}
+
+type oosBucketGrantFullControlPtrType OosBucketGrantFullControlArgs
+
+func OosBucketGrantFullControlPtr(v *OosBucketGrantFullControlArgs) OosBucketGrantFullControlPtrInput {
+	return (*oosBucketGrantFullControlPtrType)(v)
+}
+
+func (*oosBucketGrantFullControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantFullControl)(nil)).Elem()
+}
+
+func (i *oosBucketGrantFullControlPtrType) ToOosBucketGrantFullControlPtrOutput() OosBucketGrantFullControlPtrOutput {
+	return i.ToOosBucketGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketGrantFullControlPtrType) ToOosBucketGrantFullControlPtrOutputWithContext(ctx context.Context) OosBucketGrantFullControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantFullControlPtrOutput)
+}
+
+type OosBucketGrantFullControlOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantFullControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantFullControl)(nil)).Elem()
+}
+
+func (o OosBucketGrantFullControlOutput) ToOosBucketGrantFullControlOutput() OosBucketGrantFullControlOutput {
+	return o
+}
+
+func (o OosBucketGrantFullControlOutput) ToOosBucketGrantFullControlOutputWithContext(ctx context.Context) OosBucketGrantFullControlOutput {
+	return o
+}
+
+func (o OosBucketGrantFullControlOutput) ToOosBucketGrantFullControlPtrOutput() OosBucketGrantFullControlPtrOutput {
+	return o.ToOosBucketGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketGrantFullControlOutput) ToOosBucketGrantFullControlPtrOutputWithContext(ctx context.Context) OosBucketGrantFullControlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketGrantFullControl) *OosBucketGrantFullControl {
+		return &v
+	}).(OosBucketGrantFullControlPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantFullControlOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantFullControl) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantFullControlOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantFullControl) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantFullControlPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantFullControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantFullControl)(nil)).Elem()
+}
+
+func (o OosBucketGrantFullControlPtrOutput) ToOosBucketGrantFullControlPtrOutput() OosBucketGrantFullControlPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantFullControlPtrOutput) ToOosBucketGrantFullControlPtrOutputWithContext(ctx context.Context) OosBucketGrantFullControlPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantFullControlPtrOutput) Elem() OosBucketGrantFullControlOutput {
+	return o.ApplyT(func(v *OosBucketGrantFullControl) OosBucketGrantFullControl {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketGrantFullControl
+		return ret
+	}).(OosBucketGrantFullControlOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantFullControlPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantFullControl) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantFullControlPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantFullControl) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantRead struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosBucketGrantReadInput is an input type that accepts OosBucketGrantReadArgs and OosBucketGrantReadOutput values.
+// You can construct a concrete instance of `OosBucketGrantReadInput` via:
+//
+//	OosBucketGrantReadArgs{...}
+type OosBucketGrantReadInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantReadOutput() OosBucketGrantReadOutput
+	ToOosBucketGrantReadOutputWithContext(context.Context) OosBucketGrantReadOutput
+}
+
+type OosBucketGrantReadArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosBucketGrantReadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantRead)(nil)).Elem()
+}
+
+func (i OosBucketGrantReadArgs) ToOosBucketGrantReadOutput() OosBucketGrantReadOutput {
+	return i.ToOosBucketGrantReadOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantReadArgs) ToOosBucketGrantReadOutputWithContext(ctx context.Context) OosBucketGrantReadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantReadOutput)
+}
+
+func (i OosBucketGrantReadArgs) ToOosBucketGrantReadPtrOutput() OosBucketGrantReadPtrOutput {
+	return i.ToOosBucketGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantReadArgs) ToOosBucketGrantReadPtrOutputWithContext(ctx context.Context) OosBucketGrantReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantReadOutput).ToOosBucketGrantReadPtrOutputWithContext(ctx)
+}
+
+// OosBucketGrantReadPtrInput is an input type that accepts OosBucketGrantReadArgs, OosBucketGrantReadPtr and OosBucketGrantReadPtrOutput values.
+// You can construct a concrete instance of `OosBucketGrantReadPtrInput` via:
+//
+//	        OosBucketGrantReadArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketGrantReadPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantReadPtrOutput() OosBucketGrantReadPtrOutput
+	ToOosBucketGrantReadPtrOutputWithContext(context.Context) OosBucketGrantReadPtrOutput
+}
+
+type oosBucketGrantReadPtrType OosBucketGrantReadArgs
+
+func OosBucketGrantReadPtr(v *OosBucketGrantReadArgs) OosBucketGrantReadPtrInput {
+	return (*oosBucketGrantReadPtrType)(v)
+}
+
+func (*oosBucketGrantReadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantRead)(nil)).Elem()
+}
+
+func (i *oosBucketGrantReadPtrType) ToOosBucketGrantReadPtrOutput() OosBucketGrantReadPtrOutput {
+	return i.ToOosBucketGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketGrantReadPtrType) ToOosBucketGrantReadPtrOutputWithContext(ctx context.Context) OosBucketGrantReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantReadPtrOutput)
+}
+
+type OosBucketGrantReadOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantReadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantRead)(nil)).Elem()
+}
+
+func (o OosBucketGrantReadOutput) ToOosBucketGrantReadOutput() OosBucketGrantReadOutput {
+	return o
+}
+
+func (o OosBucketGrantReadOutput) ToOosBucketGrantReadOutputWithContext(ctx context.Context) OosBucketGrantReadOutput {
+	return o
+}
+
+func (o OosBucketGrantReadOutput) ToOosBucketGrantReadPtrOutput() OosBucketGrantReadPtrOutput {
+	return o.ToOosBucketGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketGrantReadOutput) ToOosBucketGrantReadPtrOutputWithContext(ctx context.Context) OosBucketGrantReadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketGrantRead) *OosBucketGrantRead {
+		return &v
+	}).(OosBucketGrantReadPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantReadOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantRead) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantReadOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantRead) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantReadPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantReadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantRead)(nil)).Elem()
+}
+
+func (o OosBucketGrantReadPtrOutput) ToOosBucketGrantReadPtrOutput() OosBucketGrantReadPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantReadPtrOutput) ToOosBucketGrantReadPtrOutputWithContext(ctx context.Context) OosBucketGrantReadPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantReadPtrOutput) Elem() OosBucketGrantReadOutput {
+	return o.ApplyT(func(v *OosBucketGrantRead) OosBucketGrantRead {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketGrantRead
+		return ret
+	}).(OosBucketGrantReadOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantReadPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantReadPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantReadAcp struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosBucketGrantReadAcpInput is an input type that accepts OosBucketGrantReadAcpArgs and OosBucketGrantReadAcpOutput values.
+// You can construct a concrete instance of `OosBucketGrantReadAcpInput` via:
+//
+//	OosBucketGrantReadAcpArgs{...}
+type OosBucketGrantReadAcpInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantReadAcpOutput() OosBucketGrantReadAcpOutput
+	ToOosBucketGrantReadAcpOutputWithContext(context.Context) OosBucketGrantReadAcpOutput
+}
+
+type OosBucketGrantReadAcpArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosBucketGrantReadAcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantReadAcp)(nil)).Elem()
+}
+
+func (i OosBucketGrantReadAcpArgs) ToOosBucketGrantReadAcpOutput() OosBucketGrantReadAcpOutput {
+	return i.ToOosBucketGrantReadAcpOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantReadAcpArgs) ToOosBucketGrantReadAcpOutputWithContext(ctx context.Context) OosBucketGrantReadAcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantReadAcpOutput)
+}
+
+func (i OosBucketGrantReadAcpArgs) ToOosBucketGrantReadAcpPtrOutput() OosBucketGrantReadAcpPtrOutput {
+	return i.ToOosBucketGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantReadAcpArgs) ToOosBucketGrantReadAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantReadAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantReadAcpOutput).ToOosBucketGrantReadAcpPtrOutputWithContext(ctx)
+}
+
+// OosBucketGrantReadAcpPtrInput is an input type that accepts OosBucketGrantReadAcpArgs, OosBucketGrantReadAcpPtr and OosBucketGrantReadAcpPtrOutput values.
+// You can construct a concrete instance of `OosBucketGrantReadAcpPtrInput` via:
+//
+//	        OosBucketGrantReadAcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketGrantReadAcpPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantReadAcpPtrOutput() OosBucketGrantReadAcpPtrOutput
+	ToOosBucketGrantReadAcpPtrOutputWithContext(context.Context) OosBucketGrantReadAcpPtrOutput
+}
+
+type oosBucketGrantReadAcpPtrType OosBucketGrantReadAcpArgs
+
+func OosBucketGrantReadAcpPtr(v *OosBucketGrantReadAcpArgs) OosBucketGrantReadAcpPtrInput {
+	return (*oosBucketGrantReadAcpPtrType)(v)
+}
+
+func (*oosBucketGrantReadAcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantReadAcp)(nil)).Elem()
+}
+
+func (i *oosBucketGrantReadAcpPtrType) ToOosBucketGrantReadAcpPtrOutput() OosBucketGrantReadAcpPtrOutput {
+	return i.ToOosBucketGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketGrantReadAcpPtrType) ToOosBucketGrantReadAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantReadAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantReadAcpPtrOutput)
+}
+
+type OosBucketGrantReadAcpOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantReadAcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantReadAcp)(nil)).Elem()
+}
+
+func (o OosBucketGrantReadAcpOutput) ToOosBucketGrantReadAcpOutput() OosBucketGrantReadAcpOutput {
+	return o
+}
+
+func (o OosBucketGrantReadAcpOutput) ToOosBucketGrantReadAcpOutputWithContext(ctx context.Context) OosBucketGrantReadAcpOutput {
+	return o
+}
+
+func (o OosBucketGrantReadAcpOutput) ToOosBucketGrantReadAcpPtrOutput() OosBucketGrantReadAcpPtrOutput {
+	return o.ToOosBucketGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketGrantReadAcpOutput) ToOosBucketGrantReadAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantReadAcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketGrantReadAcp) *OosBucketGrantReadAcp {
+		return &v
+	}).(OosBucketGrantReadAcpPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantReadAcpOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantReadAcp) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantReadAcpOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantReadAcp) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantReadAcpPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantReadAcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantReadAcp)(nil)).Elem()
+}
+
+func (o OosBucketGrantReadAcpPtrOutput) ToOosBucketGrantReadAcpPtrOutput() OosBucketGrantReadAcpPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantReadAcpPtrOutput) ToOosBucketGrantReadAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantReadAcpPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantReadAcpPtrOutput) Elem() OosBucketGrantReadAcpOutput {
+	return o.ApplyT(func(v *OosBucketGrantReadAcp) OosBucketGrantReadAcp {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketGrantReadAcp
+		return ret
+	}).(OosBucketGrantReadAcpOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantReadAcpPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantReadAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantReadAcpPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantReadAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantWrite struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosBucketGrantWriteInput is an input type that accepts OosBucketGrantWriteArgs and OosBucketGrantWriteOutput values.
+// You can construct a concrete instance of `OosBucketGrantWriteInput` via:
+//
+//	OosBucketGrantWriteArgs{...}
+type OosBucketGrantWriteInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantWriteOutput() OosBucketGrantWriteOutput
+	ToOosBucketGrantWriteOutputWithContext(context.Context) OosBucketGrantWriteOutput
+}
+
+type OosBucketGrantWriteArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosBucketGrantWriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantWrite)(nil)).Elem()
+}
+
+func (i OosBucketGrantWriteArgs) ToOosBucketGrantWriteOutput() OosBucketGrantWriteOutput {
+	return i.ToOosBucketGrantWriteOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantWriteArgs) ToOosBucketGrantWriteOutputWithContext(ctx context.Context) OosBucketGrantWriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantWriteOutput)
+}
+
+func (i OosBucketGrantWriteArgs) ToOosBucketGrantWritePtrOutput() OosBucketGrantWritePtrOutput {
+	return i.ToOosBucketGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantWriteArgs) ToOosBucketGrantWritePtrOutputWithContext(ctx context.Context) OosBucketGrantWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantWriteOutput).ToOosBucketGrantWritePtrOutputWithContext(ctx)
+}
+
+// OosBucketGrantWritePtrInput is an input type that accepts OosBucketGrantWriteArgs, OosBucketGrantWritePtr and OosBucketGrantWritePtrOutput values.
+// You can construct a concrete instance of `OosBucketGrantWritePtrInput` via:
+//
+//	        OosBucketGrantWriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketGrantWritePtrInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantWritePtrOutput() OosBucketGrantWritePtrOutput
+	ToOosBucketGrantWritePtrOutputWithContext(context.Context) OosBucketGrantWritePtrOutput
+}
+
+type oosBucketGrantWritePtrType OosBucketGrantWriteArgs
+
+func OosBucketGrantWritePtr(v *OosBucketGrantWriteArgs) OosBucketGrantWritePtrInput {
+	return (*oosBucketGrantWritePtrType)(v)
+}
+
+func (*oosBucketGrantWritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantWrite)(nil)).Elem()
+}
+
+func (i *oosBucketGrantWritePtrType) ToOosBucketGrantWritePtrOutput() OosBucketGrantWritePtrOutput {
+	return i.ToOosBucketGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketGrantWritePtrType) ToOosBucketGrantWritePtrOutputWithContext(ctx context.Context) OosBucketGrantWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantWritePtrOutput)
+}
+
+type OosBucketGrantWriteOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantWriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantWrite)(nil)).Elem()
+}
+
+func (o OosBucketGrantWriteOutput) ToOosBucketGrantWriteOutput() OosBucketGrantWriteOutput {
+	return o
+}
+
+func (o OosBucketGrantWriteOutput) ToOosBucketGrantWriteOutputWithContext(ctx context.Context) OosBucketGrantWriteOutput {
+	return o
+}
+
+func (o OosBucketGrantWriteOutput) ToOosBucketGrantWritePtrOutput() OosBucketGrantWritePtrOutput {
+	return o.ToOosBucketGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketGrantWriteOutput) ToOosBucketGrantWritePtrOutputWithContext(ctx context.Context) OosBucketGrantWritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketGrantWrite) *OosBucketGrantWrite {
+		return &v
+	}).(OosBucketGrantWritePtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantWriteOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantWrite) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantWriteOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantWrite) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantWritePtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantWritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantWrite)(nil)).Elem()
+}
+
+func (o OosBucketGrantWritePtrOutput) ToOosBucketGrantWritePtrOutput() OosBucketGrantWritePtrOutput {
+	return o
+}
+
+func (o OosBucketGrantWritePtrOutput) ToOosBucketGrantWritePtrOutputWithContext(ctx context.Context) OosBucketGrantWritePtrOutput {
+	return o
+}
+
+func (o OosBucketGrantWritePtrOutput) Elem() OosBucketGrantWriteOutput {
+	return o.ApplyT(func(v *OosBucketGrantWrite) OosBucketGrantWrite {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketGrantWrite
+		return ret
+	}).(OosBucketGrantWriteOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantWritePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantWrite) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantWritePtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantWrite) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantWriteAcp struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosBucketGrantWriteAcpInput is an input type that accepts OosBucketGrantWriteAcpArgs and OosBucketGrantWriteAcpOutput values.
+// You can construct a concrete instance of `OosBucketGrantWriteAcpInput` via:
+//
+//	OosBucketGrantWriteAcpArgs{...}
+type OosBucketGrantWriteAcpInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantWriteAcpOutput() OosBucketGrantWriteAcpOutput
+	ToOosBucketGrantWriteAcpOutputWithContext(context.Context) OosBucketGrantWriteAcpOutput
+}
+
+type OosBucketGrantWriteAcpArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosBucketGrantWriteAcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantWriteAcp)(nil)).Elem()
+}
+
+func (i OosBucketGrantWriteAcpArgs) ToOosBucketGrantWriteAcpOutput() OosBucketGrantWriteAcpOutput {
+	return i.ToOosBucketGrantWriteAcpOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantWriteAcpArgs) ToOosBucketGrantWriteAcpOutputWithContext(ctx context.Context) OosBucketGrantWriteAcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantWriteAcpOutput)
+}
+
+func (i OosBucketGrantWriteAcpArgs) ToOosBucketGrantWriteAcpPtrOutput() OosBucketGrantWriteAcpPtrOutput {
+	return i.ToOosBucketGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketGrantWriteAcpArgs) ToOosBucketGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantWriteAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantWriteAcpOutput).ToOosBucketGrantWriteAcpPtrOutputWithContext(ctx)
+}
+
+// OosBucketGrantWriteAcpPtrInput is an input type that accepts OosBucketGrantWriteAcpArgs, OosBucketGrantWriteAcpPtr and OosBucketGrantWriteAcpPtrOutput values.
+// You can construct a concrete instance of `OosBucketGrantWriteAcpPtrInput` via:
+//
+//	        OosBucketGrantWriteAcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketGrantWriteAcpPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketGrantWriteAcpPtrOutput() OosBucketGrantWriteAcpPtrOutput
+	ToOosBucketGrantWriteAcpPtrOutputWithContext(context.Context) OosBucketGrantWriteAcpPtrOutput
+}
+
+type oosBucketGrantWriteAcpPtrType OosBucketGrantWriteAcpArgs
+
+func OosBucketGrantWriteAcpPtr(v *OosBucketGrantWriteAcpArgs) OosBucketGrantWriteAcpPtrInput {
+	return (*oosBucketGrantWriteAcpPtrType)(v)
+}
+
+func (*oosBucketGrantWriteAcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantWriteAcp)(nil)).Elem()
+}
+
+func (i *oosBucketGrantWriteAcpPtrType) ToOosBucketGrantWriteAcpPtrOutput() OosBucketGrantWriteAcpPtrOutput {
+	return i.ToOosBucketGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketGrantWriteAcpPtrType) ToOosBucketGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantWriteAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketGrantWriteAcpPtrOutput)
+}
+
+type OosBucketGrantWriteAcpOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantWriteAcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketGrantWriteAcp)(nil)).Elem()
+}
+
+func (o OosBucketGrantWriteAcpOutput) ToOosBucketGrantWriteAcpOutput() OosBucketGrantWriteAcpOutput {
+	return o
+}
+
+func (o OosBucketGrantWriteAcpOutput) ToOosBucketGrantWriteAcpOutputWithContext(ctx context.Context) OosBucketGrantWriteAcpOutput {
+	return o
+}
+
+func (o OosBucketGrantWriteAcpOutput) ToOosBucketGrantWriteAcpPtrOutput() OosBucketGrantWriteAcpPtrOutput {
+	return o.ToOosBucketGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketGrantWriteAcpOutput) ToOosBucketGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantWriteAcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketGrantWriteAcp) *OosBucketGrantWriteAcp {
+		return &v
+	}).(OosBucketGrantWriteAcpPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantWriteAcpOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantWriteAcp) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantWriteAcpOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosBucketGrantWriteAcp) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosBucketGrantWriteAcpPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketGrantWriteAcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketGrantWriteAcp)(nil)).Elem()
+}
+
+func (o OosBucketGrantWriteAcpPtrOutput) ToOosBucketGrantWriteAcpPtrOutput() OosBucketGrantWriteAcpPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantWriteAcpPtrOutput) ToOosBucketGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosBucketGrantWriteAcpPtrOutput {
+	return o
+}
+
+func (o OosBucketGrantWriteAcpPtrOutput) Elem() OosBucketGrantWriteAcpOutput {
+	return o.ApplyT(func(v *OosBucketGrantWriteAcp) OosBucketGrantWriteAcp {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketGrantWriteAcp
+		return ret
+	}).(OosBucketGrantWriteAcpOutput)
+}
+
+// One or more user email addresses.
+func (o OosBucketGrantWriteAcpPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantWriteAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosBucketGrantWriteAcpPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosBucketGrantWriteAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosBucketLifecycleRule struct {
+	// Specifies when an incomplete multipart upload is aborted.
+	AbortIncompleteMultipartUpload *OosBucketLifecycleRuleAbortIncompleteMultipartUpload `pulumi:"abortIncompleteMultipartUpload"`
+	// Specifies the expiration date for the objects.
+	Expiration *OosBucketLifecycleRuleExpiration `pulumi:"expiration"`
+	// Specifies the objects the rule applies to, using `and`, `prefix`, `tags` keys. See the Object filtering section below for examples of usage.
+	Filter OosBucketLifecycleRuleFilter `pulumi:"filter"`
+	// A unique name for the rule. If omitted, the provider generates a unique name for it.
+	Id *string `pulumi:"id"`
+	// If specified, the noncurrent versions of your objects are automatically deleted once they reach the duration specified in their lifecycle.
+	NoncurrentVersionExpiration *OosBucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpiration"`
+	// If `Enabled`, the rule is applied. If `Disabled`, the rule is not applied.
+	Status string `pulumi:"status"`
+}
+
+// OosBucketLifecycleRuleInput is an input type that accepts OosBucketLifecycleRuleArgs and OosBucketLifecycleRuleOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleInput` via:
+//
+//	OosBucketLifecycleRuleArgs{...}
+type OosBucketLifecycleRuleInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleOutput() OosBucketLifecycleRuleOutput
+	ToOosBucketLifecycleRuleOutputWithContext(context.Context) OosBucketLifecycleRuleOutput
+}
+
+type OosBucketLifecycleRuleArgs struct {
+	// Specifies when an incomplete multipart upload is aborted.
+	AbortIncompleteMultipartUpload OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrInput `pulumi:"abortIncompleteMultipartUpload"`
+	// Specifies the expiration date for the objects.
+	Expiration OosBucketLifecycleRuleExpirationPtrInput `pulumi:"expiration"`
+	// Specifies the objects the rule applies to, using `and`, `prefix`, `tags` keys. See the Object filtering section below for examples of usage.
+	Filter OosBucketLifecycleRuleFilterInput `pulumi:"filter"`
+	// A unique name for the rule. If omitted, the provider generates a unique name for it.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If specified, the noncurrent versions of your objects are automatically deleted once they reach the duration specified in their lifecycle.
+	NoncurrentVersionExpiration OosBucketLifecycleRuleNoncurrentVersionExpirationPtrInput `pulumi:"noncurrentVersionExpiration"`
+	// If `Enabled`, the rule is applied. If `Disabled`, the rule is not applied.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (OosBucketLifecycleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRule)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleRuleArgs) ToOosBucketLifecycleRuleOutput() OosBucketLifecycleRuleOutput {
+	return i.ToOosBucketLifecycleRuleOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleArgs) ToOosBucketLifecycleRuleOutputWithContext(ctx context.Context) OosBucketLifecycleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleOutput)
+}
+
+// OosBucketLifecycleRuleArrayInput is an input type that accepts OosBucketLifecycleRuleArray and OosBucketLifecycleRuleArrayOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleArrayInput` via:
+//
+//	OosBucketLifecycleRuleArray{ OosBucketLifecycleRuleArgs{...} }
+type OosBucketLifecycleRuleArrayInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleArrayOutput() OosBucketLifecycleRuleArrayOutput
+	ToOosBucketLifecycleRuleArrayOutputWithContext(context.Context) OosBucketLifecycleRuleArrayOutput
+}
+
+type OosBucketLifecycleRuleArray []OosBucketLifecycleRuleInput
+
+func (OosBucketLifecycleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosBucketLifecycleRule)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleRuleArray) ToOosBucketLifecycleRuleArrayOutput() OosBucketLifecycleRuleArrayOutput {
+	return i.ToOosBucketLifecycleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleArray) ToOosBucketLifecycleRuleArrayOutputWithContext(ctx context.Context) OosBucketLifecycleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleArrayOutput)
+}
+
+type OosBucketLifecycleRuleOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRule)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleOutput) ToOosBucketLifecycleRuleOutput() OosBucketLifecycleRuleOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleOutput) ToOosBucketLifecycleRuleOutputWithContext(ctx context.Context) OosBucketLifecycleRuleOutput {
+	return o
+}
+
+// Specifies when an incomplete multipart upload is aborted.
+func (o OosBucketLifecycleRuleOutput) AbortIncompleteMultipartUpload() OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRule) *OosBucketLifecycleRuleAbortIncompleteMultipartUpload {
+		return v.AbortIncompleteMultipartUpload
+	}).(OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput)
+}
+
+// Specifies the expiration date for the objects.
+func (o OosBucketLifecycleRuleOutput) Expiration() OosBucketLifecycleRuleExpirationPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRule) *OosBucketLifecycleRuleExpiration { return v.Expiration }).(OosBucketLifecycleRuleExpirationPtrOutput)
+}
+
+// Specifies the objects the rule applies to, using `and`, `prefix`, `tags` keys. See the Object filtering section below for examples of usage.
+func (o OosBucketLifecycleRuleOutput) Filter() OosBucketLifecycleRuleFilterOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRule) OosBucketLifecycleRuleFilter { return v.Filter }).(OosBucketLifecycleRuleFilterOutput)
+}
+
+// A unique name for the rule. If omitted, the provider generates a unique name for it.
+func (o OosBucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// If specified, the noncurrent versions of your objects are automatically deleted once they reach the duration specified in their lifecycle.
+func (o OosBucketLifecycleRuleOutput) NoncurrentVersionExpiration() OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRule) *OosBucketLifecycleRuleNoncurrentVersionExpiration {
+		return v.NoncurrentVersionExpiration
+	}).(OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
+}
+
+// If `Enabled`, the rule is applied. If `Disabled`, the rule is not applied.
+func (o OosBucketLifecycleRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type OosBucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosBucketLifecycleRule)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleArrayOutput) ToOosBucketLifecycleRuleArrayOutput() OosBucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleArrayOutput) ToOosBucketLifecycleRuleArrayOutputWithContext(ctx context.Context) OosBucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) OosBucketLifecycleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OosBucketLifecycleRule {
+		return vs[0].([]OosBucketLifecycleRule)[vs[1].(int)]
+	}).(OosBucketLifecycleRuleOutput)
+}
+
+type OosBucketLifecycleRuleAbortIncompleteMultipartUpload struct {
+	// The number of days after which an incomplete multipart upload is aborted.
+	DaysAfterInitiation *int `pulumi:"daysAfterInitiation"`
+}
+
+// OosBucketLifecycleRuleAbortIncompleteMultipartUploadInput is an input type that accepts OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs and OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleAbortIncompleteMultipartUploadInput` via:
+//
+//	OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs{...}
+type OosBucketLifecycleRuleAbortIncompleteMultipartUploadInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput
+	ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadOutputWithContext(context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput
+}
+
+type OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs struct {
+	// The number of days after which an incomplete multipart upload is aborted.
+	DaysAfterInitiation pulumi.IntPtrInput `pulumi:"daysAfterInitiation"`
+}
+
+func (OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleAbortIncompleteMultipartUpload)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput {
+	return i.ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadOutputWithContext(ctx context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput)
+}
+
+func (i OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return i.ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput).ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx)
+}
+
+// OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrInput is an input type that accepts OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs, OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtr and OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrInput` via:
+//
+//	        OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput
+	ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput
+}
+
+type oosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrType OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs
+
+func OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtr(v *OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs) OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrInput {
+	return (*oosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrType)(v)
+}
+
+func (*oosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleAbortIncompleteMultipartUpload)(nil)).Elem()
+}
+
+func (i *oosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrType) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return i.ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrType) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput)
+}
+
+type OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleAbortIncompleteMultipartUpload)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadOutputWithContext(ctx context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return o.ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketLifecycleRuleAbortIncompleteMultipartUpload) *OosBucketLifecycleRuleAbortIncompleteMultipartUpload {
+		return &v
+	}).(OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput)
+}
+
+// The number of days after which an incomplete multipart upload is aborted.
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput) DaysAfterInitiation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleAbortIncompleteMultipartUpload) *int { return v.DaysAfterInitiation }).(pulumi.IntPtrOutput)
+}
+
+type OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleAbortIncompleteMultipartUpload)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput() OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput) ToOosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput) Elem() OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleAbortIncompleteMultipartUpload) OosBucketLifecycleRuleAbortIncompleteMultipartUpload {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketLifecycleRuleAbortIncompleteMultipartUpload
+		return ret
+	}).(OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput)
+}
+
+// The number of days after which an incomplete multipart upload is aborted.
+func (o OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput) DaysAfterInitiation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleAbortIncompleteMultipartUpload) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DaysAfterInitiation
+	}).(pulumi.IntPtrOutput)
+}
+
+type OosBucketLifecycleRuleExpiration struct {
+	// The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
+	Date *string `pulumi:"date"`
+	// The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
+	Days *int `pulumi:"days"`
+	// If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
+	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
+}
+
+// OosBucketLifecycleRuleExpirationInput is an input type that accepts OosBucketLifecycleRuleExpirationArgs and OosBucketLifecycleRuleExpirationOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleExpirationInput` via:
+//
+//	OosBucketLifecycleRuleExpirationArgs{...}
+type OosBucketLifecycleRuleExpirationInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleExpirationOutput() OosBucketLifecycleRuleExpirationOutput
+	ToOosBucketLifecycleRuleExpirationOutputWithContext(context.Context) OosBucketLifecycleRuleExpirationOutput
+}
+
+type OosBucketLifecycleRuleExpirationArgs struct {
+	// The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
+	Date pulumi.StringPtrInput `pulumi:"date"`
+	// The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
+	Days pulumi.IntPtrInput `pulumi:"days"`
+	// If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
+	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
+}
+
+func (OosBucketLifecycleRuleExpirationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleRuleExpirationArgs) ToOosBucketLifecycleRuleExpirationOutput() OosBucketLifecycleRuleExpirationOutput {
+	return i.ToOosBucketLifecycleRuleExpirationOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleExpirationArgs) ToOosBucketLifecycleRuleExpirationOutputWithContext(ctx context.Context) OosBucketLifecycleRuleExpirationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleExpirationOutput)
+}
+
+func (i OosBucketLifecycleRuleExpirationArgs) ToOosBucketLifecycleRuleExpirationPtrOutput() OosBucketLifecycleRuleExpirationPtrOutput {
+	return i.ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleExpirationArgs) ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleExpirationOutput).ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(ctx)
+}
+
+// OosBucketLifecycleRuleExpirationPtrInput is an input type that accepts OosBucketLifecycleRuleExpirationArgs, OosBucketLifecycleRuleExpirationPtr and OosBucketLifecycleRuleExpirationPtrOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleExpirationPtrInput` via:
+//
+//	        OosBucketLifecycleRuleExpirationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketLifecycleRuleExpirationPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleExpirationPtrOutput() OosBucketLifecycleRuleExpirationPtrOutput
+	ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(context.Context) OosBucketLifecycleRuleExpirationPtrOutput
+}
+
+type oosBucketLifecycleRuleExpirationPtrType OosBucketLifecycleRuleExpirationArgs
+
+func OosBucketLifecycleRuleExpirationPtr(v *OosBucketLifecycleRuleExpirationArgs) OosBucketLifecycleRuleExpirationPtrInput {
+	return (*oosBucketLifecycleRuleExpirationPtrType)(v)
+}
+
+func (*oosBucketLifecycleRuleExpirationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (i *oosBucketLifecycleRuleExpirationPtrType) ToOosBucketLifecycleRuleExpirationPtrOutput() OosBucketLifecycleRuleExpirationPtrOutput {
+	return i.ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketLifecycleRuleExpirationPtrType) ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleExpirationPtrOutput)
+}
+
+type OosBucketLifecycleRuleExpirationOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleExpirationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleExpirationOutput) ToOosBucketLifecycleRuleExpirationOutput() OosBucketLifecycleRuleExpirationOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleExpirationOutput) ToOosBucketLifecycleRuleExpirationOutputWithContext(ctx context.Context) OosBucketLifecycleRuleExpirationOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleExpirationOutput) ToOosBucketLifecycleRuleExpirationPtrOutput() OosBucketLifecycleRuleExpirationPtrOutput {
+	return o.ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketLifecycleRuleExpirationOutput) ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleExpirationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketLifecycleRuleExpiration) *OosBucketLifecycleRuleExpiration {
+		return &v
+	}).(OosBucketLifecycleRuleExpirationPtrOutput)
+}
+
+// The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
+func (o OosBucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
+func (o OosBucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+// If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
+func (o OosBucketLifecycleRuleExpirationOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
+}
+
+type OosBucketLifecycleRuleExpirationPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleExpirationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleExpiration)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleExpirationPtrOutput) ToOosBucketLifecycleRuleExpirationPtrOutput() OosBucketLifecycleRuleExpirationPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleExpirationPtrOutput) ToOosBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleExpirationPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleExpirationPtrOutput) Elem() OosBucketLifecycleRuleExpirationOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleExpiration) OosBucketLifecycleRuleExpiration {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketLifecycleRuleExpiration
+		return ret
+	}).(OosBucketLifecycleRuleExpirationOutput)
+}
+
+// The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
+func (o OosBucketLifecycleRuleExpirationPtrOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleExpiration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Date
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
+func (o OosBucketLifecycleRuleExpirationPtrOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleExpiration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.IntPtrOutput)
+}
+
+// If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
+func (o OosBucketLifecycleRuleExpirationPtrOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleExpiration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiredObjectDeleteMarker
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OosBucketLifecycleRuleFilter struct {
+	And    *OosBucketLifecycleRuleFilterAnd `pulumi:"and"`
+	Prefix *string                          `pulumi:"prefix"`
+}
+
+// OosBucketLifecycleRuleFilterInput is an input type that accepts OosBucketLifecycleRuleFilterArgs and OosBucketLifecycleRuleFilterOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleFilterInput` via:
+//
+//	OosBucketLifecycleRuleFilterArgs{...}
+type OosBucketLifecycleRuleFilterInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleFilterOutput() OosBucketLifecycleRuleFilterOutput
+	ToOosBucketLifecycleRuleFilterOutputWithContext(context.Context) OosBucketLifecycleRuleFilterOutput
+}
+
+type OosBucketLifecycleRuleFilterArgs struct {
+	And    OosBucketLifecycleRuleFilterAndPtrInput `pulumi:"and"`
+	Prefix pulumi.StringPtrInput                   `pulumi:"prefix"`
+}
+
+func (OosBucketLifecycleRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleFilter)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleRuleFilterArgs) ToOosBucketLifecycleRuleFilterOutput() OosBucketLifecycleRuleFilterOutput {
+	return i.ToOosBucketLifecycleRuleFilterOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleFilterArgs) ToOosBucketLifecycleRuleFilterOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleFilterOutput)
+}
+
+type OosBucketLifecycleRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleFilter)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleFilterOutput) ToOosBucketLifecycleRuleFilterOutput() OosBucketLifecycleRuleFilterOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleFilterOutput) ToOosBucketLifecycleRuleFilterOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleFilterOutput) And() OosBucketLifecycleRuleFilterAndPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleFilter) *OosBucketLifecycleRuleFilterAnd { return v.And }).(OosBucketLifecycleRuleFilterAndPtrOutput)
+}
+
+func (o OosBucketLifecycleRuleFilterOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleFilter) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketLifecycleRuleFilterAnd struct {
+	Prefix string            `pulumi:"prefix"`
+	Tags   map[string]string `pulumi:"tags"`
+}
+
+// OosBucketLifecycleRuleFilterAndInput is an input type that accepts OosBucketLifecycleRuleFilterAndArgs and OosBucketLifecycleRuleFilterAndOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleFilterAndInput` via:
+//
+//	OosBucketLifecycleRuleFilterAndArgs{...}
+type OosBucketLifecycleRuleFilterAndInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleFilterAndOutput() OosBucketLifecycleRuleFilterAndOutput
+	ToOosBucketLifecycleRuleFilterAndOutputWithContext(context.Context) OosBucketLifecycleRuleFilterAndOutput
+}
+
+type OosBucketLifecycleRuleFilterAndArgs struct {
+	Prefix pulumi.StringInput    `pulumi:"prefix"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (OosBucketLifecycleRuleFilterAndArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleFilterAnd)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleRuleFilterAndArgs) ToOosBucketLifecycleRuleFilterAndOutput() OosBucketLifecycleRuleFilterAndOutput {
+	return i.ToOosBucketLifecycleRuleFilterAndOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleFilterAndArgs) ToOosBucketLifecycleRuleFilterAndOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterAndOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleFilterAndOutput)
+}
+
+func (i OosBucketLifecycleRuleFilterAndArgs) ToOosBucketLifecycleRuleFilterAndPtrOutput() OosBucketLifecycleRuleFilterAndPtrOutput {
+	return i.ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleFilterAndArgs) ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterAndPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleFilterAndOutput).ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(ctx)
+}
+
+// OosBucketLifecycleRuleFilterAndPtrInput is an input type that accepts OosBucketLifecycleRuleFilterAndArgs, OosBucketLifecycleRuleFilterAndPtr and OosBucketLifecycleRuleFilterAndPtrOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleFilterAndPtrInput` via:
+//
+//	        OosBucketLifecycleRuleFilterAndArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketLifecycleRuleFilterAndPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleFilterAndPtrOutput() OosBucketLifecycleRuleFilterAndPtrOutput
+	ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(context.Context) OosBucketLifecycleRuleFilterAndPtrOutput
+}
+
+type oosBucketLifecycleRuleFilterAndPtrType OosBucketLifecycleRuleFilterAndArgs
+
+func OosBucketLifecycleRuleFilterAndPtr(v *OosBucketLifecycleRuleFilterAndArgs) OosBucketLifecycleRuleFilterAndPtrInput {
+	return (*oosBucketLifecycleRuleFilterAndPtrType)(v)
+}
+
+func (*oosBucketLifecycleRuleFilterAndPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleFilterAnd)(nil)).Elem()
+}
+
+func (i *oosBucketLifecycleRuleFilterAndPtrType) ToOosBucketLifecycleRuleFilterAndPtrOutput() OosBucketLifecycleRuleFilterAndPtrOutput {
+	return i.ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketLifecycleRuleFilterAndPtrType) ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterAndPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleFilterAndPtrOutput)
+}
+
+type OosBucketLifecycleRuleFilterAndOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleFilterAndOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleFilterAnd)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleFilterAndOutput) ToOosBucketLifecycleRuleFilterAndOutput() OosBucketLifecycleRuleFilterAndOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleFilterAndOutput) ToOosBucketLifecycleRuleFilterAndOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterAndOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleFilterAndOutput) ToOosBucketLifecycleRuleFilterAndPtrOutput() OosBucketLifecycleRuleFilterAndPtrOutput {
+	return o.ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketLifecycleRuleFilterAndOutput) ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterAndPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketLifecycleRuleFilterAnd) *OosBucketLifecycleRuleFilterAnd {
+		return &v
+	}).(OosBucketLifecycleRuleFilterAndPtrOutput)
+}
+
+func (o OosBucketLifecycleRuleFilterAndOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleFilterAnd) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+func (o OosBucketLifecycleRuleFilterAndOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleFilterAnd) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type OosBucketLifecycleRuleFilterAndPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleFilterAndPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleFilterAnd)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleFilterAndPtrOutput) ToOosBucketLifecycleRuleFilterAndPtrOutput() OosBucketLifecycleRuleFilterAndPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleFilterAndPtrOutput) ToOosBucketLifecycleRuleFilterAndPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleFilterAndPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleFilterAndPtrOutput) Elem() OosBucketLifecycleRuleFilterAndOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleFilterAnd) OosBucketLifecycleRuleFilterAnd {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketLifecycleRuleFilterAnd
+		return ret
+	}).(OosBucketLifecycleRuleFilterAndOutput)
+}
+
+func (o OosBucketLifecycleRuleFilterAndPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleFilterAnd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OosBucketLifecycleRuleFilterAndPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleFilterAnd) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type OosBucketLifecycleRuleNoncurrentVersionExpiration struct {
+	// The lifetime, in days, of noncurrent objects.
+	NoncurrentDays int `pulumi:"noncurrentDays"`
+}
+
+// OosBucketLifecycleRuleNoncurrentVersionExpirationInput is an input type that accepts OosBucketLifecycleRuleNoncurrentVersionExpirationArgs and OosBucketLifecycleRuleNoncurrentVersionExpirationOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleNoncurrentVersionExpirationInput` via:
+//
+//	OosBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
+type OosBucketLifecycleRuleNoncurrentVersionExpirationInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleNoncurrentVersionExpirationOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationOutput
+	ToOosBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationOutput
+}
+
+type OosBucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
+	// The lifetime, in days, of noncurrent objects.
+	NoncurrentDays pulumi.IntInput `pulumi:"noncurrentDays"`
+}
+
+func (OosBucketLifecycleRuleNoncurrentVersionExpirationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToOosBucketLifecycleRuleNoncurrentVersionExpirationOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return i.ToOosBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToOosBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(ctx context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleNoncurrentVersionExpirationOutput)
+}
+
+func (i OosBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return i.ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleRuleNoncurrentVersionExpirationArgs) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleNoncurrentVersionExpirationOutput).ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx)
+}
+
+// OosBucketLifecycleRuleNoncurrentVersionExpirationPtrInput is an input type that accepts OosBucketLifecycleRuleNoncurrentVersionExpirationArgs, OosBucketLifecycleRuleNoncurrentVersionExpirationPtr and OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleRuleNoncurrentVersionExpirationPtrInput` via:
+//
+//	        OosBucketLifecycleRuleNoncurrentVersionExpirationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketLifecycleRuleNoncurrentVersionExpirationPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput
+	ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput
+}
+
+type oosBucketLifecycleRuleNoncurrentVersionExpirationPtrType OosBucketLifecycleRuleNoncurrentVersionExpirationArgs
+
+func OosBucketLifecycleRuleNoncurrentVersionExpirationPtr(v *OosBucketLifecycleRuleNoncurrentVersionExpirationArgs) OosBucketLifecycleRuleNoncurrentVersionExpirationPtrInput {
+	return (*oosBucketLifecycleRuleNoncurrentVersionExpirationPtrType)(v)
+}
+
+func (*oosBucketLifecycleRuleNoncurrentVersionExpirationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (i *oosBucketLifecycleRuleNoncurrentVersionExpirationPtrType) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return i.ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketLifecycleRuleNoncurrentVersionExpirationPtrType) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
+}
+
+type OosBucketLifecycleRuleNoncurrentVersionExpirationOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleNoncurrentVersionExpirationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToOosBucketLifecycleRuleNoncurrentVersionExpirationOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToOosBucketLifecycleRuleNoncurrentVersionExpirationOutputWithContext(ctx context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o.ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationOutput) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketLifecycleRuleNoncurrentVersionExpiration) *OosBucketLifecycleRuleNoncurrentVersionExpiration {
+		return &v
+	}).(OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
+}
+
+// The lifetime, in days, of noncurrent objects.
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationOutput) NoncurrentDays() pulumi.IntOutput {
+	return o.ApplyT(func(v OosBucketLifecycleRuleNoncurrentVersionExpiration) int { return v.NoncurrentDays }).(pulumi.IntOutput)
+}
+
+type OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleRuleNoncurrentVersionExpiration)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput() OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) ToOosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Elem() OosBucketLifecycleRuleNoncurrentVersionExpirationOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleNoncurrentVersionExpiration) OosBucketLifecycleRuleNoncurrentVersionExpiration {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketLifecycleRuleNoncurrentVersionExpiration
+		return ret
+	}).(OosBucketLifecycleRuleNoncurrentVersionExpirationOutput)
+}
+
+// The lifetime, in days, of noncurrent objects.
+func (o OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) NoncurrentDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleRuleNoncurrentVersionExpiration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NoncurrentDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type OosBucketLifecycleTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosBucketLifecycleTimeoutsInput is an input type that accepts OosBucketLifecycleTimeoutsArgs and OosBucketLifecycleTimeoutsOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleTimeoutsInput` via:
+//
+//	OosBucketLifecycleTimeoutsArgs{...}
+type OosBucketLifecycleTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleTimeoutsOutput() OosBucketLifecycleTimeoutsOutput
+	ToOosBucketLifecycleTimeoutsOutputWithContext(context.Context) OosBucketLifecycleTimeoutsOutput
+}
+
+type OosBucketLifecycleTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosBucketLifecycleTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleTimeouts)(nil)).Elem()
+}
+
+func (i OosBucketLifecycleTimeoutsArgs) ToOosBucketLifecycleTimeoutsOutput() OosBucketLifecycleTimeoutsOutput {
+	return i.ToOosBucketLifecycleTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleTimeoutsArgs) ToOosBucketLifecycleTimeoutsOutputWithContext(ctx context.Context) OosBucketLifecycleTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleTimeoutsOutput)
+}
+
+func (i OosBucketLifecycleTimeoutsArgs) ToOosBucketLifecycleTimeoutsPtrOutput() OosBucketLifecycleTimeoutsPtrOutput {
+	return i.ToOosBucketLifecycleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketLifecycleTimeoutsArgs) ToOosBucketLifecycleTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketLifecycleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleTimeoutsOutput).ToOosBucketLifecycleTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosBucketLifecycleTimeoutsPtrInput is an input type that accepts OosBucketLifecycleTimeoutsArgs, OosBucketLifecycleTimeoutsPtr and OosBucketLifecycleTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosBucketLifecycleTimeoutsPtrInput` via:
+//
+//	        OosBucketLifecycleTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketLifecycleTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketLifecycleTimeoutsPtrOutput() OosBucketLifecycleTimeoutsPtrOutput
+	ToOosBucketLifecycleTimeoutsPtrOutputWithContext(context.Context) OosBucketLifecycleTimeoutsPtrOutput
+}
+
+type oosBucketLifecycleTimeoutsPtrType OosBucketLifecycleTimeoutsArgs
+
+func OosBucketLifecycleTimeoutsPtr(v *OosBucketLifecycleTimeoutsArgs) OosBucketLifecycleTimeoutsPtrInput {
+	return (*oosBucketLifecycleTimeoutsPtrType)(v)
+}
+
+func (*oosBucketLifecycleTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleTimeouts)(nil)).Elem()
+}
+
+func (i *oosBucketLifecycleTimeoutsPtrType) ToOosBucketLifecycleTimeoutsPtrOutput() OosBucketLifecycleTimeoutsPtrOutput {
+	return i.ToOosBucketLifecycleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketLifecycleTimeoutsPtrType) ToOosBucketLifecycleTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketLifecycleTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketLifecycleTimeoutsPtrOutput)
+}
+
+type OosBucketLifecycleTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketLifecycleTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleTimeoutsOutput) ToOosBucketLifecycleTimeoutsOutput() OosBucketLifecycleTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketLifecycleTimeoutsOutput) ToOosBucketLifecycleTimeoutsOutputWithContext(ctx context.Context) OosBucketLifecycleTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketLifecycleTimeoutsOutput) ToOosBucketLifecycleTimeoutsPtrOutput() OosBucketLifecycleTimeoutsPtrOutput {
+	return o.ToOosBucketLifecycleTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketLifecycleTimeoutsOutput) ToOosBucketLifecycleTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketLifecycleTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketLifecycleTimeouts) *OosBucketLifecycleTimeouts {
+		return &v
+	}).(OosBucketLifecycleTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketLifecycleTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketLifecycleTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketLifecycleTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketLifecycleTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketLifecycleTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketLifecycleTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketLifecycleTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketLifecycleTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketLifecycleTimeoutsPtrOutput) ToOosBucketLifecycleTimeoutsPtrOutput() OosBucketLifecycleTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleTimeoutsPtrOutput) ToOosBucketLifecycleTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketLifecycleTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketLifecycleTimeoutsPtrOutput) Elem() OosBucketLifecycleTimeoutsOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleTimeouts) OosBucketLifecycleTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketLifecycleTimeouts
+		return ret
+	}).(OosBucketLifecycleTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketLifecycleTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketLifecycleTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketLifecycleTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketLifecycleTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketLifecycleTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketObjectLock struct {
+	// The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
+	DefaultRetention *OosBucketObjectLockDefaultRetention `pulumi:"defaultRetention"`
+	// (Default: `false`) Whether object lock is enabled on the bucket.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// OosBucketObjectLockInput is an input type that accepts OosBucketObjectLockArgs and OosBucketObjectLockOutput values.
+// You can construct a concrete instance of `OosBucketObjectLockInput` via:
+//
+//	OosBucketObjectLockArgs{...}
+type OosBucketObjectLockInput interface {
+	pulumi.Input
+
+	ToOosBucketObjectLockOutput() OosBucketObjectLockOutput
+	ToOosBucketObjectLockOutputWithContext(context.Context) OosBucketObjectLockOutput
+}
+
+type OosBucketObjectLockArgs struct {
+	// The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
+	DefaultRetention OosBucketObjectLockDefaultRetentionPtrInput `pulumi:"defaultRetention"`
+	// (Default: `false`) Whether object lock is enabled on the bucket.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (OosBucketObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketObjectLock)(nil)).Elem()
+}
+
+func (i OosBucketObjectLockArgs) ToOosBucketObjectLockOutput() OosBucketObjectLockOutput {
+	return i.ToOosBucketObjectLockOutputWithContext(context.Background())
+}
+
+func (i OosBucketObjectLockArgs) ToOosBucketObjectLockOutputWithContext(ctx context.Context) OosBucketObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketObjectLockOutput)
+}
+
+func (i OosBucketObjectLockArgs) ToOosBucketObjectLockPtrOutput() OosBucketObjectLockPtrOutput {
+	return i.ToOosBucketObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketObjectLockArgs) ToOosBucketObjectLockPtrOutputWithContext(ctx context.Context) OosBucketObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketObjectLockOutput).ToOosBucketObjectLockPtrOutputWithContext(ctx)
+}
+
+// OosBucketObjectLockPtrInput is an input type that accepts OosBucketObjectLockArgs, OosBucketObjectLockPtr and OosBucketObjectLockPtrOutput values.
+// You can construct a concrete instance of `OosBucketObjectLockPtrInput` via:
+//
+//	        OosBucketObjectLockArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketObjectLockPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketObjectLockPtrOutput() OosBucketObjectLockPtrOutput
+	ToOosBucketObjectLockPtrOutputWithContext(context.Context) OosBucketObjectLockPtrOutput
+}
+
+type oosBucketObjectLockPtrType OosBucketObjectLockArgs
+
+func OosBucketObjectLockPtr(v *OosBucketObjectLockArgs) OosBucketObjectLockPtrInput {
+	return (*oosBucketObjectLockPtrType)(v)
+}
+
+func (*oosBucketObjectLockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketObjectLock)(nil)).Elem()
+}
+
+func (i *oosBucketObjectLockPtrType) ToOosBucketObjectLockPtrOutput() OosBucketObjectLockPtrOutput {
+	return i.ToOosBucketObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketObjectLockPtrType) ToOosBucketObjectLockPtrOutputWithContext(ctx context.Context) OosBucketObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketObjectLockPtrOutput)
+}
+
+type OosBucketObjectLockOutput struct{ *pulumi.OutputState }
+
+func (OosBucketObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketObjectLock)(nil)).Elem()
+}
+
+func (o OosBucketObjectLockOutput) ToOosBucketObjectLockOutput() OosBucketObjectLockOutput {
+	return o
+}
+
+func (o OosBucketObjectLockOutput) ToOosBucketObjectLockOutputWithContext(ctx context.Context) OosBucketObjectLockOutput {
+	return o
+}
+
+func (o OosBucketObjectLockOutput) ToOosBucketObjectLockPtrOutput() OosBucketObjectLockPtrOutput {
+	return o.ToOosBucketObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketObjectLockOutput) ToOosBucketObjectLockPtrOutputWithContext(ctx context.Context) OosBucketObjectLockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketObjectLock) *OosBucketObjectLock {
+		return &v
+	}).(OosBucketObjectLockPtrOutput)
+}
+
+// The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
+func (o OosBucketObjectLockOutput) DefaultRetention() OosBucketObjectLockDefaultRetentionPtrOutput {
+	return o.ApplyT(func(v OosBucketObjectLock) *OosBucketObjectLockDefaultRetention { return v.DefaultRetention }).(OosBucketObjectLockDefaultRetentionPtrOutput)
+}
+
+// (Default: `false`) Whether object lock is enabled on the bucket.
+func (o OosBucketObjectLockOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OosBucketObjectLock) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type OosBucketObjectLockPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketObjectLockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketObjectLock)(nil)).Elem()
+}
+
+func (o OosBucketObjectLockPtrOutput) ToOosBucketObjectLockPtrOutput() OosBucketObjectLockPtrOutput {
+	return o
+}
+
+func (o OosBucketObjectLockPtrOutput) ToOosBucketObjectLockPtrOutputWithContext(ctx context.Context) OosBucketObjectLockPtrOutput {
+	return o
+}
+
+func (o OosBucketObjectLockPtrOutput) Elem() OosBucketObjectLockOutput {
+	return o.ApplyT(func(v *OosBucketObjectLock) OosBucketObjectLock {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketObjectLock
+		return ret
+	}).(OosBucketObjectLockOutput)
+}
+
+// The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
+func (o OosBucketObjectLockPtrOutput) DefaultRetention() OosBucketObjectLockDefaultRetentionPtrOutput {
+	return o.ApplyT(func(v *OosBucketObjectLock) *OosBucketObjectLockDefaultRetention {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRetention
+	}).(OosBucketObjectLockDefaultRetentionPtrOutput)
+}
+
+// (Default: `false`) Whether object lock is enabled on the bucket.
+func (o OosBucketObjectLockPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OosBucketObjectLock) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OosBucketObjectLockDefaultRetention struct {
+	// The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
+	Days *int `pulumi:"days"`
+	// (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
+	Mode *string `pulumi:"mode"`
+	// The years after which your objects will no longer be protected.
+	Years *int `pulumi:"years"`
+}
+
+// OosBucketObjectLockDefaultRetentionInput is an input type that accepts OosBucketObjectLockDefaultRetentionArgs and OosBucketObjectLockDefaultRetentionOutput values.
+// You can construct a concrete instance of `OosBucketObjectLockDefaultRetentionInput` via:
+//
+//	OosBucketObjectLockDefaultRetentionArgs{...}
+type OosBucketObjectLockDefaultRetentionInput interface {
+	pulumi.Input
+
+	ToOosBucketObjectLockDefaultRetentionOutput() OosBucketObjectLockDefaultRetentionOutput
+	ToOosBucketObjectLockDefaultRetentionOutputWithContext(context.Context) OosBucketObjectLockDefaultRetentionOutput
+}
+
+type OosBucketObjectLockDefaultRetentionArgs struct {
+	// The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
+	Days pulumi.IntPtrInput `pulumi:"days"`
+	// (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The years after which your objects will no longer be protected.
+	Years pulumi.IntPtrInput `pulumi:"years"`
+}
+
+func (OosBucketObjectLockDefaultRetentionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketObjectLockDefaultRetention)(nil)).Elem()
+}
+
+func (i OosBucketObjectLockDefaultRetentionArgs) ToOosBucketObjectLockDefaultRetentionOutput() OosBucketObjectLockDefaultRetentionOutput {
+	return i.ToOosBucketObjectLockDefaultRetentionOutputWithContext(context.Background())
+}
+
+func (i OosBucketObjectLockDefaultRetentionArgs) ToOosBucketObjectLockDefaultRetentionOutputWithContext(ctx context.Context) OosBucketObjectLockDefaultRetentionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketObjectLockDefaultRetentionOutput)
+}
+
+func (i OosBucketObjectLockDefaultRetentionArgs) ToOosBucketObjectLockDefaultRetentionPtrOutput() OosBucketObjectLockDefaultRetentionPtrOutput {
+	return i.ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketObjectLockDefaultRetentionArgs) ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(ctx context.Context) OosBucketObjectLockDefaultRetentionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketObjectLockDefaultRetentionOutput).ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(ctx)
+}
+
+// OosBucketObjectLockDefaultRetentionPtrInput is an input type that accepts OosBucketObjectLockDefaultRetentionArgs, OosBucketObjectLockDefaultRetentionPtr and OosBucketObjectLockDefaultRetentionPtrOutput values.
+// You can construct a concrete instance of `OosBucketObjectLockDefaultRetentionPtrInput` via:
+//
+//	        OosBucketObjectLockDefaultRetentionArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketObjectLockDefaultRetentionPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketObjectLockDefaultRetentionPtrOutput() OosBucketObjectLockDefaultRetentionPtrOutput
+	ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(context.Context) OosBucketObjectLockDefaultRetentionPtrOutput
+}
+
+type oosBucketObjectLockDefaultRetentionPtrType OosBucketObjectLockDefaultRetentionArgs
+
+func OosBucketObjectLockDefaultRetentionPtr(v *OosBucketObjectLockDefaultRetentionArgs) OosBucketObjectLockDefaultRetentionPtrInput {
+	return (*oosBucketObjectLockDefaultRetentionPtrType)(v)
+}
+
+func (*oosBucketObjectLockDefaultRetentionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketObjectLockDefaultRetention)(nil)).Elem()
+}
+
+func (i *oosBucketObjectLockDefaultRetentionPtrType) ToOosBucketObjectLockDefaultRetentionPtrOutput() OosBucketObjectLockDefaultRetentionPtrOutput {
+	return i.ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketObjectLockDefaultRetentionPtrType) ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(ctx context.Context) OosBucketObjectLockDefaultRetentionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketObjectLockDefaultRetentionPtrOutput)
+}
+
+type OosBucketObjectLockDefaultRetentionOutput struct{ *pulumi.OutputState }
+
+func (OosBucketObjectLockDefaultRetentionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketObjectLockDefaultRetention)(nil)).Elem()
+}
+
+func (o OosBucketObjectLockDefaultRetentionOutput) ToOosBucketObjectLockDefaultRetentionOutput() OosBucketObjectLockDefaultRetentionOutput {
+	return o
+}
+
+func (o OosBucketObjectLockDefaultRetentionOutput) ToOosBucketObjectLockDefaultRetentionOutputWithContext(ctx context.Context) OosBucketObjectLockDefaultRetentionOutput {
+	return o
+}
+
+func (o OosBucketObjectLockDefaultRetentionOutput) ToOosBucketObjectLockDefaultRetentionPtrOutput() OosBucketObjectLockDefaultRetentionPtrOutput {
+	return o.ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketObjectLockDefaultRetentionOutput) ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(ctx context.Context) OosBucketObjectLockDefaultRetentionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketObjectLockDefaultRetention) *OosBucketObjectLockDefaultRetention {
+		return &v
+	}).(OosBucketObjectLockDefaultRetentionPtrOutput)
+}
+
+// The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
+func (o OosBucketObjectLockDefaultRetentionOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OosBucketObjectLockDefaultRetention) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+// (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
+func (o OosBucketObjectLockDefaultRetentionOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketObjectLockDefaultRetention) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The years after which your objects will no longer be protected.
+func (o OosBucketObjectLockDefaultRetentionOutput) Years() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OosBucketObjectLockDefaultRetention) *int { return v.Years }).(pulumi.IntPtrOutput)
+}
+
+type OosBucketObjectLockDefaultRetentionPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketObjectLockDefaultRetentionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketObjectLockDefaultRetention)(nil)).Elem()
+}
+
+func (o OosBucketObjectLockDefaultRetentionPtrOutput) ToOosBucketObjectLockDefaultRetentionPtrOutput() OosBucketObjectLockDefaultRetentionPtrOutput {
+	return o
+}
+
+func (o OosBucketObjectLockDefaultRetentionPtrOutput) ToOosBucketObjectLockDefaultRetentionPtrOutputWithContext(ctx context.Context) OosBucketObjectLockDefaultRetentionPtrOutput {
+	return o
+}
+
+func (o OosBucketObjectLockDefaultRetentionPtrOutput) Elem() OosBucketObjectLockDefaultRetentionOutput {
+	return o.ApplyT(func(v *OosBucketObjectLockDefaultRetention) OosBucketObjectLockDefaultRetention {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketObjectLockDefaultRetention
+		return ret
+	}).(OosBucketObjectLockDefaultRetentionOutput)
+}
+
+// The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
+func (o OosBucketObjectLockDefaultRetentionPtrOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OosBucketObjectLockDefaultRetention) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
+func (o OosBucketObjectLockDefaultRetentionPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketObjectLockDefaultRetention) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The years after which your objects will no longer be protected.
+func (o OosBucketObjectLockDefaultRetentionPtrOutput) Years() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OosBucketObjectLockDefaultRetention) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Years
+	}).(pulumi.IntPtrOutput)
+}
+
+type OosBucketPermissions struct {
+	// Information about a granted permission for the bucket.
+	Grants []OosBucketPermissionsGrant `pulumi:"grants"`
+	// Information about the owner of the bucket.
+	Owner *OosBucketPermissionsOwner `pulumi:"owner"`
+}
+
+// OosBucketPermissionsInput is an input type that accepts OosBucketPermissionsArgs and OosBucketPermissionsOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsInput` via:
+//
+//	OosBucketPermissionsArgs{...}
+type OosBucketPermissionsInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsOutput() OosBucketPermissionsOutput
+	ToOosBucketPermissionsOutputWithContext(context.Context) OosBucketPermissionsOutput
+}
+
+type OosBucketPermissionsArgs struct {
+	// Information about a granted permission for the bucket.
+	Grants OosBucketPermissionsGrantArrayInput `pulumi:"grants"`
+	// Information about the owner of the bucket.
+	Owner OosBucketPermissionsOwnerPtrInput `pulumi:"owner"`
+}
+
+func (OosBucketPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissions)(nil)).Elem()
+}
+
+func (i OosBucketPermissionsArgs) ToOosBucketPermissionsOutput() OosBucketPermissionsOutput {
+	return i.ToOosBucketPermissionsOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsArgs) ToOosBucketPermissionsOutputWithContext(ctx context.Context) OosBucketPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsOutput)
+}
+
+func (i OosBucketPermissionsArgs) ToOosBucketPermissionsPtrOutput() OosBucketPermissionsPtrOutput {
+	return i.ToOosBucketPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsArgs) ToOosBucketPermissionsPtrOutputWithContext(ctx context.Context) OosBucketPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsOutput).ToOosBucketPermissionsPtrOutputWithContext(ctx)
+}
+
+// OosBucketPermissionsPtrInput is an input type that accepts OosBucketPermissionsArgs, OosBucketPermissionsPtr and OosBucketPermissionsPtrOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsPtrInput` via:
+//
+//	        OosBucketPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsPtrOutput() OosBucketPermissionsPtrOutput
+	ToOosBucketPermissionsPtrOutputWithContext(context.Context) OosBucketPermissionsPtrOutput
+}
+
+type oosBucketPermissionsPtrType OosBucketPermissionsArgs
+
+func OosBucketPermissionsPtr(v *OosBucketPermissionsArgs) OosBucketPermissionsPtrInput {
+	return (*oosBucketPermissionsPtrType)(v)
+}
+
+func (*oosBucketPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPermissions)(nil)).Elem()
+}
+
+func (i *oosBucketPermissionsPtrType) ToOosBucketPermissionsPtrOutput() OosBucketPermissionsPtrOutput {
+	return i.ToOosBucketPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketPermissionsPtrType) ToOosBucketPermissionsPtrOutputWithContext(ctx context.Context) OosBucketPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsPtrOutput)
+}
+
+type OosBucketPermissionsOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissions)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsOutput) ToOosBucketPermissionsOutput() OosBucketPermissionsOutput {
+	return o
+}
+
+func (o OosBucketPermissionsOutput) ToOosBucketPermissionsOutputWithContext(ctx context.Context) OosBucketPermissionsOutput {
+	return o
+}
+
+func (o OosBucketPermissionsOutput) ToOosBucketPermissionsPtrOutput() OosBucketPermissionsPtrOutput {
+	return o.ToOosBucketPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketPermissionsOutput) ToOosBucketPermissionsPtrOutputWithContext(ctx context.Context) OosBucketPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketPermissions) *OosBucketPermissions {
+		return &v
+	}).(OosBucketPermissionsPtrOutput)
+}
+
+// Information about a granted permission for the bucket.
+func (o OosBucketPermissionsOutput) Grants() OosBucketPermissionsGrantArrayOutput {
+	return o.ApplyT(func(v OosBucketPermissions) []OosBucketPermissionsGrant { return v.Grants }).(OosBucketPermissionsGrantArrayOutput)
+}
+
+// Information about the owner of the bucket.
+func (o OosBucketPermissionsOutput) Owner() OosBucketPermissionsOwnerPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissions) *OosBucketPermissionsOwner { return v.Owner }).(OosBucketPermissionsOwnerPtrOutput)
+}
+
+type OosBucketPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPermissions)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsPtrOutput) ToOosBucketPermissionsPtrOutput() OosBucketPermissionsPtrOutput {
+	return o
+}
+
+func (o OosBucketPermissionsPtrOutput) ToOosBucketPermissionsPtrOutputWithContext(ctx context.Context) OosBucketPermissionsPtrOutput {
+	return o
+}
+
+func (o OosBucketPermissionsPtrOutput) Elem() OosBucketPermissionsOutput {
+	return o.ApplyT(func(v *OosBucketPermissions) OosBucketPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketPermissions
+		return ret
+	}).(OosBucketPermissionsOutput)
+}
+
+// Information about a granted permission for the bucket.
+func (o OosBucketPermissionsPtrOutput) Grants() OosBucketPermissionsGrantArrayOutput {
+	return o.ApplyT(func(v *OosBucketPermissions) []OosBucketPermissionsGrant {
+		if v == nil {
+			return nil
+		}
+		return v.Grants
+	}).(OosBucketPermissionsGrantArrayOutput)
+}
+
+// Information about the owner of the bucket.
+func (o OosBucketPermissionsPtrOutput) Owner() OosBucketPermissionsOwnerPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissions) *OosBucketPermissionsOwner {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(OosBucketPermissionsOwnerPtrOutput)
+}
+
+type OosBucketPermissionsGrant struct {
+	// A grantee.
+	Grantee *OosBucketPermissionsGrantGrantee `pulumi:"grantee"`
+	// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+	Permission *string `pulumi:"permission"`
+}
+
+// OosBucketPermissionsGrantInput is an input type that accepts OosBucketPermissionsGrantArgs and OosBucketPermissionsGrantOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsGrantInput` via:
+//
+//	OosBucketPermissionsGrantArgs{...}
+type OosBucketPermissionsGrantInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsGrantOutput() OosBucketPermissionsGrantOutput
+	ToOosBucketPermissionsGrantOutputWithContext(context.Context) OosBucketPermissionsGrantOutput
+}
+
+type OosBucketPermissionsGrantArgs struct {
+	// A grantee.
+	Grantee OosBucketPermissionsGrantGranteePtrInput `pulumi:"grantee"`
+	// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (OosBucketPermissionsGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissionsGrant)(nil)).Elem()
+}
+
+func (i OosBucketPermissionsGrantArgs) ToOosBucketPermissionsGrantOutput() OosBucketPermissionsGrantOutput {
+	return i.ToOosBucketPermissionsGrantOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsGrantArgs) ToOosBucketPermissionsGrantOutputWithContext(ctx context.Context) OosBucketPermissionsGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsGrantOutput)
+}
+
+// OosBucketPermissionsGrantArrayInput is an input type that accepts OosBucketPermissionsGrantArray and OosBucketPermissionsGrantArrayOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsGrantArrayInput` via:
+//
+//	OosBucketPermissionsGrantArray{ OosBucketPermissionsGrantArgs{...} }
+type OosBucketPermissionsGrantArrayInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsGrantArrayOutput() OosBucketPermissionsGrantArrayOutput
+	ToOosBucketPermissionsGrantArrayOutputWithContext(context.Context) OosBucketPermissionsGrantArrayOutput
+}
+
+type OosBucketPermissionsGrantArray []OosBucketPermissionsGrantInput
+
+func (OosBucketPermissionsGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosBucketPermissionsGrant)(nil)).Elem()
+}
+
+func (i OosBucketPermissionsGrantArray) ToOosBucketPermissionsGrantArrayOutput() OosBucketPermissionsGrantArrayOutput {
+	return i.ToOosBucketPermissionsGrantArrayOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsGrantArray) ToOosBucketPermissionsGrantArrayOutputWithContext(ctx context.Context) OosBucketPermissionsGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsGrantArrayOutput)
+}
+
+type OosBucketPermissionsGrantOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissionsGrant)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsGrantOutput) ToOosBucketPermissionsGrantOutput() OosBucketPermissionsGrantOutput {
+	return o
+}
+
+func (o OosBucketPermissionsGrantOutput) ToOosBucketPermissionsGrantOutputWithContext(ctx context.Context) OosBucketPermissionsGrantOutput {
+	return o
+}
+
+// A grantee.
+func (o OosBucketPermissionsGrantOutput) Grantee() OosBucketPermissionsGrantGranteePtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsGrant) *OosBucketPermissionsGrantGrantee { return v.Grantee }).(OosBucketPermissionsGrantGranteePtrOutput)
+}
+
+// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+func (o OosBucketPermissionsGrantOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsGrant) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketPermissionsGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosBucketPermissionsGrant)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsGrantArrayOutput) ToOosBucketPermissionsGrantArrayOutput() OosBucketPermissionsGrantArrayOutput {
+	return o
+}
+
+func (o OosBucketPermissionsGrantArrayOutput) ToOosBucketPermissionsGrantArrayOutputWithContext(ctx context.Context) OosBucketPermissionsGrantArrayOutput {
+	return o
+}
+
+func (o OosBucketPermissionsGrantArrayOutput) Index(i pulumi.IntInput) OosBucketPermissionsGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OosBucketPermissionsGrant {
+		return vs[0].([]OosBucketPermissionsGrant)[vs[1].(int)]
+	}).(OosBucketPermissionsGrantOutput)
+}
+
+type OosBucketPermissionsGrantGrantee struct {
+	// The OUTSCALE account ID of the owner of the bucket.
+	DisplayName *string `pulumi:"displayName"`
+	// The email address of the grantee.
+	EmailAddress *string `pulumi:"emailAddress"`
+	// The S3 user ID of the owner of the bucket.
+	Id *string `pulumi:"id"`
+	// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+	Type *string `pulumi:"type"`
+	// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+	Uri *string `pulumi:"uri"`
+}
+
+// OosBucketPermissionsGrantGranteeInput is an input type that accepts OosBucketPermissionsGrantGranteeArgs and OosBucketPermissionsGrantGranteeOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsGrantGranteeInput` via:
+//
+//	OosBucketPermissionsGrantGranteeArgs{...}
+type OosBucketPermissionsGrantGranteeInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsGrantGranteeOutput() OosBucketPermissionsGrantGranteeOutput
+	ToOosBucketPermissionsGrantGranteeOutputWithContext(context.Context) OosBucketPermissionsGrantGranteeOutput
+}
+
+type OosBucketPermissionsGrantGranteeArgs struct {
+	// The OUTSCALE account ID of the owner of the bucket.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The email address of the grantee.
+	EmailAddress pulumi.StringPtrInput `pulumi:"emailAddress"`
+	// The S3 user ID of the owner of the bucket.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (OosBucketPermissionsGrantGranteeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (i OosBucketPermissionsGrantGranteeArgs) ToOosBucketPermissionsGrantGranteeOutput() OosBucketPermissionsGrantGranteeOutput {
+	return i.ToOosBucketPermissionsGrantGranteeOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsGrantGranteeArgs) ToOosBucketPermissionsGrantGranteeOutputWithContext(ctx context.Context) OosBucketPermissionsGrantGranteeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsGrantGranteeOutput)
+}
+
+func (i OosBucketPermissionsGrantGranteeArgs) ToOosBucketPermissionsGrantGranteePtrOutput() OosBucketPermissionsGrantGranteePtrOutput {
+	return i.ToOosBucketPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsGrantGranteeArgs) ToOosBucketPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosBucketPermissionsGrantGranteePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsGrantGranteeOutput).ToOosBucketPermissionsGrantGranteePtrOutputWithContext(ctx)
+}
+
+// OosBucketPermissionsGrantGranteePtrInput is an input type that accepts OosBucketPermissionsGrantGranteeArgs, OosBucketPermissionsGrantGranteePtr and OosBucketPermissionsGrantGranteePtrOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsGrantGranteePtrInput` via:
+//
+//	        OosBucketPermissionsGrantGranteeArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketPermissionsGrantGranteePtrInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsGrantGranteePtrOutput() OosBucketPermissionsGrantGranteePtrOutput
+	ToOosBucketPermissionsGrantGranteePtrOutputWithContext(context.Context) OosBucketPermissionsGrantGranteePtrOutput
+}
+
+type oosBucketPermissionsGrantGranteePtrType OosBucketPermissionsGrantGranteeArgs
+
+func OosBucketPermissionsGrantGranteePtr(v *OosBucketPermissionsGrantGranteeArgs) OosBucketPermissionsGrantGranteePtrInput {
+	return (*oosBucketPermissionsGrantGranteePtrType)(v)
+}
+
+func (*oosBucketPermissionsGrantGranteePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (i *oosBucketPermissionsGrantGranteePtrType) ToOosBucketPermissionsGrantGranteePtrOutput() OosBucketPermissionsGrantGranteePtrOutput {
+	return i.ToOosBucketPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketPermissionsGrantGranteePtrType) ToOosBucketPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosBucketPermissionsGrantGranteePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsGrantGranteePtrOutput)
+}
+
+type OosBucketPermissionsGrantGranteeOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsGrantGranteeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsGrantGranteeOutput) ToOosBucketPermissionsGrantGranteeOutput() OosBucketPermissionsGrantGranteeOutput {
+	return o
+}
+
+func (o OosBucketPermissionsGrantGranteeOutput) ToOosBucketPermissionsGrantGranteeOutputWithContext(ctx context.Context) OosBucketPermissionsGrantGranteeOutput {
+	return o
+}
+
+func (o OosBucketPermissionsGrantGranteeOutput) ToOosBucketPermissionsGrantGranteePtrOutput() OosBucketPermissionsGrantGranteePtrOutput {
+	return o.ToOosBucketPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketPermissionsGrantGranteeOutput) ToOosBucketPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosBucketPermissionsGrantGranteePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketPermissionsGrantGrantee) *OosBucketPermissionsGrantGrantee {
+		return &v
+	}).(OosBucketPermissionsGrantGranteePtrOutput)
+}
+
+// The OUTSCALE account ID of the owner of the bucket.
+func (o OosBucketPermissionsGrantGranteeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsGrantGrantee) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The email address of the grantee.
+func (o OosBucketPermissionsGrantGranteeOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsGrantGrantee) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the bucket.
+func (o OosBucketPermissionsGrantGranteeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsGrantGrantee) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+func (o OosBucketPermissionsGrantGranteeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsGrantGrantee) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+func (o OosBucketPermissionsGrantGranteeOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsGrantGrantee) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketPermissionsGrantGranteePtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsGrantGranteePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsGrantGranteePtrOutput) ToOosBucketPermissionsGrantGranteePtrOutput() OosBucketPermissionsGrantGranteePtrOutput {
+	return o
+}
+
+func (o OosBucketPermissionsGrantGranteePtrOutput) ToOosBucketPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosBucketPermissionsGrantGranteePtrOutput {
+	return o
+}
+
+func (o OosBucketPermissionsGrantGranteePtrOutput) Elem() OosBucketPermissionsGrantGranteeOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsGrantGrantee) OosBucketPermissionsGrantGrantee {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketPermissionsGrantGrantee
+		return ret
+	}).(OosBucketPermissionsGrantGranteeOutput)
+}
+
+// The OUTSCALE account ID of the owner of the bucket.
+func (o OosBucketPermissionsGrantGranteePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email address of the grantee.
+func (o OosBucketPermissionsGrantGranteePtrOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the bucket.
+func (o OosBucketPermissionsGrantGranteePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+func (o OosBucketPermissionsGrantGranteePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+func (o OosBucketPermissionsGrantGranteePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketPermissionsOwner struct {
+	// The OUTSCALE account ID of the owner of the bucket.
+	DisplayName *string `pulumi:"displayName"`
+	// The S3 user ID of the owner of the bucket.
+	Id *string `pulumi:"id"`
+}
+
+// OosBucketPermissionsOwnerInput is an input type that accepts OosBucketPermissionsOwnerArgs and OosBucketPermissionsOwnerOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsOwnerInput` via:
+//
+//	OosBucketPermissionsOwnerArgs{...}
+type OosBucketPermissionsOwnerInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsOwnerOutput() OosBucketPermissionsOwnerOutput
+	ToOosBucketPermissionsOwnerOutputWithContext(context.Context) OosBucketPermissionsOwnerOutput
+}
+
+type OosBucketPermissionsOwnerArgs struct {
+	// The OUTSCALE account ID of the owner of the bucket.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The S3 user ID of the owner of the bucket.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (OosBucketPermissionsOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissionsOwner)(nil)).Elem()
+}
+
+func (i OosBucketPermissionsOwnerArgs) ToOosBucketPermissionsOwnerOutput() OosBucketPermissionsOwnerOutput {
+	return i.ToOosBucketPermissionsOwnerOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsOwnerArgs) ToOosBucketPermissionsOwnerOutputWithContext(ctx context.Context) OosBucketPermissionsOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsOwnerOutput)
+}
+
+func (i OosBucketPermissionsOwnerArgs) ToOosBucketPermissionsOwnerPtrOutput() OosBucketPermissionsOwnerPtrOutput {
+	return i.ToOosBucketPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketPermissionsOwnerArgs) ToOosBucketPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosBucketPermissionsOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsOwnerOutput).ToOosBucketPermissionsOwnerPtrOutputWithContext(ctx)
+}
+
+// OosBucketPermissionsOwnerPtrInput is an input type that accepts OosBucketPermissionsOwnerArgs, OosBucketPermissionsOwnerPtr and OosBucketPermissionsOwnerPtrOutput values.
+// You can construct a concrete instance of `OosBucketPermissionsOwnerPtrInput` via:
+//
+//	        OosBucketPermissionsOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketPermissionsOwnerPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketPermissionsOwnerPtrOutput() OosBucketPermissionsOwnerPtrOutput
+	ToOosBucketPermissionsOwnerPtrOutputWithContext(context.Context) OosBucketPermissionsOwnerPtrOutput
+}
+
+type oosBucketPermissionsOwnerPtrType OosBucketPermissionsOwnerArgs
+
+func OosBucketPermissionsOwnerPtr(v *OosBucketPermissionsOwnerArgs) OosBucketPermissionsOwnerPtrInput {
+	return (*oosBucketPermissionsOwnerPtrType)(v)
+}
+
+func (*oosBucketPermissionsOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPermissionsOwner)(nil)).Elem()
+}
+
+func (i *oosBucketPermissionsOwnerPtrType) ToOosBucketPermissionsOwnerPtrOutput() OosBucketPermissionsOwnerPtrOutput {
+	return i.ToOosBucketPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketPermissionsOwnerPtrType) ToOosBucketPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosBucketPermissionsOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPermissionsOwnerPtrOutput)
+}
+
+type OosBucketPermissionsOwnerOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPermissionsOwner)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsOwnerOutput) ToOosBucketPermissionsOwnerOutput() OosBucketPermissionsOwnerOutput {
+	return o
+}
+
+func (o OosBucketPermissionsOwnerOutput) ToOosBucketPermissionsOwnerOutputWithContext(ctx context.Context) OosBucketPermissionsOwnerOutput {
+	return o
+}
+
+func (o OosBucketPermissionsOwnerOutput) ToOosBucketPermissionsOwnerPtrOutput() OosBucketPermissionsOwnerPtrOutput {
+	return o.ToOosBucketPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketPermissionsOwnerOutput) ToOosBucketPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosBucketPermissionsOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketPermissionsOwner) *OosBucketPermissionsOwner {
+		return &v
+	}).(OosBucketPermissionsOwnerPtrOutput)
+}
+
+// The OUTSCALE account ID of the owner of the bucket.
+func (o OosBucketPermissionsOwnerOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsOwner) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the bucket.
+func (o OosBucketPermissionsOwnerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPermissionsOwner) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketPermissionsOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPermissionsOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPermissionsOwner)(nil)).Elem()
+}
+
+func (o OosBucketPermissionsOwnerPtrOutput) ToOosBucketPermissionsOwnerPtrOutput() OosBucketPermissionsOwnerPtrOutput {
+	return o
+}
+
+func (o OosBucketPermissionsOwnerPtrOutput) ToOosBucketPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosBucketPermissionsOwnerPtrOutput {
+	return o
+}
+
+func (o OosBucketPermissionsOwnerPtrOutput) Elem() OosBucketPermissionsOwnerOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsOwner) OosBucketPermissionsOwner {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketPermissionsOwner
+		return ret
+	}).(OosBucketPermissionsOwnerOutput)
+}
+
+// The OUTSCALE account ID of the owner of the bucket.
+func (o OosBucketPermissionsOwnerPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the bucket.
+func (o OosBucketPermissionsOwnerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPermissionsOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketPolicyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosBucketPolicyTimeoutsInput is an input type that accepts OosBucketPolicyTimeoutsArgs and OosBucketPolicyTimeoutsOutput values.
+// You can construct a concrete instance of `OosBucketPolicyTimeoutsInput` via:
+//
+//	OosBucketPolicyTimeoutsArgs{...}
+type OosBucketPolicyTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosBucketPolicyTimeoutsOutput() OosBucketPolicyTimeoutsOutput
+	ToOosBucketPolicyTimeoutsOutputWithContext(context.Context) OosBucketPolicyTimeoutsOutput
+}
+
+type OosBucketPolicyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosBucketPolicyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (i OosBucketPolicyTimeoutsArgs) ToOosBucketPolicyTimeoutsOutput() OosBucketPolicyTimeoutsOutput {
+	return i.ToOosBucketPolicyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosBucketPolicyTimeoutsArgs) ToOosBucketPolicyTimeoutsOutputWithContext(ctx context.Context) OosBucketPolicyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPolicyTimeoutsOutput)
+}
+
+func (i OosBucketPolicyTimeoutsArgs) ToOosBucketPolicyTimeoutsPtrOutput() OosBucketPolicyTimeoutsPtrOutput {
+	return i.ToOosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketPolicyTimeoutsArgs) ToOosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPolicyTimeoutsOutput).ToOosBucketPolicyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosBucketPolicyTimeoutsPtrInput is an input type that accepts OosBucketPolicyTimeoutsArgs, OosBucketPolicyTimeoutsPtr and OosBucketPolicyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosBucketPolicyTimeoutsPtrInput` via:
+//
+//	        OosBucketPolicyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketPolicyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketPolicyTimeoutsPtrOutput() OosBucketPolicyTimeoutsPtrOutput
+	ToOosBucketPolicyTimeoutsPtrOutputWithContext(context.Context) OosBucketPolicyTimeoutsPtrOutput
+}
+
+type oosBucketPolicyTimeoutsPtrType OosBucketPolicyTimeoutsArgs
+
+func OosBucketPolicyTimeoutsPtr(v *OosBucketPolicyTimeoutsArgs) OosBucketPolicyTimeoutsPtrInput {
+	return (*oosBucketPolicyTimeoutsPtrType)(v)
+}
+
+func (*oosBucketPolicyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (i *oosBucketPolicyTimeoutsPtrType) ToOosBucketPolicyTimeoutsPtrOutput() OosBucketPolicyTimeoutsPtrOutput {
+	return i.ToOosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketPolicyTimeoutsPtrType) ToOosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketPolicyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketPolicyTimeoutsPtrOutput)
+}
+
+type OosBucketPolicyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPolicyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketPolicyTimeoutsOutput) ToOosBucketPolicyTimeoutsOutput() OosBucketPolicyTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketPolicyTimeoutsOutput) ToOosBucketPolicyTimeoutsOutputWithContext(ctx context.Context) OosBucketPolicyTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketPolicyTimeoutsOutput) ToOosBucketPolicyTimeoutsPtrOutput() OosBucketPolicyTimeoutsPtrOutput {
+	return o.ToOosBucketPolicyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketPolicyTimeoutsOutput) ToOosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketPolicyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketPolicyTimeouts) *OosBucketPolicyTimeouts {
+		return &v
+	}).(OosBucketPolicyTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketPolicyTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPolicyTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketPolicyTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPolicyTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketPolicyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPolicyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketPolicyTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketPolicyTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketPolicyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketPolicyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketPolicyTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketPolicyTimeoutsPtrOutput) ToOosBucketPolicyTimeoutsPtrOutput() OosBucketPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketPolicyTimeoutsPtrOutput) ToOosBucketPolicyTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketPolicyTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketPolicyTimeoutsPtrOutput) Elem() OosBucketPolicyTimeoutsOutput {
+	return o.ApplyT(func(v *OosBucketPolicyTimeouts) OosBucketPolicyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketPolicyTimeouts
+		return ret
+	}).(OosBucketPolicyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketPolicyTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketPolicyTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketPolicyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketPolicyTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketPolicyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosBucketTimeoutsInput is an input type that accepts OosBucketTimeoutsArgs and OosBucketTimeoutsOutput values.
+// You can construct a concrete instance of `OosBucketTimeoutsInput` via:
+//
+//	OosBucketTimeoutsArgs{...}
+type OosBucketTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosBucketTimeoutsOutput() OosBucketTimeoutsOutput
+	ToOosBucketTimeoutsOutputWithContext(context.Context) OosBucketTimeoutsOutput
+}
+
+type OosBucketTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosBucketTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketTimeouts)(nil)).Elem()
+}
+
+func (i OosBucketTimeoutsArgs) ToOosBucketTimeoutsOutput() OosBucketTimeoutsOutput {
+	return i.ToOosBucketTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosBucketTimeoutsArgs) ToOosBucketTimeoutsOutputWithContext(ctx context.Context) OosBucketTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketTimeoutsOutput)
+}
+
+func (i OosBucketTimeoutsArgs) ToOosBucketTimeoutsPtrOutput() OosBucketTimeoutsPtrOutput {
+	return i.ToOosBucketTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketTimeoutsArgs) ToOosBucketTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketTimeoutsOutput).ToOosBucketTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosBucketTimeoutsPtrInput is an input type that accepts OosBucketTimeoutsArgs, OosBucketTimeoutsPtr and OosBucketTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosBucketTimeoutsPtrInput` via:
+//
+//	        OosBucketTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketTimeoutsPtrOutput() OosBucketTimeoutsPtrOutput
+	ToOosBucketTimeoutsPtrOutputWithContext(context.Context) OosBucketTimeoutsPtrOutput
+}
+
+type oosBucketTimeoutsPtrType OosBucketTimeoutsArgs
+
+func OosBucketTimeoutsPtr(v *OosBucketTimeoutsArgs) OosBucketTimeoutsPtrInput {
+	return (*oosBucketTimeoutsPtrType)(v)
+}
+
+func (*oosBucketTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketTimeouts)(nil)).Elem()
+}
+
+func (i *oosBucketTimeoutsPtrType) ToOosBucketTimeoutsPtrOutput() OosBucketTimeoutsPtrOutput {
+	return i.ToOosBucketTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketTimeoutsPtrType) ToOosBucketTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketTimeoutsPtrOutput)
+}
+
+type OosBucketTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosBucketTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketTimeoutsOutput) ToOosBucketTimeoutsOutput() OosBucketTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketTimeoutsOutput) ToOosBucketTimeoutsOutputWithContext(ctx context.Context) OosBucketTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketTimeoutsOutput) ToOosBucketTimeoutsPtrOutput() OosBucketTimeoutsPtrOutput {
+	return o.ToOosBucketTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketTimeoutsOutput) ToOosBucketTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketTimeouts) *OosBucketTimeouts {
+		return &v
+	}).(OosBucketTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketTimeoutsPtrOutput) ToOosBucketTimeoutsPtrOutput() OosBucketTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketTimeoutsPtrOutput) ToOosBucketTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketTimeoutsPtrOutput) Elem() OosBucketTimeoutsOutput {
+	return o.ApplyT(func(v *OosBucketTimeouts) OosBucketTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketTimeouts
+		return ret
+	}).(OosBucketTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosBucketVersioningTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosBucketVersioningTimeoutsInput is an input type that accepts OosBucketVersioningTimeoutsArgs and OosBucketVersioningTimeoutsOutput values.
+// You can construct a concrete instance of `OosBucketVersioningTimeoutsInput` via:
+//
+//	OosBucketVersioningTimeoutsArgs{...}
+type OosBucketVersioningTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosBucketVersioningTimeoutsOutput() OosBucketVersioningTimeoutsOutput
+	ToOosBucketVersioningTimeoutsOutputWithContext(context.Context) OosBucketVersioningTimeoutsOutput
+}
+
+type OosBucketVersioningTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosBucketVersioningTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketVersioningTimeouts)(nil)).Elem()
+}
+
+func (i OosBucketVersioningTimeoutsArgs) ToOosBucketVersioningTimeoutsOutput() OosBucketVersioningTimeoutsOutput {
+	return i.ToOosBucketVersioningTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosBucketVersioningTimeoutsArgs) ToOosBucketVersioningTimeoutsOutputWithContext(ctx context.Context) OosBucketVersioningTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketVersioningTimeoutsOutput)
+}
+
+func (i OosBucketVersioningTimeoutsArgs) ToOosBucketVersioningTimeoutsPtrOutput() OosBucketVersioningTimeoutsPtrOutput {
+	return i.ToOosBucketVersioningTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosBucketVersioningTimeoutsArgs) ToOosBucketVersioningTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketVersioningTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketVersioningTimeoutsOutput).ToOosBucketVersioningTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosBucketVersioningTimeoutsPtrInput is an input type that accepts OosBucketVersioningTimeoutsArgs, OosBucketVersioningTimeoutsPtr and OosBucketVersioningTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosBucketVersioningTimeoutsPtrInput` via:
+//
+//	        OosBucketVersioningTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosBucketVersioningTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosBucketVersioningTimeoutsPtrOutput() OosBucketVersioningTimeoutsPtrOutput
+	ToOosBucketVersioningTimeoutsPtrOutputWithContext(context.Context) OosBucketVersioningTimeoutsPtrOutput
+}
+
+type oosBucketVersioningTimeoutsPtrType OosBucketVersioningTimeoutsArgs
+
+func OosBucketVersioningTimeoutsPtr(v *OosBucketVersioningTimeoutsArgs) OosBucketVersioningTimeoutsPtrInput {
+	return (*oosBucketVersioningTimeoutsPtrType)(v)
+}
+
+func (*oosBucketVersioningTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketVersioningTimeouts)(nil)).Elem()
+}
+
+func (i *oosBucketVersioningTimeoutsPtrType) ToOosBucketVersioningTimeoutsPtrOutput() OosBucketVersioningTimeoutsPtrOutput {
+	return i.ToOosBucketVersioningTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosBucketVersioningTimeoutsPtrType) ToOosBucketVersioningTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketVersioningTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosBucketVersioningTimeoutsPtrOutput)
+}
+
+type OosBucketVersioningTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosBucketVersioningTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosBucketVersioningTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketVersioningTimeoutsOutput) ToOosBucketVersioningTimeoutsOutput() OosBucketVersioningTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketVersioningTimeoutsOutput) ToOosBucketVersioningTimeoutsOutputWithContext(ctx context.Context) OosBucketVersioningTimeoutsOutput {
+	return o
+}
+
+func (o OosBucketVersioningTimeoutsOutput) ToOosBucketVersioningTimeoutsPtrOutput() OosBucketVersioningTimeoutsPtrOutput {
+	return o.ToOosBucketVersioningTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosBucketVersioningTimeoutsOutput) ToOosBucketVersioningTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketVersioningTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosBucketVersioningTimeouts) *OosBucketVersioningTimeouts {
+		return &v
+	}).(OosBucketVersioningTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketVersioningTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketVersioningTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketVersioningTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketVersioningTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketVersioningTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketVersioningTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketVersioningTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosBucketVersioningTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosBucketVersioningTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosBucketVersioningTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosBucketVersioningTimeouts)(nil)).Elem()
+}
+
+func (o OosBucketVersioningTimeoutsPtrOutput) ToOosBucketVersioningTimeoutsPtrOutput() OosBucketVersioningTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketVersioningTimeoutsPtrOutput) ToOosBucketVersioningTimeoutsPtrOutputWithContext(ctx context.Context) OosBucketVersioningTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosBucketVersioningTimeoutsPtrOutput) Elem() OosBucketVersioningTimeoutsOutput {
+	return o.ApplyT(func(v *OosBucketVersioningTimeouts) OosBucketVersioningTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosBucketVersioningTimeouts
+		return ret
+	}).(OosBucketVersioningTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketVersioningTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketVersioningTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosBucketVersioningTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketVersioningTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosBucketVersioningTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketVersioningTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosBucketVersioningTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosBucketVersioningTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyCopySource struct {
+	// Copies the object only if its ETag matches the ETag you specify.
+	IfMatch *string `pulumi:"ifMatch"`
+	// Copies the object only if it has been modified after the date and time you specify, in UTC format.
+	IfModifiedSince *string `pulumi:"ifModifiedSince"`
+	// Copies the object only if its ETag does not match the ETag you specify.
+	IfNoneMatch *string `pulumi:"ifNoneMatch"`
+	// Copies the object only if it has not been modified since the date and time you specify, in UTC format.
+	IfUnmodifiedSince *string `pulumi:"ifUnmodifiedSince"`
+	// The path in OOS to the source object you want to copy.
+	Path string `pulumi:"path"`
+	// The version ID of the object.
+	VersionId *string `pulumi:"versionId"`
+}
+
+// OosObjectCopyCopySourceInput is an input type that accepts OosObjectCopyCopySourceArgs and OosObjectCopyCopySourceOutput values.
+// You can construct a concrete instance of `OosObjectCopyCopySourceInput` via:
+//
+//	OosObjectCopyCopySourceArgs{...}
+type OosObjectCopyCopySourceInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyCopySourceOutput() OosObjectCopyCopySourceOutput
+	ToOosObjectCopyCopySourceOutputWithContext(context.Context) OosObjectCopyCopySourceOutput
+}
+
+type OosObjectCopyCopySourceArgs struct {
+	// Copies the object only if its ETag matches the ETag you specify.
+	IfMatch pulumi.StringPtrInput `pulumi:"ifMatch"`
+	// Copies the object only if it has been modified after the date and time you specify, in UTC format.
+	IfModifiedSince pulumi.StringPtrInput `pulumi:"ifModifiedSince"`
+	// Copies the object only if its ETag does not match the ETag you specify.
+	IfNoneMatch pulumi.StringPtrInput `pulumi:"ifNoneMatch"`
+	// Copies the object only if it has not been modified since the date and time you specify, in UTC format.
+	IfUnmodifiedSince pulumi.StringPtrInput `pulumi:"ifUnmodifiedSince"`
+	// The path in OOS to the source object you want to copy.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The version ID of the object.
+	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
+}
+
+func (OosObjectCopyCopySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyCopySource)(nil)).Elem()
+}
+
+func (i OosObjectCopyCopySourceArgs) ToOosObjectCopyCopySourceOutput() OosObjectCopyCopySourceOutput {
+	return i.ToOosObjectCopyCopySourceOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyCopySourceArgs) ToOosObjectCopyCopySourceOutputWithContext(ctx context.Context) OosObjectCopyCopySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyCopySourceOutput)
+}
+
+func (i OosObjectCopyCopySourceArgs) ToOosObjectCopyCopySourcePtrOutput() OosObjectCopyCopySourcePtrOutput {
+	return i.ToOosObjectCopyCopySourcePtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyCopySourceArgs) ToOosObjectCopyCopySourcePtrOutputWithContext(ctx context.Context) OosObjectCopyCopySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyCopySourceOutput).ToOosObjectCopyCopySourcePtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyCopySourcePtrInput is an input type that accepts OosObjectCopyCopySourceArgs, OosObjectCopyCopySourcePtr and OosObjectCopyCopySourcePtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyCopySourcePtrInput` via:
+//
+//	        OosObjectCopyCopySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyCopySourcePtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyCopySourcePtrOutput() OosObjectCopyCopySourcePtrOutput
+	ToOosObjectCopyCopySourcePtrOutputWithContext(context.Context) OosObjectCopyCopySourcePtrOutput
+}
+
+type oosObjectCopyCopySourcePtrType OosObjectCopyCopySourceArgs
+
+func OosObjectCopyCopySourcePtr(v *OosObjectCopyCopySourceArgs) OosObjectCopyCopySourcePtrInput {
+	return (*oosObjectCopyCopySourcePtrType)(v)
+}
+
+func (*oosObjectCopyCopySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyCopySource)(nil)).Elem()
+}
+
+func (i *oosObjectCopyCopySourcePtrType) ToOosObjectCopyCopySourcePtrOutput() OosObjectCopyCopySourcePtrOutput {
+	return i.ToOosObjectCopyCopySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyCopySourcePtrType) ToOosObjectCopyCopySourcePtrOutputWithContext(ctx context.Context) OosObjectCopyCopySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyCopySourcePtrOutput)
+}
+
+type OosObjectCopyCopySourceOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyCopySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyCopySource)(nil)).Elem()
+}
+
+func (o OosObjectCopyCopySourceOutput) ToOosObjectCopyCopySourceOutput() OosObjectCopyCopySourceOutput {
+	return o
+}
+
+func (o OosObjectCopyCopySourceOutput) ToOosObjectCopyCopySourceOutputWithContext(ctx context.Context) OosObjectCopyCopySourceOutput {
+	return o
+}
+
+func (o OosObjectCopyCopySourceOutput) ToOosObjectCopyCopySourcePtrOutput() OosObjectCopyCopySourcePtrOutput {
+	return o.ToOosObjectCopyCopySourcePtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyCopySourceOutput) ToOosObjectCopyCopySourcePtrOutputWithContext(ctx context.Context) OosObjectCopyCopySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyCopySource) *OosObjectCopyCopySource {
+		return &v
+	}).(OosObjectCopyCopySourcePtrOutput)
+}
+
+// Copies the object only if its ETag matches the ETag you specify.
+func (o OosObjectCopyCopySourceOutput) IfMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyCopySource) *string { return v.IfMatch }).(pulumi.StringPtrOutput)
+}
+
+// Copies the object only if it has been modified after the date and time you specify, in UTC format.
+func (o OosObjectCopyCopySourceOutput) IfModifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyCopySource) *string { return v.IfModifiedSince }).(pulumi.StringPtrOutput)
+}
+
+// Copies the object only if its ETag does not match the ETag you specify.
+func (o OosObjectCopyCopySourceOutput) IfNoneMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyCopySource) *string { return v.IfNoneMatch }).(pulumi.StringPtrOutput)
+}
+
+// Copies the object only if it has not been modified since the date and time you specify, in UTC format.
+func (o OosObjectCopyCopySourceOutput) IfUnmodifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyCopySource) *string { return v.IfUnmodifiedSince }).(pulumi.StringPtrOutput)
+}
+
+// The path in OOS to the source object you want to copy.
+func (o OosObjectCopyCopySourceOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v OosObjectCopyCopySource) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The version ID of the object.
+func (o OosObjectCopyCopySourceOutput) VersionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyCopySource) *string { return v.VersionId }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyCopySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyCopySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyCopySource)(nil)).Elem()
+}
+
+func (o OosObjectCopyCopySourcePtrOutput) ToOosObjectCopyCopySourcePtrOutput() OosObjectCopyCopySourcePtrOutput {
+	return o
+}
+
+func (o OosObjectCopyCopySourcePtrOutput) ToOosObjectCopyCopySourcePtrOutputWithContext(ctx context.Context) OosObjectCopyCopySourcePtrOutput {
+	return o
+}
+
+func (o OosObjectCopyCopySourcePtrOutput) Elem() OosObjectCopyCopySourceOutput {
+	return o.ApplyT(func(v *OosObjectCopyCopySource) OosObjectCopyCopySource {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyCopySource
+		return ret
+	}).(OosObjectCopyCopySourceOutput)
+}
+
+// Copies the object only if its ETag matches the ETag you specify.
+func (o OosObjectCopyCopySourcePtrOutput) IfMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyCopySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IfMatch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Copies the object only if it has been modified after the date and time you specify, in UTC format.
+func (o OosObjectCopyCopySourcePtrOutput) IfModifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyCopySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IfModifiedSince
+	}).(pulumi.StringPtrOutput)
+}
+
+// Copies the object only if its ETag does not match the ETag you specify.
+func (o OosObjectCopyCopySourcePtrOutput) IfNoneMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyCopySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IfNoneMatch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Copies the object only if it has not been modified since the date and time you specify, in UTC format.
+func (o OosObjectCopyCopySourcePtrOutput) IfUnmodifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyCopySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IfUnmodifiedSince
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path in OOS to the source object you want to copy.
+func (o OosObjectCopyCopySourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyCopySource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version ID of the object.
+func (o OosObjectCopyCopySourcePtrOutput) VersionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyCopySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionId
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyGrant struct {
+	// Users to whom you grant `full-control` permission.
+	FullControl *OosObjectCopyGrantFullControl `pulumi:"fullControl"`
+	// Users to whom you grant `read` permission.
+	Read *OosObjectCopyGrantRead `pulumi:"read"`
+	// Users to whom you grant `readAcp` permission.
+	ReadAcp *OosObjectCopyGrantReadAcp `pulumi:"readAcp"`
+	// Users to whom you grant `write` permission.
+	Write *OosObjectCopyGrantWrite `pulumi:"write"`
+	// Users to whom you grant `writeAcp` permission.
+	WriteAcp *OosObjectCopyGrantWriteAcp `pulumi:"writeAcp"`
+}
+
+// OosObjectCopyGrantInput is an input type that accepts OosObjectCopyGrantArgs and OosObjectCopyGrantOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantInput` via:
+//
+//	OosObjectCopyGrantArgs{...}
+type OosObjectCopyGrantInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantOutput() OosObjectCopyGrantOutput
+	ToOosObjectCopyGrantOutputWithContext(context.Context) OosObjectCopyGrantOutput
+}
+
+type OosObjectCopyGrantArgs struct {
+	// Users to whom you grant `full-control` permission.
+	FullControl OosObjectCopyGrantFullControlPtrInput `pulumi:"fullControl"`
+	// Users to whom you grant `read` permission.
+	Read OosObjectCopyGrantReadPtrInput `pulumi:"read"`
+	// Users to whom you grant `readAcp` permission.
+	ReadAcp OosObjectCopyGrantReadAcpPtrInput `pulumi:"readAcp"`
+	// Users to whom you grant `write` permission.
+	Write OosObjectCopyGrantWritePtrInput `pulumi:"write"`
+	// Users to whom you grant `writeAcp` permission.
+	WriteAcp OosObjectCopyGrantWriteAcpPtrInput `pulumi:"writeAcp"`
+}
+
+func (OosObjectCopyGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrant)(nil)).Elem()
+}
+
+func (i OosObjectCopyGrantArgs) ToOosObjectCopyGrantOutput() OosObjectCopyGrantOutput {
+	return i.ToOosObjectCopyGrantOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantArgs) ToOosObjectCopyGrantOutputWithContext(ctx context.Context) OosObjectCopyGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantOutput)
+}
+
+func (i OosObjectCopyGrantArgs) ToOosObjectCopyGrantPtrOutput() OosObjectCopyGrantPtrOutput {
+	return i.ToOosObjectCopyGrantPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantArgs) ToOosObjectCopyGrantPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantOutput).ToOosObjectCopyGrantPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyGrantPtrInput is an input type that accepts OosObjectCopyGrantArgs, OosObjectCopyGrantPtr and OosObjectCopyGrantPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantPtrInput` via:
+//
+//	        OosObjectCopyGrantArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyGrantPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantPtrOutput() OosObjectCopyGrantPtrOutput
+	ToOosObjectCopyGrantPtrOutputWithContext(context.Context) OosObjectCopyGrantPtrOutput
+}
+
+type oosObjectCopyGrantPtrType OosObjectCopyGrantArgs
+
+func OosObjectCopyGrantPtr(v *OosObjectCopyGrantArgs) OosObjectCopyGrantPtrInput {
+	return (*oosObjectCopyGrantPtrType)(v)
+}
+
+func (*oosObjectCopyGrantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrant)(nil)).Elem()
+}
+
+func (i *oosObjectCopyGrantPtrType) ToOosObjectCopyGrantPtrOutput() OosObjectCopyGrantPtrOutput {
+	return i.ToOosObjectCopyGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyGrantPtrType) ToOosObjectCopyGrantPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantPtrOutput)
+}
+
+type OosObjectCopyGrantOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrant)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantOutput) ToOosObjectCopyGrantOutput() OosObjectCopyGrantOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantOutput) ToOosObjectCopyGrantOutputWithContext(ctx context.Context) OosObjectCopyGrantOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantOutput) ToOosObjectCopyGrantPtrOutput() OosObjectCopyGrantPtrOutput {
+	return o.ToOosObjectCopyGrantPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyGrantOutput) ToOosObjectCopyGrantPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyGrant) *OosObjectCopyGrant {
+		return &v
+	}).(OosObjectCopyGrantPtrOutput)
+}
+
+// Users to whom you grant `full-control` permission.
+func (o OosObjectCopyGrantOutput) FullControl() OosObjectCopyGrantFullControlPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyGrant) *OosObjectCopyGrantFullControl { return v.FullControl }).(OosObjectCopyGrantFullControlPtrOutput)
+}
+
+// Users to whom you grant `read` permission.
+func (o OosObjectCopyGrantOutput) Read() OosObjectCopyGrantReadPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyGrant) *OosObjectCopyGrantRead { return v.Read }).(OosObjectCopyGrantReadPtrOutput)
+}
+
+// Users to whom you grant `readAcp` permission.
+func (o OosObjectCopyGrantOutput) ReadAcp() OosObjectCopyGrantReadAcpPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyGrant) *OosObjectCopyGrantReadAcp { return v.ReadAcp }).(OosObjectCopyGrantReadAcpPtrOutput)
+}
+
+// Users to whom you grant `write` permission.
+func (o OosObjectCopyGrantOutput) Write() OosObjectCopyGrantWritePtrOutput {
+	return o.ApplyT(func(v OosObjectCopyGrant) *OosObjectCopyGrantWrite { return v.Write }).(OosObjectCopyGrantWritePtrOutput)
+}
+
+// Users to whom you grant `writeAcp` permission.
+func (o OosObjectCopyGrantOutput) WriteAcp() OosObjectCopyGrantWriteAcpPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyGrant) *OosObjectCopyGrantWriteAcp { return v.WriteAcp }).(OosObjectCopyGrantWriteAcpPtrOutput)
+}
+
+type OosObjectCopyGrantPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrant)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantPtrOutput) ToOosObjectCopyGrantPtrOutput() OosObjectCopyGrantPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantPtrOutput) ToOosObjectCopyGrantPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantPtrOutput) Elem() OosObjectCopyGrantOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrant) OosObjectCopyGrant {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyGrant
+		return ret
+	}).(OosObjectCopyGrantOutput)
+}
+
+// Users to whom you grant `full-control` permission.
+func (o OosObjectCopyGrantPtrOutput) FullControl() OosObjectCopyGrantFullControlPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrant) *OosObjectCopyGrantFullControl {
+		if v == nil {
+			return nil
+		}
+		return v.FullControl
+	}).(OosObjectCopyGrantFullControlPtrOutput)
+}
+
+// Users to whom you grant `read` permission.
+func (o OosObjectCopyGrantPtrOutput) Read() OosObjectCopyGrantReadPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrant) *OosObjectCopyGrantRead {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(OosObjectCopyGrantReadPtrOutput)
+}
+
+// Users to whom you grant `readAcp` permission.
+func (o OosObjectCopyGrantPtrOutput) ReadAcp() OosObjectCopyGrantReadAcpPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrant) *OosObjectCopyGrantReadAcp {
+		if v == nil {
+			return nil
+		}
+		return v.ReadAcp
+	}).(OosObjectCopyGrantReadAcpPtrOutput)
+}
+
+// Users to whom you grant `write` permission.
+func (o OosObjectCopyGrantPtrOutput) Write() OosObjectCopyGrantWritePtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrant) *OosObjectCopyGrantWrite {
+		if v == nil {
+			return nil
+		}
+		return v.Write
+	}).(OosObjectCopyGrantWritePtrOutput)
+}
+
+// Users to whom you grant `writeAcp` permission.
+func (o OosObjectCopyGrantPtrOutput) WriteAcp() OosObjectCopyGrantWriteAcpPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrant) *OosObjectCopyGrantWriteAcp {
+		if v == nil {
+			return nil
+		}
+		return v.WriteAcp
+	}).(OosObjectCopyGrantWriteAcpPtrOutput)
+}
+
+type OosObjectCopyGrantFullControl struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectCopyGrantFullControlInput is an input type that accepts OosObjectCopyGrantFullControlArgs and OosObjectCopyGrantFullControlOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantFullControlInput` via:
+//
+//	OosObjectCopyGrantFullControlArgs{...}
+type OosObjectCopyGrantFullControlInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantFullControlOutput() OosObjectCopyGrantFullControlOutput
+	ToOosObjectCopyGrantFullControlOutputWithContext(context.Context) OosObjectCopyGrantFullControlOutput
+}
+
+type OosObjectCopyGrantFullControlArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectCopyGrantFullControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantFullControl)(nil)).Elem()
+}
+
+func (i OosObjectCopyGrantFullControlArgs) ToOosObjectCopyGrantFullControlOutput() OosObjectCopyGrantFullControlOutput {
+	return i.ToOosObjectCopyGrantFullControlOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantFullControlArgs) ToOosObjectCopyGrantFullControlOutputWithContext(ctx context.Context) OosObjectCopyGrantFullControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantFullControlOutput)
+}
+
+func (i OosObjectCopyGrantFullControlArgs) ToOosObjectCopyGrantFullControlPtrOutput() OosObjectCopyGrantFullControlPtrOutput {
+	return i.ToOosObjectCopyGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantFullControlArgs) ToOosObjectCopyGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantFullControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantFullControlOutput).ToOosObjectCopyGrantFullControlPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyGrantFullControlPtrInput is an input type that accepts OosObjectCopyGrantFullControlArgs, OosObjectCopyGrantFullControlPtr and OosObjectCopyGrantFullControlPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantFullControlPtrInput` via:
+//
+//	        OosObjectCopyGrantFullControlArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyGrantFullControlPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantFullControlPtrOutput() OosObjectCopyGrantFullControlPtrOutput
+	ToOosObjectCopyGrantFullControlPtrOutputWithContext(context.Context) OosObjectCopyGrantFullControlPtrOutput
+}
+
+type oosObjectCopyGrantFullControlPtrType OosObjectCopyGrantFullControlArgs
+
+func OosObjectCopyGrantFullControlPtr(v *OosObjectCopyGrantFullControlArgs) OosObjectCopyGrantFullControlPtrInput {
+	return (*oosObjectCopyGrantFullControlPtrType)(v)
+}
+
+func (*oosObjectCopyGrantFullControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantFullControl)(nil)).Elem()
+}
+
+func (i *oosObjectCopyGrantFullControlPtrType) ToOosObjectCopyGrantFullControlPtrOutput() OosObjectCopyGrantFullControlPtrOutput {
+	return i.ToOosObjectCopyGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyGrantFullControlPtrType) ToOosObjectCopyGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantFullControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantFullControlPtrOutput)
+}
+
+type OosObjectCopyGrantFullControlOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantFullControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantFullControl)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantFullControlOutput) ToOosObjectCopyGrantFullControlOutput() OosObjectCopyGrantFullControlOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantFullControlOutput) ToOosObjectCopyGrantFullControlOutputWithContext(ctx context.Context) OosObjectCopyGrantFullControlOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantFullControlOutput) ToOosObjectCopyGrantFullControlPtrOutput() OosObjectCopyGrantFullControlPtrOutput {
+	return o.ToOosObjectCopyGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyGrantFullControlOutput) ToOosObjectCopyGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantFullControlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyGrantFullControl) *OosObjectCopyGrantFullControl {
+		return &v
+	}).(OosObjectCopyGrantFullControlPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantFullControlOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantFullControl) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantFullControlOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantFullControl) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantFullControlPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantFullControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantFullControl)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantFullControlPtrOutput) ToOosObjectCopyGrantFullControlPtrOutput() OosObjectCopyGrantFullControlPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantFullControlPtrOutput) ToOosObjectCopyGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantFullControlPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantFullControlPtrOutput) Elem() OosObjectCopyGrantFullControlOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantFullControl) OosObjectCopyGrantFullControl {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyGrantFullControl
+		return ret
+	}).(OosObjectCopyGrantFullControlOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantFullControlPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantFullControl) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantFullControlPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantFullControl) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantRead struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectCopyGrantReadInput is an input type that accepts OosObjectCopyGrantReadArgs and OosObjectCopyGrantReadOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantReadInput` via:
+//
+//	OosObjectCopyGrantReadArgs{...}
+type OosObjectCopyGrantReadInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantReadOutput() OosObjectCopyGrantReadOutput
+	ToOosObjectCopyGrantReadOutputWithContext(context.Context) OosObjectCopyGrantReadOutput
+}
+
+type OosObjectCopyGrantReadArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectCopyGrantReadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantRead)(nil)).Elem()
+}
+
+func (i OosObjectCopyGrantReadArgs) ToOosObjectCopyGrantReadOutput() OosObjectCopyGrantReadOutput {
+	return i.ToOosObjectCopyGrantReadOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantReadArgs) ToOosObjectCopyGrantReadOutputWithContext(ctx context.Context) OosObjectCopyGrantReadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantReadOutput)
+}
+
+func (i OosObjectCopyGrantReadArgs) ToOosObjectCopyGrantReadPtrOutput() OosObjectCopyGrantReadPtrOutput {
+	return i.ToOosObjectCopyGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantReadArgs) ToOosObjectCopyGrantReadPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantReadOutput).ToOosObjectCopyGrantReadPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyGrantReadPtrInput is an input type that accepts OosObjectCopyGrantReadArgs, OosObjectCopyGrantReadPtr and OosObjectCopyGrantReadPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantReadPtrInput` via:
+//
+//	        OosObjectCopyGrantReadArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyGrantReadPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantReadPtrOutput() OosObjectCopyGrantReadPtrOutput
+	ToOosObjectCopyGrantReadPtrOutputWithContext(context.Context) OosObjectCopyGrantReadPtrOutput
+}
+
+type oosObjectCopyGrantReadPtrType OosObjectCopyGrantReadArgs
+
+func OosObjectCopyGrantReadPtr(v *OosObjectCopyGrantReadArgs) OosObjectCopyGrantReadPtrInput {
+	return (*oosObjectCopyGrantReadPtrType)(v)
+}
+
+func (*oosObjectCopyGrantReadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantRead)(nil)).Elem()
+}
+
+func (i *oosObjectCopyGrantReadPtrType) ToOosObjectCopyGrantReadPtrOutput() OosObjectCopyGrantReadPtrOutput {
+	return i.ToOosObjectCopyGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyGrantReadPtrType) ToOosObjectCopyGrantReadPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantReadPtrOutput)
+}
+
+type OosObjectCopyGrantReadOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantReadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantRead)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantReadOutput) ToOosObjectCopyGrantReadOutput() OosObjectCopyGrantReadOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadOutput) ToOosObjectCopyGrantReadOutputWithContext(ctx context.Context) OosObjectCopyGrantReadOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadOutput) ToOosObjectCopyGrantReadPtrOutput() OosObjectCopyGrantReadPtrOutput {
+	return o.ToOosObjectCopyGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyGrantReadOutput) ToOosObjectCopyGrantReadPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyGrantRead) *OosObjectCopyGrantRead {
+		return &v
+	}).(OosObjectCopyGrantReadPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantReadOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantRead) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantReadOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantRead) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantReadPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantReadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantRead)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantReadPtrOutput) ToOosObjectCopyGrantReadPtrOutput() OosObjectCopyGrantReadPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadPtrOutput) ToOosObjectCopyGrantReadPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadPtrOutput) Elem() OosObjectCopyGrantReadOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantRead) OosObjectCopyGrantRead {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyGrantRead
+		return ret
+	}).(OosObjectCopyGrantReadOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantReadPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantReadPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantReadAcp struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectCopyGrantReadAcpInput is an input type that accepts OosObjectCopyGrantReadAcpArgs and OosObjectCopyGrantReadAcpOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantReadAcpInput` via:
+//
+//	OosObjectCopyGrantReadAcpArgs{...}
+type OosObjectCopyGrantReadAcpInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantReadAcpOutput() OosObjectCopyGrantReadAcpOutput
+	ToOosObjectCopyGrantReadAcpOutputWithContext(context.Context) OosObjectCopyGrantReadAcpOutput
+}
+
+type OosObjectCopyGrantReadAcpArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectCopyGrantReadAcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantReadAcp)(nil)).Elem()
+}
+
+func (i OosObjectCopyGrantReadAcpArgs) ToOosObjectCopyGrantReadAcpOutput() OosObjectCopyGrantReadAcpOutput {
+	return i.ToOosObjectCopyGrantReadAcpOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantReadAcpArgs) ToOosObjectCopyGrantReadAcpOutputWithContext(ctx context.Context) OosObjectCopyGrantReadAcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantReadAcpOutput)
+}
+
+func (i OosObjectCopyGrantReadAcpArgs) ToOosObjectCopyGrantReadAcpPtrOutput() OosObjectCopyGrantReadAcpPtrOutput {
+	return i.ToOosObjectCopyGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantReadAcpArgs) ToOosObjectCopyGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantReadAcpOutput).ToOosObjectCopyGrantReadAcpPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyGrantReadAcpPtrInput is an input type that accepts OosObjectCopyGrantReadAcpArgs, OosObjectCopyGrantReadAcpPtr and OosObjectCopyGrantReadAcpPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantReadAcpPtrInput` via:
+//
+//	        OosObjectCopyGrantReadAcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyGrantReadAcpPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantReadAcpPtrOutput() OosObjectCopyGrantReadAcpPtrOutput
+	ToOosObjectCopyGrantReadAcpPtrOutputWithContext(context.Context) OosObjectCopyGrantReadAcpPtrOutput
+}
+
+type oosObjectCopyGrantReadAcpPtrType OosObjectCopyGrantReadAcpArgs
+
+func OosObjectCopyGrantReadAcpPtr(v *OosObjectCopyGrantReadAcpArgs) OosObjectCopyGrantReadAcpPtrInput {
+	return (*oosObjectCopyGrantReadAcpPtrType)(v)
+}
+
+func (*oosObjectCopyGrantReadAcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantReadAcp)(nil)).Elem()
+}
+
+func (i *oosObjectCopyGrantReadAcpPtrType) ToOosObjectCopyGrantReadAcpPtrOutput() OosObjectCopyGrantReadAcpPtrOutput {
+	return i.ToOosObjectCopyGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyGrantReadAcpPtrType) ToOosObjectCopyGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantReadAcpPtrOutput)
+}
+
+type OosObjectCopyGrantReadAcpOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantReadAcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantReadAcp)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantReadAcpOutput) ToOosObjectCopyGrantReadAcpOutput() OosObjectCopyGrantReadAcpOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadAcpOutput) ToOosObjectCopyGrantReadAcpOutputWithContext(ctx context.Context) OosObjectCopyGrantReadAcpOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadAcpOutput) ToOosObjectCopyGrantReadAcpPtrOutput() OosObjectCopyGrantReadAcpPtrOutput {
+	return o.ToOosObjectCopyGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyGrantReadAcpOutput) ToOosObjectCopyGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadAcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyGrantReadAcp) *OosObjectCopyGrantReadAcp {
+		return &v
+	}).(OosObjectCopyGrantReadAcpPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantReadAcpOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantReadAcp) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantReadAcpOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantReadAcp) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantReadAcpPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantReadAcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantReadAcp)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantReadAcpPtrOutput) ToOosObjectCopyGrantReadAcpPtrOutput() OosObjectCopyGrantReadAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadAcpPtrOutput) ToOosObjectCopyGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantReadAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantReadAcpPtrOutput) Elem() OosObjectCopyGrantReadAcpOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantReadAcp) OosObjectCopyGrantReadAcp {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyGrantReadAcp
+		return ret
+	}).(OosObjectCopyGrantReadAcpOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantReadAcpPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantReadAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantReadAcpPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantReadAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantWrite struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectCopyGrantWriteInput is an input type that accepts OosObjectCopyGrantWriteArgs and OosObjectCopyGrantWriteOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantWriteInput` via:
+//
+//	OosObjectCopyGrantWriteArgs{...}
+type OosObjectCopyGrantWriteInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantWriteOutput() OosObjectCopyGrantWriteOutput
+	ToOosObjectCopyGrantWriteOutputWithContext(context.Context) OosObjectCopyGrantWriteOutput
+}
+
+type OosObjectCopyGrantWriteArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectCopyGrantWriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantWrite)(nil)).Elem()
+}
+
+func (i OosObjectCopyGrantWriteArgs) ToOosObjectCopyGrantWriteOutput() OosObjectCopyGrantWriteOutput {
+	return i.ToOosObjectCopyGrantWriteOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantWriteArgs) ToOosObjectCopyGrantWriteOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantWriteOutput)
+}
+
+func (i OosObjectCopyGrantWriteArgs) ToOosObjectCopyGrantWritePtrOutput() OosObjectCopyGrantWritePtrOutput {
+	return i.ToOosObjectCopyGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantWriteArgs) ToOosObjectCopyGrantWritePtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantWriteOutput).ToOosObjectCopyGrantWritePtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyGrantWritePtrInput is an input type that accepts OosObjectCopyGrantWriteArgs, OosObjectCopyGrantWritePtr and OosObjectCopyGrantWritePtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantWritePtrInput` via:
+//
+//	        OosObjectCopyGrantWriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyGrantWritePtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantWritePtrOutput() OosObjectCopyGrantWritePtrOutput
+	ToOosObjectCopyGrantWritePtrOutputWithContext(context.Context) OosObjectCopyGrantWritePtrOutput
+}
+
+type oosObjectCopyGrantWritePtrType OosObjectCopyGrantWriteArgs
+
+func OosObjectCopyGrantWritePtr(v *OosObjectCopyGrantWriteArgs) OosObjectCopyGrantWritePtrInput {
+	return (*oosObjectCopyGrantWritePtrType)(v)
+}
+
+func (*oosObjectCopyGrantWritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantWrite)(nil)).Elem()
+}
+
+func (i *oosObjectCopyGrantWritePtrType) ToOosObjectCopyGrantWritePtrOutput() OosObjectCopyGrantWritePtrOutput {
+	return i.ToOosObjectCopyGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyGrantWritePtrType) ToOosObjectCopyGrantWritePtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantWritePtrOutput)
+}
+
+type OosObjectCopyGrantWriteOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantWriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantWrite)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantWriteOutput) ToOosObjectCopyGrantWriteOutput() OosObjectCopyGrantWriteOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWriteOutput) ToOosObjectCopyGrantWriteOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWriteOutput) ToOosObjectCopyGrantWritePtrOutput() OosObjectCopyGrantWritePtrOutput {
+	return o.ToOosObjectCopyGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyGrantWriteOutput) ToOosObjectCopyGrantWritePtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyGrantWrite) *OosObjectCopyGrantWrite {
+		return &v
+	}).(OosObjectCopyGrantWritePtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantWriteOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantWrite) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantWriteOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantWrite) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantWritePtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantWritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantWrite)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantWritePtrOutput) ToOosObjectCopyGrantWritePtrOutput() OosObjectCopyGrantWritePtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWritePtrOutput) ToOosObjectCopyGrantWritePtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWritePtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWritePtrOutput) Elem() OosObjectCopyGrantWriteOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantWrite) OosObjectCopyGrantWrite {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyGrantWrite
+		return ret
+	}).(OosObjectCopyGrantWriteOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantWritePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantWrite) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantWritePtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantWrite) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantWriteAcp struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectCopyGrantWriteAcpInput is an input type that accepts OosObjectCopyGrantWriteAcpArgs and OosObjectCopyGrantWriteAcpOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantWriteAcpInput` via:
+//
+//	OosObjectCopyGrantWriteAcpArgs{...}
+type OosObjectCopyGrantWriteAcpInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantWriteAcpOutput() OosObjectCopyGrantWriteAcpOutput
+	ToOosObjectCopyGrantWriteAcpOutputWithContext(context.Context) OosObjectCopyGrantWriteAcpOutput
+}
+
+type OosObjectCopyGrantWriteAcpArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectCopyGrantWriteAcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantWriteAcp)(nil)).Elem()
+}
+
+func (i OosObjectCopyGrantWriteAcpArgs) ToOosObjectCopyGrantWriteAcpOutput() OosObjectCopyGrantWriteAcpOutput {
+	return i.ToOosObjectCopyGrantWriteAcpOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantWriteAcpArgs) ToOosObjectCopyGrantWriteAcpOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteAcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantWriteAcpOutput)
+}
+
+func (i OosObjectCopyGrantWriteAcpArgs) ToOosObjectCopyGrantWriteAcpPtrOutput() OosObjectCopyGrantWriteAcpPtrOutput {
+	return i.ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyGrantWriteAcpArgs) ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantWriteAcpOutput).ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyGrantWriteAcpPtrInput is an input type that accepts OosObjectCopyGrantWriteAcpArgs, OosObjectCopyGrantWriteAcpPtr and OosObjectCopyGrantWriteAcpPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyGrantWriteAcpPtrInput` via:
+//
+//	        OosObjectCopyGrantWriteAcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyGrantWriteAcpPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyGrantWriteAcpPtrOutput() OosObjectCopyGrantWriteAcpPtrOutput
+	ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(context.Context) OosObjectCopyGrantWriteAcpPtrOutput
+}
+
+type oosObjectCopyGrantWriteAcpPtrType OosObjectCopyGrantWriteAcpArgs
+
+func OosObjectCopyGrantWriteAcpPtr(v *OosObjectCopyGrantWriteAcpArgs) OosObjectCopyGrantWriteAcpPtrInput {
+	return (*oosObjectCopyGrantWriteAcpPtrType)(v)
+}
+
+func (*oosObjectCopyGrantWriteAcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantWriteAcp)(nil)).Elem()
+}
+
+func (i *oosObjectCopyGrantWriteAcpPtrType) ToOosObjectCopyGrantWriteAcpPtrOutput() OosObjectCopyGrantWriteAcpPtrOutput {
+	return i.ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyGrantWriteAcpPtrType) ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyGrantWriteAcpPtrOutput)
+}
+
+type OosObjectCopyGrantWriteAcpOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantWriteAcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyGrantWriteAcp)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantWriteAcpOutput) ToOosObjectCopyGrantWriteAcpOutput() OosObjectCopyGrantWriteAcpOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWriteAcpOutput) ToOosObjectCopyGrantWriteAcpOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteAcpOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWriteAcpOutput) ToOosObjectCopyGrantWriteAcpPtrOutput() OosObjectCopyGrantWriteAcpPtrOutput {
+	return o.ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyGrantWriteAcpOutput) ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteAcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyGrantWriteAcp) *OosObjectCopyGrantWriteAcp {
+		return &v
+	}).(OosObjectCopyGrantWriteAcpPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantWriteAcpOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantWriteAcp) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantWriteAcpOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyGrantWriteAcp) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyGrantWriteAcpPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyGrantWriteAcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyGrantWriteAcp)(nil)).Elem()
+}
+
+func (o OosObjectCopyGrantWriteAcpPtrOutput) ToOosObjectCopyGrantWriteAcpPtrOutput() OosObjectCopyGrantWriteAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWriteAcpPtrOutput) ToOosObjectCopyGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectCopyGrantWriteAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyGrantWriteAcpPtrOutput) Elem() OosObjectCopyGrantWriteAcpOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantWriteAcp) OosObjectCopyGrantWriteAcp {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyGrantWriteAcp
+		return ret
+	}).(OosObjectCopyGrantWriteAcpOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectCopyGrantWriteAcpPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantWriteAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectCopyGrantWriteAcpPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyGrantWriteAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectCopyPermissions struct {
+	// Information about a granted permission for the object.
+	Grants []OosObjectCopyPermissionsGrant `pulumi:"grants"`
+	// Information about the owner of the object.
+	Owner *OosObjectCopyPermissionsOwner `pulumi:"owner"`
+}
+
+// OosObjectCopyPermissionsInput is an input type that accepts OosObjectCopyPermissionsArgs and OosObjectCopyPermissionsOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsInput` via:
+//
+//	OosObjectCopyPermissionsArgs{...}
+type OosObjectCopyPermissionsInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsOutput() OosObjectCopyPermissionsOutput
+	ToOosObjectCopyPermissionsOutputWithContext(context.Context) OosObjectCopyPermissionsOutput
+}
+
+type OosObjectCopyPermissionsArgs struct {
+	// Information about a granted permission for the object.
+	Grants OosObjectCopyPermissionsGrantArrayInput `pulumi:"grants"`
+	// Information about the owner of the object.
+	Owner OosObjectCopyPermissionsOwnerPtrInput `pulumi:"owner"`
+}
+
+func (OosObjectCopyPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissions)(nil)).Elem()
+}
+
+func (i OosObjectCopyPermissionsArgs) ToOosObjectCopyPermissionsOutput() OosObjectCopyPermissionsOutput {
+	return i.ToOosObjectCopyPermissionsOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsArgs) ToOosObjectCopyPermissionsOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsOutput)
+}
+
+func (i OosObjectCopyPermissionsArgs) ToOosObjectCopyPermissionsPtrOutput() OosObjectCopyPermissionsPtrOutput {
+	return i.ToOosObjectCopyPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsArgs) ToOosObjectCopyPermissionsPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsOutput).ToOosObjectCopyPermissionsPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyPermissionsPtrInput is an input type that accepts OosObjectCopyPermissionsArgs, OosObjectCopyPermissionsPtr and OosObjectCopyPermissionsPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsPtrInput` via:
+//
+//	        OosObjectCopyPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsPtrOutput() OosObjectCopyPermissionsPtrOutput
+	ToOosObjectCopyPermissionsPtrOutputWithContext(context.Context) OosObjectCopyPermissionsPtrOutput
+}
+
+type oosObjectCopyPermissionsPtrType OosObjectCopyPermissionsArgs
+
+func OosObjectCopyPermissionsPtr(v *OosObjectCopyPermissionsArgs) OosObjectCopyPermissionsPtrInput {
+	return (*oosObjectCopyPermissionsPtrType)(v)
+}
+
+func (*oosObjectCopyPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyPermissions)(nil)).Elem()
+}
+
+func (i *oosObjectCopyPermissionsPtrType) ToOosObjectCopyPermissionsPtrOutput() OosObjectCopyPermissionsPtrOutput {
+	return i.ToOosObjectCopyPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyPermissionsPtrType) ToOosObjectCopyPermissionsPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsPtrOutput)
+}
+
+type OosObjectCopyPermissionsOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissions)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsOutput) ToOosObjectCopyPermissionsOutput() OosObjectCopyPermissionsOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsOutput) ToOosObjectCopyPermissionsOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsOutput) ToOosObjectCopyPermissionsPtrOutput() OosObjectCopyPermissionsPtrOutput {
+	return o.ToOosObjectCopyPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyPermissionsOutput) ToOosObjectCopyPermissionsPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyPermissions) *OosObjectCopyPermissions {
+		return &v
+	}).(OosObjectCopyPermissionsPtrOutput)
+}
+
+// Information about a granted permission for the object.
+func (o OosObjectCopyPermissionsOutput) Grants() OosObjectCopyPermissionsGrantArrayOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissions) []OosObjectCopyPermissionsGrant { return v.Grants }).(OosObjectCopyPermissionsGrantArrayOutput)
+}
+
+// Information about the owner of the object.
+func (o OosObjectCopyPermissionsOutput) Owner() OosObjectCopyPermissionsOwnerPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissions) *OosObjectCopyPermissionsOwner { return v.Owner }).(OosObjectCopyPermissionsOwnerPtrOutput)
+}
+
+type OosObjectCopyPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyPermissions)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsPtrOutput) ToOosObjectCopyPermissionsPtrOutput() OosObjectCopyPermissionsPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsPtrOutput) ToOosObjectCopyPermissionsPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsPtrOutput) Elem() OosObjectCopyPermissionsOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissions) OosObjectCopyPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyPermissions
+		return ret
+	}).(OosObjectCopyPermissionsOutput)
+}
+
+// Information about a granted permission for the object.
+func (o OosObjectCopyPermissionsPtrOutput) Grants() OosObjectCopyPermissionsGrantArrayOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissions) []OosObjectCopyPermissionsGrant {
+		if v == nil {
+			return nil
+		}
+		return v.Grants
+	}).(OosObjectCopyPermissionsGrantArrayOutput)
+}
+
+// Information about the owner of the object.
+func (o OosObjectCopyPermissionsPtrOutput) Owner() OosObjectCopyPermissionsOwnerPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissions) *OosObjectCopyPermissionsOwner {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(OosObjectCopyPermissionsOwnerPtrOutput)
+}
+
+type OosObjectCopyPermissionsGrant struct {
+	// A grantee.
+	Grantee *OosObjectCopyPermissionsGrantGrantee `pulumi:"grantee"`
+	// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+	Permission *string `pulumi:"permission"`
+}
+
+// OosObjectCopyPermissionsGrantInput is an input type that accepts OosObjectCopyPermissionsGrantArgs and OosObjectCopyPermissionsGrantOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsGrantInput` via:
+//
+//	OosObjectCopyPermissionsGrantArgs{...}
+type OosObjectCopyPermissionsGrantInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsGrantOutput() OosObjectCopyPermissionsGrantOutput
+	ToOosObjectCopyPermissionsGrantOutputWithContext(context.Context) OosObjectCopyPermissionsGrantOutput
+}
+
+type OosObjectCopyPermissionsGrantArgs struct {
+	// A grantee.
+	Grantee OosObjectCopyPermissionsGrantGranteePtrInput `pulumi:"grantee"`
+	// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (OosObjectCopyPermissionsGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissionsGrant)(nil)).Elem()
+}
+
+func (i OosObjectCopyPermissionsGrantArgs) ToOosObjectCopyPermissionsGrantOutput() OosObjectCopyPermissionsGrantOutput {
+	return i.ToOosObjectCopyPermissionsGrantOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsGrantArgs) ToOosObjectCopyPermissionsGrantOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsGrantOutput)
+}
+
+// OosObjectCopyPermissionsGrantArrayInput is an input type that accepts OosObjectCopyPermissionsGrantArray and OosObjectCopyPermissionsGrantArrayOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsGrantArrayInput` via:
+//
+//	OosObjectCopyPermissionsGrantArray{ OosObjectCopyPermissionsGrantArgs{...} }
+type OosObjectCopyPermissionsGrantArrayInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsGrantArrayOutput() OosObjectCopyPermissionsGrantArrayOutput
+	ToOosObjectCopyPermissionsGrantArrayOutputWithContext(context.Context) OosObjectCopyPermissionsGrantArrayOutput
+}
+
+type OosObjectCopyPermissionsGrantArray []OosObjectCopyPermissionsGrantInput
+
+func (OosObjectCopyPermissionsGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosObjectCopyPermissionsGrant)(nil)).Elem()
+}
+
+func (i OosObjectCopyPermissionsGrantArray) ToOosObjectCopyPermissionsGrantArrayOutput() OosObjectCopyPermissionsGrantArrayOutput {
+	return i.ToOosObjectCopyPermissionsGrantArrayOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsGrantArray) ToOosObjectCopyPermissionsGrantArrayOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsGrantArrayOutput)
+}
+
+type OosObjectCopyPermissionsGrantOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissionsGrant)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsGrantOutput) ToOosObjectCopyPermissionsGrantOutput() OosObjectCopyPermissionsGrantOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsGrantOutput) ToOosObjectCopyPermissionsGrantOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantOutput {
+	return o
+}
+
+// A grantee.
+func (o OosObjectCopyPermissionsGrantOutput) Grantee() OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsGrant) *OosObjectCopyPermissionsGrantGrantee { return v.Grantee }).(OosObjectCopyPermissionsGrantGranteePtrOutput)
+}
+
+// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+func (o OosObjectCopyPermissionsGrantOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsGrant) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyPermissionsGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosObjectCopyPermissionsGrant)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsGrantArrayOutput) ToOosObjectCopyPermissionsGrantArrayOutput() OosObjectCopyPermissionsGrantArrayOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsGrantArrayOutput) ToOosObjectCopyPermissionsGrantArrayOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantArrayOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsGrantArrayOutput) Index(i pulumi.IntInput) OosObjectCopyPermissionsGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OosObjectCopyPermissionsGrant {
+		return vs[0].([]OosObjectCopyPermissionsGrant)[vs[1].(int)]
+	}).(OosObjectCopyPermissionsGrantOutput)
+}
+
+type OosObjectCopyPermissionsGrantGrantee struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName *string `pulumi:"displayName"`
+	// The email address of the grantee.
+	EmailAddress *string `pulumi:"emailAddress"`
+	// The S3 user ID of the owner of the object.
+	Id *string `pulumi:"id"`
+	// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+	Type *string `pulumi:"type"`
+	// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+	Uri *string `pulumi:"uri"`
+}
+
+// OosObjectCopyPermissionsGrantGranteeInput is an input type that accepts OosObjectCopyPermissionsGrantGranteeArgs and OosObjectCopyPermissionsGrantGranteeOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsGrantGranteeInput` via:
+//
+//	OosObjectCopyPermissionsGrantGranteeArgs{...}
+type OosObjectCopyPermissionsGrantGranteeInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsGrantGranteeOutput() OosObjectCopyPermissionsGrantGranteeOutput
+	ToOosObjectCopyPermissionsGrantGranteeOutputWithContext(context.Context) OosObjectCopyPermissionsGrantGranteeOutput
+}
+
+type OosObjectCopyPermissionsGrantGranteeArgs struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The email address of the grantee.
+	EmailAddress pulumi.StringPtrInput `pulumi:"emailAddress"`
+	// The S3 user ID of the owner of the object.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (OosObjectCopyPermissionsGrantGranteeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (i OosObjectCopyPermissionsGrantGranteeArgs) ToOosObjectCopyPermissionsGrantGranteeOutput() OosObjectCopyPermissionsGrantGranteeOutput {
+	return i.ToOosObjectCopyPermissionsGrantGranteeOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsGrantGranteeArgs) ToOosObjectCopyPermissionsGrantGranteeOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantGranteeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsGrantGranteeOutput)
+}
+
+func (i OosObjectCopyPermissionsGrantGranteeArgs) ToOosObjectCopyPermissionsGrantGranteePtrOutput() OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return i.ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsGrantGranteeArgs) ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsGrantGranteeOutput).ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyPermissionsGrantGranteePtrInput is an input type that accepts OosObjectCopyPermissionsGrantGranteeArgs, OosObjectCopyPermissionsGrantGranteePtr and OosObjectCopyPermissionsGrantGranteePtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsGrantGranteePtrInput` via:
+//
+//	        OosObjectCopyPermissionsGrantGranteeArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyPermissionsGrantGranteePtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsGrantGranteePtrOutput() OosObjectCopyPermissionsGrantGranteePtrOutput
+	ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(context.Context) OosObjectCopyPermissionsGrantGranteePtrOutput
+}
+
+type oosObjectCopyPermissionsGrantGranteePtrType OosObjectCopyPermissionsGrantGranteeArgs
+
+func OosObjectCopyPermissionsGrantGranteePtr(v *OosObjectCopyPermissionsGrantGranteeArgs) OosObjectCopyPermissionsGrantGranteePtrInput {
+	return (*oosObjectCopyPermissionsGrantGranteePtrType)(v)
+}
+
+func (*oosObjectCopyPermissionsGrantGranteePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (i *oosObjectCopyPermissionsGrantGranteePtrType) ToOosObjectCopyPermissionsGrantGranteePtrOutput() OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return i.ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyPermissionsGrantGranteePtrType) ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsGrantGranteePtrOutput)
+}
+
+type OosObjectCopyPermissionsGrantGranteeOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsGrantGranteeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsGrantGranteeOutput) ToOosObjectCopyPermissionsGrantGranteeOutput() OosObjectCopyPermissionsGrantGranteeOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsGrantGranteeOutput) ToOosObjectCopyPermissionsGrantGranteeOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantGranteeOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsGrantGranteeOutput) ToOosObjectCopyPermissionsGrantGranteePtrOutput() OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return o.ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyPermissionsGrantGranteeOutput) ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyPermissionsGrantGrantee) *OosObjectCopyPermissionsGrantGrantee {
+		return &v
+	}).(OosObjectCopyPermissionsGrantGranteePtrOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectCopyPermissionsGrantGranteeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsGrantGrantee) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The email address of the grantee.
+func (o OosObjectCopyPermissionsGrantGranteeOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsGrantGrantee) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectCopyPermissionsGrantGranteeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsGrantGrantee) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+func (o OosObjectCopyPermissionsGrantGranteeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsGrantGrantee) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+func (o OosObjectCopyPermissionsGrantGranteeOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsGrantGrantee) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyPermissionsGrantGranteePtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsGrantGranteePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) ToOosObjectCopyPermissionsGrantGranteePtrOutput() OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) ToOosObjectCopyPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsGrantGranteePtrOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) Elem() OosObjectCopyPermissionsGrantGranteeOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsGrantGrantee) OosObjectCopyPermissionsGrantGrantee {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyPermissionsGrantGrantee
+		return ret
+	}).(OosObjectCopyPermissionsGrantGranteeOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email address of the grantee.
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+func (o OosObjectCopyPermissionsGrantGranteePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyPermissionsOwner struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName *string `pulumi:"displayName"`
+	// The S3 user ID of the owner of the object.
+	Id *string `pulumi:"id"`
+}
+
+// OosObjectCopyPermissionsOwnerInput is an input type that accepts OosObjectCopyPermissionsOwnerArgs and OosObjectCopyPermissionsOwnerOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsOwnerInput` via:
+//
+//	OosObjectCopyPermissionsOwnerArgs{...}
+type OosObjectCopyPermissionsOwnerInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsOwnerOutput() OosObjectCopyPermissionsOwnerOutput
+	ToOosObjectCopyPermissionsOwnerOutputWithContext(context.Context) OosObjectCopyPermissionsOwnerOutput
+}
+
+type OosObjectCopyPermissionsOwnerArgs struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The S3 user ID of the owner of the object.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (OosObjectCopyPermissionsOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissionsOwner)(nil)).Elem()
+}
+
+func (i OosObjectCopyPermissionsOwnerArgs) ToOosObjectCopyPermissionsOwnerOutput() OosObjectCopyPermissionsOwnerOutput {
+	return i.ToOosObjectCopyPermissionsOwnerOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsOwnerArgs) ToOosObjectCopyPermissionsOwnerOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsOwnerOutput)
+}
+
+func (i OosObjectCopyPermissionsOwnerArgs) ToOosObjectCopyPermissionsOwnerPtrOutput() OosObjectCopyPermissionsOwnerPtrOutput {
+	return i.ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyPermissionsOwnerArgs) ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsOwnerOutput).ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyPermissionsOwnerPtrInput is an input type that accepts OosObjectCopyPermissionsOwnerArgs, OosObjectCopyPermissionsOwnerPtr and OosObjectCopyPermissionsOwnerPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyPermissionsOwnerPtrInput` via:
+//
+//	        OosObjectCopyPermissionsOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyPermissionsOwnerPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyPermissionsOwnerPtrOutput() OosObjectCopyPermissionsOwnerPtrOutput
+	ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(context.Context) OosObjectCopyPermissionsOwnerPtrOutput
+}
+
+type oosObjectCopyPermissionsOwnerPtrType OosObjectCopyPermissionsOwnerArgs
+
+func OosObjectCopyPermissionsOwnerPtr(v *OosObjectCopyPermissionsOwnerArgs) OosObjectCopyPermissionsOwnerPtrInput {
+	return (*oosObjectCopyPermissionsOwnerPtrType)(v)
+}
+
+func (*oosObjectCopyPermissionsOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyPermissionsOwner)(nil)).Elem()
+}
+
+func (i *oosObjectCopyPermissionsOwnerPtrType) ToOosObjectCopyPermissionsOwnerPtrOutput() OosObjectCopyPermissionsOwnerPtrOutput {
+	return i.ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyPermissionsOwnerPtrType) ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyPermissionsOwnerPtrOutput)
+}
+
+type OosObjectCopyPermissionsOwnerOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyPermissionsOwner)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsOwnerOutput) ToOosObjectCopyPermissionsOwnerOutput() OosObjectCopyPermissionsOwnerOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsOwnerOutput) ToOosObjectCopyPermissionsOwnerOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOwnerOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsOwnerOutput) ToOosObjectCopyPermissionsOwnerPtrOutput() OosObjectCopyPermissionsOwnerPtrOutput {
+	return o.ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyPermissionsOwnerOutput) ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyPermissionsOwner) *OosObjectCopyPermissionsOwner {
+		return &v
+	}).(OosObjectCopyPermissionsOwnerPtrOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectCopyPermissionsOwnerOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsOwner) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectCopyPermissionsOwnerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyPermissionsOwner) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyPermissionsOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyPermissionsOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyPermissionsOwner)(nil)).Elem()
+}
+
+func (o OosObjectCopyPermissionsOwnerPtrOutput) ToOosObjectCopyPermissionsOwnerPtrOutput() OosObjectCopyPermissionsOwnerPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsOwnerPtrOutput) ToOosObjectCopyPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectCopyPermissionsOwnerPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyPermissionsOwnerPtrOutput) Elem() OosObjectCopyPermissionsOwnerOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsOwner) OosObjectCopyPermissionsOwner {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyPermissionsOwner
+		return ret
+	}).(OosObjectCopyPermissionsOwnerOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectCopyPermissionsOwnerPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectCopyPermissionsOwnerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyPermissionsOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosObjectCopyTimeoutsInput is an input type that accepts OosObjectCopyTimeoutsArgs and OosObjectCopyTimeoutsOutput values.
+// You can construct a concrete instance of `OosObjectCopyTimeoutsInput` via:
+//
+//	OosObjectCopyTimeoutsArgs{...}
+type OosObjectCopyTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyTimeoutsOutput() OosObjectCopyTimeoutsOutput
+	ToOosObjectCopyTimeoutsOutputWithContext(context.Context) OosObjectCopyTimeoutsOutput
+}
+
+type OosObjectCopyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosObjectCopyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyTimeouts)(nil)).Elem()
+}
+
+func (i OosObjectCopyTimeoutsArgs) ToOosObjectCopyTimeoutsOutput() OosObjectCopyTimeoutsOutput {
+	return i.ToOosObjectCopyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyTimeoutsArgs) ToOosObjectCopyTimeoutsOutputWithContext(ctx context.Context) OosObjectCopyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyTimeoutsOutput)
+}
+
+func (i OosObjectCopyTimeoutsArgs) ToOosObjectCopyTimeoutsPtrOutput() OosObjectCopyTimeoutsPtrOutput {
+	return i.ToOosObjectCopyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectCopyTimeoutsArgs) ToOosObjectCopyTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectCopyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyTimeoutsOutput).ToOosObjectCopyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosObjectCopyTimeoutsPtrInput is an input type that accepts OosObjectCopyTimeoutsArgs, OosObjectCopyTimeoutsPtr and OosObjectCopyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosObjectCopyTimeoutsPtrInput` via:
+//
+//	        OosObjectCopyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectCopyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectCopyTimeoutsPtrOutput() OosObjectCopyTimeoutsPtrOutput
+	ToOosObjectCopyTimeoutsPtrOutputWithContext(context.Context) OosObjectCopyTimeoutsPtrOutput
+}
+
+type oosObjectCopyTimeoutsPtrType OosObjectCopyTimeoutsArgs
+
+func OosObjectCopyTimeoutsPtr(v *OosObjectCopyTimeoutsArgs) OosObjectCopyTimeoutsPtrInput {
+	return (*oosObjectCopyTimeoutsPtrType)(v)
+}
+
+func (*oosObjectCopyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyTimeouts)(nil)).Elem()
+}
+
+func (i *oosObjectCopyTimeoutsPtrType) ToOosObjectCopyTimeoutsPtrOutput() OosObjectCopyTimeoutsPtrOutput {
+	return i.ToOosObjectCopyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectCopyTimeoutsPtrType) ToOosObjectCopyTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectCopyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectCopyTimeoutsPtrOutput)
+}
+
+type OosObjectCopyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectCopyTimeouts)(nil)).Elem()
+}
+
+func (o OosObjectCopyTimeoutsOutput) ToOosObjectCopyTimeoutsOutput() OosObjectCopyTimeoutsOutput {
+	return o
+}
+
+func (o OosObjectCopyTimeoutsOutput) ToOosObjectCopyTimeoutsOutputWithContext(ctx context.Context) OosObjectCopyTimeoutsOutput {
+	return o
+}
+
+func (o OosObjectCopyTimeoutsOutput) ToOosObjectCopyTimeoutsPtrOutput() OosObjectCopyTimeoutsPtrOutput {
+	return o.ToOosObjectCopyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectCopyTimeoutsOutput) ToOosObjectCopyTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectCopyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectCopyTimeouts) *OosObjectCopyTimeouts {
+		return &v
+	}).(OosObjectCopyTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectCopyTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosObjectCopyTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosObjectCopyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectCopyTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectCopyTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectCopyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectCopyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectCopyTimeouts)(nil)).Elem()
+}
+
+func (o OosObjectCopyTimeoutsPtrOutput) ToOosObjectCopyTimeoutsPtrOutput() OosObjectCopyTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyTimeoutsPtrOutput) ToOosObjectCopyTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectCopyTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosObjectCopyTimeoutsPtrOutput) Elem() OosObjectCopyTimeoutsOutput {
+	return o.ApplyT(func(v *OosObjectCopyTimeouts) OosObjectCopyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectCopyTimeouts
+		return ret
+	}).(OosObjectCopyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectCopyTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosObjectCopyTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosObjectCopyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectCopyTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectCopyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectGrant struct {
+	// Users to whom you grant `full-control` permission.
+	FullControl *OosObjectGrantFullControl `pulumi:"fullControl"`
+	// Users to whom you grant `read` permission.
+	Read *OosObjectGrantRead `pulumi:"read"`
+	// Users to whom you grant `readAcp` permission.
+	ReadAcp *OosObjectGrantReadAcp `pulumi:"readAcp"`
+	// Users to whom you grant `write` permission.
+	Write *OosObjectGrantWrite `pulumi:"write"`
+	// Users to whom you grant `writeAcp` permission.
+	WriteAcp *OosObjectGrantWriteAcp `pulumi:"writeAcp"`
+}
+
+// OosObjectGrantInput is an input type that accepts OosObjectGrantArgs and OosObjectGrantOutput values.
+// You can construct a concrete instance of `OosObjectGrantInput` via:
+//
+//	OosObjectGrantArgs{...}
+type OosObjectGrantInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantOutput() OosObjectGrantOutput
+	ToOosObjectGrantOutputWithContext(context.Context) OosObjectGrantOutput
+}
+
+type OosObjectGrantArgs struct {
+	// Users to whom you grant `full-control` permission.
+	FullControl OosObjectGrantFullControlPtrInput `pulumi:"fullControl"`
+	// Users to whom you grant `read` permission.
+	Read OosObjectGrantReadPtrInput `pulumi:"read"`
+	// Users to whom you grant `readAcp` permission.
+	ReadAcp OosObjectGrantReadAcpPtrInput `pulumi:"readAcp"`
+	// Users to whom you grant `write` permission.
+	Write OosObjectGrantWritePtrInput `pulumi:"write"`
+	// Users to whom you grant `writeAcp` permission.
+	WriteAcp OosObjectGrantWriteAcpPtrInput `pulumi:"writeAcp"`
+}
+
+func (OosObjectGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrant)(nil)).Elem()
+}
+
+func (i OosObjectGrantArgs) ToOosObjectGrantOutput() OosObjectGrantOutput {
+	return i.ToOosObjectGrantOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantArgs) ToOosObjectGrantOutputWithContext(ctx context.Context) OosObjectGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantOutput)
+}
+
+func (i OosObjectGrantArgs) ToOosObjectGrantPtrOutput() OosObjectGrantPtrOutput {
+	return i.ToOosObjectGrantPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantArgs) ToOosObjectGrantPtrOutputWithContext(ctx context.Context) OosObjectGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantOutput).ToOosObjectGrantPtrOutputWithContext(ctx)
+}
+
+// OosObjectGrantPtrInput is an input type that accepts OosObjectGrantArgs, OosObjectGrantPtr and OosObjectGrantPtrOutput values.
+// You can construct a concrete instance of `OosObjectGrantPtrInput` via:
+//
+//	        OosObjectGrantArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectGrantPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantPtrOutput() OosObjectGrantPtrOutput
+	ToOosObjectGrantPtrOutputWithContext(context.Context) OosObjectGrantPtrOutput
+}
+
+type oosObjectGrantPtrType OosObjectGrantArgs
+
+func OosObjectGrantPtr(v *OosObjectGrantArgs) OosObjectGrantPtrInput {
+	return (*oosObjectGrantPtrType)(v)
+}
+
+func (*oosObjectGrantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrant)(nil)).Elem()
+}
+
+func (i *oosObjectGrantPtrType) ToOosObjectGrantPtrOutput() OosObjectGrantPtrOutput {
+	return i.ToOosObjectGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectGrantPtrType) ToOosObjectGrantPtrOutputWithContext(ctx context.Context) OosObjectGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantPtrOutput)
+}
+
+type OosObjectGrantOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrant)(nil)).Elem()
+}
+
+func (o OosObjectGrantOutput) ToOosObjectGrantOutput() OosObjectGrantOutput {
+	return o
+}
+
+func (o OosObjectGrantOutput) ToOosObjectGrantOutputWithContext(ctx context.Context) OosObjectGrantOutput {
+	return o
+}
+
+func (o OosObjectGrantOutput) ToOosObjectGrantPtrOutput() OosObjectGrantPtrOutput {
+	return o.ToOosObjectGrantPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectGrantOutput) ToOosObjectGrantPtrOutputWithContext(ctx context.Context) OosObjectGrantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectGrant) *OosObjectGrant {
+		return &v
+	}).(OosObjectGrantPtrOutput)
+}
+
+// Users to whom you grant `full-control` permission.
+func (o OosObjectGrantOutput) FullControl() OosObjectGrantFullControlPtrOutput {
+	return o.ApplyT(func(v OosObjectGrant) *OosObjectGrantFullControl { return v.FullControl }).(OosObjectGrantFullControlPtrOutput)
+}
+
+// Users to whom you grant `read` permission.
+func (o OosObjectGrantOutput) Read() OosObjectGrantReadPtrOutput {
+	return o.ApplyT(func(v OosObjectGrant) *OosObjectGrantRead { return v.Read }).(OosObjectGrantReadPtrOutput)
+}
+
+// Users to whom you grant `readAcp` permission.
+func (o OosObjectGrantOutput) ReadAcp() OosObjectGrantReadAcpPtrOutput {
+	return o.ApplyT(func(v OosObjectGrant) *OosObjectGrantReadAcp { return v.ReadAcp }).(OosObjectGrantReadAcpPtrOutput)
+}
+
+// Users to whom you grant `write` permission.
+func (o OosObjectGrantOutput) Write() OosObjectGrantWritePtrOutput {
+	return o.ApplyT(func(v OosObjectGrant) *OosObjectGrantWrite { return v.Write }).(OosObjectGrantWritePtrOutput)
+}
+
+// Users to whom you grant `writeAcp` permission.
+func (o OosObjectGrantOutput) WriteAcp() OosObjectGrantWriteAcpPtrOutput {
+	return o.ApplyT(func(v OosObjectGrant) *OosObjectGrantWriteAcp { return v.WriteAcp }).(OosObjectGrantWriteAcpPtrOutput)
+}
+
+type OosObjectGrantPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrant)(nil)).Elem()
+}
+
+func (o OosObjectGrantPtrOutput) ToOosObjectGrantPtrOutput() OosObjectGrantPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantPtrOutput) ToOosObjectGrantPtrOutputWithContext(ctx context.Context) OosObjectGrantPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantPtrOutput) Elem() OosObjectGrantOutput {
+	return o.ApplyT(func(v *OosObjectGrant) OosObjectGrant {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectGrant
+		return ret
+	}).(OosObjectGrantOutput)
+}
+
+// Users to whom you grant `full-control` permission.
+func (o OosObjectGrantPtrOutput) FullControl() OosObjectGrantFullControlPtrOutput {
+	return o.ApplyT(func(v *OosObjectGrant) *OosObjectGrantFullControl {
+		if v == nil {
+			return nil
+		}
+		return v.FullControl
+	}).(OosObjectGrantFullControlPtrOutput)
+}
+
+// Users to whom you grant `read` permission.
+func (o OosObjectGrantPtrOutput) Read() OosObjectGrantReadPtrOutput {
+	return o.ApplyT(func(v *OosObjectGrant) *OosObjectGrantRead {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(OosObjectGrantReadPtrOutput)
+}
+
+// Users to whom you grant `readAcp` permission.
+func (o OosObjectGrantPtrOutput) ReadAcp() OosObjectGrantReadAcpPtrOutput {
+	return o.ApplyT(func(v *OosObjectGrant) *OosObjectGrantReadAcp {
+		if v == nil {
+			return nil
+		}
+		return v.ReadAcp
+	}).(OosObjectGrantReadAcpPtrOutput)
+}
+
+// Users to whom you grant `write` permission.
+func (o OosObjectGrantPtrOutput) Write() OosObjectGrantWritePtrOutput {
+	return o.ApplyT(func(v *OosObjectGrant) *OosObjectGrantWrite {
+		if v == nil {
+			return nil
+		}
+		return v.Write
+	}).(OosObjectGrantWritePtrOutput)
+}
+
+// Users to whom you grant `writeAcp` permission.
+func (o OosObjectGrantPtrOutput) WriteAcp() OosObjectGrantWriteAcpPtrOutput {
+	return o.ApplyT(func(v *OosObjectGrant) *OosObjectGrantWriteAcp {
+		if v == nil {
+			return nil
+		}
+		return v.WriteAcp
+	}).(OosObjectGrantWriteAcpPtrOutput)
+}
+
+type OosObjectGrantFullControl struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectGrantFullControlInput is an input type that accepts OosObjectGrantFullControlArgs and OosObjectGrantFullControlOutput values.
+// You can construct a concrete instance of `OosObjectGrantFullControlInput` via:
+//
+//	OosObjectGrantFullControlArgs{...}
+type OosObjectGrantFullControlInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantFullControlOutput() OosObjectGrantFullControlOutput
+	ToOosObjectGrantFullControlOutputWithContext(context.Context) OosObjectGrantFullControlOutput
+}
+
+type OosObjectGrantFullControlArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectGrantFullControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantFullControl)(nil)).Elem()
+}
+
+func (i OosObjectGrantFullControlArgs) ToOosObjectGrantFullControlOutput() OosObjectGrantFullControlOutput {
+	return i.ToOosObjectGrantFullControlOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantFullControlArgs) ToOosObjectGrantFullControlOutputWithContext(ctx context.Context) OosObjectGrantFullControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantFullControlOutput)
+}
+
+func (i OosObjectGrantFullControlArgs) ToOosObjectGrantFullControlPtrOutput() OosObjectGrantFullControlPtrOutput {
+	return i.ToOosObjectGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantFullControlArgs) ToOosObjectGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectGrantFullControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantFullControlOutput).ToOosObjectGrantFullControlPtrOutputWithContext(ctx)
+}
+
+// OosObjectGrantFullControlPtrInput is an input type that accepts OosObjectGrantFullControlArgs, OosObjectGrantFullControlPtr and OosObjectGrantFullControlPtrOutput values.
+// You can construct a concrete instance of `OosObjectGrantFullControlPtrInput` via:
+//
+//	        OosObjectGrantFullControlArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectGrantFullControlPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantFullControlPtrOutput() OosObjectGrantFullControlPtrOutput
+	ToOosObjectGrantFullControlPtrOutputWithContext(context.Context) OosObjectGrantFullControlPtrOutput
+}
+
+type oosObjectGrantFullControlPtrType OosObjectGrantFullControlArgs
+
+func OosObjectGrantFullControlPtr(v *OosObjectGrantFullControlArgs) OosObjectGrantFullControlPtrInput {
+	return (*oosObjectGrantFullControlPtrType)(v)
+}
+
+func (*oosObjectGrantFullControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantFullControl)(nil)).Elem()
+}
+
+func (i *oosObjectGrantFullControlPtrType) ToOosObjectGrantFullControlPtrOutput() OosObjectGrantFullControlPtrOutput {
+	return i.ToOosObjectGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectGrantFullControlPtrType) ToOosObjectGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectGrantFullControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantFullControlPtrOutput)
+}
+
+type OosObjectGrantFullControlOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantFullControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantFullControl)(nil)).Elem()
+}
+
+func (o OosObjectGrantFullControlOutput) ToOosObjectGrantFullControlOutput() OosObjectGrantFullControlOutput {
+	return o
+}
+
+func (o OosObjectGrantFullControlOutput) ToOosObjectGrantFullControlOutputWithContext(ctx context.Context) OosObjectGrantFullControlOutput {
+	return o
+}
+
+func (o OosObjectGrantFullControlOutput) ToOosObjectGrantFullControlPtrOutput() OosObjectGrantFullControlPtrOutput {
+	return o.ToOosObjectGrantFullControlPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectGrantFullControlOutput) ToOosObjectGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectGrantFullControlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectGrantFullControl) *OosObjectGrantFullControl {
+		return &v
+	}).(OosObjectGrantFullControlPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantFullControlOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantFullControl) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantFullControlOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantFullControl) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantFullControlPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantFullControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantFullControl)(nil)).Elem()
+}
+
+func (o OosObjectGrantFullControlPtrOutput) ToOosObjectGrantFullControlPtrOutput() OosObjectGrantFullControlPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantFullControlPtrOutput) ToOosObjectGrantFullControlPtrOutputWithContext(ctx context.Context) OosObjectGrantFullControlPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantFullControlPtrOutput) Elem() OosObjectGrantFullControlOutput {
+	return o.ApplyT(func(v *OosObjectGrantFullControl) OosObjectGrantFullControl {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectGrantFullControl
+		return ret
+	}).(OosObjectGrantFullControlOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantFullControlPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantFullControl) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantFullControlPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantFullControl) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantRead struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectGrantReadInput is an input type that accepts OosObjectGrantReadArgs and OosObjectGrantReadOutput values.
+// You can construct a concrete instance of `OosObjectGrantReadInput` via:
+//
+//	OosObjectGrantReadArgs{...}
+type OosObjectGrantReadInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantReadOutput() OosObjectGrantReadOutput
+	ToOosObjectGrantReadOutputWithContext(context.Context) OosObjectGrantReadOutput
+}
+
+type OosObjectGrantReadArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectGrantReadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantRead)(nil)).Elem()
+}
+
+func (i OosObjectGrantReadArgs) ToOosObjectGrantReadOutput() OosObjectGrantReadOutput {
+	return i.ToOosObjectGrantReadOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantReadArgs) ToOosObjectGrantReadOutputWithContext(ctx context.Context) OosObjectGrantReadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantReadOutput)
+}
+
+func (i OosObjectGrantReadArgs) ToOosObjectGrantReadPtrOutput() OosObjectGrantReadPtrOutput {
+	return i.ToOosObjectGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantReadArgs) ToOosObjectGrantReadPtrOutputWithContext(ctx context.Context) OosObjectGrantReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantReadOutput).ToOosObjectGrantReadPtrOutputWithContext(ctx)
+}
+
+// OosObjectGrantReadPtrInput is an input type that accepts OosObjectGrantReadArgs, OosObjectGrantReadPtr and OosObjectGrantReadPtrOutput values.
+// You can construct a concrete instance of `OosObjectGrantReadPtrInput` via:
+//
+//	        OosObjectGrantReadArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectGrantReadPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantReadPtrOutput() OosObjectGrantReadPtrOutput
+	ToOosObjectGrantReadPtrOutputWithContext(context.Context) OosObjectGrantReadPtrOutput
+}
+
+type oosObjectGrantReadPtrType OosObjectGrantReadArgs
+
+func OosObjectGrantReadPtr(v *OosObjectGrantReadArgs) OosObjectGrantReadPtrInput {
+	return (*oosObjectGrantReadPtrType)(v)
+}
+
+func (*oosObjectGrantReadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantRead)(nil)).Elem()
+}
+
+func (i *oosObjectGrantReadPtrType) ToOosObjectGrantReadPtrOutput() OosObjectGrantReadPtrOutput {
+	return i.ToOosObjectGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectGrantReadPtrType) ToOosObjectGrantReadPtrOutputWithContext(ctx context.Context) OosObjectGrantReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantReadPtrOutput)
+}
+
+type OosObjectGrantReadOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantReadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantRead)(nil)).Elem()
+}
+
+func (o OosObjectGrantReadOutput) ToOosObjectGrantReadOutput() OosObjectGrantReadOutput {
+	return o
+}
+
+func (o OosObjectGrantReadOutput) ToOosObjectGrantReadOutputWithContext(ctx context.Context) OosObjectGrantReadOutput {
+	return o
+}
+
+func (o OosObjectGrantReadOutput) ToOosObjectGrantReadPtrOutput() OosObjectGrantReadPtrOutput {
+	return o.ToOosObjectGrantReadPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectGrantReadOutput) ToOosObjectGrantReadPtrOutputWithContext(ctx context.Context) OosObjectGrantReadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectGrantRead) *OosObjectGrantRead {
+		return &v
+	}).(OosObjectGrantReadPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantReadOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantRead) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantReadOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantRead) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantReadPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantReadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantRead)(nil)).Elem()
+}
+
+func (o OosObjectGrantReadPtrOutput) ToOosObjectGrantReadPtrOutput() OosObjectGrantReadPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantReadPtrOutput) ToOosObjectGrantReadPtrOutputWithContext(ctx context.Context) OosObjectGrantReadPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantReadPtrOutput) Elem() OosObjectGrantReadOutput {
+	return o.ApplyT(func(v *OosObjectGrantRead) OosObjectGrantRead {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectGrantRead
+		return ret
+	}).(OosObjectGrantReadOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantReadPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantReadPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantReadAcp struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectGrantReadAcpInput is an input type that accepts OosObjectGrantReadAcpArgs and OosObjectGrantReadAcpOutput values.
+// You can construct a concrete instance of `OosObjectGrantReadAcpInput` via:
+//
+//	OosObjectGrantReadAcpArgs{...}
+type OosObjectGrantReadAcpInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantReadAcpOutput() OosObjectGrantReadAcpOutput
+	ToOosObjectGrantReadAcpOutputWithContext(context.Context) OosObjectGrantReadAcpOutput
+}
+
+type OosObjectGrantReadAcpArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectGrantReadAcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantReadAcp)(nil)).Elem()
+}
+
+func (i OosObjectGrantReadAcpArgs) ToOosObjectGrantReadAcpOutput() OosObjectGrantReadAcpOutput {
+	return i.ToOosObjectGrantReadAcpOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantReadAcpArgs) ToOosObjectGrantReadAcpOutputWithContext(ctx context.Context) OosObjectGrantReadAcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantReadAcpOutput)
+}
+
+func (i OosObjectGrantReadAcpArgs) ToOosObjectGrantReadAcpPtrOutput() OosObjectGrantReadAcpPtrOutput {
+	return i.ToOosObjectGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantReadAcpArgs) ToOosObjectGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantReadAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantReadAcpOutput).ToOosObjectGrantReadAcpPtrOutputWithContext(ctx)
+}
+
+// OosObjectGrantReadAcpPtrInput is an input type that accepts OosObjectGrantReadAcpArgs, OosObjectGrantReadAcpPtr and OosObjectGrantReadAcpPtrOutput values.
+// You can construct a concrete instance of `OosObjectGrantReadAcpPtrInput` via:
+//
+//	        OosObjectGrantReadAcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectGrantReadAcpPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantReadAcpPtrOutput() OosObjectGrantReadAcpPtrOutput
+	ToOosObjectGrantReadAcpPtrOutputWithContext(context.Context) OosObjectGrantReadAcpPtrOutput
+}
+
+type oosObjectGrantReadAcpPtrType OosObjectGrantReadAcpArgs
+
+func OosObjectGrantReadAcpPtr(v *OosObjectGrantReadAcpArgs) OosObjectGrantReadAcpPtrInput {
+	return (*oosObjectGrantReadAcpPtrType)(v)
+}
+
+func (*oosObjectGrantReadAcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantReadAcp)(nil)).Elem()
+}
+
+func (i *oosObjectGrantReadAcpPtrType) ToOosObjectGrantReadAcpPtrOutput() OosObjectGrantReadAcpPtrOutput {
+	return i.ToOosObjectGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectGrantReadAcpPtrType) ToOosObjectGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantReadAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantReadAcpPtrOutput)
+}
+
+type OosObjectGrantReadAcpOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantReadAcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantReadAcp)(nil)).Elem()
+}
+
+func (o OosObjectGrantReadAcpOutput) ToOosObjectGrantReadAcpOutput() OosObjectGrantReadAcpOutput {
+	return o
+}
+
+func (o OosObjectGrantReadAcpOutput) ToOosObjectGrantReadAcpOutputWithContext(ctx context.Context) OosObjectGrantReadAcpOutput {
+	return o
+}
+
+func (o OosObjectGrantReadAcpOutput) ToOosObjectGrantReadAcpPtrOutput() OosObjectGrantReadAcpPtrOutput {
+	return o.ToOosObjectGrantReadAcpPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectGrantReadAcpOutput) ToOosObjectGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantReadAcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectGrantReadAcp) *OosObjectGrantReadAcp {
+		return &v
+	}).(OosObjectGrantReadAcpPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantReadAcpOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantReadAcp) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantReadAcpOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantReadAcp) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantReadAcpPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantReadAcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantReadAcp)(nil)).Elem()
+}
+
+func (o OosObjectGrantReadAcpPtrOutput) ToOosObjectGrantReadAcpPtrOutput() OosObjectGrantReadAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantReadAcpPtrOutput) ToOosObjectGrantReadAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantReadAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantReadAcpPtrOutput) Elem() OosObjectGrantReadAcpOutput {
+	return o.ApplyT(func(v *OosObjectGrantReadAcp) OosObjectGrantReadAcp {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectGrantReadAcp
+		return ret
+	}).(OosObjectGrantReadAcpOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantReadAcpPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantReadAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantReadAcpPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantReadAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantWrite struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectGrantWriteInput is an input type that accepts OosObjectGrantWriteArgs and OosObjectGrantWriteOutput values.
+// You can construct a concrete instance of `OosObjectGrantWriteInput` via:
+//
+//	OosObjectGrantWriteArgs{...}
+type OosObjectGrantWriteInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantWriteOutput() OosObjectGrantWriteOutput
+	ToOosObjectGrantWriteOutputWithContext(context.Context) OosObjectGrantWriteOutput
+}
+
+type OosObjectGrantWriteArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectGrantWriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantWrite)(nil)).Elem()
+}
+
+func (i OosObjectGrantWriteArgs) ToOosObjectGrantWriteOutput() OosObjectGrantWriteOutput {
+	return i.ToOosObjectGrantWriteOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantWriteArgs) ToOosObjectGrantWriteOutputWithContext(ctx context.Context) OosObjectGrantWriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantWriteOutput)
+}
+
+func (i OosObjectGrantWriteArgs) ToOosObjectGrantWritePtrOutput() OosObjectGrantWritePtrOutput {
+	return i.ToOosObjectGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantWriteArgs) ToOosObjectGrantWritePtrOutputWithContext(ctx context.Context) OosObjectGrantWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantWriteOutput).ToOosObjectGrantWritePtrOutputWithContext(ctx)
+}
+
+// OosObjectGrantWritePtrInput is an input type that accepts OosObjectGrantWriteArgs, OosObjectGrantWritePtr and OosObjectGrantWritePtrOutput values.
+// You can construct a concrete instance of `OosObjectGrantWritePtrInput` via:
+//
+//	        OosObjectGrantWriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectGrantWritePtrInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantWritePtrOutput() OosObjectGrantWritePtrOutput
+	ToOosObjectGrantWritePtrOutputWithContext(context.Context) OosObjectGrantWritePtrOutput
+}
+
+type oosObjectGrantWritePtrType OosObjectGrantWriteArgs
+
+func OosObjectGrantWritePtr(v *OosObjectGrantWriteArgs) OosObjectGrantWritePtrInput {
+	return (*oosObjectGrantWritePtrType)(v)
+}
+
+func (*oosObjectGrantWritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantWrite)(nil)).Elem()
+}
+
+func (i *oosObjectGrantWritePtrType) ToOosObjectGrantWritePtrOutput() OosObjectGrantWritePtrOutput {
+	return i.ToOosObjectGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectGrantWritePtrType) ToOosObjectGrantWritePtrOutputWithContext(ctx context.Context) OosObjectGrantWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantWritePtrOutput)
+}
+
+type OosObjectGrantWriteOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantWriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantWrite)(nil)).Elem()
+}
+
+func (o OosObjectGrantWriteOutput) ToOosObjectGrantWriteOutput() OosObjectGrantWriteOutput {
+	return o
+}
+
+func (o OosObjectGrantWriteOutput) ToOosObjectGrantWriteOutputWithContext(ctx context.Context) OosObjectGrantWriteOutput {
+	return o
+}
+
+func (o OosObjectGrantWriteOutput) ToOosObjectGrantWritePtrOutput() OosObjectGrantWritePtrOutput {
+	return o.ToOosObjectGrantWritePtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectGrantWriteOutput) ToOosObjectGrantWritePtrOutputWithContext(ctx context.Context) OosObjectGrantWritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectGrantWrite) *OosObjectGrantWrite {
+		return &v
+	}).(OosObjectGrantWritePtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantWriteOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantWrite) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantWriteOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantWrite) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantWritePtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantWritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantWrite)(nil)).Elem()
+}
+
+func (o OosObjectGrantWritePtrOutput) ToOosObjectGrantWritePtrOutput() OosObjectGrantWritePtrOutput {
+	return o
+}
+
+func (o OosObjectGrantWritePtrOutput) ToOosObjectGrantWritePtrOutputWithContext(ctx context.Context) OosObjectGrantWritePtrOutput {
+	return o
+}
+
+func (o OosObjectGrantWritePtrOutput) Elem() OosObjectGrantWriteOutput {
+	return o.ApplyT(func(v *OosObjectGrantWrite) OosObjectGrantWrite {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectGrantWrite
+		return ret
+	}).(OosObjectGrantWriteOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantWritePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantWrite) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantWritePtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantWrite) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantWriteAcp struct {
+	// One or more user email addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids []string `pulumi:"ids"`
+}
+
+// OosObjectGrantWriteAcpInput is an input type that accepts OosObjectGrantWriteAcpArgs and OosObjectGrantWriteAcpOutput values.
+// You can construct a concrete instance of `OosObjectGrantWriteAcpInput` via:
+//
+//	OosObjectGrantWriteAcpArgs{...}
+type OosObjectGrantWriteAcpInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantWriteAcpOutput() OosObjectGrantWriteAcpOutput
+	ToOosObjectGrantWriteAcpOutputWithContext(context.Context) OosObjectGrantWriteAcpOutput
+}
+
+type OosObjectGrantWriteAcpArgs struct {
+	// One or more user email addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OosObjectGrantWriteAcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantWriteAcp)(nil)).Elem()
+}
+
+func (i OosObjectGrantWriteAcpArgs) ToOosObjectGrantWriteAcpOutput() OosObjectGrantWriteAcpOutput {
+	return i.ToOosObjectGrantWriteAcpOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantWriteAcpArgs) ToOosObjectGrantWriteAcpOutputWithContext(ctx context.Context) OosObjectGrantWriteAcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantWriteAcpOutput)
+}
+
+func (i OosObjectGrantWriteAcpArgs) ToOosObjectGrantWriteAcpPtrOutput() OosObjectGrantWriteAcpPtrOutput {
+	return i.ToOosObjectGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectGrantWriteAcpArgs) ToOosObjectGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantWriteAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantWriteAcpOutput).ToOosObjectGrantWriteAcpPtrOutputWithContext(ctx)
+}
+
+// OosObjectGrantWriteAcpPtrInput is an input type that accepts OosObjectGrantWriteAcpArgs, OosObjectGrantWriteAcpPtr and OosObjectGrantWriteAcpPtrOutput values.
+// You can construct a concrete instance of `OosObjectGrantWriteAcpPtrInput` via:
+//
+//	        OosObjectGrantWriteAcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectGrantWriteAcpPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectGrantWriteAcpPtrOutput() OosObjectGrantWriteAcpPtrOutput
+	ToOosObjectGrantWriteAcpPtrOutputWithContext(context.Context) OosObjectGrantWriteAcpPtrOutput
+}
+
+type oosObjectGrantWriteAcpPtrType OosObjectGrantWriteAcpArgs
+
+func OosObjectGrantWriteAcpPtr(v *OosObjectGrantWriteAcpArgs) OosObjectGrantWriteAcpPtrInput {
+	return (*oosObjectGrantWriteAcpPtrType)(v)
+}
+
+func (*oosObjectGrantWriteAcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantWriteAcp)(nil)).Elem()
+}
+
+func (i *oosObjectGrantWriteAcpPtrType) ToOosObjectGrantWriteAcpPtrOutput() OosObjectGrantWriteAcpPtrOutput {
+	return i.ToOosObjectGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectGrantWriteAcpPtrType) ToOosObjectGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantWriteAcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectGrantWriteAcpPtrOutput)
+}
+
+type OosObjectGrantWriteAcpOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantWriteAcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectGrantWriteAcp)(nil)).Elem()
+}
+
+func (o OosObjectGrantWriteAcpOutput) ToOosObjectGrantWriteAcpOutput() OosObjectGrantWriteAcpOutput {
+	return o
+}
+
+func (o OosObjectGrantWriteAcpOutput) ToOosObjectGrantWriteAcpOutputWithContext(ctx context.Context) OosObjectGrantWriteAcpOutput {
+	return o
+}
+
+func (o OosObjectGrantWriteAcpOutput) ToOosObjectGrantWriteAcpPtrOutput() OosObjectGrantWriteAcpPtrOutput {
+	return o.ToOosObjectGrantWriteAcpPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectGrantWriteAcpOutput) ToOosObjectGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantWriteAcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectGrantWriteAcp) *OosObjectGrantWriteAcp {
+		return &v
+	}).(OosObjectGrantWriteAcpPtrOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantWriteAcpOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantWriteAcp) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantWriteAcpOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OosObjectGrantWriteAcp) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OosObjectGrantWriteAcpPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectGrantWriteAcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectGrantWriteAcp)(nil)).Elem()
+}
+
+func (o OosObjectGrantWriteAcpPtrOutput) ToOosObjectGrantWriteAcpPtrOutput() OosObjectGrantWriteAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantWriteAcpPtrOutput) ToOosObjectGrantWriteAcpPtrOutputWithContext(ctx context.Context) OosObjectGrantWriteAcpPtrOutput {
+	return o
+}
+
+func (o OosObjectGrantWriteAcpPtrOutput) Elem() OosObjectGrantWriteAcpOutput {
+	return o.ApplyT(func(v *OosObjectGrantWriteAcp) OosObjectGrantWriteAcp {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectGrantWriteAcp
+		return ret
+	}).(OosObjectGrantWriteAcpOutput)
+}
+
+// One or more user email addresses.
+func (o OosObjectGrantWriteAcpPtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantWriteAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+func (o OosObjectGrantWriteAcpPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OosObjectGrantWriteAcp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
+type OosObjectPermissions struct {
+	// Information about a granted permission for the object.
+	Grants []OosObjectPermissionsGrant `pulumi:"grants"`
+	// Information about the owner of the object.
+	Owner *OosObjectPermissionsOwner `pulumi:"owner"`
+}
+
+// OosObjectPermissionsInput is an input type that accepts OosObjectPermissionsArgs and OosObjectPermissionsOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsInput` via:
+//
+//	OosObjectPermissionsArgs{...}
+type OosObjectPermissionsInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsOutput() OosObjectPermissionsOutput
+	ToOosObjectPermissionsOutputWithContext(context.Context) OosObjectPermissionsOutput
+}
+
+type OosObjectPermissionsArgs struct {
+	// Information about a granted permission for the object.
+	Grants OosObjectPermissionsGrantArrayInput `pulumi:"grants"`
+	// Information about the owner of the object.
+	Owner OosObjectPermissionsOwnerPtrInput `pulumi:"owner"`
+}
+
+func (OosObjectPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissions)(nil)).Elem()
+}
+
+func (i OosObjectPermissionsArgs) ToOosObjectPermissionsOutput() OosObjectPermissionsOutput {
+	return i.ToOosObjectPermissionsOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsArgs) ToOosObjectPermissionsOutputWithContext(ctx context.Context) OosObjectPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsOutput)
+}
+
+func (i OosObjectPermissionsArgs) ToOosObjectPermissionsPtrOutput() OosObjectPermissionsPtrOutput {
+	return i.ToOosObjectPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsArgs) ToOosObjectPermissionsPtrOutputWithContext(ctx context.Context) OosObjectPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsOutput).ToOosObjectPermissionsPtrOutputWithContext(ctx)
+}
+
+// OosObjectPermissionsPtrInput is an input type that accepts OosObjectPermissionsArgs, OosObjectPermissionsPtr and OosObjectPermissionsPtrOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsPtrInput` via:
+//
+//	        OosObjectPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsPtrOutput() OosObjectPermissionsPtrOutput
+	ToOosObjectPermissionsPtrOutputWithContext(context.Context) OosObjectPermissionsPtrOutput
+}
+
+type oosObjectPermissionsPtrType OosObjectPermissionsArgs
+
+func OosObjectPermissionsPtr(v *OosObjectPermissionsArgs) OosObjectPermissionsPtrInput {
+	return (*oosObjectPermissionsPtrType)(v)
+}
+
+func (*oosObjectPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectPermissions)(nil)).Elem()
+}
+
+func (i *oosObjectPermissionsPtrType) ToOosObjectPermissionsPtrOutput() OosObjectPermissionsPtrOutput {
+	return i.ToOosObjectPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectPermissionsPtrType) ToOosObjectPermissionsPtrOutputWithContext(ctx context.Context) OosObjectPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsPtrOutput)
+}
+
+type OosObjectPermissionsOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissions)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsOutput) ToOosObjectPermissionsOutput() OosObjectPermissionsOutput {
+	return o
+}
+
+func (o OosObjectPermissionsOutput) ToOosObjectPermissionsOutputWithContext(ctx context.Context) OosObjectPermissionsOutput {
+	return o
+}
+
+func (o OosObjectPermissionsOutput) ToOosObjectPermissionsPtrOutput() OosObjectPermissionsPtrOutput {
+	return o.ToOosObjectPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectPermissionsOutput) ToOosObjectPermissionsPtrOutputWithContext(ctx context.Context) OosObjectPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectPermissions) *OosObjectPermissions {
+		return &v
+	}).(OosObjectPermissionsPtrOutput)
+}
+
+// Information about a granted permission for the object.
+func (o OosObjectPermissionsOutput) Grants() OosObjectPermissionsGrantArrayOutput {
+	return o.ApplyT(func(v OosObjectPermissions) []OosObjectPermissionsGrant { return v.Grants }).(OosObjectPermissionsGrantArrayOutput)
+}
+
+// Information about the owner of the object.
+func (o OosObjectPermissionsOutput) Owner() OosObjectPermissionsOwnerPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissions) *OosObjectPermissionsOwner { return v.Owner }).(OosObjectPermissionsOwnerPtrOutput)
+}
+
+type OosObjectPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectPermissions)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsPtrOutput) ToOosObjectPermissionsPtrOutput() OosObjectPermissionsPtrOutput {
+	return o
+}
+
+func (o OosObjectPermissionsPtrOutput) ToOosObjectPermissionsPtrOutputWithContext(ctx context.Context) OosObjectPermissionsPtrOutput {
+	return o
+}
+
+func (o OosObjectPermissionsPtrOutput) Elem() OosObjectPermissionsOutput {
+	return o.ApplyT(func(v *OosObjectPermissions) OosObjectPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectPermissions
+		return ret
+	}).(OosObjectPermissionsOutput)
+}
+
+// Information about a granted permission for the object.
+func (o OosObjectPermissionsPtrOutput) Grants() OosObjectPermissionsGrantArrayOutput {
+	return o.ApplyT(func(v *OosObjectPermissions) []OosObjectPermissionsGrant {
+		if v == nil {
+			return nil
+		}
+		return v.Grants
+	}).(OosObjectPermissionsGrantArrayOutput)
+}
+
+// Information about the owner of the object.
+func (o OosObjectPermissionsPtrOutput) Owner() OosObjectPermissionsOwnerPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissions) *OosObjectPermissionsOwner {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(OosObjectPermissionsOwnerPtrOutput)
+}
+
+type OosObjectPermissionsGrant struct {
+	// A grantee.
+	Grantee *OosObjectPermissionsGrantGrantee `pulumi:"grantee"`
+	// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+	Permission *string `pulumi:"permission"`
+}
+
+// OosObjectPermissionsGrantInput is an input type that accepts OosObjectPermissionsGrantArgs and OosObjectPermissionsGrantOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsGrantInput` via:
+//
+//	OosObjectPermissionsGrantArgs{...}
+type OosObjectPermissionsGrantInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsGrantOutput() OosObjectPermissionsGrantOutput
+	ToOosObjectPermissionsGrantOutputWithContext(context.Context) OosObjectPermissionsGrantOutput
+}
+
+type OosObjectPermissionsGrantArgs struct {
+	// A grantee.
+	Grantee OosObjectPermissionsGrantGranteePtrInput `pulumi:"grantee"`
+	// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (OosObjectPermissionsGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissionsGrant)(nil)).Elem()
+}
+
+func (i OosObjectPermissionsGrantArgs) ToOosObjectPermissionsGrantOutput() OosObjectPermissionsGrantOutput {
+	return i.ToOosObjectPermissionsGrantOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsGrantArgs) ToOosObjectPermissionsGrantOutputWithContext(ctx context.Context) OosObjectPermissionsGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsGrantOutput)
+}
+
+// OosObjectPermissionsGrantArrayInput is an input type that accepts OosObjectPermissionsGrantArray and OosObjectPermissionsGrantArrayOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsGrantArrayInput` via:
+//
+//	OosObjectPermissionsGrantArray{ OosObjectPermissionsGrantArgs{...} }
+type OosObjectPermissionsGrantArrayInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsGrantArrayOutput() OosObjectPermissionsGrantArrayOutput
+	ToOosObjectPermissionsGrantArrayOutputWithContext(context.Context) OosObjectPermissionsGrantArrayOutput
+}
+
+type OosObjectPermissionsGrantArray []OosObjectPermissionsGrantInput
+
+func (OosObjectPermissionsGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosObjectPermissionsGrant)(nil)).Elem()
+}
+
+func (i OosObjectPermissionsGrantArray) ToOosObjectPermissionsGrantArrayOutput() OosObjectPermissionsGrantArrayOutput {
+	return i.ToOosObjectPermissionsGrantArrayOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsGrantArray) ToOosObjectPermissionsGrantArrayOutputWithContext(ctx context.Context) OosObjectPermissionsGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsGrantArrayOutput)
+}
+
+type OosObjectPermissionsGrantOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissionsGrant)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsGrantOutput) ToOosObjectPermissionsGrantOutput() OosObjectPermissionsGrantOutput {
+	return o
+}
+
+func (o OosObjectPermissionsGrantOutput) ToOosObjectPermissionsGrantOutputWithContext(ctx context.Context) OosObjectPermissionsGrantOutput {
+	return o
+}
+
+// A grantee.
+func (o OosObjectPermissionsGrantOutput) Grantee() OosObjectPermissionsGrantGranteePtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsGrant) *OosObjectPermissionsGrantGrantee { return v.Grantee }).(OosObjectPermissionsGrantGranteePtrOutput)
+}
+
+// The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+func (o OosObjectPermissionsGrantOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsGrant) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectPermissionsGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OosObjectPermissionsGrant)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsGrantArrayOutput) ToOosObjectPermissionsGrantArrayOutput() OosObjectPermissionsGrantArrayOutput {
+	return o
+}
+
+func (o OosObjectPermissionsGrantArrayOutput) ToOosObjectPermissionsGrantArrayOutputWithContext(ctx context.Context) OosObjectPermissionsGrantArrayOutput {
+	return o
+}
+
+func (o OosObjectPermissionsGrantArrayOutput) Index(i pulumi.IntInput) OosObjectPermissionsGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OosObjectPermissionsGrant {
+		return vs[0].([]OosObjectPermissionsGrant)[vs[1].(int)]
+	}).(OosObjectPermissionsGrantOutput)
+}
+
+type OosObjectPermissionsGrantGrantee struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName *string `pulumi:"displayName"`
+	// The email address of the grantee.
+	EmailAddress *string `pulumi:"emailAddress"`
+	// The S3 user ID of the owner of the object.
+	Id *string `pulumi:"id"`
+	// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+	Type *string `pulumi:"type"`
+	// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+	Uri *string `pulumi:"uri"`
+}
+
+// OosObjectPermissionsGrantGranteeInput is an input type that accepts OosObjectPermissionsGrantGranteeArgs and OosObjectPermissionsGrantGranteeOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsGrantGranteeInput` via:
+//
+//	OosObjectPermissionsGrantGranteeArgs{...}
+type OosObjectPermissionsGrantGranteeInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsGrantGranteeOutput() OosObjectPermissionsGrantGranteeOutput
+	ToOosObjectPermissionsGrantGranteeOutputWithContext(context.Context) OosObjectPermissionsGrantGranteeOutput
+}
+
+type OosObjectPermissionsGrantGranteeArgs struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The email address of the grantee.
+	EmailAddress pulumi.StringPtrInput `pulumi:"emailAddress"`
+	// The S3 user ID of the owner of the object.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (OosObjectPermissionsGrantGranteeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (i OosObjectPermissionsGrantGranteeArgs) ToOosObjectPermissionsGrantGranteeOutput() OosObjectPermissionsGrantGranteeOutput {
+	return i.ToOosObjectPermissionsGrantGranteeOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsGrantGranteeArgs) ToOosObjectPermissionsGrantGranteeOutputWithContext(ctx context.Context) OosObjectPermissionsGrantGranteeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsGrantGranteeOutput)
+}
+
+func (i OosObjectPermissionsGrantGranteeArgs) ToOosObjectPermissionsGrantGranteePtrOutput() OosObjectPermissionsGrantGranteePtrOutput {
+	return i.ToOosObjectPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsGrantGranteeArgs) ToOosObjectPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectPermissionsGrantGranteePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsGrantGranteeOutput).ToOosObjectPermissionsGrantGranteePtrOutputWithContext(ctx)
+}
+
+// OosObjectPermissionsGrantGranteePtrInput is an input type that accepts OosObjectPermissionsGrantGranteeArgs, OosObjectPermissionsGrantGranteePtr and OosObjectPermissionsGrantGranteePtrOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsGrantGranteePtrInput` via:
+//
+//	        OosObjectPermissionsGrantGranteeArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectPermissionsGrantGranteePtrInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsGrantGranteePtrOutput() OosObjectPermissionsGrantGranteePtrOutput
+	ToOosObjectPermissionsGrantGranteePtrOutputWithContext(context.Context) OosObjectPermissionsGrantGranteePtrOutput
+}
+
+type oosObjectPermissionsGrantGranteePtrType OosObjectPermissionsGrantGranteeArgs
+
+func OosObjectPermissionsGrantGranteePtr(v *OosObjectPermissionsGrantGranteeArgs) OosObjectPermissionsGrantGranteePtrInput {
+	return (*oosObjectPermissionsGrantGranteePtrType)(v)
+}
+
+func (*oosObjectPermissionsGrantGranteePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (i *oosObjectPermissionsGrantGranteePtrType) ToOosObjectPermissionsGrantGranteePtrOutput() OosObjectPermissionsGrantGranteePtrOutput {
+	return i.ToOosObjectPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectPermissionsGrantGranteePtrType) ToOosObjectPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectPermissionsGrantGranteePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsGrantGranteePtrOutput)
+}
+
+type OosObjectPermissionsGrantGranteeOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsGrantGranteeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsGrantGranteeOutput) ToOosObjectPermissionsGrantGranteeOutput() OosObjectPermissionsGrantGranteeOutput {
+	return o
+}
+
+func (o OosObjectPermissionsGrantGranteeOutput) ToOosObjectPermissionsGrantGranteeOutputWithContext(ctx context.Context) OosObjectPermissionsGrantGranteeOutput {
+	return o
+}
+
+func (o OosObjectPermissionsGrantGranteeOutput) ToOosObjectPermissionsGrantGranteePtrOutput() OosObjectPermissionsGrantGranteePtrOutput {
+	return o.ToOosObjectPermissionsGrantGranteePtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectPermissionsGrantGranteeOutput) ToOosObjectPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectPermissionsGrantGranteePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectPermissionsGrantGrantee) *OosObjectPermissionsGrantGrantee {
+		return &v
+	}).(OosObjectPermissionsGrantGranteePtrOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectPermissionsGrantGranteeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsGrantGrantee) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The email address of the grantee.
+func (o OosObjectPermissionsGrantGranteeOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsGrantGrantee) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectPermissionsGrantGranteeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsGrantGrantee) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+func (o OosObjectPermissionsGrantGranteeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsGrantGrantee) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+func (o OosObjectPermissionsGrantGranteeOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsGrantGrantee) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectPermissionsGrantGranteePtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsGrantGranteePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectPermissionsGrantGrantee)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsGrantGranteePtrOutput) ToOosObjectPermissionsGrantGranteePtrOutput() OosObjectPermissionsGrantGranteePtrOutput {
+	return o
+}
+
+func (o OosObjectPermissionsGrantGranteePtrOutput) ToOosObjectPermissionsGrantGranteePtrOutputWithContext(ctx context.Context) OosObjectPermissionsGrantGranteePtrOutput {
+	return o
+}
+
+func (o OosObjectPermissionsGrantGranteePtrOutput) Elem() OosObjectPermissionsGrantGranteeOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsGrantGrantee) OosObjectPermissionsGrantGrantee {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectPermissionsGrantGrantee
+		return ret
+	}).(OosObjectPermissionsGrantGranteeOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectPermissionsGrantGranteePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email address of the grantee.
+func (o OosObjectPermissionsGrantGranteePtrOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectPermissionsGrantGranteePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+func (o OosObjectPermissionsGrantGranteePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grantee group (`AllUsers` | `AuthenticatedUsers`).
+func (o OosObjectPermissionsGrantGranteePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsGrantGrantee) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectPermissionsOwner struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName *string `pulumi:"displayName"`
+	// The S3 user ID of the owner of the object.
+	Id *string `pulumi:"id"`
+}
+
+// OosObjectPermissionsOwnerInput is an input type that accepts OosObjectPermissionsOwnerArgs and OosObjectPermissionsOwnerOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsOwnerInput` via:
+//
+//	OosObjectPermissionsOwnerArgs{...}
+type OosObjectPermissionsOwnerInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsOwnerOutput() OosObjectPermissionsOwnerOutput
+	ToOosObjectPermissionsOwnerOutputWithContext(context.Context) OosObjectPermissionsOwnerOutput
+}
+
+type OosObjectPermissionsOwnerArgs struct {
+	// The OUTSCALE account ID of the owner of the object.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The S3 user ID of the owner of the object.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (OosObjectPermissionsOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissionsOwner)(nil)).Elem()
+}
+
+func (i OosObjectPermissionsOwnerArgs) ToOosObjectPermissionsOwnerOutput() OosObjectPermissionsOwnerOutput {
+	return i.ToOosObjectPermissionsOwnerOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsOwnerArgs) ToOosObjectPermissionsOwnerOutputWithContext(ctx context.Context) OosObjectPermissionsOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsOwnerOutput)
+}
+
+func (i OosObjectPermissionsOwnerArgs) ToOosObjectPermissionsOwnerPtrOutput() OosObjectPermissionsOwnerPtrOutput {
+	return i.ToOosObjectPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectPermissionsOwnerArgs) ToOosObjectPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectPermissionsOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsOwnerOutput).ToOosObjectPermissionsOwnerPtrOutputWithContext(ctx)
+}
+
+// OosObjectPermissionsOwnerPtrInput is an input type that accepts OosObjectPermissionsOwnerArgs, OosObjectPermissionsOwnerPtr and OosObjectPermissionsOwnerPtrOutput values.
+// You can construct a concrete instance of `OosObjectPermissionsOwnerPtrInput` via:
+//
+//	        OosObjectPermissionsOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectPermissionsOwnerPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectPermissionsOwnerPtrOutput() OosObjectPermissionsOwnerPtrOutput
+	ToOosObjectPermissionsOwnerPtrOutputWithContext(context.Context) OosObjectPermissionsOwnerPtrOutput
+}
+
+type oosObjectPermissionsOwnerPtrType OosObjectPermissionsOwnerArgs
+
+func OosObjectPermissionsOwnerPtr(v *OosObjectPermissionsOwnerArgs) OosObjectPermissionsOwnerPtrInput {
+	return (*oosObjectPermissionsOwnerPtrType)(v)
+}
+
+func (*oosObjectPermissionsOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectPermissionsOwner)(nil)).Elem()
+}
+
+func (i *oosObjectPermissionsOwnerPtrType) ToOosObjectPermissionsOwnerPtrOutput() OosObjectPermissionsOwnerPtrOutput {
+	return i.ToOosObjectPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectPermissionsOwnerPtrType) ToOosObjectPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectPermissionsOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectPermissionsOwnerPtrOutput)
+}
+
+type OosObjectPermissionsOwnerOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectPermissionsOwner)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsOwnerOutput) ToOosObjectPermissionsOwnerOutput() OosObjectPermissionsOwnerOutput {
+	return o
+}
+
+func (o OosObjectPermissionsOwnerOutput) ToOosObjectPermissionsOwnerOutputWithContext(ctx context.Context) OosObjectPermissionsOwnerOutput {
+	return o
+}
+
+func (o OosObjectPermissionsOwnerOutput) ToOosObjectPermissionsOwnerPtrOutput() OosObjectPermissionsOwnerPtrOutput {
+	return o.ToOosObjectPermissionsOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectPermissionsOwnerOutput) ToOosObjectPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectPermissionsOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectPermissionsOwner) *OosObjectPermissionsOwner {
+		return &v
+	}).(OosObjectPermissionsOwnerPtrOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectPermissionsOwnerOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsOwner) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectPermissionsOwnerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectPermissionsOwner) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectPermissionsOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectPermissionsOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectPermissionsOwner)(nil)).Elem()
+}
+
+func (o OosObjectPermissionsOwnerPtrOutput) ToOosObjectPermissionsOwnerPtrOutput() OosObjectPermissionsOwnerPtrOutput {
+	return o
+}
+
+func (o OosObjectPermissionsOwnerPtrOutput) ToOosObjectPermissionsOwnerPtrOutputWithContext(ctx context.Context) OosObjectPermissionsOwnerPtrOutput {
+	return o
+}
+
+func (o OosObjectPermissionsOwnerPtrOutput) Elem() OosObjectPermissionsOwnerOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsOwner) OosObjectPermissionsOwner {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectPermissionsOwner
+		return ret
+	}).(OosObjectPermissionsOwnerOutput)
+}
+
+// The OUTSCALE account ID of the owner of the object.
+func (o OosObjectPermissionsOwnerPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The S3 user ID of the owner of the object.
+func (o OosObjectPermissionsOwnerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectPermissionsOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectRetentionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosObjectRetentionTimeoutsInput is an input type that accepts OosObjectRetentionTimeoutsArgs and OosObjectRetentionTimeoutsOutput values.
+// You can construct a concrete instance of `OosObjectRetentionTimeoutsInput` via:
+//
+//	OosObjectRetentionTimeoutsArgs{...}
+type OosObjectRetentionTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosObjectRetentionTimeoutsOutput() OosObjectRetentionTimeoutsOutput
+	ToOosObjectRetentionTimeoutsOutputWithContext(context.Context) OosObjectRetentionTimeoutsOutput
+}
+
+type OosObjectRetentionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosObjectRetentionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectRetentionTimeouts)(nil)).Elem()
+}
+
+func (i OosObjectRetentionTimeoutsArgs) ToOosObjectRetentionTimeoutsOutput() OosObjectRetentionTimeoutsOutput {
+	return i.ToOosObjectRetentionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosObjectRetentionTimeoutsArgs) ToOosObjectRetentionTimeoutsOutputWithContext(ctx context.Context) OosObjectRetentionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectRetentionTimeoutsOutput)
+}
+
+func (i OosObjectRetentionTimeoutsArgs) ToOosObjectRetentionTimeoutsPtrOutput() OosObjectRetentionTimeoutsPtrOutput {
+	return i.ToOosObjectRetentionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectRetentionTimeoutsArgs) ToOosObjectRetentionTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectRetentionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectRetentionTimeoutsOutput).ToOosObjectRetentionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosObjectRetentionTimeoutsPtrInput is an input type that accepts OosObjectRetentionTimeoutsArgs, OosObjectRetentionTimeoutsPtr and OosObjectRetentionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosObjectRetentionTimeoutsPtrInput` via:
+//
+//	        OosObjectRetentionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectRetentionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectRetentionTimeoutsPtrOutput() OosObjectRetentionTimeoutsPtrOutput
+	ToOosObjectRetentionTimeoutsPtrOutputWithContext(context.Context) OosObjectRetentionTimeoutsPtrOutput
+}
+
+type oosObjectRetentionTimeoutsPtrType OosObjectRetentionTimeoutsArgs
+
+func OosObjectRetentionTimeoutsPtr(v *OosObjectRetentionTimeoutsArgs) OosObjectRetentionTimeoutsPtrInput {
+	return (*oosObjectRetentionTimeoutsPtrType)(v)
+}
+
+func (*oosObjectRetentionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectRetentionTimeouts)(nil)).Elem()
+}
+
+func (i *oosObjectRetentionTimeoutsPtrType) ToOosObjectRetentionTimeoutsPtrOutput() OosObjectRetentionTimeoutsPtrOutput {
+	return i.ToOosObjectRetentionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectRetentionTimeoutsPtrType) ToOosObjectRetentionTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectRetentionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectRetentionTimeoutsPtrOutput)
+}
+
+type OosObjectRetentionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosObjectRetentionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectRetentionTimeouts)(nil)).Elem()
+}
+
+func (o OosObjectRetentionTimeoutsOutput) ToOosObjectRetentionTimeoutsOutput() OosObjectRetentionTimeoutsOutput {
+	return o
+}
+
+func (o OosObjectRetentionTimeoutsOutput) ToOosObjectRetentionTimeoutsOutputWithContext(ctx context.Context) OosObjectRetentionTimeoutsOutput {
+	return o
+}
+
+func (o OosObjectRetentionTimeoutsOutput) ToOosObjectRetentionTimeoutsPtrOutput() OosObjectRetentionTimeoutsPtrOutput {
+	return o.ToOosObjectRetentionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectRetentionTimeoutsOutput) ToOosObjectRetentionTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectRetentionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectRetentionTimeouts) *OosObjectRetentionTimeouts {
+		return &v
+	}).(OosObjectRetentionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectRetentionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectRetentionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosObjectRetentionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectRetentionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectRetentionTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectRetentionTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectRetentionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectRetentionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectRetentionTimeouts)(nil)).Elem()
+}
+
+func (o OosObjectRetentionTimeoutsPtrOutput) ToOosObjectRetentionTimeoutsPtrOutput() OosObjectRetentionTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosObjectRetentionTimeoutsPtrOutput) ToOosObjectRetentionTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectRetentionTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosObjectRetentionTimeoutsPtrOutput) Elem() OosObjectRetentionTimeoutsOutput {
+	return o.ApplyT(func(v *OosObjectRetentionTimeouts) OosObjectRetentionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectRetentionTimeouts
+		return ret
+	}).(OosObjectRetentionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectRetentionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectRetentionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosObjectRetentionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectRetentionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectRetentionTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectRetentionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type OosObjectTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// OosObjectTimeoutsInput is an input type that accepts OosObjectTimeoutsArgs and OosObjectTimeoutsOutput values.
+// You can construct a concrete instance of `OosObjectTimeoutsInput` via:
+//
+//	OosObjectTimeoutsArgs{...}
+type OosObjectTimeoutsInput interface {
+	pulumi.Input
+
+	ToOosObjectTimeoutsOutput() OosObjectTimeoutsOutput
+	ToOosObjectTimeoutsOutputWithContext(context.Context) OosObjectTimeoutsOutput
+}
+
+type OosObjectTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (OosObjectTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectTimeouts)(nil)).Elem()
+}
+
+func (i OosObjectTimeoutsArgs) ToOosObjectTimeoutsOutput() OosObjectTimeoutsOutput {
+	return i.ToOosObjectTimeoutsOutputWithContext(context.Background())
+}
+
+func (i OosObjectTimeoutsArgs) ToOosObjectTimeoutsOutputWithContext(ctx context.Context) OosObjectTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectTimeoutsOutput)
+}
+
+func (i OosObjectTimeoutsArgs) ToOosObjectTimeoutsPtrOutput() OosObjectTimeoutsPtrOutput {
+	return i.ToOosObjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i OosObjectTimeoutsArgs) ToOosObjectTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectTimeoutsOutput).ToOosObjectTimeoutsPtrOutputWithContext(ctx)
+}
+
+// OosObjectTimeoutsPtrInput is an input type that accepts OosObjectTimeoutsArgs, OosObjectTimeoutsPtr and OosObjectTimeoutsPtrOutput values.
+// You can construct a concrete instance of `OosObjectTimeoutsPtrInput` via:
+//
+//	        OosObjectTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OosObjectTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToOosObjectTimeoutsPtrOutput() OosObjectTimeoutsPtrOutput
+	ToOosObjectTimeoutsPtrOutputWithContext(context.Context) OosObjectTimeoutsPtrOutput
+}
+
+type oosObjectTimeoutsPtrType OosObjectTimeoutsArgs
+
+func OosObjectTimeoutsPtr(v *OosObjectTimeoutsArgs) OosObjectTimeoutsPtrInput {
+	return (*oosObjectTimeoutsPtrType)(v)
+}
+
+func (*oosObjectTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectTimeouts)(nil)).Elem()
+}
+
+func (i *oosObjectTimeoutsPtrType) ToOosObjectTimeoutsPtrOutput() OosObjectTimeoutsPtrOutput {
+	return i.ToOosObjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *oosObjectTimeoutsPtrType) ToOosObjectTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OosObjectTimeoutsPtrOutput)
+}
+
+type OosObjectTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (OosObjectTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OosObjectTimeouts)(nil)).Elem()
+}
+
+func (o OosObjectTimeoutsOutput) ToOosObjectTimeoutsOutput() OosObjectTimeoutsOutput {
+	return o
+}
+
+func (o OosObjectTimeoutsOutput) ToOosObjectTimeoutsOutputWithContext(ctx context.Context) OosObjectTimeoutsOutput {
+	return o
+}
+
+func (o OosObjectTimeoutsOutput) ToOosObjectTimeoutsPtrOutput() OosObjectTimeoutsPtrOutput {
+	return o.ToOosObjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o OosObjectTimeoutsOutput) ToOosObjectTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OosObjectTimeouts) *OosObjectTimeouts {
+		return &v
+	}).(OosObjectTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosObjectTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosObjectTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OosObjectTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type OosObjectTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (OosObjectTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OosObjectTimeouts)(nil)).Elem()
+}
+
+func (o OosObjectTimeoutsPtrOutput) ToOosObjectTimeoutsPtrOutput() OosObjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosObjectTimeoutsPtrOutput) ToOosObjectTimeoutsPtrOutputWithContext(ctx context.Context) OosObjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o OosObjectTimeoutsPtrOutput) Elem() OosObjectTimeoutsOutput {
+	return o.ApplyT(func(v *OosObjectTimeouts) OosObjectTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret OosObjectTimeouts
+		return ret
+	}).(OosObjectTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o OosObjectTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o OosObjectTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o OosObjectTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OosObjectTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -58402,12 +66651,111 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterStatusesPtrInput)(nil)).Elem(), OksClusterStatusesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterTimeoutsInput)(nil)).Elem(), OksClusterTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksClusterTimeoutsPtrInput)(nil)).Elem(), OksClusterTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestFieldManagerInput)(nil)).Elem(), OksManifestFieldManagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestFieldManagerPtrInput)(nil)).Elem(), OksManifestFieldManagerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestTimeoutsInput)(nil)).Elem(), OksManifestTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestTimeoutsPtrInput)(nil)).Elem(), OksManifestTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestWaitForInput)(nil)).Elem(), OksManifestWaitForArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksManifestWaitForPtrInput)(nil)).Elem(), OksManifestWaitForArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksProjectTimeoutsInput)(nil)).Elem(), OksProjectTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OksProjectTimeoutsPtrInput)(nil)).Elem(), OksProjectTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketCorsRuleInput)(nil)).Elem(), OosBucketCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketCorsRuleArrayInput)(nil)).Elem(), OosBucketCorsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketCorsTimeoutsInput)(nil)).Elem(), OosBucketCorsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketCorsTimeoutsPtrInput)(nil)).Elem(), OosBucketCorsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketEncryptionTimeoutsInput)(nil)).Elem(), OosBucketEncryptionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketEncryptionTimeoutsPtrInput)(nil)).Elem(), OosBucketEncryptionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantInput)(nil)).Elem(), OosBucketGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantPtrInput)(nil)).Elem(), OosBucketGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantFullControlInput)(nil)).Elem(), OosBucketGrantFullControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantFullControlPtrInput)(nil)).Elem(), OosBucketGrantFullControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantReadInput)(nil)).Elem(), OosBucketGrantReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantReadPtrInput)(nil)).Elem(), OosBucketGrantReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantReadAcpInput)(nil)).Elem(), OosBucketGrantReadAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantReadAcpPtrInput)(nil)).Elem(), OosBucketGrantReadAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantWriteInput)(nil)).Elem(), OosBucketGrantWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantWritePtrInput)(nil)).Elem(), OosBucketGrantWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantWriteAcpInput)(nil)).Elem(), OosBucketGrantWriteAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketGrantWriteAcpPtrInput)(nil)).Elem(), OosBucketGrantWriteAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleInput)(nil)).Elem(), OosBucketLifecycleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleArrayInput)(nil)).Elem(), OosBucketLifecycleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleAbortIncompleteMultipartUploadInput)(nil)).Elem(), OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrInput)(nil)).Elem(), OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleExpirationInput)(nil)).Elem(), OosBucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleExpirationPtrInput)(nil)).Elem(), OosBucketLifecycleRuleExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleFilterInput)(nil)).Elem(), OosBucketLifecycleRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleFilterAndInput)(nil)).Elem(), OosBucketLifecycleRuleFilterAndArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleFilterAndPtrInput)(nil)).Elem(), OosBucketLifecycleRuleFilterAndArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleNoncurrentVersionExpirationInput)(nil)).Elem(), OosBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), OosBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleTimeoutsInput)(nil)).Elem(), OosBucketLifecycleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketLifecycleTimeoutsPtrInput)(nil)).Elem(), OosBucketLifecycleTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketObjectLockInput)(nil)).Elem(), OosBucketObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketObjectLockPtrInput)(nil)).Elem(), OosBucketObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketObjectLockDefaultRetentionInput)(nil)).Elem(), OosBucketObjectLockDefaultRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketObjectLockDefaultRetentionPtrInput)(nil)).Elem(), OosBucketObjectLockDefaultRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsInput)(nil)).Elem(), OosBucketPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsPtrInput)(nil)).Elem(), OosBucketPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsGrantInput)(nil)).Elem(), OosBucketPermissionsGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsGrantArrayInput)(nil)).Elem(), OosBucketPermissionsGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsGrantGranteeInput)(nil)).Elem(), OosBucketPermissionsGrantGranteeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsGrantGranteePtrInput)(nil)).Elem(), OosBucketPermissionsGrantGranteeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsOwnerInput)(nil)).Elem(), OosBucketPermissionsOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPermissionsOwnerPtrInput)(nil)).Elem(), OosBucketPermissionsOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPolicyTimeoutsInput)(nil)).Elem(), OosBucketPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketPolicyTimeoutsPtrInput)(nil)).Elem(), OosBucketPolicyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketTimeoutsInput)(nil)).Elem(), OosBucketTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketTimeoutsPtrInput)(nil)).Elem(), OosBucketTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketVersioningTimeoutsInput)(nil)).Elem(), OosBucketVersioningTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosBucketVersioningTimeoutsPtrInput)(nil)).Elem(), OosBucketVersioningTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyCopySourceInput)(nil)).Elem(), OosObjectCopyCopySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyCopySourcePtrInput)(nil)).Elem(), OosObjectCopyCopySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantInput)(nil)).Elem(), OosObjectCopyGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantPtrInput)(nil)).Elem(), OosObjectCopyGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantFullControlInput)(nil)).Elem(), OosObjectCopyGrantFullControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantFullControlPtrInput)(nil)).Elem(), OosObjectCopyGrantFullControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantReadInput)(nil)).Elem(), OosObjectCopyGrantReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantReadPtrInput)(nil)).Elem(), OosObjectCopyGrantReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantReadAcpInput)(nil)).Elem(), OosObjectCopyGrantReadAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantReadAcpPtrInput)(nil)).Elem(), OosObjectCopyGrantReadAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantWriteInput)(nil)).Elem(), OosObjectCopyGrantWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantWritePtrInput)(nil)).Elem(), OosObjectCopyGrantWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantWriteAcpInput)(nil)).Elem(), OosObjectCopyGrantWriteAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyGrantWriteAcpPtrInput)(nil)).Elem(), OosObjectCopyGrantWriteAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsInput)(nil)).Elem(), OosObjectCopyPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsPtrInput)(nil)).Elem(), OosObjectCopyPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsGrantInput)(nil)).Elem(), OosObjectCopyPermissionsGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsGrantArrayInput)(nil)).Elem(), OosObjectCopyPermissionsGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsGrantGranteeInput)(nil)).Elem(), OosObjectCopyPermissionsGrantGranteeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsGrantGranteePtrInput)(nil)).Elem(), OosObjectCopyPermissionsGrantGranteeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsOwnerInput)(nil)).Elem(), OosObjectCopyPermissionsOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyPermissionsOwnerPtrInput)(nil)).Elem(), OosObjectCopyPermissionsOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyTimeoutsInput)(nil)).Elem(), OosObjectCopyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectCopyTimeoutsPtrInput)(nil)).Elem(), OosObjectCopyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantInput)(nil)).Elem(), OosObjectGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantPtrInput)(nil)).Elem(), OosObjectGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantFullControlInput)(nil)).Elem(), OosObjectGrantFullControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantFullControlPtrInput)(nil)).Elem(), OosObjectGrantFullControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantReadInput)(nil)).Elem(), OosObjectGrantReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantReadPtrInput)(nil)).Elem(), OosObjectGrantReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantReadAcpInput)(nil)).Elem(), OosObjectGrantReadAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantReadAcpPtrInput)(nil)).Elem(), OosObjectGrantReadAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantWriteInput)(nil)).Elem(), OosObjectGrantWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantWritePtrInput)(nil)).Elem(), OosObjectGrantWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantWriteAcpInput)(nil)).Elem(), OosObjectGrantWriteAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectGrantWriteAcpPtrInput)(nil)).Elem(), OosObjectGrantWriteAcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsInput)(nil)).Elem(), OosObjectPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsPtrInput)(nil)).Elem(), OosObjectPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsGrantInput)(nil)).Elem(), OosObjectPermissionsGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsGrantArrayInput)(nil)).Elem(), OosObjectPermissionsGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsGrantGranteeInput)(nil)).Elem(), OosObjectPermissionsGrantGranteeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsGrantGranteePtrInput)(nil)).Elem(), OosObjectPermissionsGrantGranteeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsOwnerInput)(nil)).Elem(), OosObjectPermissionsOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectPermissionsOwnerPtrInput)(nil)).Elem(), OosObjectPermissionsOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectRetentionTimeoutsInput)(nil)).Elem(), OosObjectRetentionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectRetentionTimeoutsPtrInput)(nil)).Elem(), OosObjectRetentionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectTimeoutsInput)(nil)).Elem(), OosObjectTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OosObjectTimeoutsPtrInput)(nil)).Elem(), OosObjectTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutsInput)(nil)).Elem(), PolicyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyTimeoutsPtrInput)(nil)).Elem(), PolicyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyVersionTimeoutsInput)(nil)).Elem(), PolicyVersionTimeoutsArgs{})
@@ -59295,12 +67643,111 @@ func init() {
 	pulumi.RegisterOutputType(OksClusterStatusesPtrOutput{})
 	pulumi.RegisterOutputType(OksClusterTimeoutsOutput{})
 	pulumi.RegisterOutputType(OksClusterTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OksManifestFieldManagerOutput{})
+	pulumi.RegisterOutputType(OksManifestFieldManagerPtrOutput{})
 	pulumi.RegisterOutputType(OksManifestTimeoutsOutput{})
 	pulumi.RegisterOutputType(OksManifestTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(OksManifestWaitForOutput{})
 	pulumi.RegisterOutputType(OksManifestWaitForPtrOutput{})
 	pulumi.RegisterOutputType(OksProjectTimeoutsOutput{})
 	pulumi.RegisterOutputType(OksProjectTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketCorsRuleOutput{})
+	pulumi.RegisterOutputType(OosBucketCorsRuleArrayOutput{})
+	pulumi.RegisterOutputType(OosBucketCorsTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosBucketCorsTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketEncryptionTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosBucketEncryptionTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantFullControlOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantFullControlPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantReadOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantReadPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantReadAcpOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantReadAcpPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantWriteOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantWritePtrOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantWriteAcpOutput{})
+	pulumi.RegisterOutputType(OosBucketGrantWriteAcpPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleArrayOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleAbortIncompleteMultipartUploadOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleAbortIncompleteMultipartUploadPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleExpirationOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleExpirationPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleFilterOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleFilterAndOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleFilterAndPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleNoncurrentVersionExpirationOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosBucketLifecycleTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketObjectLockOutput{})
+	pulumi.RegisterOutputType(OosBucketObjectLockPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketObjectLockDefaultRetentionOutput{})
+	pulumi.RegisterOutputType(OosBucketObjectLockDefaultRetentionPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsGrantOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsGrantArrayOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsGrantGranteeOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsGrantGranteePtrOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsOwnerOutput{})
+	pulumi.RegisterOutputType(OosBucketPermissionsOwnerPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketPolicyTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosBucketPolicyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosBucketTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosBucketVersioningTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosBucketVersioningTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyCopySourceOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyCopySourcePtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantFullControlOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantFullControlPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantReadOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantReadPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantReadAcpOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantReadAcpPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantWriteOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantWritePtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantWriteAcpOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyGrantWriteAcpPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsGrantOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsGrantArrayOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsGrantGranteeOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsGrantGranteePtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsOwnerOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyPermissionsOwnerPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosObjectCopyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantFullControlOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantFullControlPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantReadOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantReadPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantReadAcpOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantReadAcpPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantWriteOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantWritePtrOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantWriteAcpOutput{})
+	pulumi.RegisterOutputType(OosObjectGrantWriteAcpPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsGrantOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsGrantArrayOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsGrantGranteeOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsGrantGranteePtrOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsOwnerOutput{})
+	pulumi.RegisterOutputType(OosObjectPermissionsOwnerPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectRetentionTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosObjectRetentionTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(OosObjectTimeoutsOutput{})
+	pulumi.RegisterOutputType(OosObjectTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTimeoutsOutput{})
 	pulumi.RegisterOutputType(PolicyTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(PolicyVersionTimeoutsOutput{})

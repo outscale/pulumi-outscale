@@ -288,7 +288,7 @@ def get_nic(filters: Optional[Sequence[Union['GetNicFilterArgs', 'GetNicFilterAr
     Provides information about a network interface card (NIC).
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+    For more information on this resource actions, see the [Nic](https://docs.outscale.com/api#3ds-outscale-api-nic) API methods.
 
     ## Example Usage
 
@@ -338,7 +338,7 @@ def get_nic_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNi
     Provides information about a network interface card (NIC).
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+    For more information on this resource actions, see the [Nic](https://docs.outscale.com/api#3ds-outscale-api-nic) API methods.
 
     ## Example Usage
 

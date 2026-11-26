@@ -78,7 +78,7 @@ def get_policies(filters: Optional[Sequence[Union['GetPoliciesFilterArgs', 'GetP
     Provides information about policies.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#3ds-outscale-api-policy).
+    For more information on this resource actions, see the [Policy](https://docs.outscale.com/api.html#3ds-outscale-api-policy) API methods.
 
     ## Example Usage
 
@@ -117,7 +117,7 @@ def get_policies_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     Provides information about policies.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Policies.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#3ds-outscale-api-policy).
+    For more information on this resource actions, see the [Policy](https://docs.outscale.com/api.html#3ds-outscale-api-policy) API methods.
 
     ## Example Usage
 

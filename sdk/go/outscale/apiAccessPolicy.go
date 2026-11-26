@@ -19,7 +19,7 @@ import (
 // * Specify a Certificate Authority (CA) in all your API access rules.
 //
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html).\
-// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy).
+// For more information on this resource actions, see the [ApiAccessPolicy](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy) API methods.
 //
 // ## Example Usage
 //
@@ -106,13 +106,16 @@ import (
 type ApiAccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
-	MaxAccessKeyExpirationSeconds pulumi.IntOutput    `pulumi:"maxAccessKeyExpirationSeconds"`
-	RequestId                     pulumi.StringOutput `pulumi:"requestId"`
-	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
-	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
-	RequireTrustedEnv pulumi.BoolOutput                `pulumi:"requireTrustedEnv"`
-	Timeouts          ApiAccessPolicyTimeoutsPtrOutput `pulumi:"timeouts"`
+	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+	MaxAccessKeyExpirationSeconds pulumi.IntOutput `pulumi:"maxAccessKeyExpirationSeconds"`
+	// The ID of the API request.
+	RequestId pulumi.StringOutput `pulumi:"requestId"`
+	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
+	RequireTrustedEnv pulumi.BoolOutput `pulumi:"requireTrustedEnv"`
+	// (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
+	// This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
+	RequireTrustedEnvSecureMode pulumi.BoolOutput                `pulumi:"requireTrustedEnvSecureMode"`
+	Timeouts                    ApiAccessPolicyTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewApiAccessPolicy registers a new resource with the given unique name, arguments, and options.
@@ -151,23 +154,29 @@ func GetApiAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiAccessPolicy resources.
 type apiAccessPolicyState struct {
-	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
-	MaxAccessKeyExpirationSeconds *int    `pulumi:"maxAccessKeyExpirationSeconds"`
-	RequestId                     *string `pulumi:"requestId"`
-	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
-	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
-	RequireTrustedEnv *bool                    `pulumi:"requireTrustedEnv"`
-	Timeouts          *ApiAccessPolicyTimeouts `pulumi:"timeouts"`
+	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+	MaxAccessKeyExpirationSeconds *int `pulumi:"maxAccessKeyExpirationSeconds"`
+	// The ID of the API request.
+	RequestId *string `pulumi:"requestId"`
+	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
+	RequireTrustedEnv *bool `pulumi:"requireTrustedEnv"`
+	// (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
+	// This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
+	RequireTrustedEnvSecureMode *bool                    `pulumi:"requireTrustedEnvSecureMode"`
+	Timeouts                    *ApiAccessPolicyTimeouts `pulumi:"timeouts"`
 }
 
 type ApiAccessPolicyState struct {
-	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
 	MaxAccessKeyExpirationSeconds pulumi.IntPtrInput
-	RequestId                     pulumi.StringPtrInput
-	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
-	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
+	// The ID of the API request.
+	RequestId pulumi.StringPtrInput
+	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
 	RequireTrustedEnv pulumi.BoolPtrInput
-	Timeouts          ApiAccessPolicyTimeoutsPtrInput
+	// (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
+	// This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
+	RequireTrustedEnvSecureMode pulumi.BoolPtrInput
+	Timeouts                    ApiAccessPolicyTimeoutsPtrInput
 }
 
 func (ApiAccessPolicyState) ElementType() reflect.Type {
@@ -175,22 +184,26 @@ func (ApiAccessPolicyState) ElementType() reflect.Type {
 }
 
 type apiAccessPolicyArgs struct {
-	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
 	MaxAccessKeyExpirationSeconds int `pulumi:"maxAccessKeyExpirationSeconds"`
-	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
-	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
-	RequireTrustedEnv bool                     `pulumi:"requireTrustedEnv"`
-	Timeouts          *ApiAccessPolicyTimeouts `pulumi:"timeouts"`
+	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
+	RequireTrustedEnv bool `pulumi:"requireTrustedEnv"`
+	// (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
+	// This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
+	RequireTrustedEnvSecureMode *bool                    `pulumi:"requireTrustedEnvSecureMode"`
+	Timeouts                    *ApiAccessPolicyTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ApiAccessPolicy resource.
 type ApiAccessPolicyArgs struct {
-	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+	// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
 	MaxAccessKeyExpirationSeconds pulumi.IntInput
-	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
-	// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
+	// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
 	RequireTrustedEnv pulumi.BoolInput
-	Timeouts          ApiAccessPolicyTimeoutsPtrInput
+	// (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
+	// This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
+	RequireTrustedEnvSecureMode pulumi.BoolPtrInput
+	Timeouts                    ApiAccessPolicyTimeoutsPtrInput
 }
 
 func (ApiAccessPolicyArgs) ElementType() reflect.Type {
@@ -280,19 +293,25 @@ func (o ApiAccessPolicyOutput) ToApiAccessPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `O`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
+// The maximum possible lifetime for your access keys, in seconds (between `0` and `3153600000`, both included). If set to `0`, your access keys can have unlimited lifetimes, but a trusted session cannot be activated. Otherwise, all your access keys must have an expiration date. This value must be greater than the remaining lifetime of each access key of your account.
 func (o ApiAccessPolicyOutput) MaxAccessKeyExpirationSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApiAccessPolicy) pulumi.IntOutput { return v.MaxAccessKeyExpirationSeconds }).(pulumi.IntOutput)
 }
 
+// The ID of the API request.
 func (o ApiAccessPolicyOutput) RequestId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiAccessPolicy) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
 }
 
-// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`.<br />
-// Enabling this will require you and all your users to log in to Cockpit v2 using the WebAuthn method for multi-factor authentication. For more information, see [About Authentication > Multi-Factor Authentication](https://docs.outscale.com/en/userguide/About-Authentication.html#_multi_factor_authentication).
+// If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0`. This allows you to bypass Certificate Authorities (CAs) enforcement.
 func (o ApiAccessPolicyOutput) RequireTrustedEnv() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApiAccessPolicy) pulumi.BoolOutput { return v.RequireTrustedEnv }).(pulumi.BoolOutput)
+}
+
+// (Default: `false`) If true, a trusted session is activated, provided that you specify the `maxAccessKeyExpirationSeconds` parameter with a value greater than `0` and that the parameter `requireTrustedEnv` is set to true.<br />
+// This requires you and all your EIM users to use only trusted access keys, to log in to Cockpit v2 using multi-factor authentication (MFA), and will restrict the CLI use of certain API calls. For more information, see [About Your API Access Policy > Scope of a Trusted Session](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html#_scope_of_a_trusted_session).
+func (o ApiAccessPolicyOutput) RequireTrustedEnvSecureMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApiAccessPolicy) pulumi.BoolOutput { return v.RequireTrustedEnvSecureMode }).(pulumi.BoolOutput)
 }
 
 func (o ApiAccessPolicyOutput) Timeouts() ApiAccessPolicyTimeoutsPtrOutput {

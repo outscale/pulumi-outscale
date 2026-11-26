@@ -138,7 +138,7 @@ def get_user(filters: Optional[Sequence[Union['GetUserFilterArgs', 'GetUserFilte
     Provides information about a user.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIM-Users.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#createuser).
+    For more information on this resource actions, see the [User](https://docs.outscale.com/api.html#3ds-outscale-api-user) API methods.
 
     ## Example Usage
 
@@ -172,7 +172,7 @@ def get_user_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetU
     Provides information about a user.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIM-Users.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#createuser).
+    For more information on this resource actions, see the [User](https://docs.outscale.com/api.html#3ds-outscale-api-user) API methods.
 
     ## Example Usage
 

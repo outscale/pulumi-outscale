@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Provides information about a server certificate.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+ * For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
  */
 export function getServerCertificate(args?: GetServerCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCertificateResult> {
     args = args || {};
@@ -65,7 +65,7 @@ export interface GetServerCertificateResult {
  * Provides information about a server certificate.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+ * For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
  */
 export function getServerCertificateOutput(args?: GetServerCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerCertificateResult> {
     args = args || {};

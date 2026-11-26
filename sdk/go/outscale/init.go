@@ -85,6 +85,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OksManifest{}
 	case "outscale:index/oksProject:OksProject":
 		r = &OksProject{}
+	case "outscale:index/oosBucket:OosBucket":
+		r = &OosBucket{}
+	case "outscale:index/oosBucketCors:OosBucketCors":
+		r = &OosBucketCors{}
+	case "outscale:index/oosBucketEncryption:OosBucketEncryption":
+		r = &OosBucketEncryption{}
+	case "outscale:index/oosBucketLifecycle:OosBucketLifecycle":
+		r = &OosBucketLifecycle{}
+	case "outscale:index/oosBucketPolicy:OosBucketPolicy":
+		r = &OosBucketPolicy{}
+	case "outscale:index/oosBucketVersioning:OosBucketVersioning":
+		r = &OosBucketVersioning{}
+	case "outscale:index/oosObject:OosObject":
+		r = &OosObject{}
+	case "outscale:index/oosObjectCopy:OosObjectCopy":
+		r = &OosObjectCopy{}
+	case "outscale:index/oosObjectRetention:OosObjectRetention":
+		r = &OosObjectRetention{}
+	case "outscale:index/oosPresignedUrl:OosPresignedUrl":
+		r = &OosPresignedUrl{}
 	case "outscale:index/policy:Policy":
 		r = &Policy{}
 	case "outscale:index/policyVersion:PolicyVersion":
@@ -322,6 +342,56 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"outscale",
 		"index/oksProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosBucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosBucketCors",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosBucketEncryption",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosBucketLifecycle",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosBucketPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosBucketVersioning",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosObject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosObjectCopy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosObjectRetention",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"outscale",
+		"index/oosPresignedUrl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

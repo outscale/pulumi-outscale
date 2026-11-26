@@ -432,7 +432,7 @@ class Route(pulumi.CustomResource):
         Manages a route.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-route).
+        For more information on this resource actions, see the [Route](https://docs.outscale.com/api#3ds-outscale-api-route) API methods.
 
         ## Example Usage
 
@@ -493,7 +493,7 @@ class Route(pulumi.CustomResource):
         Manages a route.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-route).
+        For more information on this resource actions, see the [Route](https://docs.outscale.com/api#3ds-outscale-api-route) API methods.
 
         ## Example Usage
 

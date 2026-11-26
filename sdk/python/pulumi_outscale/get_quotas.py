@@ -87,7 +87,7 @@ def get_quotas(filters: Optional[Sequence[Union['GetQuotasFilterArgs', 'GetQuota
     Provides information about quotas.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+    For more information on this resource actions, see the [ReadQuotas](https://docs.outscale.com/api#readquotas) API method.
 
     ## Example Usage
 
@@ -129,7 +129,7 @@ def get_quotas_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
     Provides information about quotas.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-OUTSCALE-Account.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readquotas).
+    For more information on this resource actions, see the [ReadQuotas](https://docs.outscale.com/api#readquotas) API method.
 
     ## Example Usage
 

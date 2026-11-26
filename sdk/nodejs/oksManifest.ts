@@ -77,6 +77,24 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A Kubernetes manifest can be imported using the cluster ID, API version, kind, name, and optionally the namespace, in the format `<cluster_id>,<api_version>,<kind>,<name>[,<namespace>]`. For example:
+ *
+ * ```sh
+ *
+ * $ pulumi import outscale:index/oksManifest:OksManifest nodepool cluster-id,oks.dev/v1beta2,NodePool,pool-1
+ *
+ * ```
+ *
+ * or
+ *
+ * ```sh
+ *
+ * $ pulumi import outscale:index/oksManifest:OksManifest configmap cluster-id,v1,ConfigMap,example,default
+ *
+ * ```
  */
 export class OksManifest extends pulumi.CustomResource {
     /**
@@ -110,6 +128,10 @@ export class OksManifest extends pulumi.CustomResource {
      * The ID of the cluster on which you want to apply the manifest.
      */
     declare public readonly clusterId: pulumi.Output<string>;
+    /**
+     * Server-side apply field manager options:
+     */
+    declare public readonly fieldManager: pulumi.Output<outputs.OksManifestFieldManager>;
     /**
      * The Kubernetes YAML manifest.
      */
@@ -146,6 +168,7 @@ export class OksManifest extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OksManifestState | undefined;
             resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["fieldManager"] = state?.fieldManager;
             resourceInputs["manifest"] = state?.manifest;
             resourceInputs["object"] = state?.object;
             resourceInputs["skipDelete"] = state?.skipDelete;
@@ -161,6 +184,7 @@ export class OksManifest extends pulumi.CustomResource {
                 throw new Error("Missing required property 'manifest'");
             }
             resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["fieldManager"] = args?.fieldManager;
             resourceInputs["manifest"] = args?.manifest;
             resourceInputs["skipDelete"] = args?.skipDelete;
             resourceInputs["timeouts"] = args?.timeouts;
@@ -181,6 +205,10 @@ export interface OksManifestState {
      * The ID of the cluster on which you want to apply the manifest.
      */
     clusterId?: pulumi.Input<string>;
+    /**
+     * Server-side apply field manager options:
+     */
+    fieldManager?: pulumi.Input<inputs.OksManifestFieldManager>;
     /**
      * The Kubernetes YAML manifest.
      */
@@ -212,6 +240,10 @@ export interface OksManifestArgs {
      * The ID of the cluster on which you want to apply the manifest.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * Server-side apply field manager options:
+     */
+    fieldManager?: pulumi.Input<inputs.OksManifestFieldManager>;
     /**
      * The Kubernetes YAML manifest.
      */

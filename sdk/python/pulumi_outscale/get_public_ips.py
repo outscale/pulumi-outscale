@@ -87,7 +87,7 @@ def get_public_ips(filters: Optional[Sequence[Union['GetPublicIpsFilterArgs', 'G
     Provides information about public IPs.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+    For more information on this resource actions, see the [PublicIp](https://docs.outscale.com/api#3ds-outscale-api-publicip) API methods.
 
     ## Example Usage
 
@@ -123,7 +123,7 @@ def get_public_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union
     Provides information about public IPs.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Public-IPs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-publicip).
+    For more information on this resource actions, see the [PublicIp](https://docs.outscale.com/api#3ds-outscale-api-publicip) API methods.
 
     ## Example Usage
 

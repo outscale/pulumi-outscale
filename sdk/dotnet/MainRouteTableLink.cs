@@ -15,7 +15,7 @@ namespace Pulumi.Outscale
     /// &gt; **Note:** On Net creation, the OUTSCALE API always creates an initial main route table. The `MainRouteTableLink`resource records the ID of the inital route table under the `DefaultRouteTableId` attribute. The "Destroy" action for a `MainRouteTableLink` consists of resetting the original route table as the main route table for the Net. The additional route table must remain intact in order for the `MainRouteTableLink` destroy to work properly.
     /// 
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Route-Tables.html).\
-    /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-routetable).
+    /// For more information on this resource actions, see the [RouteTable](https://docs.outscale.com/api#3ds-outscale-api-routetable) API methods.
     /// 
     /// ## Example Usage
     /// 
