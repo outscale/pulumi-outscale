@@ -210,11 +210,11 @@ class SnapshotAttributes(pulumi.CustomResource):
             subregion_name="eu-west-2a",
             size=40)
         snapshot01 = outscale.Snapshot("snapshot01",
-            volume_id=volume01.volume_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-snapshot-test",
-            }])
+            }],
+            volume_id=volume01.volume_id)
         ```
 
         ### Add permissions
@@ -224,10 +224,10 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes01 = outscale.SnapshotAttributes("snapshot_attributes01",
-            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_additions={
                 "account_ids": ["012345678910"],
-            })
+            },
+            snapshot_id=snapshot01["snapshotId"])
         ```
 
         ### Remove permissions
@@ -237,10 +237,10 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes02 = outscale.SnapshotAttributes("snapshot_attributes02",
-            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_removals={
                 "account_ids": ["012345678910"],
-            })
+            },
+            snapshot_id=snapshot01["snapshotId"])
         ```
 
         :param str resource_name: The name of the resource.
@@ -273,11 +273,11 @@ class SnapshotAttributes(pulumi.CustomResource):
             subregion_name="eu-west-2a",
             size=40)
         snapshot01 = outscale.Snapshot("snapshot01",
-            volume_id=volume01.volume_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-snapshot-test",
-            }])
+            }],
+            volume_id=volume01.volume_id)
         ```
 
         ### Add permissions
@@ -287,10 +287,10 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes01 = outscale.SnapshotAttributes("snapshot_attributes01",
-            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_additions={
                 "account_ids": ["012345678910"],
-            })
+            },
+            snapshot_id=snapshot01["snapshotId"])
         ```
 
         ### Remove permissions
@@ -300,10 +300,10 @@ class SnapshotAttributes(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         snapshot_attributes02 = outscale.SnapshotAttributes("snapshot_attributes02",
-            snapshot_id=snapshot01["snapshotId"],
             permissions_to_create_volume_removals={
                 "account_ids": ["012345678910"],
-            })
+            },
+            snapshot_id=snapshot01["snapshotId"])
         ```
 
         :param str resource_name: The name of the resource.

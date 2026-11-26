@@ -35,7 +35,6 @@ namespace Pulumi.Outscale
     /// 
     ///     var snapshot01 = new Outscale.Snapshot("snapshot01", new()
     ///     {
-    ///         VolumeId = volume01.VolumeId,
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.SnapshotTagArgs
@@ -44,6 +43,7 @@ namespace Pulumi.Outscale
     ///                 Value = "terraform-snapshot-test",
     ///             },
     ///         },
+    ///         VolumeId = volume01.VolumeId,
     ///     });
     /// 
     /// });
@@ -61,7 +61,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var snapshotAttributes01 = new Outscale.SnapshotAttributes("snapshot_attributes01", new()
     ///     {
-    ///         SnapshotId = snapshot01.SnapshotId,
     ///         PermissionsToCreateVolumeAdditions = new Outscale.Inputs.SnapshotAttributesPermissionsToCreateVolumeAdditionsArgs
     ///         {
     ///             AccountIds = new[]
@@ -69,6 +68,7 @@ namespace Pulumi.Outscale
     ///                 "012345678910",
     ///             },
     ///         },
+    ///         SnapshotId = snapshot01.SnapshotId,
     ///     });
     /// 
     /// });
@@ -86,7 +86,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var snapshotAttributes02 = new Outscale.SnapshotAttributes("snapshot_attributes02", new()
     ///     {
-    ///         SnapshotId = snapshot01.SnapshotId,
     ///         PermissionsToCreateVolumeRemovals = new Outscale.Inputs.SnapshotAttributesPermissionsToCreateVolumeRemovalsArgs
     ///         {
     ///             AccountIds = new[]
@@ -94,6 +93,7 @@ namespace Pulumi.Outscale
     ///                 "012345678910",
     ///             },
     ///         },
+    ///         SnapshotId = snapshot01.SnapshotId,
     ///     });
     /// 
     /// });

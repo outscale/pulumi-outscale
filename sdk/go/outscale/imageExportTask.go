@@ -61,18 +61,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewImageExportTask(ctx, "image_export_task01", &outscale.ImageExportTaskArgs{
-//				ImageId: pulumi.Any(image01.ImageId),
 //				OsuExports: outscale.ImageExportTaskOsuExportArray{
 //					&outscale.ImageExportTaskOsuExportArgs{
-//						DiskImageFormat: pulumi.String("qcow2"),
-//						OsuBucket:       pulumi.String("terraform-bucket"),
-//						OsuPrefix:       pulumi.String("new-export"),
 //						OsuApiKeys: outscale.ImageExportTaskOsuExportOsuApiKeyArray{
 //							&outscale.ImageExportTaskOsuExportOsuApiKeyArgs{
 //								ApiKeyId:  pulumi.Any(accessKeyId),
 //								SecretKey: pulumi.Any(secretKeyId),
 //							},
 //						},
+//						DiskImageFormat: pulumi.String("qcow2"),
+//						OsuBucket:       pulumi.String("terraform-bucket"),
+//						OsuPrefix:       pulumi.String("new-export"),
 //					},
 //				},
 //				Tags: outscale.ImageExportTaskTagArray{
@@ -81,6 +80,7 @@ import (
 //						Value: pulumi.String("terraform-snapshot-export-task"),
 //					},
 //				},
+//				ImageId:           pulumi.Any(image01.ImageId),
 //				WaitForCompletion: pulumi.Bool(false),
 //			})
 //			if err != nil {

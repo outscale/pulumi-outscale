@@ -93,8 +93,7 @@ def get_policies_linked_to_user_group(filters: Optional[Sequence[Union['GetPolic
     import pulumi
     import pulumi_outscale as outscale
 
-    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(user_group_name="user_group_name",
-        filters=[
+    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(filters=[
             {
                 "name": "user_group_ids",
                 "values": [
@@ -106,7 +105,8 @@ def get_policies_linked_to_user_group(filters: Optional[Sequence[Union['GetPolic
                 "name": "path_prefix",
                 "values": ["/test/"],
             },
-        ])
+        ],
+        user_group_name="user_group_name")
     ```
 
 
@@ -138,8 +138,7 @@ def get_policies_linked_to_user_group_output(filters: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_outscale as outscale
 
-    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(user_group_name="user_group_name",
-        filters=[
+    managed_policies_linked_to_user_group = outscale.get_policies_linked_to_user_group(filters=[
             {
                 "name": "user_group_ids",
                 "values": [
@@ -151,7 +150,8 @@ def get_policies_linked_to_user_group_output(filters: Optional[pulumi.Input[Opti
                 "name": "path_prefix",
                 "values": ["/test/"],
             },
-        ])
+        ],
+        user_group_name="user_group_name")
     ```
 
 

@@ -34,11 +34,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const user_1 = new outscale.User("user-1", {
- *     userName: "User-TF-1",
  *     policies: [{
  *         policyOrn: policy_1.orn,
  *         defaultVersionId: "V1",
  *     }],
+ *     userName: "User-TF-1",
  * });
  * ```
  *

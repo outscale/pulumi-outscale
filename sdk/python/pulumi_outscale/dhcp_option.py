@@ -299,6 +299,10 @@ class DhcpOption(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         dhcp_option02 = outscale.DhcpOption("dhcp_option_02",
+            tags=[{
+                "key": "Name",
+                "value": "DHCP01",
+            }],
             domain_name="MyCompany.com",
             domain_name_servers=[
                 "111.111.11.111",
@@ -307,11 +311,7 @@ class DhcpOption(pulumi.CustomResource):
             ntp_servers=[
                 "111.1.1.1",
                 "222.2.2.2",
-            ],
-            tags=[{
-                "key": "Name",
-                "value": "DHCP01",
-            }])
+            ])
         ```
 
         ## Import
@@ -362,6 +362,10 @@ class DhcpOption(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         dhcp_option02 = outscale.DhcpOption("dhcp_option_02",
+            tags=[{
+                "key": "Name",
+                "value": "DHCP01",
+            }],
             domain_name="MyCompany.com",
             domain_name_servers=[
                 "111.111.11.111",
@@ -370,11 +374,7 @@ class DhcpOption(pulumi.CustomResource):
             ntp_servers=[
                 "111.1.1.1",
                 "222.2.2.2",
-            ],
-            tags=[{
-                "key": "Name",
-                "value": "DHCP01",
-            }])
+            ])
         ```
 
         ## Import

@@ -32,15 +32,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewClientGateway(ctx, "client_gateway01", &outscale.ClientGatewayArgs{
-//				BgpAsn:         pulumi.Int(65000),
-//				PublicIp:       pulumi.String("111.11.11.111"),
-//				ConnectionType: pulumi.String("ipsec.1"),
 //				Tags: outscale.ClientGatewayTagArray{
 //					&outscale.ClientGatewayTagArgs{
 //						Key:   pulumi.String("Name"),
 //						Value: pulumi.String("client_gateway_01"),
 //					},
 //				},
+//				BgpAsn:         pulumi.Int(65000),
+//				PublicIp:       pulumi.String("111.11.11.111"),
+//				ConnectionType: pulumi.String("ipsec.1"),
 //			})
 //			if err != nil {
 //				return err

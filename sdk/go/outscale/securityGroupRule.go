@@ -99,21 +99,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewSecurityGroupRule(ctx, "security_group_rule02", &outscale.SecurityGroupRuleArgs{
-//				Flow:            pulumi.String("Inbound"),
-//				SecurityGroupId: pulumi.Any(securityGroup01.SecurityGroupId),
 //				Rules: outscale.SecurityGroupRuleRuleArray{
 //					&outscale.SecurityGroupRuleRuleArgs{
-//						FromPortRange: pulumi.Int(22),
-//						ToPortRange:   pulumi.Int(22),
-//						IpProtocol:    pulumi.String("tcp"),
 //						SecurityGroupsMembers: outscale.SecurityGroupRuleRuleSecurityGroupsMemberArray{
 //							&outscale.SecurityGroupRuleRuleSecurityGroupsMemberArgs{
 //								AccountId:         pulumi.String("012345678910"),
 //								SecurityGroupName: pulumi.String("terraform-security-group-test-02"),
 //							},
 //						},
+//						FromPortRange: pulumi.Int(22),
+//						ToPortRange:   pulumi.Int(22),
+//						IpProtocol:    pulumi.String("tcp"),
 //					},
 //				},
+//				Flow:            pulumi.String("Inbound"),
+//				SecurityGroupId: pulumi.Any(securityGroup01.SecurityGroupId),
 //			})
 //			if err != nil {
 //				return err

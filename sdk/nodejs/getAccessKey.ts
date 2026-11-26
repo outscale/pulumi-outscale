@@ -35,7 +35,6 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const accessKey01 = outscale.getAccessKey({
- *     userName: "user_name",
  *     filters: [
  *         {
  *             name: "access_key_ids",
@@ -46,6 +45,7 @@ import * as utilities from "./utilities";
  *             values: ["ACTIVE"],
  *         },
  *     ],
+ *     userName: "user_name",
  * });
  * ```
  */
@@ -143,7 +143,6 @@ export interface GetAccessKeyResult {
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const accessKey01 = outscale.getAccessKey({
- *     userName: "user_name",
  *     filters: [
  *         {
  *             name: "access_key_ids",
@@ -154,6 +153,7 @@ export interface GetAccessKeyResult {
  *             values: ["ACTIVE"],
  *         },
  *     ],
+ *     userName: "user_name",
  * });
  * ```
  */

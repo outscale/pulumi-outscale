@@ -26,8 +26,6 @@ import * as utilities from "./utilities";
  *     keypairName: keypairName,
  * });
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
- *     loadBalancerName: "terraform-public-load-balancer",
- *     subregionNames: [`${region}a`],
  *     listeners: [{
  *         backendPort: 80,
  *         backendProtocol: "TCP",
@@ -38,6 +36,8 @@ import * as utilities from "./utilities";
  *         key: "name",
  *         value: "terraform-public-load-balancer",
  *     }],
+ *     loadBalancerName: "terraform-public-load-balancer",
+ *     subregionNames: [`${region}a`],
  * });
  * const outscaleLoadBalancerVms01 = new outscale.LoadBalancerVms("outscale_load_balancer_vms01", {
  *     loadBalancerName: loadBalancer01.id,

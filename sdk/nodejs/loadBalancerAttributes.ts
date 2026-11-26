@@ -21,8 +21,6 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
- *     loadBalancerName: "terraform-load-balancer",
- *     subregionNames: ["eu-west-2a"],
  *     listeners: [
  *         {
  *             backendPort: 80,
@@ -54,6 +52,8 @@ import * as utilities from "./utilities";
  *             value: "eu-west-2",
  *         },
  *     ],
+ *     loadBalancerName: "terraform-load-balancer",
+ *     subregionNames: ["eu-west-2a"],
  * });
  * ```
  *
@@ -64,7 +64,6 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const attributes01 = new outscale.LoadBalancerAttributes("attributes01", {
- *     loadBalancerName: loadBalancer01.id,
  *     healthCheck: {
  *         healthyThreshold: 10,
  *         checkInterval: 30,
@@ -74,6 +73,7 @@ import * as utilities from "./utilities";
  *         timeout: 5,
  *         unhealthyThreshold: 5,
  *     },
+ *     loadBalancerName: loadBalancer01.id,
  * });
  * ```
  *
@@ -84,13 +84,13 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const attributes02 = new outscale.LoadBalancerAttributes("attributes02", {
- *     loadBalancerName: loadBalancer01.id,
  *     accessLog: {
  *         publicationInterval: 5,
  *         isEnabled: true,
  *         osuBucketName: "terraform-access-logs",
  *         osuBucketPrefix: "access-logs-01234",
  *     },
+ *     loadBalancerName: loadBalancer01.id,
  * });
  * ```
  *

@@ -551,8 +551,6 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-public-load-balancer",
-            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 8080,
                 "backend_protocol": "HTTP",
@@ -562,7 +560,9 @@ class LoadBalancer(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "terraform-public-load-balancer",
-            }])
+            }],
+            load_balancer_name="terraform-public-load-balancer",
+            subregion_names=[f"{region}a"])
         ```
 
         ### Create a load balancer in a Net
@@ -573,35 +573,35 @@ class LoadBalancer(pulumi.CustomResource):
 
         net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
         subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
             tags=[{
                 "key": "Name",
                 "value": "terraform-subnet-for-internal-load-balancer",
-            }])
-        security_group01 = outscale.SecurityGroup("security_group01",
-            description="Terraform security group for internal load balancer",
-            security_group_name="terraform-security-group-for-internal-load-balancer",
+            }],
             net_id=net01.net_id,
+            ip_range="10.0.0.0/24")
+        security_group01 = outscale.SecurityGroup("security_group01",
             tags=[{
                 "key": "Name",
                 "value": "terraform-security-group-for-internal-load-balancer",
-            }])
+            }],
+            description="Terraform security group for internal load balancer",
+            security_group_name="terraform-security-group-for-internal-load-balancer",
+            net_id=net01.net_id)
         load_balancer02 = outscale.LoadBalancer("load_balancer02",
-            load_balancer_name="terraform-private-load-balancer",
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
                 "load_balancer_protocol": "TCP",
                 "load_balancer_port": 80,
             }],
-            subnets=[subnet01.subnet_id],
-            security_groups=[security_group01.security_group_id],
-            load_balancer_type="internal",
             tags=[{
                 "key": "name",
                 "value": "terraform-private-load-balancer",
-            }])
+            }],
+            load_balancer_name="terraform-private-load-balancer",
+            subnets=[subnet01.subnet_id],
+            security_groups=[security_group01.security_group_id],
+            load_balancer_type="internal")
         ```
 
         ### Create an internet-facing load balancer in a Net
@@ -612,22 +612,22 @@ class LoadBalancer(pulumi.CustomResource):
 
         net02 = outscale.Net("net02", ip_range="10.0.0.0/16")
         subnet02 = outscale.Subnet("subnet02",
-            net_id=net02.net_id,
-            ip_range="10.0.0.0/24",
             tags=[{
                 "key": "Name",
                 "value": "terraform-security-group-for-load-balancer",
-            }])
+            }],
+            net_id=net02.net_id,
+            ip_range="10.0.0.0/24")
         internet_service01 = outscale.InternetService("internet_service01", opts = pulumi.ResourceOptions(depends_on=[net02]))
         internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
             internet_service_id=internet_service01.internet_service_id,
             net_id=net02.net_id)
         route_table01 = outscale.RouteTable("route_table01",
-            net_id=net02.net_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-route-table-for-load-balancer",
-            }])
+            }],
+            net_id=net02.net_id)
         route01 = outscale.Route("route01",
             gateway_id=internet_service01.id,
             destination_ip_range="0.0.0.0/0",
@@ -636,7 +636,6 @@ class LoadBalancer(pulumi.CustomResource):
             route_table_id=route_table01.route_table_id,
             subnet_id=subnet02.subnet_id)
         load_balancer03 = outscale.LoadBalancer("load_balancer03",
-            load_balancer_name="terraform-internet-private-lb",
             listeners=[
                 {
                     "backend_port": 80,
@@ -651,13 +650,14 @@ class LoadBalancer(pulumi.CustomResource):
                     "load_balancer_port": 8080,
                 },
             ],
-            subnets=[subnet02.subnet_id],
-            load_balancer_type="internet-facing",
-            public_ip="192.0.2.0",
             tags=[{
                 "key": "name",
                 "value": "terraform-internet-private-lb",
             }],
+            load_balancer_name="terraform-internet-private-lb",
+            subnets=[subnet02.subnet_id],
+            load_balancer_type="internet-facing",
+            public_ip="192.0.2.0",
             opts = pulumi.ResourceOptions(depends_on=[
                     route01,
                     route_table_link01,
@@ -707,8 +707,6 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-public-load-balancer",
-            subregion_names=[f"{region}a"],
             listeners=[{
                 "backend_port": 8080,
                 "backend_protocol": "HTTP",
@@ -718,7 +716,9 @@ class LoadBalancer(pulumi.CustomResource):
             tags=[{
                 "key": "name",
                 "value": "terraform-public-load-balancer",
-            }])
+            }],
+            load_balancer_name="terraform-public-load-balancer",
+            subregion_names=[f"{region}a"])
         ```
 
         ### Create a load balancer in a Net
@@ -729,35 +729,35 @@ class LoadBalancer(pulumi.CustomResource):
 
         net01 = outscale.Net("net01", ip_range="10.0.0.0/16")
         subnet01 = outscale.Subnet("subnet01",
-            net_id=net01.net_id,
-            ip_range="10.0.0.0/24",
             tags=[{
                 "key": "Name",
                 "value": "terraform-subnet-for-internal-load-balancer",
-            }])
-        security_group01 = outscale.SecurityGroup("security_group01",
-            description="Terraform security group for internal load balancer",
-            security_group_name="terraform-security-group-for-internal-load-balancer",
+            }],
             net_id=net01.net_id,
+            ip_range="10.0.0.0/24")
+        security_group01 = outscale.SecurityGroup("security_group01",
             tags=[{
                 "key": "Name",
                 "value": "terraform-security-group-for-internal-load-balancer",
-            }])
+            }],
+            description="Terraform security group for internal load balancer",
+            security_group_name="terraform-security-group-for-internal-load-balancer",
+            net_id=net01.net_id)
         load_balancer02 = outscale.LoadBalancer("load_balancer02",
-            load_balancer_name="terraform-private-load-balancer",
             listeners=[{
                 "backend_port": 80,
                 "backend_protocol": "TCP",
                 "load_balancer_protocol": "TCP",
                 "load_balancer_port": 80,
             }],
-            subnets=[subnet01.subnet_id],
-            security_groups=[security_group01.security_group_id],
-            load_balancer_type="internal",
             tags=[{
                 "key": "name",
                 "value": "terraform-private-load-balancer",
-            }])
+            }],
+            load_balancer_name="terraform-private-load-balancer",
+            subnets=[subnet01.subnet_id],
+            security_groups=[security_group01.security_group_id],
+            load_balancer_type="internal")
         ```
 
         ### Create an internet-facing load balancer in a Net
@@ -768,22 +768,22 @@ class LoadBalancer(pulumi.CustomResource):
 
         net02 = outscale.Net("net02", ip_range="10.0.0.0/16")
         subnet02 = outscale.Subnet("subnet02",
-            net_id=net02.net_id,
-            ip_range="10.0.0.0/24",
             tags=[{
                 "key": "Name",
                 "value": "terraform-security-group-for-load-balancer",
-            }])
+            }],
+            net_id=net02.net_id,
+            ip_range="10.0.0.0/24")
         internet_service01 = outscale.InternetService("internet_service01", opts = pulumi.ResourceOptions(depends_on=[net02]))
         internet_service_link01 = outscale.InternetServiceLink("internet_service_link01",
             internet_service_id=internet_service01.internet_service_id,
             net_id=net02.net_id)
         route_table01 = outscale.RouteTable("route_table01",
-            net_id=net02.net_id,
             tags=[{
                 "key": "name",
                 "value": "terraform-route-table-for-load-balancer",
-            }])
+            }],
+            net_id=net02.net_id)
         route01 = outscale.Route("route01",
             gateway_id=internet_service01.id,
             destination_ip_range="0.0.0.0/0",
@@ -792,7 +792,6 @@ class LoadBalancer(pulumi.CustomResource):
             route_table_id=route_table01.route_table_id,
             subnet_id=subnet02.subnet_id)
         load_balancer03 = outscale.LoadBalancer("load_balancer03",
-            load_balancer_name="terraform-internet-private-lb",
             listeners=[
                 {
                     "backend_port": 80,
@@ -807,13 +806,14 @@ class LoadBalancer(pulumi.CustomResource):
                     "load_balancer_port": 8080,
                 },
             ],
-            subnets=[subnet02.subnet_id],
-            load_balancer_type="internet-facing",
-            public_ip="192.0.2.0",
             tags=[{
                 "key": "name",
                 "value": "terraform-internet-private-lb",
             }],
+            load_balancer_name="terraform-internet-private-lb",
+            subnets=[subnet02.subnet_id],
+            load_balancer_type="internet-facing",
+            public_ip="192.0.2.0",
             opts = pulumi.ResourceOptions(depends_on=[
                     route01,
                     route_table_link01,

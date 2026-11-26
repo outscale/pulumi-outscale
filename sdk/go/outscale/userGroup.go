@@ -61,13 +61,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewUserGroup(ctx, "group-1", &outscale.UserGroupArgs{
-//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //				Policies: outscale.UserGroupPolicyArray{
 //					&outscale.UserGroupPolicyArgs{
 //						PolicyOrn:        pulumi.Any(policy_2.Orn),
 //						DefaultVersionId: pulumi.String("V2"),
 //					},
 //				},
+//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewUserGroup(ctx, "group-1", &outscale.UserGroupArgs{
-//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //				Users: outscale.UserGroupUserArray{
 //					&outscale.UserGroupUserArgs{
 //						UserName: pulumi.String("user-name-1"),
@@ -103,6 +102,7 @@ import (
 //						UserName: pulumi.String("user-name-2"),
 //					},
 //				},
+//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -128,7 +128,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewUserGroup(ctx, "group-1", &outscale.UserGroupArgs{
-//				UserGroupName: pulumi.String("Group-TF-test-1"),
+//				Policies: outscale.UserGroupPolicyArray{
+//					&outscale.UserGroupPolicyArgs{
+//						PolicyOrn: pulumi.Any(policy_2.Orn),
+//						VersionId: "V2",
+//					},
+//				},
 //				Users: outscale.UserGroupUserArray{
 //					&outscale.UserGroupUserArgs{
 //						UserName: pulumi.String("user-name-1"),
@@ -138,12 +143,7 @@ import (
 //						UserName: pulumi.String("user-name-2"),
 //					},
 //				},
-//				Policies: outscale.UserGroupPolicyArray{
-//					&outscale.UserGroupPolicyArgs{
-//						PolicyOrn: pulumi.Any(policy_2.Orn),
-//						VersionId: "V2",
-//					},
-//				},
+//				UserGroupName: pulumi.String("Group-TF-test-1"),
 //			})
 //			if err != nil {
 //				return err

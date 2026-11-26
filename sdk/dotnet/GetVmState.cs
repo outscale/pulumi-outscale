@@ -29,7 +29,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var vmState01 = Outscale.GetVmState.Invoke(new()
         ///     {
-        ///         AllVms = true,
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetVmStateFilterInputArgs
@@ -41,6 +40,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         AllVms = true,
         ///     });
         /// 
         /// });
@@ -67,7 +67,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var vmState01 = Outscale.GetVmState.Invoke(new()
         ///     {
-        ///         AllVms = true,
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetVmStateFilterInputArgs
@@ -79,6 +78,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         AllVms = true,
         ///     });
         /// 
         /// });
@@ -105,7 +105,6 @@ namespace Pulumi.Outscale
         /// {
         ///     var vmState01 = Outscale.GetVmState.Invoke(new()
         ///     {
-        ///         AllVms = true,
         ///         Filters = new[]
         ///         {
         ///             new Outscale.Inputs.GetVmStateFilterInputArgs
@@ -117,6 +116,7 @@ namespace Pulumi.Outscale
         ///                 },
         ///             },
         ///         },
+        ///         AllVms = true,
         ///     });
         /// 
         /// });

@@ -21,14 +21,14 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
- *     loadBalancerName: "terraform-lb-for-browser-policy",
- *     subregionNames: ["eu-west-2a"],
  *     listeners: [{
  *         backendPort: 8080,
  *         backendProtocol: "HTTP",
  *         loadBalancerPort: 8080,
  *         loadBalancerProtocol: "HTTP",
  *     }],
+ *     loadBalancerName: "terraform-lb-for-browser-policy",
+ *     subregionNames: ["eu-west-2a"],
  * });
  * const loadBalancerPolicy01 = new outscale.LoadBalancerPolicy("load_balancer_policy01", {
  *     loadBalancerName: "terraform-lb-for-browser-policy",
@@ -44,14 +44,14 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer02 = new outscale.LoadBalancer("load_balancer02", {
- *     loadBalancerName: "terraform-lb-for-app-policy",
- *     subregionNames: [`${region}b`],
  *     listeners: [{
  *         loadBalancerPort: 80,
  *         loadBalancerProtocol: "TCP",
  *         backendPort: 80,
  *         backendProtocol: "TCP",
  *     }],
+ *     loadBalancerName: "terraform-lb-for-app-policy",
+ *     subregionNames: [`${region}b`],
  * });
  * const loadBalancerPolicy02 = new outscale.LoadBalancerPolicy("load_balancer_policy02", {
  *     loadBalancerName: loadBalancer02.loadBalancerName,

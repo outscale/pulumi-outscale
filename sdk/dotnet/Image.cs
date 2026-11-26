@@ -91,12 +91,10 @@ namespace Pulumi.Outscale
     /// {
     ///     var image04 = new Outscale.Image("image04", new()
     ///     {
-    ///         ImageName = "terraform-omi-bsu",
     ///         BlockDeviceMappings = new[]
     ///         {
     ///             new Outscale.Inputs.ImageBlockDeviceMappingArgs
     ///             {
-    ///                 DeviceName = "/dev/sda1",
     ///                 Bsus = new[]
     ///                 {
     ///                     new Outscale.Inputs.ImageBlockDeviceMappingBsusArgs
@@ -108,8 +106,10 @@ namespace Pulumi.Outscale
     ///                         DeleteOnVmDeletion = true,
     ///                     },
     ///                 },
+    ///                 DeviceName = "/dev/sda1",
     ///             },
     ///         },
+    ///         ImageName = "terraform-omi-bsu",
     ///         RootDeviceName = "/dev/sda1",
     ///         Description = "Terraform OMI with BSU",
     ///     });

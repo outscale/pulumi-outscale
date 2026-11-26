@@ -711,9 +711,7 @@ class Image(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image04 = outscale.Image("image04",
-            image_name="terraform-omi-bsu",
             block_device_mappings=[{
-                "device_name": "/dev/sda1",
                 "bsus": [{
                     "snapshot_id": "snap-12345678",
                     "volume_size": 120,
@@ -721,7 +719,9 @@ class Image(pulumi.CustomResource):
                     "iops": 150,
                     "delete_on_vm_deletion": True,
                 }],
+                "device_name": "/dev/sda1",
             }],
+            image_name="terraform-omi-bsu",
             root_device_name="/dev/sda1",
             description="Terraform OMI with BSU")
         ```
@@ -812,9 +812,7 @@ class Image(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image04 = outscale.Image("image04",
-            image_name="terraform-omi-bsu",
             block_device_mappings=[{
-                "device_name": "/dev/sda1",
                 "bsus": [{
                     "snapshot_id": "snap-12345678",
                     "volume_size": 120,
@@ -822,7 +820,9 @@ class Image(pulumi.CustomResource):
                     "iops": 150,
                     "delete_on_vm_deletion": True,
                 }],
+                "device_name": "/dev/sda1",
             }],
+            image_name="terraform-omi-bsu",
             root_device_name="/dev/sda1",
             description="Terraform OMI with BSU")
         ```

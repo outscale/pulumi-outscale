@@ -52,9 +52,6 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const nic02 = new outscale.Nic("nic02", {
- *     description: "Terraform nic with private IPs",
- *     subnetId: subnet01.subnetId,
- *     securityGroupIds: [securityGroup01.securityGroupId],
  *     privateIps: [
  *         {
  *             isPrimary: true,
@@ -65,6 +62,9 @@ import * as utilities from "./utilities";
  *             privateIp: "10.0.0.5",
  *         },
  *     ],
+ *     description: "Terraform nic with private IPs",
+ *     subnetId: subnet01.subnetId,
+ *     securityGroupIds: [securityGroup01.securityGroupId],
  * });
  * ```
  *

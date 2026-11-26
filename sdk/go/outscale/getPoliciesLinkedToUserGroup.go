@@ -31,7 +31,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.GetPoliciesLinkedToUserGroup(ctx, &outscale.GetPoliciesLinkedToUserGroupArgs{
-//				UserGroupName: "user_group_name",
 //				Filters: []outscale.GetPoliciesLinkedToUserGroupFilter{
 //					{
 //						Name: "user_group_ids",
@@ -47,6 +46,7 @@ import (
 //						},
 //					},
 //				},
+//				UserGroupName: "user_group_name",
 //			}, nil)
 //			if err != nil {
 //				return err

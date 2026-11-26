@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const clientGateway01 = new outscale.ClientGateway("client_gateway01", {
- *     bgpAsn: 65000,
- *     publicIp: "111.11.11.111",
- *     connectionType: "ipsec.1",
  *     tags: [{
  *         key: "Name",
  *         value: "client_gateway_01",
  *     }],
+ *     bgpAsn: 65000,
+ *     publicIp: "111.11.11.111",
+ *     connectionType: "ipsec.1",
  * });
  * ```
  *

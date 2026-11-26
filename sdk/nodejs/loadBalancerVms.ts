@@ -33,8 +33,6 @@ import * as utilities from "./utilities";
  *     keypairName: keypairName,
  * });
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
- *     loadBalancerName: "load-balancer-for-backend-vms",
- *     subregionNames: [`${region}a`],
  *     listeners: [{
  *         backendPort: 80,
  *         backendProtocol: "TCP",
@@ -45,6 +43,8 @@ import * as utilities from "./utilities";
  *         key: "name",
  *         value: "outscale_load_balancer01",
  *     }],
+ *     loadBalancerName: "load-balancer-for-backend-vms",
+ *     subregionNames: [`${region}a`],
  * });
  * ```
  *

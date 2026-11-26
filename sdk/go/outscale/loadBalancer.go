@@ -34,10 +34,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("terraform-public-load-balancer"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.Sprintf("%va", region),
-//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(8080),
@@ -51,6 +47,10 @@ import (
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-public-load-balancer"),
 //					},
+//				},
+//				LoadBalancerName: pulumi.String("terraform-public-load-balancer"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.Sprintf("%va", region),
 //				},
 //			})
 //			if err != nil {
@@ -83,34 +83,33 @@ import (
 //				return err
 //			}
 //			subnet01, err := outscale.NewSubnet(ctx, "subnet01", &outscale.SubnetArgs{
-//				NetId:   net01.NetId,
-//				IpRange: pulumi.String("10.0.0.0/24"),
 //				Tags: outscale.SubnetTagArray{
 //					&outscale.SubnetTagArgs{
 //						Key:   pulumi.String("Name"),
 //						Value: pulumi.String("terraform-subnet-for-internal-load-balancer"),
 //					},
 //				},
+//				NetId:   net01.NetId,
+//				IpRange: pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			securityGroup01, err := outscale.NewSecurityGroup(ctx, "security_group01", &outscale.SecurityGroupArgs{
-//				Description:       pulumi.String("Terraform security group for internal load balancer"),
-//				SecurityGroupName: pulumi.String("terraform-security-group-for-internal-load-balancer"),
-//				NetId:             net01.NetId,
 //				Tags: outscale.SecurityGroupTagArray{
 //					&outscale.SecurityGroupTagArgs{
 //						Key:   pulumi.String("Name"),
 //						Value: pulumi.String("terraform-security-group-for-internal-load-balancer"),
 //					},
 //				},
+//				Description:       pulumi.String("Terraform security group for internal load balancer"),
+//				SecurityGroupName: pulumi.String("terraform-security-group-for-internal-load-balancer"),
+//				NetId:             net01.NetId,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = outscale.NewLoadBalancer(ctx, "load_balancer02", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("terraform-private-load-balancer"),
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(80),
@@ -119,6 +118,13 @@ import (
 //						LoadBalancerPort:     pulumi.Int(80),
 //					},
 //				},
+//				Tags: outscale.LoadBalancerTagArray{
+//					&outscale.LoadBalancerTagArgs{
+//						Key:   pulumi.String("name"),
+//						Value: pulumi.String("terraform-private-load-balancer"),
+//					},
+//				},
+//				LoadBalancerName: pulumi.String("terraform-private-load-balancer"),
 //				Subnets: pulumi.StringArray{
 //					subnet01.SubnetId,
 //				},
@@ -126,12 +132,6 @@ import (
 //					securityGroup01.SecurityGroupId,
 //				},
 //				LoadBalancerType: pulumi.String("internal"),
-//				Tags: outscale.LoadBalancerTagArray{
-//					&outscale.LoadBalancerTagArgs{
-//						Key:   pulumi.String("name"),
-//						Value: pulumi.String("terraform-private-load-balancer"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -163,14 +163,14 @@ import (
 //				return err
 //			}
 //			subnet02, err := outscale.NewSubnet(ctx, "subnet02", &outscale.SubnetArgs{
-//				NetId:   net02.NetId,
-//				IpRange: pulumi.String("10.0.0.0/24"),
 //				Tags: outscale.SubnetTagArray{
 //					&outscale.SubnetTagArgs{
 //						Key:   pulumi.String("Name"),
 //						Value: pulumi.String("terraform-security-group-for-load-balancer"),
 //					},
 //				},
+//				NetId:   net02.NetId,
+//				IpRange: pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
@@ -189,13 +189,13 @@ import (
 //				return err
 //			}
 //			routeTable01, err := outscale.NewRouteTable(ctx, "route_table01", &outscale.RouteTableArgs{
-//				NetId: net02.NetId,
 //				Tags: outscale.RouteTableTagArray{
 //					&outscale.RouteTableTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-route-table-for-load-balancer"),
 //					},
 //				},
+//				NetId: net02.NetId,
 //			})
 //			if err != nil {
 //				return err
@@ -216,7 +216,6 @@ import (
 //				return err
 //			}
 //			_, err = outscale.NewLoadBalancer(ctx, "load_balancer03", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("terraform-internet-private-lb"),
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(80),
@@ -231,17 +230,18 @@ import (
 //						LoadBalancerPort:     pulumi.Int(8080),
 //					},
 //				},
-//				Subnets: pulumi.StringArray{
-//					subnet02.SubnetId,
-//				},
-//				LoadBalancerType: pulumi.String("internet-facing"),
-//				PublicIp:         pulumi.String("192.0.2.0"),
 //				Tags: outscale.LoadBalancerTagArray{
 //					&outscale.LoadBalancerTagArgs{
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-internet-private-lb"),
 //					},
 //				},
+//				LoadBalancerName: pulumi.String("terraform-internet-private-lb"),
+//				Subnets: pulumi.StringArray{
+//					subnet02.SubnetId,
+//				},
+//				LoadBalancerType: pulumi.String("internet-facing"),
+//				PublicIp:         pulumi.String("192.0.2.0"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				route01,
 //				routeTableLink01,

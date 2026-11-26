@@ -42,10 +42,6 @@ import (
 //				return err
 //			}
 //			loadBalancer01, err := outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("terraform-public-load-balancer"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.Sprintf("%va", region),
-//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(80),
@@ -59,6 +55,10 @@ import (
 //						Key:   pulumi.String("name"),
 //						Value: pulumi.String("terraform-public-load-balancer"),
 //					},
+//				},
+//				LoadBalancerName: pulumi.String("terraform-public-load-balancer"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.Sprintf("%va", region),
 //				},
 //			})
 //			if err != nil {

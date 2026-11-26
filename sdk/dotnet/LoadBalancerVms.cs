@@ -45,11 +45,6 @@ namespace Pulumi.Outscale
     /// 
     ///     var loadBalancer01 = new Outscale.LoadBalancer("load_balancer01", new()
     ///     {
-    ///         LoadBalancerName = "load-balancer-for-backend-vms",
-    ///         SubregionNames = new[]
-    ///         {
-    ///             $"{region}a",
-    ///         },
     ///         Listeners = new[]
     ///         {
     ///             new Outscale.Inputs.LoadBalancerListenerArgs
@@ -67,6 +62,11 @@ namespace Pulumi.Outscale
     ///                 Key = "name",
     ///                 Value = "outscale_load_balancer01",
     ///             },
+    ///         },
+    ///         LoadBalancerName = "load-balancer-for-backend-vms",
+    ///         SubregionNames = new[]
+    ///         {
+    ///             $"{region}a",
     ///         },
     ///     });
     /// 

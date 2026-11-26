@@ -27,16 +27,16 @@ import * as utilities from "./utilities";
  *     securityGroupName: "vm_security_group",
  * });
  * const vm01 = new outscale.Vm("vm01", {
+ *     tags: [{
+ *         key: "name",
+ *         value: "terraform-public-vm",
+ *     }],
  *     imageId: imageId,
  *     vmType: "tinav5.c1r1p2",
  *     keypairName: keypair01.keypairName,
  *     securityGroupIds: [securityGroup01.securityGroupId],
  *     placementSubregionName: "eu-west-2a",
  *     placementTenancy: "default",
- *     tags: [{
- *         key: "name",
- *         value: "terraform-public-vm",
- *     }],
  *     userData: std.base64encode({
  *         input: "    <CONFIGURATION>\n",
  *     }).result,
@@ -60,29 +60,29 @@ import * as utilities from "./utilities";
  *     securityGroupName: "vm_security_group",
  * });
  * const vm01 = new outscale.Vm("vm01", {
- *     imageId: imageId,
- *     vmType: "tinav5.c1r1p2",
- *     keypairName: keypair01.keypairName,
- *     securityGroupIds: [securityGroup01.securityGroupId],
  *     blockDeviceMappings: [
  *         {
- *             deviceName: "/dev/sdb",
  *             bsu: {
  *                 volumeSize: 15,
  *                 volumeType: "gp2",
  *                 snapshotId: snapshot01.snapshotId,
  *             },
+ *             deviceName: "/dev/sdb",
  *         },
  *         {
- *             deviceName: "/dev/sdc",
  *             bsu: {
  *                 volumeSize: 22,
  *                 volumeType: "io1",
  *                 iops: 150,
  *                 deleteOnVmDeletion: true,
  *             },
+ *             deviceName: "/dev/sdc",
  *         },
  *     ],
+ *     imageId: imageId,
+ *     vmType: "tinav5.c1r1p2",
+ *     keypairName: keypair01.keypairName,
+ *     securityGroupIds: [securityGroup01.securityGroupId],
  * });
  * ```
  *
@@ -93,20 +93,20 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const net01 = new outscale.Net("net01", {
- *     ipRange: "10.0.0.0/16",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-net-for-vm",
  *     }],
+ *     ipRange: "10.0.0.0/16",
  * });
  * const subnet01 = new outscale.Subnet("subnet01", {
- *     netId: net01.netId,
- *     ipRange: "10.0.0.0/24",
- *     subregionName: "eu-west-2b",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-subnet-for-vm",
  *     }],
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/24",
+ *     subregionName: "eu-west-2b",
  * });
  * const internetService01 = new outscale.InternetService("internet_service01", {});
  * const internetServiceLink01 = new outscale.InternetServiceLink("internet_service_link01", {
@@ -114,11 +114,11 @@ import * as utilities from "./utilities";
  *     netId: net01.netId,
  * });
  * const routeTable01 = new outscale.RouteTable("route_table01", {
- *     netId: net01.netId,
  *     tags: [{
  *         key: "name",
  *         value: "terraform-route-table-for-vm",
  *     }],
+ *     netId: net01.netId,
  * });
  * const routeTableLink01 = new outscale.RouteTableLink("route_table_link01", {
  *     routeTableId: routeTable01.routeTableId,
@@ -199,9 +199,6 @@ import * as utilities from "./utilities";
  * });
  * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
  * const vm01 = new outscale.Vm("vm01", {
- *     imageId: imageId,
- *     vmType: "tinav7.c1r1p2",
- *     keypairName: keypair01.keypairName,
  *     nics: [
  *         {
  *             deleteOnVmDeletion: true,
@@ -214,6 +211,9 @@ import * as utilities from "./utilities";
  *             deviceNumber: 1,
  *         },
  *     ],
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
  * });
  * ```
  *
@@ -238,9 +238,6 @@ import * as utilities from "./utilities";
  * const nic02 = new outscale.Nic("nic02", {subnetId: subnet02.subnetId});
  * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
  * const vm01 = new outscale.Vm("vm01", {
- *     imageId: imageId,
- *     vmType: "tinav7.c1r1p2",
- *     keypairName: keypair01.keypairName,
  *     nics: [
  *         {
  *             nicId: nic01.nicId,
@@ -251,6 +248,9 @@ import * as utilities from "./utilities";
  *             deviceNumber: 1,
  *         },
  *     ],
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
  * });
  * ```
  *
@@ -285,13 +285,13 @@ import * as utilities from "./utilities";
  * const nic02 = new outscale.Nic("nic02", {subnetId: subnet02.subnetId});
  * const keypair01 = new outscale.Keypair("keypair01", {keypairName: "terraform-keypair-for-vm"});
  * const vm01 = new outscale.Vm("vm01", {
- *     imageId: imageId,
- *     vmType: "tinav7.c1r1p2",
- *     keypairName: keypair01.keypairName,
  *     primaryNics: [{
  *         nicId: nic01.nicId,
  *         deviceNumber: 0,
  *     }],
+ *     imageId: imageId,
+ *     vmType: "tinav7.c1r1p2",
+ *     keypairName: keypair01.keypairName,
  * });
  * const nicLink01 = new outscale.NicLink("nic_link01", {
  *     deviceNumber: 1,

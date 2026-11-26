@@ -21,8 +21,6 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const loadBalancer01 = new outscale.LoadBalancer("load_balancer01", {
- *     loadBalancerName: "terraform-public-load-balancer",
- *     subregionNames: [`${region}a`],
  *     listeners: [{
  *         backendPort: 8080,
  *         backendProtocol: "HTTP",
@@ -33,6 +31,8 @@ import * as utilities from "./utilities";
  *         key: "name",
  *         value: "terraform-public-load-balancer",
  *     }],
+ *     loadBalancerName: "terraform-public-load-balancer",
+ *     subregionNames: [`${region}a`],
  * });
  * ```
  *
@@ -44,37 +44,37 @@ import * as utilities from "./utilities";
  *
  * const net01 = new outscale.Net("net01", {ipRange: "10.0.0.0/16"});
  * const subnet01 = new outscale.Subnet("subnet01", {
- *     netId: net01.netId,
- *     ipRange: "10.0.0.0/24",
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-subnet-for-internal-load-balancer",
  *     }],
+ *     netId: net01.netId,
+ *     ipRange: "10.0.0.0/24",
  * });
  * const securityGroup01 = new outscale.SecurityGroup("security_group01", {
- *     description: "Terraform security group for internal load balancer",
- *     securityGroupName: "terraform-security-group-for-internal-load-balancer",
- *     netId: net01.netId,
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-security-group-for-internal-load-balancer",
  *     }],
+ *     description: "Terraform security group for internal load balancer",
+ *     securityGroupName: "terraform-security-group-for-internal-load-balancer",
+ *     netId: net01.netId,
  * });
  * const loadBalancer02 = new outscale.LoadBalancer("load_balancer02", {
- *     loadBalancerName: "terraform-private-load-balancer",
  *     listeners: [{
  *         backendPort: 80,
  *         backendProtocol: "TCP",
  *         loadBalancerProtocol: "TCP",
  *         loadBalancerPort: 80,
  *     }],
- *     subnets: [subnet01.subnetId],
- *     securityGroups: [securityGroup01.securityGroupId],
- *     loadBalancerType: "internal",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-private-load-balancer",
  *     }],
+ *     loadBalancerName: "terraform-private-load-balancer",
+ *     subnets: [subnet01.subnetId],
+ *     securityGroups: [securityGroup01.securityGroupId],
+ *     loadBalancerType: "internal",
  * });
  * ```
  *
@@ -86,12 +86,12 @@ import * as utilities from "./utilities";
  *
  * const net02 = new outscale.Net("net02", {ipRange: "10.0.0.0/16"});
  * const subnet02 = new outscale.Subnet("subnet02", {
- *     netId: net02.netId,
- *     ipRange: "10.0.0.0/24",
  *     tags: [{
  *         key: "Name",
  *         value: "terraform-security-group-for-load-balancer",
  *     }],
+ *     netId: net02.netId,
+ *     ipRange: "10.0.0.0/24",
  * });
  * const internetService01 = new outscale.InternetService("internet_service01", {}, {
  *     dependsOn: [net02],
@@ -101,11 +101,11 @@ import * as utilities from "./utilities";
  *     netId: net02.netId,
  * });
  * const routeTable01 = new outscale.RouteTable("route_table01", {
- *     netId: net02.netId,
  *     tags: [{
  *         key: "name",
  *         value: "terraform-route-table-for-load-balancer",
  *     }],
+ *     netId: net02.netId,
  * });
  * const route01 = new outscale.Route("route01", {
  *     gatewayId: internetService01.id,
@@ -117,7 +117,6 @@ import * as utilities from "./utilities";
  *     subnetId: subnet02.subnetId,
  * });
  * const loadBalancer03 = new outscale.LoadBalancer("load_balancer03", {
- *     loadBalancerName: "terraform-internet-private-lb",
  *     listeners: [
  *         {
  *             backendPort: 80,
@@ -132,13 +131,14 @@ import * as utilities from "./utilities";
  *             loadBalancerPort: 8080,
  *         },
  *     ],
- *     subnets: [subnet02.subnetId],
- *     loadBalancerType: "internet-facing",
- *     publicIp: "192.0.2.0",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-internet-private-lb",
  *     }],
+ *     loadBalancerName: "terraform-internet-private-lb",
+ *     subnets: [subnet02.subnetId],
+ *     loadBalancerType: "internet-facing",
+ *     publicIp: "192.0.2.0",
  * }, {
  *     dependsOn: [
  *         route01,

@@ -34,12 +34,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewImageLaunchPermission(ctx, "image01", &outscale.ImageLaunchPermissionArgs{
-//				ImageId: pulumi.String("ami-12345678"),
 //				PermissionAdditions: &outscale.ImageLaunchPermissionPermissionAdditionsArgs{
 //					AccountIds: pulumi.StringArray{
 //						pulumi.String("012345678910"),
 //					},
 //				},
+//				ImageId: pulumi.String("ami-12345678"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,12 +65,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewImageLaunchPermission(ctx, "image02", &outscale.ImageLaunchPermissionArgs{
-//				ImageId: pulumi.String("ami-12345678"),
 //				PermissionRemovals: &outscale.ImageLaunchPermissionPermissionRemovalsArgs{
 //					AccountIds: pulumi.StringArray{
 //						pulumi.String("012345678910"),
 //					},
 //				},
+//				ImageId: pulumi.String("ami-12345678"),
 //			})
 //			if err != nil {
 //				return err

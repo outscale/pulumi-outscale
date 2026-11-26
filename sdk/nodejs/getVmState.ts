@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const vmState01 = outscale.getVmState({
- *     allVms: true,
  *     filters: [{
  *         name: "vm_ids",
  *         values: ["i-12345678"],
  *     }],
+ *     allVms: true,
  * });
  * ```
  */
@@ -96,11 +96,11 @@ export interface GetVmStateResult {
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const vmState01 = outscale.getVmState({
- *     allVms: true,
  *     filters: [{
  *         name: "vm_ids",
  *         values: ["i-12345678"],
  *     }],
+ *     allVms: true,
  * });
  * ```
  */

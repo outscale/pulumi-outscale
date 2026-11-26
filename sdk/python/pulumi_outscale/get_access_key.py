@@ -169,8 +169,7 @@ def get_access_key(access_key_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_outscale as outscale
 
-    access_key01 = outscale.get_access_key(user_name="user_name",
-        filters=[
+    access_key01 = outscale.get_access_key(filters=[
             {
                 "name": "access_key_ids",
                 "values": ["XXXXXXXXX"],
@@ -179,7 +178,8 @@ def get_access_key(access_key_id: Optional[_builtins.str] = None,
                 "name": "states",
                 "values": ["ACTIVE"],
             },
-        ])
+        ],
+        user_name="user_name")
     ```
 
 
@@ -237,8 +237,7 @@ def get_access_key_output(access_key_id: Optional[pulumi.Input[Optional[_builtin
     import pulumi
     import pulumi_outscale as outscale
 
-    access_key01 = outscale.get_access_key(user_name="user_name",
-        filters=[
+    access_key01 = outscale.get_access_key(filters=[
             {
                 "name": "access_key_ids",
                 "values": ["XXXXXXXXX"],
@@ -247,7 +246,8 @@ def get_access_key_output(access_key_id: Optional[pulumi.Input[Optional[_builtin
                 "name": "states",
                 "values": ["ACTIVE"],
             },
-        ])
+        ],
+        user_name="user_name")
     ```
 
 

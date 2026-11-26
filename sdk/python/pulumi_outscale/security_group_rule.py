@@ -449,17 +449,17 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         security_group_rule02 = outscale.SecurityGroupRule("security_group_rule02",
-            flow="Inbound",
-            security_group_id=security_group01["securityGroupId"],
             rules=[{
-                "from_port_range": 22,
-                "to_port_range": 22,
-                "ip_protocol": "tcp",
                 "security_groups_members": [{
                     "account_id": "012345678910",
                     "security_group_name": "terraform-security-group-test-02",
                 }],
-            }])
+                "from_port_range": 22,
+                "to_port_range": 22,
+                "ip_protocol": "tcp",
+            }],
+            flow="Inbound",
+            security_group_id=security_group01["securityGroupId"])
         ```
 
         ## Import
@@ -537,17 +537,17 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         security_group_rule02 = outscale.SecurityGroupRule("security_group_rule02",
-            flow="Inbound",
-            security_group_id=security_group01["securityGroupId"],
             rules=[{
-                "from_port_range": 22,
-                "to_port_range": 22,
-                "ip_protocol": "tcp",
                 "security_groups_members": [{
                     "account_id": "012345678910",
                     "security_group_name": "terraform-security-group-test-02",
                 }],
-            }])
+                "from_port_range": 22,
+                "to_port_range": 22,
+                "ip_protocol": "tcp",
+            }],
+            flow="Inbound",
+            security_group_id=security_group01["securityGroupId"])
         ```
 
         ## Import

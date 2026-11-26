@@ -103,10 +103,10 @@ import (
 //				Manifest: map[string]interface{}{
 //					"apiVersion": "example.com/v1",
 //					"kind":       "ExampleResource",
-//					"metadata": map[string]interface{}{
+//					"metadata": map[string]string{
 //						"name": "example",
 //					},
-//					"spec": map[string]interface{}{
+//					"spec": map[string]string{
 //						"value": "example",
 //					},
 //				},

@@ -198,10 +198,10 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image01 = outscale.ImageLaunchPermission("image01",
-            image_id="ami-12345678",
             permission_additions={
                 "account_ids": ["012345678910"],
-            })
+            },
+            image_id="ami-12345678")
         ```
 
         ### Remove permissions
@@ -211,10 +211,10 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image02 = outscale.ImageLaunchPermission("image02",
-            image_id="ami-12345678",
             permission_removals={
                 "account_ids": ["012345678910"],
-            })
+            },
+            image_id="ami-12345678")
         ```
 
         :param str resource_name: The name of the resource.
@@ -244,10 +244,10 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image01 = outscale.ImageLaunchPermission("image01",
-            image_id="ami-12345678",
             permission_additions={
                 "account_ids": ["012345678910"],
-            })
+            },
+            image_id="ami-12345678")
         ```
 
         ### Remove permissions
@@ -257,10 +257,10 @@ class ImageLaunchPermission(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         image02 = outscale.ImageLaunchPermission("image02",
-            image_id="ami-12345678",
             permission_removals={
                 "account_ids": ["012345678910"],
-            })
+            },
+            image_id="ami-12345678")
         ```
 
         :param str resource_name: The name of the resource.

@@ -590,14 +590,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-lb-for-browser-policy",
-            subregion_names=["eu-west-2a"],
             listeners=[{
                 "backend_port": 8080,
                 "backend_protocol": "HTTP",
                 "load_balancer_port": 8080,
                 "load_balancer_protocol": "HTTP",
-            }])
+            }],
+            load_balancer_name="terraform-lb-for-browser-policy",
+            subregion_names=["eu-west-2a"])
         load_balancer_policy01 = outscale.LoadBalancerPolicy("load_balancer_policy01",
             load_balancer_name="terraform-lb-for-browser-policy",
             policy_name="terraform-lb-browser-policy",
@@ -611,14 +611,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer02 = outscale.LoadBalancer("load_balancer02",
-            load_balancer_name="terraform-lb-for-app-policy",
-            subregion_names=[f"{region}b"],
             listeners=[{
                 "load_balancer_port": 80,
                 "load_balancer_protocol": "TCP",
                 "backend_port": 80,
                 "backend_protocol": "TCP",
-            }])
+            }],
+            load_balancer_name="terraform-lb-for-app-policy",
+            subregion_names=[f"{region}b"])
         load_balancer_policy02 = outscale.LoadBalancerPolicy("load_balancer_policy02",
             load_balancer_name=load_balancer02.load_balancer_name,
             policy_name="terraform-lb-app-policy",
@@ -662,14 +662,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer01 = outscale.LoadBalancer("load_balancer01",
-            load_balancer_name="terraform-lb-for-browser-policy",
-            subregion_names=["eu-west-2a"],
             listeners=[{
                 "backend_port": 8080,
                 "backend_protocol": "HTTP",
                 "load_balancer_port": 8080,
                 "load_balancer_protocol": "HTTP",
-            }])
+            }],
+            load_balancer_name="terraform-lb-for-browser-policy",
+            subregion_names=["eu-west-2a"])
         load_balancer_policy01 = outscale.LoadBalancerPolicy("load_balancer_policy01",
             load_balancer_name="terraform-lb-for-browser-policy",
             policy_name="terraform-lb-browser-policy",
@@ -683,14 +683,14 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         load_balancer02 = outscale.LoadBalancer("load_balancer02",
-            load_balancer_name="terraform-lb-for-app-policy",
-            subregion_names=[f"{region}b"],
             listeners=[{
                 "load_balancer_port": 80,
                 "load_balancer_protocol": "TCP",
                 "backend_port": 80,
                 "backend_protocol": "TCP",
-            }])
+            }],
+            load_balancer_name="terraform-lb-for-app-policy",
+            subregion_names=[f"{region}b"])
         load_balancer_policy02 = outscale.LoadBalancerPolicy("load_balancer_policy02",
             load_balancer_name=load_balancer02.load_balancer_name,
             policy_name="terraform-lb-app-policy",

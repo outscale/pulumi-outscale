@@ -260,13 +260,13 @@ class ClientGateway(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         client_gateway01 = outscale.ClientGateway("client_gateway01",
-            bgp_asn=65000,
-            public_ip="111.11.11.111",
-            connection_type="ipsec.1",
             tags=[{
                 "key": "Name",
                 "value": "client_gateway_01",
-            }])
+            }],
+            bgp_asn=65000,
+            public_ip="111.11.11.111",
+            connection_type="ipsec.1")
         ```
 
         ## Import
@@ -307,13 +307,13 @@ class ClientGateway(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         client_gateway01 = outscale.ClientGateway("client_gateway01",
-            bgp_asn=65000,
-            public_ip="111.11.11.111",
-            connection_type="ipsec.1",
             tags=[{
                 "key": "Name",
                 "value": "client_gateway_01",
-            }])
+            }],
+            bgp_asn=65000,
+            public_ip="111.11.11.111",
+            connection_type="ipsec.1")
         ```
 
         ## Import

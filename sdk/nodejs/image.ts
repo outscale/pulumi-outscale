@@ -62,9 +62,7 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const image04 = new outscale.Image("image04", {
- *     imageName: "terraform-omi-bsu",
  *     blockDeviceMappings: [{
- *         deviceName: "/dev/sda1",
  *         bsus: [{
  *             snapshotId: "snap-12345678",
  *             volumeSize: 120,
@@ -72,7 +70,9 @@ import * as utilities from "./utilities";
  *             iops: 150,
  *             deleteOnVmDeletion: true,
  *         }],
+ *         deviceName: "/dev/sda1",
  *     }],
+ *     imageName: "terraform-omi-bsu",
  *     rootDeviceName: "/dev/sda1",
  *     description: "Terraform OMI with BSU",
  * });

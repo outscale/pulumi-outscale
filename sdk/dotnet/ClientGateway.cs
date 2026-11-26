@@ -27,9 +27,6 @@ namespace Pulumi.Outscale
     /// {
     ///     var clientGateway01 = new Outscale.ClientGateway("client_gateway01", new()
     ///     {
-    ///         BgpAsn = 65000,
-    ///         PublicIp = "111.11.11.111",
-    ///         ConnectionType = "ipsec.1",
     ///         Tags = new[]
     ///         {
     ///             new Outscale.Inputs.ClientGatewayTagArgs
@@ -38,6 +35,9 @@ namespace Pulumi.Outscale
     ///                 Value = "client_gateway_01",
     ///             },
     ///         },
+    ///         BgpAsn = 65000,
+    ///         PublicIp = "111.11.11.111",
+    ///         ConnectionType = "ipsec.1",
     ///     });
     /// 
     /// });

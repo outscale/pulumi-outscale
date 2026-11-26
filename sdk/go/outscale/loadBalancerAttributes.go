@@ -34,10 +34,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewLoadBalancer(ctx, "load_balancer01", &outscale.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String("terraform-load-balancer"),
-//				SubregionNames: pulumi.StringArray{
-//					pulumi.String("eu-west-2a"),
-//				},
 //				Listeners: outscale.LoadBalancerListenerArray{
 //					&outscale.LoadBalancerListenerArgs{
 //						BackendPort:          pulumi.Int(80),
@@ -69,6 +65,10 @@ import (
 //						Value: pulumi.String("eu-west-2"),
 //					},
 //				},
+//				LoadBalancerName: pulumi.String("terraform-load-balancer"),
+//				SubregionNames: pulumi.StringArray{
+//					pulumi.String("eu-west-2a"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -94,7 +94,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewLoadBalancerAttributes(ctx, "attributes01", &outscale.LoadBalancerAttributesArgs{
-//				LoadBalancerName: pulumi.Any(loadBalancer01.Id),
 //				HealthCheck: &outscale.LoadBalancerAttributesHealthCheckArgs{
 //					HealthyThreshold:   pulumi.Int(10),
 //					CheckInterval:      pulumi.Int(30),
@@ -104,6 +103,7 @@ import (
 //					Timeout:            pulumi.Int(5),
 //					UnhealthyThreshold: pulumi.Int(5),
 //				},
+//				LoadBalancerName: pulumi.Any(loadBalancer01.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -129,13 +129,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := outscale.NewLoadBalancerAttributes(ctx, "attributes02", &outscale.LoadBalancerAttributesArgs{
-//				LoadBalancerName: pulumi.Any(loadBalancer01.Id),
 //				AccessLog: &outscale.LoadBalancerAttributesAccessLogArgs{
 //					PublicationInterval: pulumi.Int(5),
 //					IsEnabled:           pulumi.Bool(true),
 //					OsuBucketName:       pulumi.String("terraform-access-logs"),
 //					OsuBucketPrefix:     pulumi.String("access-logs-01234"),
 //				},
+//				LoadBalancerName: pulumi.Any(loadBalancer01.Id),
 //			})
 //			if err != nil {
 //				return err

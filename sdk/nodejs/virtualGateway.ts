@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as outscale from "@outscale/pulumi-outscale";
  *
  * const virtualGateway01 = new outscale.VirtualGateway("virtual_gateway01", {
- *     connectionType: "ipsec.1",
  *     tags: [{
  *         key: "name",
  *         value: "terraform-virtual-gateway",
  *     }],
+ *     connectionType: "ipsec.1",
  * });
  * ```
  *

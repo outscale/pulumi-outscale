@@ -271,11 +271,11 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
-            user_group_name="Group-TF-test-1",
             policies=[{
                 "policy_orn": policy_2["orn"],
                 "default_version_id": "V2",
-            }])
+            }],
+            user_group_name="Group-TF-test-1")
         ```
 
         ### Add a user to a user group
@@ -285,26 +285,6 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
-            user_group_name="Group-TF-test-1",
-            users=[
-                {
-                    "user_name": "user-name-1",
-                    "path": "/terraform/",
-                },
-                {
-                    "user_name": "user-name-2",
-                },
-            ])
-        ```
-
-        ### Create a user group, and add a user and a policy to it
-
-        ```python
-        import pulumi
-        import pulumi_outscale as outscale
-
-        group_1 = outscale.UserGroup("group-1",
-            user_group_name="Group-TF-test-1",
             users=[
                 {
                     "user_name": "user-name-1",
@@ -314,10 +294,30 @@ class UserGroup(pulumi.CustomResource):
                     "user_name": "user-name-2",
                 },
             ],
+            user_group_name="Group-TF-test-1")
+        ```
+
+        ### Create a user group, and add a user and a policy to it
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        group_1 = outscale.UserGroup("group-1",
             policies=[{
                 "policy_orn": policy_2["orn"],
                 "version_id": "V2",
-            }])
+            }],
+            users=[
+                {
+                    "user_name": "user-name-1",
+                    "path": "/terraform/",
+                },
+                {
+                    "user_name": "user-name-2",
+                },
+            ],
+            user_group_name="Group-TF-test-1")
         ```
 
         ## Import
@@ -367,11 +367,11 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
-            user_group_name="Group-TF-test-1",
             policies=[{
                 "policy_orn": policy_2["orn"],
                 "default_version_id": "V2",
-            }])
+            }],
+            user_group_name="Group-TF-test-1")
         ```
 
         ### Add a user to a user group
@@ -381,26 +381,6 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_outscale as outscale
 
         group_1 = outscale.UserGroup("group-1",
-            user_group_name="Group-TF-test-1",
-            users=[
-                {
-                    "user_name": "user-name-1",
-                    "path": "/terraform/",
-                },
-                {
-                    "user_name": "user-name-2",
-                },
-            ])
-        ```
-
-        ### Create a user group, and add a user and a policy to it
-
-        ```python
-        import pulumi
-        import pulumi_outscale as outscale
-
-        group_1 = outscale.UserGroup("group-1",
-            user_group_name="Group-TF-test-1",
             users=[
                 {
                     "user_name": "user-name-1",
@@ -410,10 +390,30 @@ class UserGroup(pulumi.CustomResource):
                     "user_name": "user-name-2",
                 },
             ],
+            user_group_name="Group-TF-test-1")
+        ```
+
+        ### Create a user group, and add a user and a policy to it
+
+        ```python
+        import pulumi
+        import pulumi_outscale as outscale
+
+        group_1 = outscale.UserGroup("group-1",
             policies=[{
                 "policy_orn": policy_2["orn"],
                 "version_id": "V2",
-            }])
+            }],
+            users=[
+                {
+                    "user_name": "user-name-1",
+                    "path": "/terraform/",
+                },
+                {
+                    "user_name": "user-name-2",
+                },
+            ],
+            user_group_name="Group-TF-test-1")
         ```
 
         ## Import
