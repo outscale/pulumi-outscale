@@ -87,7 +87,7 @@ def get_load_balancer_listener_rules(filters: Optional[Sequence[Union['GetLoadBa
     Provides information about load balancer listener rules.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-listener).
+    For more information on this resource actions, see the [Listener](https://docs.outscale.com/api#3ds-outscale-api-listener) API methods.
 
     ## Example Usage
 
@@ -123,7 +123,7 @@ def get_load_balancer_listener_rules_output(filters: Optional[pulumi.Input[Optio
     Provides information about load balancer listener rules.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Load-Balancers.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-listener).
+    For more information on this resource actions, see the [Listener](https://docs.outscale.com/api#3ds-outscale-api-listener) API methods.
 
     ## Example Usage
 

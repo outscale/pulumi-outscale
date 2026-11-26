@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Manages a keypair.
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+ * For more information on this resource actions, see the [Keypair](https://docs.outscale.com/api#3ds-outscale-api-keypair) API methods.
  *
  * ## Example Usage
  *
@@ -149,6 +149,8 @@ export class Keypair extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Keypair.__pulumiType, name, resourceInputs, opts);
     }
 }

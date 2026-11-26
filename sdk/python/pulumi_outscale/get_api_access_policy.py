@@ -88,7 +88,7 @@ def get_api_access_policy(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     Provides information about the API access policy.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy).
+    For more information on this resource actions, see the [ApiAccessPolicy](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy) API methods.
 
     ## Example Usage
 
@@ -113,7 +113,7 @@ def get_api_access_policy_output(opts: Optional[Union[pulumi.InvokeOptions, pulu
     Provides information about the API access policy.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Your-API-Access-Policy.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy).
+    For more information on this resource actions, see the [ApiAccessPolicy](https://docs.outscale.com/api#3ds-outscale-api-apiaccesspolicy) API methods.
 
     ## Example Usage
 

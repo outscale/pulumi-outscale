@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Provides information about network interface cards (NICs).
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+ * For more information on this resource actions, see the [Nic](https://docs.outscale.com/api#3ds-outscale-api-nic) API methods.
  *
  * ## Example Usage
  *
@@ -72,7 +72,7 @@ export interface GetNicsResult {
  * Provides information about network interface cards (NICs).
  *
  * For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-NICs.html).\
- * For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-nic).
+ * For more information on this resource actions, see the [Nic](https://docs.outscale.com/api#3ds-outscale-api-nic) API methods.
  *
  * ## Example Usage
  *

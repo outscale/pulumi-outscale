@@ -135,7 +135,7 @@ def get_oks_kubeconfig(cluster_id: Optional[_builtins.str] = None,
     Provides information about a kubeconfig file.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Accessing-a-Cluster.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getkubeconfigwithpubkeynacl).
+    For more information on this resource actions, see the [GetKubeconfigWithPubkeyNACL](https://docs.outscale.com/oks.html#getkubeconfigwithpubkeynacl) API method.
 
     ## Example Usage
 
@@ -182,7 +182,7 @@ def get_oks_kubeconfig_output(cluster_id: Optional[pulumi.Input[_builtins.str]] 
     Provides information about a kubeconfig file.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/Accessing-a-Cluster.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/oks.html#getkubeconfigwithpubkeynacl).
+    For more information on this resource actions, see the [GetKubeconfigWithPubkeyNACL](https://docs.outscale.com/oks.html#getkubeconfigwithpubkeynacl) API method.
 
     ## Example Usage
 

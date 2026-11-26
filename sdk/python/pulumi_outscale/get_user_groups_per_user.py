@@ -84,7 +84,7 @@ def get_user_groups_per_user(user_name: Optional[_builtins.str] = None,
     Provides information about  groups that a specified user belongs to.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIM-Groups.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#readusergroupsperuser).
+    For more information on this resource actions, see the [ReadUserGroupPerUser](https://docs.outscale.com/api.html#readusergroupsperuser) API method.
 
     ## Example Usage
 
@@ -118,7 +118,7 @@ def get_user_groups_per_user_output(user_name: Optional[pulumi.Input[_builtins.s
     Provides information about  groups that a specified user belongs to.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-EIM-Groups.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api.html#readusergroupsperuser).
+    For more information on this resource actions, see the [ReadUserGroupPerUser](https://docs.outscale.com/api.html#readusergroupsperuser) API method.
 
     ## Example Usage
 

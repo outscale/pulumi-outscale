@@ -244,7 +244,7 @@ class Keypair(pulumi.CustomResource):
         Manages a keypair.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+        For more information on this resource actions, see the [Keypair](https://docs.outscale.com/api#3ds-outscale-api-keypair) API methods.
 
         ## Example Usage
 
@@ -298,7 +298,7 @@ class Keypair(pulumi.CustomResource):
         Manages a keypair.
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+        For more information on this resource actions, see the [Keypair](https://docs.outscale.com/api#3ds-outscale-api-keypair) API methods.
 
         ## Example Usage
 
@@ -375,6 +375,8 @@ class Keypair(pulumi.CustomResource):
             __props__.__dict__["keypair_type"] = None
             __props__.__dict__["private_key"] = None
             __props__.__dict__["request_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Keypair, __self__).__init__(
             'outscale:index/keypair:Keypair',
             resource_name,

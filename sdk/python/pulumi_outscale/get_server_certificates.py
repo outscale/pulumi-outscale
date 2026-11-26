@@ -87,7 +87,7 @@ def get_server_certificates(filters: Optional[Sequence[Union['GetServerCertifica
     Provides information about server certificates.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+    For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
     ## Example Usage
 
@@ -134,7 +134,7 @@ def get_server_certificates_output(filters: Optional[pulumi.Input[Optional[Seque
     Provides information about server certificates.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Server-Certificates-in-EIM.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-servercertificate).
+    For more information on this resource actions, see the [ServerCertificate](https://docs.outscale.com/api#3ds-outscale-api-servercertificate) API methods.
 
     ## Example Usage
 

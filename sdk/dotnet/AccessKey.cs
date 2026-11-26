@@ -15,7 +15,7 @@ namespace Pulumi.Outscale
     /// &gt; When creating an access key, the secret key is stored in the Terraform state. For security reasons, it is strongly recommended to create access keys using the API rather than the Terraform resource. For more information on how to create access keys using the OUTSCALE API, see the [API documentation](https://docs.outscale.com/api#createaccesskey).
     /// 
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\
-    /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+    /// For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
     /// 
     /// ## Example Usage
     /// 
@@ -151,6 +151,10 @@ namespace Pulumi.Outscale
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -233,11 +237,21 @@ namespace Pulumi.Outscale
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// The secret key that enables you to send requests.
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The state for the access key (`ACTIVE` | `INACTIVE`).

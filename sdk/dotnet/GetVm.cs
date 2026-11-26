@@ -15,7 +15,7 @@ namespace Pulumi.Outscale
         /// Provides information about a virtual machine (VM).
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).  
-        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+        /// For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +52,7 @@ namespace Pulumi.Outscale
         /// Provides information about a virtual machine (VM).
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).  
-        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+        /// For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
         /// 
         /// ## Example Usage
         /// 
@@ -89,7 +89,7 @@ namespace Pulumi.Outscale
         /// Provides information about a virtual machine (VM).
         /// 
         /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-VMs.html).  
-        /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-vm).
+        /// For more information on this resource actions, see the [Vm](https://docs.outscale.com/api#3ds-outscale-api-vm) API methods.
         /// 
         /// ## Example Usage
         /// 

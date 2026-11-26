@@ -105,9 +105,59 @@ __all__ = [
     'OksClusterKubeconfigAttributes',
     'OksClusterStatuses',
     'OksClusterTimeouts',
+    'OksManifestFieldManager',
     'OksManifestTimeouts',
     'OksManifestWaitFor',
     'OksProjectTimeouts',
+    'OosBucketCorsRule',
+    'OosBucketCorsTimeouts',
+    'OosBucketEncryptionTimeouts',
+    'OosBucketGrant',
+    'OosBucketGrantFullControl',
+    'OosBucketGrantRead',
+    'OosBucketGrantReadAcp',
+    'OosBucketGrantWrite',
+    'OosBucketGrantWriteAcp',
+    'OosBucketLifecycleRule',
+    'OosBucketLifecycleRuleAbortIncompleteMultipartUpload',
+    'OosBucketLifecycleRuleExpiration',
+    'OosBucketLifecycleRuleFilter',
+    'OosBucketLifecycleRuleFilterAnd',
+    'OosBucketLifecycleRuleNoncurrentVersionExpiration',
+    'OosBucketLifecycleTimeouts',
+    'OosBucketObjectLock',
+    'OosBucketObjectLockDefaultRetention',
+    'OosBucketPermissions',
+    'OosBucketPermissionsGrant',
+    'OosBucketPermissionsGrantGrantee',
+    'OosBucketPermissionsOwner',
+    'OosBucketPolicyTimeouts',
+    'OosBucketTimeouts',
+    'OosBucketVersioningTimeouts',
+    'OosObjectCopyCopySource',
+    'OosObjectCopyGrant',
+    'OosObjectCopyGrantFullControl',
+    'OosObjectCopyGrantRead',
+    'OosObjectCopyGrantReadAcp',
+    'OosObjectCopyGrantWrite',
+    'OosObjectCopyGrantWriteAcp',
+    'OosObjectCopyPermissions',
+    'OosObjectCopyPermissionsGrant',
+    'OosObjectCopyPermissionsGrantGrantee',
+    'OosObjectCopyPermissionsOwner',
+    'OosObjectCopyTimeouts',
+    'OosObjectGrant',
+    'OosObjectGrantFullControl',
+    'OosObjectGrantRead',
+    'OosObjectGrantReadAcp',
+    'OosObjectGrantWrite',
+    'OosObjectGrantWriteAcp',
+    'OosObjectPermissions',
+    'OosObjectPermissionsGrant',
+    'OosObjectPermissionsGrantGrantee',
+    'OosObjectPermissionsOwner',
+    'OosObjectRetentionTimeouts',
+    'OosObjectTimeouts',
     'PolicyTimeouts',
     'PolicyVersionTimeouts',
     'PublicIpLinkTag',
@@ -5636,6 +5686,54 @@ class OksClusterTimeouts(dict):
 
 
 @pulumi.output_type
+class OksManifestFieldManager(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forceConflicts":
+            suggest = "force_conflicts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OksManifestFieldManager. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OksManifestFieldManager.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OksManifestFieldManager.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 force_conflicts: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool force_conflicts: (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
+        :param _builtins.str name: (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
+        """
+        if force_conflicts is not None:
+            pulumi.set(__self__, "force_conflicts", force_conflicts)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="forceConflicts")
+    def force_conflicts(self) -> Optional[_builtins.bool]:
+        """
+        (Default: `false`) Allow server-side apply to change fields owned by another field manager, taking ownership of conflicting fields.
+        """
+        return pulumi.get(self, "force_conflicts")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Default: `terraform-provider-outscale`) The name identifying the manager that applies the manifest.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class OksManifestTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
@@ -5726,6 +5824,2627 @@ class OksManifestWaitFor(dict):
 
 @pulumi.output_type
 class OksProjectTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosBucketCorsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedHeaders":
+            suggest = "allowed_headers"
+        elif key == "allowedMethods":
+            suggest = "allowed_methods"
+        elif key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketCorsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketCorsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketCorsRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_headers: Sequence[_builtins.str],
+                 allowed_methods: Sequence[_builtins.str],
+                 allowed_origins: Sequence[_builtins.str],
+                 max_age_seconds: _builtins.int,
+                 expose_headers: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] allowed_headers: The headers specified in the Access-Control-Request-Headers header. These headers are allowed in preflight OPTIONS requests. In response to preflight OPTIONS requests, allowed requested headers are returned.
+        :param Sequence[_builtins.str] allowed_methods: One or more HTTP methods (`GET` | `PUT` | `HEAD` | `POST` | `DELETE`) that you allow the origin to execute.
+        :param Sequence[_builtins.str] allowed_origins: One or more origins you want to be able to access the bucket from.
+        :param _builtins.int max_age_seconds: The duration in seconds that the preflight response for the specified source can be cached.
+        :param Sequence[_builtins.str] expose_headers: One or more headers in the response that you want to make accessible.
+        """
+        pulumi.set(__self__, "allowed_headers", allowed_headers)
+        pulumi.set(__self__, "allowed_methods", allowed_methods)
+        pulumi.set(__self__, "allowed_origins", allowed_origins)
+        pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedHeaders")
+    def allowed_headers(self) -> Sequence[_builtins.str]:
+        """
+        The headers specified in the Access-Control-Request-Headers header. These headers are allowed in preflight OPTIONS requests. In response to preflight OPTIONS requests, allowed requested headers are returned.
+        """
+        return pulumi.get(self, "allowed_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Sequence[_builtins.str]:
+        """
+        One or more HTTP methods (`GET` | `PUT` | `HEAD` | `POST` | `DELETE`) that you allow the origin to execute.
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Sequence[_builtins.str]:
+        """
+        One or more origins you want to be able to access the bucket from.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @_builtins.property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> _builtins.int:
+        """
+        The duration in seconds that the preflight response for the specified source can be cached.
+        """
+        return pulumi.get(self, "max_age_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more headers in the response that you want to make accessible.
+        """
+        return pulumi.get(self, "expose_headers")
+
+
+@pulumi.output_type
+class OosBucketCorsTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosBucketEncryptionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosBucketGrant(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullControl":
+            suggest = "full_control"
+        elif key == "readAcp":
+            suggest = "read_acp"
+        elif key == "writeAcp":
+            suggest = "write_acp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketGrant. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketGrant.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketGrant.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_control: Optional['outputs.OosBucketGrantFullControl'] = None,
+                 read: Optional['outputs.OosBucketGrantRead'] = None,
+                 read_acp: Optional['outputs.OosBucketGrantReadAcp'] = None,
+                 write: Optional['outputs.OosBucketGrantWrite'] = None,
+                 write_acp: Optional['outputs.OosBucketGrantWriteAcp'] = None):
+        """
+        :param 'OosBucketGrantFullControlArgs' full_control: Users to whom you grant `full-control` permission.
+        :param 'OosBucketGrantReadArgs' read: Users to whom you grant `read` permission.
+        :param 'OosBucketGrantReadAcpArgs' read_acp: Users to whom you grant `read_acp` permission.
+        :param 'OosBucketGrantWriteArgs' write: Users to whom you grant `write` permission.
+        :param 'OosBucketGrantWriteAcpArgs' write_acp: Users to whom you grant `write_acp` permission.
+        """
+        if full_control is not None:
+            pulumi.set(__self__, "full_control", full_control)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if read_acp is not None:
+            pulumi.set(__self__, "read_acp", read_acp)
+        if write is not None:
+            pulumi.set(__self__, "write", write)
+        if write_acp is not None:
+            pulumi.set(__self__, "write_acp", write_acp)
+
+    @_builtins.property
+    @pulumi.getter(name="fullControl")
+    def full_control(self) -> Optional['outputs.OosBucketGrantFullControl']:
+        """
+        Users to whom you grant `full-control` permission.
+        """
+        return pulumi.get(self, "full_control")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional['outputs.OosBucketGrantRead']:
+        """
+        Users to whom you grant `read` permission.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter(name="readAcp")
+    def read_acp(self) -> Optional['outputs.OosBucketGrantReadAcp']:
+        """
+        Users to whom you grant `read_acp` permission.
+        """
+        return pulumi.get(self, "read_acp")
+
+    @_builtins.property
+    @pulumi.getter
+    def write(self) -> Optional['outputs.OosBucketGrantWrite']:
+        """
+        Users to whom you grant `write` permission.
+        """
+        return pulumi.get(self, "write")
+
+    @_builtins.property
+    @pulumi.getter(name="writeAcp")
+    def write_acp(self) -> Optional['outputs.OosBucketGrantWriteAcp']:
+        """
+        Users to whom you grant `write_acp` permission.
+        """
+        return pulumi.get(self, "write_acp")
+
+
+@pulumi.output_type
+class OosBucketGrantFullControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketGrantFullControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketGrantFullControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketGrantFullControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosBucketGrantRead(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketGrantRead. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketGrantRead.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketGrantRead.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosBucketGrantReadAcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketGrantReadAcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketGrantReadAcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketGrantReadAcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosBucketGrantWrite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketGrantWrite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketGrantWrite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketGrantWrite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosBucketGrantWriteAcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketGrantWriteAcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketGrantWriteAcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketGrantWriteAcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosBucketLifecycleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "abortIncompleteMultipartUpload":
+            suggest = "abort_incomplete_multipart_upload"
+        elif key == "noncurrentVersionExpiration":
+            suggest = "noncurrent_version_expiration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketLifecycleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketLifecycleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketLifecycleRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter: 'outputs.OosBucketLifecycleRuleFilter',
+                 status: _builtins.str,
+                 abort_incomplete_multipart_upload: Optional['outputs.OosBucketLifecycleRuleAbortIncompleteMultipartUpload'] = None,
+                 expiration: Optional['outputs.OosBucketLifecycleRuleExpiration'] = None,
+                 id: Optional[_builtins.str] = None,
+                 noncurrent_version_expiration: Optional['outputs.OosBucketLifecycleRuleNoncurrentVersionExpiration'] = None):
+        """
+        :param 'OosBucketLifecycleRuleFilterArgs' filter: Specifies the objects the rule applies to, using `and`, `prefix`, `tags` keys. See the Object filtering section below for examples of usage.
+        :param _builtins.str status: If `Enabled`, the rule is applied. If `Disabled`, the rule is not applied.
+        :param 'OosBucketLifecycleRuleAbortIncompleteMultipartUploadArgs' abort_incomplete_multipart_upload: Specifies when an incomplete multipart upload is aborted.
+        :param 'OosBucketLifecycleRuleExpirationArgs' expiration: Specifies the expiration date for the objects.
+        :param _builtins.str id: A unique name for the rule. If omitted, the provider generates a unique name for it.
+        :param 'OosBucketLifecycleRuleNoncurrentVersionExpirationArgs' noncurrent_version_expiration: If specified, the noncurrent versions of your objects are automatically deleted once they reach the duration specified in their lifecycle.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "status", status)
+        if abort_incomplete_multipart_upload is not None:
+            pulumi.set(__self__, "abort_incomplete_multipart_upload", abort_incomplete_multipart_upload)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if noncurrent_version_expiration is not None:
+            pulumi.set(__self__, "noncurrent_version_expiration", noncurrent_version_expiration)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> 'outputs.OosBucketLifecycleRuleFilter':
+        """
+        Specifies the objects the rule applies to, using `and`, `prefix`, `tags` keys. See the Object filtering section below for examples of usage.
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        If `Enabled`, the rule is applied. If `Disabled`, the rule is not applied.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="abortIncompleteMultipartUpload")
+    def abort_incomplete_multipart_upload(self) -> Optional['outputs.OosBucketLifecycleRuleAbortIncompleteMultipartUpload']:
+        """
+        Specifies when an incomplete multipart upload is aborted.
+        """
+        return pulumi.get(self, "abort_incomplete_multipart_upload")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiration(self) -> Optional['outputs.OosBucketLifecycleRuleExpiration']:
+        """
+        Specifies the expiration date for the objects.
+        """
+        return pulumi.get(self, "expiration")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        A unique name for the rule. If omitted, the provider generates a unique name for it.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="noncurrentVersionExpiration")
+    def noncurrent_version_expiration(self) -> Optional['outputs.OosBucketLifecycleRuleNoncurrentVersionExpiration']:
+        """
+        If specified, the noncurrent versions of your objects are automatically deleted once they reach the duration specified in their lifecycle.
+        """
+        return pulumi.get(self, "noncurrent_version_expiration")
+
+
+@pulumi.output_type
+class OosBucketLifecycleRuleAbortIncompleteMultipartUpload(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "daysAfterInitiation":
+            suggest = "days_after_initiation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketLifecycleRuleAbortIncompleteMultipartUpload. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketLifecycleRuleAbortIncompleteMultipartUpload.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketLifecycleRuleAbortIncompleteMultipartUpload.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 days_after_initiation: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int days_after_initiation: The number of days after which an incomplete multipart upload is aborted.
+        """
+        if days_after_initiation is not None:
+            pulumi.set(__self__, "days_after_initiation", days_after_initiation)
+
+    @_builtins.property
+    @pulumi.getter(name="daysAfterInitiation")
+    def days_after_initiation(self) -> Optional[_builtins.int]:
+        """
+        The number of days after which an incomplete multipart upload is aborted.
+        """
+        return pulumi.get(self, "days_after_initiation")
+
+
+@pulumi.output_type
+class OosBucketLifecycleRuleExpiration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiredObjectDeleteMarker":
+            suggest = "expired_object_delete_marker"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketLifecycleRuleExpiration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketLifecycleRuleExpiration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketLifecycleRuleExpiration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 date: Optional[_builtins.str] = None,
+                 days: Optional[_builtins.int] = None,
+                 expired_object_delete_marker: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str date: The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
+        :param _builtins.int days: The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
+        :param _builtins.bool expired_object_delete_marker: If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
+        """
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if expired_object_delete_marker is not None:
+            pulumi.set(__self__, "expired_object_delete_marker", expired_object_delete_marker)
+
+    @_builtins.property
+    @pulumi.getter
+    def date(self) -> Optional[_builtins.str]:
+        """
+        The lifetime of the objects, using a timestamp. The date must be in ISO 8601 (for example `2050-01-01T00:00:00Z`). The action is applied once the specified date is reached.<br />- The time is always midnight UTC. Specifying a different time (for example `2050-01-01T16:00:00Z`) will not return an error, but the action will still automatically be applied at midnight UTC on the specified date.<br />- You can specify a lifecycle action and set it to a past date. This will immediately qualify all relevant objects for that action.
+        """
+        return pulumi.get(self, "date")
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Optional[_builtins.int]:
+        """
+        The lifetime of the objects, in days.<br />- When you create a lifecycle rule, the specified number of days is added to the creation time of your object and then rounded to the nearest midnight UTC. For example, if you create an object on February 1st, 2024 at 06:00 UTC and set a 1-day lifecycle rule, the object will expire on February 3rd, 2024 at exactly midnight UTC.
+        """
+        return pulumi.get(self, "days")
+
+    @_builtins.property
+    @pulumi.getter(name="expiredObjectDeleteMarker")
+    def expired_object_delete_marker(self) -> Optional[_builtins.bool]:
+        """
+        If `true`, the expired delete markers of an object are deleted when no older versions of the object are attached to them. This ensures that you do not accumulate unnecessary delete markers in a bucket.
+        """
+        return pulumi.get(self, "expired_object_delete_marker")
+
+
+@pulumi.output_type
+class OosBucketLifecycleRuleFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "and":
+            suggest = "and_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketLifecycleRuleFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketLifecycleRuleFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketLifecycleRuleFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 and_: Optional['outputs.OosBucketLifecycleRuleFilterAnd'] = None,
+                 prefix: Optional[_builtins.str] = None):
+        if and_ is not None:
+            pulumi.set(__self__, "and_", and_)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="and")
+    def and_(self) -> Optional['outputs.OosBucketLifecycleRuleFilterAnd']:
+        return pulumi.get(self, "and_")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class OosBucketLifecycleRuleFilterAnd(dict):
+    def __init__(__self__, *,
+                 prefix: _builtins.str,
+                 tags: Mapping[str, _builtins.str]):
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class OosBucketLifecycleRuleNoncurrentVersionExpiration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noncurrentDays":
+            suggest = "noncurrent_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketLifecycleRuleNoncurrentVersionExpiration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketLifecycleRuleNoncurrentVersionExpiration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketLifecycleRuleNoncurrentVersionExpiration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 noncurrent_days: _builtins.int):
+        """
+        :param _builtins.int noncurrent_days: The lifetime, in days, of noncurrent objects.
+        """
+        pulumi.set(__self__, "noncurrent_days", noncurrent_days)
+
+    @_builtins.property
+    @pulumi.getter(name="noncurrentDays")
+    def noncurrent_days(self) -> _builtins.int:
+        """
+        The lifetime, in days, of noncurrent objects.
+        """
+        return pulumi.get(self, "noncurrent_days")
+
+
+@pulumi.output_type
+class OosBucketLifecycleTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosBucketObjectLock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRetention":
+            suggest = "default_retention"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketObjectLock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketObjectLock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketObjectLock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_retention: Optional['outputs.OosBucketObjectLockDefaultRetention'] = None,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param 'OosBucketObjectLockDefaultRetentionArgs' default_retention: The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
+        :param _builtins.bool enabled: (Default: `false`) Whether object lock is enabled on the bucket.
+        """
+        if default_retention is not None:
+            pulumi.set(__self__, "default_retention", default_retention)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRetention")
+    def default_retention(self) -> Optional['outputs.OosBucketObjectLockDefaultRetention']:
+        """
+        The default retention parameters for new objects placed in the bucket. The `days` and `years` arguments are mutually exclusive.
+        """
+        return pulumi.get(self, "default_retention")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        (Default: `false`) Whether object lock is enabled on the bucket.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class OosBucketObjectLockDefaultRetention(dict):
+    def __init__(__self__, *,
+                 days: Optional[_builtins.int] = None,
+                 mode: Optional[_builtins.str] = None,
+                 years: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int days: The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
+        :param _builtins.str mode: (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
+        :param _builtins.int years: The years after which your objects will no longer be protected.
+        """
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if years is not None:
+            pulumi.set(__self__, "years", years)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Optional[_builtins.int]:
+        """
+        The days after which your objects will no longer be protected. The minimum is `1`, and the expiration is calculated from the exact time each object is uploaded to the bucket. For example, if the default retention for your bucket is `1` day and you upload an object at 06:00 UTC, the object will be locked until the next day, at 06:00 UTC.
+        """
+        return pulumi.get(self, "days")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        (Default: `COMPLIANCE`) The retention mode for the bucket. If set to `COMPLIANCE`, this prevents any user, including the root user, from overwriting or deleting objects within the bucket until the retention period expires. OOS currently does not support `GOVERNANCE` mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def years(self) -> Optional[_builtins.int]:
+        """
+        The years after which your objects will no longer be protected.
+        """
+        return pulumi.get(self, "years")
+
+
+@pulumi.output_type
+class OosBucketPermissions(dict):
+    def __init__(__self__, *,
+                 grants: Optional[Sequence['outputs.OosBucketPermissionsGrant']] = None,
+                 owner: Optional['outputs.OosBucketPermissionsOwner'] = None):
+        """
+        :param Sequence['OosBucketPermissionsGrantArgs'] grants: Information about a granted permission for the bucket.
+        :param 'OosBucketPermissionsOwnerArgs' owner: Information about the owner of the bucket.
+        """
+        if grants is not None:
+            pulumi.set(__self__, "grants", grants)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+
+    @_builtins.property
+    @pulumi.getter
+    def grants(self) -> Optional[Sequence['outputs.OosBucketPermissionsGrant']]:
+        """
+        Information about a granted permission for the bucket.
+        """
+        return pulumi.get(self, "grants")
+
+    @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional['outputs.OosBucketPermissionsOwner']:
+        """
+        Information about the owner of the bucket.
+        """
+        return pulumi.get(self, "owner")
+
+
+@pulumi.output_type
+class OosBucketPermissionsGrant(dict):
+    def __init__(__self__, *,
+                 grantee: Optional['outputs.OosBucketPermissionsGrantGrantee'] = None,
+                 permission: Optional[_builtins.str] = None):
+        """
+        :param 'OosBucketPermissionsGrantGranteeArgs' grantee: A grantee.
+        :param _builtins.str permission: The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+        """
+        if grantee is not None:
+            pulumi.set(__self__, "grantee", grantee)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def grantee(self) -> Optional['outputs.OosBucketPermissionsGrantGrantee']:
+        """
+        A grantee.
+        """
+        return pulumi.get(self, "grantee")
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> Optional[_builtins.str]:
+        """
+        The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class OosBucketPermissionsGrantGrantee(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "emailAddress":
+            suggest = "email_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketPermissionsGrantGrantee. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketPermissionsGrantGrantee.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketPermissionsGrantGrantee.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 email_address: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The OUTSCALE account ID of the owner of the bucket.
+        :param _builtins.str email_address: The email address of the grantee.
+        :param _builtins.str id: The S3 user ID of the owner of the bucket.
+        :param _builtins.str type: If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+        :param _builtins.str uri: The grantee group (`AllUsers` | `AuthenticatedUsers`).
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email_address is not None:
+            pulumi.set(__self__, "email_address", email_address)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The OUTSCALE account ID of the owner of the bucket.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddress")
+    def email_address(self) -> Optional[_builtins.str]:
+        """
+        The email address of the grantee.
+        """
+        return pulumi.get(self, "email_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The S3 user ID of the owner of the bucket.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> Optional[_builtins.str]:
+        """
+        The grantee group (`AllUsers` | `AuthenticatedUsers`).
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class OosBucketPermissionsOwner(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosBucketPermissionsOwner. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosBucketPermissionsOwner.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosBucketPermissionsOwner.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The OUTSCALE account ID of the owner of the bucket.
+        :param _builtins.str id: The S3 user ID of the owner of the bucket.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The OUTSCALE account ID of the owner of the bucket.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The S3 user ID of the owner of the bucket.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class OosBucketPolicyTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosBucketTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosBucketVersioningTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosObjectCopyCopySource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ifMatch":
+            suggest = "if_match"
+        elif key == "ifModifiedSince":
+            suggest = "if_modified_since"
+        elif key == "ifNoneMatch":
+            suggest = "if_none_match"
+        elif key == "ifUnmodifiedSince":
+            suggest = "if_unmodified_since"
+        elif key == "versionId":
+            suggest = "version_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyCopySource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyCopySource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyCopySource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 if_match: Optional[_builtins.str] = None,
+                 if_modified_since: Optional[_builtins.str] = None,
+                 if_none_match: Optional[_builtins.str] = None,
+                 if_unmodified_since: Optional[_builtins.str] = None,
+                 version_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str path: The path in OOS to the source object you want to copy.
+        :param _builtins.str if_match: Copies the object only if its ETag matches the ETag you specify.
+        :param _builtins.str if_modified_since: Copies the object only if it has been modified after the date and time you specify, in UTC format.
+        :param _builtins.str if_none_match: Copies the object only if its ETag does not match the ETag you specify.
+        :param _builtins.str if_unmodified_since: Copies the object only if it has not been modified since the date and time you specify, in UTC format.
+        :param _builtins.str version_id: The version ID of the object.
+        """
+        pulumi.set(__self__, "path", path)
+        if if_match is not None:
+            pulumi.set(__self__, "if_match", if_match)
+        if if_modified_since is not None:
+            pulumi.set(__self__, "if_modified_since", if_modified_since)
+        if if_none_match is not None:
+            pulumi.set(__self__, "if_none_match", if_none_match)
+        if if_unmodified_since is not None:
+            pulumi.set(__self__, "if_unmodified_since", if_unmodified_since)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path in OOS to the source object you want to copy.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="ifMatch")
+    def if_match(self) -> Optional[_builtins.str]:
+        """
+        Copies the object only if its ETag matches the ETag you specify.
+        """
+        return pulumi.get(self, "if_match")
+
+    @_builtins.property
+    @pulumi.getter(name="ifModifiedSince")
+    def if_modified_since(self) -> Optional[_builtins.str]:
+        """
+        Copies the object only if it has been modified after the date and time you specify, in UTC format.
+        """
+        return pulumi.get(self, "if_modified_since")
+
+    @_builtins.property
+    @pulumi.getter(name="ifNoneMatch")
+    def if_none_match(self) -> Optional[_builtins.str]:
+        """
+        Copies the object only if its ETag does not match the ETag you specify.
+        """
+        return pulumi.get(self, "if_none_match")
+
+    @_builtins.property
+    @pulumi.getter(name="ifUnmodifiedSince")
+    def if_unmodified_since(self) -> Optional[_builtins.str]:
+        """
+        Copies the object only if it has not been modified since the date and time you specify, in UTC format.
+        """
+        return pulumi.get(self, "if_unmodified_since")
+
+    @_builtins.property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[_builtins.str]:
+        """
+        The version ID of the object.
+        """
+        return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class OosObjectCopyGrant(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullControl":
+            suggest = "full_control"
+        elif key == "readAcp":
+            suggest = "read_acp"
+        elif key == "writeAcp":
+            suggest = "write_acp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyGrant. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyGrant.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyGrant.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_control: Optional['outputs.OosObjectCopyGrantFullControl'] = None,
+                 read: Optional['outputs.OosObjectCopyGrantRead'] = None,
+                 read_acp: Optional['outputs.OosObjectCopyGrantReadAcp'] = None,
+                 write: Optional['outputs.OosObjectCopyGrantWrite'] = None,
+                 write_acp: Optional['outputs.OosObjectCopyGrantWriteAcp'] = None):
+        """
+        :param 'OosObjectCopyGrantFullControlArgs' full_control: Users to whom you grant `full-control` permission.
+        :param 'OosObjectCopyGrantReadArgs' read: Users to whom you grant `read` permission.
+        :param 'OosObjectCopyGrantReadAcpArgs' read_acp: Users to whom you grant `read_acp` permission.
+        :param 'OosObjectCopyGrantWriteArgs' write: Users to whom you grant `write` permission.
+        :param 'OosObjectCopyGrantWriteAcpArgs' write_acp: Users to whom you grant `write_acp` permission.
+        """
+        if full_control is not None:
+            pulumi.set(__self__, "full_control", full_control)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if read_acp is not None:
+            pulumi.set(__self__, "read_acp", read_acp)
+        if write is not None:
+            pulumi.set(__self__, "write", write)
+        if write_acp is not None:
+            pulumi.set(__self__, "write_acp", write_acp)
+
+    @_builtins.property
+    @pulumi.getter(name="fullControl")
+    def full_control(self) -> Optional['outputs.OosObjectCopyGrantFullControl']:
+        """
+        Users to whom you grant `full-control` permission.
+        """
+        return pulumi.get(self, "full_control")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional['outputs.OosObjectCopyGrantRead']:
+        """
+        Users to whom you grant `read` permission.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter(name="readAcp")
+    def read_acp(self) -> Optional['outputs.OosObjectCopyGrantReadAcp']:
+        """
+        Users to whom you grant `read_acp` permission.
+        """
+        return pulumi.get(self, "read_acp")
+
+    @_builtins.property
+    @pulumi.getter
+    def write(self) -> Optional['outputs.OosObjectCopyGrantWrite']:
+        """
+        Users to whom you grant `write` permission.
+        """
+        return pulumi.get(self, "write")
+
+    @_builtins.property
+    @pulumi.getter(name="writeAcp")
+    def write_acp(self) -> Optional['outputs.OosObjectCopyGrantWriteAcp']:
+        """
+        Users to whom you grant `write_acp` permission.
+        """
+        return pulumi.get(self, "write_acp")
+
+
+@pulumi.output_type
+class OosObjectCopyGrantFullControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyGrantFullControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyGrantFullControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyGrantFullControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectCopyGrantRead(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyGrantRead. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyGrantRead.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyGrantRead.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectCopyGrantReadAcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyGrantReadAcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyGrantReadAcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyGrantReadAcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectCopyGrantWrite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyGrantWrite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyGrantWrite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyGrantWrite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectCopyGrantWriteAcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyGrantWriteAcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyGrantWriteAcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyGrantWriteAcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectCopyPermissions(dict):
+    def __init__(__self__, *,
+                 grants: Optional[Sequence['outputs.OosObjectCopyPermissionsGrant']] = None,
+                 owner: Optional['outputs.OosObjectCopyPermissionsOwner'] = None):
+        """
+        :param Sequence['OosObjectCopyPermissionsGrantArgs'] grants: Information about a granted permission for the object.
+        :param 'OosObjectCopyPermissionsOwnerArgs' owner: Information about the owner of the object.
+        """
+        if grants is not None:
+            pulumi.set(__self__, "grants", grants)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+
+    @_builtins.property
+    @pulumi.getter
+    def grants(self) -> Optional[Sequence['outputs.OosObjectCopyPermissionsGrant']]:
+        """
+        Information about a granted permission for the object.
+        """
+        return pulumi.get(self, "grants")
+
+    @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional['outputs.OosObjectCopyPermissionsOwner']:
+        """
+        Information about the owner of the object.
+        """
+        return pulumi.get(self, "owner")
+
+
+@pulumi.output_type
+class OosObjectCopyPermissionsGrant(dict):
+    def __init__(__self__, *,
+                 grantee: Optional['outputs.OosObjectCopyPermissionsGrantGrantee'] = None,
+                 permission: Optional[_builtins.str] = None):
+        """
+        :param 'OosObjectCopyPermissionsGrantGranteeArgs' grantee: A grantee.
+        :param _builtins.str permission: The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+        """
+        if grantee is not None:
+            pulumi.set(__self__, "grantee", grantee)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def grantee(self) -> Optional['outputs.OosObjectCopyPermissionsGrantGrantee']:
+        """
+        A grantee.
+        """
+        return pulumi.get(self, "grantee")
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> Optional[_builtins.str]:
+        """
+        The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class OosObjectCopyPermissionsGrantGrantee(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "emailAddress":
+            suggest = "email_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyPermissionsGrantGrantee. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyPermissionsGrantGrantee.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyPermissionsGrantGrantee.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 email_address: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The OUTSCALE account ID of the owner of the object.
+        :param _builtins.str email_address: The email address of the grantee.
+        :param _builtins.str id: The S3 user ID of the owner of the object.
+        :param _builtins.str type: If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+        :param _builtins.str uri: The grantee group (`AllUsers` | `AuthenticatedUsers`).
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email_address is not None:
+            pulumi.set(__self__, "email_address", email_address)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The OUTSCALE account ID of the owner of the object.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddress")
+    def email_address(self) -> Optional[_builtins.str]:
+        """
+        The email address of the grantee.
+        """
+        return pulumi.get(self, "email_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The S3 user ID of the owner of the object.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> Optional[_builtins.str]:
+        """
+        The grantee group (`AllUsers` | `AuthenticatedUsers`).
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class OosObjectCopyPermissionsOwner(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectCopyPermissionsOwner. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectCopyPermissionsOwner.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectCopyPermissionsOwner.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The OUTSCALE account ID of the owner of the object.
+        :param _builtins.str id: The S3 user ID of the owner of the object.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The OUTSCALE account ID of the owner of the object.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The S3 user ID of the owner of the object.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class OosObjectCopyTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosObjectGrant(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullControl":
+            suggest = "full_control"
+        elif key == "readAcp":
+            suggest = "read_acp"
+        elif key == "writeAcp":
+            suggest = "write_acp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectGrant. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectGrant.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectGrant.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_control: Optional['outputs.OosObjectGrantFullControl'] = None,
+                 read: Optional['outputs.OosObjectGrantRead'] = None,
+                 read_acp: Optional['outputs.OosObjectGrantReadAcp'] = None,
+                 write: Optional['outputs.OosObjectGrantWrite'] = None,
+                 write_acp: Optional['outputs.OosObjectGrantWriteAcp'] = None):
+        """
+        :param 'OosObjectGrantFullControlArgs' full_control: Users to whom you grant `full-control` permission.
+        :param 'OosObjectGrantReadArgs' read: Users to whom you grant `read` permission.
+        :param 'OosObjectGrantReadAcpArgs' read_acp: Users to whom you grant `read_acp` permission.
+        :param 'OosObjectGrantWriteArgs' write: Users to whom you grant `write` permission.
+        :param 'OosObjectGrantWriteAcpArgs' write_acp: Users to whom you grant `write_acp` permission.
+        """
+        if full_control is not None:
+            pulumi.set(__self__, "full_control", full_control)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if read_acp is not None:
+            pulumi.set(__self__, "read_acp", read_acp)
+        if write is not None:
+            pulumi.set(__self__, "write", write)
+        if write_acp is not None:
+            pulumi.set(__self__, "write_acp", write_acp)
+
+    @_builtins.property
+    @pulumi.getter(name="fullControl")
+    def full_control(self) -> Optional['outputs.OosObjectGrantFullControl']:
+        """
+        Users to whom you grant `full-control` permission.
+        """
+        return pulumi.get(self, "full_control")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional['outputs.OosObjectGrantRead']:
+        """
+        Users to whom you grant `read` permission.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter(name="readAcp")
+    def read_acp(self) -> Optional['outputs.OosObjectGrantReadAcp']:
+        """
+        Users to whom you grant `read_acp` permission.
+        """
+        return pulumi.get(self, "read_acp")
+
+    @_builtins.property
+    @pulumi.getter
+    def write(self) -> Optional['outputs.OosObjectGrantWrite']:
+        """
+        Users to whom you grant `write` permission.
+        """
+        return pulumi.get(self, "write")
+
+    @_builtins.property
+    @pulumi.getter(name="writeAcp")
+    def write_acp(self) -> Optional['outputs.OosObjectGrantWriteAcp']:
+        """
+        Users to whom you grant `write_acp` permission.
+        """
+        return pulumi.get(self, "write_acp")
+
+
+@pulumi.output_type
+class OosObjectGrantFullControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectGrantFullControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectGrantFullControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectGrantFullControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectGrantRead(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectGrantRead. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectGrantRead.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectGrantRead.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectGrantReadAcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectGrantReadAcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectGrantReadAcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectGrantReadAcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectGrantWrite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectGrantWrite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectGrantWrite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectGrantWrite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectGrantWriteAcp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectGrantWriteAcp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectGrantWriteAcp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectGrantWriteAcp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] email_addresses: One or more user email addresses.
+        :param Sequence[_builtins.str] ids: One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more user email addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        One or more S3 user IDs (not to be confused with OUTSCALE account IDs).
+        """
+        return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class OosObjectPermissions(dict):
+    def __init__(__self__, *,
+                 grants: Optional[Sequence['outputs.OosObjectPermissionsGrant']] = None,
+                 owner: Optional['outputs.OosObjectPermissionsOwner'] = None):
+        """
+        :param Sequence['OosObjectPermissionsGrantArgs'] grants: Information about a granted permission for the object.
+        :param 'OosObjectPermissionsOwnerArgs' owner: Information about the owner of the object.
+        """
+        if grants is not None:
+            pulumi.set(__self__, "grants", grants)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+
+    @_builtins.property
+    @pulumi.getter
+    def grants(self) -> Optional[Sequence['outputs.OosObjectPermissionsGrant']]:
+        """
+        Information about a granted permission for the object.
+        """
+        return pulumi.get(self, "grants")
+
+    @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional['outputs.OosObjectPermissionsOwner']:
+        """
+        Information about the owner of the object.
+        """
+        return pulumi.get(self, "owner")
+
+
+@pulumi.output_type
+class OosObjectPermissionsGrant(dict):
+    def __init__(__self__, *,
+                 grantee: Optional['outputs.OosObjectPermissionsGrantGrantee'] = None,
+                 permission: Optional[_builtins.str] = None):
+        """
+        :param 'OosObjectPermissionsGrantGranteeArgs' grantee: A grantee.
+        :param _builtins.str permission: The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+        """
+        if grantee is not None:
+            pulumi.set(__self__, "grantee", grantee)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+
+    @_builtins.property
+    @pulumi.getter
+    def grantee(self) -> Optional['outputs.OosObjectPermissionsGrantGrantee']:
+        """
+        A grantee.
+        """
+        return pulumi.get(self, "grantee")
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> Optional[_builtins.str]:
+        """
+        The granted permission (`READ` | `WRITE` | `READ_ACP` | `WRITE_ACP` | `FULL_CONTROL`).
+        """
+        return pulumi.get(self, "permission")
+
+
+@pulumi.output_type
+class OosObjectPermissionsGrantGrantee(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "emailAddress":
+            suggest = "email_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectPermissionsGrantGrantee. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectPermissionsGrantGrantee.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectPermissionsGrantGrantee.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 email_address: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The OUTSCALE account ID of the owner of the object.
+        :param _builtins.str email_address: The email address of the grantee.
+        :param _builtins.str id: The S3 user ID of the owner of the object.
+        :param _builtins.str type: If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+        :param _builtins.str uri: The grantee group (`AllUsers` | `AuthenticatedUsers`).
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if email_address is not None:
+            pulumi.set(__self__, "email_address", email_address)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The OUTSCALE account ID of the owner of the object.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddress")
+    def email_address(self) -> Optional[_builtins.str]:
+        """
+        The email address of the grantee.
+        """
+        return pulumi.get(self, "email_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The S3 user ID of the owner of the object.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        If the permission is for an individual user, `CanonicalUser`. If the permission is for a group of users, `Group`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> Optional[_builtins.str]:
+        """
+        The grantee group (`AllUsers` | `AuthenticatedUsers`).
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class OosObjectPermissionsOwner(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OosObjectPermissionsOwner. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OosObjectPermissionsOwner.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OosObjectPermissionsOwner.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: The OUTSCALE account ID of the owner of the object.
+        :param _builtins.str id: The S3 user ID of the owner of the object.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        The OUTSCALE account ID of the owner of the object.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The S3 user ID of the owner of the object.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class OosObjectRetentionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OosObjectTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
                  delete: Optional[_builtins.str] = None,

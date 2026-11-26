@@ -15,7 +15,7 @@ import (
 // Manages a keypair.
 //
 // For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\
-// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+// For more information on this resource actions, see the [Keypair](https://docs.outscale.com/api#3ds-outscale-api-keypair) API methods.
 //
 // ## Example Usage
 //
@@ -126,6 +126,10 @@ func NewKeypair(ctx *pulumi.Context,
 	if args.KeypairName == nil {
 		return nil, errors.New("invalid value for required argument 'KeypairName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Keypair
 	err := ctx.RegisterResource("outscale:index/keypair:Keypair", name, args, &resource, opts...)

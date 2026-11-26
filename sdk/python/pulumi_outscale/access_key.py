@@ -272,7 +272,7 @@ class AccessKey(pulumi.CustomResource):
         > When creating an access key, the secret key is stored in the Terraform state. For security reasons, it is strongly recommended to create access keys using the API rather than the Terraform resource. For more information on how to create access keys using the OUTSCALE API, see the [API documentation](https://docs.outscale.com/api#createaccesskey).
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+        For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
 
         ## Example Usage
 
@@ -328,7 +328,7 @@ class AccessKey(pulumi.CustomResource):
         > When creating an access key, the secret key is stored in the Terraform state. For security reasons, it is strongly recommended to create access keys using the API rather than the Terraform resource. For more information on how to create access keys using the OUTSCALE API, see the [API documentation](https://docs.outscale.com/api#createaccesskey).
 
         For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Access-Keys.html).\\
-        For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-accesskey).
+        For more information on this resource actions, see the [AccessKey](https://docs.outscale.com/api#3ds-outscale-api-accesskey) API methods.
 
         ## Example Usage
 
@@ -405,6 +405,8 @@ class AccessKey(pulumi.CustomResource):
             __props__.__dict__["last_modification_date"] = None
             __props__.__dict__["request_id"] = None
             __props__.__dict__["secret_key"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccessKey, __self__).__init__(
             'outscale:index/accessKey:AccessKey',
             resource_name,

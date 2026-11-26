@@ -87,7 +87,7 @@ def get_flexible_gpu_catalog(filters: Optional[Sequence[Union['GetFlexibleGpuCat
     Provides information about the flexible GPU catalog.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readflexiblegpucatalog).
+    For more information on this resource actions, see the [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) API method.
 
     ## Example Usage
 
@@ -114,7 +114,7 @@ def get_flexible_gpu_catalog_output(filters: Optional[pulumi.Input[Optional[Sequ
     Provides information about the flexible GPU catalog.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#readflexiblegpucatalog).
+    For more information on this resource actions, see the [ReadFlexibleGpuCatalog](https://docs.outscale.com/api#readflexiblegpucatalog) API method.
 
     ## Example Usage
 

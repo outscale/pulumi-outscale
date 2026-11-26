@@ -135,7 +135,7 @@ def get_api_access_rule(filters: Optional[Sequence[Union['GetApiAccessRuleFilter
     Provides information about an API access rule.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+    For more information on this resource actions, see the [ApiAccessRule](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule) API methods.
 
     ## Example Usage
 
@@ -172,7 +172,7 @@ def get_api_access_rule_output(filters: Optional[pulumi.Input[Optional[Sequence[
     Provides information about an API access rule.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-API-Access-Rules.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule).
+    For more information on this resource actions, see the [ApiAccessRule](https://docs.outscale.com/api#3ds-outscale-api-apiaccessrule) API methods.
 
     ## Example Usage
 

@@ -62,7 +62,7 @@ def get_oks_crd_templates(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     """
     Provides information about the YAML manifest templates provided by the OKS API to create Custom Resource Definitions (CRDs).
 
-    For more information on the templates, see the [API documentation](https://docs.outscale.com/oks.html#oks-api-templates).
+    For more information on the templates, see the [Templates](https://docs.outscale.com/oks.html#oks-api-templates) API method.
 
     ## Example Usage
 
@@ -84,7 +84,7 @@ def get_oks_crd_templates_output(opts: Optional[Union[pulumi.InvokeOptions, pulu
     """
     Provides information about the YAML manifest templates provided by the OKS API to create Custom Resource Definitions (CRDs).
 
-    For more information on the templates, see the [API documentation](https://docs.outscale.com/oks.html#oks-api-templates).
+    For more information on the templates, see the [Templates](https://docs.outscale.com/oks.html#oks-api-templates) API method.
 
     ## Example Usage
 

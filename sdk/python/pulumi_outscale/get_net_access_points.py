@@ -87,7 +87,7 @@ def get_net_access_points(filters: Optional[Sequence[Union['GetNetAccessPointsFi
     Provides information about Net access points.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+    For more information on this resource actions, see the [NetAccessPoint](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint) API methods.
 
     ## Example Usage
 
@@ -143,7 +143,7 @@ def get_net_access_points_output(filters: Optional[pulumi.Input[Optional[Sequenc
     Provides information about Net access points.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Net-Access-Points.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint).
+    For more information on this resource actions, see the [NetAccessPoint](https://docs.outscale.com/api#3ds-outscale-api-netaccesspoint) API methods.
 
     ## Example Usage
 

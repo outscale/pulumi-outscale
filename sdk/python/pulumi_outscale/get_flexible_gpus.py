@@ -87,7 +87,7 @@ def get_flexible_gpus(filters: Optional[Sequence[Union['GetFlexibleGpusFilterArg
     Provides information about flexible GPUs.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+    For more information on this resource actions, see the [FlexibleGpu](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu) API methods.
 
     ## Example Usage
 
@@ -129,7 +129,7 @@ def get_flexible_gpus_output(filters: Optional[pulumi.Input[Optional[Sequence[Un
     Provides information about flexible GPUs.
 
     For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).\\
-    For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu).
+    For more information on this resource actions, see the [FlexibleGpu](https://docs.outscale.com/api#3ds-outscale-api-flexiblegpu) API methods.
 
     ## Example Usage
 

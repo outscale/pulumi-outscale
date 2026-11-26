@@ -13,7 +13,7 @@ namespace Pulumi.Outscale
     /// Manages a keypair.
     /// 
     /// For more information on this resource, see the [User Guide](https://docs.outscale.com/en/userguide/About-Keypairs.html).\
-    /// For more information on this resource actions, see the [API documentation](https://docs.outscale.com/api#3ds-outscale-api-keypair).
+    /// For more information on this resource actions, see the [Keypair](https://docs.outscale.com/api#3ds-outscale-api-keypair) API methods.
     /// 
     /// ## Example Usage
     /// 
@@ -148,6 +148,10 @@ namespace Pulumi.Outscale
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -230,11 +234,21 @@ namespace Pulumi.Outscale
         [Input("keypairType")]
         public Input<string>? KeypairType { get; set; }
 
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
         /// <summary>
         /// The private key, returned only if you are creating a keypair (not if you are importing). When you save this private key in a .rsa file, make sure you replace the `\n` escape sequences with real line breaks.
         /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The public key to import in your account, if you are importing an existing keypair. This value must be Base64-encoded.

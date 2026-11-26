@@ -610,6 +610,56 @@ export type OksProject = import("./oksProject").OksProject;
 export const OksProject: typeof import("./oksProject").OksProject = null as any;
 utilities.lazyLoad(exports, ["OksProject"], () => require("./oksProject"));
 
+export { OosBucketArgs, OosBucketState } from "./oosBucket";
+export type OosBucket = import("./oosBucket").OosBucket;
+export const OosBucket: typeof import("./oosBucket").OosBucket = null as any;
+utilities.lazyLoad(exports, ["OosBucket"], () => require("./oosBucket"));
+
+export { OosBucketCorsArgs, OosBucketCorsState } from "./oosBucketCors";
+export type OosBucketCors = import("./oosBucketCors").OosBucketCors;
+export const OosBucketCors: typeof import("./oosBucketCors").OosBucketCors = null as any;
+utilities.lazyLoad(exports, ["OosBucketCors"], () => require("./oosBucketCors"));
+
+export { OosBucketEncryptionArgs, OosBucketEncryptionState } from "./oosBucketEncryption";
+export type OosBucketEncryption = import("./oosBucketEncryption").OosBucketEncryption;
+export const OosBucketEncryption: typeof import("./oosBucketEncryption").OosBucketEncryption = null as any;
+utilities.lazyLoad(exports, ["OosBucketEncryption"], () => require("./oosBucketEncryption"));
+
+export { OosBucketLifecycleArgs, OosBucketLifecycleState } from "./oosBucketLifecycle";
+export type OosBucketLifecycle = import("./oosBucketLifecycle").OosBucketLifecycle;
+export const OosBucketLifecycle: typeof import("./oosBucketLifecycle").OosBucketLifecycle = null as any;
+utilities.lazyLoad(exports, ["OosBucketLifecycle"], () => require("./oosBucketLifecycle"));
+
+export { OosBucketPolicyArgs, OosBucketPolicyState } from "./oosBucketPolicy";
+export type OosBucketPolicy = import("./oosBucketPolicy").OosBucketPolicy;
+export const OosBucketPolicy: typeof import("./oosBucketPolicy").OosBucketPolicy = null as any;
+utilities.lazyLoad(exports, ["OosBucketPolicy"], () => require("./oosBucketPolicy"));
+
+export { OosBucketVersioningArgs, OosBucketVersioningState } from "./oosBucketVersioning";
+export type OosBucketVersioning = import("./oosBucketVersioning").OosBucketVersioning;
+export const OosBucketVersioning: typeof import("./oosBucketVersioning").OosBucketVersioning = null as any;
+utilities.lazyLoad(exports, ["OosBucketVersioning"], () => require("./oosBucketVersioning"));
+
+export { OosObjectArgs, OosObjectState } from "./oosObject";
+export type OosObject = import("./oosObject").OosObject;
+export const OosObject: typeof import("./oosObject").OosObject = null as any;
+utilities.lazyLoad(exports, ["OosObject"], () => require("./oosObject"));
+
+export { OosObjectCopyArgs, OosObjectCopyState } from "./oosObjectCopy";
+export type OosObjectCopy = import("./oosObjectCopy").OosObjectCopy;
+export const OosObjectCopy: typeof import("./oosObjectCopy").OosObjectCopy = null as any;
+utilities.lazyLoad(exports, ["OosObjectCopy"], () => require("./oosObjectCopy"));
+
+export { OosObjectRetentionArgs, OosObjectRetentionState } from "./oosObjectRetention";
+export type OosObjectRetention = import("./oosObjectRetention").OosObjectRetention;
+export const OosObjectRetention: typeof import("./oosObjectRetention").OosObjectRetention = null as any;
+utilities.lazyLoad(exports, ["OosObjectRetention"], () => require("./oosObjectRetention"));
+
+export { OosPresignedUrlArgs, OosPresignedUrlState } from "./oosPresignedUrl";
+export type OosPresignedUrl = import("./oosPresignedUrl").OosPresignedUrl;
+export const OosPresignedUrl: typeof import("./oosPresignedUrl").OosPresignedUrl = null as any;
+utilities.lazyLoad(exports, ["OosPresignedUrl"], () => require("./oosPresignedUrl"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
@@ -811,6 +861,26 @@ const _module = {
                 return new OksManifest(name, <any>undefined, { urn })
             case "outscale:index/oksProject:OksProject":
                 return new OksProject(name, <any>undefined, { urn })
+            case "outscale:index/oosBucket:OosBucket":
+                return new OosBucket(name, <any>undefined, { urn })
+            case "outscale:index/oosBucketCors:OosBucketCors":
+                return new OosBucketCors(name, <any>undefined, { urn })
+            case "outscale:index/oosBucketEncryption:OosBucketEncryption":
+                return new OosBucketEncryption(name, <any>undefined, { urn })
+            case "outscale:index/oosBucketLifecycle:OosBucketLifecycle":
+                return new OosBucketLifecycle(name, <any>undefined, { urn })
+            case "outscale:index/oosBucketPolicy:OosBucketPolicy":
+                return new OosBucketPolicy(name, <any>undefined, { urn })
+            case "outscale:index/oosBucketVersioning:OosBucketVersioning":
+                return new OosBucketVersioning(name, <any>undefined, { urn })
+            case "outscale:index/oosObject:OosObject":
+                return new OosObject(name, <any>undefined, { urn })
+            case "outscale:index/oosObjectCopy:OosObjectCopy":
+                return new OosObjectCopy(name, <any>undefined, { urn })
+            case "outscale:index/oosObjectRetention:OosObjectRetention":
+                return new OosObjectRetention(name, <any>undefined, { urn })
+            case "outscale:index/oosPresignedUrl:OosPresignedUrl":
+                return new OosPresignedUrl(name, <any>undefined, { urn })
             case "outscale:index/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "outscale:index/policyVersion:PolicyVersion":
@@ -896,6 +966,16 @@ pulumi.runtime.registerResourceModule("outscale", "index/nicPrivateIp", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/oksCluster", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/oksManifest", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/oksProject", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosBucket", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosBucketCors", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosBucketEncryption", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosBucketLifecycle", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosBucketPolicy", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosBucketVersioning", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosObject", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosObjectCopy", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosObjectRetention", _module)
+pulumi.runtime.registerResourceModule("outscale", "index/oosPresignedUrl", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/policy", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/policyVersion", _module)
 pulumi.runtime.registerResourceModule("outscale", "index/publicIp", _module)
