@@ -1,6 +1,6 @@
 {
   "packages": [
-    "yarn@latest",
+    "yarn@1.22.22",
     "pulumictl@latest",
     "go@1.21.",
     "nodejs@20.",
