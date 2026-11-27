@@ -1,0 +1,39 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>outscale/oks-tools-team//renovate/default.json5#initial",
+    "group:pulumi"
+  ],
+  "postUpdateOptions": ["gomodTidy"],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "description": "Managed by upgrade-provider workflows",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": [
+        "github.com/outscale/terraform-provider-outscale{/,}**",
+        "github.com/pulumi/pulumi-terraform-bridge{/,}**",
+        "github.com/pulumi/pulumi/{sdk,pkg}{/,}**"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Managed by ci-mgmt",
+      "matchFileNames": [
+        "sdk/**",
+        ".config/mise*.toml",
+        ".devcontainer/**",
+        ".github/workflows/**"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Update only custom workflows",
+      "matchManagers": ["github-actions"],
+      "matchFileNames": [".github/workflows/gitleaks.yml"],
+      "enabled": true
+    }
+  ]
+}
