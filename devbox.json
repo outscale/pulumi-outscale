@@ -1,7 +1,7 @@
 {
   "packages": [
     "yarn@latest",
-    "pulumictl@latest",
+    "pulumictl@0.0.50",
     "go@1.21.",
     "nodejs@20.",
     "python3@3.11.8",
