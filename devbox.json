@@ -7,7 +7,7 @@
     "python3@3.11.8",
     "dotnet-sdk@8.0.",
     "gradle_7@7.6",
-    "curl@8"
+    "curl@8.23.0"
   ],
   "shell": {
     "init_hook": [
