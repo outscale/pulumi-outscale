@@ -1,6 +1,6 @@
 # Overwrites mise configuration at .config/mise.toml
 [tools]
 pulumi = "3.278.0"
-go = "1.27.0"
+go = "1.27.4"
 golangci-lint = "2.15.0"
 "vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.4.0"
